@@ -1,0 +1,75 @@
+@import url('http://fonts.cdnfonts.com/css/reinata');
+@import url('http://fonts.cdnfonts.com/css/gilroy-bold');
+
+.landing {
+   position: relative;
+   width: 100vw;
+}
+
+.landing > .bannerBack {
+   width: 100vw;
+}
+
+.landing > .bannerBack > img {
+   width: 100%;
+}
+
+.landing > .brand {
+   position: absolute;
+   top: 110px;
+   width: 100%;
+}
+
+.landing > .brand > .title {
+   width: 60%;
+   margin: auto;
+   margin-bottom: 10px;
+   text-align: center;
+   font-family: 'Gilroy';
+   font-style: normal;
+   font-weight: 800;
+   font-size: 3rem;
+   line-height: 110%;
+   letter-spacing: -0.02em;
+   color: var(--white);
+}
+
+.landing > .brand > .slogan {
+   display: block;
+   width: 85%;
+   margin: auto;
+   text-align: center;
+   font-family: 'Reinata';
+   font-style: normal;
+   font-size: 4rem;
+   line-height: 80%;
+   letter-spacing: 5px;
+   color: #ffffff;
+   transform: rotate(-4.91deg);
+}
+
+.landing > .linkTo {
+   display: flex;
+   justify-content: center;
+   position: absolute;
+   top: 400px;
+   width: 100%;
+}
+
+.landing > .linkTo > .linkButton {
+   letter-spacing: 1.5px;
+   border-color: var(--white);
+   color: var(--white);
+}
+
+.landing > .bannerDishes {
+   position: absolute;
+   width: 90%;
+   left: 50%;
+   bottom: -150px;
+   transform: translate(-50%, 0);
+}
+
+.landing > .bannerDishes > img {
+   width: 100%;
+}
