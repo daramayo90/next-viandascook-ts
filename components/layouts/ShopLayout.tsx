@@ -1,7 +1,7 @@
 import { FC, ReactNode } from 'react';
 import Head from 'next/head';
 
-import { Navbar } from '../ui';
+import { Navbar, SideMenu } from '../ui';
 
 interface Props {
    children: ReactNode;
@@ -25,6 +25,8 @@ export const ShopLayout: FC<Props> = ({ children, title, pageDescription, imageF
          <nav>
             <Navbar />
          </nav>
+
+         <SideMenu />
 
          <main>{children}</main>
 

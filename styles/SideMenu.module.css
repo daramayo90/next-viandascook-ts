@@ -1,0 +1,93 @@
+@import url('http://fonts.cdnfonts.com/css/gilroy-bold');
+
+.sidemenu {
+   position: fixed;
+   top: 0;
+   width: 100vw;
+   height: 100vh;
+   background-color: white;
+   transition: 'all 0.5s ease-out';
+   z-index: 99;
+}
+
+.sidemenu > .close {
+   display: flex;
+   position: absolute;
+   top: 20px;
+   right: 15px;
+   z-index: 999;
+}
+
+.sidemenu > .close > .closeIcon {
+   font-size: 1.7rem;
+   color: var(--black);
+}
+
+.sidemenu > .menuBack {
+   width: 100vw;
+   height: 100vh;
+}
+
+.sidemenu > .menuBack > img {
+   width: 100%;
+}
+
+.sidemenu > .logo {
+   position: absolute;
+   margin-left: auto;
+   margin-right: auto;
+   top: 5px;
+   left: 0;
+   right: 0;
+   width: 55%;
+   min-width: 170px;
+   max-width: 220px;
+   cursor: pointer;
+   z-index: 999;
+}
+
+.sidemenu > .logo > img {
+   width: 100%;
+   margin-left: -11px;
+}
+
+.sidemenu > .menuOptions {
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-start;
+   position: absolute;
+   top: 0;
+   align-items: center;
+   width: 100vw;
+   height: 100vh;
+}
+
+.sidemenu > .menuOptions > .list {
+   margin-top: 5rem;
+   text-align: center;
+   list-style: none;
+}
+
+.sidemenu > .menuOptions > .list > li {
+   margin: 40px 0;
+   font-family: 'Gilroy';
+   font-style: normal;
+   font-weight: 500;
+   font-size: 28px;
+   line-height: 36px;
+   color: var(--black);
+}
+
+.sidemenu > .menuOptions > .login {
+   display: flex;
+   justify-content: center;
+   width: 60%;
+   margin-top: 10px;
+}
+
+.sidemenu > .menuOptions > .login > button {
+   width: 100%;
+   border: 2px solid var(--primary);
+   background-color: var(--primary);
+   color: var(--white);
+}
