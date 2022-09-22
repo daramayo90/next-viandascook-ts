@@ -1,0 +1,157 @@
+@import url('http://fonts.cdnfonts.com/css/reinata');
+@import url('http://fonts.cdnfonts.com/css/gilroy-bold');
+
+.banner {
+   background-image: url(/img/banner-back-mobile.jpg);
+   background-position: top;
+   background-repeat: no-repeat;
+   background-size: cover;
+   position: relative;
+   height: 660px;
+}
+
+.banner > .container {
+   display: flex;
+   flex-direction: column;
+   max-width: 500px;
+   width: 100vw;
+   height: 100%;
+   margin: auto;
+}
+
+.banner > .container > .brand {
+   width: 100%;
+   margin-top: 6rem;
+}
+
+.banner > .container > .brand > .title {
+   width: 60%;
+   margin: auto;
+   text-align: center;
+   font-family: 'Gilroy';
+   font-size: 3rem;
+   line-height: 110%;
+   letter-spacing: -0.02em;
+   color: var(--white);
+}
+
+.banner > .container > .brand > .slogan {
+   width: 85%;
+   margin: auto;
+   text-align: center;
+   font-family: 'Reinata';
+   font-style: normal;
+   font-size: 4rem;
+   line-height: 80%;
+   letter-spacing: 5px;
+   color: #ffffff;
+   transform: rotate(-4.91deg);
+}
+
+.banner > .container > .brand > .linkTo {
+   display: flex;
+   justify-content: center;
+   margin-top: 3rem;
+}
+
+.banner > .container > .brand > .linkTo > .linkButton {
+   letter-spacing: 1.5px;
+   border-color: var(--white);
+   color: var(--white);
+}
+
+.banner > .container > .brand > .discount {
+   width: 100%;
+   margin-top: 1rem;
+   margin-bottom: 2rem;
+   text-align: center;
+   font-style: normal;
+   font-weight: 400;
+   font-size: 14px;
+   line-height: 160%;
+   color: var(--secondary);
+}
+
+.banner > .container > .brand > .discount > span {
+   display: block;
+}
+
+.banner > .container > .bannerDishes {
+   width: 100%;
+   position: relative;
+   overflow-x: clip;
+}
+
+.banner > .container > .bannerDishes > img {
+   position: absolute;
+   max-width: 120%;
+   right: -10%;
+}
+
+@media (min-width: 720px) {
+   .banner {
+      background-image: url(/img/banner-back-desktop.jpg);
+      position: relative;
+      height: 690px;
+      padding: 180px 0 174px;
+      background-position: center;
+      overflow-x: clip;
+   }
+
+   .banner > .container {
+      flex-direction: row;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-left: 15px;
+      padding-right: 15px;
+   }
+
+   .banner > .container > .brand {
+      max-width: 607px;
+      width: 60%;
+      margin-top: 0;
+      text-align: left;
+   }
+
+   .banner > .container > .brand > .title {
+      width: 100%;
+      margin: 0;
+      font-weight: 800;
+      font-size: 3.7rem;
+      line-height: 97.5%;
+   }
+
+   .banner > .container > .brand > .slogan {
+      display: block;
+      width: 100%;
+      margin: initial;
+      font-weight: 400;
+      font-size: 7rem;
+      line-height: 97.5%;
+      letter-spacing: -0.02em;
+   }
+
+   .banner > .container > .brand > .linkTo > .linkButton {
+      padding: 10px 70px;
+   }
+
+   .banner > .container > .brand > .discount {
+      font-size: 16px;
+   }
+
+   .banner > .container > .brand > .discount > span {
+      display: inline;
+   }
+
+   .banner > .container > .bannerDishes {
+      position: relative;
+      margin-top: -30px;
+      margin-right: -100px;
+      overflow-x: visible;
+   }
+
+   .banner > .container > .bannerDishes > img {
+      right: -88px;
+      top: -70px;
+   }
+}

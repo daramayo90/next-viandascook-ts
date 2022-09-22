@@ -23,6 +23,7 @@
 }
 
 .footer > .footerBrand > .title {
+   margin-bottom: 10px;
    font-size: 24px;
    font-style: normal;
    font-weight: 800;
@@ -33,6 +34,7 @@
    display: flex;
    justify-content: center;
    align-items: center;
+   margin-top: -15px;
    font-family: 'Reinata';
    font-style: normal;
    font-weight: 400;

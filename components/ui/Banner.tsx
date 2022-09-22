@@ -1,0 +1,40 @@
+import Link from 'next/link';
+
+import styles from '../../styles/Banner.module.css';
+
+export const Banner = () => {
+   return (
+      <section className={styles.banner}>
+         {/* <div className={styles.bannerBack}>
+            <img src='/img/banner-back-mobile.jpg' alt='viandascook-banner-back' />
+         </div> */}
+
+         <div className={styles.container}>
+            <div className={styles.brand}>
+               <h1 className={styles.title}>Viandas Saludables</h1>
+               <p className={styles.slogan}>
+                  <span>¡Hacé que tu día</span>
+                  <span> tenga sabor!</span>
+               </p>
+
+               <Link href='/'>
+                  <div className={styles.linkTo}>
+                     <button className={styles.linkButton}>¡Quiero!</button>
+                  </div>
+               </Link>
+
+               <h4 className={styles.discount}>
+                  <span>10% OFF EN TU PRIMER PEDIDO.</span>
+                  <span>
+                     CUPÓN: <strong>BIENVENIDO10</strong>
+                  </span>
+               </h4>
+            </div>
+
+            <div className={styles.bannerDishes}>
+               <img src='/img/banner-dishes.png' alt='viandascook-banner-back' />
+            </div>
+         </div>
+      </section>
+   );
+};
