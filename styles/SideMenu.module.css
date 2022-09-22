@@ -5,38 +5,38 @@
    top: 0;
    width: 100vw;
    height: 100vh;
-   background-color: white;
-   transition: 'all 0.5s ease-out';
-   z-index: 99;
+   z-index: 999;
 }
 
-.sidemenu > .close {
+.sidemenu > .container {
+   background-image: url(/img/menu-mobile.jpg);
+   background-size: cover;
+   background-repeat: no-repeat;
+   width: 100vw;
+   height: 100vh;
+   overflow: auto;
+}
+
+.sidemenu > .container > .close {
    display: flex;
    position: absolute;
    top: 20px;
    right: 15px;
-   z-index: 999;
+   cursor: pointer;
+   z-index: 9999;
+   backdrop-filter: blur(20px);
 }
 
-.sidemenu > .close > .closeIcon {
+.sidemenu > .container > .close > .closeIcon {
    font-size: 1.7rem;
    color: var(--black);
 }
 
-.sidemenu > .menuBack {
-   width: 100vw;
-   height: 100vh;
-}
-
-.sidemenu > .menuBack > img {
-   width: 100%;
-}
-
-.sidemenu > .logo {
+.sidemenu > .container > .logo {
    position: absolute;
    margin-left: auto;
    margin-right: auto;
-   top: 5px;
+   top: 3px;
    left: 0;
    right: 0;
    width: 55%;
@@ -46,29 +46,27 @@
    z-index: 999;
 }
 
-.sidemenu > .logo > img {
+.sidemenu > .container > .logo > img {
    width: 100%;
-   margin-left: -11px;
+   margin-left: -14px;
 }
 
-.sidemenu > .menuOptions {
+.sidemenu > .container > .menuOptions {
    display: flex;
    flex-direction: column;
    justify-content: flex-start;
-   position: absolute;
-   top: 0;
    align-items: center;
    width: 100vw;
    height: 100vh;
 }
 
-.sidemenu > .menuOptions > .list {
+.sidemenu > .container > .menuOptions > .list {
    margin-top: 5rem;
    text-align: center;
    list-style: none;
 }
 
-.sidemenu > .menuOptions > .list > li {
+.sidemenu > .container > .menuOptions > .list > li {
    margin: 40px 0;
    font-family: 'Gilroy';
    font-style: normal;
@@ -76,18 +74,65 @@
    font-size: 28px;
    line-height: 36px;
    color: var(--black);
+   cursor: pointer;
 }
 
-.sidemenu > .menuOptions > .login {
+.sidemenu > .container > .menuOptions > .login {
    display: flex;
    justify-content: center;
    width: 60%;
    margin-top: 10px;
 }
 
-.sidemenu > .menuOptions > .login > button {
+.sidemenu > .container > .menuOptions > .login > button {
    width: 100%;
    border: 2px solid var(--primary);
    background-color: var(--primary);
    color: var(--white);
+}
+
+@media (min-width: 720px) {
+   .sidemenu {
+      width: 19%;
+      min-width: 350px;
+      right: 0;
+   }
+
+   .sidemenu > .container {
+      width: 100%;
+   }
+
+   .sidemenu > .container > .close {
+      top: 16px;
+      right: 35px;
+   }
+
+   .sidemenu > .container > .close > .closeIcon {
+      font-size: 37px;
+   }
+
+   .sidemenu > .container > .logo {
+      margin-left: initial;
+      margin-right: initial;
+      left: 20px;
+      width: 200px;
+      top: 3px;
+   }
+
+   .sidemenu > .container > .menuOptions {
+      width: 100%;
+   }
+
+   .sidemenu > .container > .menuOptions > .list {
+      margin-top: 10rem;
+      text-align: left;
+   }
+
+   .sidemenu > .container > .menuOptions > .list > li {
+      margin: 40px 0;
+   }
+
+   .sidemenu > .container > .menuOptions > .login {
+      width: 50%;
+   }
 }

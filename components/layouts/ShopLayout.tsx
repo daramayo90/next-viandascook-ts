@@ -28,7 +28,7 @@ export const ShopLayout: FC<Props> = ({ children, title, pageDescription, imageF
 
          <SideMenu />
 
-         <main>{children}</main>
+         <main id='main'>{children}</main>
 
          <footer>
             <Footer />

@@ -8,7 +8,7 @@ import { UIContext } from '../../context/ui';
 import styles from '../../styles/Navbar.module.css';
 
 export const Navbar = () => {
-   const { isMenuOpen, toggleSideMenu } = useContext(UIContext);
+   const { toggleSideMenu } = useContext(UIContext);
 
    return (
       <section className={styles.navbar}>

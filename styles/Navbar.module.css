@@ -26,10 +26,29 @@
 
 .navbar > .menu {
    margin-right: 15px;
-   font-size: 24px;
    cursor: pointer;
 }
 
 .navbar > .menu > .menuIcon {
+   font-size: 24px;
    color: var(--white);
+}
+
+@media (min-width: 720px) {
+   .navbar > .logo {
+      margin-left: 0;
+      top: 0;
+      width: 100%;
+      min-width: 220px;
+      max-width: 380px;
+   }
+
+   .navbar > .menu {
+      margin-right: 35px;
+   }
+
+   .navbar > .menu > .menuIcon {
+      font-size: 37px;
+      color: var(--white);
+   }
 }
