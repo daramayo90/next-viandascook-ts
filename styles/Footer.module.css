@@ -1,0 +1,116 @@
+@import url('http://fonts.cdnfonts.com/css/gilroy-bold');
+
+.footer {
+   display: flex;
+   justify-content: center;
+   position: relative;
+   height: 100%;
+}
+
+.footer > .footerBack {
+   width: 100vw;
+}
+
+.footer > .footerBack > img {
+   width: 100%;
+}
+
+.footer > .footerBrand {
+   position: absolute;
+   top: 3rem;
+   text-align: center;
+   z-index: 99;
+}
+
+.footer > .footerBrand > .title {
+   font-size: 24px;
+   font-style: normal;
+   font-weight: 800;
+   color: var(--white);
+}
+
+.footer > .footerBrand > .slogan {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   font-family: 'Reinata';
+   font-style: normal;
+   font-weight: 400;
+   font-size: 4rem;
+   color: #2daa96;
+   transform: rotate(-4.43deg);
+}
+
+.footer > .columnList {
+   display: flex;
+   align-items: center;
+   justify-content: space-evenly;
+   position: absolute;
+   top: 13rem;
+   width: 70%;
+}
+
+.footer > .columnList > .list {
+   text-align: center;
+   list-style: none;
+}
+
+.footer > .columnList > .list > li {
+   margin: 20px 0;
+   font-weight: 500;
+   color: var(--white);
+}
+
+.footer > .mail {
+   position: absolute;
+   top: 22rem;
+   font-weight: 500;
+   color: var(--white);
+}
+
+.footer > .logo {
+   position: absolute;
+   top: 26rem;
+   width: 70%;
+   min-width: 170px;
+   max-width: 240px;
+   cursor: pointer;
+}
+
+.footer > .logo > img {
+   width: 100%;
+}
+
+.footer > .socialMedia {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   position: absolute;
+   top: 35rem;
+}
+
+.footer > .socialMedia > .icon {
+   margin: 0 15px;
+   padding: 11px;
+   font-size: 2.9rem;
+   border: 1px solid var(--white);
+   border-radius: 50%;
+   color: var(--white);
+}
+
+.footer > .copyright {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   position: absolute;
+   top: 43rem;
+   width: 100%;
+}
+
+.footer > .copyright > span {
+   margin: 10px 0;
+   font-size: 0.8rem;
+   font-weight: 500;
+   color: var(--white);
+}

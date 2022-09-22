@@ -2,15 +2,31 @@
 @import url('http://fonts.cdnfonts.com/css/gilroy-bold');
 
 .landing {
+   width: 100vw;
+}
+
+.landing > .container {
    position: relative;
+   width: 100%;
+}
+
+.landing > .container > .bannerBack {
    width: 100vw;
 }
 
-.landing > .bannerBack {
-   width: 100vw;
+.landing > .container > .bannerBack > img {
+   width: 100%;
 }
 
-.landing > .bannerBack > img {
+.landing > .container > .bannerDishes {
+   position: absolute;
+   width: 90%;
+   left: 50%;
+   bottom: -150px;
+   transform: translate(-50%, 0);
+}
+
+.landing > .container > .bannerDishes > img {
    width: 100%;
 }
 
@@ -62,14 +78,7 @@
    color: var(--white);
 }
 
-.landing > .bannerDishes {
-   position: absolute;
-   width: 90%;
-   left: 50%;
-   bottom: -150px;
-   transform: translate(-50%, 0);
-}
-
-.landing > .bannerDishes > img {
-   width: 100%;
+.viandascookpapa {
+   width: 100vw;
+   height: 100rem;
 }

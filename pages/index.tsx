@@ -13,8 +13,14 @@ const Landing: NextPage = () => {
    return (
       <ShopLayout title={title} pageDescription={description}>
          <section className={styles.landing}>
-            <div className={styles.bannerBack}>
-               <img src='/img/banner-back-mobile.jpg' alt='viandascook-banner-back' />
+            <div className={styles.container}>
+               <div className={styles.bannerBack}>
+                  <img src='/img/banner-back-mobile.jpg' alt='viandascook-banner-back' />
+               </div>
+
+               <div className={styles.bannerDishes}>
+                  <img src='/img/banner-dishes.png' alt='viandascook-banner-back' />
+               </div>
             </div>
 
             <div className={styles.brand}>
@@ -29,9 +35,7 @@ const Landing: NextPage = () => {
                </div>
             </Link>
 
-            <div className={styles.bannerDishes}>
-               <img src='/img/banner-dishes.png' alt='viandascook-banner-back' />
-            </div>
+            <div className={styles.viandascookpapa}></div>
          </section>
       </ShopLayout>
    );
