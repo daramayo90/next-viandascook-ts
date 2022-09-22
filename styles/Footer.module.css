@@ -1,118 +1,204 @@
 @import url('http://fonts.cdnfonts.com/css/gilroy-bold');
 
 .footer {
+   background-image: url(/img/footer-mobile.jpg);
+   background-size: cover;
+   max-height: 100%;
+   padding: 70px 45px 18px;
+   color: var(--white);
+   background-color: #231f20;
+}
+
+.footer > .info {
    display: flex;
-   justify-content: center;
-   position: relative;
-   height: 100%;
+   flex-direction: column;
+   align-items: center;
 }
 
-.footer > .footerBack {
-   width: 100vw;
-}
-
-.footer > .footerBack > img {
+.footer > .info > .footerBrand {
    width: 100%;
 }
 
-.footer > .footerBrand {
-   position: absolute;
-   top: 3rem;
+.footer > .info > .footerBrand > .title {
    text-align: center;
-   z-index: 99;
-}
-
-.footer > .footerBrand > .title {
-   margin-bottom: 10px;
-   font-size: 24px;
+   font-family: 'Gilroy';
    font-style: normal;
+   font-size: 24px;
    font-weight: 800;
    color: var(--white);
 }
 
-.footer > .footerBrand > .slogan {
+.footer > .info > .footerBrand > .slogan {
    display: flex;
    justify-content: center;
-   align-items: center;
-   margin-top: -15px;
+   margin: -10px 0 30px;
    font-family: 'Reinata';
    font-style: normal;
    font-weight: 400;
-   font-size: 4rem;
-   color: #2daa96;
-   transform: rotate(-4.43deg);
+   font-size: 78.0059px;
+   line-height: 94px;
+   color: var(--secondary);
+   transform: rotate(-3.43deg);
 }
 
-.footer > .columnList {
+.footer > .info > .columnList {
    display: flex;
-   align-items: center;
-   justify-content: space-evenly;
-   position: absolute;
-   top: 13rem;
-   width: 70%;
+   margin-top: 0;
+   text-align: center;
+   gap: 38px;
 }
 
-.footer > .columnList > .list {
+.footer > .info > .columnList > .list {
+   margin: 0;
    text-align: center;
    list-style: none;
 }
 
-.footer > .columnList > .list > li {
-   margin: 20px 0;
+.footer > .info > .columnList > .list > li {
+   margin: 0 0 10px;
+   font-size: 18px;
    font-weight: 500;
    color: var(--white);
 }
 
-.footer > .mail {
-   position: absolute;
-   top: 22rem;
-   font-weight: 500;
+.footer > .info > .contact {
+   margin-top: 36px;
+   text-align: center;
+}
+
+.footer > .info > .contact > .support {
+   display: flex;
+   flex-direction: column-reverse;
+}
+
+.footer > .info > .contact > .support > .logo {
+   max-width: 100%;
+   margin: 24px 0;
+}
+
+.footer > .info > .contact > .support > .mail {
+   font-style: normal;
+   font-weight: 600;
+   font-size: 14px;
+   line-height: 26px;
    color: var(--white);
 }
 
-.footer > .logo {
-   position: absolute;
-   top: 26rem;
-   width: 70%;
-   min-width: 170px;
-   max-width: 240px;
-   cursor: pointer;
-}
-
-.footer > .logo > img {
-   width: 100%;
-}
-
-.footer > .socialMedia {
+.footer > .info > .contact > .socialMedia {
    display: flex;
    justify-content: center;
-   align-items: center;
-   position: absolute;
-   top: 35rem;
+   gap: 32px;
+   padding: 0;
+   margin: 0 0 84px;
 }
 
-.footer > .socialMedia > .icon {
-   margin: 0 15px;
+.footer > .info > .contact > .socialMedia > .icon {
+   display: flex;
+   align-items: center;
+
    padding: 11px;
-   font-size: 2.9rem;
-   border: 1px solid var(--white);
+   font-size: 2.7rem;
+   color: var(--white);
    border-radius: 50%;
-   color: var(--white);
+   border: 0.5px solid var(--white);
 }
 
-.footer > .copyright {
+.footer > .legal {
    display: flex;
-   flex-direction: column;
-   justify-content: center;
    align-items: center;
-   position: absolute;
-   top: 43rem;
-   width: 100%;
+   margin-top: 0;
+   margin-bottom: 0;
+   color: var(--white);
+   gap: 12px;
 }
 
-.footer > .copyright > span {
-   margin: 10px 0;
-   font-size: 0.8rem;
-   font-weight: 500;
-   color: var(--white);
+@media (min-width: 720px) {
+   .footer {
+      background-image: url(/img/footer-desktop.jpg);
+      padding: 75px 50px 28px;
+   }
+
+   .footer > .info {
+      flex-direction: row;
+      justify-content: space-between;
+      max-width: 1440px;
+      margin: 0 auto;
+   }
+
+   .footer > .info > .footerBrand {
+      width: 50%;
+   }
+
+   .footer > .info > .footerBrand > .title {
+      margin: 0 0 0 28px;
+      font-size: 40.303px;
+      text-align: left;
+   }
+
+   .footer > .info > .footerBrand > .slogan {
+      justify-content: flex-start;
+      margin-left: 3rem;
+      color: var(--white);
+      transform: none;
+   }
+
+   .footer > .info > .columnList {
+      margin-top: 36px;
+      gap: 87px;
+   }
+
+   /* .footer > .info > .columnList > .list {
+      text-align: center;
+      list-style: none;
+   } */
+
+   .footer > .info > .columnList > .list > li {
+      margin: 20px 0;
+   }
+
+   /* .footer > .info > .contact {
+      margin-top: 36px;
+      text-align: center;
+   } */
+
+   .footer > .info > .contact > .support {
+      flex-direction: column;
+   }
+
+   .footer > .info > .contact > .support > .logo {
+      max-width: 240px;
+      margin-bottom: 32px;
+   }
+
+   /* .footer > .info > .contact > .support > .mail {
+      font-style: normal;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 26px;
+      color: #ffffff;
+   } */
+
+   .footer > .info > .contact > .socialMedia {
+      margin: 66px 0 0;
+   }
+
+   /* .footer > .info > .contact > .socialMedia > .icon {
+      border: 0.5px solid var(--white);
+      display: flex;
+      align-items: center;
+
+      padding: 11px;
+      font-size: 2.7rem;
+      border-radius: 50%;
+      color: var(--white);
+   } */
+
+   .footer > .legal {
+      flex-direction: column-reverse;
+      gap: 26px;
+      max-width: 1440px;
+      margin-top: 41px;
+      margin-bottom: 0;
+      margin: 41px auto 0;
+   }
 }
