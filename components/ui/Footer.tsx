@@ -12,7 +12,7 @@ export const Footer = () => {
             <div className={styles.footerBrand}>
                <h2 className={styles.title}>Comida Saludable.</h2>
                <h2 className={styles.title}>Comida Práctica y Casera.</h2>
-               <span className={styles.slogan}>¡Riquísima!</span>
+               <span className={styles.slogan}>¡Riquísimo!</span>
             </div>
 
             <div className={styles.columnList}>

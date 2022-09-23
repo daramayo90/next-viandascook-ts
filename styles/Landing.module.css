@@ -6,6 +6,12 @@
 }
 
 .viandascookpapa {
-   width: 100vw;
+   width: 100%;
    height: 100rem;
+}
+
+@media (min-width: 720px) {
+   .landing {
+      width: 100%;
+   }
 }

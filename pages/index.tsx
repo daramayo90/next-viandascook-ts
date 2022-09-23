@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 
 import { ShopLayout } from '../components/layouts';
-import { Banner } from '../components/ui';
+import { Banner, Intro, Values } from '../components/ui';
 
 import styles from '../styles/Landing.module.css';
 
@@ -14,6 +14,10 @@ const LandingPage: NextPage = () => {
       <ShopLayout title={title} pageDescription={description}>
          <section className={styles.landing}>
             <Banner />
+
+            <Intro />
+
+            <Values />
 
             <div className={styles.viandascookpapa}></div>
          </section>

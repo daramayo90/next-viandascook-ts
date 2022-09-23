@@ -1,0 +1,33 @@
+.intro {
+   background-color: rgba(180, 180, 180, 0.1);
+   height: 26rem;
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-end;
+}
+
+.intro > .text {
+   width: 85vw;
+   margin: auto;
+   margin-bottom: 2rem;
+}
+
+.intro > .text > p {
+   text-align: center;
+   color: var(--textColor);
+}
+
+@media (min-width: 720px) {
+   .intro {
+      height: 20rem;
+   }
+   .intro > .text {
+      max-width: 720px;
+      margin-bottom: 3rem;
+   }
+   .intro > .text > p {
+      font-size: 1.2rem;
+      text-align: center;
+      color: var(--textColor);
+   }
+}

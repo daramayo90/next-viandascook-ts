@@ -3,6 +3,7 @@
    --black: rgba(10, 10, 10, 0.9);
    --primary: rgb(125, 147, 62);
    --secondary: rgba(45, 170, 150, 0.75);
+   --textColor: rgb(77, 77, 79);
 }
 
 * {
@@ -35,12 +36,11 @@ nav {
 }
 
 main {
-   width: 100vw;
-   max-width: 1440px;
+   width: 100%;
 }
 
 footer {
-   width: 100vw;
+   width: 100%;
 }
 
 button {

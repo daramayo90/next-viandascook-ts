@@ -79,13 +79,13 @@
 .banner > .container > .bannerDishes {
    width: 100%;
    position: relative;
-   overflow-x: clip;
+   overflow: visible;
 }
 
 .banner > .container > .bannerDishes > img {
    position: absolute;
-   max-width: 120%;
-   right: -10%;
+   max-width: 100%;
+   right: 0%;
 }
 
 @media (min-width: 720px) {
