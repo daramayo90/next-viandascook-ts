@@ -13,3 +13,6 @@
    text-align: center;
    color: var(--white);
 }
+
+@media (min-width: 720px) {
+}

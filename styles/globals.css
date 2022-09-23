@@ -106,3 +106,8 @@ button {
       font-size: 2rem;
    }
 }
+
+/* React Slideshow library */
+button.nav.default-nav {
+   display: none;
+}
