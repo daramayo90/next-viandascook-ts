@@ -1,6 +1,7 @@
 import type { NextPage } from 'next';
 
 import { ShopLayout } from '../components/layouts';
+import { ProductSlides } from '../components/products/ProductSlides';
 import { Banner, Intro, Values } from '../components/ui';
 
 import styles from '../styles/Landing.module.css';
@@ -18,6 +19,8 @@ const LandingPage: NextPage = () => {
             <Intro />
 
             <Values />
+
+            <ProductSlides />
 
             <div className={styles.viandascookpapa}></div>
          </section>

@@ -22,6 +22,10 @@ h1 {
    font-size: 2rem;
 }
 
+h2 {
+   font-size: 1.5rem;
+}
+
 a {
    color: inherit;
    text-decoration: none;
@@ -90,5 +94,15 @@ button {
    body {
       color: black;
       background: white;
+   }
+}
+
+@media (min-width: 720px) {
+   h1 {
+      font-size: 2.5rem;
+   }
+
+   h2 {
+      font-size: 2rem;
    }
 }

@@ -51,12 +51,25 @@
 .banner > .container > .brand > .linkTo {
    display: flex;
    justify-content: center;
+   align-items: center;
    margin-top: 3rem;
 }
 
 .banner > .container > .brand > .linkTo > .linkButton {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   position: relative;
+   padding: 10px 55px 10px 40px;
    letter-spacing: 1.5px;
    border-color: var(--white);
+   color: var(--white);
+}
+
+.banner > .container > .brand > .linkTo > .linkButton > .icon {
+   position: absolute;
+   margin-left: 7rem;
+   font-size: 2rem;
    color: var(--white);
 }
 
@@ -132,7 +145,26 @@
    }
 
    .banner > .container > .brand > .linkTo > .linkButton {
-      padding: 10px 70px;
+      padding: 10px 40px;
+      transition: all 0.2s ease-in-out;
+   }
+
+   .banner > .container > .brand > .linkTo > .linkButton:hover {
+      background-color: hsla(0, 0%, 100%, 0.2);
+      border-color: hsla(0, 0%, 100%, 0.05);
+      padding-right: 55px;
+   }
+
+   .banner > .container > .brand > .linkTo > .linkButton > .icon {
+      opacity: 0;
+      margin-left: 5rem;
+      transition: all 0.2s ease-in-out;
+   }
+
+   .banner > .container > .brand > .linkTo > .linkButton:hover > .icon {
+      opacity: 1;
+      margin-left: 7rem;
+      z-index: 10;
    }
 
    .banner > .container > .brand > .discount {

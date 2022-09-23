@@ -1,5 +1,7 @@
 import Link from 'next/link';
 
+import { BiChevronRight } from 'react-icons/bi';
+
 import styles from '../../styles/Banner.module.css';
 
 export const Banner = () => {
@@ -15,7 +17,10 @@ export const Banner = () => {
 
                <Link href='/'>
                   <div className={styles.linkTo}>
-                     <button className={styles.linkButton}>¡Quiero!</button>
+                     <button className={styles.linkButton}>
+                        ¡Quiero!
+                        <BiChevronRight className={styles.icon} />
+                     </button>
                   </div>
                </Link>
 
