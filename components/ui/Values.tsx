@@ -31,15 +31,13 @@ export const Values = () => {
 
             <div className={styles.list}>
                {valueList.map((value) => (
-                  <>
-                     <div className={styles.listContainer}>
-                        <img src={value.src} alt={value.alt} />
-                        <div className={styles.description}>
-                           <h3 className={styles.title}>{value.title}</h3>
-                           <p className={styles.text}>{value.text}</p>
-                        </div>
+                  <div key={value.title} className={styles.listContainer}>
+                     <img src={value.src} alt={value.alt} />
+                     <div className={styles.description}>
+                        <h3 className={styles.title}>{value.title}</h3>
+                        <p className={styles.text}>{value.text}</p>
                      </div>
-                  </>
+                  </div>
                ))}
             </div>
          </div>

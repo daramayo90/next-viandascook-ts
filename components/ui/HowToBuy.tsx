@@ -34,7 +34,7 @@ export const HowToBuy = () => {
             <h2 className={styles.title}>¿Cómo Comprar?</h2>
 
             <div className={styles.mobile}>
-               <Slide easing='ease' duration={70000000} indicators>
+               <Slide easing='ease' duration={7000} indicators>
                   {slides.map((slide) => (
                      <div key={slide.alt} className={styles.box}>
                         <img className={styles.icon} src={slide.icon} alt={slide.alt} />
