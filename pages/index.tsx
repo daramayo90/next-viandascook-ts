@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 
 import { ShopLayout } from '../components/layouts';
-import { ProductSlides } from '../components/products/ProductSlides';
+import { ProductSlides } from '../components/products';
 import { Banner, CommonQuestions, HowToBuy, Intro, Values } from '../components/ui';
 
 import styles from '../styles/Landing.module.css';

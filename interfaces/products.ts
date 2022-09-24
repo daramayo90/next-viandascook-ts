@@ -6,7 +6,7 @@ export interface IProduct {
    inStock: boolean;
    type: IType;
    ingredients: string[];
-   nutritionalInfo: object[];
+   nutritionalInfo: object;
    howToHeat: string;
    createdAt: string;
    updatedAt: string;

@@ -3,13 +3,13 @@ import { IProduct } from '../interfaces';
 
 const productSchema = new Schema(
    {
-      image: [{ type: String }],
+      image: { type: String },
       name: { type: String, required: true },
       price: { type: Number, required: true, default: 0 },
       inStock: { type: Boolean, required: true },
       ingredients: [{ type: String }],
-      nutritionalInfo: [{ type: Object }],
-      howToHeat: [{ type: String }],
+      nutritionalInfo: { type: Object },
+      howToHeat: { type: String },
       type: {
          type: String,
          enum: {

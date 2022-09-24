@@ -42,15 +42,17 @@ footer {
 h1 {
    font-size: 2em;
    margin: 0.67em 0;
+   color: var(--black);
 }
 
 h2 {
    font-size: 1.5rem;
+   color: var(--black);
 }
 
 p {
-   color: var(--textColor);
    line-height: 1.5rem;
+   color: var(--textColor);
 }
 
 a {

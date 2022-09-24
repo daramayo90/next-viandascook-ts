@@ -1,0 +1,19 @@
+.box {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   color: var(--textColor);
+}
+
+.box > .iconButton {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   font-size: 1.5rem;
+}
+
+.box > .counter {
+   margin: 0 15px;
+   text-align: center;
+   font-size: 1.2rem;
+}
