@@ -12,6 +12,7 @@ class MyDocument extends Document {
          <Html>
             <Head>
                <link href='https://fonts.googleapis.com' rel='preconnect' />
+               <link href='http://fonts.cdnfonts.com' rel='preconnect' />
                <link href='http://fonts.cdnfonts.com/css/gilroy-bold' rel='stylesheet' />
                <link href='http://fonts.cdnfonts.com/css/reinata' rel='stylesheet' />
                <link
