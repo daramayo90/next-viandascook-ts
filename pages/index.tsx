@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 
-import { ShopLayout } from '../components/layouts';
+import { MainLayout } from '../components/layouts';
 import { ProductSlides } from '../components/products';
 import { Banner, CommonQuestions, HowToBuy, Intro, Values } from '../components/ui';
 
@@ -12,7 +12,7 @@ const description =
 
 const LandingPage: NextPage = () => {
    return (
-      <ShopLayout title={title} pageDescription={description}>
+      <MainLayout title={title} pageDescription={description}>
          <section className={styles.landing}>
             <Banner />
 
@@ -26,7 +26,7 @@ const LandingPage: NextPage = () => {
 
             <CommonQuestions />
          </section>
-      </ShopLayout>
+      </MainLayout>
    );
 };
 

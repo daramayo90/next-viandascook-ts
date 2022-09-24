@@ -7,11 +7,11 @@ import { UIContext } from '../../context/ui';
 
 import styles from '../../styles/Navbar.module.css';
 
-export const Navbar = () => {
+export const NavbarHome = () => {
    const { toggleSideMenu } = useContext(UIContext);
 
    return (
-      <section className={`${styles.navbar} ${styles.navbarWeb}`}>
+      <section className={styles.navbar}>
          <div className={styles.logo}>
             <Link href='/'>
                <img src='/logo/viandascook-logo.png' alt='viandascook-logo' />

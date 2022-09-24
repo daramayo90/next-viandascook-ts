@@ -1,4 +1,5 @@
 import { GetStaticProps, NextPage } from 'next';
+import { MainLayout } from '../../components/layouts';
 import { ProductCard } from '../../components/products';
 import { dbProducts } from '../../database';
 import { IProduct } from '../../interfaces';
@@ -11,13 +12,17 @@ interface Props {
 
 const ProductsPage: NextPage<Props> = ({ products }) => {
    return (
-      <section className={styles.products}>
-         <h1 className={styles.title}>Viandas a Domicilio</h1>
+      <MainLayout title={''} pageDescription={''}>
+         <section className={styles.products}>
+            <h1 className={styles.title}>Viandas a Domicilio</h1>
 
-         {products.map((product) => (
-            <ProductCard key={product._id} product={product} />
-         ))}
-      </section>
+            <article className={styles.container}>
+               {products.map((product) => (
+                  <ProductCard key={product._id} product={product} />
+               ))}
+            </article>
+         </section>
+      </MainLayout>
    );
 };
 

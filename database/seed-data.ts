@@ -3,6 +3,7 @@ import { IType } from '../interfaces';
 interface SeedProduct {
    image: string;
    name: string;
+   slug: string;
    price: number;
    inStock: boolean;
    type: IType;
@@ -20,6 +21,7 @@ export const initialData: SeedData = {
       {
          image: 'albondigas-con-vegetales.jpg',
          name: 'Albondigas con vegetales',
+         slug: 'albondigas-con-vegetales',
          price: 850,
          inStock: true,
          type: 'meat',
@@ -49,6 +51,7 @@ export const initialData: SeedData = {
       {
          image: 'bife-a-la-criolla-con-verduras.jpg',
          name: 'Bife a la criolla con verduras',
+         slug: 'bife-a-la-criolla-con-verduras',
          price: 900,
          inStock: true,
          type: 'meat',
@@ -78,6 +81,7 @@ export const initialData: SeedData = {
       {
          image: 'bondiola-con-croquetas-de-arroz.jpg',
          name: 'Bondiola con croquetas de arroz',
+         slug: 'bondiola-con-croquetas-de-arroz',
          price: 900,
          inStock: true,
          type: 'meat',
@@ -96,6 +100,7 @@ export const initialData: SeedData = {
       {
          image: 'bondiola-con-pure-de-zapallo.jpg',
          name: 'Bondiola con puré de zapallo',
+         slug: 'bondiola-con-pure-de-zapallo',
          price: 900,
          inStock: true,
          type: 'meat',
@@ -114,6 +119,7 @@ export const initialData: SeedData = {
       {
          image: 'bowl-de-garbanzo-salteado-con-vegetales.jpg',
          name: 'Bowl de garbanzo salteado con vegetales',
+         slug: 'bowl-de-garbanzo-salteado-con-vegetales',
          price: 700,
          inStock: true,
          type: 'meat',
@@ -141,6 +147,7 @@ export const initialData: SeedData = {
       {
          image: 'canelones-de-acelga-y-ricota-con-salsa.jpg',
          name: 'Canelones de acelga y ricota con salsa',
+         slug: 'canelones-de-acelga-y-ricota-con-salsa',
          price: 750,
          inStock: true,
          type: 'meat',
@@ -159,6 +166,7 @@ export const initialData: SeedData = {
       {
          image: 'canelones-de-verdura-con-salsa-blanca.jpg',
          name: 'Canelones de verdura con salsa blanca',
+         slug: 'canelones-de-verdura-con-salsa-blanca',
          price: 750,
          inStock: true,
          type: 'meat',
