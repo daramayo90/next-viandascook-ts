@@ -13,9 +13,11 @@ interface Props {
 }
 
 export const ProductCard: FC<Props> = ({ product }) => {
+   // TODO: Ver el tema any
+   let info: any = product.nutritionalInfo;
    return (
       <article className={styles.product}>
-         <Link href={`/product/${product.name}`} prefetch={false}>
+         <Link href={`/plato/${product.slug}`} prefetch={false}>
             <article className={styles.card}>
                {product.inStock === false && <div className={styles.stock}>Sin stock</div>}
 
@@ -23,10 +25,7 @@ export const ProductCard: FC<Props> = ({ product }) => {
 
                <div className={styles.tags}>
                   <div className={styles.tag}>
-                     {/* TODO: Ver el tipo 'any' */}
-                     {Object.values(product.nutritionalInfo).map((p: any) => (
-                        <span key={product._id}>{p.calories}</span>
-                     ))}
+                     <span>{info.calories}</span>
                   </div>
                </div>
             </article>

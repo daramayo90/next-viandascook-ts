@@ -11,3 +11,29 @@ export const getAllProducts = async (): Promise<IProduct[]> => {
 
    return JSON.parse(JSON.stringify(products));
 };
+
+interface ProductSlug {
+   slug: string;
+}
+
+export const getAllProductSlug = async (): Promise<ProductSlug[]> => {
+   await db.connect();
+
+   const slugs = await Product.find().select('slug -_id').lean();
+
+   await db.disconnect();
+
+   return slugs;
+};
+
+export const getProductBySlug = async (slug: string): Promise<IProduct | null> => {
+   await db.connect();
+
+   const product = await Product.findOne({ slug }).lean();
+
+   await db.disconnect();
+
+   if (!product) return null;
+
+   return JSON.parse(JSON.stringify(product));
+};

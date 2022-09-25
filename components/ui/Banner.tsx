@@ -13,7 +13,7 @@ export const Banner = () => {
                   <span> tenga sabor!</span>
                </p>
 
-               <Button content='¡Quiero!' />
+               <Button href='/menu' content='¡Quiero!' />
 
                <h4 className={styles.discount}>
                   <span>10% OFF EN TU PRIMER PEDIDO.</span>

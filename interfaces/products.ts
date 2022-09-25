@@ -2,6 +2,7 @@ export interface IProduct {
    _id: string;
    image: string;
    name: string;
+   slug: string;
    price: number;
    inStock: boolean;
    type: IType;
