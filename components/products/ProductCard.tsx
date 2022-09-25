@@ -15,6 +15,7 @@ interface Props {
 export const ProductCard: FC<Props> = ({ product }) => {
    // TODO: Ver el tema any
    let info: any = product.nutritionalInfo;
+   console.log(info);
    return (
       <article className={styles.product}>
          <Link href={`/plato/${product.slug}`} prefetch={false}>
@@ -25,7 +26,7 @@ export const ProductCard: FC<Props> = ({ product }) => {
 
                <div className={styles.tags}>
                   <div className={styles.tag}>
-                     <span>{info.calories}</span>
+                     <span>{info.Calorías}</span>
                   </div>
                </div>
             </article>

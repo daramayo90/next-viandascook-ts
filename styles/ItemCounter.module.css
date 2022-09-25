@@ -17,3 +17,17 @@
    text-align: center;
    font-size: 1.2rem;
 }
+
+@media (min-width: 720px) {
+   .box {
+      justify-content: flex-start;
+   }
+
+   .box > .iconButton {
+      font-size: 2rem;
+   }
+
+   .box > .counter {
+      font-size: 1.3rem;
+   }
+}
