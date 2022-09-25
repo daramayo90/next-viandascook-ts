@@ -1,4 +1,6 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
+import { useRouter } from 'next/router';
+import Image from 'next/image';
 
 import { dbProducts } from '../../database';
 import { IProduct } from '../../interfaces';
@@ -7,10 +9,9 @@ import { currency } from '../../utils';
 import { ItemCounter } from '../../components/products';
 
 import { BsArrowLeftShort } from 'react-icons/bs';
-import { GiFrozenOrb } from 'react-icons/gi';
-import styles from '../../styles/Product.module.css';
 import { BiChevronLeft } from 'react-icons/bi';
-import { useRouter } from 'next/router';
+
+import styles from '../../styles/Product.module.css';
 
 interface Props {
    product: IProduct;
@@ -38,7 +39,16 @@ const ProductPage: NextPage<Props> = ({ product }) => {
 
             {/* Image */}
             <div className={styles.image}>
-               <img src={`/products/${product.image}`} alt={product.name} />
+               <div className={styles.nextImage}>
+                  <Image
+                     src={`/products/${product.image}`}
+                     alt={product.name}
+                     width={100}
+                     height={75}
+                     layout='responsive'
+                     priority
+                  />
+               </div>
             </div>
 
             {/* Price and Cart */}
@@ -56,8 +66,8 @@ const ProductPage: NextPage<Props> = ({ product }) => {
                <h3 className={styles.subTitle}>Ingredientes</h3>
 
                <div className={styles.container}>
-                  {product.ingredients.map((ingredient) => (
-                     <div className={styles.ingredient}>
+                  {product.ingredients.map((ingredient, index) => (
+                     <div key={index} className={styles.ingredient}>
                         <span>{ingredient}</span>
                      </div>
                   ))}
@@ -67,8 +77,8 @@ const ProductPage: NextPage<Props> = ({ product }) => {
             <div className={styles.nutrition}>
                <h3 className={styles.subTitle}>Información Nutricional</h3>
 
-               {Object.entries(product.nutritionalInfo).map((nutrition) => (
-                  <div className={styles.nutritionInfo}>
+               {Object.entries(product.nutritionalInfo).map((nutrition, index) => (
+                  <div key={index} className={styles.nutritionInfo}>
                      <span>{nutrition[0]}</span>
                      <span>{nutrition[1]}</span>
                   </div>
@@ -79,7 +89,14 @@ const ProductPage: NextPage<Props> = ({ product }) => {
          <div className={styles.info}>
             <div className={styles.delivery}>
                <div className={styles.icon}>
-                  <img src='/img/icons/frozen.png' alt='Platos Congelados' />
+                  <div className={styles.nextImage}>
+                     <Image
+                        src='/img/icons/frozen.png'
+                        alt='Platos Congelados'
+                        width={100}
+                        height={100}
+                     />
+                  </div>
                </div>
 
                <div className={styles.content}>
@@ -93,7 +110,14 @@ const ProductPage: NextPage<Props> = ({ product }) => {
 
             <div className={styles.heat}>
                <div className={styles.icon}>
-                  <img src='/img/icons/heat.png' alt='Como calentar' />
+                  <div className={styles.nextImage}>
+                     <Image
+                        src='/img/icons/heat.png'
+                        alt='Como calentar'
+                        width={100}
+                        height={100}
+                     />
+                  </div>
                </div>
 
                <div className={styles.content}>

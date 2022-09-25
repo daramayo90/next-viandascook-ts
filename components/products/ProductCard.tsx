@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 import { IProduct } from '../../interfaces';
 
@@ -14,15 +15,22 @@ interface Props {
 
 export const ProductCard: FC<Props> = ({ product }) => {
    // TODO: Ver el tema any
-   let info: any = product.nutritionalInfo;
-   console.log(info);
+   const info: any = product.nutritionalInfo;
+
    return (
       <article className={styles.product}>
          <Link href={`/plato/${product.slug}`} prefetch={false}>
             <article className={styles.card}>
                {product.inStock === false && <div className={styles.stock}>Sin stock</div>}
 
-               <img src={`/products/${product.image}`} alt={product.name} />
+               <div className={styles.nextImage}>
+                  <Image
+                     src={`/products/${product.image}`}
+                     alt={product.name}
+                     layout='fill'
+                     priority
+                  />
+               </div>
 
                <div className={styles.tags}>
                   <div className={styles.tag}>

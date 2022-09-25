@@ -67,7 +67,7 @@
    overflow: visible;
 }
 
-.banner > .container > .bannerDishes > img {
+.banner > .container > .bannerDishes > .nextImage {
    position: absolute;
    max-width: 100%;
    right: 0%;
@@ -131,7 +131,7 @@
       overflow-x: visible;
    }
 
-   .banner > .container > .bannerDishes > img {
+   .banner > .container > .bannerDishes > .nextImage {
       right: -88px;
       top: -70px;
    }

@@ -43,11 +43,12 @@
 
 .product > .topSection > .image {
    width: 100%;
-   margin-top: 4rem;
+   margin-top: 5rem;
 }
 
-.product > .topSection > .image > img {
+.product > .topSection > .image > .nextImage {
    width: 100%;
+   margin: auto;
 }
 
 .product > .topSection > .container {
@@ -135,8 +136,8 @@
    margin: 10px;
 }
 
-.product > .info > .delivery > .icon > img,
-.product > .info > .heat > .icon > img {
+.product > .info > .delivery > .icon > .nextImage,
+.product > .info > .heat > .icon > .nextImage {
    width: 50px;
 }
 

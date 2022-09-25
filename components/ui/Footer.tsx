@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 import { AiOutlineInstagram, AiOutlineWhatsApp } from 'react-icons/ai';
 import { BsFacebook } from 'react-icons/bs';
 
@@ -28,7 +30,9 @@ export const Footer = () => {
 
             <div className={styles.contact}>
                <div className={styles.support}>
-                  <img className={styles.logo} src='/logo/viandascook-logo.png' alt='logo' />
+                  <div className={styles.logo}>
+                     <Image src='/logo/viandascook-logo.png' alt='logo' width={180} height={50} />
+                  </div>
                   <span className={styles.mail}>info@viandascook.com</span>
                </div>
 

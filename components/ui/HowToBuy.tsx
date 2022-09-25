@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 import { Slide } from 'react-slideshow-image';
 
 import 'react-slideshow-image/dist/styles.css';
@@ -37,7 +39,9 @@ export const HowToBuy = () => {
                <Slide easing='ease' duration={7000} indicators>
                   {slides.map((slide) => (
                      <div key={slide.alt} className={styles.box}>
-                        <img className={styles.icon} src={slide.icon} alt={slide.alt} />
+                        <div className={styles.icon}>
+                           <Image src={slide.icon} alt={slide.alt} width={100} height={100} />
+                        </div>
                         <h5 className={styles.title}>{slide.title}</h5>
                         <p className={styles.lead}>{slide.lead}</p>
                         <p className={styles.text}>{slide.text}</p>
@@ -49,7 +53,9 @@ export const HowToBuy = () => {
             <div className={styles.desktop}>
                {slides.map((slide) => (
                   <div key={slide.alt} className={styles.box}>
-                     <img className={styles.icon} src={slide.icon} alt={slide.alt} />
+                     <div className={styles.icon}>
+                        <Image src={slide.icon} alt={slide.alt} width={100} height={100} />
+                     </div>
                      <h5 className={styles.title}>{slide.title}</h5>
                      <p className={styles.lead}>{slide.lead}</p>
                      <p className={styles.text}>{slide.text}</p>

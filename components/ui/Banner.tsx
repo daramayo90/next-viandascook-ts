@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 import { Button } from './Button';
 
 import styles from '../../styles/Banner.module.css';
@@ -24,7 +26,15 @@ export const Banner = () => {
             </div>
 
             <div className={styles.bannerDishes}>
-               <img src='/img/banner-dishes.png' alt='viandascook-banner-back' />
+               <div className={styles.nextImage}>
+                  <Image
+                     src='/img/banner-dishes.png'
+                     alt='viandascook-banner-back'
+                     width={800}
+                     height={800}
+                     layout='intrinsic'
+                  />
+               </div>
             </div>
          </div>
       </section>

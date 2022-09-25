@@ -1,5 +1,6 @@
 import { useContext, useEffect } from 'react';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
 
 import { IoMdClose } from 'react-icons/io';
 
@@ -40,7 +41,15 @@ export const SideMenu = () => {
             </div>
 
             <div className={styles.logo}>
-               <img src='/logo/viandascook-logo-primary.png' alt='Viandas Cook Logo' />
+               <div className={styles.nextImage}>
+                  <Image
+                     src='/logo/viandascook-logo-primary.png'
+                     alt='Viandas Cook Logo'
+                     width={100}
+                     height={35}
+                     layout='responsive'
+                  />
+               </div>
             </div>
 
             <div className={styles.menuOptions}>

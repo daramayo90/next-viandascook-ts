@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 import styles from '../../styles/Values.module.css';
 
 const valueList = [
@@ -32,7 +34,9 @@ export const Values = () => {
             <div className={styles.list}>
                {valueList.map((value) => (
                   <div key={value.title} className={styles.listContainer}>
-                     <img src={value.src} alt={value.alt} />
+                     <div className={styles.nextImage}>
+                        <Image src={value.src} alt={value.alt} width={100} height={100} />
+                     </div>
                      <div className={styles.description}>
                         <h3 className={styles.title}>{value.title}</h3>
                         <p className={styles.text}>{value.text}</p>
