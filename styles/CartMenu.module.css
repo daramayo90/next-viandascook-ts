@@ -1,0 +1,86 @@
+.cartMenu {
+   position: fixed;
+   bottom: 0;
+   width: 100vw;
+   height: 110px;
+   margin: 0 auto;
+   border-radius: 25px 25px 0 0;
+   background-color: rgb(20, 20, 20);
+}
+
+.cartMenu > .line {
+   width: 100%;
+   text-align: center;
+   color: var(--white);
+}
+
+.cartMenu > .line > .icon {
+   font-size: 2rem;
+}
+
+.cartMenu > .container {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   width: 80%;
+   margin: 0 auto;
+   font-size: 2.5rem;
+   color: var(--white);
+}
+
+.cartMenu > .container > .items {
+   display: flex;
+   align-items: center;
+}
+
+.cartMenu > .container > .items > .icon {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
+
+.cartMenu > .container > .items > .quantity {
+   margin-left: 1.8rem;
+}
+
+.cartMenu > .container > .linkTo {
+   display: flex;
+}
+
+/* Is Touched */
+
+.cartMenu > .fullMenu {
+   width: 100vw;
+   height: calc(100vh - 88px);
+   background-color: rgb(20, 20, 20);
+   position: fixed;
+   top: 0;
+   border-bottom: 1px solid var(--white);
+}
+
+.cartMenu > .fullMenu > .top {
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   justify-content: space-between;
+   width: 90%;
+   margin: 0 auto;
+   margin-top: 6rem;
+}
+
+.cartMenu > .fullMenu > .top > .title {
+   color: var(--white);
+   font-size: 1.1rem;
+}
+
+.cartMenu > .fullMenu > .top > .closeMenu {
+   display: flex;
+}
+
+.cartMenu > .fullMenu > .top > .closeMenu > .icon {
+   font-size: 1.7rem;
+   color: var(--white);
+   border: 1px solid var(--white);
+   border-radius: 50%;
+}

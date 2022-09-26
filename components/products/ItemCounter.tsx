@@ -1,19 +1,23 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
+
 import { IoMdAddCircleOutline, IoMdRemoveCircleOutline } from 'react-icons/io';
 
 import styles from '../../styles/ItemCounter.module.css';
 
-export const ItemCounter: FC = () => {
-   const [currentValue, setCurrentValue] = useState(0);
+interface Props {
+   currentValue: number;
+   updatedQuantity: (quantity: number) => void;
+}
 
+export const ItemCounter: FC<Props> = ({ currentValue, updatedQuantity }) => {
    const addOrRemove = (value: number) => {
       if (value === -1) {
          if (currentValue === 0) return;
 
-         return setCurrentValue(currentValue - 1);
+         return updatedQuantity(currentValue - 1);
       }
 
-      return setCurrentValue(currentValue + 1);
+      return updatedQuantity(currentValue + 1);
    };
 
    return (

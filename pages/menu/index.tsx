@@ -1,4 +1,5 @@
 import { GetStaticProps, NextPage } from 'next';
+import { CartMenu } from '../../components/cart';
 import { MainLayout } from '../../components/layouts';
 import { ProductCard } from '../../components/products';
 import { dbProducts } from '../../database';
@@ -22,6 +23,8 @@ const ProductsPage: NextPage<Props> = ({ products }) => {
                ))}
             </article>
          </section>
+
+         <CartMenu />
       </MainLayout>
    );
 };

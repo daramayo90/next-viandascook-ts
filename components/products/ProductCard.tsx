@@ -1,13 +1,14 @@
-import { FC } from 'react';
+import { FC, useContext, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
-import { IProduct } from '../../interfaces';
+import { ICartProduct, IProduct } from '../../interfaces';
 
 import { ItemCounter } from './';
 import { currency } from '../../utils';
 
 import styles from '../../styles/Products.module.css';
+import { CartContext } from '../../context';
 
 interface Props {
    product: IProduct;
@@ -16,6 +17,30 @@ interface Props {
 export const ProductCard: FC<Props> = ({ product }) => {
    // TODO: Ver el tema any
    const info: any = product.nutritionalInfo;
+
+   const { addProductToCart } = useContext(CartContext);
+
+   const [tempCartProduct, setTempCartProduct] = useState<ICartProduct>({
+      _id: product._id,
+      image: product.image,
+      name: product.name,
+      slug: product.slug,
+      price: product.price,
+      type: product.type,
+      quantity: 0,
+   });
+
+   const onUpdatedQuantity = (quantity: number) => {
+      setTempCartProduct((currentProduct) => ({
+         ...currentProduct,
+         quantity,
+      }));
+   };
+
+   const onAddProduct = () => {
+      addProductToCart(tempCartProduct);
+      console.log(tempCartProduct);
+   };
 
    return (
       <article className={styles.product}>
@@ -44,9 +69,19 @@ export const ProductCard: FC<Props> = ({ product }) => {
             <h4 className={styles.name}>{product.name}</h4>
             <div className={styles.container}>
                <h4 className={styles.price}>{currency.format(product.price)}</h4>
-               <ItemCounter />
+
+               <ItemCounter
+                  currentValue={tempCartProduct.quantity}
+                  updatedQuantity={onUpdatedQuantity}
+               />
+
+               <button className={styles.addToCart} onClick={onAddProduct}>
+                  Agregar al carrito
+               </button>
             </div>
          </article>
+
+         {/* TODO: Out of Stock */}
       </article>
    );
 };

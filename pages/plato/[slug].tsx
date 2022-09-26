@@ -1,9 +1,12 @@
+import { useContext, useState } from 'react';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 
 import { dbProducts } from '../../database';
-import { IProduct } from '../../interfaces';
+import { ICartProduct, IProduct } from '../../interfaces';
+
+import { CartContext } from '../../context';
 
 import { currency } from '../../utils';
 import { ItemCounter } from '../../components/products';
@@ -19,6 +22,30 @@ interface Props {
 
 const ProductPage: NextPage<Props> = ({ product }) => {
    const router = useRouter();
+
+   const { addProductToCart } = useContext(CartContext);
+
+   const [tempCartProduct, setTempCartProduct] = useState<ICartProduct>({
+      _id: product._id,
+      image: product.image,
+      name: product.name,
+      slug: product.slug,
+      price: product.price,
+      type: product.type,
+      quantity: 0,
+   });
+
+   const onUpdatedQuantity = (quantity: number) => {
+      setTempCartProduct((currentProduct) => ({
+         ...currentProduct,
+         quantity,
+      }));
+   };
+
+   const onAddProduct = () => {
+      addProductToCart(tempCartProduct);
+      console.log(tempCartProduct);
+   };
 
    return (
       <article className={styles.product}>
@@ -55,7 +82,10 @@ const ProductPage: NextPage<Props> = ({ product }) => {
             <div className={styles.container}>
                <h1 className={styles.title}>{product.name}</h1>
                <h4 className={styles.price}>{currency.format(product.price)}</h4>
-               <ItemCounter />
+               <ItemCounter
+                  currentValue={tempCartProduct.quantity}
+                  updatedQuantity={onUpdatedQuantity}
+               />
             </div>
          </div>
 
@@ -128,6 +158,9 @@ const ProductPage: NextPage<Props> = ({ product }) => {
                </div>
             </div>
          </div>
+
+         {/* TODO: Out of Stock */}
+         <button onClick={onAddProduct}>Agregar al carrito</button>
       </article>
    );
 };

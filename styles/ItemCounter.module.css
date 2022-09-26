@@ -25,6 +25,7 @@
 
    .box > .iconButton {
       font-size: 2rem;
+      cursor: pointer;
    }
 
    .box > .counter {

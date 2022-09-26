@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 import { HiOutlineMenu } from 'react-icons/hi';
 
-import { UIContext } from '../../context/ui';
+import { UIContext } from '../../context';
 
 import styles from '../../styles/Navbar.module.css';
 

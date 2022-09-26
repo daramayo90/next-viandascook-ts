@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 import { IoMdClose } from 'react-icons/io';
 
-import { UIContext } from '../../context/ui';
+import { UIContext } from '../../context';
 
 import styles from '../../styles/SideMenu.module.css';
 
