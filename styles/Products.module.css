@@ -125,6 +125,7 @@
 
    .product {
       width: 30%;
+      min-width: 320px;
       max-height: 410px;
       margin: 60px 0;
    }

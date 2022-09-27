@@ -1,4 +1,4 @@
-import { FC, useContext, useState } from 'react';
+import { FC, useContext, useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -18,8 +18,9 @@ export const ProductCard: FC<Props> = ({ product }) => {
    // TODO: Ver el tema any
    const info: any = product.nutritionalInfo;
 
-   const { addProductToCart } = useContext(CartContext);
+   const { cart, addProductToCart } = useContext(CartContext);
 
+   const [selected, setSelected] = useState(false);
    const [tempCartProduct, setTempCartProduct] = useState<ICartProduct>({
       _id: product._id,
       image: product.image,
@@ -39,11 +40,19 @@ export const ProductCard: FC<Props> = ({ product }) => {
 
    const onAddProduct = () => {
       addProductToCart(tempCartProduct);
-      console.log(tempCartProduct);
    };
 
+   useEffect(() => {
+      const selectedProduct = cart.find((p) => product._id === p._id);
+      if (selectedProduct) {
+         setSelected(true);
+      } else {
+         setSelected(false);
+      }
+   }, [cart]);
+
    return (
-      <article className={styles.product}>
+      <article className={selected ? `${styles.product} selected` : `${styles.product}`}>
          <Link href={`/plato/${product.slug}`} prefetch={false}>
             <article className={styles.card}>
                {product.inStock === false && <div className={styles.stock}>Sin stock</div>}

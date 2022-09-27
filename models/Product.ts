@@ -15,6 +15,7 @@ const productSchema = new Schema(
          type: String,
          enum: {
             values: [
+               'chicken',
                'dairyfree',
                'glutenfree',
                'keto',
@@ -22,7 +23,7 @@ const productSchema = new Schema(
                'lowcarbs',
                'lowsodium',
                'meat',
-               'poultry',
+               'pasta',
                'seafood',
                'vegan',
                'vegetarian',

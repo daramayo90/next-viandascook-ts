@@ -27,7 +27,6 @@ nav {
    top: 0;
    width: 100%;
    height: 75px;
-   z-index: 99;
 }
 
 main {
@@ -164,6 +163,10 @@ textarea {
    font: inherit; /* 2 */
 }
 
+.selected {
+   border: 2px solid #47d178;
+}
+
 .fadeIn {
    -webkit-animation-duration: 0.5s;
    animation-duration: 0.5s;
@@ -192,10 +195,6 @@ textarea {
    }
 }
 
-.hide {
-   display: none;
-}
-
 @media (prefers-color-scheme: light) {
    html {
       color-scheme: light;
@@ -213,6 +212,10 @@ textarea {
 
    h2 {
       font-size: 2rem;
+   }
+
+   .hide {
+      display: none;
    }
 }
 

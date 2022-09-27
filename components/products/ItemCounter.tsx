@@ -7,9 +7,14 @@ import styles from '../../styles/ItemCounter.module.css';
 interface Props {
    currentValue: number;
    updatedQuantity: (quantity: number) => void;
+   color?: string;
 }
 
-export const ItemCounter: FC<Props> = ({ currentValue, updatedQuantity }) => {
+export const ItemCounter: FC<Props> = ({ currentValue, updatedQuantity, color }) => {
+   const styleBox = {
+      color,
+   };
+
    const addOrRemove = (value: number) => {
       if (value === -1) {
          if (currentValue === 0) return;
@@ -21,7 +26,7 @@ export const ItemCounter: FC<Props> = ({ currentValue, updatedQuantity }) => {
    };
 
    return (
-      <div className={styles.box}>
+      <div className={styles.box} style={styleBox}>
          <div className={styles.iconButton} onClick={() => addOrRemove(-1)}>
             <IoMdRemoveCircleOutline className={styles.icon} />
          </div>

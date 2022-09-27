@@ -14,6 +14,7 @@ export interface IProduct {
 }
 
 export type IType =
+   | 'chicken'
    | 'dairyfree'
    | 'glutenfree'
    | 'keto'
@@ -21,7 +22,7 @@ export type IType =
    | 'lowcarbs'
    | 'lowsodium'
    | 'meat'
-   | 'poultry'
+   | 'pasta'
    | 'seafood'
    | 'vegan'
    | 'vegetarian';

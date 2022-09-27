@@ -67,7 +67,27 @@ export const CartProvider: FC<Props> = ({ children }) => {
       return dispatch({ type: '[Cart] - Update Products', payload: updatedProducts });
    };
 
+   // Update Quantity in Cart Product
+   const updateCartQuantity = (product: ICartProduct) => {
+      const products = state.cart.map((p) => {
+         if (p._id !== product._id) return p;
+
+         return product;
+      });
+
+      dispatch({ type: '[Cart] - Update Quantity', payload: products });
+   };
+
+   // Remove Product from Cart
+   const removeCartProduct = (product: ICartProduct) => {
+      const products = state.cart.filter((p) => !(p._id === product._id));
+      dispatch({ type: '[Cart] - Remove Product', payload: products });
+   };
+
    return (
-      <CartContext.Provider value={{ ...state, addProductToCart }}>{children}</CartContext.Provider>
+      <CartContext.Provider
+         value={{ ...state, addProductToCart, updateCartQuantity, removeCartProduct }}>
+         {children}
+      </CartContext.Provider>
    );
 };

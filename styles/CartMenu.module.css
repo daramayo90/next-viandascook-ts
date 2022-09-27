@@ -1,3 +1,7 @@
+.desktop {
+   display: none;
+}
+
 .cartMenu {
    position: fixed;
    bottom: 0;
@@ -6,6 +10,7 @@
    margin: 0 auto;
    border-radius: 25px 25px 0 0;
    background-color: rgb(20, 20, 20);
+   z-index: 10;
 }
 
 .cartMenu > .line {
@@ -50,37 +55,160 @@
 
 /* Is Touched */
 
-.cartMenu > .fullMenu {
+.fullMenu {
    width: 100vw;
-   height: calc(100vh - 88px);
+   height: calc(100vh - 89px);
    background-color: rgb(20, 20, 20);
    position: fixed;
    top: 0;
    border-bottom: 1px solid var(--white);
+   overflow: auto;
+   z-index: 10;
 }
 
-.cartMenu > .fullMenu > .top {
+.fullMenu > .top {
    display: flex;
    flex-direction: row;
    align-items: center;
    justify-content: space-between;
    width: 90%;
    margin: 0 auto;
-   margin-top: 6rem;
+   margin-top: 2.5rem;
 }
 
-.cartMenu > .fullMenu > .top > .title {
+.fullMenu > .top > .title {
    color: var(--white);
    font-size: 1.1rem;
 }
 
-.cartMenu > .fullMenu > .top > .closeMenu {
+.fullMenu > .top > .closeMenu {
    display: flex;
 }
 
-.cartMenu > .fullMenu > .top > .closeMenu > .icon {
+.fullMenu > .top > .closeMenu > .icon {
    font-size: 1.7rem;
    color: var(--white);
    border: 1px solid var(--white);
    border-radius: 50%;
+}
+
+.fullMenu > .selectedMeals {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   width: 90%;
+   height: calc(100vh - 230px);
+   margin: 15px auto;
+   overflow: scroll;
+}
+
+.fullMenu > .selectedMeals > .mealRow {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   position: relative;
+   width: 100%;
+}
+
+.fullMenu > .selectedMeals > .mealRow > .meal {
+   display: flex;
+   align-items: center;
+   justify-content: flex-start;
+   width: 75%;
+   margin: 15px 0;
+}
+
+.fullMenu > .selectedMeals > .mealRow > .meal > .nextImage {
+   width: 35%;
+   max-width: 70px;
+   margin-left: 5px;
+   border-radius: 10px;
+}
+
+.fullMenu > .selectedMeals > .mealRow > .meal > .name {
+   width: 40%;
+   margin-left: 8px;
+   font-size: 0.8rem;
+   color: var(--white);
+}
+
+.fullMenu > .selectedMeals > .mealRow > .quantity {
+   display: flex;
+   align-items: center;
+   justify-content: space-evenly;
+   width: 30%;
+}
+
+.fullMenu > .selectedMeals > .mealRow > .quantity > span {
+   font-size: 1.3rem;
+   color: var(--white);
+}
+
+.fullMenu > .selectedMeals > .mealRow > .removeButton {
+   position: absolute;
+   right: 0;
+   bottom: 0px;
+   padding: 1px 5px;
+}
+
+@media (min-width: 720px) {
+   .desktop {
+      display: block;
+   }
+
+   /* TODO: Agregar box shadow */
+   .cart {
+      position: fixed;
+      top: 50%;
+      right: 10px;
+      padding: 15px 15px;
+      border-radius: 3px;
+      color: white;
+      background-color: rgb(25, 25, 25);
+      cursor: pointer;
+   }
+
+   .cart > .icon {
+      font-size: 1.1rem;
+   }
+
+   .cart > .quantity {
+      position: absolute;
+      top: -15px;
+      left: 3px;
+      padding: 4px;
+      font-size: 0.8rem;
+      border: 1px solid white;
+      border-radius: 50%;
+      background-color: #2196f3;
+   }
+
+   /* Is Touched */
+
+   .fullMenu {
+      width: 19%;
+      min-width: 350px;
+      height: calc(100vh - 110px);
+      right: 0;
+      background-color: rgb(10, 10, 10);
+   }
+
+   .fullMenu > .top > .closeMenu {
+      cursor: pointer;
+   }
+
+   .fullMenu > .selectedMeals {
+      overflow: visible;
+   }
+
+   .cartMenu {
+      right: 0;
+      width: 19%;
+      min-width: 350px;
+      background-color: rgb(10, 10, 10);
+   }
+
+   .cartMenu > .container > .linkTo {
+      cursor: pointer;
+   }
 }
