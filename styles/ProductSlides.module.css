@@ -3,15 +3,46 @@
    flex-direction: column;
    align-items: center;
    position: relative;
-   height: 50rem;
+   width: 100vw;
    padding: 20px;
-   background-color: black;
+   margin-bottom: 5rem;
 }
 
 .ourMenu > .title {
    width: 80%;
+   margin-bottom: 3rem;
    text-align: center;
-   color: var(--white);
+   color: var(--black);
+}
+
+.ourMenu > .container {
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-start;
+   width: 100%;
+}
+
+/* Slider */
+
+.box {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   width: 100%;
+}
+
+.box > .nextImage {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
+
+.box > .title {
+   margin: 1.5rem 0;
+   text-align: center;
+   font-size: 1.15rem;
+   color: var(--black);
 }
 
 @media (min-width: 720px) {

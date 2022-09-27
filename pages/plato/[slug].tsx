@@ -68,11 +68,11 @@ const ProductPage: NextPage<Props> = ({ product }) => {
             {/* TODO: Agregar Layout nuevo */}
             {/* TODO: Mantener los filtros */}
 
-            <div className={styles.backMobile} onClick={() => router.back()}>
+            <div className={styles.backMobile} onClick={() => router.push('/menu')}>
                <BiChevronLeft />
             </div>
 
-            <div className={styles.backDesktop} onClick={() => router.back()}>
+            <div className={styles.backDesktop} onClick={() => router.push('/menu')}>
                <BsArrowLeftShort />
                <span className={styles.text}>Volver</span>
             </div>
