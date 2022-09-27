@@ -24,9 +24,10 @@ interface Props {
 const ProductPage: NextPage<Props> = ({ product }) => {
    const router = useRouter();
 
-   const { cart, addProductToCart } = useContext(CartContext);
+   const { cart, addProductToCart, updateCartQuantity, removeCartProduct } =
+      useContext(CartContext);
 
-   const [selectMore, setSelectMore] = useState(true);
+   const [isSelecting, setIsSelecting] = useState(false);
 
    const [tempCartProduct, setTempCartProduct] = useState<ICartProduct>({
       _id: product._id,
@@ -38,34 +39,25 @@ const ProductPage: NextPage<Props> = ({ product }) => {
       quantity: 0,
    });
 
-   const onUpdatedQuantity = (quantity: number) => {
-      setTempCartProduct((currentProduct) => ({
-         ...currentProduct,
-         quantity,
-      }));
-   };
-
-   const onAddProduct = () => {
-      if (tempCartProduct.quantity === 0 || !selectMore) return;
-
-      addProductToCart(tempCartProduct);
-
-      setSelectMore(false);
-   };
-
-   useEffect(() => {
-      if (cartProduct) {
-         setSelectMore(false);
+   // Add new product to cart, else update product cart quantity
+   const onNewCartQuantityValue = (product: ICartProduct, quantity: number) => {
+      if (!product) {
+         tempCartProduct.quantity = quantity;
+         addProductToCart(tempCartProduct);
+      } else {
+         product.quantity = quantity;
+         updateCartQuantity(product);
       }
-   }, [cart]);
+
+      if (product && product.quantity === 0) {
+         removeCartProduct(product);
+      }
+   };
 
    useEffect(() => {
-      const cartProduct = cart.find((p) => product._id === p._id);
+      const interval = setInterval(() => setIsSelecting(false), 3500);
 
-      setTempCartProduct((currentProduct) => ({
-         ...currentProduct,
-         quantity: cartProduct ? cartProduct.quantity : 0,
-      }));
+      return () => clearInterval(interval);
    }, [cart]);
 
    const cartProduct = cart.find((p) => product._id === p._id);
@@ -106,22 +98,25 @@ const ProductPage: NextPage<Props> = ({ product }) => {
                <div className={styles.container}>
                   <h1 className={styles.title}>{product.name}</h1>
                   <h4 className={styles.price}>{currency.format(product.price)}</h4>
-                  {!cartProduct || selectMore ? (
-                     <ItemCounter
-                        currentValue={tempCartProduct.quantity}
-                        updatedQuantity={onUpdatedQuantity}
-                     />
-                  ) : (
-                     <div className={styles.selectedQuantity} onClick={() => setSelectMore(true)}>
-                        <span>{cartProduct.quantity}</span>
+
+                  {!isSelecting && !cartProduct ? (
+                     <div className={styles.selectedQuantity} onClick={() => setIsSelecting(true)}>
+                        <span>+</span>
                      </div>
+                  ) : (
+                     <ItemCounter
+                        currentValue={cartProduct ? cartProduct.quantity : tempCartProduct.quantity}
+                        updatedQuantity={(quantity) =>
+                           onNewCartQuantityValue(cartProduct as ICartProduct, quantity)
+                        }
+                     />
                   )}
                </div>
 
                {/* TODO: Out of Stock */}
-               <button className={styles.addToCart} onClick={onAddProduct}>
+               {/* <button className={styles.addToCart} onClick={onAddProduct}>
                   Agregar al carrito
-               </button>
+               </button> */}
             </div>
 
             {/* Tags */}
