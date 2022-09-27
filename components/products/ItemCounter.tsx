@@ -5,12 +5,12 @@ import { IoMdAddCircleOutline, IoMdRemoveCircleOutline } from 'react-icons/io';
 import styles from '../../styles/ItemCounter.module.css';
 
 interface Props {
+   color?: string;
    currentValue: number;
    updatedQuantity: (quantity: number) => void;
-   color?: string;
 }
 
-export const ItemCounter: FC<Props> = ({ currentValue, updatedQuantity, color }) => {
+export const ItemCounter: FC<Props> = ({ color, currentValue, updatedQuantity }) => {
    const styleBox = {
       color,
    };

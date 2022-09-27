@@ -82,6 +82,7 @@
 
 .product > .box > .container {
    display: flex;
+   align-items: center;
    position: relative;
    width: 100%;
    margin-top: 10px;
@@ -93,6 +94,18 @@
    font-size: 1rem;
    font-weight: 600;
    color: var(--black);
+}
+
+.product > .box > .container > .selectedQuantity {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   width: 35px;
+   height: 30px;
+   border-radius: 50%;
+   background: #47d178;
+   color: var(--white);
 }
 
 .product > .box > .container > .addToCart {
@@ -144,6 +157,10 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
+   }
+
+   .product > .box > .container > .selectedQuantity {
+      cursor: pointer;
    }
 
    .product > .box > .container > .addToCart {
