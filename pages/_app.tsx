@@ -1,15 +1,20 @@
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
+import { SessionProvider } from 'next-auth/react';
 import { UIProvider } from '../context/ui';
-import { CartProvider } from '../context';
+import { AuthProvider, CartProvider } from '../context';
 
 function MyApp({ Component, pageProps }: AppProps) {
    return (
-      <CartProvider>
-         <UIProvider>
-            <Component {...pageProps} />
-         </UIProvider>
-      </CartProvider>
+      <SessionProvider>
+         <AuthProvider>
+            <CartProvider>
+               <UIProvider>
+                  <Component {...pageProps} />
+               </UIProvider>
+            </CartProvider>
+         </AuthProvider>
+      </SessionProvider>
    );
 }
 

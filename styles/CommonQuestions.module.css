@@ -1,7 +1,8 @@
 .commonFaqs {
    width: 100%;
    max-width: 450px;
-   margin: 10rem auto 5rem auto;
+   margin: 5rem auto 5rem auto;
+   padding-bottom: 5rem;
 }
 
 .commonFaqs > .title {
@@ -17,7 +18,8 @@
 /* Accordion Component */
 
 .accordionItem {
-   width: 100%;
+   width: 95%;
+   margin: 0 auto;
    border-bottom: 1px solid #dddddd;
 }
 
@@ -52,7 +54,7 @@
 
 @media (min-width: 720px) {
    .commonFaqs {
-      margin-top: 17rem;
+      margin-top: 5rem;
    }
 
    .accordion {

@@ -1,3 +1,4 @@
+import bcrypt from 'bcryptjs';
 import { IType } from '../interfaces';
 
 interface SeedProduct {
@@ -12,11 +13,37 @@ interface SeedProduct {
    howToHeat: string;
 }
 
+interface SeedUser {
+   name: string;
+   lastName: string;
+   email: string;
+   password: string;
+   role: 'admin' | 'client';
+}
+
 interface SeedData {
+   users: SeedUser[];
    products: SeedProduct[];
 }
 
 export const initialData: SeedData = {
+   users: [
+      {
+         name: 'Damian',
+         lastName: 'Aramayo',
+         email: 'da.aramayo1990@gmail.com',
+         password: bcrypt.hashSync('123456', 10),
+         role: 'admin',
+      },
+      {
+         name: 'Norma',
+         lastName: 'Henscheid',
+         email: 'norma.henscheid@gmail.com',
+         password: bcrypt.hashSync('123456', 10),
+         role: 'client',
+      },
+   ],
+
    products: [
       {
          image: 'albondigas-con-vegetales.jpg',

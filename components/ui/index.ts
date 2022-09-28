@@ -8,4 +8,5 @@ export * from './Intro';
 export * from './Navbar';
 export * from './NavbarHome';
 export * from './SideMenu';
+export * from './SubmitButton';
 export * from './Values';

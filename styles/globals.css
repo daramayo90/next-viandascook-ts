@@ -167,6 +167,10 @@ textarea {
    border: 2px solid #47d178;
 }
 
+.noDisplay {
+   display: none;
+}
+
 .fadeIn {
    -webkit-animation-duration: 0.5s;
    animation-duration: 0.5s;
