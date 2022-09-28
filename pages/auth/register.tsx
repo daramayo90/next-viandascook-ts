@@ -3,16 +3,17 @@ import { useContext, useState } from 'react';
 import { GetServerSideProps } from 'next';
 import { signIn, getSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 import { useForm } from 'react-hook-form';
+
+import { AuthContext } from '../../context/auth';
 
 import { AuthLayout } from '../../components/layouts';
 import { CommonQuestions, SubmitButton } from '../../components/ui';
 import { validations } from '../../utils';
 
 import styles from '../../styles/Register.module.css';
-import Link from 'next/link';
-import { AuthContext } from '../../context/auth';
 
 type FormData = {
    name: string;
@@ -36,15 +37,11 @@ const RegisterPage = () => {
       setShowError(false);
       const hasError = await registerUser(newUser);
 
-      console.log(hasError);
-
       if (hasError) {
          setShowError(true);
          setTimeout(() => setShowError(false), 3500);
          return;
       }
-
-      console.log('test1');
 
       const { email, password } = newUser;
 
