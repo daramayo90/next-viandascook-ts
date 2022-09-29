@@ -15,12 +15,14 @@ export const CommonQuestions = () => {
             ))}
          </div>
 
-         <Button
-            href='/'
-            content='Ver Todas'
-            color='var(--primary)'
-            border='2px solid var(--primary)'
-         />
+         <div className={styles.button}>
+            <Button
+               href='/'
+               content='Ver Todas'
+               color='var(--black)'
+               border='2px solid var(--black)'
+            />
+         </div>
       </section>
    );
 };

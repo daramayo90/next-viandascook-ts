@@ -45,6 +45,12 @@
    transform: rotate(-4.91deg);
 }
 
+.banner > .container > .brand > .button {
+   width: 60%;
+   max-width: 210px;
+   margin: 1.5rem auto;
+}
+
 .banner > .container > .brand > .discount {
    width: 100%;
    margin-top: 1rem;

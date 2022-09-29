@@ -15,7 +15,9 @@ export const Banner = () => {
                   <span> tenga sabor!</span>
                </p>
 
-               <Button href='/menu' content='¡Quiero!' />
+               <div className={styles.button}>
+                  <Button href='/menu' content='¡Quiero!' />
+               </div>
 
                <h4 className={styles.discount}>
                   <span>10% OFF EN TU PRIMER PEDIDO.</span>
