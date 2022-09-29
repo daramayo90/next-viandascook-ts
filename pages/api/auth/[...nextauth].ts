@@ -43,6 +43,8 @@ export const authOptions: NextAuthOptions = {
       newUser: '/auth/register',
    },
 
+   secret: process.env.SECRET,
+
    session: {
       maxAge: 2592000, // 30 days
       strategy: 'jwt',
