@@ -1,0 +1,165 @@
+.auth {
+   width: 100vw;
+   height: 100%;
+}
+
+.auth > .container {
+   background-image: url(/img/header-signup.jpg);
+   background-position: left;
+   background-size: cover;
+   background-repeat: no-repeat;
+   width: 100%;
+   height: 700px;
+   text-align: left;
+}
+
+.auth > .container > form {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   width: 100%;
+   max-width: 410px;
+   margin: 0 auto;
+   padding-top: 5rem;
+}
+
+.auth > .container > form > .title {
+   text-align: left;
+   font-size: 2.5rem;
+   color: var(--white);
+}
+
+.auth > .container > form > .userNames {
+   width: 90%;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+}
+
+.auth > .container > form > .userNames > .inputText {
+   width: 48%;
+}
+
+.auth > .container > form .inputText {
+   width: 90%;
+   max-width: 410px;
+   margin: 0.9rem 0;
+}
+
+.auth > .container > form .inputText > input {
+   display: block;
+   width: 100%;
+   padding: 15px;
+   height: 50px;
+   border-radius: 4px;
+   font-size: 1rem;
+   font-weight: 400;
+   line-height: 1.5;
+   color: #596068;
+   background-color: #fff;
+   background-clip: padding-box;
+   border: 1px solid #ced4da;
+   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.auth > .container > form .inputText > input:focus {
+   color: #495057;
+   background-color: #fff;
+   border-color: #80bdff;
+   outline: 0;
+   box-shadow: 0 0 0 0.2rem rgb(0 123 255 / 25%);
+}
+
+.auth > .container > form > .linksTo {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   width: 90%;
+   margin: 1rem 0;
+   padding: 0 0.7rem;
+}
+
+.auth > .container > form > .linksTo > .login,
+.auth > .container > form > .linksTo > .register {
+   width: 50%;
+   font-size: 1rem;
+   font-weight: 700;
+   text-decoration-line: underline;
+   color: var(--white);
+   cursor: pointer;
+}
+
+.auth > .container > form > .linksTo > .registerButton,
+.auth > .container > form > .linksTo > .loginButton {
+   width: 50%;
+   max-width: 150px;
+}
+
+.auth > .container > .loginContainer {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   width: 95%;
+   margin: 0 auto;
+}
+
+.auth > .container > .textProviders {
+   display: block;
+   width: 90%;
+   margin: 2rem auto;
+   font-size: 0.9rem;
+   text-align: center;
+   color: var(--white);
+}
+
+.auth > .container > .providersContainer > .providers {
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   justify-content: center;
+   width: 70%;
+   margin: 0 auto;
+}
+
+.auth > .container > .providersContainer > .providers > .providerButton {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   width: 56px;
+   height: 56px;
+   margin: 0 2rem;
+   padding: 0;
+   border-radius: 34px;
+}
+
+.auth > .container > .providersContainer > .providers > .google {
+   border: 1px solid #fff;
+   background-color: #fff;
+}
+
+.auth > .container > .providersContainer > .providers > .facebook {
+   border: 1px solid rgb(60, 90, 153);
+   background-color: rgb(60, 90, 153);
+}
+
+.auth > .container > .providersContainer > .providers > .providerButton > .icon {
+   font-size: 1.5rem;
+}
+
+@media (min-width: 720px) {
+   .auth > .container {
+      background-position: center;
+   }
+
+   .auth > .container > form {
+      max-width: 535px;
+      margin: 0 auto;
+      padding-top: 5rem;
+   }
+
+   .auth > .container > form .inputText {
+      width: 90%;
+      max-width: 480px;
+      margin: 0.9rem 0;
+   }
+}

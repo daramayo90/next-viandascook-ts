@@ -14,9 +14,9 @@ import { CommonQuestions, SubmitButton } from '../../components/ui';
 import { validations } from '../../utils';
 
 import { FcGoogle } from 'react-icons/fc';
-import { TbBrandMeta } from 'react-icons/tb';
+import { FaFacebookF } from 'react-icons/fa';
 
-import styles from '../../styles/Register.module.css';
+import styles from '../../styles/Auth.module.css';
 
 type FormData = {
    name: string;
@@ -58,24 +58,29 @@ const RegisterPage = () => {
 
    return (
       <AuthLayout title={'Crear nueva cuenta'}>
-         <section className={styles.register}>
+         <section className={styles.auth}>
             <div className={styles.container}>
                <form onSubmit={handleSubmit(onRegisterForm)} noValidate>
                   <h1 className={styles.title}>Registrarse</h1>
 
-                  <label className={styles.inputText}>
-                     <input {...register('name', { required: true })} placeholder='Nombre' />
-                     {errors.name && (
-                        <span className={styles.error}>El nombre es un campo requerido</span>
-                     )}
-                  </label>
+                  <div className={styles.userNames}>
+                     <label className={styles.inputText}>
+                        <input {...register('name', { required: true })} placeholder='Nombre' />
+                        {errors.name && (
+                           <span className={styles.error}>El nombre es un campo requerido</span>
+                        )}
+                     </label>
 
-                  <label className={styles.inputText}>
-                     <input {...register('lastName', { required: true })} placeholder='Apellido' />
-                     {errors.lastName && (
-                        <span className={styles.error}>El apellido es un campo requerido</span>
-                     )}
-                  </label>
+                     <label className={styles.inputText}>
+                        <input
+                           {...register('lastName', { required: true })}
+                           placeholder='Apellido'
+                        />
+                        {errors.lastName && (
+                           <span className={styles.error}>El apellido es un campo requerido</span>
+                        )}
+                     </label>
+                  </div>
 
                   <label className={styles.inputText}>
                      <input
@@ -103,25 +108,31 @@ const RegisterPage = () => {
                      )}
                   </label>
 
-                  <div className={styles.registerButton}>
-                     <SubmitButton
-                        content='Registrarse'
-                        border='1px solid var(--black)'
-                        color='var(--white)'
-                        background='var(--black)'
-                     />
+                  <div className={styles.linksTo}>
+                     <div className={styles.login}>
+                        <Link href={`/auth/login?page=${router.query.page?.toString()}`}>
+                           <span>Ya tengo cuenta</span>
+                        </Link>
+                     </div>
+
+                     <div className={styles.registerButton}>
+                        <SubmitButton
+                           content='Registrarse'
+                           border='1px solid var(--secondary)'
+                           color='var(--white)'
+                           background='var(--secondary)'
+                        />
+                     </div>
                   </div>
 
                   <div className={showError ? `${styles.errorMessage} fadeIn` : 'noDisplay'}>
-                     <span>Email o contraseña no válidos</span>
+                     <span>Corrige los errores antes de continuar</span>
                   </div>
                </form>
 
-               <div className={styles.loginContainer}>
-                  {/* <div className={styles.textProviders}>
-                     <span>Registrate usando tu cuenta de google:</span>
-                  </div> */}
+               <span className={styles.textProviders}>Continuar con..</span>
 
+               <div className={styles.providersContainer}>
                   <div className={styles.providers}>
                      {Object.values(providers).map((provider: any) => {
                         if (provider.id === 'credentials') return <div key='credentials'></div>;
@@ -130,31 +141,21 @@ const RegisterPage = () => {
                            return (
                               <button
                                  key={provider.id}
-                                 className={styles.providerButton}
+                                 className={`${styles.providerButton} ${styles.google}`}
                                  onClick={() => signIn(provider.id)}>
                                  <FcGoogle className={styles.icon} />
-                                 Continuar con {provider.name}
                               </button>
                            );
 
                         return (
                            <button
                               key={provider.id}
-                              className={styles.providerButton}
+                              className={`${styles.providerButton} ${styles.facebook}`}
                               onClick={() => signIn(provider.id)}>
-                              <TbBrandMeta className={styles.icon} />
-                              Continuar con {provider.name}
+                              <FaFacebookF className={styles.icon} />
                            </button>
                         );
                      })}
-                  </div>
-
-                  <div className={styles.login}>
-                     <Link href={`/auth/login?page=${router.query.page?.toString()}`}>
-                        <span>
-                           ¿Ya tenes cuenta? Logueate -<strong>aquí</strong>-
-                        </span>
-                     </Link>
                   </div>
                </div>
             </div>

@@ -31,10 +31,8 @@
 }
 
 .navbarAuth > .logo {
-   margin-left: 0;
-   top: 0;
-   min-width: 220px;
-   max-width: 380px;
+   min-width: 260px;
+   max-width: 420px;
 }
 
 .navbar > .logo > .nextImage {

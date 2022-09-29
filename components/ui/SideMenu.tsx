@@ -11,7 +11,7 @@ import styles from '../../styles/SideMenu.module.css';
 export const SideMenu = () => {
    const router = useRouter();
 
-   const { user } = useContext(AuthContext);
+   const { isLoggedIn, user, logout } = useContext(AuthContext);
 
    const { isMenuOpen, toggleSideMenu } = useContext(UIContext);
 
@@ -57,18 +57,23 @@ export const SideMenu = () => {
 
             <div className={styles.menuOptions}>
                <ul className={styles.list}>
-                  {user && <li onClick={() => navigateTo('/mi-cuenta')}>Mi cuenta</li>}
+                  {isLoggedIn && <li onClick={() => navigateTo('/mi-cuenta')}>Mi Cuenta</li>}
+                  {isLoggedIn && <li onClick={() => navigateTo('/mis-pedidos')}>Mis Pedidos</li>}
                   <li onClick={() => navigateTo('/menu')}>Elegí tus Viandas</li>
                   <li onClick={() => navigateTo('/nosotros')}>Nosotros</li>
                   <li onClick={() => navigateTo('/loyalty')}>Sumá Puntos</li>
                   <li onClick={() => navigateTo('/preguntas')}>¿Preguntas?</li>
                </ul>
 
-               {!user && (
+               {!isLoggedIn ? (
                   <div className={styles.login}>
                      <button onClick={() => navigateTo(`/auth/login?page=${router.asPath}`)}>
                         Iniciá Sesión
                      </button>
+                  </div>
+               ) : (
+                  <div className={styles.login}>
+                     <button onClick={logout}>Cerrar Sesión</button>
                   </div>
                )}
             </div>

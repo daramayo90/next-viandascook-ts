@@ -11,9 +11,9 @@ import { CommonQuestions, SubmitButton } from '../../components/ui';
 import { validations } from '../../utils';
 
 import { FcGoogle } from 'react-icons/fc';
-import { TbBrandMeta } from 'react-icons/tb';
+import { FaFacebookF } from 'react-icons/fa';
 
-import styles from '../../styles/Register.module.css';
+import styles from '../../styles/Auth.module.css';
 
 type FormData = {
    email: string;
@@ -42,7 +42,7 @@ const LoginPage = () => {
 
    return (
       <AuthLayout title={'Iniciar Sesión'}>
-         <section className={styles.register}>
+         <section className={styles.auth}>
             <div className={styles.container}>
                <form onSubmit={handleSubmit(onLoginUser)} noValidate>
                   <h1 className={styles.title}>Iniciar Sesión</h1>
@@ -73,13 +73,21 @@ const LoginPage = () => {
                      )}
                   </label>
 
-                  <div className={styles.registerButton}>
-                     <SubmitButton
-                        content='Acceder'
-                        border='1px solid var(--black)'
-                        color='var(--white)'
-                        background='var(--black)'
-                     />
+                  <div className={styles.linksTo}>
+                     <div className={styles.register}>
+                        <Link href={`/auth/register?page=${router.query.page?.toString()}`}>
+                           <span>Crear nueva cuenta</span>
+                        </Link>
+                     </div>
+
+                     <div className={styles.loginButton}>
+                        <SubmitButton
+                           content='Acceder'
+                           border='1px solid var(--secondary)'
+                           color='var(--white)'
+                           background='var(--secondary)'
+                        />
+                     </div>
                   </div>
 
                   <div className={showError ? `${styles.errorMessage} fadeIn` : 'noDisplay'}>
@@ -87,11 +95,9 @@ const LoginPage = () => {
                   </div>
                </form>
 
-               <div className={styles.loginContainer}>
-                  {/* <div className={styles.textProviders}>
-                     <span>Accedé usando Google o Facebook:</span>
-                  </div> */}
+               <span className={styles.textProviders}>Continuar con..</span>
 
+               <div className={styles.providersContainer}>
                   <div className={styles.providers}>
                      {Object.values(providers).map((provider: any) => {
                         if (provider.id === 'credentials') return <div key='credentials'></div>;
@@ -100,31 +106,21 @@ const LoginPage = () => {
                            return (
                               <button
                                  key={provider.id}
-                                 className={styles.providerButton}
+                                 className={`${styles.providerButton} ${styles.google}`}
                                  onClick={() => signIn(provider.id)}>
                                  <FcGoogle className={styles.icon} />
-                                 Continuar con {provider.name}
                               </button>
                            );
 
                         return (
                            <button
                               key={provider.id}
-                              className={styles.providerButton}
+                              className={`${styles.providerButton} ${styles.facebook}`}
                               onClick={() => signIn(provider.id)}>
-                              <TbBrandMeta className={styles.icon} />
-                              Continuar con {provider.name}
+                              <FaFacebookF className={styles.icon} />
                            </button>
                         );
                      })}
-                  </div>
-
-                  <div className={styles.login}>
-                     <Link href={`/auth/register?page=${router.query.page?.toString()}`}>
-                        <span>
-                           ¿No tenes cuenta? Registrate -<strong>aquí</strong>-
-                        </span>
-                     </Link>
                   </div>
                </div>
             </div>
