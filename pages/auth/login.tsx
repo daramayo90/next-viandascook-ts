@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-
 import { GetServerSideProps } from 'next';
 import { signIn, getSession, getProviders } from 'next-auth/react';
 import { useRouter } from 'next/router';
@@ -33,6 +32,7 @@ const LoginPage = () => {
 
    useEffect(() => {
       getProviders().then((prov) => setProviders(prov));
+      console.log('PROVIDERS', providers);
    }, []);
 
    const onLoginUser = async ({ email, password }: FormData) => {
@@ -124,23 +124,23 @@ const LoginPage = () => {
    );
 };
 
-// export const getServerSideProps: GetServerSideProps = async ({ req, query }) => {
-//    const session = await getSession({ req });
+export const getServerSideProps: GetServerSideProps = async ({ req, query }) => {
+   const session = await getSession({ req });
 
-//    const { page = '/' } = query;
+   const { page = '/' } = query;
 
-//    if (session) {
-//       return {
-//          redirect: {
-//             destination: page.toString(),
-//             permanent: false,
-//          },
-//       };
-//    }
+   if (session) {
+      return {
+         redirect: {
+            destination: page.toString(),
+            permanent: false,
+         },
+      };
+   }
 
-//    return {
-//       props: {},
-//    };
-// };
+   return {
+      props: {},
+   };
+};
 
 export default LoginPage;
