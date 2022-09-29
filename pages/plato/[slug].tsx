@@ -1,4 +1,3 @@
-import { useContext, useEffect, useState } from 'react';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
@@ -6,16 +5,15 @@ import Image from 'next/image';
 import { dbProducts } from '../../database';
 import { ICartProduct, IProduct } from '../../interfaces';
 
-import { CartContext } from '../../context';
-
 import { currency } from '../../utils';
+import { useTempCart } from '../../hooks';
+import { CartMenu } from '../../components/cart';
 import { ItemCounter } from '../../components/products';
 
 import { BsArrowLeftShort } from 'react-icons/bs';
 import { BiChevronLeft } from 'react-icons/bi';
 
 import styles from '../../styles/Product.module.css';
-import { CartMenu } from '../../components/cart';
 
 interface Props {
    product: IProduct;
@@ -24,43 +22,8 @@ interface Props {
 const ProductPage: NextPage<Props> = ({ product }) => {
    const router = useRouter();
 
-   const { cart, addProductToCart, updateCartQuantity, removeCartProduct } =
-      useContext(CartContext);
-
-   const [isSelecting, setIsSelecting] = useState(false);
-
-   const [tempCartProduct, setTempCartProduct] = useState<ICartProduct>({
-      _id: product._id,
-      image: product.image,
-      name: product.name,
-      slug: product.slug,
-      price: product.price,
-      type: product.type,
-      quantity: 0,
-   });
-
-   // Add new product to cart, else update product cart quantity
-   const onNewCartQuantityValue = (product: ICartProduct, quantity: number) => {
-      if (!product) {
-         tempCartProduct.quantity = quantity;
-         addProductToCart(tempCartProduct);
-      } else {
-         product.quantity = quantity;
-         updateCartQuantity(product);
-      }
-
-      if (product && product.quantity === 0) {
-         removeCartProduct(product);
-      }
-   };
-
-   useEffect(() => {
-      const interval = setInterval(() => setIsSelecting(false), 3500);
-
-      return () => clearInterval(interval);
-   }, [cart]);
-
-   const cartProduct = cart.find((p) => product._id === p._id);
+   const { isSelecting, setIsSelecting, tempCartProduct, onNewCartQuantityValue, cartProduct } =
+      useTempCart(product);
 
    return (
       <>
@@ -99,6 +62,7 @@ const ProductPage: NextPage<Props> = ({ product }) => {
                   <h1 className={styles.title}>{product.name}</h1>
                   <h4 className={styles.price}>{currency.format(product.price)}</h4>
 
+                  {/* TODO: Out of Stock */}
                   {!isSelecting && !cartProduct ? (
                      <div className={styles.selectedQuantity} onClick={() => setIsSelecting(true)}>
                         <span>+</span>
@@ -112,11 +76,6 @@ const ProductPage: NextPage<Props> = ({ product }) => {
                      />
                   )}
                </div>
-
-               {/* TODO: Out of Stock */}
-               {/* <button className={styles.addToCart} onClick={onAddProduct}>
-                  Agregar al carrito
-               </button> */}
             </div>
 
             {/* Tags */}
