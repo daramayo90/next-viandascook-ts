@@ -43,7 +43,7 @@ export const authOptions: NextAuthOptions = {
       newUser: '/auth/register',
    },
 
-   secret: process.env.SECRET,
+   secret: process.env.NEXT_PUBLIC_SECRET,
 
    session: {
       maxAge: 2592000, // 30 days
