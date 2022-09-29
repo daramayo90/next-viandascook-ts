@@ -14,21 +14,21 @@
    /* padding: 15px 0; */
    /* overflow-x: hidden; */
    background-image: url(/img/header-signup.jpg);
-   background-position: 100%;
+   background-position: 55%;
    background-size: cover;
    background-repeat: no-repeat;
    width: 100%;
-   height: 770px;
+   height: 750px;
    text-align: left;
 }
 
 .register > .container > form {
    display: flex;
    flex-direction: column;
-   justify-content: flex-start;
+   align-items: center;
    width: 95%;
    margin: 0 auto;
-   padding-top: 4rem;
+   padding-top: 5rem;
 }
 
 .register > .container > form > .title {
@@ -38,6 +38,7 @@
 
 .register > .container > form > .inputText {
    width: 80%;
+   max-width: 350px;
    margin-top: 1rem;
 }
 
@@ -66,14 +67,15 @@
 }
 
 .register > .container > form > .registerButton {
-   max-width: 200px;
-   margin: -1.7rem 0 2rem -1rem;
+   width: 80%;
+   max-width: 350px;
+   margin: 1.5rem 0 2rem 0;
 }
 
 .register > .container > .loginContainer {
    display: flex;
    flex-direction: column;
-   justify-content: flex-start;
+   align-items: center;
    width: 95%;
    margin: 0 auto;
 }
@@ -91,15 +93,16 @@
 .register > .container > .loginContainer > .providers {
    display: flex;
    flex-direction: column;
-   justify-content: flex-start;
+   align-items: center;
    width: 95%;
 }
 
 .register > .container > .loginContainer > .providers > .providerButton {
    display: flex;
-   justify-content: flex-start;
-   max-width: 270px;
-   margin: 1rem 0;
+   justify-content: center;
+   width: 80%;
+   max-width: 350px;
+   margin: 0.8rem 0;
    padding: 0.5rem 0.5rem;
    color: var(--black);
    border: 1px solid var(--black);
@@ -121,25 +124,57 @@
 
    .register > .container > form {
       max-width: 1140px;
+      align-items: flex-start;
    }
 
    .register > .container > form > .inputText {
       width: 40%;
-      max-width: 450px;
+      max-width: 400px;
       margin-top: 1rem;
    }
 
    .register > .container > form > .registerButton {
-      margin: -1.7rem 0 2rem -1.4rem;
+      width: 40%;
+      max-width: 400px;
    }
 
    .register > .container > .loginContainer {
+      max-width: 1140px;
+      align-items: flex-start;
+   }
+
+   .register > .container > .loginContainer > .providers {
       display: flex;
       flex-direction: column;
-      justify-content: flex-start;
+      align-items: flex-start;
       width: 95%;
-      margin: 0 auto;
+   }
+
+   .register > .container > .loginContainer > .providers > .providerButton {
+      display: flex;
+      justify-content: center;
+      width: 42.5%;
+      max-width: 400px;
+      margin: 0.8rem 0;
+      padding: 0.5rem 0.5rem;
+      color: var(--black);
+      border: 1px solid var(--black);
+      background-color: var(--white);
+   }
+
+   .register > .container > .loginContainer > .login {
+      text-align: center;
+      width: 80%;
       max-width: 1140px;
+      display: flex;
+      align-items: flex-start;
+   }
+
+   .register > .container > .loginContainer > .login > span {
+      display: flex;
+      justify-content: center;
+      width: 50%;
+      max-width: 400px;
    }
 
    .register > .container > .loginContainer > .login strong {

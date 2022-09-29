@@ -2,7 +2,7 @@
    display: flex;
    justify-content: center;
    align-items: center;
-   margin-top: 3rem;
+   width: 100%;
 }
 
 .linkTo > .linkButton {
@@ -10,6 +10,7 @@
    justify-content: center;
    align-items: center;
    position: relative;
+   width: 100%;
    padding: 10px 55px 10px 40px;
    letter-spacing: 1.5px;
    border-color: var(--white);

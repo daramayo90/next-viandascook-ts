@@ -122,7 +122,7 @@ const LoginPage = () => {
                   <div className={styles.login}>
                      <Link href={`/auth/register?page=${router.query.page?.toString()}`}>
                         <span>
-                           ¿No tenes cuenta? Registrate <strong>aquí</strong>
+                           ¿No tenes cuenta? Registrate -<strong>aquí</strong>-
                         </span>
                      </Link>
                   </div>
