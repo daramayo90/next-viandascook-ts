@@ -11,6 +11,7 @@ import { CommonQuestions, SubmitButton } from '../../components/ui';
 import { validations } from '../../utils';
 
 import { FcGoogle } from 'react-icons/fc';
+import { TbBrandMeta } from 'react-icons/tb';
 
 import styles from '../../styles/Register.module.css';
 
@@ -96,19 +97,30 @@ const LoginPage = () => {
                   </div>
 
                   <div className={styles.textProviders}>
-                     <span>Accedé usando tu cuenta de google:</span>
+                     <span>Accedé usando Google o Facebook:</span>
                   </div>
 
                   <div className={styles.providers}>
                      {Object.values(providers).map((provider: any) => {
                         if (provider.id === 'credentials') return <div key='credentials'></div>;
 
+                        if (provider.name === 'Google')
+                           return (
+                              <button
+                                 key={provider.id}
+                                 className={styles.providerButton}
+                                 onClick={() => signIn(provider.id)}>
+                                 <FcGoogle className={styles.icon} />
+                                 {provider.name}
+                              </button>
+                           );
+
                         return (
                            <button
                               key={provider.id}
                               className={styles.providerButton}
                               onClick={() => signIn(provider.id)}>
-                              <FcGoogle className={styles.icon} />
+                              <TbBrandMeta className={styles.icon} />
                               {provider.name}
                            </button>
                         );

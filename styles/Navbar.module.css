@@ -3,6 +3,10 @@
    background-color: rgb(10, 10, 10);
 }
 
+.navbarAuth {
+   background-color: transparent;
+}
+
 .navbar {
    position: relative;
    display: flex;
@@ -26,6 +30,13 @@
    cursor: pointer;
 }
 
+.navbarAuth > .logo {
+   margin-left: 0;
+   top: 0;
+   min-width: 220px;
+   max-width: 380px;
+}
+
 .navbar > .logo > .nextImage {
    width: 100%;
 }
@@ -45,6 +56,10 @@
       position: relative;
       padding: 50px 0;
       background-color: rgb(10, 10, 10);
+   }
+
+   .navbarAuth {
+      background-color: transparent;
    }
 
    .navbar > .logo {

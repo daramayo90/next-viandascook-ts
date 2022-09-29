@@ -1,6 +1,6 @@
 import NextAuth, { NextAuthOptions } from 'next-auth';
-import GithubProvider from 'next-auth/providers/github';
 import GoogleProvider from 'next-auth/providers/google';
+import FacebookProvider from 'next-auth/providers/facebook';
 import Credentials from 'next-auth/providers/credentials';
 import { dbUsers } from '../../../database';
 
@@ -18,11 +18,6 @@ export const authOptions: NextAuthOptions = {
             return await dbUsers.checkUserEmailPassword(credentials!.email, credentials!.password);
          },
       }),
-      // Github Login
-      /*GithubProvider({
-         clientId: process.env.GITHUB_ID!,
-         clientSecret: process.env.GITHUB_SECRET!,
-      }),*/
       // Google Login
       GoogleProvider({
          clientId: process.env.GOOGLE_ID!,
@@ -35,6 +30,10 @@ export const authOptions: NextAuthOptions = {
             },
          },
       }),
+      FacebookProvider({
+         clientId: process.env.FACEBOOK_CLIENT_ID!,
+         clientSecret: process.env.FACEBOOK_CLIENT_SECRET!,
+      }),
    ],
 
    // Custom Pages
@@ -44,7 +43,7 @@ export const authOptions: NextAuthOptions = {
    },
 
    session: {
-      maxAge: 2592000, // 30 days
+      maxAge: 5184000, // 60 days
       strategy: 'jwt',
       updateAge: 86400, // every day
    },
