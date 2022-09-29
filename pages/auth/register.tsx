@@ -121,7 +121,7 @@ const RegisterPage = () => {
                   <div className={styles.login}>
                      <Link href={`/auth/login?page=${router.query.page?.toString()}`}>
                         <span>
-                           ¿Ya tienes cuenta? Logueate <strong>aquí</strong>
+                           ¿Ya tenes cuenta? Logueate <strong>aquí</strong>
                         </span>
                      </Link>
                   </div>
@@ -141,7 +141,7 @@ const RegisterPage = () => {
                                  className={styles.providerButton}
                                  onClick={() => signIn(provider.id)}>
                                  <FcGoogle className={styles.icon} />
-                                 {provider.name}
+                                 Continuar con {provider.name}
                               </button>
                            );
 
@@ -151,7 +151,7 @@ const RegisterPage = () => {
                               className={styles.providerButton}
                               onClick={() => signIn(provider.id)}>
                               <TbBrandMeta className={styles.icon} />
-                              {provider.name}
+                              Continuar con {provider.name}
                            </button>
                         );
                      })}
