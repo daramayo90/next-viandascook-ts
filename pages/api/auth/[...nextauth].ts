@@ -24,17 +24,17 @@ export const authOptions: NextAuthOptions = {
          clientSecret: process.env.GITHUB_SECRET!,
       }),*/
       // Google Login
-      GoogleProvider({
-         clientId: process.env.GOOGLE_ID!,
-         clientSecret: process.env.GOOGLE_SECRET!,
-         authorization: {
-            params: {
-               prompt: 'consent',
-               access_type: 'offline',
-               response_type: 'code',
-            },
-         },
-      }),
+      // GoogleProvider({
+      //    clientId: process.env.GOOGLE_ID!,
+      //    clientSecret: process.env.GOOGLE_SECRET!,
+      //    authorization: {
+      //       params: {
+      //          prompt: 'consent',
+      //          access_type: 'offline',
+      //          response_type: 'code',
+      //       },
+      //    },
+      // }),
    ],
 
    // Custom Pages
