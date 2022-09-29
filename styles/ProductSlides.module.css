@@ -50,6 +50,7 @@
 @media (min-width: 720px) {
    .box {
       width: 80%;
+      margin: 0 auto;
       cursor: pointer;
    }
 

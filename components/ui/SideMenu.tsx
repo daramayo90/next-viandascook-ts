@@ -2,20 +2,18 @@ import { useContext, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 
-import { IoMdClose } from 'react-icons/io';
+import { AuthContext, UIContext } from '../../context';
 
-import { UIContext } from '../../context';
+import { IoMdClose } from 'react-icons/io';
 
 import styles from '../../styles/SideMenu.module.css';
 
 export const SideMenu = () => {
    const router = useRouter();
-   const { isMenuOpen, toggleSideMenu } = useContext(UIContext);
 
-   const navigateTo = (url: string) => {
-      toggleSideMenu();
-      router.push(url);
-   };
+   const { user } = useContext(AuthContext);
+
+   const { isMenuOpen, toggleSideMenu } = useContext(UIContext);
 
    useEffect(() => {
       const main = document.getElementById('main')!;
@@ -28,6 +26,11 @@ export const SideMenu = () => {
          main.style.filter = 'none';
       }
    }, [isMenuOpen]);
+
+   const navigateTo = (url: string) => {
+      toggleSideMenu();
+      router.push(url);
+   };
 
    if (!isMenuOpen) {
       return <></>;
@@ -54,16 +57,20 @@ export const SideMenu = () => {
 
             <div className={styles.menuOptions}>
                <ul className={styles.list}>
-                  <li onClick={() => navigateTo('/')}>Mi cuenta</li>
-                  <li onClick={() => navigateTo('/')}>Nosotros</li>
-                  <li onClick={() => navigateTo('/')}>Sumá Puntos</li>
-                  <li onClick={() => navigateTo('/')}>Elegí tus Viandas</li>
-                  <li onClick={() => navigateTo('/')}>¿Preguntas?</li>
+                  {user && <li onClick={() => navigateTo('/mi-cuenta')}>Mi cuenta</li>}
+                  <li onClick={() => navigateTo('/menu')}>Elegí tus Viandas</li>
+                  <li onClick={() => navigateTo('/nosotros')}>Nosotros</li>
+                  <li onClick={() => navigateTo('/loyalty')}>Sumá Puntos</li>
+                  <li onClick={() => navigateTo('/preguntas')}>¿Preguntas?</li>
                </ul>
 
-               <div className={styles.login}>
-                  <button onClick={() => navigateTo('/')}>Iniciá Sesión</button>
-               </div>
+               {!user && (
+                  <div className={styles.login}>
+                     <button onClick={() => navigateTo(`/auth/login?page=${router.asPath}`)}>
+                        Iniciá Sesión
+                     </button>
+                  </div>
+               )}
             </div>
          </div>
       </section>

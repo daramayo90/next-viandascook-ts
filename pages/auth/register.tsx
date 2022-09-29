@@ -80,7 +80,7 @@ const RegisterPage = () => {
                   <label className={styles.inputText}>
                      <input
                         {...register('email', { required: true, validate: validations.isEmail })}
-                        placeholder='email@gmail.com'
+                        placeholder='email@ejemplo.com'
                      />
                      {errors.email && (
                         <span className={styles.error}>El email es un campo requerido</span>
