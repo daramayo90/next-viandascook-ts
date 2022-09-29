@@ -88,17 +88,9 @@ const LoginPage = () => {
                </form>
 
                <div className={styles.loginContainer}>
-                  <div className={styles.login}>
-                     <Link href={`/auth/register?page=${router.query.page?.toString()}`}>
-                        <span>
-                           ¿No tenes cuenta? Registrate <strong>aquí</strong>
-                        </span>
-                     </Link>
-                  </div>
-
-                  <div className={styles.textProviders}>
+                  {/* <div className={styles.textProviders}>
                      <span>Accedé usando Google o Facebook:</span>
-                  </div>
+                  </div> */}
 
                   <div className={styles.providers}>
                      {Object.values(providers).map((provider: any) => {
@@ -125,6 +117,14 @@ const LoginPage = () => {
                            </button>
                         );
                      })}
+                  </div>
+
+                  <div className={styles.login}>
+                     <Link href={`/auth/register?page=${router.query.page?.toString()}`}>
+                        <span>
+                           ¿No tenes cuenta? Registrate <strong>aquí</strong>
+                        </span>
+                     </Link>
                   </div>
                </div>
             </div>

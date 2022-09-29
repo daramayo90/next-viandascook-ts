@@ -118,17 +118,9 @@ const RegisterPage = () => {
                </form>
 
                <div className={styles.loginContainer}>
-                  <div className={styles.login}>
-                     <Link href={`/auth/login?page=${router.query.page?.toString()}`}>
-                        <span>
-                           ¿Ya tenes cuenta? Logueate <strong>aquí</strong>
-                        </span>
-                     </Link>
-                  </div>
-
-                  <div className={styles.textProviders}>
+                  {/* <div className={styles.textProviders}>
                      <span>Registrate usando tu cuenta de google:</span>
-                  </div>
+                  </div> */}
 
                   <div className={styles.providers}>
                      {Object.values(providers).map((provider: any) => {
@@ -155,6 +147,14 @@ const RegisterPage = () => {
                            </button>
                         );
                      })}
+                  </div>
+
+                  <div className={styles.login}>
+                     <Link href={`/auth/login?page=${router.query.page?.toString()}`}>
+                        <span>
+                           ¿Ya tenes cuenta? Logueate <strong>aquí</strong>
+                        </span>
+                     </Link>
                   </div>
                </div>
             </div>
