@@ -100,7 +100,7 @@ const LoginPage = () => {
                   </div>
 
                   <div className={styles.providers}>
-                     {/* {Object.values(providers).map((provider: any) => {
+                     {Object.values(providers).map((provider: any) => {
                         if (provider.id === 'credentials') return <div key='credentials'></div>;
 
                         return (
@@ -112,7 +112,7 @@ const LoginPage = () => {
                               {provider.name}
                            </button>
                         );
-                     })} */}
+                     })}
                   </div>
                </div>
             </div>
