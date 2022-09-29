@@ -61,8 +61,8 @@ const registerUser = async (req: NextApiRequest, res: NextApiResponse<Data>) => 
       email: email.toLocaleLowerCase(),
       password: bcrypt.hashSync(password, 10),
       role: 'client',
-      name,
-      lastName,
+      name: name.charAt(0).toUpperCase() + name.slice(1),
+      lastName: lastName.charAt(0).toUpperCase() + lastName.slice(1),
    });
 
    try {

@@ -40,8 +40,6 @@ const LoginPage = () => {
       await signIn('credentials', { email, password });
    };
 
-   console.log({ router });
-
    return (
       <AuthLayout title={'Iniciar Sesión'}>
          <section className={styles.register}>
