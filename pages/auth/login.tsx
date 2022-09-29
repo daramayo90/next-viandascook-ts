@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { GetServerSideProps } from 'next';
 import { signIn, getSession, getProviders } from 'next-auth/react';
 import { useRouter } from 'next/router';
@@ -19,10 +19,14 @@ type FormData = {
    password: string;
 };
 
-const LoginPage = () => {
+interface Props {
+   providers: any;
+}
+
+const LoginPage: FC<Props> = ({ providers }) => {
    const router = useRouter();
 
-   const [providers, setProviders] = useState<any>({});
+   // const [providers, setProviders] = useState<any>({});
    const [showError, setShowError] = useState(false);
    const {
       register,
@@ -30,10 +34,9 @@ const LoginPage = () => {
       formState: { errors },
    } = useForm<FormData>();
 
-   useEffect(() => {
-      getProviders().then((prov) => setProviders(prov));
-      console.log('PROVIDERS', providers);
-   }, []);
+   // useEffect(() => {
+   //    getProviders().then((prov) => setProviders(prov));
+   // }, []);
 
    const onLoginUser = async ({ email, password }: FormData) => {
       setShowError(false);
@@ -138,8 +141,12 @@ export const getServerSideProps: GetServerSideProps = async ({ req, query }) => 
       };
    }
 
+   const providers = getProviders();
+
    return {
-      props: {},
+      props: {
+         providers,
+      },
    };
 };
 
