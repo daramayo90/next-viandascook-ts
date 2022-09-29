@@ -1,7 +1,7 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 import { GetServerSideProps } from 'next';
-import { signIn, getSession } from 'next-auth/react';
+import { signIn, getSession, getProviders } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 
@@ -12,6 +12,8 @@ import { AuthContext } from '../../context/auth';
 import { AuthLayout } from '../../components/layouts';
 import { CommonQuestions, SubmitButton } from '../../components/ui';
 import { validations } from '../../utils';
+
+import { FcGoogle } from 'react-icons/fc';
 
 import styles from '../../styles/Register.module.css';
 
@@ -26,12 +28,17 @@ const RegisterPage = () => {
    const router = useRouter();
    const { registerUser } = useContext(AuthContext);
 
+   const [providers, setProviders] = useState<any>({});
    const [showError, setShowError] = useState(false);
    const {
       register,
       handleSubmit,
       formState: { errors },
    } = useForm<FormData>();
+
+   useEffect(() => {
+      getProviders().then((prov) => setProviders(prov));
+   }, []);
 
    const onRegisterForm = async (newUser: FormData) => {
       setShowError(false);
@@ -107,15 +114,37 @@ const RegisterPage = () => {
                   <div className={showError ? `${styles.errorMessage} fadeIn` : 'noDisplay'}>
                      <span>Email o contraseña no válidos</span>
                   </div>
+               </form>
 
-                  <div style={{ display: 'flex', justifyContent: 'center' }}>
+               <div className={styles.loginContainer}>
+                  <div className={styles.login}>
                      <Link href={`/auth/login?page=${router.query.page?.toString()}`}>
                         <span>
                            ¿Ya tienes cuenta? Logueate <strong>aquí</strong>
                         </span>
                      </Link>
                   </div>
-               </form>
+
+                  <div className={styles.textProviders}>
+                     <span>Registrate usando tu cuenta de google:</span>
+                  </div>
+
+                  <div className={styles.providers}>
+                     {Object.values(providers).map((provider: any) => {
+                        if (provider.id === 'credentials') return <div key='credentials'></div>;
+
+                        return (
+                           <button
+                              key={provider.id}
+                              className={styles.providerButton}
+                              onClick={() => signIn(provider.id)}>
+                              <FcGoogle className={styles.icon} />
+                              {provider.name}
+                           </button>
+                        );
+                     })}
+                  </div>
+               </div>
             </div>
 
             <CommonQuestions />

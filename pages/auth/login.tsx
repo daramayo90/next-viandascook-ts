@@ -7,13 +7,13 @@ import Link from 'next/link';
 
 import { useForm } from 'react-hook-form';
 
-import { AuthContext } from '../../context/auth';
-
 import { AuthLayout } from '../../components/layouts';
 import { CommonQuestions, SubmitButton } from '../../components/ui';
 import { validations } from '../../utils';
 
-import styles from '../../styles/Login.module.css';
+import { FcGoogle } from 'react-icons/fc';
+
+import styles from '../../styles/Register.module.css';
 
 type FormData = {
    email: string;
@@ -39,6 +39,8 @@ const LoginPage = () => {
       setShowError(false);
       await signIn('credentials', { email, password });
    };
+
+   console.log({ router });
 
    return (
       <AuthLayout title={'Iniciar Sesión'}>
@@ -75,7 +77,7 @@ const LoginPage = () => {
 
                   <div className={styles.registerButton}>
                      <SubmitButton
-                        content='Iniciar Sesión'
+                        content='Acceder'
                         border='1px solid var(--black)'
                         color='var(--white)'
                         background='var(--black)'
@@ -85,32 +87,37 @@ const LoginPage = () => {
                   <div className={showError ? `${styles.errorMessage} fadeIn` : 'noDisplay'}>
                      <span>Email o contraseña no válidos</span>
                   </div>
+               </form>
 
-                  <div style={{ display: 'flex', justifyContent: 'center' }}>
-                     <Link href={`/auth/login?page=${router.query.page?.toString()}`}>
+               <div className={styles.loginContainer}>
+                  <div className={styles.login}>
+                     <Link href={`/auth/register?page=${router.query.page?.toString()}`}>
                         <span>
                            ¿No tienes cuenta? Registrate <strong>aquí</strong>
                         </span>
                      </Link>
                   </div>
-               </form>
 
-               {Object.values(providers).map((provider: any) => {
-                  if (provider.id === 'credentials') return <div key='credentials'></div>;
+                  <div className={styles.textProviders}>
+                     <span>Accedé usando tu cuenta de google:</span>
+                  </div>
 
-                  return (
-                     <button
-                        key={provider.id}
-                        style={{
-                           background: 'var(--black)',
-                           color: 'var(--white)',
-                           border: '1px solid var(--black)',
-                        }}
-                        onClick={() => signIn(provider.id)}>
-                        {provider.name}
-                     </button>
-                  );
-               })}
+                  <div className={styles.providers}>
+                     {Object.values(providers).map((provider: any) => {
+                        if (provider.id === 'credentials') return <div key='credentials'></div>;
+
+                        return (
+                           <button
+                              key={provider.id}
+                              className={styles.providerButton}
+                              onClick={() => signIn(provider.id)}>
+                              <FcGoogle className={styles.icon} />
+                              {provider.name}
+                           </button>
+                        );
+                     })}
+                  </div>
+               </div>
             </div>
 
             <CommonQuestions />
