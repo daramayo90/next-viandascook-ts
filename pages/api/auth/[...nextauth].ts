@@ -37,13 +37,13 @@ export const authOptions: NextAuthOptions = {
       // }),
    ],
 
+   secret: process.env.NEXT_PUBLIC_SECRET,
+
    // Custom Pages
    pages: {
       signIn: '/auth/login',
       newUser: '/auth/register',
    },
-
-   secret: process.env.NEXT_PUBLIC_SECRET,
 
    session: {
       maxAge: 2592000, // 30 days
