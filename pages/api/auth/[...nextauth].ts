@@ -19,10 +19,10 @@ export const authOptions: NextAuthOptions = {
          },
       }),
       // Github Login
-      /*GithubProvider({
+      GithubProvider({
          clientId: process.env.GITHUB_ID!,
          clientSecret: process.env.GITHUB_SECRET!,
-      }),*/
+      }),
       // Google Login
       // GoogleProvider({
       //    clientId: process.env.GOOGLE_ID!,
@@ -56,10 +56,7 @@ export const authOptions: NextAuthOptions = {
             token.accessToken = account.access_token;
             switch (account.type) {
                case 'oauth':
-                  const fullName = user?.name?.split(' ');
-                  const name = fullName ? fullName[0] : '';
-                  const lastName = fullName ? fullName[1] : '';
-                  token.user = await dbUsers.oAuthToDbUser(user?.email || '', name, lastName);
+                  token.user = await dbUsers.oAuthToDbUser(user?.email || '', user?.name || '');
                   break;
 
                case 'credentials':
