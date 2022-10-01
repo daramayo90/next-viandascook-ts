@@ -35,3 +35,10 @@
    max-width: 200px;
    margin: 2rem auto 1rem auto;
 }
+
+@media (min-width: 720px) {
+   .orderSummary {
+      width: 40%;
+      margin-top: 2rem;
+   }
+}

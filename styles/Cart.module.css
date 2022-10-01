@@ -18,3 +18,21 @@
    min-height: 80vh;
    margin: 0 auto;
 }
+
+@media (min-width: 720px) {
+   .cart {
+      max-width: 1140px;
+      margin: 0 auto;
+   }
+
+   .cart > .title {
+      margin: 9rem auto 1rem auto;
+   }
+
+   .cart > .container {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+      min-height: 70vh;
+   }
+}

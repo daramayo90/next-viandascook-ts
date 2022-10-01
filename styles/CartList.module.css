@@ -52,3 +52,9 @@
    color: grey;
    cursor: pointer;
 }
+
+@media (min-width: 720px) {
+   .cartList {
+      width: 45%;
+   }
+}
