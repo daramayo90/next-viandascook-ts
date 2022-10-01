@@ -57,6 +57,10 @@
 }
 
 @media (min-width: 720px) {
+   .commonFaqs {
+      margin-bottom: 5rem;
+   }
+
    .accordion {
       max-width: 600px;
       margin: 2rem auto;

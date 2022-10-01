@@ -13,12 +13,16 @@ export interface CartState {
    isLoaded: boolean;
    cart: ICartProduct[];
    numberOfItems: number;
+   subTotal: number;
+   total: number;
 }
 
 const CART_INITIAL_STATE: CartState = {
    isLoaded: false,
    cart: [],
    numberOfItems: 0,
+   subTotal: 0,
+   total: 0,
 };
 
 export const CartProvider: FC<Props> = ({ children }) => {
@@ -39,11 +43,16 @@ export const CartProvider: FC<Props> = ({ children }) => {
       if (state.cart.length > 0) Cookies.set('cart', JSON.stringify(state.cart));
    }, [state.cart]);
 
-   // TODO
+   // TODO: Calcular el shipping + cupones
    useEffect(() => {
       const numberOfItems = state.cart.reduce((prev, curr) => curr.quantity + prev, 0);
+      const subTotal = state.cart.reduce((prev, curr) => curr.quantity * curr.price + prev, 0);
+      const total = subTotal;
+
       const orderSummary = {
          numberOfItems,
+         subTotal,
+         total,
       };
 
       dispatch({ type: '[Cart] - Update Order Summary', payload: orderSummary });

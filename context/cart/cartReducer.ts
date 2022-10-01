@@ -6,7 +6,15 @@ type CartActionType =
    | { type: '[Cart] - Update Products'; payload: ICartProduct[] }
    | { type: '[Cart] - Update Quantity'; payload: ICartProduct[] }
    | { type: '[Cart] - Remove Product'; payload: ICartProduct[] }
-   | { type: '[Cart] - Update Order Summary'; payload: { numberOfItems: number } };
+   | {
+        type: '[Cart] - Update Order Summary';
+        payload: {
+           numberOfItems: number;
+           subTotal: number;
+           total: number;
+        };
+     }
+   | { type: '[Cart] - Order Complete' };
 
 export const cartReducer = (state: CartState, action: CartActionType): CartState => {
    switch (action.type) {

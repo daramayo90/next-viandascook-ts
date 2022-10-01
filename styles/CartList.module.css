@@ -1,0 +1,54 @@
+.cartList {
+   width: 100%;
+}
+
+.cartList > .product {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   position: relative;
+   width: 90%;
+   margin: 2rem auto;
+}
+
+.cartList > .product > .details {
+   display: flex;
+   align-items: center;
+   justify-content: flex-start;
+   width: 100%;
+}
+
+.cartList > .product > .details > .nextImage {
+   min-width: 105px;
+   margin-left: -30px;
+   display: flex;
+   justify-content: center;
+}
+
+.cartList > .product > .details > .info {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-evenly;
+   width: 55%;
+}
+
+.cartList > .product > .details > .info > .name {
+   display: block;
+   margin-bottom: 3px;
+   font-size: 0.9rem;
+}
+
+.cartList > .product > .details > .info > .price {
+   font-size: 0.9rem;
+   color: grey;
+   font-weight: 500;
+}
+
+.remove {
+   position: absolute;
+   left: -25px;
+   top: -5px;
+   font-size: 1.2rem;
+   color: grey;
+   cursor: pointer;
+}

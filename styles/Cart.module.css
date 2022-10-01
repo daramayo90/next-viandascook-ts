@@ -1,0 +1,17 @@
+.cart {
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start;
+   width: 100vw;
+   height: 100vh;
+}
+
+.cart > .container {
+   width: 95%;
+   height: 100%;
+   margin: 0 auto;
+   margin-top: 75px;
+}
+
+.cart > .container > .title {
+}
