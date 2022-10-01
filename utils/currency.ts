@@ -1,7 +1,7 @@
 /** https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl */
 
 export const format = (value: number) => {
-   const formatter = new Intl.NumberFormat('en-US', {
+   const formatter = new Intl.NumberFormat('en-ES', {
       style: 'currency',
       currency: 'USD',
       minimumFractionDigits: 2,

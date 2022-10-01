@@ -25,9 +25,9 @@ const CartPage = () => {
    return (
       <MainLayout title={'Cart - 3'} pageDescription={'Shopping Cart'}>
          <section className={styles.cart}>
-            <div className={styles.container}>
-               <h1 className={styles.title}>Carrito</h1>
+            <h1 className={styles.title}>Carrito</h1>
 
+            <div className={styles.container}>
                <CartList editable />
 
                <OrderSummary />

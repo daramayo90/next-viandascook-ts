@@ -1,8 +1,9 @@
 import { FC, useContext } from 'react';
-
 import { CartContext } from '../../context';
-
 import { currency } from '../../utils';
+
+import styles from '../../styles/OrderSummary.module.css';
+import { Button } from '../ui';
 
 interface Props {
    orderValues?: {
@@ -18,31 +19,47 @@ export const OrderSummary: FC<Props> = ({ orderValues }) => {
    const summaryValues = orderValues ? orderValues : { numberOfItems, subTotal, total };
 
    return (
-      <section>
-         <div>
-            <span>Total de Platos</span>
-         </div>
+      <section className={styles.orderSummary}>
+         <h2 className={styles.title}>Total del Carrito</h2>
 
-         <div>
+         <div className={styles.summary}>
+            <span>N° de Viandas</span>
+
             <span>
                {summaryValues.numberOfItems} {summaryValues.numberOfItems > 1 ? 'platos' : 'plato'}
             </span>
          </div>
 
-         <div>
+         <div className={styles.summary}>
             <span>Subtotal</span>
-         </div>
 
-         <div>
             <span>{currency.format(summaryValues.subTotal)}</span>
          </div>
 
-         <div>
-            <span>Total:</span>
+         {/* TODO: Calcular envío */}
+         <div className={styles.summary}>
+            <span>Envío</span>
+
+            <span className={styles.shipping}>Calcular envío</span>
          </div>
 
-         <div>
-            <span>{currency.format(summaryValues.total)}</span>
+         <div className={styles.summary}>
+            <span>
+               <strong>Total:</strong>
+            </span>
+
+            <span>
+               <strong>{currency.format(summaryValues.total)}</strong>
+            </span>
+         </div>
+
+         <div className={styles.checkoutButton}>
+            <Button
+               href='/finalizar-compra'
+               content='Finalizar'
+               background='var(--black)'
+               color='var(--white)'
+            />
          </div>
       </section>
    );

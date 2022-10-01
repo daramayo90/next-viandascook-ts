@@ -3,15 +3,18 @@
    flex-direction: column;
    align-items: flex-start;
    width: 100vw;
-   height: 100vh;
+}
+
+.cart > .title {
+   width: 95%;
+   margin: 6rem auto 1rem auto;
 }
 
 .cart > .container {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
    width: 95%;
-   height: 100%;
+   min-height: 80vh;
    margin: 0 auto;
-   margin-top: 75px;
-}
-
-.cart > .container > .title {
 }
