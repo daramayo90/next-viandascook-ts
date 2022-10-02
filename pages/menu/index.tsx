@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, FormEvent, useState } from 'react';
 import { GetStaticProps, NextPage } from 'next';
 
 import { dbProducts } from '../../database';
@@ -23,8 +23,11 @@ const ProductsPage: NextPage<Props> = ({ products }) => {
    const [searchTerm, setSearchTerm] = useState('');
    const [type, setType] = useState('');
 
-   const onSearchTerm = (e: ChangeEvent<HTMLInputElement>) => {
+   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
+   };
+
+   const onSearchTerm = (e: ChangeEvent<HTMLInputElement>) => {
       setSearchTerm(e.target.value);
    };
 
@@ -50,7 +53,7 @@ const ProductsPage: NextPage<Props> = ({ products }) => {
    return (
       <MenuLayout title={''} pageDescription={''}>
          <section className={styles.products}>
-            <form className={styles.searchContainer}>
+            <form className={styles.searchContainer} onSubmit={handleSubmit}>
                <BiSearchAlt className={styles.icon} />
                <input
                   className={styles.search}
