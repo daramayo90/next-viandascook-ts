@@ -51,7 +51,7 @@ export const initialData: SeedData = {
          slug: 'albondigas-con-vegetales',
          price: 850,
          inStock: true,
-         type: 'meat',
+         type: 'seafood',
          ingredients: [
             'Ají morrón rojo',
             'Berenjena',
@@ -111,7 +111,7 @@ export const initialData: SeedData = {
          slug: 'bondiola-con-croquetas-de-arroz',
          price: 900,
          inStock: true,
-         type: 'meat',
+         type: 'chicken',
          ingredients: ['Aceite', 'Arroz', 'Bondiola', 'Harina', 'Huevo', 'Jamón', 'Leche'],
          nutritionalInfo: {
             Calorías: '410 kcal',
@@ -149,7 +149,7 @@ export const initialData: SeedData = {
          slug: 'bowl-de-garbanzo-salteado-con-vegetales',
          price: 700,
          inStock: true,
-         type: 'meat',
+         type: 'lowcalories',
          ingredients: [
             'Ají morrón rojo',
             'Berenjena',
@@ -177,7 +177,7 @@ export const initialData: SeedData = {
          slug: 'canelones-de-acelga-y-ricota-con-salsa',
          price: 750,
          inStock: true,
-         type: 'meat',
+         type: 'lowcarbs',
          ingredients: ['Harina', 'Huevo', 'Leche', 'Ricota', 'Salsa de tomate'],
          nutritionalInfo: {
             Calorías: '410 kcal',

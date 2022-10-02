@@ -1,5 +1,10 @@
 export const typesList = [
    {
+      icon: '/type/all.svg',
+      name: 'Todos',
+      model: ' ',
+   },
+   {
       icon: '/type/seafood.svg',
       name: 'Pescados',
       model: 'seafood',

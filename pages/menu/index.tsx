@@ -24,6 +24,7 @@ const ProductsPage: NextPage<Props> = ({ products }) => {
    const [type, setType] = useState('');
 
    const onSearchTerm = (e: ChangeEvent<HTMLInputElement>) => {
+      e.preventDefault();
       setSearchTerm(e.target.value);
    };
 
@@ -32,16 +33,19 @@ const ProductsPage: NextPage<Props> = ({ products }) => {
    };
 
    const searchProducts = products.filter((p) => {
-      p.name.toLowerCase().includes(searchTerm.toLowerCase());
+      return p.name.toLowerCase().includes(searchTerm.toLowerCase());
    });
 
    const typeProducts = products.filter((p) => {
-      p.type === type;
+      return p.type === type;
    });
 
-   const productsToShow = searchProducts.length > 0 ? searchProducts : products;
-
-   console.log(type);
+   const productsToShow =
+      typeProducts.length > 0
+         ? typeProducts
+         : searchProducts.length > 0
+         ? searchProducts
+         : products;
 
    return (
       <MenuLayout title={''} pageDescription={''}>
@@ -70,7 +74,7 @@ const ProductsPage: NextPage<Props> = ({ products }) => {
                      <div key={name} className={styles.type} onClick={() => typeFilter(model)}>
                         <div className={styles.borderImage}>
                            <div className={styles.nextImage}>
-                              <Image src={icon} width={100} height={100} />
+                              <Image src={icon} width={100} height={100} priority />
                            </div>
                         </div>
                         <span>{name}</span>
