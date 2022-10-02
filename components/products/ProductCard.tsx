@@ -74,7 +74,7 @@ export const ProductCard: FC<Props> = ({ product }) => {
                </div>
             ) : isSelecting ? (
                <ItemCounter
-                  currentValue={tempCartProduct.quantity}
+                  currentValue={cartProduct ? cartProduct.quantity : tempCartProduct.quantity}
                   updatedQuantity={(quantity) =>
                      onNewCartQuantityValue(cartProduct as ICartProduct, quantity)
                   }

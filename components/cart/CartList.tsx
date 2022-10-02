@@ -24,6 +24,10 @@ export const CartList: FC<Props> = ({ editable = false }) => {
    const onNewCartQuantityValue = (product: ICartProduct, newQuantityValue: number) => {
       product.quantity = newQuantityValue;
       updateCartQuantity(product);
+
+      if (product && product.quantity === 0) {
+         removeCartProduct(product);
+      }
    };
 
    const onRemoveProduct = (product: ICartProduct) => {
@@ -51,8 +55,8 @@ export const CartList: FC<Props> = ({ editable = false }) => {
                   <>
                      <ItemCounter
                         currentValue={product.quantity}
-                        updatedQuantity={(newValue) =>
-                           onNewCartQuantityValue(product as ICartProduct, newValue)
+                        updatedQuantity={(quantity) =>
+                           onNewCartQuantityValue(product as ICartProduct, quantity)
                         }
                      />
                      <IoMdCloseCircleOutline
