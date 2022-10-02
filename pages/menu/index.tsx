@@ -6,14 +6,12 @@ import { IProduct } from '../../interfaces';
 
 import { CartMenu } from '../../components/cart';
 import { MenuLayout } from '../../components/layouts';
-import { ProductCard } from '../../components/products';
+import { DiscountSlides } from '../../components/ui';
+import { ProductCard, TypesList } from '../../components/products';
 
 import { BiSearchAlt } from 'react-icons/bi';
 
 import styles from '../../styles/Products.module.css';
-import { DiscountSlides } from '../../components/ui';
-import { typesList } from '../../utils';
-import Image from 'next/image';
 
 interface Props {
    products: IProduct[];
@@ -29,10 +27,6 @@ const ProductsPage: NextPage<Props> = ({ products }) => {
 
    const onSearchTerm = (e: ChangeEvent<HTMLInputElement>) => {
       setSearchTerm(e.target.value);
-   };
-
-   const typeFilter = (type: string) => {
-      setType(type);
    };
 
    const searchProducts = products.filter((p) => {
@@ -68,23 +62,7 @@ const ProductsPage: NextPage<Props> = ({ products }) => {
 
             <DiscountSlides />
 
-            {/* <h1 className={styles.title}>Viandas a Domicilio</h1> */}
-
-            {/* TODO: Hacer un componente aparte */}
-            <div className={styles.types}>
-               <div className={styles.container}>
-                  {typesList.map(({ icon, name, model }) => (
-                     <div key={name} className={styles.type} onClick={() => typeFilter(model)}>
-                        <div className={styles.borderImage}>
-                           <div className={styles.nextImage}>
-                              <Image src={icon} width={100} height={100} priority />
-                           </div>
-                        </div>
-                        <span>{name}</span>
-                     </div>
-                  ))}
-               </div>
-            </div>
+            <TypesList type={type} setType={setType} />
 
             <article className={styles.container}>
                {productsToShow.map((product) => (
@@ -93,6 +71,7 @@ const ProductsPage: NextPage<Props> = ({ products }) => {
             </article>
          </section>
 
+         {/* <h1 className={styles.title}>Viandas a Domicilio</h1> */}
          {/* <CartMenu /> */}
       </MenuLayout>
    );

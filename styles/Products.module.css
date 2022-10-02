@@ -58,61 +58,6 @@
    font-size: 1.5rem;
 }
 
-/* Hacer un componente aparte */
-.products > .types {
-   display: flex;
-   flex-direction: row;
-   flex-wrap: wrap;
-   align-items: flex-start;
-   justify-content: flex-start;
-   position: -webkit-sticky;
-   width: 90%;
-   margin: 0 auto;
-}
-
-.products > .types > .container {
-   display: flex;
-   justify-content: flex-start;
-   width: 100%;
-   padding: 24px 0 20px;
-   overflow: auto;
-}
-
-.products > .types > .container > .type {
-   max-width: 100px;
-   margin-right: 22px;
-   border-radius: 8px;
-   text-align: center;
-   font-size: 12px;
-   font-weight: 600;
-   cursor: pointer;
-}
-
-.products > .types > .container > .type > .borderImage {
-   display: inline-flex;
-   flex-direction: column;
-   align-items: center;
-   justify-content: center;
-   width: 48px;
-   height: 48px;
-   background: #fff;
-   border: 1px solid #ddd;
-   border-radius: 200px;
-}
-
-.products > .types > .container > .type > .borderImage > .nextImage {
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   width: 50%;
-   margin: 0 auto;
-}
-
-.products > .types > .container > .type > span {
-   display: block;
-   margin-top: 10px;
-}
-
 .products > .container {
    display: flex;
    flex-direction: column;

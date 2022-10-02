@@ -172,6 +172,12 @@ textarea {
    font-weight: 500;
 }
 
+/* .borderSelected {
+   opacity: 1;
+   border: 2px solid #231f20;
+   font-weight: 800;
+} */
+
 .noDisplay {
    display: none;
 }

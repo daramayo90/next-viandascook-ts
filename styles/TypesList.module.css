@@ -1,0 +1,58 @@
+.types {
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+   align-items: flex-start;
+   justify-content: flex-start;
+   position: -webkit-sticky;
+   width: 90%;
+   margin: 0 auto;
+}
+
+.types > .container {
+   display: flex;
+   justify-content: flex-start;
+   width: 100%;
+   padding: 24px 0 20px;
+   overflow: auto;
+}
+
+.types > .container > .type {
+   max-width: 100px;
+   margin-right: 22px;
+   border-radius: 8px;
+   text-align: center;
+   font-size: 12px;
+   font-weight: 600;
+   cursor: pointer;
+}
+
+.types > .container > .type > .borderImage {
+   display: inline-flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   width: 48px;
+   height: 48px;
+   background: #fff;
+   border: 1px solid #ddd;
+   border-radius: 200px;
+}
+
+.types > .container > .type > .borderSelected {
+   border: 2px solid #231f20;
+   font-weight: 800;
+}
+
+.types > .container > .type > .borderImage > .nextImage {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   width: 50%;
+   margin: 0 auto;
+}
+
+.types > .container > .type > span {
+   display: block;
+   margin-top: 10px;
+}
