@@ -3,6 +3,7 @@
    flex-direction: column;
    align-items: flex-start;
    width: 100vw;
+   margin-top: 5rem;
 }
 
 .cart > .title {
@@ -17,6 +18,12 @@
    width: 85%;
    min-height: 80vh;
    margin: 0 auto;
+}
+
+.cart > .container > .cartButton {
+   width: 60%;
+   max-width: 150px;
+   margin: 0 auto 2rem auto;
 }
 
 @media (min-width: 720px) {

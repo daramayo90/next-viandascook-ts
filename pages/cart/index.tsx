@@ -2,14 +2,15 @@ import { useContext, useEffect } from 'react';
 
 import { CartContext } from '../../context';
 import { CartList, OrderSummary } from '../../components/cart';
-import { MainLayout } from '../../components/layouts';
+import { ShopLayout } from '../../components/layouts';
 import { useRouter } from 'next/router';
 
 import styles from '../../styles/Cart.module.css';
+import { Button } from '../../components/ui';
 
 const CartPage = () => {
    const router = useRouter();
-   const { isLoaded, cart } = useContext(CartContext);
+   const { isLoaded, cart, numberOfItems } = useContext(CartContext);
 
    useEffect(() => {
       if (isLoaded && cart.length === 0) {
@@ -23,17 +24,24 @@ const CartPage = () => {
    }
 
    return (
-      <MainLayout title={'Cart - 3'} pageDescription={'Shopping Cart'}>
+      <ShopLayout title={`Carrito - ${numberOfItems}`} pageDescription={'Carrito - Viandas Cook'}>
          <section className={styles.cart}>
-            <h1 className={styles.title}>Carrito</h1>
-
             <div className={styles.container}>
                <CartList editable />
+
+               <div className={styles.cartButton}>
+                  <Button
+                     href='/menu'
+                     content='Volver'
+                     color='var(--white)'
+                     background='var(--black)'
+                  />
+               </div>
 
                <OrderSummary />
             </div>
          </section>
-      </MainLayout>
+      </ShopLayout>
    );
 };
 

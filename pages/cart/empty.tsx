@@ -1,4 +1,4 @@
-import { MainLayout } from '../../components/layouts';
+import { ShopLayout } from '../../components/layouts';
 
 import { MdOutlineRemoveShoppingCart } from 'react-icons/md';
 
@@ -7,7 +7,7 @@ import { Button } from '../../components/ui';
 
 const EmptyPage = () => {
    return (
-      <MainLayout title={'Carrito vacío'} pageDescription={''}>
+      <ShopLayout title={'Carrito vacío'} pageDescription={''}>
          <section className={styles.emptyCart}>
             <MdOutlineRemoveShoppingCart className={styles.icon} />
 
@@ -24,7 +24,7 @@ const EmptyPage = () => {
                </div>
             </div>
          </section>
-      </MainLayout>
+      </ShopLayout>
    );
 };
 
