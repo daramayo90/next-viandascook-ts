@@ -22,8 +22,14 @@ interface Props {
 const ProductPage: NextPage<Props> = ({ product }) => {
    const router = useRouter();
 
-   const { isSelecting, setIsSelecting, tempCartProduct, onNewCartQuantityValue, cartProduct } =
-      useTempCart(product);
+   const {
+      isSelecting,
+      setIsSelecting,
+      startSelecting,
+      tempCartProduct,
+      onNewCartQuantityValue,
+      cartProduct,
+   } = useTempCart(product);
 
    return (
       <>
@@ -64,7 +70,9 @@ const ProductPage: NextPage<Props> = ({ product }) => {
 
                   {/* TODO: Out of Stock */}
                   {!isSelecting && !cartProduct ? (
-                     <div className={styles.selectedQuantity} onClick={() => setIsSelecting(true)}>
+                     <div
+                        className={styles.selectedQuantity}
+                        onClick={() => startSelecting(cartProduct! as ICartProduct)}>
                         <span>+</span>
                      </div>
                   ) : (

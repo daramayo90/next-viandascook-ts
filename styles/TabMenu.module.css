@@ -1,0 +1,40 @@
+.tabMenu {
+   display: flex;
+   align-items: center;
+   position: fixed;
+   bottom: 0;
+   width: 100vw;
+   height: 75px;
+   border: 1px solid rgb(240, 240, 240);
+   border-radius: 25px 25px 0 0;
+   background-color: #fff;
+   z-index: 10;
+}
+
+.tabMenu > .container {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   width: 95%;
+   height: 80%;
+   margin: 0 auto;
+}
+
+.tabMenu > .container > .option {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   align-items: center;
+   width: 100%;
+   height: 85%;
+   color: rgb(160, 160, 160);
+   cursor: pointer;
+}
+
+.tabMenu > .container > .option > .icon {
+   font-size: 1.6rem;
+}
+
+.tabMenu > .container > .option > .name {
+   font-size: 0.85rem;
+}

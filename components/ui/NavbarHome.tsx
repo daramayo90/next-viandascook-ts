@@ -2,9 +2,9 @@ import { useContext } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
-import { HiOutlineMenu } from 'react-icons/hi';
-
 import { UIContext } from '../../context';
+
+import { HiOutlineMenu } from 'react-icons/hi';
 
 import styles from '../../styles/Navbar.module.css';
 

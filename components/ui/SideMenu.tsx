@@ -11,21 +11,21 @@ import styles from '../../styles/SideMenu.module.css';
 export const SideMenu = () => {
    const router = useRouter();
 
-   const { isLoggedIn, user, logout } = useContext(AuthContext);
+   const { isLoggedIn, logout } = useContext(AuthContext);
 
    const { isMenuOpen, toggleSideMenu } = useContext(UIContext);
 
-   useEffect(() => {
-      const main = document.getElementById('main')!;
+   // useEffect(() => {
+   //    const main = document.getElementById('main')!;
 
-      if (isMenuOpen) {
-         document.body.style.overflow = 'hidden';
-         main.style.filter = 'blur(4px)';
-      } else {
-         document.body.style.overflow = 'scroll';
-         main.style.filter = 'none';
-      }
-   }, [isMenuOpen]);
+   //    if (isMenuOpen) {
+   //       document.body.style.overflow = 'hidden';
+   //       main.style.filter = 'blur(4px)';
+   //    } else {
+   //       document.body.style.overflow = 'scroll';
+   //       main.style.filter = 'none';
+   //    }
+   // }, [isMenuOpen]);
 
    const navigateTo = (url: string) => {
       toggleSideMenu();

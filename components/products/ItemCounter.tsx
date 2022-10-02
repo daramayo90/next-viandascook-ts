@@ -1,6 +1,7 @@
 import { FC } from 'react';
 
 import { IoMdAddCircleOutline, IoMdRemoveCircleOutline } from 'react-icons/io';
+import { HiOutlineTrash } from 'react-icons/hi';
 
 import styles from '../../styles/ItemCounter.module.css';
 
@@ -28,7 +29,11 @@ export const ItemCounter: FC<Props> = ({ color, currentValue, updatedQuantity })
    return (
       <div className={styles.box} style={styleBox}>
          <div className={styles.iconButton} onClick={() => addOrRemove(-1)}>
-            <IoMdRemoveCircleOutline className={styles.icon} />
+            {currentValue === 1 ? (
+               <HiOutlineTrash className={styles.icon} />
+            ) : (
+               <IoMdRemoveCircleOutline className={styles.icon} />
+            )}
          </div>
 
          <span className={styles.counter}>{currentValue}</span>

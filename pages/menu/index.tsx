@@ -1,6 +1,6 @@
 import { GetStaticProps, NextPage } from 'next';
 import { CartMenu } from '../../components/cart';
-import { MainLayout } from '../../components/layouts';
+import { ShopLayout } from '../../components/layouts';
 import { ProductCard2 } from '../../components/products';
 import { dbProducts } from '../../database';
 import { IProduct } from '../../interfaces';
@@ -13,7 +13,7 @@ interface Props {
 
 const ProductsPage: NextPage<Props> = ({ products }) => {
    return (
-      <MainLayout title={''} pageDescription={''}>
+      <ShopLayout title={''} pageDescription={''}>
          <section className={styles.products}>
             <h1 className={styles.title}>Viandas a Domicilio</h1>
 
@@ -24,8 +24,8 @@ const ProductsPage: NextPage<Props> = ({ products }) => {
             </article>
          </section>
 
-         <CartMenu />
-      </MainLayout>
+         {/* <CartMenu /> */}
+      </ShopLayout>
    );
 };
 

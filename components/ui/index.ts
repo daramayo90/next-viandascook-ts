@@ -11,3 +11,4 @@ export * from './NavbarHome';
 export * from './SideMenu';
 export * from './SubmitButton';
 export * from './Values';
+export * from './ShopNavbar';

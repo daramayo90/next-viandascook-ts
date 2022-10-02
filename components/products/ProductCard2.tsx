@@ -18,8 +18,14 @@ export const ProductCard2: FC<Props> = ({ product }) => {
    // TODO: Ver el tema any
    const info: any = product.nutritionalInfo;
 
-   const { isSelecting, setIsSelecting, tempCartProduct, onNewCartQuantityValue, cartProduct } =
-      useTempCart(product);
+   const {
+      isSelecting,
+      setIsSelecting,
+      startSelecting,
+      tempCartProduct,
+      onNewCartQuantityValue,
+      cartProduct,
+   } = useTempCart(product);
 
    return (
       <article className={cartProduct ? `${styles.product} selected` : `${styles.product}`}>
@@ -61,7 +67,9 @@ export const ProductCard2: FC<Props> = ({ product }) => {
 
          <div className={styles.addToCart}>
             {!isSelecting && !cartProduct ? (
-               <div className={styles.selectQuantity} onClick={() => setIsSelecting(true)}>
+               <div
+                  className={styles.selectQuantity}
+                  onClick={() => startSelecting(cartProduct! as ICartProduct)}>
                   <span>+</span>
                </div>
             ) : isSelecting ? (

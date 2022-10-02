@@ -4,7 +4,8 @@
 }
 
 .products > .title {
-   margin-top: 100px;
+   margin-top: 75px;
+   padding-top: 15px;
    text-align: center;
 }
 
@@ -16,6 +17,7 @@
    width: 90vw;
    max-width: 380px;
    margin: 0 auto;
+   padding-bottom: 120px;
 }
 
 /* Product Card */

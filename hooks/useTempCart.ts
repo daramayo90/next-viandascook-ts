@@ -34,6 +34,11 @@ export const useTempCart = (product: IProduct) => {
       }
    };
 
+   const startSelecting = (product: ICartProduct) => {
+      setIsSelecting(true);
+      onNewCartQuantityValue(product, 1);
+   };
+
    useEffect(() => {
       const interval = setInterval(() => setIsSelecting(false), 4500);
 
@@ -48,5 +53,6 @@ export const useTempCart = (product: IProduct) => {
       isSelecting,
       setIsSelecting,
       onNewCartQuantityValue,
+      startSelecting,
    };
 };
