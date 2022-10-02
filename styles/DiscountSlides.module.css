@@ -1,0 +1,29 @@
+.offers {
+   width: 90%;
+   margin: 0 auto;
+}
+
+.offers > .container {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   margin: 1rem 0;
+}
+
+.offers > .container > .title {
+   font-size: 1.1rem;
+}
+
+.offers > .container > span {
+   font-weight: 500;
+   color: var(--primary);
+   cursor: pointer;
+}
+
+.nextImage {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   width: 100%;
+   height: 100%;
+}

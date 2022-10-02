@@ -2,6 +2,7 @@ export * from './Accordion';
 export * from './Banner';
 export * from './Button';
 export * from './CommonQuestions';
+export * from './DiscountSlides';
 export * from './Footer';
 export * from './HowToBuy';
 export * from './Intro';

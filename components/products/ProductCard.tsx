@@ -8,7 +8,7 @@ import { ItemCounter } from '.';
 import { currency } from '../../utils';
 import { useTempCart } from '../../hooks';
 
-import styles from '../../styles/Products.module.css';
+import styles from '../../styles/ProductCard.module.css';
 
 interface Props {
    product: IProduct;

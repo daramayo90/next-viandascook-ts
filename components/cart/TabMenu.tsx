@@ -9,22 +9,22 @@ import styles from '../../styles/TabMenu.module.css';
 const menuItems = [
    {
       nav: '/menu',
-      icon: <MdOutlineFoodBank />,
+      reacticon: <MdOutlineFoodBank />,
       name: 'Menu',
    },
    {
       nav: '/pedidos',
-      icon: <HiOutlineClipboardList />,
+      reacticon: <HiOutlineClipboardList />,
       name: 'Pedidos',
    },
    {
       nav: '/favoritos',
-      icon: <AiOutlineHeart />,
+      reacticon: <AiOutlineHeart />,
       name: 'Favoritos',
    },
    {
       nav: '/perfil',
-      icon: <AiOutlineUser />,
+      reacticon: <AiOutlineUser />,
       name: 'Perfil',
    },
 ];
@@ -40,10 +40,10 @@ export const TabMenu = () => {
    return (
       <footer className={styles.tabMenu}>
          <div className={styles.container}>
-            {menuItems.map(({ nav, icon, name }) => (
+            {menuItems.map(({ nav, reacticon, name }) => (
                <div key={name} className={styles.option} onClick={() => navigateTo(nav)}>
                   <div className={path === nav ? `${styles.icon} tabSelected` : `${styles.icon}`}>
-                     {icon}
+                     {reacticon}
                   </div>
 
                   <div className={path === nav ? `${styles.name} tabSelected` : `${styles.name}`}>

@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import Link from 'next/link';
 import Image from 'next/image';
 
 import { Slide } from 'react-slideshow-image';
@@ -7,7 +8,6 @@ import { IProduct } from '../../interfaces';
 
 import 'react-slideshow-image/dist/styles.css';
 import styles from '../../styles/ProductSlides.module.css';
-import Link from 'next/link';
 
 interface Props {
    products: IProduct[];

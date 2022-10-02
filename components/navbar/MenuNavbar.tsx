@@ -1,32 +1,24 @@
-import { FC, useContext } from 'react';
-import { useRouter } from 'next/router';
+import { useContext } from 'react';
 import Link from 'next/link';
 
 import { CartContext, UIContext } from '../../context';
 
-import { BiChevronLeft } from 'react-icons/bi';
 import { HiOutlineMenu, HiOutlineShoppingBag } from 'react-icons/hi';
 
-import styles from '../../styles/ShopNavbar.module.css';
+import styles from '../../styles/MenuNavbar.module.css';
 
-interface Props {
-   pageTitle: string;
-}
-
-export const ShopNavbar: FC<Props> = ({ pageTitle }) => {
-   const router = useRouter();
-
+export const MenuNavbar = () => {
    const { toggleSideMenu } = useContext(UIContext);
    const { numberOfItems } = useContext(CartContext);
 
    return (
-      <section className={styles.shopNavbar}>
+      <section className={styles.menuNavbar}>
          <div className={styles.container}>
-            <div className={styles.backMobile} onClick={() => router.push('/menu')}>
-               <BiChevronLeft />
-            </div>
-
-            <h1 className={styles.title}>{pageTitle}</h1>
+            <Link href='/'>
+               <div className={styles.brand}>
+                  <span>Viandas Cook</span>
+               </div>
+            </Link>
 
             <div className={styles.items}>
                <Link href='/cart'>

@@ -1,9 +1,9 @@
 import { FC, ReactNode } from 'react';
 import Head from 'next/head';
 
-import { ShopNavbar } from '../navbar';
+import { MenuNavbar } from '../navbar';
 import { SideMenu } from '../ui';
-import { useRouter } from 'next/router';
+import { TabMenu } from '../cart';
 
 interface Props {
    children: ReactNode;
@@ -12,18 +12,7 @@ interface Props {
    imageFullUrl?: string;
 }
 
-export const ShopLayout: FC<Props> = ({ children, title, pageDescription, imageFullUrl }) => {
-   const router = useRouter();
-   const path = router.asPath;
-   let navTitle = '';
-
-   switch (path) {
-      case '/descuentos':
-         navTitle = 'Descuentos';
-
-      default:
-         break;
-   }
+export const MenuLayout: FC<Props> = ({ children, title, pageDescription, imageFullUrl }) => {
    return (
       <>
          <Head>
@@ -36,12 +25,14 @@ export const ShopLayout: FC<Props> = ({ children, title, pageDescription, imageF
          </Head>
 
          <nav>
-            <ShopNavbar pageTitle={navTitle} />
+            <MenuNavbar />
          </nav>
 
          <SideMenu />
 
          <main>{children}</main>
+
+         <TabMenu />
       </>
    );
 };
