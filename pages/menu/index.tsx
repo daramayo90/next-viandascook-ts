@@ -12,6 +12,8 @@ import { BiSearchAlt } from 'react-icons/bi';
 
 import styles from '../../styles/Products.module.css';
 import { DiscountSlides } from '../../components/ui';
+import { typesList } from '../../utils';
+import Image from 'next/image';
 
 interface Props {
    products: IProduct[];
@@ -19,22 +21,31 @@ interface Props {
 
 const ProductsPage: NextPage<Props> = ({ products }) => {
    const [searchTerm, setSearchTerm] = useState('');
+   const [type, setType] = useState('');
 
    const onSearchTerm = (e: ChangeEvent<HTMLInputElement>) => {
       setSearchTerm(e.target.value);
    };
 
-   const filterProducts = products.filter((p) =>
-      p.name.toLowerCase().includes(searchTerm.toLowerCase()),
-   );
+   const typeFilter = (type: string) => {
+      setType(type);
+   };
 
-   const productsToShow = filterProducts.length > 0 ? filterProducts : products;
+   const searchProducts = products.filter((p) => {
+      p.name.toLowerCase().includes(searchTerm.toLowerCase());
+   });
+
+   const typeProducts = products.filter((p) => {
+      p.type === type;
+   });
+
+   const productsToShow = searchProducts.length > 0 ? searchProducts : products;
+
+   console.log(type);
 
    return (
       <MenuLayout title={''} pageDescription={''}>
          <section className={styles.products}>
-            <h1 className={styles.title}>Viandas a Domicilio</h1>
-
             <form className={styles.searchContainer}>
                <BiSearchAlt className={styles.icon} />
                <input
@@ -49,6 +60,24 @@ const ProductsPage: NextPage<Props> = ({ products }) => {
             </form>
 
             <DiscountSlides />
+
+            {/* <h1 className={styles.title}>Viandas a Domicilio</h1> */}
+
+            {/* TODO: Hacer un componente aparte */}
+            <div className={styles.types}>
+               <div className={styles.container}>
+                  {typesList.map(({ icon, name, model }) => (
+                     <div className={styles.type} onClick={() => typeFilter(model)}>
+                        <div className={styles.borderImage}>
+                           <div className={styles.nextImage}>
+                              <Image src={icon} width={100} height={100} />
+                           </div>
+                        </div>
+                        <span>{name}</span>
+                     </div>
+                  ))}
+               </div>
+            </div>
 
             <article className={styles.container}>
                {productsToShow.map((product) => (
