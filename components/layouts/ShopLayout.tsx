@@ -20,12 +20,15 @@ export const ShopLayout: FC<Props> = ({ children, title, pageDescription, imageF
    switch (path) {
       case '/descuentos':
          navTitle = 'Descuentos';
+         break;
 
       case '/cart':
          navTitle = 'Carrito';
+         break;
 
       case '/cart/empty':
          navTitle = 'Carrito';
+         break;
 
       default:
          break;
