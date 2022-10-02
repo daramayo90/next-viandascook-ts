@@ -67,7 +67,7 @@ const ProductsPage: NextPage<Props> = ({ products }) => {
             <div className={styles.types}>
                <div className={styles.container}>
                   {typesList.map(({ icon, name, model }) => (
-                     <div className={styles.type} onClick={() => typeFilter(model)}>
+                     <div key={name} className={styles.type} onClick={() => typeFilter(model)}>
                         <div className={styles.borderImage}>
                            <div className={styles.nextImage}>
                               <Image src={icon} width={100} height={100} />
