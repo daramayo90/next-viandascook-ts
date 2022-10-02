@@ -1,8 +1,8 @@
 import { FC, ReactNode } from 'react';
 import Head from 'next/head';
 
-import { Footer, Navbar, NavbarHome, ShopNavbar, SideMenu } from '../ui';
-import { useRouter } from 'next/router';
+import { ShopNavbar } from '../navbar';
+import { SideMenu } from '../ui';
 import { TabMenu } from '../cart';
 
 interface Props {
@@ -13,8 +13,6 @@ interface Props {
 }
 
 export const ShopLayout: FC<Props> = ({ children, title, pageDescription, imageFullUrl }) => {
-   const router = useRouter();
-
    return (
       <>
          <Head>

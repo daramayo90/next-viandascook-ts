@@ -14,6 +14,7 @@ import { BsArrowLeftShort } from 'react-icons/bs';
 import { BiChevronLeft } from 'react-icons/bi';
 
 import styles from '../../styles/Product.module.css';
+import { ProductLayout } from '../../components/layouts';
 
 interface Props {
    product: IProduct;
@@ -22,17 +23,11 @@ interface Props {
 const ProductPage: NextPage<Props> = ({ product }) => {
    const router = useRouter();
 
-   const {
-      isSelecting,
-      setIsSelecting,
-      startSelecting,
-      tempCartProduct,
-      onNewCartQuantityValue,
-      cartProduct,
-   } = useTempCart(product);
+   const { isSelecting, startSelecting, tempCartProduct, onNewCartQuantityValue, cartProduct } =
+      useTempCart(product);
 
    return (
-      <>
+      <ProductLayout title={''} pageDescription={''}>
          <article className={styles.product}>
             {/* TODO: Agregar Layout nuevo */}
             {/* TODO: Mantener los filtros */}
@@ -156,8 +151,8 @@ const ProductPage: NextPage<Props> = ({ product }) => {
                </div>
             </div>
          </article>
-         <CartMenu />
-      </>
+         {/* <CartMenu /> */}
+      </ProductLayout>
    );
 };
 

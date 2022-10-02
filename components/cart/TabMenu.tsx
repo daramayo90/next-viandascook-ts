@@ -41,7 +41,7 @@ export const TabMenu = () => {
       <footer className={styles.tabMenu}>
          <div className={styles.container}>
             {menuItems.map(({ nav, icon, name }) => (
-               <div className={styles.option} onClick={() => navigateTo(nav)}>
+               <div key={name} className={styles.option} onClick={() => navigateTo(nav)}>
                   <div className={path === nav ? `${styles.icon} tabSelected` : `${styles.icon}`}>
                      {icon}
                   </div>

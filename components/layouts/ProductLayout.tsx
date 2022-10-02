@@ -1,9 +1,7 @@
 import { FC, ReactNode } from 'react';
-import { useRouter } from 'next/router';
 import Head from 'next/head';
 
-import { Footer, SideMenu } from '../ui';
-import { HomeNavbar, Navbar } from '../navbar';
+import { TabMenu } from '../cart';
 
 interface Props {
    children: ReactNode;
@@ -12,9 +10,7 @@ interface Props {
    imageFullUrl?: string;
 }
 
-export const MainLayout: FC<Props> = ({ children, title, pageDescription, imageFullUrl }) => {
-   const router = useRouter();
-
+export const ProductLayout: FC<Props> = ({ children, title, pageDescription, imageFullUrl }) => {
    return (
       <>
          <Head>
@@ -26,15 +22,9 @@ export const MainLayout: FC<Props> = ({ children, title, pageDescription, imageF
             {imageFullUrl && <meta name='og:image' content={imageFullUrl} />}
          </Head>
 
-         <nav>{router.asPath === '/' ? <HomeNavbar /> : <Navbar />}</nav>
+         <main>{children}</main>
 
-         <SideMenu />
-
-         <main id='main'>{children}</main>
-
-         <footer>
-            <Footer />
-         </footer>
+         <TabMenu />
       </>
    );
 };

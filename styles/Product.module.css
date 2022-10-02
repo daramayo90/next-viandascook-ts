@@ -64,7 +64,7 @@
    width: 45px;
    height: 40px;
    border-radius: 50%;
-   background: #47d178;
+   background: var(--black);
    color: var(--white);
 }
 

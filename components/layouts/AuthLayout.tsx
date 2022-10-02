@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { FC, ReactNode } from 'react';
-import { NavbarAuth } from '../ui';
+import { AuthNavbar } from '../navbar';
 
 interface Props {
    title: string;
@@ -15,7 +15,7 @@ export const AuthLayout: FC<Props> = ({ children, title }) => {
          </Head>
 
          <nav>
-            <NavbarAuth />
+            <AuthNavbar />
          </nav>
 
          <main>{children}</main>

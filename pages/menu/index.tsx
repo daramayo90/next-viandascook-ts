@@ -1,7 +1,7 @@
 import { GetStaticProps, NextPage } from 'next';
 import { CartMenu } from '../../components/cart';
 import { ShopLayout } from '../../components/layouts';
-import { ProductCard2 } from '../../components/products';
+import { ProductCard } from '../../components/products';
 import { dbProducts } from '../../database';
 import { IProduct } from '../../interfaces';
 
@@ -19,7 +19,7 @@ const ProductsPage: NextPage<Props> = ({ products }) => {
 
             <article className={styles.container}>
                {products.map((product) => (
-                  <ProductCard2 key={product._id} product={product} />
+                  <ProductCard key={product._id} product={product} />
                ))}
             </article>
          </section>

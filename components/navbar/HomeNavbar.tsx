@@ -8,7 +8,7 @@ import { HiOutlineMenu } from 'react-icons/hi';
 
 import styles from '../../styles/Navbar.module.css';
 
-export const NavbarHome = () => {
+export const HomeNavbar = () => {
    const { toggleSideMenu } = useContext(UIContext);
 
    return (

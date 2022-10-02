@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 import styles from '../../styles/Navbar.module.css';
 
-export const NavbarAuth = () => {
+export const AuthNavbar = () => {
    return (
       <section className={`${styles.navbar} ${styles.navbarWeb} ${styles.navbarAuth}`}>
          <div className={styles.logo}>
