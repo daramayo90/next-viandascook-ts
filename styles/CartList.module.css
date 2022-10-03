@@ -29,13 +29,13 @@
 }
 
 .cartList > .product > .details > .info {
-   max-width: 160px;
+   max-width: 170px;
 }
 
 .cartList > .product > .details > .info > .name {
    display: block;
    margin-bottom: 3px;
-   font-size: 0.9rem;
+   font-size: 1rem;
 }
 
 .cartList > .product > .details > .info > .price {
@@ -44,14 +44,14 @@
    font-weight: 500;
 }
 
-.remove {
+/* .remove {
    position: absolute;
    left: -12px;
    top: -5px;
    font-size: 1.2rem;
    color: grey;
    cursor: pointer;
-}
+} */
 
 @media (min-width: 720px) {
    .cartList {

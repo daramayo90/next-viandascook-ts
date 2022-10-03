@@ -52,18 +52,12 @@ export const CartList: FC<Props> = ({ editable = false }) => {
                </div>
 
                {editable ? (
-                  <>
-                     <ItemCounter
-                        currentValue={product.quantity}
-                        updatedQuantity={(quantity) =>
-                           onNewCartQuantityValue(product as ICartProduct, quantity)
-                        }
-                     />
-                     <IoMdCloseCircleOutline
-                        className={styles.remove}
-                        onClick={() => onRemoveProduct(product as ICartProduct)}
-                     />
-                  </>
+                  <ItemCounter
+                     currentValue={product.quantity}
+                     updatedQuantity={(quantity) =>
+                        onNewCartQuantityValue(product as ICartProduct, quantity)
+                     }
+                  />
                ) : (
                   <h6>
                      {product.quantity} {product.quantity > 1 ? 'platos' : 'plato'}
@@ -71,6 +65,10 @@ export const CartList: FC<Props> = ({ editable = false }) => {
                )}
             </div>
          ))}
+         {/* <IoMdCloseCircleOutline
+                        className={styles.remove}
+                        onClick={() => onRemoveProduct(product as ICartProduct)}
+                     /> */}
       </section>
    );
 };
