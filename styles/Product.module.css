@@ -1,13 +1,13 @@
 .product {
    width: 90vw;
-   margin: 1rem auto 12rem auto;
+   margin: 3.5rem auto 12rem auto;
 }
 
 .product > .backDesktop {
    display: none;
 }
 
-.product > .backMobile {
+/* .product > .backMobile {
    display: flex;
    flex-direction: column;
    justify-content: center;
@@ -15,7 +15,7 @@
    font-size: 2rem;
    color: var(--black);
    cursor: pointer;
-}
+} */
 
 .product > .topSection {
    display: flex;
@@ -87,8 +87,13 @@
 }
 
 .product > .topSection > .image > .nextImage {
-   width: 100%;
-   margin: auto;
+   width: 90%;
+   margin: 2rem auto;
+}
+
+.product > .topSection > .image > .nextImage img {
+   object-fit: cover;
+   border-radius: 40px;
 }
 
 /* Aditional Information */

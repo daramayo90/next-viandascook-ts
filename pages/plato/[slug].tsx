@@ -14,7 +14,7 @@ import { BsArrowLeftShort } from 'react-icons/bs';
 import { BiChevronLeft } from 'react-icons/bi';
 
 import styles from '../../styles/Product.module.css';
-import { ProductLayout } from '../../components/layouts';
+import { ShopLayout } from '../../components/layouts';
 
 interface Props {
    product: IProduct;
@@ -27,19 +27,19 @@ const ProductPage: NextPage<Props> = ({ product }) => {
       useTempCart(product);
 
    return (
-      <ProductLayout title={''} pageDescription={''}>
+      <ShopLayout title={''} pageDescription={''}>
          <article className={styles.product}>
             {/* TODO: Agregar Layout nuevo */}
             {/* TODO: Mantener los filtros */}
 
-            <div className={styles.backMobile} onClick={() => router.push('/menu')}>
+            {/* <div className={styles.backMobile} onClick={() => router.push('/menu')}>
                <BiChevronLeft />
             </div>
 
             <div className={styles.backDesktop} onClick={() => router.push('/menu')}>
                <BsArrowLeftShort />
                <span className={styles.text}>Volver</span>
-            </div>
+            </div> */}
 
             <div className={styles.topSection}>
                {/* Title */}
@@ -51,7 +51,7 @@ const ProductPage: NextPage<Props> = ({ product }) => {
                         src={`/products/${product.image}`}
                         alt={product.name}
                         width={100}
-                        height={75}
+                        height={100}
                         layout='responsive'
                         priority
                      />
@@ -152,7 +152,7 @@ const ProductPage: NextPage<Props> = ({ product }) => {
             </div>
          </article>
          {/* <CartMenu /> */}
-      </ProductLayout>
+      </ShopLayout>
    );
 };
 

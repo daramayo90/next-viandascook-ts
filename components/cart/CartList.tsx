@@ -43,7 +43,7 @@ export const CartList: FC<Props> = ({ editable = false }) => {
             <div key={product._id} className={styles.product}>
                <div className={styles.details}>
                   <div className={styles.nextImage}>
-                     <Image src={`/products/${product.image}`} width={100} height={75} />
+                     <Image src={`/products/${product.image}`} width={60} height={60} />
                   </div>
                   <div className={styles.info}>
                      <span className={styles.name}>{product.name}</span>
