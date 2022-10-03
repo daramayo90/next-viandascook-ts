@@ -41,6 +41,7 @@ export const ShopLayout: FC<Props> = ({ children, title, pageDescription, imageF
 
             <meta name='og:title' content={title} />
             <meta name='og:description' content={pageDescription} />
+            <meta name='viewport' content='width=device-width, user-scalable=no' />
             {imageFullUrl && <meta name='og:image' content={imageFullUrl} />}
          </Head>
 
