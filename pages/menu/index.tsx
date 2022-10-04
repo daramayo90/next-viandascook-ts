@@ -7,7 +7,7 @@ import { IProduct } from '../../interfaces';
 import { CartMenu } from '../../components/cart';
 import { MenuLayout } from '../../components/layouts';
 import { DiscountSlides } from '../../components/ui';
-import { ProductCard, TypesList } from '../../components/products';
+import { ProductCard, SearchNotFound, TypesList } from '../../components/products';
 
 import { BiSearchAlt } from 'react-icons/bi';
 
@@ -65,14 +65,22 @@ const ProductsPage: NextPage<Props> = ({ products }) => {
                />
             </form>
 
-            <DiscountSlides />
+            {!searchTerm && (
+               <>
+                  <DiscountSlides />
 
-            <TypesList type={type} setType={setType} />
+                  <TypesList type={type} setType={setType} />
+               </>
+            )}
 
             <article className={styles.container}>
-               {productsToShow.map((product) => (
-                  <ProductCard key={product._id} product={product} />
-               ))}
+               {!searchTerm || (searchTerm && searchProducts.length > 0) ? (
+                  productsToShow.map((product) => (
+                     <ProductCard key={product._id} product={product} />
+                  ))
+               ) : (
+                  <SearchNotFound />
+               )}
             </article>
          </section>
 

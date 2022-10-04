@@ -1,6 +1,7 @@
 .products {
    width: 100%;
    margin-top: 5rem;
+   padding-bottom: 120px;
    background-color: var(--white);
 }
 
@@ -66,7 +67,6 @@
    width: 92%;
    max-width: 380px;
    margin: 0 auto;
-   padding-bottom: 120px;
 }
 
 @media (min-width: 720px) {

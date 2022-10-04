@@ -1,7 +1,5 @@
 import { ShopLayout } from '../../components/layouts';
 
-import { MdOutlineRemoveShoppingCart } from 'react-icons/md';
-
 import styles from '../../styles/EmptyCart.module.css';
 import { Button } from '../../components/ui';
 import Image from 'next/image';
