@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { GetServerSideProps } from 'next';
+
+import { GetServerSideProps, NextPage } from 'next';
 import { signIn, getSession, getProviders } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
@@ -20,7 +21,7 @@ type FormData = {
    password: string;
 };
 
-const LoginPage = () => {
+const LoginPage: NextPage = () => {
    const router = useRouter();
 
    const [providers, setProviders] = useState<any>({});

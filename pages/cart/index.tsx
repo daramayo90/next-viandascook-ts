@@ -1,4 +1,5 @@
 import { useContext, useEffect } from 'react';
+import type { NextPage } from 'next';
 
 import { CartContext } from '../../context';
 import { CartList, OrderSummary } from '../../components/cart';
@@ -8,7 +9,7 @@ import { useRouter } from 'next/router';
 import styles from '../../styles/Cart.module.css';
 import { Button } from '../../components/ui';
 
-const CartPage = () => {
+const CartPage: NextPage = () => {
    const router = useRouter();
    const { isLoaded, cart, numberOfItems } = useContext(CartContext);
 
@@ -28,15 +29,6 @@ const CartPage = () => {
          <section className={styles.cart}>
             <div className={styles.container}>
                <CartList editable />
-
-               <div className={styles.cartButton}>
-                  <Button
-                     href='/menu'
-                     content='Volver'
-                     color='var(--white)'
-                     background='var(--black)'
-                  />
-               </div>
 
                <OrderSummary />
             </div>

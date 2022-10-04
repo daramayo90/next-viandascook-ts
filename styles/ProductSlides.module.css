@@ -29,18 +29,24 @@
    flex-direction: column;
    justify-content: center;
    width: 100%;
+   padding: 10px;
 }
 
 .box > .nextImage {
    display: flex;
    flex-direction: column;
    justify-content: center;
-   align-items: center;
-   height: 300px;
+   width: 45%;
+   margin: 0 auto;
+}
+
+.box > .nextImage img {
+   object-fit: cover;
+   border-radius: 50px;
 }
 
 .box > .title {
-   width: 90%;
+   width: 55%;
    margin: 1rem auto;
    text-align: center;
    font-size: 1.15rem;

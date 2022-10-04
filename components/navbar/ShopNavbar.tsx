@@ -11,9 +11,10 @@ import styles from '../../styles/ShopNavbar.module.css';
 
 interface Props {
    pageTitle: string;
+   menuPage: boolean;
 }
 
-export const ShopNavbar: FC<Props> = ({ pageTitle }) => {
+export const ShopNavbar: FC<Props> = ({ pageTitle, menuPage }) => {
    const router = useRouter();
 
    const { toggleSideMenu } = useContext(UIContext);
@@ -22,11 +23,15 @@ export const ShopNavbar: FC<Props> = ({ pageTitle }) => {
    return (
       <section className={styles.shopNavbar}>
          <div className={styles.container}>
-            <div className={styles.backMobile} onClick={() => router.push('/menu')}>
-               <BiChevronLeft />
-            </div>
+            <div className={styles.navigation}>
+               {!menuPage && (
+                  <div className={styles.backMobile} onClick={() => router.push('/menu')}>
+                     <BiChevronLeft />
+                  </div>
+               )}
 
-            <h1 className={styles.title}>{pageTitle}</h1>
+               <h1 className={styles.title}>{pageTitle}</h1>
+            </div>
 
             <div className={styles.items}>
                <Link href='/cart'>

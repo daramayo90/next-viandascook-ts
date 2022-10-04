@@ -1,7 +1,7 @@
 .commonFaqs {
    width: 100%;
    max-width: 450px;
-   margin: 3rem auto 0 auto;
+   margin: 3rem auto;
 }
 
 .commonFaqs > .title {
@@ -15,7 +15,7 @@
 }
 
 .commonFaqs > .button {
-   width: 80%;
+   width: 50%;
    margin: 2rem auto 0 auto;
 }
 

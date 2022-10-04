@@ -16,8 +16,14 @@ export const ShopLayout: FC<Props> = ({ children, title, pageDescription, imageF
    const router = useRouter();
    const path = router.asPath;
    let navTitle = '';
+   let menuPage = false;
 
    switch (path) {
+      case '/menu':
+         navTitle = 'Viandas Cook';
+         menuPage = true;
+         break;
+
       case '/descuentos':
          navTitle = 'Descuentos';
          break;
@@ -33,6 +39,7 @@ export const ShopLayout: FC<Props> = ({ children, title, pageDescription, imageF
       default:
          break;
    }
+
    return (
       <>
          <Head>
@@ -46,7 +53,7 @@ export const ShopLayout: FC<Props> = ({ children, title, pageDescription, imageF
          </Head>
 
          <nav>
-            <ShopNavbar pageTitle={navTitle} />
+            <ShopNavbar pageTitle={navTitle} menuPage={menuPage} />
          </nav>
 
          <SideMenu />

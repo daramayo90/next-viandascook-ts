@@ -1,4 +1,6 @@
+import type { NextPage } from 'next';
 import Image from 'next/image';
+
 import { ShopLayout } from '../../components/layouts';
 
 import styles from '../../styles/Discounts.module.css';
@@ -22,7 +24,7 @@ const discounts = [
    },
 ];
 
-const DiscountsPage = () => {
+const DiscountsPage: NextPage = () => {
    return (
       <ShopLayout title={''} pageDescription={''}>
          <section className={styles.discounts}>

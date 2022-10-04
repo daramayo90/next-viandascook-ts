@@ -1,8 +1,10 @@
+import type { NextPage } from 'next';
+
 import { MainLayout } from '../components/layouts';
 
 import styles from '../styles/Error.module.css';
 
-const Custom404 = () => {
+const Custom404: NextPage = () => {
    return (
       <MainLayout title='Página no encontrada' pageDescription='Nada que mostrar por acá'>
          <div className={styles.box}>

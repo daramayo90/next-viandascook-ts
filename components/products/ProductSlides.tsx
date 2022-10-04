@@ -28,7 +28,7 @@ export const ProductSlides: FC<Props> = ({ products }) => {
                               src={`/products/${product.image}`}
                               alt={product.name}
                               width={400}
-                              height={300}
+                              height={400}
                            />
                         </div>
                         <h5 className={styles.title}>{product.name}</h5>

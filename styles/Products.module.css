@@ -43,7 +43,7 @@
 }
 
 .products > .searchContainer > .search:focus {
-   color: rgba(170, 170, 170, 0.9);
+   color: var(--black);
    background-color: #fff;
    border-color: #80bdff;
    outline: 0;
