@@ -4,20 +4,25 @@ import { MdOutlineRemoveShoppingCart } from 'react-icons/md';
 
 import styles from '../../styles/EmptyCart.module.css';
 import { Button } from '../../components/ui';
+import Image from 'next/image';
 
 const EmptyPage = () => {
    return (
       <ShopLayout title={'Carrito vacío'} pageDescription={''}>
          <section className={styles.emptyCart}>
-            <MdOutlineRemoveShoppingCart className={styles.icon} />
+            <div className={styles.icon}>
+               <Image src='/img/empty-cart.jpg' width={200} height={200} />
+            </div>
 
             <div className={styles.container}>
-               <h1>Tu carrito está vacío</h1>
+               <h2 className={styles.title}>Tu carrito está vacío</h2>
+               <p>No hay ninguna vianda en el carrito.</p>
+               <p>¡Compremos Algo!</p>
 
-               <div>
+               <div className={styles.button}>
                   <Button
                      href='/menu'
-                     content='Volver'
+                     content='Ver Menu'
                      background='var(--black)'
                      color='var(--white)'
                   />

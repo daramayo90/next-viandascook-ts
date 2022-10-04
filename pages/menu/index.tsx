@@ -5,7 +5,7 @@ import { dbProducts } from '../../database';
 import { IProduct } from '../../interfaces';
 
 import { CartMenu } from '../../components/cart';
-import { ShopLayout } from '../../components/layouts';
+import { MenuLayout } from '../../components/layouts';
 import { DiscountSlides } from '../../components/ui';
 import { ProductCard, TypesList } from '../../components/products';
 
@@ -48,7 +48,7 @@ const ProductsPage: NextPage<Props> = ({ products }) => {
          : products;
 
    return (
-      <ShopLayout title={''} pageDescription={''}>
+      <MenuLayout title={''} pageDescription={''}>
          <section className={styles.products}>
             <form className={styles.searchContainer} onSubmit={handleSubmit}>
                <BiSearchAlt className={styles.icon} />
@@ -78,7 +78,7 @@ const ProductsPage: NextPage<Props> = ({ products }) => {
 
          {/* <h1 className={styles.title}>Viandas a Domicilio</h1> */}
          {/* <CartMenu /> */}
-      </ShopLayout>
+      </MenuLayout>
    );
 };
 

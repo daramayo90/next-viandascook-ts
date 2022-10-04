@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 import { CartContext, UIContext } from '../../context';
 
-import { BiChevronLeft } from 'react-icons/bi';
+import { IoIosArrowRoundBack } from 'react-icons/io';
 import { HiOutlineMenu, HiOutlineShoppingBag } from 'react-icons/hi';
 
 import styles from '../../styles/ShopNavbar.module.css';
@@ -26,7 +26,7 @@ export const ShopNavbar: FC<Props> = ({ pageTitle, menuPage }) => {
             <div className={styles.navigation}>
                {!menuPage && (
                   <div className={styles.backMobile} onClick={() => router.push('/menu')}>
-                     <BiChevronLeft />
+                     <IoIosArrowRoundBack />
                   </div>
                )}
 

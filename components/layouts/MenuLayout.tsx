@@ -1,7 +1,7 @@
 import { FC, ReactNode } from 'react';
 import Head from 'next/head';
 
-import { MenuNavbar } from '../navbar';
+import { ShopNavbar } from '../navbar';
 import { SideMenu } from '../ui';
 import { TabMenu } from '../cart';
 
@@ -26,7 +26,7 @@ export const MenuLayout: FC<Props> = ({ children, title, pageDescription, imageF
          </Head>
 
          <nav>
-            <MenuNavbar />
+            <ShopNavbar pageTitle='Viandas Cook' menuPage />
          </nav>
 
          <SideMenu />
