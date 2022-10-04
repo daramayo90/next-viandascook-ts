@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useRef, useState } from 'react';
+import { ChangeEvent, FormEvent, useState } from 'react';
 import { GetStaticProps, NextPage } from 'next';
 
 import { dbProducts } from '../../database';
@@ -18,22 +18,24 @@ interface Props {
 }
 
 const ProductsPage: NextPage<Props> = ({ products }) => {
-   const inputRef = useRef<HTMLInputElement | null>(null);
-
    const [searchTerm, setSearchTerm] = useState('');
    const [type, setType] = useState('');
 
    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
-      inputRef.current!.value = '';
    };
 
    const onSearchTerm = (e: ChangeEvent<HTMLInputElement>) => {
       setSearchTerm(e.target.value);
    };
 
+   // without accented characters
    const searchProducts = products.filter((p) => {
-      return p.name.toLowerCase().includes(searchTerm.toLowerCase());
+      return p.name
+         .toLowerCase()
+         .normalize('NFD')
+         .replace(/\p{Diacritic}/gu, '')
+         .includes(searchTerm.toLowerCase());
    });
 
    const typeProducts = products.filter((p) => {
@@ -53,7 +55,6 @@ const ProductsPage: NextPage<Props> = ({ products }) => {
             <form className={styles.searchContainer} onSubmit={handleSubmit}>
                <BiSearchAlt className={styles.icon} />
                <input
-                  ref={inputRef}
                   className={styles.search}
                   autoFocus
                   type='text'
