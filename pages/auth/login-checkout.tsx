@@ -60,7 +60,7 @@ const LoginCheckoutPage: NextPage = () => {
                <form onSubmit={handleSubmit(onLoginUser)} noValidate>
                   <p className={styles.text}>
                      Si ya tenés tu usuario completalo para seguir al próximo paso o hacé click en
-                     "quiero comprar sin cuenta" para avanzar.
+                     <strong>quiero comprar sin cuenta</strong> para avanzar.
                   </p>
 
                   <label className={styles.inputText}>

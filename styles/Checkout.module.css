@@ -67,10 +67,18 @@
    width: 90%;
    margin-left: 1rem;
    font-size: 0.9rem;
+   font-weight: 500;
 }
 
 .checkout > .container > .deliveryAddress > .info > .address > .iconRight {
    font-size: 1.2rem;
    font-weight: 700;
    color: var(--primary);
+}
+
+.checkout > .container > .discounts {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   height: 70px;
 }
