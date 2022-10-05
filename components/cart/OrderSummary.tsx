@@ -55,7 +55,7 @@ export const OrderSummary: FC<Props> = ({ orderValues }) => {
 
          <div className={styles.checkoutButton}>
             <Button
-               href='/finalizar-compra'
+               href='/auth/login-checkout'
                content='Finalizar'
                background='var(--black)'
                color='var(--white)'
