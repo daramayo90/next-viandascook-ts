@@ -40,6 +40,10 @@ export const ShopLayout: FC<Props> = ({ children, title, pageDescription, imageF
          navTitle = 'Iniciar Sesión ';
          break;
 
+      case '/checkout':
+         navTitle = '¡Último Paso! ';
+         break;
+
       default:
          break;
    }
