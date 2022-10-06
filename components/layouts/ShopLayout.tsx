@@ -48,6 +48,10 @@ export const ShopLayout: FC<Props> = ({ children, title, pageDescription, imageF
          navTitle = 'Dirección de envío';
          break;
 
+      case '/checkout/promociones':
+         navTitle = 'Promos Vigentes';
+         break;
+
       default:
          break;
    }
