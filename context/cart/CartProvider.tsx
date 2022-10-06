@@ -2,7 +2,7 @@ import { FC, ReactNode, useEffect, useReducer } from 'react';
 
 import Cookies from 'js-cookie';
 
-import { ICartProduct } from '../../interfaces/cart';
+import { ICartProduct, ShippingAddress } from '../../interfaces';
 import { CartContext, cartReducer } from './';
 
 interface Props {
@@ -15,6 +15,8 @@ export interface CartState {
    numberOfItems: number;
    subTotal: number;
    total: number;
+
+   shippingAddress?: ShippingAddress;
 }
 
 const CART_INITIAL_STATE: CartState = {
@@ -23,6 +25,7 @@ const CART_INITIAL_STATE: CartState = {
    numberOfItems: 0,
    subTotal: 0,
    total: 0,
+   shippingAddress: undefined,
 };
 
 export const CartProvider: FC<Props> = ({ children }) => {
@@ -57,6 +60,26 @@ export const CartProvider: FC<Props> = ({ children }) => {
 
       dispatch({ type: '[Cart] - Update Order Summary', payload: orderSummary });
    }, [state.cart]);
+
+   // TODO: Tomar la info de la base de datos
+   // Load Address from Cookies
+   useEffect(() => {
+      if (Cookies.get('address')) {
+         const shippingAddress = {
+            firstName: Cookies.get('firstName') || '',
+            lastName: Cookies.get('lastName') || '',
+            address: Cookies.get('address') || '',
+            address2: Cookies.get('address2') || '',
+            zipcode: Cookies.get('zipcode') || '',
+            city: Cookies.get('city') || '',
+            phone: Cookies.get('phone') || '', // TODO: Transformar el numero a string
+            email: Cookies.get('email') || '',
+            dni: Cookies.get('dni') || '',
+         };
+
+         dispatch({ type: '[Cart] - Load Address from Cookies', payload: shippingAddress });
+      }
+   }, []);
 
    // Add Product to Cart
    const addProductToCart = (product: ICartProduct) => {
@@ -93,9 +116,29 @@ export const CartProvider: FC<Props> = ({ children }) => {
       dispatch({ type: '[Cart] - Remove Product', payload: products });
    };
 
+   // Update Address to Cookies
+   const updateAddress = (address: ShippingAddress) => {
+      Cookies.set('firstName', address.firstName);
+      Cookies.set('lastName', address.lastName);
+      Cookies.set('address', address.address);
+      Cookies.set('address2', address.address2 || '');
+      Cookies.set('zipcode', address.zipcode);
+      Cookies.set('city', address.city);
+      Cookies.set('phone', address.phone);
+      Cookies.set('email', address.email);
+      Cookies.set('dni', address.dni);
+      dispatch({ type: '[Cart] - Update Shipping Address', payload: address });
+   };
+
    return (
       <CartContext.Provider
-         value={{ ...state, addProductToCart, updateCartQuantity, removeCartProduct }}>
+         value={{
+            ...state,
+            addProductToCart,
+            updateCartQuantity,
+            removeCartProduct,
+            updateAddress,
+         }}>
          {children}
       </CartContext.Provider>
    );

@@ -41,7 +41,11 @@ export const ShopLayout: FC<Props> = ({ children, title, pageDescription, imageF
          break;
 
       case '/checkout':
-         navTitle = '¡Último Paso! ';
+         navTitle = '¡Último Paso!';
+         break;
+
+      case '/checkout/address':
+         navTitle = 'Dirección de envío';
          break;
 
       default:

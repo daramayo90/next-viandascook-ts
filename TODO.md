@@ -1,6 +1,6 @@
 # Estilo global para los íconos del botón
 
-# Validaciones desde el front (Login & Register)
+# Validaciones desde el front (Login, Register & Address)
 
 # Agregar Layout en Login & Register
 
@@ -21,6 +21,12 @@
 # Agregar al carrito en el slug page: Rappi
 
 # Cambiar de color la lupa en el focus del menu page
+
+# Normalizar todos los input - Que sean todos iguales
+
+# Crar un provider para las órdenes, donde también entre el shippingAddress
+
+# Crear componentes en CheckoutPage
 
 warn - No build cache found. Please configure build caching for faster rebuilds. Read more: https://nextjs.org/docs/messages/no-cache
 Attention: Next.js now collects completely anonymous telemetry regarding usage.

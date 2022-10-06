@@ -1,0 +1,65 @@
+.address {
+   width: 100vw;
+   height: 100vh;
+}
+
+.address > .container {
+   width: 100%;
+   text-align: left;
+}
+
+.address > .container > form {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   width: 100%;
+   max-width: 410px;
+   margin: 0 auto;
+   padding-top: 5rem;
+}
+
+.address > .container > form > .inputText {
+   width: 90%;
+   max-width: 410px;
+   margin: 0.5rem 0;
+}
+
+.address > .container > form > .inputText > span {
+   display: block;
+   width: 100%;
+   margin-bottom: 0.3rem;
+   font-weight: 500;
+}
+
+.address > .container > form > .inputText > input {
+   display: block;
+   width: 100%;
+   padding: 15px;
+   height: 50px;
+   border-radius: 4px;
+   font-size: 0.95rem;
+   font-weight: 400;
+   line-height: 1.5;
+   color: #596068;
+   background-color: #fff;
+   background-clip: padding-box;
+   border: 1px solid #ced4da;
+   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.address > .container > form > .inputText > input::placeholder {
+   color: rgba(170, 170, 170, 0.9);
+   font-size: 0.95rem;
+}
+
+.address > .container > form .inputText > input:focus {
+   color: #495057;
+   background-color: #fff;
+   border-color: #80bdff;
+   outline: 0;
+   box-shadow: 0 0 0 0.2rem rgb(0 123 255 / 25%);
+}
+
+.address > .container > form > .applyButton {
+   margin: 2rem 0 4rem 0;
+}

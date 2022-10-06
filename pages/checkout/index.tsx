@@ -1,14 +1,21 @@
+import { NextPage } from 'next/types';
+import Link from 'next/link';
+
 import { CartMenu, CheckoutSummary } from '../../components/cart';
 import { ShopLayout } from '../../components/layouts';
+
+import { useContext } from 'react';
+import { CartContext } from '../../context/cart/CartContext';
 
 import { RiMapPinFill } from 'react-icons/ri';
 import { AiOutlineRight } from 'react-icons/ai';
 import { TbDiscount2 } from 'react-icons/tb';
 
 import styles from '../../styles/Checkout.module.css';
-import Link from 'next/link';
 
-const CheckoutPage = () => {
+const CheckoutPage: NextPage = () => {
+   const { shippingAddress } = useContext(CartContext);
+
    return (
       <ShopLayout title={''} pageDescription={''}>
          <section className={styles.checkout}>
@@ -20,14 +27,18 @@ const CheckoutPage = () => {
 
                         <div className={styles.address}>
                            <RiMapPinFill className={styles.iconMap} />
-                           <p className={styles.text}>Agregar dirección de entrega</p>
+                           {!shippingAddress ? (
+                              <p className={styles.text}>Datos de envío</p>
+                           ) : (
+                              <p className={styles.text}>{shippingAddress.address}</p>
+                           )}
                            <AiOutlineRight className={styles.iconRight} />
                         </div>
                      </div>
                   </div>
                </Link>
 
-               <Link href='/descuentos'>
+               <Link href='/checkout/promociones'>
                   <div className={styles.discounts}>
                      <div className={styles.info}>
                         <TbDiscount2 className={styles.iconDiscount} />

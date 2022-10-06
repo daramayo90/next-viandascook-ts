@@ -23,8 +23,9 @@ const orderSchema = new Schema(
          address2: { type: String },
          zipcode: { type: String, required: true },
          city: { type: String, required: true },
-         country: { type: String, required: true },
          phone: { type: String, required: true },
+         email: { type: String, required: true },
+         dni: { type: String, required: true },
       },
 
       numberOfItems: { type: Number, required: true },

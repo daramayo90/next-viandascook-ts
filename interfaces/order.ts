@@ -33,6 +33,7 @@ export interface ShippingAddress {
    address2?: string;
    zipcode: string;
    city: string;
-   country: string;
    phone: string;
+   email: string;
+   dni: string;
 }

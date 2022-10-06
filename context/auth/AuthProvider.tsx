@@ -86,6 +86,18 @@ export const AuthProvider: FC<Props> = ({ children }) => {
    // Logout
    const logout = () => {
       Cookies.remove('token');
+      Cookies.remove('cart');
+
+      Cookies.remove('firstName');
+      Cookies.remove('lastName');
+      Cookies.remove('address');
+      Cookies.remove('address2');
+      Cookies.remove('zipcode');
+      Cookies.remove('city');
+      Cookies.remove('phone');
+      Cookies.remove('email');
+      Cookies.remove('dni');
+
       signOut();
    };
 
