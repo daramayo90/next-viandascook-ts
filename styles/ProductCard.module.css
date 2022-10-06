@@ -85,8 +85,16 @@
    background: var(--black);
 }
 
+.product > .addToCart > .selectQuantity > span {
+   color: var(--white);
+}
+
 .product > .addToCart > .selectedQuantity {
    background: var(--primary);
+}
+
+.product > .addToCart > .selectedQuantity > span {
+   color: var(--white);
 }
 
 @media (min-width: 720px) {

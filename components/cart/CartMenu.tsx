@@ -2,19 +2,21 @@ import { useContext, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
-import { CartContext } from '../../context';
-
-import { IoIosClose } from 'react-icons/io';
-import { AiOutlineMinus } from 'react-icons/ai';
-import { FaShoppingCart } from 'react-icons/fa';
-import { BsFillArrowRightCircleFill } from 'react-icons/bs';
-
-import styles from '../../styles/CartMenu.module.css';
 import { ItemCounter } from '../products';
 import { ICartProduct } from '../../interfaces';
 
+import { CartContext } from '../../context';
+
+import { IoIosClose } from 'react-icons/io';
+import { FaShoppingCart } from 'react-icons/fa';
+import { MdKeyboardArrowUp } from 'react-icons/md';
+
+import styles from '../../styles/CartMenu.module.css';
+import { currency } from '../../utils';
+
 export const CartMenu = () => {
-   const { numberOfItems, cart, updateCartQuantity, removeCartProduct } = useContext(CartContext);
+   const { numberOfItems, cart, updateCartQuantity, removeCartProduct, total } =
+      useContext(CartContext);
    const [touched, setTouched] = useState(false);
 
    const onNewCartQuantityValue = (product: ICartProduct, newQuantityValue: number) => {
@@ -31,24 +33,17 @@ export const CartMenu = () => {
          <div
             className={touched ? `${styles.cartMenu}` : `${styles.cartMenu} hide`}
             onClick={() => setTouched(!touched)}>
-            <div className={styles.line}>
-               <AiOutlineMinus className={styles.icon} />
-            </div>
-
             <div className={styles.container}>
-               <div className={styles.items}>
-                  <FaShoppingCart className={styles.icon} />
-                  <span className={styles.quantity}>{numberOfItems}</span>
+               <span className={styles.quantity}>
+                  {numberOfItems > 1 ? `${numberOfItems} viandas` : `${numberOfItems} vianda`}
+               </span>
+
+               <div className={styles.info}>
+                  <span className={styles.total}>{currency.format(total)}</span>
+                  <span className={styles.details}>Ver el Detalle</span>
+                  <MdKeyboardArrowUp className={styles.iconDetails} />
                </div>
-
-               <Link href='/direccion'>
-                  <div className={styles.linkTo}>
-                     <BsFillArrowRightCircleFill className={styles.icon} />
-                  </div>
-               </Link>
             </div>
-
-            <span style={{ color: 'green' }}>Descuento acumulado</span>
          </div>
 
          <div className={styles.desktop}>

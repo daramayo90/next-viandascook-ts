@@ -51,10 +51,10 @@ const CheckoutPage: NextPage = () => {
                <div className={styles.deliveryDate}></div>
 
                <CheckoutSummary />
-
-               <CartMenu />
             </div>
          </section>
+
+         <CartMenu />
       </ShopLayout>
    );
 };
