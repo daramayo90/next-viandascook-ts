@@ -8,14 +8,14 @@
    width: 90%;
    margin: 0 auto;
    margin-top: 80px;
-   padding-top: 10px;
+   padding-top: 1px;
 }
 
 .checkout > .container > .deliveryAddress,
 .checkout > .container > .discounts,
 .checkout > .container > .deliveryDate {
    width: 100%;
-   margin: 0.6rem 0;
+   margin: 2rem 0;
    border-radius: 15px;
    background-color: #fff;
    box-shadow: 0 8px 16px rgb(35 31 32 / 6%);
@@ -26,6 +26,7 @@
    flex-direction: column;
    justify-content: center;
    height: 110px;
+   cursor: pointer;
 }
 
 .checkout > .container > .deliveryAddress > .info {
@@ -39,8 +40,8 @@
 }
 
 .checkout > .container > .deliveryAddress > .info > .title {
-   padding-bottom: 10px;
-   font-size: 1.2rem;
+   padding-bottom: 15px;
+   font-size: 1.1rem;
    font-weight: 600;
    color: var(--black);
    border-bottom: 1px solid rgb(220, 220, 220);
@@ -50,10 +51,10 @@
    display: flex;
    align-items: center;
    justify-content: flex-start;
-   cursor: pointer;
 }
 
-.checkout > .container > .deliveryAddress > .info > .address > .iconMap {
+.checkout > .container > .deliveryAddress > .info > .address > .iconMap,
+.checkout > .container > .discounts > .info > .iconDiscount {
    width: 30px;
    height: 30px;
    padding: 6px;
@@ -63,14 +64,16 @@
    color: var(--white);
 }
 
-.checkout > .container > .deliveryAddress > .info > .address > .text {
+.checkout > .container > .deliveryAddress > .info > .address > .text,
+.checkout > .container > .discounts > .info > .text {
    width: 90%;
    margin-left: 1rem;
    font-size: 0.9rem;
    font-weight: 500;
 }
 
-.checkout > .container > .deliveryAddress > .info > .address > .iconRight {
+.checkout > .container > .deliveryAddress > .info > .address > .iconRight,
+.checkout > .container > .discounts > .info > .iconRight {
    font-size: 1.2rem;
    font-weight: 700;
    color: var(--primary);
@@ -81,4 +84,14 @@
    flex-direction: column;
    justify-content: center;
    height: 70px;
+   cursor: pointer;
+}
+
+.checkout > .container > .discounts > .info {
+   display: flex;
+   align-items: center;
+   justify-content: flex-start;
+   position: relative;
+   width: 90%;
+   margin: 0 auto;
 }
