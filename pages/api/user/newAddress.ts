@@ -31,7 +31,7 @@ const updateAddress = async (req: NextApiRequest, res: NextApiResponse<Data>) =>
 
    await User.updateOne(
       {
-         _id: user._id,
+         email: email,
       },
       {
          $set: {
