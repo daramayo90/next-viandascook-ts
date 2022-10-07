@@ -20,12 +20,15 @@ const updateAddress = async (req: NextApiRequest, res: NextApiResponse<Data>) =>
    const { email, address, address2, city, zipcode, phone, dni } = req.body;
 
    await db.connect();
+   console.log('Me conecté');
 
    const user = await User.findOne({ email }).lean();
+   console.log('Busqué al usuario');
 
    if (!user) {
       return res.status(400).json({ message: 'User does not exist' });
    }
+   console.log('Encontré al usuario');
 
    await User.updateOne(
       {
@@ -43,7 +46,12 @@ const updateAddress = async (req: NextApiRequest, res: NextApiResponse<Data>) =>
       },
    );
 
+   console.log('Update de la base de datos');
+
    await db.disconnect();
 
+   console.log('Me desconecté');
+
+   console.log('user', user);
    return res.status(200).json(user);
 };
