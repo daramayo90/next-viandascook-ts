@@ -22,7 +22,8 @@ const updateAddress = async (req: NextApiRequest, res: NextApiResponse<Data>) =>
    await db.connect();
    let user;
    try {
-      user = await User.findOne(email);
+      user = await User.find();
+      console.log(user);
    } catch (error) {
       console.log('ERROR', error);
       db.disconnect();
@@ -59,5 +60,5 @@ const updateAddress = async (req: NextApiRequest, res: NextApiResponse<Data>) =>
    console.log('Me desconecté');
 
    console.log('user', user);
-   return res.status(200).json(user);
+   return res.status(200).json({ message: 'process performed' });
 };
