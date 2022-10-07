@@ -68,6 +68,11 @@ export const authOptions: NextAuthOptions = {
          return token;
       },
       async session({ session, token, user }) {
+         if (token.user) {
+            const user = await dbUsers.getAddress(token.user as string);
+            token.user = user;
+         }
+
          session.accessToken = token.access_token;
          session.user = token.user as any;
          return session;

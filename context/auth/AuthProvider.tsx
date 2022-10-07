@@ -1,15 +1,16 @@
 import { FC, ReactNode, useEffect, useReducer } from 'react';
-import { useSession, signOut } from 'next-auth/react';
+import { useSession, signOut, getSession } from 'next-auth/react';
 import Cookies from 'js-cookie';
 
 import { viandasApi } from '../../api';
-import { IUser } from '../../interfaces';
+import { IUser, ShippingAddress } from '../../interfaces';
 import { AuthContext, authReducer } from './';
 
 interface Props {
    children: ReactNode;
 }
 
+// TODO: Remover este Form
 export type Form = {
    name: string;
    lastName: string;
@@ -88,21 +89,36 @@ export const AuthProvider: FC<Props> = ({ children }) => {
       Cookies.remove('token');
       Cookies.remove('cart');
 
-      Cookies.remove('firstName');
-      Cookies.remove('lastName');
-      Cookies.remove('address');
-      Cookies.remove('address2');
-      Cookies.remove('zipcode');
-      Cookies.remove('city');
-      Cookies.remove('phone');
-      Cookies.remove('email');
-      Cookies.remove('dni');
-
       signOut();
    };
 
+   // Update address of userdb
+   const updateAddress = async (info: ShippingAddress): Promise<boolean> => {
+      try {
+         const { email, address, address2 = '', city, zipcode, phone, dni } = info;
+
+         const { data } = await viandasApi.put('/user/newAddress', {
+            email,
+            address,
+            address2,
+            city,
+            zipcode,
+            phone,
+            dni,
+         });
+
+         dispatch({ type: '[Auth] - New Address', payload: data });
+
+         return true;
+      } catch (error) {
+         console.log(error);
+
+         return false;
+      }
+   };
+
    return (
-      <AuthContext.Provider value={{ ...state, registerUser, loginUser, logout }}>
+      <AuthContext.Provider value={{ ...state, registerUser, loginUser, logout, updateAddress }}>
          {children}
       </AuthContext.Provider>
    );

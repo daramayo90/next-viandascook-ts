@@ -1,7 +1,10 @@
 import { IUser } from '../../interfaces';
 import { AuthState } from './';
 
-type AuthActionType = { type: '[Auth] - Login'; payload: IUser };
+type AuthActionType =
+   | { type: '[Auth] - Login'; payload: IUser }
+   | { type: '[Auth] - Logout' }
+   | { type: '[Auth] - New Address'; payload: IUser };
 
 export const authReducer = (state: AuthState, action: AuthActionType): AuthState => {
    switch (action.type) {
@@ -9,6 +12,19 @@ export const authReducer = (state: AuthState, action: AuthActionType): AuthState
          return {
             ...state,
             isLoggedIn: true,
+            user: action.payload,
+         };
+
+      case '[Auth] - Logout':
+         return {
+            ...state,
+            isLoggedIn: false,
+            user: undefined,
+         };
+
+      case '[Auth] - New Address':
+         return {
+            ...state,
             user: action.payload,
          };
 

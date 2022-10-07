@@ -1,5 +1,5 @@
 import bcrypt from 'bcryptjs';
-import { IType } from '../interfaces';
+import { IAddress, IType } from '../interfaces';
 
 interface SeedProduct {
    image: string;
@@ -17,8 +17,11 @@ interface SeedUser {
    name: string;
    lastName: string;
    email: string;
-   password: string;
-   role: 'admin' | 'client';
+   phone?: string;
+   dni?: string;
+   password?: string;
+   role: string;
+   shipping: IAddress;
 }
 
 interface SeedData {
@@ -31,16 +34,32 @@ export const initialData: SeedData = {
       {
          name: 'Damian',
          lastName: 'Aramayo',
-         email: 'da.aramayo1990@gmail.com',
+         email: 'damian@gmail.com',
+         phone: '1136527688',
+         dni: '38987745',
          password: bcrypt.hashSync('123456', 10),
          role: 'admin',
+         shipping: {
+            address: 'Baker Street',
+            address2: '221B',
+            zipcode: '7933',
+            city: 'London',
+         },
       },
       {
          name: 'Norma',
          lastName: 'Henscheid',
-         email: 'norma.henscheid@gmail.com',
+         email: 'norma@gmail.com',
+         phone: '1152469988',
+         dni: '20706485',
          password: bcrypt.hashSync('123456', 10),
          role: 'client',
+         shipping: {
+            address: 'P Sherman',
+            address2: 'Depto: 4A',
+            zipcode: '4563',
+            city: 'Devoto',
+         },
       },
    ],
 

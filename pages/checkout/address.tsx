@@ -1,12 +1,15 @@
-import { NextPage } from 'next/types';
+import { useContext } from 'react';
+import { GetServerSideProps, NextPage } from 'next/types';
+import { getSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
-import Link from 'next/link';
 
 import Cookies from 'js-cookie';
 import { useForm } from 'react-hook-form';
 
-import { useContext } from 'react';
-import { CartContext } from '../../context';
+import { dbUsers } from '../../database';
+import { IUser } from '../../interfaces';
+
+import { AuthContext, OrdersContext } from '../../context';
 
 import { ShopLayout } from '../../components/layouts';
 import { SubmitButton } from '../../components/ui';
@@ -25,37 +28,60 @@ type FormData = {
    dni: string;
 };
 
-//TODO: Tomar la información de la base de datos
-const getAddressFromCookies = (): FormData => {
-   return {
-      firstName: Cookies.get('firstName') || '',
-      lastName: Cookies.get('lastName') || '',
-      address: Cookies.get('address') || '',
-      address2: Cookies.get('address2') || '',
-      zipcode: Cookies.get('zipcode') || '',
-      city: Cookies.get('city') || '',
-      phone: Cookies.get('phone') || '', // TODO: Transformar el numero a string
-      email: Cookies.get('email') || '',
-      dni: Cookies.get('dni') || '',
-   };
-};
+interface Props {
+   userdb?: IUser;
+}
 
-const AddressPage: NextPage = () => {
+const AddressPage: NextPage<Props> = ({ userdb }) => {
    const router = useRouter();
-   const { updateAddress } = useContext(CartContext);
+
+   const { addGuestAddress } = useContext(OrdersContext);
+   const { updateAddress } = useContext(AuthContext);
+
+   // Get info from database or save in cookies for user guests
+   const getAddress = (): FormData => {
+      if (userdb) {
+         return {
+            firstName: userdb.name,
+            lastName: userdb.lastName,
+            address: userdb.shipping?.address || '',
+            address2: userdb.shipping?.address2 || '',
+            zipcode: userdb.shipping?.zipcode || '',
+            city: userdb.shipping?.city || '',
+            phone: userdb.phone || '',
+            email: userdb.email,
+            dni: userdb.dni || '',
+         };
+      } else {
+         return {
+            firstName: Cookies.get('firstName') || '',
+            lastName: Cookies.get('lastName') || '',
+            address: Cookies.get('address') || '',
+            address2: Cookies.get('address2') || '',
+            zipcode: Cookies.get('zipcode') || '',
+            city: Cookies.get('city') || '',
+            phone: Cookies.get('phone') || '',
+            email: Cookies.get('email') || '',
+            dni: Cookies.get('dni') || '',
+         };
+      }
+   };
 
    const {
       register,
       handleSubmit,
       formState: { errors },
    } = useForm<FormData>({
-      defaultValues: getAddressFromCookies(),
+      defaultValues: getAddress(),
    });
 
-   // TODO: Grabar la información en la base de datos en vez de Cookies
    const onSubmitAddress = (data: FormData) => {
-      updateAddress(data);
-      router.push('/checkout');
+      if (!userdb) {
+         addGuestAddress(data);
+      } else {
+         updateAddress(data);
+      }
+      router.push('/checkout', undefined, { shallow: true });
    };
 
    return (
@@ -69,6 +95,7 @@ const AddressPage: NextPage = () => {
                         {...register('firstName', {
                            required: true,
                         })}
+                        defaultValue={userdb?.name || ''}
                      />
                      {errors.firstName && (
                         <span className={styles.error}>El nombre es un campo requerido</span>
@@ -187,6 +214,21 @@ const AddressPage: NextPage = () => {
          </section>
       </ShopLayout>
    );
+};
+
+export const getServerSideProps: GetServerSideProps = async ({ req }) => {
+   const { user }: any = (await getSession({ req })) || '';
+
+   if (!user)
+      return {
+         props: {},
+      };
+
+   const userdb = await dbUsers.getUser(user.email);
+
+   return {
+      props: { userdb },
+   };
 };
 
 export default AddressPage;

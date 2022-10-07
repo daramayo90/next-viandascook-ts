@@ -6,7 +6,10 @@ const userSchema = new Schema(
       name: { type: String, required: true },
       lastName: { type: String, required: true },
       email: { type: String, required: true, unique: true },
+      phone: { type: String, required: true },
+      dni: { type: String, required: true },
       password: { type: String, required: true },
+
       role: {
          type: String,
          enum: {
@@ -16,7 +19,15 @@ const userSchema = new Schema(
             required: true,
          },
       },
+
+      shipping: {
+         address: { type: String, required: true },
+         address2: { type: String },
+         zipcode: { type: String, required: true },
+         city: { type: String, required: true },
+      },
    },
+
    { timestamps: true },
 );
 

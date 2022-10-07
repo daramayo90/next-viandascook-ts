@@ -3,8 +3,18 @@ export interface IUser {
    name: string;
    lastName: string;
    email: string;
-   password?: string; // Information not provided to the Frontend
+   phone?: string;
+   dni?: string;
+   password?: string;
    role: string;
+   shipping: IAddress;
    createdAt?: string;
    updatedAt?: string;
+}
+
+export interface IAddress {
+   address: string;
+   address2?: string;
+   zipcode: string;
+   city: string;
 }

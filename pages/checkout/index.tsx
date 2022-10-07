@@ -1,11 +1,13 @@
+import { useContext } from 'react';
+import { GetServerSideProps } from 'next';
 import { NextPage } from 'next/types';
+import { getSession } from 'next-auth/react';
 import Link from 'next/link';
 
 import { CartMenu, CheckoutSummary } from '../../components/cart';
 import { ShopLayout } from '../../components/layouts';
 
-import { useContext } from 'react';
-import { CartContext } from '../../context/cart/CartContext';
+import { OrdersContext } from '../../context';
 
 import { RiMapPinFill } from 'react-icons/ri';
 import { AiOutlineRight } from 'react-icons/ai';
@@ -13,8 +15,14 @@ import { TbDiscount2 } from 'react-icons/tb';
 
 import styles from '../../styles/Checkout.module.css';
 
-const CheckoutPage: NextPage = () => {
-   const { shippingAddress } = useContext(CartContext);
+interface Props {
+   user?: any;
+}
+
+const CheckoutPage: NextPage<Props> = ({ user }) => {
+   const { shippingAddress } = useContext(OrdersContext);
+
+   const shipping = user ? user?.shipping : shippingAddress;
 
    return (
       <ShopLayout title={''} pageDescription={''}>
@@ -27,10 +35,10 @@ const CheckoutPage: NextPage = () => {
 
                         <div className={styles.address}>
                            <RiMapPinFill className={styles.iconMap} />
-                           {!shippingAddress ? (
+                           {!shipping ? (
                               <p className={styles.text}>Datos de envío</p>
                            ) : (
-                              <p className={styles.text}>{shippingAddress.address}</p>
+                              <p className={styles.text}>{shipping.address}</p>
                            )}
                            <AiOutlineRight className={styles.iconRight} />
                         </div>
@@ -57,6 +65,20 @@ const CheckoutPage: NextPage = () => {
          <CartMenu />
       </ShopLayout>
    );
+};
+
+export const getServerSideProps: GetServerSideProps = async ({ req }) => {
+   const { user }: any = (await getSession({ req })) || '';
+
+   if (user) {
+      return {
+         props: { user },
+      };
+   }
+
+   return {
+      props: {},
+   };
 };
 
 export default CheckoutPage;
