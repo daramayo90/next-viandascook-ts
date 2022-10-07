@@ -20,9 +20,10 @@ const updateAddress = async (req: NextApiRequest, res: NextApiResponse<Data>) =>
    const { email, address, address2, city, zipcode, phone, dni } = req.body;
 
    await db.connect();
+   console.log(email);
    let user;
    try {
-      user = await User.findOne({ email: 'damian@gmail.com' });
+      user = await User.findOne({ email: email });
       console.log(user);
    } catch (error) {
       console.log('ERROR', error);
