@@ -50,9 +50,6 @@ export const authOptions: NextAuthOptions = {
    // Callbacks
    callbacks: {
       async jwt({ token, account, user }) {
-         console.log('TOKEN', token);
-         console.log('ACCOUNT', account);
-         console.log('USER', user);
          if (account) {
             token.accessToken = account.access_token;
             switch (account.type) {
@@ -65,8 +62,6 @@ export const authOptions: NextAuthOptions = {
 
                case 'credentials':
                   token.user = user;
-                  console.log('TEST123');
-                  console.log('TOKEN USER', token.user);
                   break;
             }
          }
