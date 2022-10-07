@@ -22,7 +22,7 @@ const updateAddress = async (req: NextApiRequest, res: NextApiResponse<Data>) =>
    await db.connect();
    let user;
    try {
-      user = await User.findOne({ email });
+      user = await User.findOne(email);
    } catch (error) {
       console.log('ERROR', error);
       db.disconnect();
