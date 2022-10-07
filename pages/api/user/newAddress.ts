@@ -19,15 +19,25 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Data>)
 const updateAddress = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
    const { email, address, address2, city, zipcode, phone, dni } = req.body;
 
+   console.log('TEST SERVER 1');
+
    await db.connect();
+
+   console.log('TEST SERVER 2');
 
    const user = await User.findOne({ email }).lean();
 
+   console.log('TEST SERVER 3');
+
    await db.disconnect();
+
+   console.log('TEST SERVER 4');
 
    if (!user) {
       return res.status(400).json({ message: 'User does not exist' });
    }
+
+   console.log('TEST SERVER 5');
 
    await User.updateOne(
       {
@@ -44,6 +54,8 @@ const updateAddress = async (req: NextApiRequest, res: NextApiResponse<Data>) =>
          },
       },
    );
+
+   console.log('TEST SERVER 6');
 
    return res.status(200).json(user);
 };
