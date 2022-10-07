@@ -2,22 +2,9 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 
 import { db } from '../../../database';
 import { User } from '../../../models';
-import { IUser, IAddress } from '../../../interfaces';
+import { IUser } from '../../../interfaces';
 
-type Data =
-   | { message: string }
-   // | {
-   //      user: {
-   //         email: string;
-   //         phone: string;
-   //         dni: string;
-   //         address: IAddress;
-   //         address2: IAddress;
-   //         city: IAddress;
-   //         zipcode: IAddress;
-   //      };
-   //   };
-   | IUser;
+type Data = { message: string } | IUser;
 
 export default function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
    switch (req.method) {

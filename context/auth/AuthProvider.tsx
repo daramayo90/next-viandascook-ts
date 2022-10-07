@@ -6,6 +6,8 @@ import { viandasApi } from '../../api';
 import { IUser, ShippingAddress } from '../../interfaces';
 import { AuthContext, authReducer } from './';
 
+import axios, { AxiosError } from 'axios';
+
 interface Props {
    children: ReactNode;
 }
@@ -95,7 +97,9 @@ export const AuthProvider: FC<Props> = ({ children }) => {
    // Update address of userdb
    const updateAddress = async (info: ShippingAddress): Promise<boolean> => {
       try {
+         console.log('TEST1', info);
          const { email, address, address2 = '', city, zipcode, phone, dni } = info;
+         console.log('TEST2', email, address);
 
          const { data } = await viandasApi.put('/user/newAddress', {
             email,
@@ -106,12 +110,19 @@ export const AuthProvider: FC<Props> = ({ children }) => {
             phone,
             dni,
          });
+         console.log('TEST3', data);
 
          dispatch({ type: '[Auth] - New Address', payload: data });
 
          return true;
       } catch (error) {
+         console.log('TEST ERROR');
          console.log(error);
+
+         if (axios.isAxiosError(error)) {
+            const err = error as AxiosError;
+            console.log('AXIOS ERROR', err);
+         }
 
          return false;
       }
