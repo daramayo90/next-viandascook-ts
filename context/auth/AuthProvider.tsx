@@ -59,8 +59,6 @@ export const AuthProvider: FC<Props> = ({ children }) => {
 
          dispatch({ type: '[Auth] - Login', payload: user });
 
-         router.reload();
-
          return false;
       } catch (error) {
          console.log(error);
@@ -112,6 +110,8 @@ export const AuthProvider: FC<Props> = ({ children }) => {
          });
 
          dispatch({ type: '[Auth] - New Address', payload: data });
+
+         router.reload();
 
          return true;
       } catch (error) {
