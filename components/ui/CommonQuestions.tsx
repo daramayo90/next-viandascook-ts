@@ -1,5 +1,3 @@
-import Link from 'next/link';
-
 import { Accordion, Button } from './';
 import { commonQuestions } from '../../utils';
 
