@@ -1,7 +1,5 @@
 import { useContext } from 'react';
-import { GetServerSideProps, GetStaticProps } from 'next';
 import { NextPage } from 'next/types';
-import { getSession, useSession } from 'next-auth/react';
 import Link from 'next/link';
 
 import { CartMenu, CheckoutSummary } from '../../components/cart';
@@ -14,17 +12,16 @@ import { AiOutlineRight } from 'react-icons/ai';
 import { TbDiscount2 } from 'react-icons/tb';
 
 import styles from '../../styles/Checkout.module.css';
-import { dbUsers } from '../../database';
-import { IUser } from '../../interfaces';
 
-interface Props {
-   user?: IUser;
-}
-
-const CheckoutPage: NextPage<Props> = ({ user }) => {
+const CheckoutPage: NextPage = () => {
    const { shippingAddress } = useContext(OrdersContext);
+   const { isLoggedIn, user } = useContext(AuthContext);
 
-   const shipping = user ? user?.shipping : shippingAddress;
+   const shipping = isLoggedIn ? user?.shipping : shippingAddress;
+
+   if (!shipping) {
+      return <></>;
+   }
 
    return (
       <ShopLayout title={''} pageDescription={''}>
@@ -67,36 +64,6 @@ const CheckoutPage: NextPage<Props> = ({ user }) => {
          <CartMenu />
       </ShopLayout>
    );
-};
-
-// export const getServerSideProps: GetServerSideProps = async ({ req }) => {
-//    const { user }: any = (await getSession({ req })) || '';
-
-//    if (user) {
-//       return {
-//          props: { user },
-//       };
-//    }
-
-//    return {
-//       props: {},
-//    };
-// };
-
-export const getStaticProps: GetStaticProps = async () => {
-   const { data, status } = useSession();
-
-   if (status === 'authenticated') {
-      const user = data.user as IUser;
-
-      return {
-         props: { user },
-      };
-   }
-
-   return {
-      props: {},
-   };
 };
 
 export default CheckoutPage;

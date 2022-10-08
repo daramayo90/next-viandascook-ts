@@ -1,5 +1,5 @@
 import { FC, ReactNode, useEffect, useReducer } from 'react';
-import { useSession, signOut, getSession } from 'next-auth/react';
+import { useSession, signOut } from 'next-auth/react';
 import Cookies from 'js-cookie';
 
 import { viandasApi } from '../../api';
