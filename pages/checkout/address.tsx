@@ -95,7 +95,6 @@ const AddressPage: NextPage<Props> = ({ userdb }) => {
                         {...register('firstName', {
                            required: true,
                         })}
-                        defaultValue={userdb?.name || ''}
                      />
                      {errors.firstName && (
                         <span className={styles.error}>El nombre es un campo requerido</span>
