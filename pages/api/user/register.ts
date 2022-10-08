@@ -52,7 +52,7 @@ const registerUser = async (req: NextApiRequest, res: NextApiResponse<Data>) => 
 
    if (user) {
       await db.disconnect();
-      return res.status(400).json({ message: 'Mail already registerd' });
+      return res.status(400).json({ message: 'Correo electrónico ya registrado' });
    }
 
    await db.disconnect();

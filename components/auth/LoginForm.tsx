@@ -1,8 +1,7 @@
-import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 
-import { FormData, useAuth } from '../../hooks';
+import { useAuth } from '../../hooks';
 
 import { SubmitButton } from '../ui';
 
@@ -13,12 +12,7 @@ import styles from '../../styles/Auth.module.css';
 export const LoginForm = () => {
    const router = useRouter();
 
-   const { showError, setShowError, register, handleSubmit, errors } = useAuth();
-
-   const onLoginUser = async ({ email, password }: FormData) => {
-      setShowError(false);
-      await signIn('credentials', { email, password });
-   };
+   const { showError, register, handleSubmit, errors, onLoginUser } = useAuth();
 
    return (
       <form onSubmit={handleSubmit(onLoginUser)} noValidate>

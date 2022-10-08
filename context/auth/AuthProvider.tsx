@@ -29,6 +29,8 @@ const AUTH_INITIAL_STATE: AuthState = {
    user: undefined,
 };
 
+import axios, { AxiosError } from 'axios';
+
 export const AuthProvider: FC<Props> = ({ children }) => {
    const [state, dispatch] = useReducer(authReducer, AUTH_INITIAL_STATE);
    const { data, status } = useSession();
@@ -42,7 +44,7 @@ export const AuthProvider: FC<Props> = ({ children }) => {
    }, [data, status]);
 
    // Register new user
-   const registerUser = async (newUser: Form): Promise<boolean> => {
+   const registerUser = async (newUser: Form): Promise<{ hasError: boolean; message?: string }> => {
       try {
          const { name, lastName, email, password } = newUser;
 
@@ -59,11 +61,14 @@ export const AuthProvider: FC<Props> = ({ children }) => {
 
          dispatch({ type: '[Auth] - Login', payload: user });
 
-         return false;
-      } catch (error) {
-         console.log(error);
-
-         return true;
+         return {
+            hasError: false,
+         };
+      } catch (error: any) {
+         return {
+            hasError: true,
+            message: error.response.data.message,
+         };
       }
    };
 

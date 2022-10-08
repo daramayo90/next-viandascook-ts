@@ -1,11 +1,7 @@
-import { useContext } from 'react';
-import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 
-import { AuthContext } from '../../context/auth';
-
-import { FormData, useAuth } from '../../hooks';
+import { useAuth } from '../../hooks';
 
 import { SubmitButton } from '../ui';
 
@@ -16,24 +12,7 @@ import styles from '../../styles/Auth.module.css';
 export const RegisterForm = () => {
    const router = useRouter();
 
-   const { registerUser } = useContext(AuthContext);
-
-   const { showError, setShowError, register, handleSubmit, errors } = useAuth();
-
-   const onRegisterForm = async (newUser: FormData) => {
-      setShowError(false);
-      const hasError = await registerUser(newUser);
-
-      if (hasError) {
-         setShowError(true);
-         setTimeout(() => setShowError(false), 3500);
-         return;
-      }
-
-      const { email, password } = newUser;
-
-      await signIn('credentials', { email, password });
-   };
+   const { showError, register, handleSubmit, errors, errorMessage, onRegisterForm } = useAuth();
 
    return (
       <form onSubmit={handleSubmit(onRegisterForm)} noValidate>
@@ -99,6 +78,10 @@ export const RegisterForm = () => {
 
          <div className={showError ? `${styles.errorMessage} fadeIn` : 'noDisplay'}>
             <span>Corrige los errores antes de continuar</span>
+         </div>
+
+         <div className={errorMessage ? `${styles.errorMessage} fadeIn` : 'noDisplay'}>
+            <span>{errorMessage}</span>
          </div>
       </form>
    );
