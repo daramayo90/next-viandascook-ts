@@ -81,7 +81,7 @@ const AddressPage: NextPage<Props> = ({ userdb }) => {
       } else {
          updateAddress(data);
       }
-      router.push('/checkout', undefined, { shallow: true });
+      // router.push('/checkout', undefined, { shallow: true });
    };
 
    return (
