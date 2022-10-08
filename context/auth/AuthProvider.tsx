@@ -5,8 +5,7 @@ import Cookies from 'js-cookie';
 import { viandasApi } from '../../api';
 import { IUser, ShippingAddress } from '../../interfaces';
 import { AuthContext, authReducer } from './';
-
-import axios, { AxiosError } from 'axios';
+import { useRouter } from 'next/router';
 
 interface Props {
    children: ReactNode;
@@ -33,6 +32,7 @@ const AUTH_INITIAL_STATE: AuthState = {
 export const AuthProvider: FC<Props> = ({ children }) => {
    const [state, dispatch] = useReducer(authReducer, AUTH_INITIAL_STATE);
    const { data, status } = useSession();
+   const router = useRouter();
 
    // Persist session in the entire app when refreshing
    useEffect(() => {
@@ -58,6 +58,8 @@ export const AuthProvider: FC<Props> = ({ children }) => {
          Cookies.set('token', token);
 
          dispatch({ type: '[Auth] - Login', payload: user });
+
+         router.reload();
 
          return false;
       } catch (error) {
@@ -114,11 +116,6 @@ export const AuthProvider: FC<Props> = ({ children }) => {
          return true;
       } catch (error) {
          console.log(error);
-
-         if (axios.isAxiosError(error)) {
-            const err = error as AxiosError;
-            console.log('AXIOS ERROR', err);
-         }
 
          return false;
       }

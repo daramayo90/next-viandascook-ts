@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { GetServerSideProps } from 'next';
+import { GetServerSideProps, GetStaticProps } from 'next';
 import { NextPage } from 'next/types';
 import { getSession } from 'next-auth/react';
 import Link from 'next/link';
@@ -7,22 +7,20 @@ import Link from 'next/link';
 import { CartMenu, CheckoutSummary } from '../../components/cart';
 import { ShopLayout } from '../../components/layouts';
 
-import { OrdersContext } from '../../context';
+import { AuthContext, OrdersContext } from '../../context';
 
 import { RiMapPinFill } from 'react-icons/ri';
 import { AiOutlineRight } from 'react-icons/ai';
 import { TbDiscount2 } from 'react-icons/tb';
 
 import styles from '../../styles/Checkout.module.css';
+import { dbUsers } from '../../database';
 
-interface Props {
-   user?: any;
-}
-
-const CheckoutPage: NextPage<Props> = ({ user }) => {
+const CheckoutPage: NextPage = () => {
    const { shippingAddress } = useContext(OrdersContext);
+   const { isLoggedIn, user } = useContext(AuthContext);
 
-   const shipping = user ? user?.shipping : shippingAddress;
+   const shipping = isLoggedIn ? user?.shipping : shippingAddress;
 
    return (
       <ShopLayout title={''} pageDescription={''}>
@@ -67,18 +65,26 @@ const CheckoutPage: NextPage<Props> = ({ user }) => {
    );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ req }) => {
-   const { user }: any = (await getSession({ req })) || '';
+// export const getServerSideProps: GetServerSideProps = async ({ req }) => {
+//    const { user }: any = (await getSession({ req })) || '';
 
-   if (user) {
-      return {
-         props: { user },
-      };
-   }
+//    if (user) {
+//       return {
+//          props: { user },
+//       };
+//    }
 
-   return {
-      props: {},
-   };
-};
+//    return {
+//       props: {},
+//    };
+// };
+
+// export const getStaticProps: GetStaticProps = async (ctx) => {
+//    const user = await dbUsers.getUser('damian@gmail.com');
+
+//    return {
+//       props: { user },
+//    };
+// };
 
 export default CheckoutPage;
