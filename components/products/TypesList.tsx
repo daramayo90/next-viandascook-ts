@@ -1,7 +1,5 @@
-import { Dispatch, FC, SetStateAction } from 'react';
+import { FC } from 'react';
 import Image from 'next/image';
-
-import { IProduct } from '../../interfaces';
 
 import { typesList } from '../../utils';
 
@@ -9,7 +7,7 @@ import styles from '../../styles/TypesList.module.css';
 
 interface Props {
    type: string;
-   setType: Dispatch<SetStateAction<string>>;
+   setType: (value: string) => void;
 }
 
 export const TypesList: FC<Props> = ({ type, setType }) => {

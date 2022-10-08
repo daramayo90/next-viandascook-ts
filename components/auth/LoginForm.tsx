@@ -20,16 +20,19 @@ export const LoginForm = () => {
 
          <label className={styles.inputText}>
             <input
-               {...register('email', { required: true, validate: validations.isEmail })}
+               {...register('email', {
+                  required: 'El email es un campo requerido',
+                  validate: validations.isEmail,
+               })}
                placeholder='email@ejemplo.com'
             />
-            {errors.email && <span className={styles.error}>El email es un campo requerido</span>}
+            {errors.email && <span className={styles.error}>{errors.email?.message}</span>}
          </label>
 
          <label className={styles.inputText}>
             <input
                {...register('password', {
-                  required: true,
+                  required: 'La contraseña es un campo requerido',
                   minLength: {
                      value: 6,
                      message: 'Debe tener al menos 6 caracteres',
@@ -38,9 +41,7 @@ export const LoginForm = () => {
                type='password'
                placeholder='Contraseña'
             />
-            {errors.password && (
-               <span className={styles.error}>La contraseña es un campo requerido</span>
-            )}
+            {errors.password && <span className={styles.error}>{errors.password?.message}</span>}
          </label>
 
          <div className={styles.linksTo}>

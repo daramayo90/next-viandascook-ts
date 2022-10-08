@@ -20,32 +20,37 @@ export const RegisterForm = () => {
 
          <div className={styles.userNames}>
             <label className={styles.inputText}>
-               <input {...register('name', { required: true })} placeholder='Nombre' />
-               {errors.name && (
-                  <span className={styles.error}>El nombre es un campo requerido</span>
-               )}
+               <input
+                  {...register('name', { required: 'El nombre es un campo requerido' })}
+                  placeholder='Nombre'
+               />
+               {errors.name && <span className={styles.error}>{errors.name?.message}</span>}
             </label>
 
             <label className={styles.inputText}>
-               <input {...register('lastName', { required: true })} placeholder='Apellido' />
-               {errors.lastName && (
-                  <span className={styles.error}>El apellido es un campo requerido</span>
-               )}
+               <input
+                  {...register('lastName', { required: 'El apellido es un campo requerido' })}
+                  placeholder='Apellido'
+               />
+               {errors.lastName && <span className={styles.error}>{errors.lastName?.message}</span>}
             </label>
          </div>
 
          <label className={styles.inputText}>
             <input
-               {...register('email', { required: true, validate: validations.isEmail })}
+               {...register('email', {
+                  required: 'El email es un campo requerido',
+                  validate: validations.isEmail,
+               })}
                placeholder='email@ejemplo.com'
             />
-            {errors.email && <span className={styles.error}>No parece ser un email válido</span>}
+            {errors.email && <span className={styles.error}>{errors.email?.message}</span>}
          </label>
 
          <label className={styles.inputText}>
             <input
                {...register('password', {
-                  required: true,
+                  required: 'La contraseña es un campo requerido',
                   minLength: {
                      value: 6,
                      message: 'Debe tener al menos 6 caracteres',
@@ -54,9 +59,7 @@ export const RegisterForm = () => {
                type='password'
                placeholder='Contraseña'
             />
-            {errors.password && (
-               <span className={styles.error}>La contraseña es un campo requerido</span>
-            )}
+            {errors.password && <span className={styles.error}>{errors.password?.message}</span>}
          </label>
 
          <div className={styles.linksTo}>

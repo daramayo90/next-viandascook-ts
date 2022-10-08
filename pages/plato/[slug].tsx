@@ -1,5 +1,4 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
-import { useRouter } from 'next/router';
 import Image from 'next/image';
 
 import { dbProducts } from '../../database';
@@ -7,11 +6,7 @@ import { ICartProduct, IProduct } from '../../interfaces';
 
 import { currency } from '../../utils';
 import { useTempCart } from '../../hooks';
-import { CartMenu } from '../../components/cart';
 import { ItemCounter } from '../../components/products';
-
-import { BsArrowLeftShort } from 'react-icons/bs';
-import { BiChevronLeft } from 'react-icons/bi';
 
 import styles from '../../styles/Product.module.css';
 import { ShopLayout } from '../../components/layouts';
@@ -21,26 +16,12 @@ interface Props {
 }
 
 const ProductPage: NextPage<Props> = ({ product }) => {
-   const router = useRouter();
-
    const { isSelecting, startSelecting, tempCartProduct, onNewCartQuantityValue, cartProduct } =
       useTempCart(product);
 
    return (
       <ShopLayout title={''} pageDescription={''}>
          <article className={styles.product}>
-            {/* TODO: Agregar Layout nuevo */}
-            {/* TODO: Mantener los filtros */}
-
-            {/* <div className={styles.backMobile} onClick={() => router.push('/menu')}>
-               <BiChevronLeft />
-            </div>
-
-            <div className={styles.backDesktop} onClick={() => router.push('/menu')}>
-               <BsArrowLeftShort />
-               <span className={styles.text}>Volver</span>
-            </div> */}
-
             <div className={styles.topSection}>
                {/* Title */}
 

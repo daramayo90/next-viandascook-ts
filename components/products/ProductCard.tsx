@@ -29,11 +29,11 @@ export const ProductCard: FC<Props> = ({ product }) => {
 
    return (
       <article className={cartProduct ? `${styles.product} selected` : `${styles.product}`}>
-         <Link href={`/plato/${product.slug}`} prefetch={false}>
-            <article className={styles.card}>
-               {/* TODO: Out of Stock */}
-               {product.inStock === false && <div className={styles.stock}>Sin stock</div>}
+         <article className={styles.card}>
+            {/* TODO: Out of Stock */}
+            {product.inStock === false && <div className={styles.stock}>Sin stock</div>}
 
+            <Link href={`/plato/${product.slug}`} prefetch={false}>
                <div className={styles.nextImage}>
                   <Image
                      src={`/products/${product.image}`}
@@ -43,26 +43,26 @@ export const ProductCard: FC<Props> = ({ product }) => {
                      priority
                   />
                </div>
+            </Link>
 
-               <div className={styles.info}>
-                  <div className={styles.name}>
-                     <h4>
-                        {product.name.length > 50
-                           ? product.name.substring(0, 45) + '...'
-                           : product.name}
-                     </h4>
-                  </div>
-
-                  <div className={styles.tags}>
-                     <span>{info.Calorías}</span>
-                  </div>
-
-                  <div className={styles.price}>
-                     <span>{currency.format(product.price)}</span>
-                  </div>
+            <div className={styles.info}>
+               <div className={styles.name}>
+                  <h4>
+                     {product.name.length > 50
+                        ? product.name.substring(0, 45) + '...'
+                        : product.name}
+                  </h4>
                </div>
-            </article>
-         </Link>
+
+               <div className={styles.tags}>
+                  <span>{info.Calorías}</span>
+               </div>
+
+               <div className={styles.price}>
+                  <span>{currency.format(product.price)}</span>
+               </div>
+            </div>
+         </article>
 
          <div className={styles.addToCart}>
             {!isSelecting && !cartProduct ? (

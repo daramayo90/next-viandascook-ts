@@ -41,11 +41,11 @@ const loginUser = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
    await db.disconnect();
 
    if (!user) {
-      return res.status(400).json({ message: 'Mail or Password not valid - EMAIL' });
+      return res.status(400).json({ message: 'Mail o Contraseñas no válidos' });
    }
 
    if (!bcrypt.compareSync(password, user.password!)) {
-      return res.status(400).json({ message: 'Mail or Password not valid - PASSWORD' });
+      return res.status(400).json({ message: 'Mail o Contraseñas no válidos' });
    }
 
    const { _id, name, lastName, phone = '', dni = '', shipping, role } = user;
