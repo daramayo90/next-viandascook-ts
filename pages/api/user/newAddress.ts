@@ -21,7 +21,7 @@ const updateAddress = async (req: NextApiRequest, res: NextApiResponse<Data>) =>
 
    await db.connect();
 
-   const user = await User.findOne({ email: email }).exec();
+   const user = await User.findOne({ email: 'damian@gmail.com' }).exec();
 
    if (!user) {
       return res.status(400).json({ message: 'User does not exist' });
