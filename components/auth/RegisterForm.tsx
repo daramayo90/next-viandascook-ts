@@ -60,7 +60,7 @@ export const RegisterForm = () => {
                {...register('email', { required: true, validate: validations.isEmail })}
                placeholder='email@ejemplo.com'
             />
-            {errors.email && <span className={styles.error}>El email es un campo requerido</span>}
+            {errors.email && <span className={styles.error}>No parece ser un email válido</span>}
          </label>
 
          <label className={styles.inputText}>
@@ -72,6 +72,7 @@ export const RegisterForm = () => {
                      message: 'Debe tener al menos 6 caracteres',
                   },
                })}
+               type='password'
                placeholder='Contraseña'
             />
             {errors.password && (

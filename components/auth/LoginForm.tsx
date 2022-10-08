@@ -41,6 +41,7 @@ export const LoginForm = () => {
                      message: 'Debe tener al menos 6 caracteres',
                   },
                })}
+               type='password'
                placeholder='Contraseña'
             />
             {errors.password && (

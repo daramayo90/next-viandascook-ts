@@ -82,11 +82,15 @@
 .auth > .container > form > .linksTo > .login,
 .auth > .container > form > .linksTo > .register {
    width: 50%;
+   cursor: pointer;
+}
+
+.auth > .container > form > .linksTo > .login > span,
+.auth > .container > form > .linksTo > .register > span {
    font-size: 1rem;
    font-weight: 700;
    text-decoration-line: underline;
    color: var(--white);
-   cursor: pointer;
 }
 
 .auth > .container > form > .linksTo > .registerButton,
@@ -95,20 +99,23 @@
    max-width: 150px;
 }
 
-.auth > .container > .loginContainer {
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   width: 95%;
-   margin: 0 auto;
-}
-
 .auth > .container > .textProviders {
    display: block;
    width: 90%;
    margin: 2rem auto;
    font-size: 0.9rem;
    text-align: center;
+   color: var(--white);
+}
+
+.error {
+   display: block;
+   margin-top: 5px;
+   padding-left: 5px;
+   color: var(--white);
+}
+
+.errorMessage > span {
    color: var(--white);
 }
 

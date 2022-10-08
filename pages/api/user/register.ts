@@ -43,7 +43,7 @@ const registerUser = async (req: NextApiRequest, res: NextApiResponse<Data>) => 
    }
 
    if (!validations.isValidEmail(email)) {
-      return res.status(400).json({ message: 'Is not a valid email' });
+      return res.status(400).json({ message: 'Not a valid email' });
    }
 
    await db.connect();
@@ -58,11 +58,19 @@ const registerUser = async (req: NextApiRequest, res: NextApiResponse<Data>) => 
    await db.disconnect();
 
    const newUser = new User({
-      email: email.toLocaleLowerCase(),
-      password: bcrypt.hashSync(password, 10),
-      role: 'client',
       name: name.charAt(0).toUpperCase() + name.slice(1),
       lastName: lastName.charAt(0).toUpperCase() + lastName.slice(1),
+      email: email.toLocaleLowerCase(),
+      phone: '@',
+      dni: '@',
+      password: bcrypt.hashSync(password, 10),
+      role: 'client',
+      shipping: {
+         address: '@',
+         address2: '@',
+         zipcode: '@',
+         city: '@',
+      },
    });
 
    try {
