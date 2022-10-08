@@ -34,37 +34,24 @@
 
 .banner > .container > .brand > .slogan {
    width: 85%;
-   margin: auto;
+   margin: 2rem auto;
    text-align: center;
+   transform: rotate(-4.91deg);
+}
+
+.banner > .container > .brand > .slogan > span {
    font-family: 'Reinata';
    font-style: normal;
    font-size: 4rem;
    line-height: 80%;
    letter-spacing: 5px;
-   color: #ffffff;
-   transform: rotate(-4.91deg);
+   color: var(--white);
 }
 
 .banner > .container > .brand > .button {
    width: 60%;
    max-width: 210px;
    margin: 1.5rem auto;
-}
-
-.banner > .container > .brand > .discount {
-   width: 100%;
-   margin-top: 1rem;
-   margin-bottom: 2rem;
-   text-align: center;
-   font-style: normal;
-   font-weight: 400;
-   font-size: 14px;
-   line-height: 160%;
-   color: var(--secondary);
-}
-
-.banner > .container > .brand > .discount > span {
-   display: block;
 }
 
 .banner > .container > .bannerDishes {
@@ -120,14 +107,6 @@
       font-size: 7rem;
       line-height: 97.5%;
       letter-spacing: -0.02em;
-   }
-
-   .banner > .container > .brand > .discount {
-      font-size: 16px;
-   }
-
-   .banner > .container > .brand > .discount > span {
-      display: inline;
    }
 
    .banner > .container > .bannerDishes {

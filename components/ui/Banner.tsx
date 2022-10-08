@@ -18,13 +18,6 @@ export const Banner = () => {
                <div className={styles.button}>
                   <Button href='/menu' content='¡Quiero!' />
                </div>
-
-               <h4 className={styles.discount}>
-                  <span>10% OFF EN TU PRIMER PEDIDO.</span>
-                  <span>
-                     CUPÓN: <strong>BIENVENIDO10</strong>
-                  </span>
-               </h4>
             </div>
 
             <div className={styles.bannerDishes}>
