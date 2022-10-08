@@ -31,7 +31,6 @@ export const checkUserEmailPassword = async (email: string, password: string) =>
 };
 
 // This function craeates or verifies an OAuth user
-// TODO: Ver new user
 export const oAuthToDbUser = async (authEmail: string, authName: string, authLastName: string) => {
    await db.connect();
 
@@ -47,17 +46,25 @@ export const oAuthToDbUser = async (authEmail: string, authName: string, authLas
       name: authName,
       lastName: authLastName,
       email: authEmail,
+      phone: '@',
+      dni: '@',
       password: '@',
       role: 'client',
+      shipping: {
+         address: '@',
+         address2: '@',
+         zipcode: '@',
+         city: '@',
+      },
    });
 
    await newUser.save();
 
    await db.disconnect();
 
-   const { _id, name, lastName, email, role } = newUser;
+   const { _id, name, lastName, email, phone = '', dni = '', shipping, role } = newUser;
 
-   return { _id, name, lastName, email, role };
+   return { _id, name, lastName, email, phone, dni, shipping, role };
 };
 
 export const getUser = async (email: string): Promise<IUser | null> => {
