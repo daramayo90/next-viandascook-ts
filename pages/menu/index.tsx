@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { GetStaticProps, NextPage } from 'next';
 
 import { dbProducts } from '../../database';
@@ -8,7 +9,6 @@ import { DiscountSlides } from '../../components/ui';
 import { ProductCard, SearchNotFound, SearchProducts, TypesList } from '../../components/products';
 
 import styles from '../../styles/Products.module.css';
-import { useState } from 'react';
 
 interface Props {
    products: IProduct[];

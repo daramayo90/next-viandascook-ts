@@ -7,7 +7,6 @@ import { ShopLayout } from '../../components/layouts';
 import { useRouter } from 'next/router';
 
 import styles from '../../styles/Cart.module.css';
-import { Button } from '../../components/ui';
 
 const CartPage: NextPage = () => {
    const router = useRouter();

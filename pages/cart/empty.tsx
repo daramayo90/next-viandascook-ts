@@ -1,10 +1,12 @@
-import { ShopLayout } from '../../components/layouts';
-
-import styles from '../../styles/EmptyCart.module.css';
-import { Button } from '../../components/ui';
+import type { NextPage } from 'next';
 import Image from 'next/image';
 
-const EmptyPage = () => {
+import { ShopLayout } from '../../components/layouts';
+import { Button } from '../../components/ui';
+
+import styles from '../../styles/EmptyCart.module.css';
+
+const EmptyPage: NextPage = () => {
    return (
       <ShopLayout title={'Carrito vacío'} pageDescription={''}>
          <section className={styles.emptyCart}>
