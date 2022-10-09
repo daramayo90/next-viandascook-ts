@@ -1,7 +1,11 @@
-import React, { FC } from 'react';
+import { FC, useContext, useEffect, useState } from 'react';
 import Link from 'next/link';
 
 import { IAddress } from '../../interfaces';
+
+import { AuthContext } from '../../context';
+
+import { LoadingBars } from '../ui';
 
 import { AiOutlineRight } from 'react-icons/ai';
 import { RiMapPinFill } from 'react-icons/ri';
@@ -9,10 +13,20 @@ import { RiMapPinFill } from 'react-icons/ri';
 import styles from '../../styles/Checkout.module.css';
 
 interface Props {
-   shipping: IAddress;
+   shipping?: IAddress;
 }
 
 export const Address: FC<Props> = ({ shipping }) => {
+   const { isLoggedIn } = useContext(AuthContext);
+
+   const [isLoading, setIsLoading] = useState(true);
+
+   useEffect(() => {
+      if (shipping) {
+         setIsLoading(false);
+      }
+   }, [shipping]);
+
    return (
       <Link href='/checkout/address'>
          <div className={styles.deliveryAddress}>
@@ -21,11 +35,15 @@ export const Address: FC<Props> = ({ shipping }) => {
 
                <div className={styles.address}>
                   <RiMapPinFill className={styles.iconMap} />
+
                   {!shipping ? (
                      <p className={styles.text}>Datos de envío</p>
+                  ) : isLoading ? (
+                     <LoadingBars />
                   ) : (
                      <p className={styles.text}>{shipping.address}</p>
                   )}
+
                   <AiOutlineRight className={styles.iconRight} />
                </div>
             </div>

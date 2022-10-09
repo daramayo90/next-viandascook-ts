@@ -52,6 +52,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
    const product = await dbProducts.getProductBySlug(slug);
 
+   // Incremental Static Generation (ISG)
    if (!product) {
       return {
          redirect: {

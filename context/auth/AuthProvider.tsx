@@ -29,12 +29,9 @@ const AUTH_INITIAL_STATE: AuthState = {
    user: undefined,
 };
 
-import axios, { AxiosError } from 'axios';
-
 export const AuthProvider: FC<Props> = ({ children }) => {
    const [state, dispatch] = useReducer(authReducer, AUTH_INITIAL_STATE);
    const { data, status } = useSession();
-   const router = useRouter();
 
    // Persist session in the entire app when refreshing
    useEffect(() => {
@@ -115,8 +112,6 @@ export const AuthProvider: FC<Props> = ({ children }) => {
          });
 
          dispatch({ type: '[Auth] - New Address', payload: data });
-
-         router.reload();
 
          return true;
       } catch (error) {

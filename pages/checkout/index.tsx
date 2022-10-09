@@ -1,8 +1,11 @@
-import { useContext } from 'react';
-import { NextPage } from 'next/types';
+import { useContext, useEffect, useState } from 'react';
+import { GetServerSideProps, GetStaticProps, NextPage } from 'next/types';
+import { getSession, useSession } from 'next-auth/react';
 
-import { Address, Promos } from '../../components/checkout';
+import { IUser } from '../../interfaces';
+
 import { ShopLayout } from '../../components/layouts';
+import { Address, Promos } from '../../components/checkout';
 import { CartMenu, CheckoutSummary } from '../../components/cart';
 
 import { AuthContext, OrdersContext } from '../../context';
@@ -11,13 +14,22 @@ import styles from '../../styles/Checkout.module.css';
 
 const CheckoutPage: NextPage = () => {
    const { shippingAddress } = useContext(OrdersContext);
-   const { isLoggedIn, user } = useContext(AuthContext);
+   const [userSession, setUserSession] = useState<any>('');
 
-   const shipping = isLoggedIn ? user?.shipping : shippingAddress;
+   useEffect(() => {
+      const verifySession = async () => {
+         const session = await getSession();
 
-   if (!shipping) {
-      return <></>;
-   }
+         if (session) {
+            const { user } = session;
+            setUserSession(user);
+         }
+      };
+
+      verifySession();
+   }, []);
+
+   const shipping = userSession ? userSession.shipping : shippingAddress;
 
    return (
       <ShopLayout title={''} pageDescription={''}>
@@ -32,10 +44,27 @@ const CheckoutPage: NextPage = () => {
                <CheckoutSummary />
             </div>
          </section>
-
          <CartMenu />
       </ShopLayout>
    );
 };
+
+// export const getStaticProps: GetStaticProps = async () => {
+//    const session = await getSession();
+
+//    console.log(session);
+
+//    if (session) {
+//       const { user } = session;
+
+//       return {
+//          props: { user },
+//       };
+//    }
+
+//    return {
+//       props: {},
+//    };
+// };
 
 export default CheckoutPage;
