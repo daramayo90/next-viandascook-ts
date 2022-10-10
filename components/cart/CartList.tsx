@@ -30,10 +30,6 @@ export const CartList: FC<Props> = ({ editable = false }) => {
       }
    };
 
-   const onRemoveProduct = (product: ICartProduct) => {
-      removeCartProduct(product);
-   };
-
    // const productsToShow = products ? products : cart;
 
    // TODO: Ordenar los productos por id

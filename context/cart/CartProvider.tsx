@@ -90,7 +90,10 @@ export const CartProvider: FC<Props> = ({ children }) => {
    // Remove Product from Cart
    const removeCartProduct = (product: ICartProduct) => {
       const products = state.cart.filter((p) => !(p._id === product._id));
+
       dispatch({ type: '[Cart] - Remove Product', payload: products });
+
+      if (state.cart.length === 1) Cookies.remove('cart');
    };
 
    return (
