@@ -1,10 +1,12 @@
 import { FC } from 'react';
-import { useAddress } from '../../hooks';
+
 import { IUser } from '../../interfaces';
 
-import styles from '../../styles/Address.module.css';
+import { useAddress } from '../../hooks';
 import { validations } from '../../utils';
 import { SubmitButton } from '../ui';
+
+import styles from '../../styles/Address.module.css';
 
 interface Props {
    userdb?: IUser;

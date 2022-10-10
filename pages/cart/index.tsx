@@ -1,10 +1,10 @@
 import { useContext, useEffect } from 'react';
 import type { NextPage } from 'next';
+import { useRouter } from 'next/router';
 
 import { CartContext } from '../../context';
 import { CartList, OrderSummary } from '../../components/cart';
 import { ShopLayout } from '../../components/layouts';
-import { useRouter } from 'next/router';
 
 import styles from '../../styles/Cart.module.css';
 

@@ -1,9 +1,7 @@
-import { FC, useContext, useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import Link from 'next/link';
 
 import { IAddress } from '../../interfaces';
-
-import { AuthContext } from '../../context';
 
 import { LoadingBars } from '../ui';
 
@@ -17,8 +15,6 @@ interface Props {
 }
 
 export const Address: FC<Props> = ({ shipping }) => {
-   // const { isLoggedIn } = useContext(AuthContext);
-
    const [isLoading, setIsLoading] = useState(true);
 
    useEffect(() => {
