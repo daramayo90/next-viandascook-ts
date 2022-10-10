@@ -1,35 +1,26 @@
-import { useContext, useEffect, useState } from 'react';
-import { GetServerSideProps, GetStaticProps, NextPage } from 'next/types';
-import { getSession, useSession } from 'next-auth/react';
+import { useContext } from 'react';
+import { GetServerSideProps, NextPage } from 'next/types';
+import { getSession } from 'next-auth/react';
 
 import { IUser } from '../../interfaces';
+
+import { AuthContext, OrdersContext } from '../../context';
 
 import { ShopLayout } from '../../components/layouts';
 import { Address, Promos } from '../../components/checkout';
 import { CartMenu, CheckoutSummary } from '../../components/cart';
 
-import { AuthContext, OrdersContext } from '../../context';
-
 import styles from '../../styles/Checkout.module.css';
 
-const CheckoutPage: NextPage = () => {
+interface Props {
+   user?: IUser;
+}
+
+const CheckoutPage: NextPage<Props> = ({ user }) => {
    const { shippingAddress } = useContext(OrdersContext);
-   const [userSession, setUserSession] = useState<any>('');
+   const { isLoggedIn } = useContext(AuthContext);
 
-   useEffect(() => {
-      const verifySession = async () => {
-         const session = await getSession();
-
-         if (session) {
-            const { user } = session;
-            setUserSession(user);
-         }
-      };
-
-      verifySession();
-   }, []);
-
-   const shipping = userSession ? userSession.shipping : shippingAddress;
+   const shipping = isLoggedIn ? user?.shipping : shippingAddress;
 
    return (
       <ShopLayout title={''} pageDescription={''}>
@@ -49,22 +40,20 @@ const CheckoutPage: NextPage = () => {
    );
 };
 
-// export const getStaticProps: GetStaticProps = async () => {
-//    const session = await getSession();
+export const getServerSideProps: GetServerSideProps = async ({ req }) => {
+   const session = await getSession({ req });
 
-//    console.log(session);
+   if (session) {
+      const { user } = session;
 
-//    if (session) {
-//       const { user } = session;
+      return {
+         props: { user },
+      };
+   }
 
-//       return {
-//          props: { user },
-//       };
-//    }
-
-//    return {
-//       props: {},
-//    };
-// };
+   return {
+      props: {},
+   };
+};
 
 export default CheckoutPage;

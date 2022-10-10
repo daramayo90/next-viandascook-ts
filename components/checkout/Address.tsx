@@ -17,7 +17,7 @@ interface Props {
 }
 
 export const Address: FC<Props> = ({ shipping }) => {
-   const { isLoggedIn } = useContext(AuthContext);
+   // const { isLoggedIn } = useContext(AuthContext);
 
    const [isLoading, setIsLoading] = useState(true);
 
@@ -41,7 +41,11 @@ export const Address: FC<Props> = ({ shipping }) => {
                   ) : isLoading ? (
                      <LoadingBars />
                   ) : (
-                     <p className={styles.text}>{shipping.address}</p>
+                     <p className={styles.text}>
+                        {shipping.address.length > 30
+                           ? shipping.address.substring(0, 30) + '...'
+                           : shipping.address}
+                     </p>
                   )}
 
                   <AiOutlineRight className={styles.iconRight} />

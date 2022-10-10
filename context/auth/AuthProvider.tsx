@@ -1,11 +1,11 @@
 import { FC, ReactNode, useEffect, useReducer } from 'react';
 import { useSession, signOut } from 'next-auth/react';
+
 import Cookies from 'js-cookie';
 
 import { viandasApi } from '../../api';
 import { IUser, ShippingAddress } from '../../interfaces';
 import { AuthContext, authReducer } from './';
-import { useRouter } from 'next/router';
 
 interface Props {
    children: ReactNode;
@@ -97,7 +97,7 @@ export const AuthProvider: FC<Props> = ({ children }) => {
    };
 
    // Update address of userdb
-   const updateAddress = async (info: ShippingAddress): Promise<boolean> => {
+   const updateAddress = async (info: ShippingAddress): Promise<{ err: boolean; msg?: string }> => {
       try {
          const { email, address, address2 = '', city, zipcode, phone, dni } = info;
 
@@ -111,13 +111,18 @@ export const AuthProvider: FC<Props> = ({ children }) => {
             dni,
          });
 
-         dispatch({ type: '[Auth] - New Address', payload: data });
+         const { user } = data;
 
-         return true;
-      } catch (error) {
-         console.log(error);
+         dispatch({ type: '[Auth] - New Address', payload: user });
 
-         return false;
+         return {
+            err: false,
+         };
+      } catch (error: any) {
+         return {
+            err: true,
+            msg: error.response.data.message,
+         };
       }
    };
 

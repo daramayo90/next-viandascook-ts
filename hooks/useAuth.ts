@@ -30,7 +30,6 @@ export const useAuth = () => {
 
    // Register new user
    const onRegisterForm = async (newUser: FormData) => {
-      setShowError(false);
       const { hasError, message } = await registerUser(newUser);
 
       if (hasError) {
@@ -54,11 +53,11 @@ export const useAuth = () => {
    return {
       providers,
       showError,
+      errors,
+      errorMessage,
       setShowError,
       register,
       handleSubmit,
-      errors,
-      errorMessage,
       setErrorMessage,
       onRegisterForm,
       onLoginUser,

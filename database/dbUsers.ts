@@ -46,15 +46,15 @@ export const oAuthToDbUser = async (authEmail: string, authName: string, authLas
       name: authName,
       lastName: authLastName,
       email: authEmail,
-      phone: '@',
-      dni: '@',
-      password: '@',
+      phone: '-',
+      dni: '-',
+      password: '-',
       role: 'client',
       shipping: {
-         address: '@',
-         address2: '@',
-         zipcode: '@',
-         city: '@',
+         address: '-',
+         address2: '-',
+         zipcode: '-',
+         city: '-',
       },
    });
 

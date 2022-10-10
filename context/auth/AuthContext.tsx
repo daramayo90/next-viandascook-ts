@@ -9,7 +9,7 @@ interface ContextProps {
    registerUser: (newUser: Form) => Promise<{ hasError: boolean; message?: string }>;
    loginUser: (email: string, password: string) => Promise<boolean>;
    logout: () => void;
-   updateAddress: (address: ShippingAddress) => Promise<boolean>;
+   updateAddress: (info: ShippingAddress) => Promise<{ err: boolean; msg?: string }>;
 }
 
 export const AuthContext = createContext({} as ContextProps);

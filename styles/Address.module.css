@@ -60,6 +60,20 @@
    box-shadow: 0 0 0 0.2rem rgb(0 123 255 / 25%);
 }
 
+.address > .container > form > .inputText > .error {
+   display: block;
+   margin-top: 5px;
+   padding-left: 5px;
+   font-size: 0.9rem;
+   font-weight: 400;
+   color: rgb(240, 20, 20);
+}
+
+.errorMessage > span {
+   color: var(--white);
+   color: rgb(255, 0, 0);
+}
+
 .address > .container > form > .applyButton {
    margin: 2rem 0 4rem 0;
 }
