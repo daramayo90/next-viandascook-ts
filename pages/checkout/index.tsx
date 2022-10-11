@@ -40,19 +40,8 @@ const CheckoutPage: NextPage<Props> = ({ user }) => {
    );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ req, query }) => {
+export const getServerSideProps: GetServerSideProps = async ({ req }) => {
    const session = await getSession({ req });
-   const { page = '/cart/empty' } = query;
-   const cart = req.cookies.cart;
-
-   if (!cart) {
-      return {
-         redirect: {
-            destination: page.toString(),
-            permanent: false,
-         },
-      };
-   }
 
    if (session) {
       const { user } = session;
