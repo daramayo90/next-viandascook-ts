@@ -1,9 +1,10 @@
 import { FC, ReactNode } from 'react';
 import Head from 'next/head';
-
-import { ShopNavbar } from '../navbar';
-import { SideMenu } from '../ui';
 import { useRouter } from 'next/router';
+
+import { SideMenu } from '../ui';
+import { ShopNavbar } from '../navbar';
+import { pageTitles } from '../../utils';
 
 interface Props {
    children: ReactNode;
@@ -15,47 +16,18 @@ interface Props {
 export const ShopLayout: FC<Props> = ({ children, title, pageDescription, imageFullUrl }) => {
    const router = useRouter();
    const path = router.asPath;
+
    let navTitle = '';
    let menuPage = false;
 
-   switch (path) {
-      case '/menu':
-         navTitle = 'Viandas Cook';
-         menuPage = true;
-         break;
+   const setPath = (routerPath: string) => {
+      Object.entries(pageTitles).forEach(([path, title]): void => {
+         if (routerPath === path) navTitle = title;
+         if (routerPath === '/menu') menuPage = true;
+      });
+   };
 
-      case '/descuentos':
-         navTitle = 'Descuentos';
-         break;
-
-      case '/cart':
-         navTitle = 'Carrito';
-         break;
-
-      case '/cart/empty':
-         navTitle = 'Carrito';
-         break;
-
-      case '/auth/login-checkout':
-         navTitle = 'Iniciar Sesión ';
-         break;
-
-      case '/checkout#':
-      case '/checkout':
-         navTitle = '¡Último Paso!';
-         break;
-
-      case '/checkout/address':
-         navTitle = 'Dirección de envío';
-         break;
-
-      case '/checkout/promociones':
-         navTitle = 'Promos Vigentes';
-         break;
-
-      default:
-         break;
-   }
+   setPath(path);
 
    return (
       <>

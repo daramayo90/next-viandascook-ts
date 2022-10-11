@@ -75,5 +75,6 @@
 }
 
 .address > .container > form > .applyButton {
+   width: 90%;
    margin: 2rem 0 4rem 0;
 }

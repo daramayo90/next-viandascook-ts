@@ -16,7 +16,7 @@ export const LoginForm = () => {
 
    return (
       <form onSubmit={handleSubmit(onLoginUser)} noValidate>
-         <h1 className={styles.title}>Iniciar Sesión</h1>
+         {/* <h1 className={styles.title}>Iniciar Sesión</h1> */}
 
          <label className={styles.inputText}>
             <input

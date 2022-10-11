@@ -16,27 +16,6 @@
    text-align: center;
 }
 
-.auth > .container > .lineup {
-   display: flex;
-   flex-direction: row;
-   align-items: center;
-   justify-content: space-between;
-   width: 80%;
-   margin: 2rem auto;
-}
-
-.auth > .container > .lineup > .stage {
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   justify-content: center;
-   width: 30px;
-   height: 30px;
-   border-radius: 25px;
-   color: var(--white);
-   background-color: blue;
-}
-
 .auth > .container > form {
    display: flex;
    flex-direction: column;

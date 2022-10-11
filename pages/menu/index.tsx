@@ -4,7 +4,7 @@ import { GetStaticProps, NextPage } from 'next';
 import { dbProducts } from '../../database';
 import { IProduct } from '../../interfaces';
 
-import { MenuLayout } from '../../components/layouts';
+import { ShopLayout } from '../../components/layouts';
 import { DiscountSlides } from '../../components/ui';
 import { ProductCard, SearchNotFound, SearchProducts, TypesList } from '../../components/products';
 
@@ -40,7 +40,7 @@ const ProductsPage: NextPage<Props> = ({ products }) => {
          : products;
 
    return (
-      <MenuLayout title={''} pageDescription={''}>
+      <ShopLayout title={''} pageDescription={''}>
          <section className={styles.products}>
             <SearchProducts searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
 
@@ -62,7 +62,7 @@ const ProductsPage: NextPage<Props> = ({ products }) => {
                )}
             </article>
          </section>
-      </MenuLayout>
+      </ShopLayout>
    );
 };
 

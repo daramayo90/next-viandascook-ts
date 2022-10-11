@@ -25,7 +25,7 @@ export const ShopNavbar: FC<Props> = ({ pageTitle, menuPage }) => {
          <div className={styles.container}>
             <div className={styles.navigation}>
                {!menuPage && (
-                  <div className={styles.backMobile} onClick={() => router.push('/menu')}>
+                  <div className={styles.backMobile} onClick={() => router.back()}>
                      <IoIosArrowRoundBack />
                   </div>
                )}
