@@ -1,0 +1,16 @@
+export const holidays = [
+   new Date(2022, 10, 14),
+   new Date(2022, 10, 15),
+   new Date(2022, 10, 16),
+   new Date(2022, 9, 17),
+   new Date(2022, 9, 18),
+   new Date(2022, 11, 11),
+   new Date(2022, 10, 28),
+   new Date(2022, 12, 25),
+   new Date(2022, 1, 1),
+   new Date(2022, 1, 20),
+   new Date(2022, 2, 17),
+   new Date(2022, 5, 25),
+   new Date(2022, 7, 3),
+   new Date(2022, 9, 7),
+];

@@ -1,17 +1,15 @@
 import Link from 'next/link';
-
 import { AiOutlineRight } from 'react-icons/ai';
-import { TbDiscount2 } from 'react-icons/tb';
-
+import { TbTruckDelivery } from 'react-icons/tb';
 import styles from '../../styles/Checkout.module.css';
 
-export const Promos = () => {
+export const DeliveryDate = () => {
    return (
-      <Link href='/checkout/promociones'>
+      <Link href='/checkout/delivery'>
          <div className={styles.discounts}>
             <div className={styles.info}>
-               <TbDiscount2 className={styles.iconDiscount} />
-               <p className={styles.text}>Ver Descuentos disponibles</p>
+               <TbTruckDelivery className={styles.iconDiscount} />
+               <p className={styles.text}>Seleccionar Fecha de Entrega</p>
                <AiOutlineRight className={styles.iconRight} />
             </div>
          </div>

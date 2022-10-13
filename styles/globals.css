@@ -239,3 +239,20 @@ textarea {
 button.nav.default-nav {
    display: none;
 }
+
+/* React Datepicker */
+.react-datepicker-popper {
+   width: 242px;
+   /* transform: none; */
+}
+
+.react-datepicker__tab-loop {
+   position: relative;
+   width: 100%;
+   height: 100%;
+   margin: 0 auto;
+}
+
+.react-datepicker__triangle {
+   display: none;
+}

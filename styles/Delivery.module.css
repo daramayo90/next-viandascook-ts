@@ -1,0 +1,13 @@
+.delivery {
+   width: 100vw;
+   height: 100vh;
+   background-color: var(--white);
+}
+
+.delivery > .container {
+   width: 90%;
+   height: 50%;
+   margin: 0 auto;
+   margin-top: 80px;
+   padding-top: 1px;
+}

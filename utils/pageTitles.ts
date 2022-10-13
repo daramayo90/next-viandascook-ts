@@ -8,4 +8,5 @@ export const pageTitles = {
    '/checkout': '¡Último Paso!',
    '/checkout/address': 'Dirección de envío',
    '/checkout/promociones': 'Promos Vigentes',
+   '/checkout/delivery': 'Fecha de Entrega',
 };
