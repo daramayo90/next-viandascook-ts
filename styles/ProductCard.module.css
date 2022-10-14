@@ -26,15 +26,12 @@
    flex-direction: column;
    justify-content: center;
    cursor: pointer;
-   /* width: 35%;
-   height: 100%;
-   object-fit: cover;
-   border-radius: 25px; */
+   width: 40%;
 }
 
 .product > .card > .nextImage img {
-   object-fit: cover;
    border-radius: 25px;
+   object-fit: cover;
 }
 
 .product > .card > .info {
@@ -42,8 +39,10 @@
    flex-direction: column;
    justify-content: space-evenly;
    align-items: flex-start;
-   width: 65%;
+   width: 60%;
    height: 100%;
+   margin-left: 0.5rem;
+   padding: 1rem 0;
 }
 
 .product > .card > .info > .name {

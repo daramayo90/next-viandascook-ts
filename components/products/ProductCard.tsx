@@ -39,7 +39,7 @@ export const ProductCard: FC<Props> = ({ product }) => {
                      src={`/products/${product.image}`}
                      alt={product.name}
                      width={100}
-                     height={100}
+                     height={120}
                      priority
                   />
                </div>

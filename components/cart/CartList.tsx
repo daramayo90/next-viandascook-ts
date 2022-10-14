@@ -1,6 +1,5 @@
 import { FC, useContext } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 
 import { CartContext } from '../../context/cart';
 
@@ -11,7 +10,6 @@ import { ICartProduct } from '../../interfaces';
 import { currency } from '../../utils';
 
 import styles from '../../styles/CartList.module.css';
-import { IoMdCloseCircleOutline } from 'react-icons/io';
 
 interface Props {
    editable?: boolean;
