@@ -57,6 +57,7 @@ export const CartList: FC<Props> = ({ editable = false }) => {
 
                      <div className={styles.price}>
                         <span>{currency.format(product.price * product.quantity)}</span>
+
                         {editable ? (
                            <div className={styles.cartQuantity}>
                               <ItemCounter

@@ -14,6 +14,7 @@ export interface CartState {
    cart: ICartProduct[];
    numberOfItems: number;
    subTotal: number;
+   shipping: number;
    total: number;
 }
 
@@ -22,11 +23,39 @@ const CART_INITIAL_STATE: CartState = {
    cart: [],
    numberOfItems: 0,
    subTotal: 0,
+   shipping: 0,
    total: 0,
 };
 
 export const CartProvider: FC<Props> = ({ children }) => {
    const [state, dispatch] = useReducer(cartReducer, CART_INITIAL_STATE);
+
+   // Add Cart Products to Cookies
+   useEffect(() => {
+      if (state.cart.length > 0) Cookies.set('cart', JSON.stringify(state.cart));
+   }, [state.cart]);
+
+   // TODO: Calcular el shipping + cupones
+   useEffect(() => {
+      const numberOfItems = state.cart.reduce((prev, curr) => curr.quantity + prev, 0);
+      const subTotal = state.cart.reduce((prev, curr) => curr.quantity * curr.price + prev, 0);
+      const shipping = state.shipping;
+      const total = subTotal + shipping;
+
+      const orderSummary = {
+         numberOfItems,
+         subTotal,
+         shipping,
+         total,
+      };
+
+      dispatch({ type: '[Cart] - Update Order Summary', payload: orderSummary });
+   }, [state.cart]);
+
+   // Add Shipping cost to Cookies
+   useEffect(() => {
+      if (state.shipping !== 0) Cookies.set('shipping', JSON.stringify(state.shipping));
+   }, [state.shipping]);
 
    // Load Cart from Cookies
    useEffect(() => {
@@ -38,25 +67,15 @@ export const CartProvider: FC<Props> = ({ children }) => {
       }
    }, []);
 
-   // Add Cart Products to Cookies
+   // Load Shipping cost from Cookies
    useEffect(() => {
-      if (state.cart.length > 0) Cookies.set('cart', JSON.stringify(state.cart));
-   }, [state.cart]);
-
-   // TODO: Calcular el shipping + cupones
-   useEffect(() => {
-      const numberOfItems = state.cart.reduce((prev, curr) => curr.quantity + prev, 0);
-      const subTotal = state.cart.reduce((prev, curr) => curr.quantity * curr.price + prev, 0);
-      const total = subTotal;
-
-      const orderSummary = {
-         numberOfItems,
-         subTotal,
-         total,
-      };
-
-      dispatch({ type: '[Cart] - Update Order Summary', payload: orderSummary });
-   }, [state.cart]);
+      try {
+         const cookieShipping = JSON.parse(Cookies.get('shipping')!) || 10;
+         dispatch({ type: '[Cart] - Load Shipping from Cookies', payload: cookieShipping });
+      } catch (error) {
+         dispatch({ type: '[Cart] - Load Shipping from Cookies', payload: 0 });
+      }
+   }, []);
 
    // Add Product to Cart
    const addProductToCart = (product: ICartProduct) => {
@@ -96,6 +115,15 @@ export const CartProvider: FC<Props> = ({ children }) => {
       if (state.cart.length === 1) Cookies.remove('cart');
    };
 
+   const calculateShipping = (city: string) => {
+      let shippingCost: number = 0;
+
+      if (city === 'caba') shippingCost = Number(process.env.NEXT_PUBLIC_CABA);
+      if (city === 'ba') shippingCost = Number(process.env.NEXT_PUBLIC_BA);
+
+      dispatch({ type: '[Cart] - Calculate Shipping', payload: shippingCost });
+   };
+
    return (
       <CartContext.Provider
          value={{
@@ -103,6 +131,7 @@ export const CartProvider: FC<Props> = ({ children }) => {
             addProductToCart,
             updateCartQuantity,
             removeCartProduct,
+            calculateShipping,
          }}>
          {children}
       </CartContext.Provider>

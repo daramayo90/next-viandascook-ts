@@ -1,9 +1,10 @@
-import { FC, useContext } from 'react';
+import { ChangeEvent, FC, FormEvent, useContext, useState } from 'react';
+
 import { CartContext } from '../../context';
 import { currency } from '../../utils';
+import { Button } from '../ui';
 
 import styles from '../../styles/OrderSummary.module.css';
-import { Button } from '../ui';
 
 interface Props {
    orderValues?: {
@@ -14,9 +15,18 @@ interface Props {
 }
 
 export const OrderSummary: FC<Props> = ({ orderValues }) => {
-   const { numberOfItems, subTotal, total } = useContext(CartContext);
+   const { numberOfItems, subTotal, shipping, total, calculateShipping } = useContext(CartContext);
+
+   const [calculateAddress, setCalculateAddress] = useState(false);
 
    const summaryValues = orderValues ? orderValues : { numberOfItems, subTotal, total };
+
+   const handleCalculation = (e: ChangeEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      const city = e.target.city.value;
+      calculateShipping(city);
+      setCalculateAddress(!calculateAddress);
+   };
 
    return (
       <section className={styles.orderSummary}>
@@ -40,7 +50,40 @@ export const OrderSummary: FC<Props> = ({ orderValues }) => {
          <div className={styles.summary}>
             <span>Envío</span>
 
-            <span className={styles.shipping}>Calcular envío</span>
+            <div className={styles.shipping}>
+               {shipping === 0 ? (
+                  <span
+                     className={styles.pointer}
+                     onClick={() => setCalculateAddress(!calculateAddress)}>
+                     Calcular envío
+                  </span>
+               ) : (
+                  <>
+                     <span>{currency.format(shipping)}</span>
+                     <span
+                        className={styles.pointer}
+                        onClick={() => setCalculateAddress(!calculateAddress)}>
+                        Recalcular
+                     </span>
+                  </>
+               )}
+
+               {calculateAddress && (
+                  <form className={styles.formCalculation} onSubmit={handleCalculation}>
+                     <select name='city'>
+                        <option>Localidad</option>
+                        <option value='caba'>CABA</option>
+                        <option value='ba'>Buenos Aires</option>
+                     </select>
+
+                     <input placeholder='Código Postal' />
+
+                     <div>
+                        <button className={styles.calculateButton}>Calcular</button>
+                     </div>
+                  </form>
+               )}
+            </div>
          </div>
 
          <div className={styles.summary}>

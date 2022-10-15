@@ -4,12 +4,9 @@
    align-items: flex-start;
    width: 100vw;
    margin-top: 5rem;
+   padding-bottom: 5rem;
+   background-color: var(--white);
 }
-
-/* .cart > .title {
-   width: 95%;
-   margin: 6rem auto 1rem auto;
-} */
 
 .cart > .container {
    display: flex;
