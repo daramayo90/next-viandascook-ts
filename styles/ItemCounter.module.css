@@ -9,14 +9,14 @@
    display: flex;
    justify-content: center;
    align-items: center;
-   font-size: 1.5rem;
+   font-size: 1.3rem;
 }
 
 .box > .counter {
    /* margin: 0 15px; */
    width: 40px;
    text-align: center;
-   font-size: 1.2rem;
+   font-size: 1.1rem;
 }
 
 @media (min-width: 720px) {

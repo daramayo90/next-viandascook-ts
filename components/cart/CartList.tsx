@@ -34,35 +34,48 @@ export const CartList: FC<Props> = ({ editable = false }) => {
    return (
       <section className={styles.cartList}>
          {cart.map((product) => (
-            <div key={product._id} className={styles.product}>
+            <article key={product._id} className={styles.product}>
                <div className={styles.details}>
                   <div className={styles.nextImage}>
-                     <Image src={`/products/${product.image}`} width={60} height={60} />
+                     <Image
+                        src={`/products/${product.image}`}
+                        alt={product.name}
+                        width={60}
+                        height={80}
+                        priority
+                     />
                   </div>
+
                   <div className={styles.info}>
-                     <span className={styles.name}>{product.name}</span>
-                     <span className={styles.price}>{currency.format(product.price)}</span>
+                     <div className={styles.name}>
+                        <h4>
+                           {product.name.length > 50
+                              ? product.name.substring(0, 45) + '...'
+                              : product.name}
+                        </h4>
+                     </div>
+
+                     <div className={styles.price}>
+                        <span>{currency.format(product.price * product.quantity)}</span>
+                        {editable ? (
+                           <div className={styles.cartQuantity}>
+                              <ItemCounter
+                                 currentValue={product.quantity}
+                                 updatedQuantity={(quantity) =>
+                                    onNewCartQuantityValue(product as ICartProduct, quantity)
+                                 }
+                              />
+                           </div>
+                        ) : (
+                           <h6>
+                              {product.quantity} {product.quantity > 1 ? 'platos' : 'plato'}
+                           </h6>
+                        )}
+                     </div>
                   </div>
                </div>
-
-               {editable ? (
-                  <ItemCounter
-                     currentValue={product.quantity}
-                     updatedQuantity={(quantity) =>
-                        onNewCartQuantityValue(product as ICartProduct, quantity)
-                     }
-                  />
-               ) : (
-                  <h6>
-                     {product.quantity} {product.quantity > 1 ? 'platos' : 'plato'}
-                  </h6>
-               )}
-            </div>
+            </article>
          ))}
-         {/* <IoMdCloseCircleOutline
-                        className={styles.remove}
-                        onClick={() => onRemoveProduct(product as ICartProduct)}
-                     /> */}
       </section>
    );
 };
