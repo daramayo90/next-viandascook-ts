@@ -88,8 +88,10 @@ export const OrderSummary: FC<Props> = ({ orderValues }) => {
                      {zipcode && (
                         <select name='zipcode'>
                            <option>Código Postal</option>
-                           {zipcodesBA.map((zipcode) => (
-                              <option value={zipcode}>{zipcode}</option>
+                           {zipcodesBA.map((zipcode, index) => (
+                              <option key={index} value={zipcode}>
+                                 {zipcode}
+                              </option>
                            ))}
                         </select>
                      )}
