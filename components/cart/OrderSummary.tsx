@@ -69,6 +69,7 @@ export const OrderSummary: FC<Props> = ({ orderValues }) => {
                ) : (
                   <>
                      <span>{currency.format(shipping)}</span>
+
                      <span
                         className={styles.pointer}
                         onClick={() => setCalculateAddress(!calculateAddress)}>

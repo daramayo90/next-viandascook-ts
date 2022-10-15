@@ -23,7 +23,6 @@ export const SearchProducts: FC<Props> = ({ searchTerm, setSearchTerm }) => {
          <BiSearchAlt className={styles.icon} />
          <input
             className={styles.search}
-            autoFocus
             type='text'
             name='query'
             placeholder='Buscar...'
