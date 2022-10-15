@@ -5,3 +5,4 @@ export * from './commonQuestions';
 export * from './holidays';
 export * from './pageTitles';
 export * from './typesList';
+export * from './zipcodesBA';

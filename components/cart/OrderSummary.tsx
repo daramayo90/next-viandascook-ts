@@ -1,7 +1,7 @@
 import { ChangeEvent, FC, FormEvent, useContext, useState } from 'react';
 
 import { CartContext } from '../../context';
-import { currency } from '../../utils';
+import { currency, zipcodesBA } from '../../utils';
 import { Button } from '../ui';
 
 import styles from '../../styles/OrderSummary.module.css';
@@ -18,6 +18,7 @@ export const OrderSummary: FC<Props> = ({ orderValues }) => {
    const { numberOfItems, subTotal, shipping, total, calculateShipping } = useContext(CartContext);
 
    const [calculateAddress, setCalculateAddress] = useState(false);
+   const [zipcode, setZipcode] = useState(false);
 
    const summaryValues = orderValues ? orderValues : { numberOfItems, subTotal, total };
 
@@ -26,6 +27,14 @@ export const OrderSummary: FC<Props> = ({ orderValues }) => {
       const city = e.target.city.value;
       calculateShipping(city);
       setCalculateAddress(!calculateAddress);
+   };
+
+   const handeZipcode = (e: ChangeEvent<HTMLSelectElement>) => {
+      const city = e.target.value;
+
+      if (city === 'ba') return setZipcode(true);
+
+      setZipcode(false);
    };
 
    return (
@@ -70,13 +79,20 @@ export const OrderSummary: FC<Props> = ({ orderValues }) => {
 
                {calculateAddress && (
                   <form className={styles.formCalculation} onSubmit={handleCalculation}>
-                     <select name='city'>
+                     <select name='city' onChange={handeZipcode}>
                         <option>Localidad</option>
                         <option value='caba'>CABA</option>
                         <option value='ba'>Buenos Aires</option>
                      </select>
 
-                     <input placeholder='Código Postal' />
+                     {zipcode && (
+                        <select name='zipcode'>
+                           <option>Código Postal</option>
+                           {zipcodesBA.map((zipcode) => (
+                              <option value={zipcode}>{zipcode}</option>
+                           ))}
+                        </select>
+                     )}
 
                      <div>
                         <button className={styles.calculateButton}>Calcular</button>
