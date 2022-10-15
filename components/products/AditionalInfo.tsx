@@ -13,6 +13,7 @@ export const AditionalInfo = () => {
                      alt='Platos Congelados'
                      width={100}
                      height={100}
+                     priority={true}
                   />
                </div>
             </div>
@@ -29,7 +30,13 @@ export const AditionalInfo = () => {
          <div className={styles.heat}>
             <div className={styles.icon}>
                <div className={styles.nextImage}>
-                  <Image src='/img/icons/heat.png' alt='Como calentar' width={100} height={100} />
+                  <Image
+                     src='/img/icons/heat.png'
+                     alt='Como calentar'
+                     width={100}
+                     height={100}
+                     priority={true}
+                  />
                </div>
             </div>
 

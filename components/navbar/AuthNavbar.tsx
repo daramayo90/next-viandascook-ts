@@ -15,7 +15,7 @@ export const AuthNavbar = () => {
                      width={100}
                      height={28}
                      layout='responsive'
-                     priority
+                     priority={true}
                   />
                </div>
             </Link>

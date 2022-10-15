@@ -31,7 +31,13 @@ export const Footer = () => {
             <div className={styles.contact}>
                <div className={styles.support}>
                   <div className={styles.logo}>
-                     <Image src='/logo/viandascook-logo.png' alt='logo' width={180} height={50} />
+                     <Image
+                        src='/logo/viandascook-logo.png'
+                        alt='logo'
+                        width={180}
+                        height={50}
+                        priority={true}
+                     />
                   </div>
                   <span className={styles.mail}>info@viandascook.com</span>
                </div>

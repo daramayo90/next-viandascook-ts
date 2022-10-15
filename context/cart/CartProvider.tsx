@@ -70,7 +70,7 @@ export const CartProvider: FC<Props> = ({ children }) => {
    // Load Shipping cost from Cookies
    useEffect(() => {
       try {
-         const cookieShipping = JSON.parse(Cookies.get('shipping')!) || 10;
+         const cookieShipping: number = Number(JSON.parse(Cookies.get('shipping')!)) || 0;
          dispatch({ type: '[Cart] - Load Shipping from Cookies', payload: cookieShipping });
       } catch (error) {
          dispatch({ type: '[Cart] - Load Shipping from Cookies', payload: 0 });

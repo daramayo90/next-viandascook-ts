@@ -27,7 +27,7 @@ export const TypesList: FC<Props> = ({ type, setType }) => {
                            : `${styles.borderImage}`
                      }>
                      <div className={styles.nextImage}>
-                        <Image src={icon} width={100} height={100} priority />
+                        <Image src={icon} alt={name} width={100} height={100} priority={true} />
                      </div>
                   </div>
                   <span>{name}</span>

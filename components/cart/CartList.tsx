@@ -42,7 +42,7 @@ export const CartList: FC<Props> = ({ editable = false }) => {
                         alt={product.name}
                         width={60}
                         height={80}
-                        priority
+                        priority={true}
                      />
                   </div>
 

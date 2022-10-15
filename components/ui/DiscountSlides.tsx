@@ -39,7 +39,7 @@ export const DiscountSlides = () => {
          <Slide easing='ease' duration={4000} indicators>
             {discounts.map(({ name, img }) => (
                <div key={name} className={styles.nextImage}>
-                  <Image src={img} alt={name} width={300} height={150} priority />
+                  <Image src={img} alt={name} width={300} height={150} priority={true} />
                </div>
             ))}
          </Slide>

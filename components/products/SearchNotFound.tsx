@@ -6,7 +6,13 @@ export const SearchNotFound = () => {
    return (
       <div className={styles.container}>
          <div className={styles.nextImage}>
-            <Image src='/img/not-found.jpg' width={250} height={250} />
+            <Image
+               src='/img/not-found.jpg'
+               alt='No encontrado'
+               width={250}
+               height={250}
+               priority={true}
+            />
          </div>
 
          <h4 className={styles.subtitle}>No hay resultados</h4>

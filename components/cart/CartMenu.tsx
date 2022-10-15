@@ -76,6 +76,7 @@ export const CartMenu = () => {
                                  alt={product.name}
                                  width={100}
                                  height={80}
+                                 priority={true}
                               />
                            </div>
                            <span className={styles.name}>{product.name}</span>

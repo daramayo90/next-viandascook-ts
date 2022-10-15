@@ -51,6 +51,7 @@ export const SideMenu = () => {
                      width={100}
                      height={35}
                      layout='responsive'
+                     priority={true}
                   />
                </div>
             </div>

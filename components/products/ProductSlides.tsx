@@ -29,6 +29,7 @@ export const ProductSlides: FC<Props> = ({ products }) => {
                               alt={product.name}
                               width={400}
                               height={400}
+                              priority={true}
                            />
                         </div>
                         <h5 className={styles.title}>{product.name}</h5>

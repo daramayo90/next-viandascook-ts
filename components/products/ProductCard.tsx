@@ -40,7 +40,7 @@ export const ProductCard: FC<Props> = ({ product }) => {
                      alt={product.name}
                      width={100}
                      height={120}
-                     priority
+                     priority={true}
                   />
                </div>
             </Link>

@@ -22,7 +22,7 @@ export const HomeNavbar = () => {
                      width={100}
                      height={25}
                      layout='responsive'
-                     priority
+                     priority={true}
                   />
                </div>
             </Link>

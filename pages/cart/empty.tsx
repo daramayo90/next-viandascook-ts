@@ -11,7 +11,13 @@ const EmptyPage: NextPage = () => {
       <ShopLayout title={'Carrito vacío'} pageDescription={''}>
          <section className={styles.emptyCart}>
             <div className={styles.icon}>
-               <Image src='/img/empty-cart.jpg' width={200} height={200} />
+               <Image
+                  src='/img/empty-cart.jpg'
+                  alt='Carrito vacío'
+                  width={200}
+                  height={200}
+                  priority={true}
+               />
             </div>
 
             <div className={styles.container}>

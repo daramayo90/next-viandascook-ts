@@ -40,7 +40,13 @@ export const HowToBuy = () => {
                   {slides.map((slide) => (
                      <div key={slide.alt} className={styles.box}>
                         <div className={styles.icon}>
-                           <Image src={slide.icon} alt={slide.alt} width={100} height={100} />
+                           <Image
+                              src={slide.icon}
+                              alt={slide.alt}
+                              width={100}
+                              height={100}
+                              priority={true}
+                           />
                         </div>
                         <h5 className={styles.title}>{slide.title}</h5>
                         <p className={styles.lead}>{slide.lead}</p>
@@ -54,7 +60,13 @@ export const HowToBuy = () => {
                {slides.map((slide) => (
                   <div key={slide.alt} className={styles.box}>
                      <div className={styles.icon}>
-                        <Image src={slide.icon} alt={slide.alt} width={100} height={100} />
+                        <Image
+                           src={slide.icon}
+                           alt={slide.alt}
+                           width={100}
+                           height={100}
+                           priority={true}
+                        />
                      </div>
                      <h5 className={styles.title}>{slide.title}</h5>
                      <p className={styles.lead}>{slide.lead}</p>

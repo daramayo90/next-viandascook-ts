@@ -28,6 +28,7 @@ export const Banner = () => {
                      width={800}
                      height={800}
                      layout='intrinsic'
+                     priority={true}
                   />
                </div>
             </div>

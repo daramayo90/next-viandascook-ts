@@ -30,7 +30,7 @@ const DiscountsPage: NextPage = () => {
          <section className={styles.discounts}>
             {discounts.map(({ name, img }) => (
                <div key={name} className={styles.nextImage}>
-                  <Image src={img} alt={name} width={300} height={150} />
+                  <Image src={img} alt={name} width={300} height={150} priority={true} />
                </div>
             ))}
          </section>
