@@ -11,9 +11,10 @@ interface Props {
    color?: string;
    border?: string;
    background?: string;
+   disabled?: boolean;
 }
 
-export const Button: FC<Props> = ({ href, content, color, border, background }) => {
+export const Button: FC<Props> = ({ href, content, color, border, background, disabled }) => {
    const styleButton = {
       color,
       border,
@@ -27,7 +28,7 @@ export const Button: FC<Props> = ({ href, content, color, border, background }) 
    return (
       <Link href={href}>
          <div className={styles.linkTo}>
-            <button className={styles.linkButton} style={styleButton}>
+            <button className={styles.linkButton} style={styleButton} disabled={disabled}>
                {content}
                <BiChevronRight className={styles.icon} style={styleIcon} />
             </button>
