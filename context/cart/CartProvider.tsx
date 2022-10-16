@@ -35,9 +35,13 @@ export const CartProvider: FC<Props> = ({ children }) => {
       if (state.cart.length > 0) Cookies.set('cart', JSON.stringify(state.cart));
    }, [state.cart]);
 
-   // TODO: Calcular el shipping + cupones
+   // TODO: Calcular cupones
    useEffect(() => {
       const numberOfItems = state.cart.reduce((prev, curr) => curr.quantity + prev, 0);
+
+      if (numberOfItems >= 14) state.shipping = 0;
+      Cookies.remove('shipping');
+
       const subTotal = state.cart.reduce((prev, curr) => curr.quantity * curr.price + prev, 0);
       const shipping = state.shipping;
       const total = subTotal + shipping;

@@ -1,5 +1,6 @@
-import { useRouter } from 'next/router';
 import { ChangeEvent, useContext, useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+
 import { AuthContext, CartContext } from '../context';
 
 export const useOrderSummaryts = () => {
@@ -9,7 +10,7 @@ export const useOrderSummaryts = () => {
    const { numberOfItems, subTotal, shipping, total, calculateShipping } = useContext(CartContext);
 
    const [zipcode, setZipcode] = useState(false);
-   const [canSubmit, setCanSubmit] = useState(true);
+   const [canSubmit, setCanSubmit] = useState(false);
    const [submitErrors, setSubmitErrors] = useState(false);
    const [shippingErrors, setShippingErrors] = useState(false);
    const [calculateAddress, setCalculateAddress] = useState(false);
@@ -19,8 +20,10 @@ export const useOrderSummaryts = () => {
    }, [user]);
 
    useEffect(() => {
-      if (shipping !== 0) setCanSubmit(false);
-   }, [shipping]);
+      if (shipping === 0 && numberOfItems < 14) return setCanSubmit(false);
+
+      setCanSubmit(true);
+   }, [shipping, numberOfItems]);
 
    const summaryValues = { numberOfItems, subTotal, total };
 
@@ -47,7 +50,7 @@ export const useOrderSummaryts = () => {
    };
 
    const handleSubmit = () => {
-      if (canSubmit) return setSubmitErrors(true);
+      if (!canSubmit) return setSubmitErrors(true);
 
       setSubmitErrors(false);
 

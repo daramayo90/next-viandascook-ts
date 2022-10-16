@@ -4,6 +4,8 @@ import { currency } from '../../utils';
 
 import styles from '../../styles/OrderSummary.module.css';
 import { Shipping } from './';
+import { useContext, useEffect, useState } from 'react';
+import { CartContext } from '../../context';
 
 // interface Props {
 //    orderValues?: {
@@ -15,6 +17,7 @@ import { Shipping } from './';
 
 export const OrderSummary = () => {
    const { submitErrors, summaryValues, handleSubmit } = useOrderSummaryts();
+   const { numberOfItems } = useContext(CartContext);
 
    return (
       <section className={styles.orderSummary}>
@@ -37,7 +40,7 @@ export const OrderSummary = () => {
          <div className={styles.summary}>
             <span>Envío</span>
 
-            <Shipping />
+            {numberOfItems >= 14 ? <span>Gratis</span> : <Shipping />}
          </div>
 
          <div className={styles.summary}>
