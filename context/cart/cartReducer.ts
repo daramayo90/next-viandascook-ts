@@ -1,4 +1,4 @@
-import { ICartProduct, ShippingAddress } from '../../interfaces';
+import { ICartProduct } from '../../interfaces';
 
 import { CartState } from './';
 
@@ -15,6 +15,8 @@ type CartActionType =
         payload: {
            numberOfItems: number;
            subTotal: number;
+           discount: number;
+           shipping: number;
            total: number;
         };
      }

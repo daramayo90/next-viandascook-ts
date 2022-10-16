@@ -31,6 +31,10 @@
    text-align: right;
 }
 
+.orderSummary > .summary > .discount {
+   color: var(--primary);
+}
+
 .orderSummary > .summary > .shipping > .pointer {
    text-align: right;
    cursor: pointer;

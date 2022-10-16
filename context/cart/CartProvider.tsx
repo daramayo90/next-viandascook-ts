@@ -14,6 +14,7 @@ export interface CartState {
    cart: ICartProduct[];
    numberOfItems: number;
    subTotal: number;
+   discount: number;
    shipping: number;
    total: number;
 }
@@ -23,6 +24,7 @@ const CART_INITIAL_STATE: CartState = {
    cart: [],
    numberOfItems: 0,
    subTotal: 0,
+   discount: 0,
    shipping: 0,
    total: 0,
 };
@@ -35,31 +37,35 @@ export const CartProvider: FC<Props> = ({ children }) => {
       if (state.cart.length > 0) Cookies.set('cart', JSON.stringify(state.cart));
    }, [state.cart]);
 
+   // Add Shipping cost to Cookies
+   useEffect(() => {
+      if (state.shipping !== 0) Cookies.set('shipping', JSON.stringify(state.shipping));
+   }, [state.shipping]);
+
    // TODO: Calcular cupones
    useEffect(() => {
       const numberOfItems = state.cart.reduce((prev, curr) => curr.quantity + prev, 0);
-
-      if (numberOfItems >= 14) state.shipping = 0;
-      Cookies.remove('shipping');
-
       const subTotal = state.cart.reduce((prev, curr) => curr.quantity * curr.price + prev, 0);
+      const discount = numberOfItems >= 28 && numberOfItems < 56 ? subTotal * 0.1 : 0;
+
+      if (numberOfItems >= 14) {
+         state.shipping = 0;
+         Cookies.remove('shipping');
+      }
+
       const shipping = state.shipping;
-      const total = subTotal + shipping;
+      const total = subTotal - discount + shipping;
 
       const orderSummary = {
          numberOfItems,
          subTotal,
+         discount,
          shipping,
          total,
       };
 
       dispatch({ type: '[Cart] - Update Order Summary', payload: orderSummary });
    }, [state.cart, state.shipping]);
-
-   // Add Shipping cost to Cookies
-   useEffect(() => {
-      if (state.shipping !== 0) Cookies.set('shipping', JSON.stringify(state.shipping));
-   }, [state.shipping]);
 
    // Load Cart from Cookies
    useEffect(() => {

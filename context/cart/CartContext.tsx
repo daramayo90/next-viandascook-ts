@@ -6,6 +6,7 @@ interface ContextProps {
    cart: ICartProduct[];
    numberOfItems: number;
    subTotal: number;
+   discount: number;
    shipping: number;
    total: number;
    shippingAddress?: ShippingAddress;

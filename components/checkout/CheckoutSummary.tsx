@@ -25,19 +25,6 @@ export const CheckoutSummary = () => {
             <span>{currency.format(subTotal)}</span>
          </div>
 
-         {/* TODO: Calcular envío */}
-         <div className={styles.summary}>
-            <span>Envío</span>
-
-            <span>{currency.format(shipping)}</span>
-         </div>
-
-         {/* <div className={styles.summary}>
-            <span>+14 viandas</span>
-
-            <span className={styles.discount}>Envío Gratuito</span>
-         </div>
-
          <div className={styles.summary}>
             <span>+28 viandas (10%)</span>
 
@@ -45,6 +32,18 @@ export const CheckoutSummary = () => {
          </div>
 
          <div className={styles.summary}>
+            <span>Envío</span>
+
+            {shipping === 0 ? <span>Gratis</span> : <span>{currency.format(shipping)}</span>}
+         </div>
+
+         {/* <div className={styles.summary}>
+            <span>+14 viandas</span>
+
+            <span className={styles.discount}>Envío Gratuito</span>
+         </div> */}
+
+         {/* <div className={styles.summary}>
             <span>Cupón (BIENVENIDO10)</span>
 
             <span className={styles.discount}>-$43,84</span>

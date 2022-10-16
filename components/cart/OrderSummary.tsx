@@ -1,11 +1,15 @@
-import { SubmitButton } from '../ui';
+import { useContext } from 'react';
+
 import { useOrderSummaryts } from '../../hooks';
+import { CartContext } from '../../context';
+
+import { SubmitButton } from '../ui';
 import { currency } from '../../utils';
 
-import styles from '../../styles/OrderSummary.module.css';
 import { Shipping } from './';
-import { useContext, useEffect, useState } from 'react';
-import { CartContext } from '../../context';
+
+import styles from '../../styles/OrderSummary.module.css';
+import { Discounts } from './Discounts';
 
 // interface Props {
 //    orderValues?: {
@@ -17,7 +21,7 @@ import { CartContext } from '../../context';
 
 export const OrderSummary = () => {
    const { submitErrors, summaryValues, handleSubmit } = useOrderSummaryts();
-   const { numberOfItems } = useContext(CartContext);
+   const { numberOfItems, discount } = useContext(CartContext);
 
    return (
       <section className={styles.orderSummary}>
@@ -36,6 +40,8 @@ export const OrderSummary = () => {
 
             <span>{currency.format(summaryValues.subTotal)}</span>
          </div>
+
+         <Discounts />
 
          <div className={styles.summary}>
             <span>Envío</span>
