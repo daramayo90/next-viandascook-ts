@@ -1,14 +1,14 @@
 .promos {
    width: 100vw;
    height: 100vh;
+   margin-top: 4rem;
    background-color: var(--white);
 }
 
 .promos > .container {
    width: 90%;
    margin: 0 auto;
-   margin-top: 80px;
-   padding-top: 1px;
+   padding-top: 1rem;
 }
 
 .promos > .container > .promo {

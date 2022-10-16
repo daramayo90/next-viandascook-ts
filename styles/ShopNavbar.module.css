@@ -1,6 +1,9 @@
 .shopNavbar {
+   position: fixed;
+   top: 0;
    width: 100vw;
-   height: 100%;
+   height: 4rem;
+   background-color: #fff;
    z-index: 10;
 }
 

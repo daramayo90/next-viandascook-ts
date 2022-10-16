@@ -5,6 +5,7 @@ export async function middleware(req: NextRequest) {
    const cart = req.cookies.get('cart');
 
    const { protocol, host } = req.nextUrl;
+
    if (!cart) {
       return NextResponse.redirect(`${protocol}//${host}/cart/empty`);
    }

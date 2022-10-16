@@ -1,12 +1,29 @@
 import type { NextPage } from 'next';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
+import { useContext, useEffect } from 'react';
 
 import { ShopLayout } from '../../components/layouts';
 import { Button } from '../../components/ui';
+import { CartContext } from '../../context';
 
 import styles from '../../styles/EmptyCart.module.css';
 
 const EmptyPage: NextPage = () => {
+   const router = useRouter();
+   const { isLoaded } = useContext(CartContext);
+
+   useEffect(() => {
+      if (isLoaded) {
+         router.replace('/cart');
+      }
+   }, [isLoaded, router]);
+
+   // Avoid render anything in client-side
+   if (isLoaded) {
+      return <></>;
+   }
+
    return (
       <ShopLayout title={'Carrito vacío'} pageDescription={''}>
          <section className={styles.emptyCart}>
