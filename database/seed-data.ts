@@ -43,7 +43,7 @@ export const initialData: SeedData = {
             address: 'Baker Street',
             address2: '221B',
             zipcode: '7933',
-            city: 'London',
+            city: 'caba',
          },
       },
       {
@@ -58,7 +58,7 @@ export const initialData: SeedData = {
             address: 'P Sherman',
             address2: 'Depto: 4A',
             zipcode: '4563',
-            city: 'Devoto',
+            city: 'ba',
          },
       },
    ],

@@ -24,7 +24,14 @@ const userSchema = new Schema(
          address: { type: String, required: true },
          address2: { type: String },
          zipcode: { type: String, required: true },
-         city: { type: String, required: true },
+         city: {
+            type: String,
+            required: true,
+            enum: {
+               values: ['caba', 'ba'],
+            },
+            message: '{VALUE} is not a valid city',
+         },
       },
    },
 

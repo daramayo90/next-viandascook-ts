@@ -16,5 +16,5 @@ export interface IAddress {
    address: string;
    address2?: string;
    zipcode: string;
-   city: string;
+   city: 'caba' | 'ba';
 }

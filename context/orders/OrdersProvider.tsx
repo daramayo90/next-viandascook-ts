@@ -3,7 +3,7 @@ import { FC, ReactNode, useEffect, useReducer } from 'react';
 import Cookies from 'js-cookie';
 
 import { OrdersContext, ordersReducer } from './';
-import { ShippingAddress } from '../../interfaces';
+import { ShippingAddress, ICity } from '../../interfaces';
 
 interface Props {
    children: ReactNode;
@@ -28,7 +28,7 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
             address: Cookies.get('address') || '',
             address2: Cookies.get('address2') || '',
             zipcode: Cookies.get('zipcode') || '',
-            city: Cookies.get('city') || '',
+            city: Cookies.get('city') === 'caba' ? ('caba' as ICity) : ('ba' as ICity),
             phone: Cookies.get('phone') || '',
             email: Cookies.get('email') || '',
             dni: Cookies.get('dni') || '',

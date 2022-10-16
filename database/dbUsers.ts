@@ -54,7 +54,7 @@ export const oAuthToDbUser = async (authEmail: string, authName: string, authLas
          address: '-',
          address2: '-',
          zipcode: '-',
-         city: '-',
+         city: 'caba',
       },
    });
 

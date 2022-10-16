@@ -32,8 +32,10 @@ export interface ShippingAddress {
    address: string;
    address2?: string;
    zipcode: string;
-   city: string;
+   city: ICity;
    phone: string;
    email: string;
    dni: string;
 }
+
+export type ICity = 'caba' | 'ba';

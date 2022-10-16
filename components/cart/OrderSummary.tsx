@@ -1,6 +1,6 @@
-import { ChangeEvent, FC, useContext, useState } from 'react';
+import { ChangeEvent, FC, useContext, useState, useEffect } from 'react';
 
-import { CartContext } from '../../context';
+import { AuthContext, CartContext } from '../../context';
 import { currency, zipcodesBA } from '../../utils';
 import { Button } from '../ui';
 
@@ -15,11 +15,17 @@ interface Props {
 }
 
 export const OrderSummary: FC<Props> = ({ orderValues }) => {
-   const { numberOfItems, subTotal, shipping, total, calculateShipping } = useContext(CartContext);
-
-   const [calculateAddress, setCalculateAddress] = useState(false);
    const [zipcode, setZipcode] = useState(false);
    const [shippingErrors, setShippingErrors] = useState(false);
+   const [calculateAddress, setCalculateAddress] = useState(false);
+
+   const { user } = useContext(AuthContext);
+   const { numberOfItems, subTotal, shipping, total, calculateShipping } = useContext(CartContext);
+
+   useEffect(() => {
+      if (user) calculateShipping(user.shipping.city);
+      console.log(user?.shipping.city);
+   }, [user]);
 
    const summaryValues = orderValues ? orderValues : { numberOfItems, subTotal, total };
 
@@ -108,9 +114,7 @@ export const OrderSummary: FC<Props> = ({ orderValues }) => {
 
                      {shippingErrors && <span className={styles.error}>Indicar Cód. Postal</span>}
 
-                     <div>
-                        <button className={styles.calculateButton}>Calcular</button>
-                     </div>
+                     <button className={styles.calculateButton}>Calcular</button>
                   </form>
                )}
             </div>
