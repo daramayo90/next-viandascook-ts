@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, FormEvent, useContext, useState } from 'react';
+import { ChangeEvent, FC, useContext, useState } from 'react';
 
 import { CartContext } from '../../context';
 import { currency, zipcodesBA } from '../../utils';
@@ -19,14 +19,22 @@ export const OrderSummary: FC<Props> = ({ orderValues }) => {
 
    const [calculateAddress, setCalculateAddress] = useState(false);
    const [zipcode, setZipcode] = useState(false);
+   const [shippingErrors, setShippingErrors] = useState(false);
 
    const summaryValues = orderValues ? orderValues : { numberOfItems, subTotal, total };
 
    const handleCalculation = (e: ChangeEvent<HTMLFormElement>) => {
       e.preventDefault();
+
       const city = e.target.city.value;
+      const zipcode = e.target.zipcode?.value || '';
+
+      if (zipcode === 'Código Postal') return setShippingErrors(true);
+
       calculateShipping(city);
       setCalculateAddress(!calculateAddress);
+      setZipcode(false);
+      setShippingErrors(false);
    };
 
    const handeZipcode = (e: ChangeEvent<HTMLSelectElement>) => {
@@ -55,7 +63,6 @@ export const OrderSummary: FC<Props> = ({ orderValues }) => {
             <span>{currency.format(summaryValues.subTotal)}</span>
          </div>
 
-         {/* TODO: Calcular envío */}
          <div className={styles.summary}>
             <span>Envío</span>
 
@@ -87,7 +94,9 @@ export const OrderSummary: FC<Props> = ({ orderValues }) => {
                      </select>
 
                      {zipcode && (
-                        <select name='zipcode'>
+                        <select
+                           name='zipcode'
+                           className={shippingErrors ? `${styles.selectError}` : ''}>
                            <option>Código Postal</option>
                            {zipcodesBA.map((zipcode, index) => (
                               <option key={index} value={zipcode}>
@@ -96,6 +105,8 @@ export const OrderSummary: FC<Props> = ({ orderValues }) => {
                            ))}
                         </select>
                      )}
+
+                     {shippingErrors && <span className={styles.error}>Indicar Cód. Postal</span>}
 
                      <div>
                         <button className={styles.calculateButton}>Calcular</button>

@@ -50,7 +50,7 @@ export const CartProvider: FC<Props> = ({ children }) => {
       };
 
       dispatch({ type: '[Cart] - Update Order Summary', payload: orderSummary });
-   }, [state.cart]);
+   }, [state.cart, state.shipping]);
 
    // Add Shipping cost to Cookies
    useEffect(() => {

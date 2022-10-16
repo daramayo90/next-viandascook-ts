@@ -86,11 +86,26 @@
 .calculateButton {
    width: 90%;
    height: 30px;
-   margin: 0.8rem auto;
+   margin: 0.5rem auto;
    font-size: 0.9rem;
    border-radius: 20px;
    border: 1px solid var(--primary);
    background-color: var(--primary);
+}
+
+.orderSummary > .summary > .shipping > .formCalculation > .selectError {
+   border: 1px solid var(--error);
+}
+
+.orderSummary > .summary > .shipping > .formCalculation > .selectError:focus {
+   border: none;
+}
+
+.orderSummary > .summary > .shipping > .formCalculation > .error {
+   display: block;
+   font-size: 0.75rem;
+   margin: -0.2rem 0;
+   color: var(--error);
 }
 
 @media (min-width: 720px) {
