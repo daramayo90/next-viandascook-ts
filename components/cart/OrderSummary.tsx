@@ -3,7 +3,7 @@ import { useOrderSummaryts } from '../../hooks';
 import { currency } from '../../utils';
 
 import styles from '../../styles/OrderSummary.module.css';
-import { Shipping } from '../orders';
+import { Shipping } from './';
 
 // interface Props {
 //    orderValues?: {

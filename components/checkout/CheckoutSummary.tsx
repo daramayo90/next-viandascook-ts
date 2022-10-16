@@ -1,21 +1,11 @@
-import { FC, useContext } from 'react';
+import { useContext } from 'react';
 import { CartContext } from '../../context';
 import { currency } from '../../utils';
 
 import styles from '../../styles/CheckoutSummary.module.css';
 
-interface Props {
-   orderValues?: {
-      numberOfItems: number;
-      subTotal: number;
-      total: number;
-   };
-}
-
-export const CheckoutSummary: FC<Props> = ({ orderValues }) => {
-   const { numberOfItems, subTotal, total } = useContext(CartContext);
-
-   const summaryValues = orderValues ? orderValues : { numberOfItems, subTotal, total };
+export const CheckoutSummary = () => {
+   const { numberOfItems, subTotal, shipping, total } = useContext(CartContext);
 
    return (
       <section className={styles.checkoutSummary}>
@@ -25,24 +15,24 @@ export const CheckoutSummary: FC<Props> = ({ orderValues }) => {
             <span>N° de Viandas</span>
 
             <span>
-               {summaryValues.numberOfItems} {summaryValues.numberOfItems > 1 ? 'platos' : 'plato'}
+               {numberOfItems} {numberOfItems > 1 ? 'platos' : 'plato'}
             </span>
          </div>
 
          <div className={styles.summary}>
             <span>Subtotal</span>
 
-            <span>{currency.format(summaryValues.subTotal)}</span>
+            <span>{currency.format(subTotal)}</span>
          </div>
 
          {/* TODO: Calcular envío */}
          <div className={styles.summary}>
             <span>Envío</span>
 
-            <span>Gratis</span>
+            <span>{currency.format(shipping)}</span>
          </div>
 
-         <div className={styles.summary}>
+         {/* <div className={styles.summary}>
             <span>+14 viandas</span>
 
             <span className={styles.discount}>Envío Gratuito</span>
@@ -58,7 +48,7 @@ export const CheckoutSummary: FC<Props> = ({ orderValues }) => {
             <span>Cupón (BIENVENIDO10)</span>
 
             <span className={styles.discount}>-$43,84</span>
-         </div>
+         </div> */}
 
          <div className={`${styles.summary} ${styles.total}`}>
             <span>
@@ -66,7 +56,7 @@ export const CheckoutSummary: FC<Props> = ({ orderValues }) => {
             </span>
 
             <span>
-               <strong>{currency.format(summaryValues.total)}</strong>
+               <strong>{currency.format(total)}</strong>
             </span>
          </div>
       </section>

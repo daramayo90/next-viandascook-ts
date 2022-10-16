@@ -7,8 +7,8 @@ import { IUser } from '../../interfaces';
 import { AuthContext, OrdersContext } from '../../context';
 
 import { ShopLayout } from '../../components/layouts';
-import { Address, DeliveryDate, Promos } from '../../components/checkout';
-import { CartMenu, CheckoutSummary } from '../../components/cart';
+import { Address, CheckoutSummary, DeliveryDate, Promos } from '../../components/checkout';
+import { CartMenu } from '../../components/cart';
 
 import styles from '../../styles/Checkout.module.css';
 
