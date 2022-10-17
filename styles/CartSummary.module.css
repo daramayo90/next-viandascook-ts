@@ -64,7 +64,7 @@
    height: 100vh;
    position: fixed;
    top: 0;
-   padding-bottom: 3rem;
+   padding-bottom: 10rem;
    background-color: #fff;
    overflow: auto;
    z-index: 10;

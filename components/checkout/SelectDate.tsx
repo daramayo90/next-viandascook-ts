@@ -55,12 +55,11 @@ export const SelectDate = () => {
             locale='es'
             dateFormat='dd/MM/yyyy'
             placeholderText='Elegir fecha de entrega'
-            monthsShown={2}
             shouldCloseOnSelect={true}
             filterDate={isWeekday}
             calendarStartDay={0}
             includeDateIntervals={[
-               { start: setInterval(new Date(), -2), end: addDays(new Date(), 90) },
+               { start: setInterval(new Date(), -2), end: addDays(new Date(), 80) },
             ]}
             excludeDates={holidays}
             selected={startDate}
