@@ -242,9 +242,35 @@ button.nav.default-nav {
 }
 
 /* React Datepicker */
+.react-datepicker__input-container > input {
+   width: 90%;
+   padding: 0.5rem 0;
+   font-size: 0.95rem;
+   margin-left: 2px;
+   font-weight: 500;
+   border: none;
+   color: var(--textColor);
+   cursor: pointer;
+}
+
+.react-datepicker__input-container > input::placeholder {
+   width: 90%;
+   font-size: 0.95rem;
+   margin-left: 2px;
+   font-weight: 500;
+   border: none;
+   color: var(--textColor);
+}
+
+.react-datepicker__input-container > input:focus {
+   border-color: #80bdff;
+   border-radius: 5px;
+   outline: 0;
+   box-shadow: 0 0 0 0.2rem rgb(0 123 255 / 25%);
+}
+
 .react-datepicker-popper {
    width: 242px;
-   /* transform: none; */
 }
 
 .react-datepicker__tab-loop {
@@ -256,4 +282,13 @@ button.nav.default-nav {
 
 .react-datepicker__triangle {
    display: none;
+}
+
+.react-datepicker > .time {
+   display: block;
+   margin: 1rem 0;
+   text-align: center;
+   color: var(--black);
+   font-size: 1rem;
+   font-weight: 600;
 }

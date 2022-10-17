@@ -1,16 +1,27 @@
+/*
+ * January: 0
+ * February: 1
+ * March: 2
+ * April: 3
+ * May: 4
+ * June: 5
+ * July: 6
+ * August: 7
+ * September: 8
+ * October: 9
+ * November: 10
+ * December: 11
+ */
 export const holidays = [
-   new Date(2022, 10, 14),
-   new Date(2022, 10, 15),
-   new Date(2022, 10, 16),
-   new Date(2022, 9, 17),
-   new Date(2022, 9, 18),
-   new Date(2022, 11, 11),
-   new Date(2022, 10, 28),
-   new Date(2022, 12, 25),
-   new Date(2022, 1, 1),
-   new Date(2022, 1, 20),
-   new Date(2022, 2, 17),
-   new Date(2022, 5, 25),
-   new Date(2022, 7, 3),
-   new Date(2022, 9, 7),
+   new Date(2022, 10, 21),
+   new Date(2022, 11, 8),
+   new Date(2022, 11, 9),
+   new Date(2022, 11, 9),
+   new Date(2022, 11, 9),
+   new Date(2022, 11, 9),
+   new Date(2022, 11, 9),
+   new Date(2022, 11, 9),
+   new Date(2022, 11, 9),
+   new Date(2022, 11, 9),
+   new Date(2022, 11, 9),
 ];

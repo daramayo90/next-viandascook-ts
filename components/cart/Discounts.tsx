@@ -16,7 +16,7 @@ export const Discounts = () => {
       <>
          {numberOfItems >= 28 && numberOfItems < 56 && (
             <div className={styles.summary}>
-               <span>+28 viandas (10%)</span>
+               <span className={styles.discount}>Promo 28 platos o más (10%)</span>
 
                <span className={styles.discount}>{currency.format(discount)}</span>
             </div>
@@ -24,7 +24,7 @@ export const Discounts = () => {
 
          {numberOfItems >= 56 && (
             <div className={styles.summary}>
-               <span>+56 viandas (15%)</span>
+               <span className={styles.discount}>Promo 56 platos o más (15%)</span>
 
                <span className={styles.discount}>{currency.format(discount)}</span>
             </div>

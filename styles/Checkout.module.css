@@ -13,7 +13,7 @@
 
 .checkout > .container > .deliveryAddress,
 .checkout > .container > .discounts,
-.checkout > .container > .deliveryDate {
+.checkout > .container > .delivery {
    width: 100%;
    margin: 2rem 0;
    border-radius: 15px;
@@ -55,7 +55,8 @@
 }
 
 .checkout > .container > .deliveryAddress > .info > .address > .iconMap,
-.checkout > .container > .discounts > .info > .iconDiscount {
+.checkout > .container > .discounts > .info > .iconDiscount,
+.checkout > .container > .delivery > .info > .iconDiscount {
    width: 30px;
    height: 30px;
    padding: 6px;
@@ -80,7 +81,8 @@
    color: var(--primary);
 }
 
-.checkout > .container > .discounts {
+.checkout > .container > .discounts,
+.checkout > .container > .delivery {
    display: flex;
    flex-direction: column;
    justify-content: center;
@@ -88,11 +90,19 @@
    cursor: pointer;
 }
 
-.checkout > .container > .discounts > .info {
+.checkout > .container > .discounts > .info,
+.checkout > .container > .delivery > .info {
    display: flex;
    align-items: center;
    justify-content: flex-start;
    position: relative;
    width: 90%;
    margin: 0 auto;
+}
+
+.checkout > .container > .delivery > .info > .date {
+   width: 90%;
+   margin-left: 1rem;
+   font-size: 1rem;
+   font-weight: 500;
 }

@@ -1,16 +1,16 @@
 import { useContext, useState } from 'react';
+import Link from 'next/link';
 
 import { CartContext } from '../../context';
+import { currency } from '../../utils';
+
+import { CartList } from '../cart';
 
 import { IoIosClose } from 'react-icons/io';
 import { MdKeyboardArrowUp } from 'react-icons/md';
-
-import { currency } from '../../utils';
-import { CartList } from '../cart';
+import { MdModeEdit } from 'react-icons/md';
 
 import styles from '../../styles/CartSummary.module.css';
-import { AiFillEdit } from 'react-icons/ai';
-import Link from 'next/link';
 
 export const CartSummary = () => {
    const { numberOfItems, total } = useContext(CartContext);
@@ -49,7 +49,7 @@ export const CartSummary = () => {
 
                <Link href='/cart'>
                   <div className={styles.edit}>
-                     <AiFillEdit className={styles.editIcon} />
+                     <MdModeEdit className={styles.editIcon} />
                      <span>Modificar carrito</span>
                   </div>
                </Link>
