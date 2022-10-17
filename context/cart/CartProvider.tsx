@@ -4,6 +4,7 @@ import Cookies from 'js-cookie';
 
 import { CartContext, cartReducer } from './';
 import { ICartProduct } from '../../interfaces';
+import { promo } from '../../utils';
 
 interface Props {
    children: ReactNode;
@@ -42,11 +43,11 @@ export const CartProvider: FC<Props> = ({ children }) => {
       if (state.shipping !== 0) Cookies.set('shipping', JSON.stringify(state.shipping));
    }, [state.shipping]);
 
-   // TODO: Calcular cupones
+   // Calculation of: quantity / subTotal / discount / shipping fee / total
    useEffect(() => {
       const numberOfItems = state.cart.reduce((prev, curr) => curr.quantity + prev, 0);
       const subTotal = state.cart.reduce((prev, curr) => curr.quantity * curr.price + prev, 0);
-      const discount = numberOfItems >= 28 && numberOfItems < 56 ? subTotal * 0.1 : 0;
+      const discount = promo.calculation(numberOfItems, subTotal);
 
       if (numberOfItems >= 14) {
          state.shipping = 0;

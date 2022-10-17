@@ -21,6 +21,14 @@ export const Discounts = () => {
                <span className={styles.discount}>{currency.format(discount)}</span>
             </div>
          )}
+
+         {numberOfItems >= 56 && (
+            <div className={styles.summary}>
+               <span>+56 viandas (15%)</span>
+
+               <span className={styles.discount}>{currency.format(discount)}</span>
+            </div>
+         )}
       </>
    );
 };

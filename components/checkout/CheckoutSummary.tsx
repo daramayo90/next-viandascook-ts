@@ -1,6 +1,9 @@
 import { useContext } from 'react';
+
 import { CartContext } from '../../context';
 import { currency } from '../../utils';
+
+import { Discounts } from '../cart';
 
 import styles from '../../styles/CheckoutSummary.module.css';
 
@@ -25,11 +28,7 @@ export const CheckoutSummary = () => {
             <span>{currency.format(subTotal)}</span>
          </div>
 
-         <div className={styles.summary}>
-            <span>+28 viandas (10%)</span>
-
-            <span className={styles.discount}>-$85,45</span>
-         </div>
+         <Discounts />
 
          <div className={styles.summary}>
             <span>Envío</span>

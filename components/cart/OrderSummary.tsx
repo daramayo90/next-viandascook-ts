@@ -21,7 +21,7 @@ import { Discounts } from './Discounts';
 
 export const OrderSummary = () => {
    const { submitErrors, summaryValues, handleSubmit } = useOrderSummaryts();
-   const { numberOfItems, discount } = useContext(CartContext);
+   const { numberOfItems } = useContext(CartContext);
 
    return (
       <section className={styles.orderSummary}>
