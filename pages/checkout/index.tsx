@@ -7,8 +7,13 @@ import { IUser } from '../../interfaces';
 import { AuthContext, OrdersContext } from '../../context';
 
 import { ShopLayout } from '../../components/layouts';
-import { Address, CheckoutSummary, DeliveryDate, Promos } from '../../components/checkout';
-import { CartMenu } from '../../components/cart';
+import {
+   Address,
+   CartSummary,
+   CheckoutSummary,
+   DeliveryDate,
+   Promos,
+} from '../../components/checkout';
 
 import styles from '../../styles/Checkout.module.css';
 
@@ -35,7 +40,7 @@ const CheckoutPage: NextPage<Props> = ({ user }) => {
                <CheckoutSummary />
             </div>
          </section>
-         <CartMenu />
+         <CartSummary />
       </ShopLayout>
    );
 };

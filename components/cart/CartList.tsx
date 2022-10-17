@@ -13,7 +13,6 @@ import styles from '../../styles/CartList.module.css';
 
 interface Props {
    editable?: boolean;
-   // products?: IOrderItem[];
 }
 
 export const CartList: FC<Props> = ({ editable = false }) => {
@@ -27,8 +26,6 @@ export const CartList: FC<Props> = ({ editable = false }) => {
          removeCartProduct(product);
       }
    };
-
-   // const productsToShow = products ? products : cart;
 
    // TODO: Ordenar los productos por id
    return (
@@ -68,9 +65,9 @@ export const CartList: FC<Props> = ({ editable = false }) => {
                               />
                            </div>
                         ) : (
-                           <h6>
+                           <span className={styles.quantity}>
                               {product.quantity} {product.quantity > 1 ? 'platos' : 'plato'}
-                           </h6>
+                           </span>
                         )}
                      </div>
                   </div>

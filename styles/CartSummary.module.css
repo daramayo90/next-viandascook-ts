@@ -2,7 +2,7 @@
    display: none;
 }
 
-.cartMenu {
+.cartSummary {
    display: flex;
    align-items: center;
    position: fixed;
@@ -12,10 +12,10 @@
    border: 1px solid rgb(240, 240, 240);
    border-radius: 25px 25px 0 0;
    background-color: #fff;
-   z-index: 1;
+   z-index: 10;
 }
 
-.cartMenu > .container {
+.cartSummary > .container {
    display: flex;
    align-items: flex-start;
    justify-content: space-between;
@@ -24,46 +24,46 @@
    margin: 0 auto;
 }
 
-.cartMenu > .container > .quantity {
+.cartSummary > .container > .quantity {
    font-size: 1.1rem;
    font-weight: 500;
 }
 
-.cartMenu > .container > .info {
+.cartSummary > .container > .info {
    display: flex;
    flex-direction: column;
    align-items: flex-end;
    position: relative;
 }
 
-.cartMenu > .container > .info > .total {
+.cartSummary > .container > .info > .total {
    font-size: 1.3rem;
    font-weight: 500;
 }
 
-.cartMenu > .container > .info > .details {
+.cartSummary > .container > .info > .details {
    margin-top: -3px;
    font-size: 0.8rem;
    font-weight: 500;
    color: var(--primary);
 }
 
-.cartMenu > .container > .info > .iconDetails {
+.cartSummary > .container > .info > .iconDetails {
    position: absolute;
-   top: -3px;
+   top: -2px;
    right: -30px;
    font-size: 1.6rem;
+   color: var(--textColor);
 }
 
 /* Is Touched */
 
 .fullMenu {
    width: 100vw;
-   height: calc(100vh - 89px);
-   background-color: rgb(20, 20, 20);
+   height: 100vh;
    position: fixed;
    top: 0;
-   border-bottom: 1px solid var(--white);
+   background-color: #fff;
    overflow: auto;
    z-index: 10;
 }
@@ -75,11 +75,11 @@
    justify-content: space-between;
    width: 90%;
    margin: 0 auto;
-   margin-top: 2.5rem;
+   margin-top: 2rem;
 }
 
 .fullMenu > .top > .title {
-   color: var(--white);
+   color: var(--textColor);
    font-size: 1.1rem;
 }
 
@@ -88,12 +88,35 @@
 }
 
 .fullMenu > .top > .closeMenu > .icon {
-   font-size: 1.7rem;
-   color: var(--white);
-   border: 1px solid var(--white);
+   font-size: 1.4rem;
+   color: var(--textColor);
+   border: 1px solid var(--textColor);
    border-radius: 50%;
 }
 
+.fullMenu > .edit {
+   display: flex;
+   align-items: center;
+   justify-content: flex-end;
+   width: 90%;
+   margin: 1rem auto;
+}
+
+.fullMenu > .edit > .editIcon {
+   margin-right: 5px;
+   font-size: 0.9rem;
+   color: var(--primary);
+   cursor: pointer;
+}
+
+.fullMenu > .edit > span {
+   font-size: 0.9rem;
+   font-weight: 500;
+   text-decoration: underline;
+   color: var(--primary);
+   cursor: pointer;
+}
+/* 
 .fullMenu > .selectedMeals {
    display: flex;
    flex-direction: column;
@@ -151,7 +174,7 @@
    right: 0;
    bottom: 0px;
    padding: 1px 5px;
-}
+} */
 
 @media (min-width: 720px) {
    .desktop {
@@ -203,14 +226,14 @@
       overflow: visible;
    }
 
-   .cartMenu {
+   .cartSummary {
       right: 0;
       width: 19%;
       min-width: 350px;
       background-color: rgb(10, 10, 10);
    }
 
-   .cartMenu > .container > .linkTo {
+   .cartSummary > .container > .linkTo {
       cursor: pointer;
    }
 }
