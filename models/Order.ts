@@ -37,6 +37,8 @@ const orderSchema = new Schema(
 
       numberOfItems: { type: Number, required: true },
       subTotal: { type: Number, required: true },
+      discount: { type: Number },
+      shipping: { type: Number, required: true },
       total: { type: Number, required: true },
 
       isPaid: { type: Boolean, required: true, default: false },

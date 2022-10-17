@@ -9,6 +9,8 @@ export interface IOrder {
 
    numberOfItems: number;
    subTotal: number;
+   discount?: number;
+   shipping: number;
    total: number;
 
    isPaid: boolean;
