@@ -12,20 +12,27 @@ import styles from '../../styles/ShopNavbar.module.css';
 interface Props {
    pageTitle: string;
    menuPage: boolean;
+   backCart: boolean;
 }
 
-export const ShopNavbar: FC<Props> = ({ pageTitle, menuPage }) => {
+export const ShopNavbar: FC<Props> = ({ pageTitle, menuPage, backCart }) => {
    const router = useRouter();
 
    const { toggleSideMenu } = useContext(UIContext);
    const { numberOfItems } = useContext(CartContext);
+
+   const navigation = () => {
+      if (backCart) return router.push('/menu');
+
+      router.back();
+   };
 
    return (
       <section className={styles.shopNavbar}>
          <div className={styles.container}>
             <div className={styles.navigation}>
                {!menuPage && (
-                  <div className={styles.backMobile} onClick={() => router.back()}>
+                  <div className={styles.backMobile} onClick={navigation}>
                      <IoIosArrowRoundBack />
                   </div>
                )}

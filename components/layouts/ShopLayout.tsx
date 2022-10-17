@@ -19,11 +19,13 @@ export const ShopLayout: FC<Props> = ({ children, title, pageDescription, imageF
 
    let navTitle = '';
    let menuPage = false;
+   let backCart = false;
 
    const setPath = (routerPath: string) => {
       Object.entries(pageTitles).forEach(([path, title]): void => {
          if (routerPath === path) navTitle = title;
          if (routerPath === '/menu') menuPage = true;
+         if (routerPath === '/cart') backCart = true;
       });
    };
 
@@ -42,7 +44,7 @@ export const ShopLayout: FC<Props> = ({ children, title, pageDescription, imageF
          </Head>
 
          <nav>
-            <ShopNavbar pageTitle={navTitle} menuPage={menuPage} />
+            <ShopNavbar pageTitle={navTitle} menuPage={menuPage} backCart={backCart} />
          </nav>
 
          <SideMenu />
