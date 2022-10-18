@@ -11,16 +11,16 @@ import styles from '../../styles/EmptyCart.module.css';
 
 const EmptyPage: NextPage = () => {
    const router = useRouter();
-   const { isLoaded } = useContext(CartContext);
+   const { isLoaded, cart } = useContext(CartContext);
 
    useEffect(() => {
-      if (isLoaded) {
+      if (isLoaded && cart.length !== 0) {
          router.replace('/cart');
       }
-   }, [isLoaded, router]);
+   }, [isLoaded, cart, router]);
 
    // Avoid render anything in client-side
-   if (isLoaded) {
+   if (isLoaded || cart.length !== 0) {
       return <></>;
    }
 
