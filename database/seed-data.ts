@@ -1,5 +1,5 @@
 import bcrypt from 'bcryptjs';
-import { IAddress, IType } from '../interfaces';
+import { IAddress, ICouponTypes, IType } from '../interfaces';
 
 interface SeedProduct {
    image: string;
@@ -24,12 +24,39 @@ interface SeedUser {
    shipping: IAddress;
 }
 
+interface SeedCoupon {
+   code: string;
+   description: string;
+   discount_type: ICouponTypes;
+   discount: number;
+   enabled: boolean;
+   minAmount?: number;
+   maxAmount?: number;
+   allowedEmail?: string;
+   allowOthersCoupons?: boolean;
+   allowFreeShipping?: boolean;
+   couponLimit?: number;
+   userLimit?: number;
+   expirationDate?: Date;
+}
+
 interface SeedData {
+   coupons: SeedCoupon[];
    users: SeedUser[];
    products: SeedProduct[];
 }
 
 export const initialData: SeedData = {
+   coupons: [
+      {
+         code: 'bienvenido10',
+         description: 'Primera compra - 10%',
+         discount_type: 'percentage discount',
+         discount: 10,
+         enabled: true,
+      },
+   ],
+
    users: [
       {
          name: 'Damian',
