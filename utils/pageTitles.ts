@@ -4,7 +4,7 @@ export const pageTitles = {
    '/cart': 'Carrito',
    '/cart/empty': 'Carrito',
    '/auth/login-checkout': 'Iniciar Sesión',
-   'login-checkout?page=/checkout': 'Iniciar Sesión',
+   '/auth/login-checkout?page=/checkout': 'Iniciar Sesión',
    '/checkout#': '¡Último Paso!',
    '/checkout': '¡Último Paso!',
    '/checkout/address': 'Dirección de envío',
