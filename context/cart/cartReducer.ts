@@ -1,4 +1,4 @@
-import { ICartProduct } from '../../interfaces';
+import { ICartProduct, ICoupon } from '../../interfaces';
 
 import { CartState } from './';
 
@@ -10,6 +10,7 @@ type CartActionType =
    | { type: '[Cart] - Remove Product'; payload: ICartProduct[] }
    | { type: '[Cart] - Empty Cart'; payload: ICartProduct[] }
    | { type: '[Cart] - Calculate Shipping'; payload: number }
+   | { type: '[Cart] - Add Coupon'; payload: ICoupon[] }
    | {
         type: '[Cart] - Update Order Summary';
         payload: {
@@ -65,6 +66,12 @@ export const cartReducer = (state: CartState, action: CartActionType): CartState
          return {
             ...state,
             shipping: action.payload,
+         };
+
+      case '[Cart] - Add Coupon':
+         return {
+            ...state,
+            coupons: [...action.payload],
          };
 
       case '[Cart] - Update Order Summary':

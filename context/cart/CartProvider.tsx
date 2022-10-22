@@ -2,9 +2,11 @@ import { FC, ReactNode, useEffect, useReducer } from 'react';
 
 import Cookies from 'js-cookie';
 
+import { viandasApi } from '../../api';
+import { coupon, promo } from '../../utils';
+
 import { CartContext, cartReducer } from './';
-import { ICartProduct } from '../../interfaces';
-import { promo } from '../../utils';
+import { ICartProduct, ICoupon } from '../../interfaces';
 
 interface Props {
    children: ReactNode;
@@ -13,6 +15,7 @@ interface Props {
 export interface CartState {
    isLoaded: boolean;
    cart: ICartProduct[];
+   coupons?: ICoupon[];
    numberOfItems: number;
    subTotal: number;
    discount: number;
@@ -23,6 +26,7 @@ export interface CartState {
 const CART_INITIAL_STATE: CartState = {
    isLoaded: false,
    cart: [],
+   coupons: [],
    numberOfItems: 0,
    subTotal: 0,
    discount: 0,
@@ -55,7 +59,10 @@ export const CartProvider: FC<Props> = ({ children }) => {
       }
 
       const shipping = state.shipping;
-      const total = subTotal - discount + shipping;
+      const coupons = state.coupons!.reduce((p, c) => coupon.calc(c, state.subTotal) + p, 0);
+      const total = subTotal - discount - coupons + shipping;
+
+      console.log('coupons', coupons);
 
       const orderSummary = {
          numberOfItems,
@@ -66,7 +73,7 @@ export const CartProvider: FC<Props> = ({ children }) => {
       };
 
       dispatch({ type: '[Cart] - Update Order Summary', payload: orderSummary });
-   }, [state.cart, state.shipping]);
+   }, [state.cart, state.shipping, state.coupons]);
 
    // Load Cart from Cookies
    useEffect(() => {
@@ -126,6 +133,7 @@ export const CartProvider: FC<Props> = ({ children }) => {
       if (state.cart.length === 1) Cookies.remove('cart');
    };
 
+   // Calculate shipping value in cart page
    const calculateShipping = (city: string) => {
       let shippingCost: number = 0;
 
@@ -133,6 +141,20 @@ export const CartProvider: FC<Props> = ({ children }) => {
       if (city === 'ba') shippingCost = Number(process.env.NEXT_PUBLIC_BA);
 
       dispatch({ type: '[Cart] - Calculate Shipping', payload: shippingCost });
+   };
+
+   const addCoupon = async (couponCode: string): Promise<{ coupon?: ICoupon; error: boolean }> => {
+      try {
+         const { data } = await viandasApi.get('/coupon', { params: { code: couponCode } });
+
+         const discount = coupon.calc(data, state.subTotal);
+
+         dispatch({ type: '[Cart] - Add Coupon', payload: [...state.coupons!, data] });
+
+         return { coupon: data, error: false };
+      } catch (error) {
+         return { error: true };
+      }
    };
 
    return (
@@ -143,6 +165,7 @@ export const CartProvider: FC<Props> = ({ children }) => {
             updateCartQuantity,
             removeCartProduct,
             calculateShipping,
+            addCoupon,
          }}>
          {children}
       </CartContext.Provider>

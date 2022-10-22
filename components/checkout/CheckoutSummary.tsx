@@ -1,9 +1,10 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 
 import { CartContext } from '../../context';
 import { currency } from '../../utils';
 
 import { Discounts } from '../cart';
+import { Coupons } from './';
 
 import styles from '../../styles/CheckoutSummary.module.css';
 
@@ -12,8 +13,6 @@ export const CheckoutSummary = () => {
 
    return (
       <section className={styles.checkoutSummary}>
-         {/* <h2 className={styles.title}>Total del Carrito</h2> */}
-
          <div className={styles.summary}>
             <span>N° de Viandas</span>
 
@@ -36,17 +35,11 @@ export const CheckoutSummary = () => {
             {shipping === 0 ? <span>Gratis</span> : <span>{currency.format(shipping)}</span>}
          </div>
 
-         {/* <div className={styles.summary}>
-            <span>+14 viandas</span>
+         <div className={styles.summary}>
+            <span>¿Tenés un cupón?</span>
 
-            <span className={styles.discount}>Envío Gratuito</span>
-         </div> */}
-
-         {/* <div className={styles.summary}>
-            <span>Cupón (BIENVENIDO10)</span>
-
-            <span className={styles.discount}>-$43,84</span>
-         </div> */}
+            <Coupons />
+         </div>
 
          <div className={`${styles.summary} ${styles.total}`}>
             <span>
