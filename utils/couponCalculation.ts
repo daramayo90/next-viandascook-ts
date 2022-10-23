@@ -14,7 +14,7 @@ const calculate = (discount: number, type: string, subTotal: number): number => 
    }
 
    if (type === 'fixed discount') {
-      return subTotal - discount;
+      return discount;
    }
 
    return 0;

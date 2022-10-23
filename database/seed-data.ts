@@ -55,6 +55,17 @@ export const initialData: SeedData = {
          discount: 10,
          enabled: true,
       },
+      {
+         code: 'nico-pm',
+         description: 'Descuento del 50% por ayudarme con la web',
+         discount_type: 'fixed discount',
+         discount: 6000,
+         enabled: true,
+         minAmount: 12000,
+         maxAmount: 25000,
+         allowFreeShipping: true,
+         allowedEmail: 'damian@gmail.com',
+      },
    ],
 
    users: [
