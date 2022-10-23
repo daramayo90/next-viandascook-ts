@@ -12,6 +12,7 @@ type CartActionType =
    | { type: '[Cart] - Empty Cart'; payload: ICartProduct[] }
    | { type: '[Cart] - Calculate Shipping'; payload: number }
    | { type: '[Cart] - Add Coupon'; payload: ICoupon[] }
+   | { type: '[Cart] - Remove Coupon' }
    | {
         type: '[Cart] - Update Order Summary';
         payload: {
@@ -19,6 +20,7 @@ type CartActionType =
            subTotal: number;
            discount: number;
            shipping: number;
+           couponsDiscount: number;
            total: number;
         };
      }
@@ -75,16 +77,23 @@ export const cartReducer = (state: CartState, action: CartActionType): CartState
             shipping: action.payload,
          };
 
+      case '[Cart] - Update Order Summary':
+         return {
+            ...state,
+            ...action.payload,
+         };
+
       case '[Cart] - Add Coupon':
          return {
             ...state,
             coupons: [...action.payload],
          };
 
-      case '[Cart] - Update Order Summary':
+      case '[Cart] - Remove Coupon':
          return {
             ...state,
-            ...action.payload,
+            coupons: [],
+            couponsDiscount: 0,
          };
 
       default:

@@ -29,16 +29,12 @@ export const CheckoutSummary = () => {
 
          <Discounts />
 
+         <Coupons />
+
          <div className={styles.summary}>
             <span>Envío</span>
 
             {shipping === 0 ? <span>Gratis</span> : <span>{currency.format(shipping)}</span>}
-         </div>
-
-         <div className={styles.summary}>
-            <span>¿Tenés un cupón?</span>
-
-            <Coupons />
          </div>
 
          <div className={`${styles.summary} ${styles.total}`}>

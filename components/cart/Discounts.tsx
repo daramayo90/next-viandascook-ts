@@ -18,7 +18,7 @@ export const Discounts = () => {
             <div className={styles.summary}>
                <span className={styles.discount}>Promo 28 platos o más (10%)</span>
 
-               <span className={styles.discount}>{currency.format(discount)}</span>
+               <span className={styles.discount}>-{currency.format(discount)}</span>
             </div>
          )}
 

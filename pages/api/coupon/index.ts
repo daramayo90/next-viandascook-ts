@@ -16,6 +16,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 }
 
 const getCoupon = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
+   console.log('test');
    const { code } = req.query;
 
    await db.connect();
@@ -24,6 +25,7 @@ const getCoupon = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
       .select('code description discount_type discount -_id')
       .lean();
 
+   console.log(coupon);
    await db.disconnect();
 
    if (!coupon) {

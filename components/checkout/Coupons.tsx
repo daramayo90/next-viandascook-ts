@@ -1,10 +1,16 @@
 import { ChangeEvent, useState, useContext } from 'react';
+
 import { CartContext } from '../../context';
+
+import { currency } from '../../utils';
+
+import { TiDelete } from 'react-icons/ti';
 
 import styles from '../../styles/CheckoutSummary.module.css';
 
+// TODO: Ver los errores from db
 export const Coupons = () => {
-   const { addCoupon } = useContext(CartContext);
+   const { addCoupon, removeCoupon, coupons, couponsDiscount } = useContext(CartContext);
 
    const [hasCoupon, setHasCoupon] = useState(false);
    const [errorMsg, setErrorMsg] = useState('');
@@ -14,31 +20,51 @@ export const Coupons = () => {
 
       const couponCode = e.target.coupon.value;
 
-      const { coupon, error } = await addCoupon(couponCode);
+      const { error } = await addCoupon(couponCode);
 
-      if (error) {
-         setErrorMsg('Código no válido');
-         return;
-      }
+      if (error) return setErrorMsg('Código no válido');
 
       setHasCoupon(false);
       setErrorMsg('');
    };
 
+   const onRemoveCoupon = () => {
+      removeCoupon();
+   };
+
    return (
-      <div className={styles.coupons}>
-         <span className={styles.pointer} onClick={() => setHasCoupon(!hasCoupon)}>
-            Agregar
-         </span>
+      <div className={styles.summary}>
+         {couponsDiscount === 0 ? (
+            <>
+               <span>¿Tenés un cupón?</span>
 
-         {hasCoupon && (
-            <form className={styles.formCoupon} onSubmit={handleCoupon}>
-               <input type='text' name='coupon' placeholder='Código' />
+               <div className={styles.coupons}>
+                  <span className={styles.pointer} onClick={() => setHasCoupon(!hasCoupon)}>
+                     Agregar
+                  </span>
 
-               <button className={styles.couponButton}>Aplicar cupón</button>
+                  {hasCoupon && (
+                     <form className={styles.formCoupon} onSubmit={handleCoupon}>
+                        <input type='text' name='coupon' placeholder='Código' />
 
-               {errorMsg && <span>{errorMsg}</span>}
-            </form>
+                        <button className={styles.couponButton}>Aplicar cupón</button>
+
+                        {errorMsg && <span>{errorMsg}</span>}
+                     </form>
+                  )}
+               </div>
+            </>
+         ) : (
+            <>
+               <span>
+                  Cupón: <u>{coupons[0].code}</u>
+                  <TiDelete className={styles.delete} onClick={onRemoveCoupon} />
+               </span>
+
+               <div className={styles.coupons}>
+                  <span className={styles.discount}>-{currency.format(couponsDiscount)}</span>
+               </div>
+            </>
          )}
       </div>
    );

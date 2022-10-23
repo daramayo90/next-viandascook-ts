@@ -20,6 +20,7 @@ export interface CartState {
    subTotal: number;
    discount: number;
    shipping: number;
+   couponsDiscount: number;
    total: number;
 }
 
@@ -31,6 +32,7 @@ const CART_INITIAL_STATE: CartState = {
    subTotal: 0,
    discount: 0,
    shipping: 0,
+   couponsDiscount: 0,
    total: 0,
 };
 
@@ -65,15 +67,16 @@ export const CartProvider: FC<Props> = ({ children }) => {
 
       const shipping = state.shipping;
 
-      const coupons = state.coupons?.reduce((p, c) => coupon.calc(c, subTotal) + p, 0) || 0;
+      const couponsDiscount = state.coupons?.reduce((p, c) => coupon.calc(c, subTotal) + p, 0) || 0;
 
-      const total = subTotal - discount - coupons + shipping;
+      const total = subTotal - discount - couponsDiscount + shipping;
 
       const orderSummary = {
          numberOfItems,
          subTotal,
          discount,
          shipping,
+         couponsDiscount,
          total,
       };
 
@@ -159,18 +162,21 @@ export const CartProvider: FC<Props> = ({ children }) => {
    };
 
    // Add a coupon in checkout page
-   const addCoupon = async (couponCode: string): Promise<{ coupon?: ICoupon; error: boolean }> => {
+   const addCoupon = async (couponCode: string): Promise<{ error: boolean }> => {
       try {
          const { data } = await viandasApi.get('/coupon', { params: { code: couponCode } });
 
-         const discount = coupon.calc(data, state.subTotal);
-
          dispatch({ type: '[Cart] - Add Coupon', payload: [...state.coupons!, data] });
 
-         return { coupon: data, error: false };
+         return { error: false };
       } catch (error) {
          return { error: true };
       }
+   };
+
+   const removeCoupon = () => {
+      Cookies.remove('coupons');
+      dispatch({ type: '[Cart] - Remove Coupon' });
    };
 
    return (
@@ -182,6 +188,7 @@ export const CartProvider: FC<Props> = ({ children }) => {
             removeCartProduct,
             calculateShipping,
             addCoupon,
+            removeCoupon,
          }}>
          {children}
       </CartContext.Provider>

@@ -82,6 +82,20 @@
    background-color: var(--primary);
 }
 
+.checkoutSummary > .summary span > u {
+   color: var(--primary);
+}
+
+.checkoutSummary > .summary span > .delete {
+   color: var(--primary);
+   cursor: pointer;
+   font-size: 1rem;
+}
+
+.checkoutSummary > .summary > .coupons > .discount {
+   color: var(--primary);
+}
+
 .checkoutSummary > .total {
    margin-top: 1rem;
    padding-top: 0.5rem;
