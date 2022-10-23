@@ -5,8 +5,6 @@ export const calc = (coupon: ICoupon, subTotal: number): number => {
 
    const amount = calculate(discount, discount_type, subTotal);
 
-   console.log('AMOUNT', discount, discount_type);
-
    return amount;
 };
 

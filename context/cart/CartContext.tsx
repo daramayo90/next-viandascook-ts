@@ -4,13 +4,13 @@ import { ICartProduct, ICoupon, ShippingAddress } from '../../interfaces';
 interface ContextProps {
    isLoaded: boolean;
    cart: ICartProduct[];
-   coupons?: ICoupon[];
+   coupons: ICoupon[];
    numberOfItems: number;
    subTotal: number;
    discount: number;
    shipping: number;
    total: number;
-   shippingAddress?: ShippingAddress;
+   // shippingAddress?: ShippingAddress;
 
    addProductToCart: (product: ICartProduct) => void;
    updateCartQuantity: (product: ICartProduct) => void;

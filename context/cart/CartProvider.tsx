@@ -15,7 +15,7 @@ interface Props {
 export interface CartState {
    isLoaded: boolean;
    cart: ICartProduct[];
-   coupons?: ICoupon[];
+   coupons: ICoupon[];
    numberOfItems: number;
    subTotal: number;
    discount: number;
@@ -37,15 +37,20 @@ const CART_INITIAL_STATE: CartState = {
 export const CartProvider: FC<Props> = ({ children }) => {
    const [state, dispatch] = useReducer(cartReducer, CART_INITIAL_STATE);
 
-   // Add Cart Products to Cookies
+   // Add Cart products to cookies
    useEffect(() => {
       if (state.cart.length > 0) Cookies.set('cart', JSON.stringify(state.cart));
    }, [state.cart]);
 
-   // Add Shipping cost to Cookies
+   // Add Shipping cost to cookies
    useEffect(() => {
       if (state.shipping !== 0) Cookies.set('shipping', JSON.stringify(state.shipping));
    }, [state.shipping]);
+
+   // Add Coupons to cookies
+   useEffect(() => {
+      if (state.coupons.length > 0) Cookies.set('coupons', JSON.stringify(state.coupons));
+   }, [state.coupons]);
 
    // Calculation of: quantity / subTotal / discount / shipping fee / total
    useEffect(() => {
@@ -59,10 +64,10 @@ export const CartProvider: FC<Props> = ({ children }) => {
       }
 
       const shipping = state.shipping;
-      const coupons = state.coupons!.reduce((p, c) => coupon.calc(c, state.subTotal) + p, 0);
-      const total = subTotal - discount - coupons + shipping;
 
-      console.log('coupons', coupons);
+      const coupons = state.coupons?.reduce((p, c) => coupon.calc(c, subTotal) + p, 0) || 0;
+
+      const total = subTotal - discount - coupons + shipping;
 
       const orderSummary = {
          numberOfItems,
@@ -92,6 +97,16 @@ export const CartProvider: FC<Props> = ({ children }) => {
          dispatch({ type: '[Cart] - Load Shipping from Cookies', payload: cookieShipping });
       } catch (error) {
          dispatch({ type: '[Cart] - Load Shipping from Cookies', payload: 0 });
+      }
+   }, []);
+
+   // Load Coupons from Cookies
+   useEffect(() => {
+      try {
+         const cookieCoupons: ICoupon[] = JSON.parse(Cookies.get('coupons')!) || [];
+         dispatch({ type: '[Cart] - Load Coupons from Cookies', payload: cookieCoupons });
+      } catch (error) {
+         dispatch({ type: '[Cart] - Load Coupons from Cookies', payload: [] });
       }
    }, []);
 
@@ -143,6 +158,7 @@ export const CartProvider: FC<Props> = ({ children }) => {
       dispatch({ type: '[Cart] - Calculate Shipping', payload: shippingCost });
    };
 
+   // Add a coupon in checkout page
    const addCoupon = async (couponCode: string): Promise<{ coupon?: ICoupon; error: boolean }> => {
       try {
          const { data } = await viandasApi.get('/coupon', { params: { code: couponCode } });

@@ -5,6 +5,7 @@ import { CartState } from './';
 type CartActionType =
    | { type: '[Cart] - Load Cart from Cookies'; payload: ICartProduct[] }
    | { type: '[Cart] - Load Shipping from Cookies'; payload: number }
+   | { type: '[Cart] - Load Coupons from Cookies'; payload: ICoupon[] }
    | { type: '[Cart] - Update Products'; payload: ICartProduct[] }
    | { type: '[Cart] - Update Quantity'; payload: ICartProduct[] }
    | { type: '[Cart] - Remove Product'; payload: ICartProduct[] }
@@ -36,6 +37,12 @@ export const cartReducer = (state: CartState, action: CartActionType): CartState
          return {
             ...state,
             shipping: action.payload,
+         };
+
+      case '[Cart] - Load Coupons from Cookies':
+         return {
+            ...state,
+            coupons: action.payload,
          };
 
       case '[Cart] - Update Products':
