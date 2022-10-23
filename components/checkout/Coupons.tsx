@@ -20,9 +20,9 @@ export const Coupons = () => {
 
       const couponCode = e.target.coupon.value;
 
-      const { error } = await addCoupon(couponCode);
+      const { error, msg } = await addCoupon(couponCode);
 
-      if (error) return setErrorMsg('Código no válido');
+      if (error) return setErrorMsg(msg!);
 
       setHasCoupon(false);
       setErrorMsg('');
@@ -40,7 +40,7 @@ export const Coupons = () => {
 
                <div className={styles.coupons}>
                   <span className={styles.pointer} onClick={() => setHasCoupon(!hasCoupon)}>
-                     Agregar
+                     {!hasCoupon ? 'Agregar' : 'Cerrar'}
                   </span>
 
                   {hasCoupon && (
@@ -49,7 +49,7 @@ export const Coupons = () => {
 
                         <button className={styles.couponButton}>Aplicar cupón</button>
 
-                        {errorMsg && <span>{errorMsg}</span>}
+                        {errorMsg && <span className={styles.error}>{errorMsg}</span>}
                      </form>
                   )}
                </div>

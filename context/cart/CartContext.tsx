@@ -18,7 +18,7 @@ interface ContextProps {
    removeCartProduct: (product: ICartProduct) => void;
    calculateShipping: (city: string) => void;
 
-   addCoupon: (couponCode: string) => Promise<{ error: boolean }>;
+   addCoupon: (couponCode: string) => Promise<{ error: boolean; msg?: string }>;
    removeCoupon: () => void;
 }
 

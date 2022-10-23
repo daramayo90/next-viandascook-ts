@@ -1,4 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { getSession } from 'next-auth/react';
 import { db } from '../../../database';
 import { ICoupon } from '../../../interfaces';
 import { Coupon } from '../../../models';
@@ -16,20 +17,28 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 }
 
 const getCoupon = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
-   console.log('test');
+   const { user }: any = (await getSession({ req })) || '';
    const { code } = req.query;
 
    await db.connect();
 
-   const coupon = await Coupon.findOne({ code })
-      .select('code description discount_type discount -_id')
-      .lean();
+   const coupon = await Coupon.findOne({ code }).select(' -_id -__v -createdAt -updatedAt').lean();
 
-   console.log(coupon);
    await db.disconnect();
 
-   if (!coupon) {
-      return res.status(404).json({ message: 'Coupon not found' });
+   if (!coupon) return res.status(404).json({ message: 'Cupón no válido' });
+
+   if (coupon.enabled === false) return res.status(404).json({ message: 'Cupón expirado' });
+
+   if (coupon.expirationDate && coupon.expirationDate < new Date())
+      return res.status(404).json({ message: 'Cupón expirado' });
+
+   if (coupon.allowedEmail) {
+      if (coupon.allowedEmail !== user?.email) {
+         return res
+            .status(404)
+            .json({ message: 'Este cupón no se puede usar con el email indicado' });
+      }
    }
 
    res.status(200).json(coupon);

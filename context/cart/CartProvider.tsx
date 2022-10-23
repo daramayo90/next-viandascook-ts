@@ -3,7 +3,7 @@ import { FC, ReactNode, useEffect, useReducer } from 'react';
 import Cookies from 'js-cookie';
 
 import { viandasApi } from '../../api';
-import { coupon, promo } from '../../utils';
+import { coupon, currency, promo } from '../../utils';
 
 import { CartContext, cartReducer } from './';
 import { ICartProduct, ICoupon } from '../../interfaces';
@@ -162,15 +162,32 @@ export const CartProvider: FC<Props> = ({ children }) => {
    };
 
    // Add a coupon in checkout page
-   const addCoupon = async (couponCode: string): Promise<{ error: boolean }> => {
+   const addCoupon = async (couponCode: string): Promise<{ error: boolean; msg?: string }> => {
       try {
          const { data } = await viandasApi.get('/coupon', { params: { code: couponCode } });
+
+         const { minAmount, maxAmount } = data;
+
+         if (state.subTotal < minAmount)
+            return {
+               error: true,
+               msg: `El sub total debe ser mayor a ${currency.format(minAmount)}`,
+            };
+
+         if (state.subTotal > maxAmount)
+            return {
+               error: true,
+               msg: `El sub total debe ser menor a ${currency.format(maxAmount)}`,
+            };
 
          dispatch({ type: '[Cart] - Add Coupon', payload: [...state.coupons!, data] });
 
          return { error: false };
-      } catch (error) {
-         return { error: true };
+      } catch (error: any) {
+         return {
+            error: true,
+            msg: error.response.data.message,
+         };
       }
    };
 

@@ -63,7 +63,6 @@ export const initialData: SeedData = {
          enabled: true,
          minAmount: 12000,
          maxAmount: 25000,
-         allowFreeShipping: true,
          allowedEmail: 'damian@gmail.com',
       },
    ],
