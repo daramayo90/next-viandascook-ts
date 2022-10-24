@@ -15,6 +15,7 @@ export interface ICoupon {
 
    couponLimit?: number;
    userLimit?: number;
+   ussage: number;
 
    expirationDate?: Date;
 

@@ -1,3 +1,5 @@
+import { ICoupon } from './';
+
 export interface IUser {
    _id: string;
    name: string;
@@ -8,6 +10,7 @@ export interface IUser {
    password?: string;
    role: string;
    shipping: IAddress;
+   coupons: ICoupon[];
    createdAt?: string;
    updatedAt?: string;
 }

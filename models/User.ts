@@ -33,6 +33,8 @@ const userSchema = new Schema(
             message: '{VALUE} is not a valid city',
          },
       },
+
+      coupons: { type: Schema.Types.ObjectId, ref: 'Coupon', required: true },
    },
 
    { timestamps: true },

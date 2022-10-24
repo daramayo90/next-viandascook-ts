@@ -54,6 +54,7 @@ export const initialData: SeedData = {
          discount_type: 'percentage discount',
          discount: 10,
          enabled: true,
+         userLimit: 1,
       },
       {
          code: 'nico-pm',

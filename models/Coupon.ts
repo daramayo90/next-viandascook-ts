@@ -17,6 +17,7 @@ const couponSchema = new Schema(
 
       couponLimit: { type: Number },
       userLimit: { type: Number },
+      ussage: { type: Number },
 
       expirationDate: { type: Date },
 
