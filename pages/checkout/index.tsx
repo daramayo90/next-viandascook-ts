@@ -1,6 +1,8 @@
+import { authOptions } from '../../pages/api/auth/[...nextauth]';
+import { GetServerSideProps, NextPage } from 'next';
+import { unstable_getServerSession } from 'next-auth/next';
+
 import { useContext } from 'react';
-import { GetServerSideProps, NextPage } from 'next/types';
-import { getSession } from 'next-auth/react';
 
 import { IUser } from '../../interfaces';
 
@@ -45,8 +47,8 @@ const CheckoutPage: NextPage<Props> = ({ user }) => {
    );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ req }) => {
-   const session = await getSession({ req });
+export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
+   const session = await unstable_getServerSession(req, res, authOptions);
 
    if (session) {
       const { user } = session;

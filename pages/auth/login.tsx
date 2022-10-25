@@ -1,5 +1,6 @@
+import { authOptions } from '../../pages/api/auth/[...nextauth]';
 import { GetServerSideProps, NextPage } from 'next';
-import { getSession } from 'next-auth/react';
+import { unstable_getServerSession } from 'next-auth/next';
 
 import { LoginForm, Providers } from '../../components/auth';
 import { AuthLayout } from '../../components/layouts';
@@ -25,10 +26,10 @@ const LoginPage: NextPage = () => {
    );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ req, query }) => {
-   const session = await getSession({ req });
+export const getServerSideProps: GetServerSideProps = async ({ req, res, query }) => {
+   const session = await unstable_getServerSession(req, res, authOptions);
 
-   const { page = '/' } = query;
+   const { page = '/menu' } = query;
 
    if (session) {
       return {

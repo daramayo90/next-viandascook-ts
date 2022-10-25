@@ -1,5 +1,6 @@
+import { authOptions } from '../../pages/api/auth/[...nextauth]';
 import { GetServerSideProps, NextPage } from 'next';
-import { getSession } from 'next-auth/react';
+import { unstable_getServerSession } from 'next-auth/next';
 import { useRouter } from 'next/router';
 
 import { ShopLayout } from '../../components/layouts';
@@ -42,8 +43,8 @@ const LoginCheckoutPage: NextPage = () => {
    );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ req, query }) => {
-   const session = await getSession({ req });
+export const getServerSideProps: GetServerSideProps = async ({ req, res, query }) => {
+   const session = await unstable_getServerSession(req, res, authOptions);
 
    const { page = '/checkout' } = query;
 

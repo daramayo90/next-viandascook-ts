@@ -1,5 +1,6 @@
+import { authOptions } from '../auth/[...nextauth]';
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { getSession } from 'next-auth/react';
+import { unstable_getServerSession } from 'next-auth/next';
 import { db } from '../../../database';
 import { ICoupon, IUser } from '../../../interfaces';
 import { Coupon, User } from '../../../models';
@@ -19,7 +20,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 const getCoupon = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
    if (req.cookies.coupons) return res.status(404).json({ message: 'Cupón ya utilizado' });
 
-   const { user }: any = (await getSession({ req })) || '';
+   const { user }: any = await unstable_getServerSession(req, res, authOptions);
    const { code } = req.query;
 
    const email = user?.email;
