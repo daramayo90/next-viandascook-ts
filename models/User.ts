@@ -34,7 +34,12 @@ const userSchema = new Schema(
          },
       },
 
-      coupons: { type: Schema.Types.ObjectId, ref: 'Coupon', required: true },
+      coupons: [
+         {
+            _id: { type: Schema.Types.ObjectId, ref: 'Coupon' },
+            ussage: { type: Number },
+         },
+      ],
    },
 
    { timestamps: true },

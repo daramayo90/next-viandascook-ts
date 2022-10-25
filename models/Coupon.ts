@@ -12,12 +12,8 @@ const couponSchema = new Schema(
       maxAmount: { type: Number },
 
       allowedEmail: { type: String },
-      allowOthersCoupons: { type: Boolean },
-      allowFreeShipping: { type: Boolean },
-
-      couponLimit: { type: Number },
       userLimit: { type: Number },
-      ussage: { type: Number },
+      ussage: { type: Number, required: true },
 
       expirationDate: { type: Date },
 

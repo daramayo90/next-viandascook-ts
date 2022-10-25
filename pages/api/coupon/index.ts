@@ -20,10 +20,12 @@ const getCoupon = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
    const { user }: any = (await getSession({ req })) || '';
    const { code } = req.query;
 
+   const email = user?.email;
+
    await db.connect();
 
-   const coupon = await Coupon.findOne({ code }).select('-__v -createdAt -updatedAt').lean();
-   const userCoupons = await User.findOne({ coupons: coupon?._id }).select('coupons').lean();
+   const coupon = await Coupon.findOne({ code }).lean();
+   const userCoupon = await User.findOne({ email, 'coupons._id': coupon?._id }).lean();
 
    await db.disconnect();
 
@@ -41,14 +43,14 @@ const getCoupon = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
       return res.status(404).json({ message: 'Este cupón no se puede usar con el email indicado' });
    }
 
-   const userLimit = validateCouponUssage(userCoupons!, coupon);
+   const userLimit = validateCouponUssage(userCoupon!, coupon);
    if (userLimit) return res.status(404).json({ message: 'Ya alcanzaste el límite permitido' });
 
    res.status(200).json(coupon);
 };
 
 const validateCouponUssage = (user: IUser, coupon: ICoupon) => {
-   if (user.coupons.length === 0) return null;
+   if (!user) return null;
 
    if (coupon.userLimit === undefined) return null;
 

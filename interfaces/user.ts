@@ -21,3 +21,8 @@ export interface IAddress {
    zipcode: string;
    city: 'caba' | 'ba';
 }
+
+export interface IUserCoupon {
+   _id: string;
+   ussage: number;
+}

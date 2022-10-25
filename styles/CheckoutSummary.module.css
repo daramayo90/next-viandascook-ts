@@ -84,11 +84,11 @@
 }
 
 .checkoutSummary > .summary > .coupons > .formCoupon > .error {
-   /* display: block; */
    width: 100%;
    position: absolute;
    right: 0;
    bottom: -1.1rem;
+   font-size: 0.8rem;
    color: var(--error);
 }
 

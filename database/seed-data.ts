@@ -1,5 +1,5 @@
 import bcrypt from 'bcryptjs';
-import { IAddress, ICouponTypes, IType } from '../interfaces';
+import { IAddress, ICouponTypes, IUserCoupon, IType } from '../interfaces';
 
 interface SeedProduct {
    image: string;
@@ -22,6 +22,7 @@ interface SeedUser {
    password?: string;
    role: string;
    shipping: IAddress;
+   coupons: IUserCoupon[];
 }
 
 interface SeedCoupon {
@@ -33,10 +34,8 @@ interface SeedCoupon {
    minAmount?: number;
    maxAmount?: number;
    allowedEmail?: string;
-   allowOthersCoupons?: boolean;
-   allowFreeShipping?: boolean;
-   couponLimit?: number;
    userLimit?: number;
+   ussage: number;
    expirationDate?: Date;
 }
 
@@ -55,6 +54,7 @@ export const initialData: SeedData = {
          discount: 10,
          enabled: true,
          userLimit: 1,
+         ussage: 0,
       },
       {
          code: 'nico-pm',
@@ -65,6 +65,7 @@ export const initialData: SeedData = {
          minAmount: 12000,
          maxAmount: 25000,
          allowedEmail: 'damian@gmail.com',
+         ussage: 0,
       },
    ],
 
@@ -83,6 +84,12 @@ export const initialData: SeedData = {
             zipcode: '7933',
             city: 'caba',
          },
+         coupons: [
+            {
+               _id: '6357565094369661b1324097',
+               ussage: 1,
+            },
+         ],
       },
       {
          name: 'Norma',
@@ -98,6 +105,7 @@ export const initialData: SeedData = {
             zipcode: '4563',
             city: 'ba',
          },
+         coupons: [],
       },
    ],
 

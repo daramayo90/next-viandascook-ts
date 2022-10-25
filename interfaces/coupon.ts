@@ -10,10 +10,6 @@ export interface ICoupon {
    maxAmount?: number;
 
    allowedEmail?: string;
-   allowOthersCoupons?: boolean;
-   allowFreeShipping?: boolean;
-
-   couponLimit?: number;
    userLimit?: number;
    ussage: number;
 
