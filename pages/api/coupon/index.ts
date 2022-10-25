@@ -17,6 +17,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 }
 
 const getCoupon = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
+   if (req.cookies.coupons) return res.status(404).json({ message: 'Cupón ya utilizado' });
+
    const { user }: any = (await getSession({ req })) || '';
    const { code } = req.query;
 

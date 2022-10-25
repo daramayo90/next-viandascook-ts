@@ -1,5 +1,9 @@
+import { useContext, useState } from 'react';
 import { NextPage } from 'next/types';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
+
+import { CartContext } from '../../context';
 
 import { ShopLayout } from '../../components/layouts';
 import { SubmitButton } from '../../components/ui';
@@ -11,12 +15,27 @@ import { MdDeliveryDining, MdLocalOffer } from 'react-icons/md';
 import styles from '../../styles/Promos.module.css';
 
 const PromosPage: NextPage = () => {
+   const router = useRouter();
+
+   const { addCoupon } = useContext(CartContext);
+
+   const [errorMsg, setErrorMsg] = useState('');
+
+   const onNewUser = async () => {
+      const { error, msg } = await addCoupon('bienvenido10');
+
+      if (error) return setErrorMsg(msg!);
+
+      setErrorMsg('');
+      router.push('/checkout');
+   };
+
    return (
       <ShopLayout title={''} pageDescription={''}>
          <section className={styles.promos}>
             <div className={styles.container}>
                {/* New User Promo */}
-               <div className={styles.promo}>
+               <div className={styles.promo} onClick={onNewUser}>
                   <div className={styles.card}>
                      <RiUserFill className={styles.iconPromo} />
 
@@ -26,6 +45,8 @@ const PromosPage: NextPage = () => {
                      </div>
                   </div>
                </div>
+
+               {errorMsg && <span className={styles.error}>{errorMsg}</span>}
 
                {/* Discount 20% Off */}
                <div className={styles.promo}>
