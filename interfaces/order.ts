@@ -1,29 +1,31 @@
-import { IUser } from './';
+import { ICoupon, IUser } from './';
 
 export interface IOrder {
    _id?: string;
    user?: IUser | string;
    orderItems: IOrderItem[];
    shippingAddress: ShippingAddress;
-   paymentResult?: string;
+   coupons?: ICoupon[];
 
    numberOfItems: number;
    subTotal: number;
    discount?: number;
    shipping: number;
+   couponDiscount?: number;
    total: number;
 
    isPaid: boolean;
    paidAt?: string;
 
    transactionId?: string;
+
+   // paymentResult?: string;
 }
 
 export interface IOrderItem {
    _id: string;
    image: string;
    name: string;
-   slug: string;
    price: number;
    quantity: number;
 }

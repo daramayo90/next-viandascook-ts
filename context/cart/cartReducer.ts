@@ -20,11 +20,10 @@ type CartActionType =
            subTotal: number;
            discount: number;
            shipping: number;
-           couponsDiscount: number;
+           couponDiscount: number;
            total: number;
         };
-     }
-   | { type: '[Cart] - Order Complete' };
+     };
 
 export const cartReducer = (state: CartState, action: CartActionType): CartState => {
    switch (action.type) {
@@ -93,7 +92,7 @@ export const cartReducer = (state: CartState, action: CartActionType): CartState
          return {
             ...state,
             coupons: [],
-            couponsDiscount: 0,
+            couponDiscount: 0,
          };
 
       default:

@@ -1,6 +1,5 @@
-import { authOptions } from '../../pages/api/auth/[...nextauth]';
-import { GetServerSideProps, NextPage } from 'next';
-import { unstable_getServerSession } from 'next-auth/next';
+import { GetServerSideProps, NextPage } from 'next/types';
+import { getSession } from 'next-auth/react';
 
 import { dbUsers } from '../../database';
 import { IUser } from '../../interfaces';
@@ -26,8 +25,8 @@ const AddressPage: NextPage<Props> = ({ userdb }) => {
    );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
-   const { user }: any = await unstable_getServerSession(req, res, authOptions);
+export const getServerSideProps: GetServerSideProps = async ({ req }) => {
+   const { user }: any = (await getSession({ req })) || '';
 
    if (!user)
       return {

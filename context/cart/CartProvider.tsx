@@ -20,7 +20,7 @@ export interface CartState {
    subTotal: number;
    discount: number;
    shipping: number;
-   couponsDiscount: number;
+   couponDiscount: number;
    total: number;
 }
 
@@ -32,7 +32,7 @@ const CART_INITIAL_STATE: CartState = {
    subTotal: 0,
    discount: 0,
    shipping: 0,
-   couponsDiscount: 0,
+   couponDiscount: 0,
    total: 0,
 };
 
@@ -67,16 +67,16 @@ export const CartProvider: FC<Props> = ({ children }) => {
 
       const shipping = state.shipping;
 
-      const couponsDiscount = state.coupons?.reduce((p, c) => coupon.calc(c, subTotal) + p, 0) || 0;
+      const couponDiscount = state.coupons?.reduce((p, c) => coupon.calc(c, subTotal) + p, 0) || 0;
 
-      const total = subTotal - discount - couponsDiscount + shipping;
+      const total = subTotal - discount - couponDiscount + shipping;
 
       const orderSummary = {
          numberOfItems,
          subTotal,
          discount,
          shipping,
-         couponsDiscount,
+         couponDiscount,
          total,
       };
 

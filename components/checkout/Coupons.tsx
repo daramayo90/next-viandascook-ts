@@ -10,7 +10,7 @@ import styles from '../../styles/CheckoutSummary.module.css';
 
 // TODO: Ver los errores from db
 export const Coupons = () => {
-   const { addCoupon, removeCoupon, coupons, couponsDiscount } = useContext(CartContext);
+   const { addCoupon, removeCoupon, coupons, couponDiscount } = useContext(CartContext);
 
    const [hasCoupon, setHasCoupon] = useState(false);
    const [errorMsg, setErrorMsg] = useState('');
@@ -34,7 +34,7 @@ export const Coupons = () => {
 
    return (
       <div className={styles.summary}>
-         {couponsDiscount === 0 ? (
+         {couponDiscount === 0 ? (
             <>
                <span>¿Tenés un cupón?</span>
 
@@ -62,7 +62,7 @@ export const Coupons = () => {
                </span>
 
                <div className={styles.coupons}>
-                  <span className={styles.discount}>-{currency.format(couponsDiscount)}</span>
+                  <span className={styles.discount}>-{currency.format(couponDiscount)}</span>
                </div>
             </>
          )}

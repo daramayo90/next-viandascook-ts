@@ -9,7 +9,7 @@ interface ContextProps {
    subTotal: number;
    discount: number;
    shipping: number;
-   couponsDiscount: number;
+   couponDiscount: number;
    total: number;
    // shippingAddress?: ShippingAddress;
 

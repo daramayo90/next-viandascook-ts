@@ -13,8 +13,7 @@ interface Props {
 }
 
 export const AddressForm: FC<Props> = ({ userdb }) => {
-   const { register, handleSubmit, onSubmitAddress, errors, showError, errorMessage } =
-      useAddress(userdb);
+   const { register, handleSubmit, onSubmitAddress, errors } = useAddress(userdb);
 
    return (
       <form onSubmit={handleSubmit(onSubmitAddress)} noValidate>

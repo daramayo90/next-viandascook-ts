@@ -3,7 +3,8 @@ import { OrdersState } from './';
 
 type OrdersActionType =
    | { type: '[Cart] - Load Address from Cookies'; payload: ShippingAddress }
-   | { type: '[Orders] - Add Shipping Address'; payload: ShippingAddress };
+   | { type: '[Orders] - Add Shipping Address'; payload: ShippingAddress }
+   | { type: '[Orders] - Order Complete' };
 
 export const ordersReducer = (state: OrdersState, action: OrdersActionType): OrdersState => {
    switch (action.type) {

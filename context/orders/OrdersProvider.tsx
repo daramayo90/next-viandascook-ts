@@ -1,9 +1,13 @@
-import { FC, ReactNode, useEffect, useReducer } from 'react';
+import { FC, ReactNode, useEffect, useReducer, useContext } from 'react';
+import { getSession } from 'next-auth/react';
 
 import Cookies from 'js-cookie';
 
 import { OrdersContext, ordersReducer } from './';
-import { ShippingAddress, ICity } from '../../interfaces';
+
+import { viandasApi } from '../../api';
+import { ShippingAddress, ICity, IOrder } from '../../interfaces';
+import { CartContext } from '../';
 
 interface Props {
    children: ReactNode;
@@ -18,6 +22,8 @@ const ORDERS_INITIAL_STATE: OrdersState = {
 
 export const OrdersProvider: FC<Props> = ({ children }) => {
    const [state, dispatch] = useReducer(ordersReducer, ORDERS_INITIAL_STATE);
+   const { cart, coupons, numberOfItems, subTotal, discount, shipping, couponDiscount, total } =
+      useContext(CartContext);
 
    // Guest user - Load address from cookies
    useEffect(() => {
@@ -53,8 +59,48 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
       dispatch({ type: '[Orders] - Add Shipping Address', payload: address });
    };
 
+   const createOrder = async (): Promise<{ hasError: boolean; message: string }> => {
+      const { user } = ((await getSession()) as any) || '';
+
+      const shippingAddress = user ? user.shipping : state.shippingAddress;
+
+      if (!shippingAddress) {
+         throw new Error('Falta la dirección de envío');
+      }
+
+      const body: IOrder = {
+         orderItems: cart.map((product) => product),
+         coupons,
+         shippingAddress,
+         numberOfItems,
+         subTotal,
+         discount,
+         shipping,
+         couponDiscount,
+         total,
+         isPaid: false,
+      };
+
+      try {
+         const { data } = await viandasApi.post<IOrder>('/orders', body);
+
+         // dispatch({ type: '[Cart] - Order Complete' });
+         // Cookies.remove('cart');
+
+         return {
+            hasError: false,
+            message: data._id!,
+         };
+      } catch (error: any) {
+         return {
+            hasError: true,
+            message: error.response.data.message,
+         };
+      }
+   };
+
    return (
-      <OrdersContext.Provider value={{ ...state, addGuestAddress }}>
+      <OrdersContext.Provider value={{ ...state, addGuestAddress, createOrder }}>
          {children}
       </OrdersContext.Provider>
    );

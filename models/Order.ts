@@ -3,22 +3,28 @@ import { IOrder } from '../interfaces';
 
 const orderSchema = new Schema(
    {
-      user: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+      user: { type: Schema.Types.ObjectId, ref: 'User' },
+      email: { type: String },
+      phone: { type: String },
+      dni: { type: String },
 
       orderItems: [
          {
             _id: { type: Schema.Types.ObjectId, ref: 'Product', required: true },
             image: { type: String, required: true },
             name: { type: String, required: true },
-            slug: { type: String, required: true },
             price: { type: Number, required: true },
             quantity: { type: Number, required: true },
          },
       ],
 
+      coupons: [
+         {
+            _id: { type: Schema.Types.ObjectId, ref: 'Coupon' },
+         },
+      ],
+
       shippingAddress: {
-         firstName: { type: String, required: true },
-         lastName: { type: String, required: true },
          address: { type: String, required: true },
          address2: { type: String },
          zipcode: { type: String, required: true },
@@ -30,15 +36,13 @@ const orderSchema = new Schema(
             },
             message: '{VALUE} is not a valid city',
          },
-         phone: { type: String, required: true },
-         email: { type: String, required: true },
-         dni: { type: String, required: true },
       },
 
       numberOfItems: { type: Number, required: true },
       subTotal: { type: Number, required: true },
       discount: { type: Number },
       shipping: { type: Number, required: true },
+      couponDiscount: { type: Number },
       total: { type: Number, required: true },
 
       isPaid: { type: Boolean, required: true, default: false },
