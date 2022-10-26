@@ -1,9 +1,8 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 
 import { authOptions } from '../../pages/api/auth/[...nextauth]';
 import { GetServerSideProps, NextPage } from 'next';
 import { unstable_getServerSession } from 'next-auth/next';
-import { useRouter } from 'next/router';
 
 import { IUser } from '../../interfaces';
 
@@ -15,6 +14,7 @@ import {
    CartSummary,
    CheckoutSummary,
    DeliveryDate,
+   Posting,
    Promos,
 } from '../../components/checkout';
 
@@ -25,26 +25,8 @@ interface Props {
 }
 
 const CheckoutPage: NextPage<Props> = ({ user }) => {
-   const router = useRouter();
-
-   const { shippingAddress, createOrder } = useContext(OrdersContext);
+   const { shippingAddress } = useContext(OrdersContext);
    const { isLoggedIn } = useContext(AuthContext);
-
-   const [isPosting, setIsPosting] = useState(false);
-   const [errorMsg, setErrorMsg] = useState('');
-
-   const onCreateOrder = async () => {
-      setIsPosting(true);
-      const { hasError, message } = await createOrder();
-
-      if (hasError) {
-         setIsPosting(false);
-         setErrorMsg(message);
-         return;
-      }
-
-      // router.replace(`/orders/${message}`);
-   };
 
    const shipping = isLoggedIn ? user?.shipping : shippingAddress;
 
@@ -60,11 +42,7 @@ const CheckoutPage: NextPage<Props> = ({ user }) => {
 
                <CheckoutSummary />
 
-               <button disabled={isPosting} onClick={onCreateOrder}>
-                  Finalizar Compra
-               </button>
-
-               {errorMsg && <span className={styles.error}>{errorMsg}</span>}
+               <Posting />
             </div>
          </section>
          <CartSummary />

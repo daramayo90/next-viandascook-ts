@@ -66,17 +66,17 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
 
       const shippingAddress = user ? user.shipping : state.shippingAddress;
 
-      if (!deliveryDateSelected) {
-         return {
-            hasError: true,
-            message: 'Por favor, seleccioná una fecha de entrega',
-         };
-      }
-
       if (!shippingAddress) {
          return {
             hasError: true,
             message: 'Indicanos una dirección de entrega antes de continuar',
+         };
+      }
+
+      if (!deliveryDateSelected) {
+         return {
+            hasError: true,
+            message: 'Por favor, seleccioná una fecha de entrega',
          };
       }
 
