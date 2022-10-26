@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 
 import DatePicker, { registerLocale } from 'react-datepicker';
 
@@ -6,13 +6,16 @@ import es from 'date-fns/locale/es';
 import subDays from 'date-fns/subDays';
 import addDays from 'date-fns/addDays';
 
+import { UIContext } from '../../context';
 import { holidays } from '../../utils';
 
 import 'react-datepicker/dist/react-datepicker.css';
 import styles from '../../styles/Checkout.module.css';
 
 export const SelectDate = () => {
-   const [startDate, setStartDate] = useState<Date>();
+   const { selectDeliveryDate } = useContext(UIContext);
+
+   const [deliveryDate, setDeliveryDate] = useState<Date>();
 
    registerLocale('es', es);
 
@@ -40,11 +43,12 @@ export const SelectDate = () => {
    };
 
    const handleDateChange = (date: Date): void => {
-      setStartDate(date);
+      setDeliveryDate(date);
    };
 
    const handleDateSelect = (date: Date): void => {
-      console.log('Date Selected', date);
+      const selectedDate = date.toLocaleDateString('es-AR');
+      selectDeliveryDate(selectedDate);
    };
 
    return (
@@ -62,7 +66,7 @@ export const SelectDate = () => {
                { start: setInterval(new Date(), -2), end: addDays(new Date(), 80) },
             ]}
             excludeDates={holidays}
-            selected={startDate}
+            selected={deliveryDate}
             onSelect={handleDateSelect} //when day is clicked
             onChange={handleDateChange} //only when value has changed
          >

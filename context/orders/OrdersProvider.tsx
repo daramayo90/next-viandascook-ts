@@ -7,7 +7,7 @@ import { OrdersContext, ordersReducer } from './';
 
 import { viandasApi } from '../../api';
 import { ShippingAddress, ICity, IOrder } from '../../interfaces';
-import { CartContext } from '../';
+import { CartContext, UIContext } from '../';
 
 interface Props {
    children: ReactNode;
@@ -21,9 +21,11 @@ const ORDERS_INITIAL_STATE: OrdersState = {
 };
 
 export const OrdersProvider: FC<Props> = ({ children }) => {
-   const [state, dispatch] = useReducer(ordersReducer, ORDERS_INITIAL_STATE);
+   const { deliveryDateSelected } = useContext(UIContext);
    const { cart, coupons, numberOfItems, subTotal, discount, shipping, couponDiscount, total } =
       useContext(CartContext);
+
+   const [state, dispatch] = useReducer(ordersReducer, ORDERS_INITIAL_STATE);
 
    // Guest user - Load address from cookies
    useEffect(() => {
@@ -64,8 +66,18 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
 
       const shippingAddress = user ? user.shipping : state.shippingAddress;
 
+      if (!deliveryDateSelected) {
+         return {
+            hasError: true,
+            message: 'Por favor, selecciona una fecha de entrega',
+         };
+      }
+
       if (!shippingAddress) {
-         throw new Error('Falta la dirección de envío');
+         return {
+            hasError: true,
+            message: 'Indicanos una dirección de entrega antes de continuar',
+         };
       }
 
       const body: IOrder = {

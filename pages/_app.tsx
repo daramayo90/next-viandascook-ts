@@ -9,13 +9,13 @@ function MyApp({ Component, pageProps }: AppProps) {
    return (
       <SessionProvider>
          <AuthProvider>
-            <CartProvider>
-               <OrdersProvider>
-                  <UIProvider>
+            <UIProvider>
+               <CartProvider>
+                  <OrdersProvider>
                      <Component {...pageProps} />
-                  </UIProvider>
-               </OrdersProvider>
-            </CartProvider>
+                  </OrdersProvider>
+               </CartProvider>
+            </UIProvider>
          </AuthProvider>
       </SessionProvider>
    );

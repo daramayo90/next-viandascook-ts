@@ -57,7 +57,9 @@ const createOrder = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
       return res.status(201).json(newOrder);
    } catch (error) {
       await db.disconnect();
+
       console.log(error);
+
       res.status(400).json({ message: 'El total no suma la cantidad comprada' });
    }
 };
