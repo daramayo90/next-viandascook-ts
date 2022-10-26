@@ -69,7 +69,7 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
       if (!deliveryDateSelected) {
          return {
             hasError: true,
-            message: 'Por favor, selecciona una fecha de entrega',
+            message: 'Por favor, seleccioná una fecha de entrega',
          };
       }
 

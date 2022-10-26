@@ -60,9 +60,11 @@ const CheckoutPage: NextPage<Props> = ({ user }) => {
 
                <CheckoutSummary />
 
-               <button disabled={isPosting} onClick={onCreateOrder}></button>
+               <button disabled={isPosting} onClick={onCreateOrder}>
+                  Finalizar Compra
+               </button>
 
-               {errorMsg && <span>{errorMsg}</span>}
+               {errorMsg && <span className={styles.error}>{errorMsg}</span>}
             </div>
          </section>
          <CartSummary />
