@@ -42,7 +42,7 @@ export const OrderCheckout: FC<Props> = ({ order }) => {
 
          <Discounts orderItems={numberOfItems} orderPromo={discount} />
 
-         {coupons && (
+         {coupons.length !== 0 && (
             <div className={styles.summary}>
                <span>
                   Cupón: <u>{coupons[0].code}</u>

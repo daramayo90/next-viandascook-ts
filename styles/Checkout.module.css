@@ -120,7 +120,7 @@
 .checkout > .container > .error {
    display: block;
    width: 100%;
-   margin: -1rem 0;
+   margin: -1rem 0 3rem 0;
    text-align: center;
    color: var(--error);
    font-size: 0.95rem;
