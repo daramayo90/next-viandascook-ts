@@ -1,11 +1,22 @@
 import React, { FC } from 'react';
+
 import { IOrder } from '../../interfaces';
 
+import styles from '../../styles/Order.module.css';
+import { CartList } from '../cart';
+
 interface Props {
-   items: IOrder;
+   order: IOrder;
 }
 
-export const OrderProducts: FC<Props> = ({ items }) => {
-   console.log(items);
-   return <div>OrderProducts</div>;
+export const OrderProducts: FC<Props> = ({ order }) => {
+   const { orderItems } = order;
+
+   return (
+      <section className={styles.products}>
+         <h2 className={styles.title}>Viandas</h2>
+
+         <CartList items={orderItems} />
+      </section>
+   );
 };

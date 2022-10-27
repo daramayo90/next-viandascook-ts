@@ -4,8 +4,7 @@ import Image from 'next/image';
 import { CartContext } from '../../context/cart';
 
 import { ItemCounter } from '../products';
-import { ICartProduct } from '../../interfaces';
-// import { ICartProduct, IOrderItem } from '../../interfaces';
+import { ICartProduct, IOrderItem } from '../../interfaces';
 
 import { currency } from '../../utils';
 
@@ -13,9 +12,10 @@ import styles from '../../styles/CartList.module.css';
 
 interface Props {
    editable?: boolean;
+   items?: IOrderItem[];
 }
 
-export const CartList: FC<Props> = ({ editable = false }) => {
+export const CartList: FC<Props> = ({ items, editable = false }) => {
    const { cart, updateCartQuantity, removeCartProduct } = useContext(CartContext);
 
    const onNewCartQuantityValue = (product: ICartProduct, newQuantityValue: number) => {
@@ -27,10 +27,12 @@ export const CartList: FC<Props> = ({ editable = false }) => {
       }
    };
 
+   const products = items ? items : cart;
+
    // TODO: Ordenar los productos por id
    return (
       <section className={styles.cartList}>
-         {cart.map((product) => (
+         {products.map((product) => (
             <article key={product._id} className={styles.product}>
                <div className={styles.details}>
                   <div className={styles.nextImage}>

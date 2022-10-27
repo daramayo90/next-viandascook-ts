@@ -7,7 +7,7 @@ import { dbOrders } from '../../database';
 import { IOrder, IUser } from '../../interfaces';
 
 import { ShopLayout } from '../../components/layouts';
-import { OrderAddress, OrderCheckout } from '../../components/orders';
+import { OrderAddress, OrderCheckout, OrderProducts } from '../../components/orders';
 
 import styles from '../../styles/Order.module.css';
 
@@ -16,8 +16,6 @@ interface Props {
 }
 
 const OrderPage: NextPage<Props> = ({ order }) => {
-   const { orderItems } = order;
-
    return (
       <ShopLayout title={''} pageDescription={''}>
          <section className={styles.order}>
@@ -27,6 +25,8 @@ const OrderPage: NextPage<Props> = ({ order }) => {
                      Pedido <strong>#{order._id}</strong>
                   </span>
                </div>
+
+               <OrderProducts order={order} />
 
                <OrderCheckout order={order} />
 

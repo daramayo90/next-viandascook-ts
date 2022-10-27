@@ -1,6 +1,6 @@
 .order {
    width: 100vw;
-   height: 100vh;
+   height: 100%;
    background-color: var(--white);
 }
 
@@ -10,13 +10,16 @@
    margin-top: 3rem;
    padding: 1rem 0 4rem 0;
 }
+
+.order > .container > .products > .title,
 .order > .container > .checkout > .title,
 .order > .container > .address > .title {
-   margin-bottom: 1rem;
+   margin-bottom: 0.5rem;
    color: var(--textColor);
 }
 
 .order > .container > .number,
+.order > .container > .products,
 .order > .container > .checkout,
 .order > .container > .address {
    display: flex;
