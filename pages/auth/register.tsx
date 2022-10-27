@@ -1,6 +1,7 @@
-import { authOptions } from '../../pages/api/auth/[...nextauth]';
 import { GetServerSideProps, NextPage } from 'next';
 import { unstable_getServerSession } from 'next-auth/next';
+
+import { authOptions } from '../../pages/api/auth/[...nextauth]';
 
 import { Providers, RegisterForm } from '../../components/auth';
 import { AuthLayout } from '../../components/layouts';
@@ -27,7 +28,7 @@ const RegisterPage: NextPage = () => {
 };
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res, query }) => {
-   const session = await unstable_getServerSession(req, res, authOptions);
+   const session: any = await unstable_getServerSession(req, res, authOptions);
 
    const { page = '/' } = query;
 

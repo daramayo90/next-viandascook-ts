@@ -22,7 +22,7 @@ export const Posting = () => {
          return;
       }
 
-      // router.replace(`/orders/${message}`);
+      router.replace(`/pedidos/${message}`);
    };
    return (
       <>

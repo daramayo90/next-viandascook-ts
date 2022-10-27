@@ -1,8 +1,10 @@
-import { authOptions } from '../auth/[...nextauth]';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { unstable_getServerSession } from 'next-auth/next';
+import { authOptions } from '../auth/[...nextauth]';
+
 import { db } from '../../../database';
 import { ICoupon, IUser } from '../../../interfaces';
+
 import { Coupon, User } from '../../../models';
 
 type Data = { message: string } | ICoupon;

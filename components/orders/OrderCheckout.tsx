@@ -1,18 +1,31 @@
-import { useContext, useState } from 'react';
+import { FC } from 'react';
 
-import { CartContext } from '../../context';
+import { IOrder } from '../../interfaces';
 import { currency } from '../../utils';
 
 import { Discounts } from '../cart';
-import { Coupons } from './';
 
-import styles from '../../styles/CheckoutSummary.module.css';
+import styles from '../../styles/Order.module.css';
 
-export const CheckoutSummary = () => {
-   const { numberOfItems, subTotal, shipping, total } = useContext(CartContext);
+interface Props {
+   order: IOrder;
+}
+
+export const OrderCheckout: FC<Props> = ({ order }) => {
+   const {
+      numberOfItems,
+      subTotal,
+      discount = 0,
+      couponDiscount,
+      coupons = [],
+      shipping,
+      total,
+   } = order;
 
    return (
-      <section className={styles.checkoutSummary}>
+      <section className={styles.checkout}>
+         <h2 className={styles.title}>Detalles del pago</h2>
+
          <div className={styles.summary}>
             <span>N° de Viandas:</span>
 
@@ -27,9 +40,17 @@ export const CheckoutSummary = () => {
             <span>{currency.format(subTotal)}</span>
          </div>
 
-         <Discounts />
+         <Discounts orderItems={numberOfItems} orderPromo={discount} />
 
-         <Coupons />
+         {coupons && (
+            <div className={styles.summary}>
+               <span>
+                  Cupón: <u>{coupons[0].code}</u>
+               </span>
+
+               <span className={styles.discount}>-{currency.format(couponDiscount!)}</span>
+            </div>
+         )}
 
          <div className={styles.summary}>
             <span>Envío:</span>

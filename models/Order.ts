@@ -3,10 +3,14 @@ import { IOrder } from '../interfaces';
 
 const orderSchema = new Schema(
    {
-      user: { type: Schema.Types.ObjectId, ref: 'User' },
-      email: { type: String },
-      phone: { type: String },
-      dni: { type: String },
+      user: {
+         _id: { type: Schema.Types.ObjectId, ref: 'User' },
+         name: { type: String, ref: 'User', required: true },
+         lastName: { type: String, ref: 'User', required: true },
+         email: { type: String, ref: 'User', required: true },
+         phone: { type: String, ref: 'User', required: true },
+         dni: { type: String, ref: 'User', required: true },
+      },
 
       orderItems: [
          {
@@ -21,6 +25,7 @@ const orderSchema = new Schema(
       coupons: [
          {
             _id: { type: Schema.Types.ObjectId, ref: 'Coupon' },
+            code: { type: String, required: true, ref: 'Coupon' },
          },
       ],
 

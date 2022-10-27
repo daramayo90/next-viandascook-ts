@@ -1,12 +1,12 @@
 import { useContext } from 'react';
 
-import { authOptions } from '../../pages/api/auth/[...nextauth]';
 import { GetServerSideProps, NextPage } from 'next';
 import { unstable_getServerSession } from 'next-auth/next';
 
-import { IUser } from '../../interfaces';
-
+import { authOptions } from '../../pages/api/auth/[...nextauth]';
 import { AuthContext, OrdersContext } from '../../context';
+
+import { IUser } from '../../interfaces';
 
 import { ShopLayout } from '../../components/layouts';
 import {
@@ -51,7 +51,7 @@ const CheckoutPage: NextPage<Props> = ({ user }) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
-   const session = await unstable_getServerSession(req, res, authOptions);
+   const session: any = await unstable_getServerSession(req, res, authOptions);
 
    if (session) {
       const { user } = session;

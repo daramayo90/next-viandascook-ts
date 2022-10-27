@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { getSession } from 'next-auth/react';
 import { db } from '../../../database';
 import { IOrder } from '../../../interfaces';
-import { Order, Product } from '../../../models';
+import { Order, Product, User } from '../../../models';
 
 type Data = { message: string } | IOrder;
 
@@ -44,9 +44,18 @@ const createOrder = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
 
       const id = user ? user._id : null;
 
-      const { email, phone, dni } = req.cookies;
+      const dbUser = await User.findById(id);
 
-      const newOrder = new Order({ ...req.body, email, phone, dni, isPaid: false, user: id });
+      const orderUser = {
+         _id: id || null,
+         name: dbUser?.name || req.cookies.firstName,
+         lastName: dbUser?.lastName || req.cookies.lastName,
+         email: dbUser?.email || req.cookies.email,
+         phone: dbUser?.phone || req.cookies.phone,
+         dni: dbUser?.dni || req.cookies.dni,
+      };
+
+      const newOrder = new Order({ ...req.body, isPaid: false, user: orderUser });
 
       newOrder.total = Math.round(newOrder.total * 100) / 100;
 
