@@ -17,8 +17,6 @@ export const checkUserEmailPassword = async (email: string, password: string) =>
 
    const { _id, name, lastName, phone = '', dni = '', shipping, role } = user;
 
-   console.log('CREDENTIALS USER', user);
-
    // TODO: Acá se pasaría a number los numbers?
    return {
       _id,
@@ -59,8 +57,6 @@ export const oAuthToDbUser = async (authEmail: string, authName: string, authLas
          city: 'caba',
       },
    });
-
-   console.log('OAuth New User', newUser);
 
    await newUser.save();
 

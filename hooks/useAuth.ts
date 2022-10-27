@@ -51,13 +51,11 @@ export const useAuth = () => {
    const onLoginUser = async ({ email, password }: FormData) => {
       const res = await signIn('credentials', { redirect: false, email, password });
 
-      console.log(res);
-
       if (res!.ok === false) return setShowError(true);
 
       setShowError(false);
       const destination = router.query.page?.toString() || '/';
-      // router.replace(destination);
+      router.replace(destination);
    };
 
    return {
