@@ -84,12 +84,7 @@ export const initialData: SeedData = {
             zipcode: '7933',
             city: 'caba',
          },
-         coupons: [
-            {
-               _id: '6357565094369661b1324097',
-               ussage: 1,
-            },
-         ],
+         coupons: [],
       },
       {
          name: 'Norma',
