@@ -46,8 +46,6 @@ const createOrder = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
 
       const dbUser = await User.findById(id);
 
-      console.log('dbUser', dbUser);
-
       const orderUser = {
          _id: id || null,
          name: dbUser?.name || req.cookies.firstName,
@@ -57,17 +55,11 @@ const createOrder = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
          dni: dbUser?.dni || req.cookies.dni,
       };
 
-      console.log('orderUser', orderUser);
-
       const newOrder = new Order({ ...req.body, isPaid: false, user: orderUser });
 
       newOrder.total = Math.round(newOrder.total * 100) / 100;
 
-      console.log('test1');
-
       await newOrder.save();
-
-      console.log('test2');
 
       await db.disconnect();
 

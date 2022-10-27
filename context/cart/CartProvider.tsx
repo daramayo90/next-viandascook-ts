@@ -196,6 +196,10 @@ export const CartProvider: FC<Props> = ({ children }) => {
       dispatch({ type: '[Cart] - Remove Coupon' });
    };
 
+   const orderComplete = () => {
+      dispatch({ type: '[Cart] - Order Complete' });
+   };
+
    return (
       <CartContext.Provider
          value={{
@@ -206,6 +210,7 @@ export const CartProvider: FC<Props> = ({ children }) => {
             calculateShipping,
             addCoupon,
             removeCoupon,
+            orderComplete,
          }}>
          {children}
       </CartContext.Provider>

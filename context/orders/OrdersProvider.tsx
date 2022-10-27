@@ -1,9 +1,11 @@
 import { FC, ReactNode, useEffect, useReducer, useContext } from 'react';
 import { getSession } from 'next-auth/react';
+import { useRouter } from 'next/router';
 
 import Cookies from 'js-cookie';
 
 import { OrdersContext, ordersReducer } from './';
+import { removeCookies } from '../../utils';
 
 import { viandasApi } from '../../api';
 import { ShippingAddress, ICity, IOrder } from '../../interfaces';
@@ -21,6 +23,8 @@ const ORDERS_INITIAL_STATE: OrdersState = {
 };
 
 export const OrdersProvider: FC<Props> = ({ children }) => {
+   const router = useRouter();
+
    const { deliveryDateSelected } = useContext(UIContext);
    const { cart, coupons, numberOfItems, subTotal, discount, shipping, couponDiscount, total } =
       useContext(CartContext);
@@ -96,8 +100,7 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
       try {
          const { data } = await viandasApi.post<IOrder>('/orders', body);
 
-         // dispatch({ type: '[Cart] - Order Complete' });
-         // Cookies.remove('cart');
+         removeCookies();
 
          return {
             hasError: false,

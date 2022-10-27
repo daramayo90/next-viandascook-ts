@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import { useContext, useState } from 'react';
-import { OrdersContext } from '../../context';
+import { CartContext, OrdersContext } from '../../context';
 
 import styles from '../../styles/Checkout.module.css';
 
@@ -8,6 +8,7 @@ export const Posting = () => {
    const router = useRouter();
 
    const { createOrder } = useContext(OrdersContext);
+   const { orderComplete } = useContext(CartContext);
 
    const [isPosting, setIsPosting] = useState(false);
    const [errorMsg, setErrorMsg] = useState('');
@@ -22,6 +23,7 @@ export const Posting = () => {
          return;
       }
 
+      orderComplete();
       router.replace(`/pedidos/${message}`);
    };
    return (

@@ -6,5 +6,6 @@ export * as validations from './validations';
 export * from './commonQuestions';
 export * from './holidays';
 export * from './pageTitles';
+export * from './removeCookies';
 export * from './typesList';
 export * from './zipcodesBA';
