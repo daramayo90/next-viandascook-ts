@@ -22,7 +22,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 const getCoupon = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
    if (req.cookies.coupons) return res.status(404).json({ message: 'Cupón ya utilizado' });
 
-   const { user }: any = await unstable_getServerSession(req, res, authOptions);
+   const { user }: any = (await unstable_getServerSession(req, res, authOptions)) || '';
    const { code } = req.query;
 
    const email = user?.email;
@@ -36,9 +36,9 @@ const getCoupon = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
 
    if (!coupon) return res.status(404).json({ message: 'Cupón no válido' });
 
-   if (!user) {
-      return res.status(404).json({ message: 'Debes estar logueado para usar un cupón' });
-   }
+   // if (!user) {
+   //    return res.status(404).json({ message: 'Debes estar logueado para usar un cupón' });
+   // }
 
    if (coupon.enabled === false || (coupon.expirationDate && coupon.expirationDate < new Date())) {
       return res.status(404).json({ message: 'Cupón expirado' });

@@ -20,28 +20,39 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Data>)
 const addCoupon = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
    const { user }: any = (await getSession({ req })) || '';
 
-   // const { email, address, address2, city, zipcode, phone, dni } = req.body;
+   const { _id, code } = req.body;
+
+   const id = user ? user._id : null;
 
    await db.connect();
 
-   const dbUser = await User.findById(user._id).lean();
+   const dbUser = await User.findById(id).lean();
 
-   if (!dbUser) {
-      return res.status(400).json({ message: 'No existe el usuario' });
-   }
+   // if (!dbUser) {
+   //    return res.status(400).json({ message: 'No existe el usuario' });
+   // }
 
    // TODO: Ver cuando el usuario es guest
-   const dbUssage = dbUser.coupons.find((c) => c.code === req.body.code)?.ussage || 0;
+   const dbUssage = dbUser?.coupons.find((c) => c.code === code)?.ussage || 0;
 
    await User.updateOne(
-      { email: dbUser?.email },
+      { email: dbUser?.email || req.cookies.email },
       {
          $set: {
+            name: dbUser?.name || req.cookies.firstName,
+            lastName: dbUser?.lastName || req.cookies.lastName,
+            shipping: {
+               address: dbUser?.shipping.address || req.cookies.address,
+               address2: dbUser?.shipping.address2 || req.cookies.address2,
+               zipcode: dbUser?.shipping.zipcode || req.cookies.zipcode,
+               city: dbUser?.shipping.city || req.cookies.city,
+            },
             coupons: {
-               _id: req.body._id,
-               code: req.body.code,
+               _id: _id,
+               code: code,
                ussage: dbUssage + 1,
             },
+            role: 'client',
          },
       },
       { upsert: true, setDefaultsOnInsert: false },
