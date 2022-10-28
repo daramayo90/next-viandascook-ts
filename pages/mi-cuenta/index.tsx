@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { AiFillEdit } from 'react-icons/ai';
 import { MdOutlineKeyboardArrowRight } from 'react-icons/md';
 import { ShopLayout } from '../../components/layouts';
+import { TabMenu } from '../../components/ui';
 
 import styles from '../../styles/Profile.module.css';
 
@@ -48,6 +49,7 @@ const ProfilePage: NextPage = () => {
                </div>
             </div>
          </section>
+         <TabMenu />
       </ShopLayout>
    );
 };
