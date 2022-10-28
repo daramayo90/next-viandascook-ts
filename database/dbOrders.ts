@@ -17,12 +17,10 @@ export const getOrderById = async (id: string): Promise<IOrder | null> => {
    return JSON.parse(JSON.stringify(order));
 };
 
-export const getOrdersByUser = async (userId: string): Promise<IOrder[]> => {
-   if (!isValidObjectId(userId)) return [];
-
+export const getOrdersByUser = async (email: string): Promise<IOrder[]> => {
    await db.connect();
 
-   const orders = await Order.find({ user: userId }).lean();
+   const orders = await Order.find({ 'user.email': email }).lean();
 
    await db.disconnect();
 

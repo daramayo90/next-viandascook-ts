@@ -24,17 +24,43 @@
    position: relative;
    width: 100%;
    height: 140px;
+   min-height: 145px;
    margin: 0.6rem 0;
    border-radius: 25px;
    background-color: #fff;
    box-shadow: 0 8px 16px rgb(35 31 32 / 6%);
+   cursor: pointer;
 }
 
 .history > .container > .order > .card {
    display: flex;
-   flex-direction: row;
-   align-items: center;
+   flex-direction: column;
+   align-items: flex-start;
    justify-content: space-around;
-   width: 95%;
+   width: 90%;
    height: 90%;
+}
+
+.history > .container > .order > .card > .top {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   width: 100%;
+}
+
+.history > .container > .order > .card > .top > .number {
+   font-size: 1.1rem;
+   font-weight: 500;
+   color: var(--black);
+}
+
+.history > .container > .order > .card > .top > .date {
+   font-size: 0.85rem;
+}
+
+.history > .container > .order > .card > .bottom {
+   display: flex;
+   flex-direction: column;
+   width: 100%;
+   font-size: 0.9rem;
 }

@@ -65,9 +65,9 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res, query }
 
    // TODO: Ver el tema de la compra de un usuario guest, cómo se guarda cuando se loguea por primera vez luego de la compra?
    // La redirección debe ser a otra página
-   const { _id = '' } = order.user as IUser;
+   const { email = '' } = order.user as IUser;
 
-   if (_id !== session.user._id) {
+   if (email !== session.user.email) {
       return {
          redirect: {
             destination: '/',
