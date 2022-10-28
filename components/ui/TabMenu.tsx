@@ -23,9 +23,9 @@ const menuItems = [
       name: 'Carrito',
    },
    {
-      nav: '/perfil',
+      nav: '/mi-cuenta',
       reacticon: <AiOutlineUser />,
-      name: 'Perfil',
+      name: 'Mi Cuenta',
    },
 ];
 

@@ -2,12 +2,12 @@ import { useContext, useEffect } from 'react';
 import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
 
+import { ShopLayout } from '../../components/layouts';
 import { CartContext } from '../../context';
 import { CartList, OrderSummary } from '../../components/cart';
-import { ShopLayout } from '../../components/layouts';
+import { TabMenu } from '../../components/ui';
 
 import styles from '../../styles/Cart.module.css';
-import { TabMenu } from '../../components/ui';
 
 const CartPage: NextPage = () => {
    const router = useRouter();

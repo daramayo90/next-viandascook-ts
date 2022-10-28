@@ -10,4 +10,5 @@ export const pageTitles = {
    '/checkout/address': 'Dirección de envío',
    '/checkout/promociones': 'Promos Vigentes',
    '/checkout/delivery': 'Fecha de Entrega',
+   '/mi-cuenta': 'Mi Cuenta',
 };

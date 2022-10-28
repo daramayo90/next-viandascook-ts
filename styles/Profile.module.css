@@ -1,0 +1,80 @@
+.profile {
+   width: 100vw;
+   height: 100%;
+}
+
+.profile > .container {
+   width: 90%;
+   margin: 0 auto;
+   margin-top: 3.5rem;
+   padding: 1rem 0 4rem 0;
+}
+
+.profile > .container > .account {
+   display: flex;
+   align-items: center;
+   position: relative;
+   padding-bottom: 1rem;
+   border-bottom: 1px solid var(--borderGrey);
+}
+
+.profile > .container > .account > .nextImage {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   width: 20%;
+}
+
+.profile > .container > .account > .nextImage img {
+   border-radius: 100%;
+   object-fit: cover;
+}
+
+.profile > .container > .account > .info {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-evenly;
+   margin-left: 1rem;
+   width: 80%;
+   height: 70px;
+}
+
+.profile > .container > .account > .info > .name {
+   font-size: 1.3rem;
+   font-weight: 500;
+}
+
+.profile > .container > .account > .editIcon {
+   position: absolute;
+   right: 2rem;
+   font-size: 1.5rem;
+   color: var(--primary);
+}
+
+.profile > .container > .options {
+   width: 98%;
+   margin: 0 auto;
+}
+
+.profile > .container > .options > .option {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   margin: 1rem 0;
+   cursor: pointer;
+}
+
+.profile > .container > .options > .option > span {
+   font-weight: 400;
+   color: var(--black);
+}
+
+.profile > .container > .options > .option > .rightIcon {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   font-size: 1.2rem;
+   font-weight: 400;
+   color: var(--black);
+}

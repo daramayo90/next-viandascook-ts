@@ -4,13 +4,13 @@ import { unstable_getServerSession } from 'next-auth';
 import { authOptions } from '../api/auth/[...nextauth]';
 
 import { dbOrders } from '../../database';
+import { IOrder } from '../../interfaces';
 
 import { OrderLayout } from '../../components/layouts';
 import { OrderCard } from '../../components/orders';
+import { TabMenu } from '../../components/ui';
 
 import styles from '../../styles/OrdersHistory.module.css';
-import { IOrder } from '../../interfaces';
-import { TabMenu } from '../../components/ui';
 
 interface Props {
    orders: IOrder[];
