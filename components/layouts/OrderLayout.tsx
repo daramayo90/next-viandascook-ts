@@ -1,5 +1,6 @@
 import { FC, ReactNode } from 'react';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 
 import { IOrder } from '../../interfaces';
 
@@ -9,10 +10,20 @@ import { OrderNavbar } from '../navbar';
 interface Props {
    children: ReactNode;
    title: string;
-   order: IOrder;
+   order?: IOrder;
 }
 
 export const OrderLayout: FC<Props> = ({ children, title, order }) => {
+   const router = useRouter();
+   const path = router.asPath;
+   let pageTitle = '';
+
+   if (path === '/pedidos/historial') {
+      pageTitle = 'Historial de pedidos';
+   } else {
+      pageTitle = `Pedido #${order?._id}`;
+   }
+
    return (
       <>
          <Head>
@@ -23,7 +34,7 @@ export const OrderLayout: FC<Props> = ({ children, title, order }) => {
          </Head>
 
          <nav>
-            <OrderNavbar pageTitle={`Pedido #${order._id}`} />
+            <OrderNavbar pageTitle={pageTitle} />
          </nav>
 
          <SideMenu />

@@ -20,6 +20,8 @@ export const OrderNavbar: FC<Props> = ({ pageTitle }) => {
    const { numberOfItems } = useContext(CartContext);
 
    const navigation = () => {
+      if (router.asPath === '/pedidos/historial') return router.push('/menu');
+
       router.push('/pedidos/historial');
    };
 
@@ -32,7 +34,7 @@ export const OrderNavbar: FC<Props> = ({ pageTitle }) => {
                </div>
 
                <h1 className={styles.title}>
-                  {pageTitle.length > 10 ? pageTitle.substring(0, 21) + '...' : pageTitle}
+                  {pageTitle.length > 20 ? pageTitle.substring(0, 21) + '...' : pageTitle}
                </h1>
             </div>
 
