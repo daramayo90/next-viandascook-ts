@@ -14,6 +14,7 @@
    width: 92%;
    max-width: 380px;
    margin: 0 auto;
+   padding-top: 1rem;
 }
 
 .history > .container > .order {
@@ -37,6 +38,7 @@
    flex-direction: column;
    align-items: flex-start;
    justify-content: space-around;
+   position: relative;
    width: 90%;
    height: 90%;
 }
@@ -63,4 +65,15 @@
    flex-direction: column;
    width: 100%;
    font-size: 0.9rem;
+}
+
+.history > .container > .order > .card > .confirm {
+   position: absolute;
+   bottom: 4px;
+   right: 5px;
+}
+
+.history > .container > .order > .card > .confirm > .icon {
+   font-size: 1.7rem;
+   color: var(--primary);
 }

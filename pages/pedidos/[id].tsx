@@ -20,12 +20,6 @@ const OrderPage: NextPage<Props> = ({ order }) => {
       <OrderLayout title={''} order={order}>
          <section className={styles.order}>
             <div className={styles.container}>
-               {/* <div className={styles.number}>
-                  <span>
-                     Pedido <strong>#{order._id}</strong>
-                  </span>
-               </div> */}
-
                <OrderProducts order={order} />
 
                <OrderCheckout order={order} />
@@ -70,7 +64,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res, query }
    if (email !== session.user.email) {
       return {
          redirect: {
-            destination: '/',
+            destination: `/auth/login?page=/pedidos/${id}`,
             permanent: false,
          },
       };

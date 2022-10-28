@@ -18,7 +18,6 @@
    color: var(--black);
 }
 
-.order > .container > .number,
 .order > .container > .products,
 .order > .container > .checkout,
 .order > .container > .address {
@@ -37,16 +36,6 @@
    align-items: flex-start;
    justify-content: space-between;
    position: relative;
-}
-
-.order > .container > .number > span {
-   font-size: 1.1rem;
-   text-align: center;
-}
-
-.order > .container > .number > span strong {
-   color: var(--primary);
-   font-weight: 500;
 }
 
 .order > .container > .checkout > .summary span {

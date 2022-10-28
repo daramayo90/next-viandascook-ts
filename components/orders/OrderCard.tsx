@@ -2,9 +2,11 @@ import { useRouter } from 'next/router';
 import { FC, useState } from 'react';
 
 import { IOrder } from '../../interfaces';
+import { currency } from '../../utils';
+
+import { AiFillCheckCircle } from 'react-icons/ai';
 
 import styles from '../../styles/OrdersHistory.module.css';
-import { currency } from '../../utils';
 
 interface Props {
    order: IOrder;
@@ -50,6 +52,10 @@ export const OrderCard: FC<Props> = ({ order }) => {
                   {order.shippingAddress.address}, {order.shippingAddress.address2},{' '}
                   {order.shippingAddress.city}
                </span>
+            </div>
+
+            <div className={styles.confirm}>
+               <AiFillCheckCircle className={styles.icon} />
             </div>
          </div>
       </div>
