@@ -36,16 +36,6 @@ export const oAuthToDbUser = async (authEmail: string, authName: string, authLas
 
    const user = await User.findOne({ email: authEmail });
 
-   // if (user && JSON.stringify(user.shipping) === '{}') {
-   //    const address = {
-   //       address: '-',
-   //       address2: '-',
-   //       zipcode: '-',
-   //       city: 'caba',
-   //    };
-   //    await User.updateOne({ email: user.email }, { $set: { shipping: address } });
-   // }
-
    if (user) {
       await db.disconnect();
       const { _id, name, lastName, email, phone = '', dni = '', shipping, role } = user;

@@ -6,7 +6,7 @@ import { authOptions } from '../api/auth/[...nextauth]';
 import { dbOrders } from '../../database';
 import { IOrder, IUser } from '../../interfaces';
 
-import { ShopLayout } from '../../components/layouts';
+import { OrderLayout } from '../../components/layouts';
 import { OrderAddress, OrderCheckout, OrderProducts } from '../../components/orders';
 
 import styles from '../../styles/Order.module.css';
@@ -17,14 +17,14 @@ interface Props {
 
 const OrderPage: NextPage<Props> = ({ order }) => {
    return (
-      <ShopLayout title={''} pageDescription={''}>
+      <OrderLayout title={''} order={order}>
          <section className={styles.order}>
             <div className={styles.container}>
-               <div className={styles.number}>
+               {/* <div className={styles.number}>
                   <span>
                      Pedido <strong>#{order._id}</strong>
                   </span>
-               </div>
+               </div> */}
 
                <OrderProducts order={order} />
 
@@ -33,7 +33,7 @@ const OrderPage: NextPage<Props> = ({ order }) => {
                <OrderAddress order={order} />
             </div>
          </section>
-      </ShopLayout>
+      </OrderLayout>
    );
 };
 

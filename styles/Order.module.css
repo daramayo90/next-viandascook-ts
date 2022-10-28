@@ -15,7 +15,7 @@
 .order > .container > .checkout > .title,
 .order > .container > .address > .title {
    margin-bottom: 0.5rem;
-   color: var(--textColor);
+   color: var(--black);
 }
 
 .order > .container > .number,
