@@ -43,6 +43,8 @@ const orderSchema = new Schema(
          },
       },
 
+      deliveryDate: { type: String, required: true },
+
       numberOfItems: { type: Number, required: true },
       subTotal: { type: Number, required: true },
       discount: { type: Number },

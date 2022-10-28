@@ -37,7 +37,7 @@ export const OrderCard: FC<Props> = ({ order }) => {
                   }`}
                </span>
 
-               <span className={styles.date}>25/10/2022</span>
+               <span className={styles.date}>{order.deliveryDate}</span>
             </div>
 
             <div className={styles.bottom}>

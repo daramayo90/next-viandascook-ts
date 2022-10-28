@@ -7,6 +7,8 @@ export interface IOrder {
    shippingAddress: ShippingAddress;
    coupons?: ICoupon[];
 
+   deliveryDate: string;
+
    numberOfItems: number;
    subTotal: number;
    discount?: number;

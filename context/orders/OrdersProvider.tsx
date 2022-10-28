@@ -1,6 +1,5 @@
 import { FC, ReactNode, useEffect, useReducer, useContext } from 'react';
 import { getSession } from 'next-auth/react';
-import { useRouter } from 'next/router';
 
 import Cookies from 'js-cookie';
 
@@ -23,8 +22,6 @@ const ORDERS_INITIAL_STATE: OrdersState = {
 };
 
 export const OrdersProvider: FC<Props> = ({ children }) => {
-   const router = useRouter();
-
    const { deliveryDateSelected } = useContext(UIContext);
    const { cart, coupons, numberOfItems, subTotal, discount, shipping, couponDiscount, total } =
       useContext(CartContext);
@@ -88,6 +85,7 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
          orderItems: cart.map((product) => product),
          coupons,
          shippingAddress,
+         deliveryDate: deliveryDateSelected,
          numberOfItems,
          subTotal,
          discount,
