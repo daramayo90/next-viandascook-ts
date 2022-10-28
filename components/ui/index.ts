@@ -9,4 +9,5 @@ export * from './Intro';
 export * from './LoadingBars';
 export * from './SideMenu';
 export * from './SubmitButton';
+export * from './TabMenu';
 export * from './Values';

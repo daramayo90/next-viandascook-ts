@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 
-import { AiOutlineUser, AiOutlineHeart } from 'react-icons/ai';
-import { HiOutlineClipboardList } from 'react-icons/hi';
+import { AiOutlineUser } from 'react-icons/ai';
+import { HiOutlineClipboardList, HiOutlineShoppingBag } from 'react-icons/hi';
 import { MdOutlineFoodBank } from 'react-icons/md';
 
 import styles from '../../styles/TabMenu.module.css';
@@ -13,14 +13,14 @@ const menuItems = [
       name: 'Menu',
    },
    {
-      nav: '/pedidos',
+      nav: '/pedidos/historial',
       reacticon: <HiOutlineClipboardList />,
       name: 'Pedidos',
    },
    {
-      nav: '/favoritos',
-      reacticon: <AiOutlineHeart />,
-      name: 'Favoritos',
+      nav: '/cart',
+      reacticon: <HiOutlineShoppingBag />,
+      name: 'Carrito',
    },
    {
       nav: '/perfil',

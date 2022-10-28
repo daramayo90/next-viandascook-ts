@@ -7,6 +7,7 @@ import { CartList, OrderSummary } from '../../components/cart';
 import { ShopLayout } from '../../components/layouts';
 
 import styles from '../../styles/Cart.module.css';
+import { TabMenu } from '../../components/ui';
 
 const CartPage: NextPage = () => {
    const router = useRouter();
@@ -32,6 +33,7 @@ const CartPage: NextPage = () => {
                <OrderSummary />
             </div>
          </section>
+         <TabMenu />
       </ShopLayout>
    );
 };

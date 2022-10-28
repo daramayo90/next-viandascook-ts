@@ -5,7 +5,7 @@ import { dbProducts } from '../../database';
 import { IProduct } from '../../interfaces';
 
 import { ShopLayout } from '../../components/layouts';
-import { DiscountSlides } from '../../components/ui';
+import { DiscountSlides, TabMenu } from '../../components/ui';
 import { ProductCard, SearchNotFound, SearchProducts, TypesList } from '../../components/products';
 
 import styles from '../../styles/Products.module.css';
@@ -62,6 +62,7 @@ const ProductsPage: NextPage<Props> = ({ products }) => {
                )}
             </article>
          </section>
+         <TabMenu />
       </ShopLayout>
    );
 };

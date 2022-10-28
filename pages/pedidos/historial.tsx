@@ -10,6 +10,7 @@ import { OrderCard } from '../../components/orders';
 
 import styles from '../../styles/OrdersHistory.module.css';
 import { IOrder } from '../../interfaces';
+import { TabMenu } from '../../components/ui';
 
 interface Props {
    orders: IOrder[];
@@ -25,6 +26,8 @@ const OrderHistoryPage: NextPage<Props> = ({ orders }) => {
                ))}
             </div>
          </section>
+
+         <TabMenu />
       </OrderLayout>
    );
 };
