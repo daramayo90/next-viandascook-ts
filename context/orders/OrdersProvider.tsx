@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import Cookies from 'js-cookie';
 
 import { OrdersContext, ordersReducer } from './';
-import { removeCookies } from '../../utils';
+import { coupon, removeCookies } from '../../utils';
 
 import { viandasApi } from '../../api';
 import { ShippingAddress, ICity, IOrder } from '../../interfaces';
@@ -99,6 +99,10 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
 
       try {
          const { data } = await viandasApi.post<IOrder>('/orders', body);
+
+         if (coupons.length !== 0) {
+            await viandasApi.put('user/addCoupon', coupons[0]);
+         }
 
          removeCookies();
 

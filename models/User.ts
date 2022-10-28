@@ -37,6 +37,7 @@ const userSchema = new Schema(
       coupons: [
          {
             _id: { type: Schema.Types.ObjectId, ref: 'Coupon' },
+            code: { type: String },
             ussage: { type: Number },
          },
       ],
