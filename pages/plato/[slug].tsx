@@ -4,7 +4,13 @@ import { dbProducts } from '../../database';
 import { IProduct } from '../../interfaces';
 
 import { ShopLayout } from '../../components/layouts';
-import { AditionalInfo, Image, Ingredients, NutritionInfo, Price } from '../../components/products';
+import {
+   AditionalInfo,
+   ProductImg,
+   Ingredients,
+   NutritionInfo,
+   Price,
+} from '../../components/products';
 
 import styles from '../../styles/Product.module.css';
 
@@ -17,7 +23,7 @@ const ProductPage: NextPage<Props> = ({ product }) => {
       <ShopLayout title={''} pageDescription={''}>
          <article className={styles.product}>
             <div className={styles.topSection}>
-               <Image product={product} />
+               <ProductImg product={product} />
 
                <Price product={product} />
             </div>

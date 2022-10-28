@@ -1,5 +1,5 @@
 export * from './AditionalInfo';
-export * from './Image';
+export * from './ProductImg';
 export * from './Ingredients';
 export * from './ItemCounter';
 export * from './NutritionInfo';

@@ -15,7 +15,7 @@ const menuItems = [
    {
       nav: '/pedidos/historial',
       reacticon: <HiOutlineClipboardList />,
-      name: 'Pedidos',
+      name: 'Mis Pedidos',
    },
    {
       nav: '/cart',

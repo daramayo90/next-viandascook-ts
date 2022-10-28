@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import NImage from 'next/image';
+import Image from 'next/image';
 
 import { IProduct } from '../../interfaces';
 
@@ -9,11 +9,11 @@ interface Props {
    product: IProduct;
 }
 
-export const Image: FC<Props> = ({ product }) => {
+export const ProductImg: FC<Props> = ({ product }) => {
    return (
       <div className={styles.image}>
          <div className={styles.nextImage}>
-            <NImage
+            <Image
                src={`/products/${product.image}`}
                alt={product.name}
                width={100}

@@ -58,8 +58,12 @@ export const SideMenu = () => {
 
             <div className={styles.menuOptions}>
                <ul className={styles.list}>
-                  {isLoggedIn && <li onClick={() => navigateTo('/mi-cuenta')}>Mi Cuenta</li>}
-                  {isLoggedIn && <li onClick={() => navigateTo('/mis-pedidos')}>Mis Pedidos</li>}
+                  {isLoggedIn && (
+                     <>
+                        <li onClick={() => navigateTo('/mi-cuenta')}>Mi Cuenta</li>
+                        <li onClick={() => navigateTo('/pedidos/historial')}>Mis Pedidos</li>
+                     </>
+                  )}
                   <li onClick={() => navigateTo('/menu')}>Elegí tus Viandas</li>
                   <li onClick={() => navigateTo('/nosotros')}>Nosotros</li>
                   <li onClick={() => navigateTo('/loyalty')}>Sumá Puntos</li>
