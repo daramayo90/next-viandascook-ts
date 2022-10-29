@@ -3,7 +3,7 @@ import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import { dbProducts } from '../../database';
 import { IProduct } from '../../interfaces';
 
-import { ShopLayout } from '../../components/layouts';
+import { ProductLayout } from '../../components/layouts';
 import {
    AditionalInfo,
    ProductImg,
@@ -20,7 +20,7 @@ interface Props {
 
 const ProductPage: NextPage<Props> = ({ product }) => {
    return (
-      <ShopLayout title={''} pageDescription={''}>
+      <ProductLayout title={product.name} pageDescription={''}>
          <article className={styles.product}>
             <div className={styles.topSection}>
                <ProductImg product={product} />
@@ -36,7 +36,7 @@ const ProductPage: NextPage<Props> = ({ product }) => {
 
             <AditionalInfo />
          </article>
-      </ShopLayout>
+      </ProductLayout>
    );
 };
 

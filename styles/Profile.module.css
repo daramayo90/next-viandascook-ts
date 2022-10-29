@@ -66,7 +66,7 @@
 
 .profile > .container > .options > .option > .icon {
    max-width: 20px;
-   margin-bottom: 3px;
+   margin-bottom: 1px;
    font-size: 1.5rem;
    font-weight: 400;
    color: var(--black);
@@ -80,6 +80,7 @@
    color: var(--black);
 }
 
+.profile > .container > .options > .logout > .logoutIcon,
 .profile > .container > .options > .logout > span {
    color: var(--error);
 }

@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 
 import { IOrder } from '../../interfaces';
 
-import { SideMenu } from '../ui';
+import { SideMenu, TabMenu } from '../ui';
 import { OrderNavbar } from '../navbar';
 
 interface Props {
@@ -40,6 +40,8 @@ export const OrderLayout: FC<Props> = ({ children, title, order }) => {
          <SideMenu />
 
          <main>{children}</main>
+
+         <TabMenu />
       </>
    );
 };

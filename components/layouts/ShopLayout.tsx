@@ -2,7 +2,7 @@ import { FC, ReactNode } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
-import { SideMenu } from '../ui';
+import { SideMenu, TabMenu } from '../ui';
 import { ShopNavbar } from '../navbar';
 import { pageTitles } from '../../utils';
 
@@ -50,6 +50,8 @@ export const ShopLayout: FC<Props> = ({ children, title, pageDescription, imageF
          <SideMenu />
 
          <main>{children}</main>
+
+         <TabMenu />
       </>
    );
 };

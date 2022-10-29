@@ -33,7 +33,6 @@ const CartPage: NextPage = () => {
                <OrderSummary />
             </div>
          </section>
-         <TabMenu />
       </ShopLayout>
    );
 };

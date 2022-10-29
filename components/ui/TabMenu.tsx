@@ -42,11 +42,17 @@ export const TabMenu = () => {
          <div className={styles.container}>
             {menuItems.map(({ nav, reacticon, name }) => (
                <div key={name} className={styles.option} onClick={() => navigateTo(nav)}>
-                  <div className={path === nav ? `${styles.icon} tabSelected` : `${styles.icon}`}>
+                  <div
+                     className={
+                        path.includes(nav) ? `${styles.icon} tabSelected` : `${styles.icon}`
+                     }>
                      {reacticon}
                   </div>
 
-                  <div className={path === nav ? `${styles.name} tabSelected` : `${styles.name}`}>
+                  <div
+                     className={
+                        path.includes(nav) ? `${styles.name} tabSelected` : `${styles.name}`
+                     }>
                      {name}
                   </div>
                </div>

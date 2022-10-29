@@ -62,7 +62,6 @@ const ProductsPage: NextPage<Props> = ({ products }) => {
                )}
             </article>
          </section>
-         <TabMenu />
       </ShopLayout>
    );
 };

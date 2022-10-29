@@ -1,5 +1,7 @@
 import { FC, ReactNode } from 'react';
 import Head from 'next/head';
+import { SideMenu } from '../ui';
+import { ShopNavbar } from '../navbar';
 
 interface Props {
    children: ReactNode;
@@ -20,6 +22,12 @@ export const ProductLayout: FC<Props> = ({ children, title, pageDescription, ima
             <meta name='viewport' content='width=device-width, user-scalable=no' />
             {imageFullUrl && <meta name='og:image' content={imageFullUrl} />}
          </Head>
+
+         <nav>
+            <ShopNavbar pageTitle={''} menuPage={false} backCart={false} />
+         </nav>
+
+         <SideMenu />
 
          <main>{children}</main>
       </>

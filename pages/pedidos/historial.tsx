@@ -26,8 +26,6 @@ const OrderHistoryPage: NextPage<Props> = ({ orders }) => {
                ))}
             </div>
          </section>
-
-         <TabMenu />
       </OrderLayout>
    );
 };
