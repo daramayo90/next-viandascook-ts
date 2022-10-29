@@ -21,10 +21,9 @@ const LoginCheckoutPage: NextPage = () => {
       <ShopLayout title={''} pageDescription={''}>
          <section className={styles.auth}>
             <div className={styles.container}>
-               {/* <h2 className={styles.title}>Detalles del Pago</h2> */}
-
                <p className={styles.text}>
-                  Si ya tenés tu usuario completalo para seguir al próximo paso o hacé click en
+                  Si ya tenés cuenta, ingresá tu mail y contraseña.<br></br>También podes hacer
+                  click en
                   <strong> quiero comprar sin cuenta</strong> para avanzar.
                </p>
 

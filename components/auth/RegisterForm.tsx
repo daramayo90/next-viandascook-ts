@@ -16,27 +16,28 @@ export const RegisterForm = () => {
 
    return (
       <form onSubmit={handleSubmit(onRegisterForm)} noValidate>
-         <h1 className={styles.title}>Registrarse</h1>
-
          <div className={styles.userNames}>
             <label className={styles.inputText}>
+               <span>Nombre</span>
                <input
                   {...register('name', { required: 'El nombre es un campo requerido' })}
-                  placeholder='Nombre'
+                  placeholder='Juan'
                />
                {errors.name && <span className={styles.error}>{errors.name?.message}</span>}
             </label>
 
             <label className={styles.inputText}>
+               <span>Apellido</span>
                <input
                   {...register('lastName', { required: 'El apellido es un campo requerido' })}
-                  placeholder='Apellido'
+                  placeholder='Perez'
                />
                {errors.lastName && <span className={styles.error}>{errors.lastName?.message}</span>}
             </label>
          </div>
 
          <label className={styles.inputText}>
+            <span>Correo electrónico</span>
             <input
                {...register('email', {
                   required: 'El email es un campo requerido',
@@ -48,6 +49,7 @@ export const RegisterForm = () => {
          </label>
 
          <label className={styles.inputText}>
+            <span>Contraseña</span>
             <input
                {...register('password', {
                   required: 'La contraseña es un campo requerido',
@@ -57,7 +59,6 @@ export const RegisterForm = () => {
                   },
                })}
                type='password'
-               placeholder='Contraseña'
             />
             {errors.password && <span className={styles.error}>{errors.password?.message}</span>}
          </label>
@@ -72,9 +73,9 @@ export const RegisterForm = () => {
             <div className={styles.registerButton}>
                <SubmitButton
                   content='Registrarse'
-                  border='1px solid var(--secondary)'
+                  border='1px solid var(--primary)'
                   color='var(--white)'
-                  background='var(--secondary)'
+                  background='var(--primary)'
                />
             </div>
          </div>

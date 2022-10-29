@@ -6,6 +6,7 @@ export { default } from 'next-auth/middleware';
 export async function middleware(req: NextRequest) {
    const cart = req.cookies.get('cart');
    const session = req.cookies.get('next-auth.session-token');
+   const query = req.nextUrl.searchParams.get('page');
 
    const { protocol, host, pathname = '' } = req.nextUrl;
 
@@ -14,11 +15,11 @@ export async function middleware(req: NextRequest) {
    }
 
    if (pathname.includes('login') && session) {
-      return NextResponse.redirect(`${protocol}//${host}/menu`);
+      return NextResponse.redirect(`${protocol}//${host}${query}`);
    }
 
    if (pathname.includes('register') && session) {
-      return NextResponse.redirect(`${protocol}//${host}/menu`);
+      return NextResponse.redirect(`${protocol}//${host}${query}`);
    }
 
    if (pathname.includes('mi-cuenta') && !session) {

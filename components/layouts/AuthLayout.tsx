@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import { FC, ReactNode } from 'react';
 import { AuthNavbar } from '../navbar';
+import { SideMenu } from '../ui';
 
 interface Props {
    title: string;
@@ -15,8 +16,10 @@ export const AuthLayout: FC<Props> = ({ children, title }) => {
          </Head>
 
          <nav>
-            <AuthNavbar />
+            <AuthNavbar pageTitle={title} />
          </nav>
+
+         <SideMenu />
 
          <main>{children}</main>
       </>

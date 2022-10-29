@@ -1,24 +1,39 @@
+import { FC, useContext } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 
-import styles from '../../styles/Navbar.module.css';
+import { CartContext, UIContext } from '../../context';
 
-export const AuthNavbar = () => {
+import { HiOutlineMenu, HiOutlineShoppingBag } from 'react-icons/hi';
+
+import styles from '../../styles/ShopNavbar.module.css';
+
+interface Props {
+   pageTitle: string;
+}
+
+export const AuthNavbar: FC<Props> = ({ pageTitle }) => {
+   const { toggleSideMenu } = useContext(UIContext);
+   const { numberOfItems } = useContext(CartContext);
+
    return (
-      <section className={`${styles.navbar} ${styles.navbarWeb} ${styles.navbarAuth}`}>
-         <div className={styles.logo}>
-            <Link href='/'>
-               <div className={styles.nextImage}>
-                  <Image
-                     src='/logo/viandascook-logo.png'
-                     alt='viandascook-logo'
-                     width={100}
-                     height={28}
-                     layout='responsive'
-                     priority={true}
-                  />
-               </div>
-            </Link>
+      <section className={styles.shopNavbar}>
+         <div className={styles.container}>
+            <div className={styles.navigation}>
+               <h1 className={styles.title}>{pageTitle}</h1>
+            </div>
+
+            <div className={styles.items}>
+               <Link href='/cart'>
+                  <div className={styles.cart}>
+                     <HiOutlineShoppingBag />
+                     <span className={numberOfItems !== 0 ? `${styles.quantity}` : 'noDisplay'}>
+                        {numberOfItems}
+                     </span>
+                  </div>
+               </Link>
+
+               <HiOutlineMenu onClick={toggleSideMenu} />
+            </div>
          </div>
       </section>
    );

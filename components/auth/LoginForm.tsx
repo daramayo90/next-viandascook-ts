@@ -16,9 +16,8 @@ export const LoginForm = () => {
 
    return (
       <form onSubmit={handleSubmit(onLoginUser)} noValidate>
-         {/* <h1 className={styles.title}>Iniciar Sesión</h1> */}
-
          <label className={styles.inputText}>
+            <span>Correo electrónico:</span>
             <input
                {...register('email', {
                   required: 'El email es un campo requerido',
@@ -30,6 +29,7 @@ export const LoginForm = () => {
          </label>
 
          <label className={styles.inputText}>
+            <span>Contraseña:</span>
             <input
                {...register('password', {
                   required: 'La contraseña es un campo requerido',
@@ -39,7 +39,6 @@ export const LoginForm = () => {
                   },
                })}
                type='password'
-               placeholder='Contraseña'
             />
             {errors.password && <span className={styles.error}>{errors.password?.message}</span>}
          </label>
@@ -54,9 +53,9 @@ export const LoginForm = () => {
             <div className={styles.loginButton}>
                <SubmitButton
                   content='Acceder'
-                  border='1px solid var(--secondary)'
+                  border='1px solid var(--primary)'
                   color='var(--white)'
-                  background='var(--secondary)'
+                  background='var(--primary)'
                />
             </div>
          </div>
