@@ -129,11 +129,11 @@
    display: block;
    margin-top: 5px;
    padding-left: 5px;
-   color: var(--white);
+   color: var(--error);
 }
 
 .errorMessage > span {
-   color: var(--white);
+   color: var(--error);
 }
 
 .auth > .container > .providersContainer > .providers {
