@@ -10,15 +10,24 @@ export async function middleware(req: NextRequest) {
 
    const { protocol, host, pathname = '' } = req.nextUrl;
 
+   console.log('session', session);
+   console.log('query', query);
+   console.log('protocol', protocol);
+   console.log('host', host);
+   console.log('pathname', pathname);
+
    if (pathname.includes('login-checkout') && session) {
+      console.log('LOGIN-CHECKOUT', `${protocol}//${host}/checkout`);
       return NextResponse.redirect(`${protocol}//${host}/checkout`);
    }
 
    if (pathname.includes('login') && session) {
+      console.log('LOGIN', `${protocol}//${host}/checkout`);
       return NextResponse.redirect(`${protocol}//${host}${query}`);
    }
 
    if (pathname.includes('register') && session) {
+      console.log('REGISTER', `${protocol}//${host}/checkout`);
       return NextResponse.redirect(`${protocol}//${host}${query}`);
    }
 
