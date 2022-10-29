@@ -46,7 +46,7 @@
 
 .profile > .container > .account > .editIcon {
    position: absolute;
-   right: 2rem;
+   right: 0.5rem;
    font-size: 1.5rem;
    color: var(--primary);
 }
@@ -64,17 +64,29 @@
    cursor: pointer;
 }
 
-.profile > .container > .options > .option > span {
+.profile > .container > .options > .option > .icon {
+   max-width: 20px;
+   margin-bottom: 3px;
+   font-size: 1.5rem;
    font-weight: 400;
    color: var(--black);
 }
 
-.profile > .container > .options > .option > .rightIcon {
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   justify-content: center;
-   font-size: 1.2rem;
+.profile > .container > .options > .option > span {
+   width: 100%;
+   margin-left: 1rem;
+   font-size: 1.1rem;
+   font-weight: 400;
+   color: var(--black);
+}
+
+.profile > .container > .options > .logout > span {
+   color: var(--error);
+}
+
+.profile > .container > .options > .option > .rightIcon,
+.profile > .container > .options > .option > .toggleIcon {
+   font-size: 1.8rem;
    font-weight: 400;
    color: var(--black);
 }

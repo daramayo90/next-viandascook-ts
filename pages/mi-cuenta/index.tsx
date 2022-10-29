@@ -1,13 +1,26 @@
+import { useState } from 'react';
+
 import { NextPage } from 'next';
 import Image from 'next/image';
-import { AiFillEdit } from 'react-icons/ai';
-import { MdOutlineKeyboardArrowRight } from 'react-icons/md';
+
 import { ShopLayout } from '../../components/layouts';
 import { TabMenu } from '../../components/ui';
+
+import { AiFillEdit, AiOutlineEye, AiOutlineUser, AiOutlineUserAdd } from 'react-icons/ai';
+import { MdOutlineKeyboardArrowRight } from 'react-icons/md';
+import { BsToggleOff, BsToggleOn } from 'react-icons/bs';
+import { FiMapPin } from 'react-icons/fi';
+import { HiOutlineLogout } from 'react-icons/hi';
 
 import styles from '../../styles/Profile.module.css';
 
 const ProfilePage: NextPage = () => {
+   const [darkmode, setDarkmode] = useState(false);
+
+   const toggleDarkMode = () => {
+      setDarkmode(!darkmode);
+   };
+
    return (
       <ShopLayout title={'Mi Cuenta'} pageDescription={''}>
          <section className={styles.profile}>
@@ -27,24 +40,36 @@ const ProfilePage: NextPage = () => {
 
                <div className={styles.options}>
                   <div className={styles.option}>
+                     <AiOutlineUser className={styles.icon} />
                      <span>Perfil</span>
                      <MdOutlineKeyboardArrowRight className={styles.rightIcon} />
                   </div>
+
                   <div className={styles.option}>
+                     <FiMapPin className={styles.icon} />
                      <span>Dirección</span>
                      <MdOutlineKeyboardArrowRight className={styles.rightIcon} />
                   </div>
+
                   <div className={styles.option}>
-                     <span>Modo Oscuro</span>
-                     <MdOutlineKeyboardArrowRight className={styles.rightIcon} />
-                  </div>
-                  <div className={styles.option}>
+                     <AiOutlineUserAdd className={styles.icon} />
                      <span>Invitar Amigos</span>
                      <MdOutlineKeyboardArrowRight className={styles.rightIcon} />
                   </div>
-                  <div className={styles.option}>
+
+                  <div className={styles.option} onClick={toggleDarkMode}>
+                     <AiOutlineEye className={styles.icon} />
+                     <span>Modo Oscuro</span>
+                     {!darkmode ? (
+                        <BsToggleOff className={styles.toggleIcon} />
+                     ) : (
+                        <BsToggleOn className={styles.toggleIcon} />
+                     )}
+                  </div>
+
+                  <div className={`${styles.option} ${styles.logout}`}>
+                     <HiOutlineLogout className={styles.icon} />
                      <span>Cerrar Sesión</span>
-                     <MdOutlineKeyboardArrowRight className={styles.rightIcon} />
                   </div>
                </div>
             </div>

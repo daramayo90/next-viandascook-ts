@@ -37,14 +37,14 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res, query }
    const session: any = await unstable_getServerSession(req, res, authOptions);
 
    // TODO: Probar esta redirección
-   if (!session) {
-      return {
-         redirect: {
-            destination: `/auth/login?page=/pedidos/${id}`,
-            permanent: false,
-         },
-      };
-   }
+   // if (!session) {
+   //    return {
+   //       redirect: {
+   //          destination: `/auth/login?page=/pedidos/${id}`,
+   //          permanent: false,
+   //       },
+   //    };
+   // }
 
    const order = await dbOrders.getOrderById(id.toString());
 
@@ -61,7 +61,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res, query }
    // La redirección debe ser a otra página
    const { email = '' } = order.user as IUser;
 
-   if (email !== session.user.email) {
+   if (email !== session!.user.email) {
       return {
          redirect: {
             destination: `/auth/login?page=/pedidos/${id}`,

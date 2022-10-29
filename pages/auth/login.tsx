@@ -27,23 +27,23 @@ const LoginPage: NextPage = () => {
    );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ req, res, query }) => {
-   const session: any = await unstable_getServerSession(req, res, authOptions);
+// export const getServerSideProps: GetServerSideProps = async ({ req, res, query }) => {
+//    const session: any = await unstable_getServerSession(req, res, authOptions);
 
-   const { page = '/menu' } = query;
+//    const { page = '/menu' } = query;
 
-   if (session) {
-      return {
-         redirect: {
-            destination: page.toString(),
-            permanent: false,
-         },
-      };
-   }
+//    if (session) {
+//       return {
+//          redirect: {
+//             destination: page.toString(),
+//             permanent: false,
+//          },
+//       };
+//    }
 
-   return {
-      props: {},
-   };
-};
+//    return {
+//       props: {},
+//    };
+// };
 
 export default LoginPage;
