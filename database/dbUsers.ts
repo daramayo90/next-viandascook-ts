@@ -12,14 +12,10 @@ export const checkUserEmailPassword = async (email: string, password: string) =>
 
    await db.disconnect();
 
-   console.log('NEXT AUTH User: ', user);
-
    if (!user) return null;
    if (!bcrypt.compareSync(password, user.password!)) return null;
 
    const { _id, name, lastName, phone = '', dni = '', shipping, role } = user;
-
-   console.log('NEXT AUTH 2: Test123');
 
    // TODO: Acá se pasaría a number los numbers?
    return {

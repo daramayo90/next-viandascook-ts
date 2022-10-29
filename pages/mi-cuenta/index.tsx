@@ -9,6 +9,7 @@ import { Options } from '../../components/profile/Options';
 import styles from '../../styles/Profile.module.css';
 
 const ProfilePage: NextPage = () => {
+   console.log('test mi-cuenta');
    return (
       <ShopLayout title={'Mi Cuenta'} pageDescription={''}>
          <section className={styles.profile}>

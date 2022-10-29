@@ -54,7 +54,7 @@ export const useOrderSummaryts = () => {
 
       setSubmitErrors(false);
 
-      router.push('/auth/login-checkout?page=/checkout');
+      router.push('/auth/login-checkout');
    };
 
    return {
