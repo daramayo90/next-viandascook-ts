@@ -166,6 +166,24 @@ textarea {
    font: inherit; /* 2 */
 }
 
+.loading {
+   width: 100vw;
+   height: calc(100vh - 4rem);
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+}
+
+.loading span {
+   font-size: 1.4rem;
+}
+
+#nprogress .bar {
+   background: var(--primary) !important;
+   height: 3px !important;
+}
+
 .selected {
    border: 2px solid var(--primary);
 }

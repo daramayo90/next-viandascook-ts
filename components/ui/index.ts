@@ -6,6 +6,7 @@ export * from './DiscountSlides';
 export * from './Footer';
 export * from './HowToBuy';
 export * from './Intro';
+export * from './Loading';
 export * from './LoadingBars';
 export * from './SideMenu';
 export * from './SubmitButton';

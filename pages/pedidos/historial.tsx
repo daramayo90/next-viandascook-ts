@@ -8,7 +8,6 @@ import { IOrder } from '../../interfaces';
 
 import { OrderLayout } from '../../components/layouts';
 import { OrderCard } from '../../components/orders';
-import { TabMenu } from '../../components/ui';
 
 import styles from '../../styles/OrdersHistory.module.css';
 

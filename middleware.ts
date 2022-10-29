@@ -9,7 +9,7 @@ export async function middleware(req: NextRequest) {
    const session = await getToken({ req });
    const query = req.nextUrl.searchParams.get('page');
 
-   const { protocol, host, pathname = '' } = req.nextUrl;
+   const { pathname = '' } = req.nextUrl;
 
    const url = req.nextUrl.clone();
    url.search = '';
