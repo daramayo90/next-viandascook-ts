@@ -1,14 +1,11 @@
-import Image from 'next/image';
-import { BarLoader } from 'react-spinners';
-
 import { LoadingLayout } from '../layouts';
+import { ClipLoader } from 'react-spinners';
 
 const LoadingPage = () => {
    return (
       <LoadingLayout>
          <section className='loading'>
-            {/* <Image src='/loading.gif' width={500} height={400} /> */}
-            <BarLoader color={'var(--primary)'} width={300} speedMultiplier={2} />
+            <ClipLoader color={'var(--primary)'} size={55} speedMultiplier={1} />
          </section>
       </LoadingLayout>
    );

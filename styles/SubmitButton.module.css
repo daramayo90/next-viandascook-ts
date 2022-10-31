@@ -3,47 +3,63 @@
    justify-content: center;
    align-items: center;
    width: 100%;
+   height: 100%;
 }
 
-.linkTo > .linkButton {
+.linkTo > .btn {
    display: flex;
    justify-content: center;
    align-items: center;
    position: relative;
    width: 100%;
+   height: 100%;
    padding: 10px 55px 10px 40px;
    letter-spacing: 1.5px;
-   border-color: var(--white);
+   border-color: var(--primary);
    color: var(--white);
+   background-color: var(--primary);
    transition: all 0.2s ease-in-out;
 }
 
-.linkTo > .linkButton:focus,
-.linkTo > .linkButton:hover {
-   background-color: hsla(0, 0%, 100%, 0.2);
-   border-color: hsla(0, 0%, 100%, 0.05);
+.linkTo > .btn > .load {
+   position: absolute;
+   left: 10px;
+}
+
+.linkTo > .btn:focus,
+.linkTo > .btn:disabled,
+.linkTo > .btn:hover {
+   background-color: var(--primaryHover);
+   border-color: var(--primaryHover);
    padding-right: 55px;
 }
 
-.linkTo > .linkButton > .icon {
+.linkTo > .btn:focus,
+.linkTo > .btn:disabled,
+.linkTo > .btn:focus > .icon {
+   color: var(--clickedButton);
+   cursor: auto;
+}
+
+.linkTo > .btn > .icon {
    position: absolute;
-   margin-left: 7rem;
+   margin-left: 8rem;
    font-size: 1.6rem;
    color: var(--white);
 }
 
 @media (min-width: 720px) {
-   .linkTo > .linkButton {
+   .linkTo > .btn {
       padding: 10px 40px;
    }
 
-   .linkTo > .linkButton > .icon {
+   .linkTo > .btn > .icon {
       opacity: 0;
       margin-left: 5rem;
       transition: all 0.2s ease-in-out;
    }
 
-   .linkTo > .linkButton:hover > .icon {
+   .linkTo > .btn:hover > .icon {
       opacity: 1;
       margin-left: 7rem;
       z-index: 10;

@@ -1,32 +1,22 @@
 import { FC } from 'react';
 
+import { ClipLoader } from 'react-spinners';
 import { BiChevronRight } from 'react-icons/bi';
 
-import styles from '../../styles/Button.module.css';
+import styles from '../../styles/SubmitButton.module.css';
 
 interface Props {
    content: string;
-   color?: string;
-   border?: string;
-   background?: string;
+   isClicked?: boolean;
 }
 
-export const SubmitButton: FC<Props> = ({ content, color, border, background }) => {
-   const styleButton = {
-      color,
-      border,
-      background,
-   };
-
-   const styleIcon = {
-      color,
-   };
-
+export const SubmitButton: FC<Props> = ({ content, isClicked }) => {
    return (
       <div className={styles.linkTo}>
-         <button className={styles.linkButton} style={styleButton} type='submit'>
+         <button className={styles.btn} type='submit' disabled={isClicked}>
+            {isClicked && <ClipLoader className={styles.load} color={'var(--white)'} size={20} />}
             {content}
-            <BiChevronRight className={styles.icon} style={styleIcon} />
+            <BiChevronRight className={styles.icon} />
          </button>
       </div>
    );

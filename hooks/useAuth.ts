@@ -17,6 +17,7 @@ export const useAuth = () => {
 
    const [providers, setProviders] = useState<any>({});
    const [showError, setShowError] = useState(false);
+   const [isClicked, setIsClicked] = useState(false);
    const [errorMessage, setErrorMessage] = useState('');
 
    const { registerUser } = useContext(AuthContext);
@@ -42,6 +43,8 @@ export const useAuth = () => {
          return;
       }
 
+      setIsClicked(true);
+
       const { email, password } = newUser;
 
       await signIn('credentials', { email, password });
@@ -49,18 +52,18 @@ export const useAuth = () => {
 
    // Login user
    const onLoginUser = async ({ email, password }: FormData) => {
+      setIsClicked(true);
+
       const res = await signIn('credentials', { redirect: false, email, password });
 
       if (res!.ok === false) return setShowError(true);
 
       return await signIn('credentials', { email, password });
-      setShowError(false);
-      const destination = router.query.page?.toString() || '/menu';
-      router.replace(destination, undefined, { shallow: true });
    };
 
    return {
       providers,
+      isClicked,
       showError,
       errors,
       errorMessage,

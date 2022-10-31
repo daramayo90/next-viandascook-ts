@@ -99,12 +99,7 @@ const PromosPage: NextPage = () => {
                {/* Apply Button */}
                <Link href='/checkout'>
                   <div className={styles.applyButton}>
-                     <SubmitButton
-                        content='Aplicar'
-                        border='1px solid var(--primary)'
-                        color='var(--white)'
-                        background='var(--primary)'
-                     />
+                     <SubmitButton content='Aplicar' />
                   </div>
                </Link>
             </div>

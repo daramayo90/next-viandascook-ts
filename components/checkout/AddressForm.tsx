@@ -13,7 +13,7 @@ interface Props {
 }
 
 export const AddressForm: FC<Props> = ({ userdb }) => {
-   const { register, handleSubmit, onSubmitAddress, errors } = useAddress(userdb);
+   const { register, handleSubmit, onSubmitAddress, errors, isClicked } = useAddress(userdb);
 
    return (
       <form onSubmit={handleSubmit(onSubmitAddress)} noValidate>
@@ -137,12 +137,7 @@ export const AddressForm: FC<Props> = ({ userdb }) => {
          </div> */}
 
          <div className={styles.applyButton}>
-            <SubmitButton
-               content='Continuar'
-               border='1px solid var(--primary)'
-               color='var(--white)'
-               background='var(--primary)'
-            />
+            <SubmitButton content='Continuar' isClicked={isClicked} />
          </div>
       </form>
    );

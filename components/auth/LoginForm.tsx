@@ -12,7 +12,7 @@ import styles from '../../styles/Auth.module.css';
 export const LoginForm = () => {
    const router = useRouter();
 
-   const { showError, register, handleSubmit, errors, onLoginUser } = useAuth();
+   const { showError, register, handleSubmit, errors, onLoginUser, isClicked } = useAuth();
 
    return (
       <form onSubmit={handleSubmit(onLoginUser)} noValidate>
@@ -46,17 +46,12 @@ export const LoginForm = () => {
          <div className={styles.linksTo}>
             <div className={styles.register}>
                <Link href={`/auth/register?page=${router.query.page?.toString()}`}>
-                  <span>Crear nueva cuenta</span>
+                  <span>Crear cuenta</span>
                </Link>
             </div>
 
             <div className={styles.loginButton}>
-               <SubmitButton
-                  content='Acceder'
-                  border='1px solid var(--primary)'
-                  color='var(--white)'
-                  background='var(--primary)'
-               />
+               <SubmitButton content='Acceder' isClicked={isClicked} />
             </div>
          </div>
 

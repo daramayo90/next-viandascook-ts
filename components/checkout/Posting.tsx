@@ -3,6 +3,7 @@ import { useContext, useState } from 'react';
 import { CartContext, OrdersContext } from '../../context';
 
 import styles from '../../styles/Checkout.module.css';
+import { SubmitButton } from '../ui';
 
 export const Posting = () => {
    const router = useRouter();
@@ -31,6 +32,7 @@ export const Posting = () => {
          <button disabled={isPosting} onClick={onCreateOrder}>
             Finalizar Compra
          </button>
+         <SubmitButton content='Finalizar Compra' isClicked={isPosting} />
 
          {errorMsg && <span className={styles.error}>{errorMsg}</span>}
       </>

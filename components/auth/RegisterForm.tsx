@@ -12,7 +12,8 @@ import styles from '../../styles/Auth.module.css';
 export const RegisterForm = () => {
    const router = useRouter();
 
-   const { showError, register, handleSubmit, errors, errorMessage, onRegisterForm } = useAuth();
+   const { showError, register, handleSubmit, errors, errorMessage, onRegisterForm, isClicked } =
+      useAuth();
 
    return (
       <form onSubmit={handleSubmit(onRegisterForm)} noValidate>
@@ -71,12 +72,7 @@ export const RegisterForm = () => {
             </div>
 
             <div className={styles.registerButton}>
-               <SubmitButton
-                  content='Registrarse'
-                  border='1px solid var(--primary)'
-                  color='var(--white)'
-                  background='var(--primary)'
-               />
+               <SubmitButton content='Registrarse' isClicked={isClicked} />
             </div>
          </div>
 

@@ -97,7 +97,7 @@
 
 .auth > .container > form > .linksTo > .login,
 .auth > .container > form > .linksTo > .register {
-   width: 50%;
+   width: 45%;
    cursor: pointer;
 }
 
@@ -111,8 +111,8 @@
 
 .auth > .container > form > .linksTo > .registerButton,
 .auth > .container > form > .linksTo > .loginButton {
-   width: 50%;
-   max-width: 150px;
+   width: 55%;
+   max-width: 185px;
 }
 
 .auth > .container > .textProviders {

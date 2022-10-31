@@ -60,7 +60,7 @@ export const OrderSummary = () => {
          </div>
 
          <div className={styles.checkoutButton} onClick={handleSubmit}>
-            <SubmitButton content='Finalizar' background='var(--black)' color='var(--white)' />
+            <SubmitButton content='Finalizar' />
          </div>
 
          {submitErrors && (

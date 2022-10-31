@@ -24,6 +24,7 @@ export const useAddress = (userdb?: IUser) => {
    const { updateAddress } = useContext(AuthContext);
 
    const [showError, setShowError] = useState(false);
+   const [isClicked, setIsClicked] = useState(false);
    const [errorMessage, setErrorMessage] = useState('');
 
    const router = useRouter();
@@ -70,10 +71,13 @@ export const useAddress = (userdb?: IUser) => {
          addGuestAddress(data);
       }
 
+      setIsClicked(true);
+
       if (userdb) {
          const { err, msg } = await updateAddress(data);
 
          if (err) {
+            setIsClicked(false);
             setShowError(true);
             setErrorMessage(msg!);
             setTimeout(() => setShowError(false), 3500);
@@ -88,6 +92,7 @@ export const useAddress = (userdb?: IUser) => {
       errors,
       showError,
       errorMessage,
+      isClicked,
       register,
       handleSubmit,
       onSubmitAddress,
