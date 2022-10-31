@@ -4,9 +4,9 @@ import { useRouter } from 'next/router';
 
 import { authOptions } from '../../pages/api/auth/[...nextauth]';
 
-import { ShopLayout } from '../../components/layouts';
+import { AuthLayout } from '../../components/layouts';
 import { LoginForm, Providers } from '../../components/auth';
-import { CommonQuestions } from '../../components/ui';
+import { Button, CommonQuestions } from '../../components/ui';
 
 import styles from '../../styles/Auth.module.css';
 
@@ -18,7 +18,7 @@ const LoginCheckoutPage: NextPage = () => {
    };
 
    return (
-      <ShopLayout title={''} pageDescription={''}>
+      <AuthLayout title={'Iniciar Sesión'}>
          <section className={styles.auth}>
             <div className={styles.container}>
                <p className={styles.text}>
@@ -39,7 +39,7 @@ const LoginCheckoutPage: NextPage = () => {
             </div>
             <CommonQuestions />
          </section>
-      </ShopLayout>
+      </AuthLayout>
    );
 };
 
