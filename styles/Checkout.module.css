@@ -107,21 +107,18 @@
    font-weight: 500;
 }
 
-.checkout > .container > button {
+.checkout > .container > .submit {
+   position: relative;
    width: 99%;
    margin: 2.5rem auto;
-   padding: 10px 55px 10px 40px;
-   letter-spacing: 1.5px;
-   border: 1px solid var(--primary);
-   color: var(--white);
-   background-color: var(--primary);
 }
 
-.checkout > .container > .error {
+.checkout > .container > .submit > .error {
    display: block;
+   position: absolute;
+   top: -30px;
    width: 100%;
-   margin: -1rem 0 3rem 0;
    text-align: center;
-   color: var(--error);
    font-size: 0.95rem;
+   color: var(--error);
 }

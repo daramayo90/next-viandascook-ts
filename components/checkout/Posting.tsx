@@ -28,13 +28,10 @@ export const Posting = () => {
       router.replace(`/pedidos/${message}`);
    };
    return (
-      <>
-         <button disabled={isPosting} onClick={onCreateOrder}>
-            Finalizar Compra
-         </button>
-         <SubmitButton content='Finalizar Compra' isClicked={isPosting} />
-
+      <div className={styles.submit}>
          {errorMsg && <span className={styles.error}>{errorMsg}</span>}
-      </>
+
+         <SubmitButton content='Finalizar' isClicked={isPosting} onClick={onCreateOrder} />
+      </div>
    );
 };
