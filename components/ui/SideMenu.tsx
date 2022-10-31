@@ -1,10 +1,14 @@
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { useRouter } from 'next/router';
-import Image from 'next/image';
 
 import { AuthContext, UIContext } from '../../context';
 
-import { IoMdClose } from 'react-icons/io';
+import { FiLogIn } from 'react-icons/fi';
+import { TbDiscount2 } from 'react-icons/tb';
+import { BsInfoCircle } from 'react-icons/bs';
+import { AiOutlineQuestionCircle, AiOutlineUser } from 'react-icons/ai';
+import { HiOutlineClipboardList, HiOutlineLogout } from 'react-icons/hi';
+import { MdOutlineFoodBank, MdOutlineKeyboardArrowRight } from 'react-icons/md';
 
 import styles from '../../styles/SideMenu.module.css';
 
@@ -15,73 +19,64 @@ export const SideMenu = () => {
 
    const { isMenuOpen, toggleSideMenu } = useContext(UIContext);
 
-   // useEffect(() => {
-   //    const main = document.getElementById('main')!;
-
-   //    if (isMenuOpen) {
-   //       document.body.style.overflow = 'hidden';
-   //       main.style.filter = 'blur(4px)';
-   //    } else {
-   //       document.body.style.overflow = 'scroll';
-   //       main.style.filter = 'none';
-   //    }
-   // }, [isMenuOpen]);
-
    const navigateTo = (url: string) => {
       toggleSideMenu();
       router.push(url);
    };
 
-   if (!isMenuOpen) {
-      return <></>;
-   }
-
    return (
-      <section className={styles.sidemenu}>
-         <div className={styles.container}>
-            <div className={styles.close} onClick={toggleSideMenu}>
-               <IoMdClose className={styles.closeIcon} />
-            </div>
-
-            <div className={styles.logo}>
-               <div className={styles.nextImage}>
-                  <Image
-                     src='/logo/viandascook-logo-primary.png'
-                     alt='Viandas Cook Logo'
-                     width={100}
-                     height={35}
-                     layout='responsive'
-                     priority={true}
-                  />
-               </div>
-            </div>
-
-            <div className={styles.menuOptions}>
-               <ul className={styles.list}>
-                  {isLoggedIn && (
-                     <>
-                        <li onClick={() => navigateTo('/mi-cuenta')}>Mi Cuenta</li>
-                        <li onClick={() => navigateTo('/pedidos/historial')}>Mis Pedidos</li>
-                     </>
-                  )}
-                  <li onClick={() => navigateTo('/menu')}>Elegí tus Viandas</li>
-                  <li onClick={() => navigateTo('/nosotros')}>Nosotros</li>
-                  <li onClick={() => navigateTo('/loyalty')}>Sumá Puntos</li>
-                  <li onClick={() => navigateTo('/preguntas')}>¿Preguntas?</li>
-               </ul>
+      <section className={isMenuOpen ? `${styles.sidemenu} ${styles.open}` : `${styles.sidemenu}`}>
+         <div className={isMenuOpen ? `${styles.options} ${styles.open}` : `${styles.options}`}>
+            <ul className={styles.list}>
+               {isLoggedIn && (
+                  <>
+                     <li onClick={() => navigateTo('/mi-cuenta')}>
+                        <AiOutlineUser className={styles.icon} />
+                        <span>Mi Cuenta</span>
+                        <MdOutlineKeyboardArrowRight className={styles.iconRight} />
+                     </li>
+                     <li onClick={() => navigateTo('/pedidos/historial')}>
+                        <HiOutlineClipboardList className={styles.icon} />
+                        <span>Mis Pedidos</span>
+                        <MdOutlineKeyboardArrowRight className={styles.iconRight} />
+                     </li>
+                  </>
+               )}
+               <li onClick={() => navigateTo('/menu')}>
+                  <MdOutlineFoodBank className={styles.icon} />
+                  <span>Elegí tus Viandas</span>
+                  <MdOutlineKeyboardArrowRight className={styles.iconRight} />
+               </li>
+               <li onClick={() => navigateTo('/nosotros')}>
+                  <BsInfoCircle className={styles.icon} />
+                  <span>Nosotros</span>
+                  <MdOutlineKeyboardArrowRight className={styles.iconRight} />
+               </li>
+               <li onClick={() => navigateTo('/loyalty')}>
+                  <TbDiscount2 className={styles.icon} />
+                  <span>Sumá Puntos</span>
+                  <MdOutlineKeyboardArrowRight className={styles.iconRight} />
+               </li>
+               <li onClick={() => navigateTo('/preguntas')}>
+                  <AiOutlineQuestionCircle className={styles.icon} />
+                  <span>¿Preguntas?</span>
+                  <MdOutlineKeyboardArrowRight className={styles.iconRight} />
+               </li>
 
                {!isLoggedIn ? (
-                  <div className={styles.login}>
-                     <button onClick={() => navigateTo(`/auth/login?page=${router.asPath}`)}>
-                        Iniciá Sesión
-                     </button>
-                  </div>
+                  <li onClick={() => navigateTo(`/auth/login?page=${router.asPath}`)}>
+                     <FiLogIn className={styles.icon} />
+                     <span>Iniciá Sesión</span>
+                     <MdOutlineKeyboardArrowRight className={styles.iconRight} />
+                  </li>
                ) : (
-                  <div className={styles.login}>
-                     <button onClick={logout}>Cerrar Sesión</button>
-                  </div>
+                  <li onClick={logout}>
+                     <HiOutlineLogout className={styles.icon} />
+                     <span>Cerrar Sesión</span>
+                     <MdOutlineKeyboardArrowRight className={styles.iconRight} />
+                  </li>
                )}
-            </div>
+            </ul>
          </div>
       </section>
    );

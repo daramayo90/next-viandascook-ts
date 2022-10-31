@@ -9,21 +9,32 @@ import { UIContext } from '../../context';
 import styles from '../../styles/Navbar.module.css';
 
 export const Navbar = () => {
-   const { toggleSideMenu } = useContext(UIContext);
+   const { isMenuOpen, toggleSideMenu } = useContext(UIContext);
 
    return (
       <section className={`${styles.navbar} ${styles.navbarWeb}`}>
          <div className={styles.logo}>
             <Link href='/'>
                <div className={styles.nextImage}>
-                  <Image
-                     src='/logo/viandascook-logo.png'
-                     alt='viandascook-logo'
-                     width={100}
-                     height={25}
-                     layout='responsive'
-                     priority={true}
-                  />
+                  {isMenuOpen ? (
+                     <Image
+                        src='/logo/viandascook-primary.png'
+                        alt='viandascook-logo'
+                        width={100}
+                        height={25}
+                        layout='responsive'
+                        priority={true}
+                     />
+                  ) : (
+                     <Image
+                        src='/logo/viandascook-logo-primary.png'
+                        alt='viandascook-logo'
+                        width={100}
+                        height={25}
+                        layout='responsive'
+                        priority={true}
+                     />
+                  )}
                </div>
             </Link>
          </div>

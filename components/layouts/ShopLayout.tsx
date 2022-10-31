@@ -47,10 +47,9 @@ export const ShopLayout: FC<Props> = ({ children, title, pageDescription, imageF
             <ShopNavbar pageTitle={navTitle} menuPage={menuPage} backCart={backCart} />
          </nav>
 
-         <SideMenu />
-
          <main>{children}</main>
 
+         <SideMenu />
          <TabMenu />
       </>
    );

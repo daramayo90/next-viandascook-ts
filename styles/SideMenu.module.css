@@ -3,90 +3,147 @@
    top: 0;
    width: 100vw;
    height: 100vh;
-   z-index: 50;
+   z-index: -1;
 }
 
-.sidemenu > .container {
-   background-image: url(/img/menu-mobile.jpg);
-   background-size: cover;
-   background-repeat: no-repeat;
-   width: 100vw;
-   height: 100vh;
-   overflow: auto;
+.sidemenu.open {
+   z-index: 1;
 }
 
-.sidemenu > .container > .close {
-   display: flex;
-   position: absolute;
-   top: 20px;
-   right: 15px;
-   cursor: pointer;
-   z-index: 9999;
-   backdrop-filter: blur(20px);
-}
-
-.sidemenu > .container > .close > .closeIcon {
-   font-size: 1.7rem;
-   color: var(--black);
-}
-
-.sidemenu > .container > .logo {
-   position: absolute;
-   margin-left: auto;
-   margin-right: auto;
-   top: 3px;
-   left: 0;
-   right: 0;
-   width: 55%;
-   min-width: 170px;
-   max-width: 220px;
-   cursor: pointer;
-   z-index: 999;
-}
-
-.sidemenu > .container > .logo > .nextImage {
-   width: 100%;
-   margin-left: -14px;
-}
-
-.sidemenu > .container > .menuOptions {
+.sidemenu > .options {
    display: flex;
    flex-direction: column;
    justify-content: flex-start;
    align-items: center;
+   position: absolute;
+   top: 0;
+   right: 0;
    width: 100vw;
-   height: 100vh;
-}
-
-.sidemenu > .container > .menuOptions > .list {
-   margin-top: 5rem;
-   text-align: center;
-   list-style: none;
-}
-
-.sidemenu > .container > .menuOptions > .list > li {
-   margin: 40px 0;
-   font-family: 'Gilroy';
-   font-style: normal;
-   font-weight: 500;
-   font-size: 28px;
-   line-height: 36px;
+   height: 100%;
    color: var(--black);
+   background-color: #fff;
+   transform: translateX(100%);
+   transition: 0.24s cubic-bezier(0.52, 0.01, 0.8, 1);
+   z-index: 50;
+}
+
+.sidemenu > .open {
+   transform: translateX(0%);
+   z-index: 50;
+}
+
+.sidemenu > .open > .logo {
+   /* position: absolute;
+   margin-left: auto;
+   margin-right: auto;
+   top: 150px;
+   left: 0;
+   right: 0; */
+   width: 198px;
+   margin-top: 5rem;
+   margin-left: -4rem;
    cursor: pointer;
 }
 
-.sidemenu > .container > .menuOptions > .login {
-   display: flex;
-   justify-content: center;
-   width: 60%;
-   margin-top: 10px;
+.sidemenu > .open > .logo > .nextImage {
+   width: 100%;
 }
 
-.sidemenu > .container > .menuOptions > .login > button {
-   width: 100%;
-   border: 2px solid var(--primary);
-   background-color: var(--primary);
-   color: var(--white);
+.sidemenu > .options > .list {
+   margin-top: 5rem;
+   text-align: center;
+   list-style: none;
+   width: 55%;
+}
+
+.sidemenu > .options > .list > li {
+   opacity: 0;
+   display: flex;
+   align-items: center;
+   justify-content: flex-start;
+   margin: 4rem 0;
+   transform: translateX(-5px);
+   transition: 0.16s cubic-bezier(0.44, 0.09, 0.46, 0.84);
+   cursor: pointer;
+}
+
+.sidemenu > .options > .list > li > .icon {
+   max-width: 22px;
+   max-height: 22px;
+   margin-right: 1rem;
+   font-style: normal;
+   font-weight: 500;
+   font-size: 1.5rem;
+   color: var(--black);
+   transition: 0.24s ease-in-out;
+}
+
+.sidemenu > .options > .list > li > span {
+   display: block;
+   font-family: 'Gilroy';
+   font-style: normal;
+   font-weight: 500;
+   font-size: 1.7rem;
+   text-align: left;
+   line-height: 36px;
+   color: var(--black);
+   transition: 0.24s ease-in-out;
+}
+
+/* .sidemenu > .options > .list > li:hover > span:hover,
+.sidemenu > .options > .list > li:hover > span:hover ~ .iconRight,
+.sidemenu > .options > .list > li:hover > .iconRight:hover {
+   text-decoration: none;
+   color: var(--primary);
+} */
+
+.sidemenu > .options > .list > li > .iconRight {
+   margin-top: 1px;
+   margin-left: auto;
+   font-size: 1.5rem;
+   color: var(--black);
+}
+
+.sidemenu > .open li:nth-child(1) {
+   transition-delay: 0.16s;
+   transform: translateX(0px);
+   opacity: 1;
+}
+
+.sidemenu > .open li:nth-child(2) {
+   transition-delay: 0.32s;
+   transform: translateX(0px);
+   opacity: 1;
+}
+
+.sidemenu > .open li:nth-child(3) {
+   transition-delay: 0.48s;
+   transform: translateX(0px);
+   opacity: 1;
+}
+
+.sidemenu > .open li:nth-child(4) {
+   transition-delay: 0.64s;
+   transform: translateX(0px);
+   opacity: 1;
+}
+
+.sidemenu > .open li:nth-child(5) {
+   transition-delay: 0.8s;
+   transform: translateX(0px);
+   opacity: 1;
+}
+
+.sidemenu > .open li:nth-child(6) {
+   transition-delay: 0.96s;
+   transform: translateX(0px);
+   opacity: 1;
+}
+
+.sidemenu > .open li:nth-child(7) {
+   transition-delay: 1.12s;
+   transform: translateX(0px);
+   opacity: 1;
 }
 
 @media (min-width: 720px) {
@@ -100,16 +157,16 @@
       width: 100%;
    }
 
-   .sidemenu > .container > .close {
+   .sidemenu > .close {
       top: 16px;
       right: 40px;
    }
 
-   .sidemenu > .container > .close > .closeIcon {
+   .sidemenu > .close > .closeIcon {
       font-size: 37px;
    }
 
-   .sidemenu > .container > .logo {
+   .sidemenu > .logo {
       margin-left: initial;
       margin-right: initial;
       left: 20px;
@@ -117,20 +174,20 @@
       top: 3px;
    }
 
-   .sidemenu > .container > .menuOptions {
+   .sidemenu > .options {
       width: 100%;
    }
 
-   .sidemenu > .container > .menuOptions > .list {
+   .sidemenu > .options > .list {
       margin-top: 10rem;
       text-align: left;
    }
 
-   .sidemenu > .container > .menuOptions > .list > li {
+   .sidemenu > .options > .list > li {
       margin: 40px 0;
    }
 
-   .sidemenu > .container > .menuOptions > .login {
+   .sidemenu > .options > .login {
       width: 50%;
    }
 }

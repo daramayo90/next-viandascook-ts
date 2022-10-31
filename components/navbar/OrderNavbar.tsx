@@ -16,7 +16,7 @@ interface Props {
 export const OrderNavbar: FC<Props> = ({ pageTitle }) => {
    const router = useRouter();
 
-   const { toggleSideMenu } = useContext(UIContext);
+   const { isMenuOpen, toggleSideMenu } = useContext(UIContext);
    const { numberOfItems } = useContext(CartContext);
 
    const navigation = () => {
@@ -26,7 +26,7 @@ export const OrderNavbar: FC<Props> = ({ pageTitle }) => {
    };
 
    return (
-      <section className={styles.orderNavbar}>
+      <section className={styles.shopNavbar}>
          <div className={styles.container}>
             <div className={styles.navigation}>
                <div className={styles.backMobile} onClick={navigation}>
@@ -48,7 +48,14 @@ export const OrderNavbar: FC<Props> = ({ pageTitle }) => {
                   </div>
                </Link>
 
-               <HiOutlineMenu onClick={toggleSideMenu} />
+               {/* <HiOutlineMenu onClick={toggleSideMenu} /> */}
+               <div className={styles.hamburgerMenu} onClick={toggleSideMenu}>
+                  <button className={isMenuOpen ? `${styles.btn} ${styles.open}` : `${styles.btn}`}>
+                     <span></span>
+                     <span></span>
+                     <span></span>
+                  </button>
+               </div>
             </div>
          </div>
       </section>

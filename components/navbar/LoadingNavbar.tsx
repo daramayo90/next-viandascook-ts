@@ -12,7 +12,7 @@ interface Props {
 }
 
 export const LoadingNavbar: FC<Props> = ({ pageTitle }) => {
-   const { toggleSideMenu } = useContext(UIContext);
+   const { isMenuOpen, toggleSideMenu } = useContext(UIContext);
    const { numberOfItems } = useContext(CartContext);
 
    return (
@@ -32,7 +32,14 @@ export const LoadingNavbar: FC<Props> = ({ pageTitle }) => {
                   </div>
                </Link>
 
-               <HiOutlineMenu onClick={toggleSideMenu} />
+               {/* <HiOutlineMenu onClick={toggleSideMenu} /> */}
+               <div className={styles.hamburgerMenu} onClick={toggleSideMenu}>
+                  <button className={isMenuOpen ? `${styles.btn} ${styles.open}` : `${styles.btn}`}>
+                     <span></span>
+                     <span></span>
+                     <span></span>
+                  </button>
+               </div>
             </div>
          </div>
       </section>
