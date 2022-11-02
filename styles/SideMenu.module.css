@@ -32,13 +32,13 @@
    z-index: 50;
 }
 
-.sidemenu > .open > .logo {
-   /* position: absolute;
+/* .sidemenu > .open > .logo {
+   position: absolute;
    margin-left: auto;
    margin-right: auto;
    top: 150px;
    left: 0;
-   right: 0; */
+   right: 0;
    width: 198px;
    margin-top: 5rem;
    margin-left: -4rem;
@@ -47,13 +47,13 @@
 
 .sidemenu > .open > .logo > .nextImage {
    width: 100%;
-}
+} */
 
 .sidemenu > .options > .list {
    margin-top: 5rem;
    text-align: center;
    list-style: none;
-   width: 55%;
+   width: 75%;
 }
 
 .sidemenu > .options > .list > li {
@@ -61,7 +61,7 @@
    display: flex;
    align-items: center;
    justify-content: flex-start;
-   margin: 4rem 0;
+   margin: 2.5rem 0;
    transform: translateX(-5px);
    transition: 0.16s cubic-bezier(0.44, 0.09, 0.46, 0.84);
    cursor: pointer;
