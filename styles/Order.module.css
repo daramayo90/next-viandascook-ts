@@ -11,6 +11,19 @@
    padding: 1rem 0 4rem 0;
 }
 
+.order > .container > .products {
+   position: relative;
+}
+
+.order > .container > .products > .repeatBtn {
+   position: absolute;
+   right: 8px;
+   width: 170px;
+   height: 30px;
+   font-size: 0.9rem;
+   background-color: var(--primary);
+}
+
 .order > .container > .products > .title,
 .order > .container > .checkout > .title,
 .order > .container > .address > .title {

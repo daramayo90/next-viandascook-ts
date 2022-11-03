@@ -200,6 +200,10 @@ export const CartProvider: FC<Props> = ({ children }) => {
       dispatch({ type: '[Cart] - Order Complete' });
    };
 
+   const repeatOrder = (orderItems: ICartProduct[]) => {
+      dispatch({ type: '[Cart] - Repeat Order', payload: orderItems });
+   };
+
    return (
       <CartContext.Provider
          value={{
@@ -211,6 +215,7 @@ export const CartProvider: FC<Props> = ({ children }) => {
             addCoupon,
             removeCoupon,
             orderComplete,
+            repeatOrder,
          }}>
          {children}
       </CartContext.Provider>

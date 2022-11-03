@@ -24,7 +24,8 @@ type CartActionType =
            couponDiscount: number;
            total: number;
         };
-     };
+     }
+   | { type: '[Cart] - Repeat Order'; payload: ICartProduct[] };
 
 export const cartReducer = (state: CartState, action: CartActionType): CartState => {
    switch (action.type) {
@@ -107,6 +108,13 @@ export const cartReducer = (state: CartState, action: CartActionType): CartState
             shipping: 0,
             couponDiscount: 0,
             total: 0,
+         };
+
+      case '[Cart] - Repeat Order':
+         return {
+            ...state,
+            isLoaded: true,
+            cart: [...action.payload],
          };
 
       default:

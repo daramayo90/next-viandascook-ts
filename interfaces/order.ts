@@ -21,6 +21,9 @@ export interface IOrder {
 
    transactionId?: string;
 
+   createdAt?: string;
+   updatedAt?: string;
+
    // paymentResult?: string;
 }
 
@@ -28,6 +31,7 @@ export interface IOrderItem {
    _id: string;
    image: string;
    name: string;
+   // slug: string;
    price: number;
    quantity: number;
 }

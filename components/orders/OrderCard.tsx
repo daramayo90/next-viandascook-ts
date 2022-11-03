@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import { FC, useState } from 'react';
 
-import { IOrder } from '../../interfaces';
+import { IOrder, ShippingAddress } from '../../interfaces';
 import { currency } from '../../utils';
 
 import { AiFillCheckCircle } from 'react-icons/ai';
@@ -16,6 +16,13 @@ export const OrderCard: FC<Props> = ({ order }) => {
    const router = useRouter();
 
    const [selected, setSelected] = useState(false);
+
+   const { address, address2, city } = order.shippingAddress as ShippingAddress;
+   const { _id, numberOfItems, total, deliveryDate, createdAt } = order;
+
+   const [date] = createdAt!.split('T');
+
+   const [year, month, day] = date.split('-');
 
    const navigate = () => {
       setSelected(true);
@@ -32,26 +39,21 @@ export const OrderCard: FC<Props> = ({ order }) => {
          <div className={styles.card} onClick={navigate}>
             <div className={styles.top}>
                <span className={styles.number}>
-                  {`Pedido #${
-                     order._id!.length > 12 ? order._id!.substring(0, 12) + '...' : order._id
-                  }`}
+                  {`Pedido #${_id!.length > 12 ? _id!.substring(0, 12) + '...' : _id}`}
                </span>
 
-               <span className={styles.date}>{order.deliveryDate}</span>
+               <span className={styles.date}>{`${day}/${month}/${year}`}</span>
             </div>
 
             <div className={styles.bottom}>
                <span>
-                  {order.numberOfItems}
-                  {order.numberOfItems > 1 ? ' platos comprados' : ' plato comprado'}
+                  {numberOfItems}
+                  {numberOfItems > 1 ? ' platos comprados' : ' plato comprado'}
                </span>
 
-               <span>{currency.format(order.total)}</span>
+               <span>{currency.format(total)}</span>
 
-               <span>
-                  {order.shippingAddress.address}, {order.shippingAddress.address2},{' '}
-                  {order.shippingAddress.city}
-               </span>
+               <span>Fecha Entrega: {deliveryDate}</span>
             </div>
 
             <div className={styles.confirm}>

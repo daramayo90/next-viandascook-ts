@@ -3,7 +3,6 @@ import { getProviders, signIn } from 'next-auth/react';
 
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../context';
-import { useRouter } from 'next/router';
 
 export type FormData = {
    name: string;
@@ -13,8 +12,6 @@ export type FormData = {
 };
 
 export const useAuth = () => {
-   const router = useRouter();
-
    const [providers, setProviders] = useState<any>({});
    const [showError, setShowError] = useState(false);
    const [isClicked, setIsClicked] = useState(false);

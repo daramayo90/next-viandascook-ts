@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { AiOutlineUser, AiOutlineWhatsApp } from 'react-icons/ai';
+import { AiOutlineCalendar, AiOutlineUser, AiOutlineWhatsApp } from 'react-icons/ai';
 import { FaRegAddressCard } from 'react-icons/fa';
 import { FiMail } from 'react-icons/fi';
 import { GoLocation } from 'react-icons/go';
@@ -16,6 +16,8 @@ export const OrderAddress: FC<Props> = ({ order }) => {
    const { name, lastName, email, phone, dni } = order.user as IUser;
 
    const { address, address2, city } = order.shippingAddress as ShippingAddress;
+
+   const { deliveryDate } = order;
 
    return (
       <section className={styles.address}>
@@ -55,6 +57,12 @@ export const OrderAddress: FC<Props> = ({ order }) => {
             <p className={styles.text}>
                {address}, {address2}, {city}
             </p>
+         </div>
+
+         <div className={styles.summary}>
+            <AiOutlineCalendar className={styles.icon} />
+
+            <p className={styles.text}>Entrega el día {deliveryDate}</p>
          </div>
       </section>
    );

@@ -9,8 +9,8 @@ export interface IProduct {
    ingredients: string[];
    nutritionalInfo: object;
    howToHeat: string;
-   createdAt: string;
-   updatedAt: string;
+   createdAt?: string;
+   updatedAt?: string;
 }
 
 export type IType =

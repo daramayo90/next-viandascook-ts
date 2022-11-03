@@ -21,6 +21,7 @@ interface ContextProps {
    addCoupon: (couponCode: string) => Promise<{ error: boolean; msg?: string }>;
    removeCoupon: () => void;
    orderComplete: () => void;
+   repeatOrder: (orderItems: ICartProduct[]) => void;
 }
 
 export const CartContext = createContext({} as ContextProps);

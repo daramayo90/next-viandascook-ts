@@ -34,7 +34,7 @@ export const OrderNavbar: FC<Props> = ({ pageTitle }) => {
                </div>
 
                <h1 className={styles.title}>
-                  {pageTitle.length > 20 ? pageTitle.substring(0, 21) + '...' : pageTitle}
+                  {pageTitle.length > 19 ? pageTitle.substring(0, 15) + '...' : pageTitle}
                </h1>
             </div>
 
