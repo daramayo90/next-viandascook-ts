@@ -44,7 +44,7 @@ export const useOrderSummaryts = () => {
    const handeZipcode = (e: ChangeEvent<HTMLSelectElement>) => {
       const city = e.target.value;
 
-      if (city === 'ba') return setZipcode(true);
+      if (city === 'Buenos Aires') return setZipcode(true);
 
       setZipcode(false);
    };

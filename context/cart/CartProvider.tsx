@@ -155,8 +155,8 @@ export const CartProvider: FC<Props> = ({ children }) => {
    const calculateShipping = (city: string) => {
       let shippingCost: number = 0;
 
-      if (city === 'caba') shippingCost = Number(process.env.NEXT_PUBLIC_CABA);
-      if (city === 'ba') shippingCost = Number(process.env.NEXT_PUBLIC_BA);
+      if (city === 'CABA') shippingCost = Number(process.env.NEXT_PUBLIC_CABA);
+      if (city === 'Buenos Aires') shippingCost = Number(process.env.NEXT_PUBLIC_BA);
 
       dispatch({ type: '[Cart] - Calculate Shipping', payload: shippingCost });
    };

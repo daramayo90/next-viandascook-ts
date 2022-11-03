@@ -73,12 +73,13 @@ export const AddressForm: FC<Props> = ({ userdb }) => {
 
          <label className={styles.inputText}>
             <span>Localidad / Ciudad</span>
-            <input
+            <select
                {...register('city', {
                   required: 'La ciudad es un campo requerido',
-               })}
-               type='text'
-            />
+               })}>
+               <option value='CABA'>CABA</option>
+               <option value='Buenos Aires'>Buenos Aires</option>
+            </select>
             {errors.city && <span className={styles.error}>{errors.city?.message}</span>}
          </label>
 

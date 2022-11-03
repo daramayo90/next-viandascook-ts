@@ -67,7 +67,7 @@ const registerUser = async (req: NextApiRequest, res: NextApiResponse<Data>) => 
          address: '-',
          address2: '-',
          zipcode: '-',
-         city: 'caba',
+         city: 'CABA',
       },
    });
 

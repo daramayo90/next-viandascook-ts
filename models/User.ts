@@ -28,7 +28,7 @@ const userSchema = new Schema(
             type: String,
             required: true,
             enum: {
-               values: ['caba', 'ba'],
+               values: ['CABA', 'Buenos Aires'],
             },
             message: '{VALUE} is not a valid city',
          },

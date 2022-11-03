@@ -48,4 +48,4 @@ export interface ShippingAddress {
    dni: string;
 }
 
-export type ICity = 'caba' | 'ba';
+export type ICity = 'CABA' | 'Buenos Aires';

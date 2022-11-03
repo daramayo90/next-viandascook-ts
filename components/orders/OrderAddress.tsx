@@ -52,17 +52,17 @@ export const OrderAddress: FC<Props> = ({ order }) => {
 
          {/* Shipping info */}
          <div className={styles.summary}>
-            <GoLocation className={styles.icon} />
-
-            <p className={styles.text}>
-               {address}, {address2}, {city}
-            </p>
-         </div>
-
-         <div className={styles.summary}>
             <AiOutlineCalendar className={styles.icon} />
 
             <p className={styles.text}>Entrega el día {deliveryDate}</p>
+         </div>
+
+         <div className={styles.summary}>
+            <GoLocation className={styles.icon} />
+
+            <p className={styles.text}>
+               {address}, Depto: {address2}, {city}
+            </p>
          </div>
       </section>
    );

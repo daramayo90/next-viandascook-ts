@@ -36,8 +36,8 @@ export const Shipping = () => {
             <form className={styles.formCalculation} onSubmit={handleCalculation}>
                <select name='city' onChange={handeZipcode}>
                   <option>Localidad</option>
-                  <option value='caba'>CABA</option>
-                  <option value='ba'>Buenos Aires</option>
+                  <option value='CABA'>CABA</option>
+                  <option value='Buenos Aires'>Buenos Aires</option>
                </select>
 
                {zipcode && (

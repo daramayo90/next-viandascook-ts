@@ -4,7 +4,7 @@ import { getSession } from 'next-auth/react';
 import Cookies from 'js-cookie';
 
 import { OrdersContext, ordersReducer } from './';
-import { coupon, removeCookies } from '../../utils';
+import { removeCookies } from '../../utils';
 
 import { viandasApi } from '../../api';
 import { ShippingAddress, ICity, IOrder } from '../../interfaces';
@@ -37,7 +37,7 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
             address: Cookies.get('address') || '',
             address2: Cookies.get('address2') || '',
             zipcode: Cookies.get('zipcode') || '',
-            city: Cookies.get('city') === 'caba' ? ('caba' as ICity) : ('ba' as ICity),
+            city: Cookies.get('city') === 'CABA' ? ('CABA' as ICity) : ('Buenos Aires' as ICity),
             phone: Cookies.get('phone') || '',
             email: Cookies.get('email') || '',
             dni: Cookies.get('dni') || '',
