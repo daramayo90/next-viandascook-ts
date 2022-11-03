@@ -1,11 +1,18 @@
+import { FC, useContext, useState } from 'react';
 import { useRouter } from 'next/router';
-import { useContext, useState } from 'react';
-import { CartContext, OrdersContext } from '../../context';
 
-import styles from '../../styles/Checkout.module.css';
+import { IUser } from '../../interfaces';
+
+import { CartContext, OrdersContext } from '../../context';
 import { SubmitButton } from '../ui';
 
-export const Posting = () => {
+import styles from '../../styles/Checkout.module.css';
+
+interface Props {
+   user?: IUser;
+}
+
+export const Posting: FC<Props> = ({ user }) => {
    const router = useRouter();
 
    const { createOrder } = useContext(OrdersContext);
@@ -25,6 +32,8 @@ export const Posting = () => {
       }
 
       orderComplete();
+
+      if (!user) router.replace(`/muchas-gracias/${message}`);
       router.replace(`/pedidos/${message}`);
    };
    return (

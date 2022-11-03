@@ -8,6 +8,7 @@ export const pageTitles = {
    '/checkout/address': 'Dirección de envío',
    '/checkout/promociones': 'Promos Vigentes',
    '/checkout/delivery': 'Fecha de Entrega',
+   '/muchas-gracias': 'Pedido Completado',
    '/mi-cuenta': 'Mi Cuenta',
    '/mi-cuenta/perfil': 'Perfil',
    '/mi-cuenta/invitar-amigos': 'Invitar Amigos',

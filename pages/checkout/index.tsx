@@ -42,7 +42,7 @@ const CheckoutPage: NextPage<Props> = ({ user }) => {
 
                <CheckoutSummary />
 
-               <Posting />
+               <Posting user={user} />
             </div>
          </section>
          <CartSummary />

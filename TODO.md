@@ -32,6 +32,8 @@
 
 # Cada vez que hago una llamada a la bd, cambiar el botón por el loading
 
+# Si no tenes cuenta, se puede usar el cupon de bienvenido10 indefinidamente
+
 warn - No build cache found. Please configure build caching for faster rebuilds. Read more: https://nextjs.org/docs/messages/no-cache
 Attention: Next.js now collects completely anonymous telemetry regarding usage.
 This information is used to shape Next.js' roadmap and prioritize features.
