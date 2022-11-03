@@ -5,5 +5,7 @@ export * from './CheckoutSummary';
 export * from './Coupons';
 export * from './DeliveryDate';
 export * from './Posting';
+export * from './PromoCard';
 export * from './Promos';
+export * from './PromosList';
 export * from './SelectDate';

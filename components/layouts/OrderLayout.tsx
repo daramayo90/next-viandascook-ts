@@ -19,7 +19,7 @@ export const OrderLayout: FC<Props> = ({ children, title, order }) => {
    let pageTitle = '';
 
    if (path === '/pedidos/historial') {
-      pageTitle = 'Historial de pedidos';
+      pageTitle = 'Historial';
    } else {
       pageTitle = `Pedido #${order?._id}`;
    }
