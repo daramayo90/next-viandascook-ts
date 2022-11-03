@@ -19,7 +19,7 @@ type FormData = {
    dni: string;
 };
 
-export const useAddress = (userdb?: IUser) => {
+export const useProfile = (userdb?: IUser) => {
    const { addGuestAddress } = useContext(OrdersContext);
    const { updateAddress } = useContext(AuthContext);
 
@@ -85,9 +85,7 @@ export const useAddress = (userdb?: IUser) => {
          }
       }
 
-      if (router.asPath.includes('/checkout')) router.push('/checkout');
-
-      if (router.asPath.includes('/mi-cuenta')) router.push('/mi-cuenta');
+      router.push('/checkout');
    };
 
    return {

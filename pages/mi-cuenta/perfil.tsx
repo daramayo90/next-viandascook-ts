@@ -1,13 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import { NextPage } from 'next';
 import { getSession } from 'next-auth/react';
 
-import { IUser } from '../../interfaces/user';
+import { IUser } from '../../interfaces';
 
 import { ShopLayout } from '../../components/layouts';
-import { Account, Options } from '../../components/account';
 
-import styles from '../../styles/Account.module.css';
+import styles from '../../styles/Address.module.css';
+import Address from '../checkout/address';
 
 const ProfilePage: NextPage = () => {
    const [user, setUser] = useState<IUser | undefined>();
@@ -23,12 +23,10 @@ const ProfilePage: NextPage = () => {
    if (!user) return <></>;
 
    return (
-      <ShopLayout title={'Mi Cuenta'} pageDescription={''}>
-         <section className={styles.account}>
+      <ShopLayout title={'Perfil'} pageDescription={''}>
+         <section className={styles.address}>
             <div className={styles.container}>
-               <Account user={user} />
-
-               <Options />
+               <Address userdb={user} />
             </div>
          </section>
       </ShopLayout>

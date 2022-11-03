@@ -22,7 +22,7 @@ const promosList = [
    {
       icon: <TbDiscount2 className={styles.iconPromo} />,
       title: 'Cyber Monday',
-      text: '20% de descuento en todos el menú',
+      text: '20% de descuento en todo el menú',
       coupon: 'cyber-viandas',
    },
    {

@@ -1,93 +1,85 @@
 .profile {
    width: 100vw;
-   height: 100%;
+   height: 100vh;
+   margin-top: 4rem;
 }
 
 .profile > .container {
-   width: 90%;
-   margin: 0 auto;
-   margin-top: 3.5rem;
-   padding: 1rem 0 4rem 0;
+   width: 100%;
+   padding-bottom: 4rem;
+   text-align: left;
 }
 
-.profile > .container > .account {
+.profile > .container > form {
    display: flex;
+   flex-direction: column;
    align-items: center;
-   position: relative;
-   padding-bottom: 1rem;
-   border-bottom: 1px solid var(--borderGrey);
+   width: 100%;
+   max-width: 410px;
+   margin: 0 auto;
+   padding-top: 1rem;
 }
 
-.profile > .container > .account > .nextImage {
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   width: 20%;
+.profile > .container > form > .inputText {
+   width: 90%;
+   max-width: 410px;
+   margin: 0.5rem 0;
 }
 
-.profile > .container > .account > .nextImage img {
-   border-radius: 100%;
-   object-fit: cover;
-}
-
-.profile > .container > .account > .info {
-   display: flex;
-   flex-direction: column;
-   justify-content: space-evenly;
-   margin-left: 1rem;
-   width: 80%;
-   height: 70px;
-}
-
-.profile > .container > .account > .info > .name {
-   font-size: 1.3rem;
+.profile > .container > form > .inputText > span {
+   display: block;
+   width: 100%;
+   margin-bottom: 0.3rem;
    font-weight: 500;
 }
 
-.profile > .container > .account > .editIcon {
-   position: absolute;
-   right: 0.5rem;
-   font-size: 1.5rem;
-   color: var(--primary);
-}
-
-.profile > .container > .options {
-   width: 98%;
-   margin: 0 auto;
-}
-
-.profile > .container > .options > .option {
-   display: flex;
-   align-items: center;
-   justify-content: space-between;
-   margin: 1rem 0;
-   cursor: pointer;
-}
-
-.profile > .container > .options > .option > .icon {
-   max-width: 20px;
-   margin-bottom: 1px;
-   font-size: 1.5rem;
-   font-weight: 400;
-   color: var(--black);
-}
-
-.profile > .container > .options > .option > span {
+.profile > .container > form > .inputText > input,
+.profile > .container > form > .inputText > select {
+   display: block;
    width: 100%;
-   margin-left: 1rem;
-   font-size: 1.1rem;
+   padding: 15px;
+   height: 50px;
+   border-radius: 4px;
+   font-size: 0.95rem;
    font-weight: 400;
-   color: var(--black);
+   line-height: 1.5;
+   color: #596068;
+   background-color: #fff;
+   background-clip: padding-box;
+   border: 1px solid #ced4da;
+   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-.profile > .container > .options > .logout > .logoutIcon,
-.profile > .container > .options > .logout > span {
-   color: var(--error);
+.profile > .container > form > .inputText > input::placeholder,
+.profile > .container > form > .inputText > select::placeholder {
+   color: rgba(170, 170, 170, 0.9);
+   font-size: 0.95rem;
 }
 
-.profile > .container > .options > .option > .rightIcon,
-.profile > .container > .options > .option > .toggleIcon {
-   font-size: 1.8rem;
+.profile > .container > form .inputText > input:focus,
+.profile > .container > form .inputText > select:focus {
+   color: #495057;
+   background-color: #fff;
+   border-color: #80bdff;
+   outline: 0;
+   box-shadow: 0 0 0 0.2rem rgb(0 123 255 / 25%);
+}
+
+.profile > .container > form > .inputText > .error {
+   display: block;
+   margin-top: 5px;
+   padding-left: 5px;
+   font-size: 0.9rem;
    font-weight: 400;
-   color: var(--black);
+   color: rgb(240, 20, 20);
+}
+
+.errorMessage > span {
+   color: var(--white);
+   color: rgb(255, 0, 0);
+}
+
+.profile > .container > form > .applyButton {
+   width: 90%;
+   margin: 2rem 0 4rem 0;
 }

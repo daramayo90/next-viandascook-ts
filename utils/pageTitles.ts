@@ -9,4 +9,6 @@ export const pageTitles = {
    '/checkout/promociones': 'Promos Vigentes',
    '/checkout/delivery': 'Fecha de Entrega',
    '/mi-cuenta': 'Mi Cuenta',
+   '/mi-cuenta/perfil': 'Perfil',
+   '/mi-cuenta/invitar-amigos': 'Invitar Amigos',
 };
