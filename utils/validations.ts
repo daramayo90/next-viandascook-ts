@@ -11,3 +11,15 @@ export const isValidEmail = (email: string): boolean => {
 export const isEmail = (email: string): string | undefined => {
    return isValidEmail(email) ? undefined : 'No parece un email válido';
 };
+
+export const isValidPhone = (phone: string): boolean => {
+   const match = String(phone)
+      .toLowerCase()
+      .match(/^(?:11)(?:(?=\d{0,2}15)\d{2})??\d{8}$/);
+
+   return !!match;
+};
+
+export const isPhone = (phone: string): string | undefined => {
+   return isValidPhone(phone) ? undefined : 'Con 11, sin 15 y debe tener 10 dígitos';
+};

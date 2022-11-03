@@ -98,6 +98,7 @@ export const AddressForm: FC<Props> = ({ userdb }) => {
             <input
                {...register('phone', {
                   required: 'El teléfono es un campo requerido',
+                  validate: validations.isPhone,
                })}
                type='number'
                placeholder='Con 11 y sin 15'
@@ -114,7 +115,7 @@ export const AddressForm: FC<Props> = ({ userdb }) => {
                })}
                type='text'
             />
-            {errors.phone && <span className={styles.error}>{errors.email?.message}</span>}
+            {errors.email && <span className={styles.error}>{errors.email?.message}</span>}
          </label>
 
          <label className={styles.inputText}>
@@ -125,16 +126,8 @@ export const AddressForm: FC<Props> = ({ userdb }) => {
                })}
                type='number'
             />
-            {errors.phone && <span className={styles.error}>{errors.dni?.message}</span>}
+            {errors.dni && <span className={styles.error}>{errors.dni?.message}</span>}
          </label>
-
-         {/* <div className={errors ? `${styles.errorMessage} fadeIn` : 'noDisplay'}>
-            <span>Corrige los errores antes de continuar</span>
-         </div>
-
-         <div className={errorMessage ? `${styles.errorMessage} fadeIn` : 'noDisplay'}>
-            <span>{errorMessage}</span>
-         </div> */}
 
          <div className={styles.applyButton}>
             <SubmitButton content='Continuar' isClicked={isClicked} />
