@@ -1,10 +1,8 @@
 import { NextPage } from 'next';
 
 import { ShopLayout } from '../../components/layouts';
-import { TabMenu } from '../../components/ui';
 
-import { Account } from '../../components/profile';
-import { Options } from '../../components/profile/Options';
+import { Account, Options } from '../../components/profile';
 
 import styles from '../../styles/Profile.module.css';
 

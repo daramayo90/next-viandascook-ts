@@ -13,7 +13,7 @@ export const useTempCart = (product: IProduct) => {
       _id: product._id,
       image: product.image,
       name: product.name,
-      slug: product.slug,
+      // slug: product.slug,
       price: product.price,
       type: product.type,
       quantity: 0,
