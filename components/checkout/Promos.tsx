@@ -2,9 +2,10 @@ import { useContext } from 'react';
 
 import Link from 'next/link';
 
+import { CartContext } from '../../context';
+
 import { AiOutlineRight } from 'react-icons/ai';
 import { TbDiscount2 } from 'react-icons/tb';
-import { CartContext } from '../../context';
 
 import styles from '../../styles/Checkout.module.css';
 
