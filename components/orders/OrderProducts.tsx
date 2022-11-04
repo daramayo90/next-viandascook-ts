@@ -15,18 +15,8 @@ interface Props {
 export const OrderProducts: FC<Props> = ({ order }) => {
    const router = useRouter();
 
-   const { orderItems, createdAt } = order;
+   const { orderItems } = order;
    const { repeatOrder } = useContext(CartContext);
-
-   console.log(order.createdAt);
-
-   const [date] = createdAt!.split('T');
-
-   const [year, month, day] = date.split('-');
-
-   console.log(year); // 👉️ 09
-   console.log(month); // 👉️ 24
-   console.log(day); // 👉️ 2022
 
    const onRepeatOrder = () => {
       repeatOrder(orderItems);

@@ -17,7 +17,6 @@ export const OrderCard: FC<Props> = ({ order }) => {
 
    const [selected, setSelected] = useState(false);
 
-   const { address, address2, city } = order.shippingAddress as ShippingAddress;
    const { _id, numberOfItems, total, deliveryDate, createdAt } = order;
 
    const [date] = createdAt!.split('T');
