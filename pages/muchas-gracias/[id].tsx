@@ -5,10 +5,11 @@ import { authOptions } from '../api/auth/[...nextauth]';
 import { dbOrders } from '../../database';
 import { IOrder, IUser } from '../../interfaces';
 
-import { ShopLayout } from '../../components/layouts';
+import { OrderLayout } from '../../components/layouts';
 
 import styles from '../../styles/Order.module.css';
 import { OrderProducts, OrderCheckout, OrderAddress } from '../../components/orders';
+import { Button } from '../../components/ui';
 
 interface Props {
    order: IOrder;
@@ -16,17 +17,24 @@ interface Props {
 
 const ThankYouPage: NextPage<Props> = ({ order }) => {
    return (
-      <ShopLayout title='¡Muchas Gracias!' pageDescription={''}>
+      <OrderLayout title='¡Muchas Gracias!'>
          <section className={styles.order}>
             <div className={styles.container}>
-               <OrderProducts order={order} />
+               <h1 style={{ textAlign: 'center' }}>¡Muchas Gracias!</h1>
+
+               <p style={{ textAlign: 'center' }}>Tu pedido ha sido recibido con éxito</p>
+               <p style={{ textAlign: 'center' }}>A continuación podrás encontrar el detalle</p>
+
+               <OrderProducts order={order} repeat={false} />
 
                <OrderCheckout order={order} />
 
                <OrderAddress order={order} />
+
+               <Button href='/pedidos/historial' content='Historial' background='var(--primary)' />
             </div>
          </section>
-      </ShopLayout>
+      </OrderLayout>
    );
 };
 

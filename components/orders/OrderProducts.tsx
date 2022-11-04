@@ -10,9 +10,10 @@ import { useRouter } from 'next/router';
 
 interface Props {
    order: IOrder;
+   repeat?: boolean;
 }
 
-export const OrderProducts: FC<Props> = ({ order }) => {
+export const OrderProducts: FC<Props> = ({ order, repeat = true }) => {
    const router = useRouter();
 
    const { orderItems } = order;
@@ -23,13 +24,17 @@ export const OrderProducts: FC<Props> = ({ order }) => {
       router.push('/cart');
    };
 
+   console.log(repeat);
+
    return (
       <section className={styles.products}>
          <h2 className={styles.title}>Viandas</h2>
 
-         <button className={styles.repeatBtn} onClick={onRepeatOrder}>
-            Repetir Orden
-         </button>
+         {repeat && (
+            <button className={styles.repeatBtn} onClick={onRepeatOrder}>
+               Repetir Orden
+            </button>
+         )}
 
          <CartList items={orderItems} />
       </section>

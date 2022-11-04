@@ -16,12 +16,14 @@ interface Props {
 export const OrderLayout: FC<Props> = ({ children, title, order }) => {
    const router = useRouter();
    const path = router.asPath;
-   let pageTitle = '';
+   let pageTitle = `Pedido #${order?._id}`;
 
    if (path === '/pedidos/historial') {
       pageTitle = 'Historial';
-   } else {
-      pageTitle = `Pedido #${order?._id}`;
+   }
+
+   if (path.includes('muchas-gracias')) {
+      pageTitle = 'Pedido Completado';
    }
 
    return (
@@ -41,7 +43,7 @@ export const OrderLayout: FC<Props> = ({ children, title, order }) => {
 
          <main>{children}</main>
 
-         <TabMenu />
+         {!path.includes('muchas-gracias') && <TabMenu />}
       </>
    );
 };

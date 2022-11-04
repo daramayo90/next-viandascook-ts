@@ -33,8 +33,7 @@ export const Posting: FC<Props> = ({ user }) => {
 
       orderComplete();
 
-      if (!user) router.replace(`/muchas-gracias/${message}`);
-      router.replace(`/pedidos/${message}`);
+      router.replace(`/muchas-gracias/${message}`);
    };
    return (
       <div className={styles.submit}>

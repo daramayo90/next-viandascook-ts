@@ -8,7 +8,6 @@ import { ShopLayout } from '../../components/layouts';
 
 import styles from '../../styles/Address.module.css';
 import Address from '../checkout/address';
-import LoadingPage from '../../components/ui/Loading';
 
 const ProfilePage: NextPage = () => {
    const [user, setUser] = useState<IUser | undefined>();
@@ -21,7 +20,7 @@ const ProfilePage: NextPage = () => {
       userSession();
    }, []);
 
-   if (!user) return <LoadingPage />;
+   if (!user) return <></>;
 
    return (
       <ShopLayout title={'Perfil'} pageDescription={''}>

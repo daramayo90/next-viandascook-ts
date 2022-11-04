@@ -22,8 +22,6 @@ export const AuthLayout: FC<Props> = ({ children, title }) => {
          <SideMenu />
 
          <main>{children}</main>
-
-         <TabMenu />
       </>
    );
 };
