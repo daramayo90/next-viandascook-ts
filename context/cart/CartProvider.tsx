@@ -180,7 +180,7 @@ export const CartProvider: FC<Props> = ({ children }) => {
                msg: `El sub total debe ser menor a ${currency.format(maxAmount)}`,
             };
 
-         dispatch({ type: '[Cart] - Add Coupon', payload: [...state.coupons!, data] });
+         dispatch({ type: '[Cart] - Add Coupon', payload: data });
 
          return { error: false };
       } catch (error: any) {

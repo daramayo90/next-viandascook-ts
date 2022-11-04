@@ -11,7 +11,7 @@ type CartActionType =
    | { type: '[Cart] - Remove Product'; payload: ICartProduct[] }
    | { type: '[Cart] - Empty Cart'; payload: ICartProduct[] }
    | { type: '[Cart] - Calculate Shipping'; payload: number }
-   | { type: '[Cart] - Add Coupon'; payload: ICoupon[] }
+   | { type: '[Cart] - Add Coupon'; payload: ICoupon }
    | { type: '[Cart] - Remove Coupon' }
    | { type: '[Cart] - Order Complete' }
    | {
@@ -87,7 +87,7 @@ export const cartReducer = (state: CartState, action: CartActionType): CartState
       case '[Cart] - Add Coupon':
          return {
             ...state,
-            coupons: [...action.payload],
+            coupons: [action.payload],
          };
 
       case '[Cart] - Remove Coupon':

@@ -19,11 +19,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
    }
 }
 
+// TODO: Ver uso de cupones cuando no hay login
 const getCoupon = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
-   if (req.cookies.coupons) return res.status(404).json({ message: 'Cupón ya utilizado' });
-
    const { user }: any = (await unstable_getServerSession(req, res, authOptions)) || '';
-   const { code } = req.query;
+   const { code }: any = req.query;
+
+   if (req.cookies.coupons?.includes(code)) {
+      return res.status(404).json({ message: 'Cupón ya utilizado' });
+   }
 
    const email = user?.email;
 
@@ -35,10 +38,6 @@ const getCoupon = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
    await db.disconnect();
 
    if (!coupon) return res.status(404).json({ message: 'Cupón no válido' });
-
-   // if (!user) {
-   //    return res.status(404).json({ message: 'Debes estar logueado para usar un cupón' });
-   // }
 
    if (coupon.enabled === false || (coupon.expirationDate && coupon.expirationDate < new Date())) {
       return res.status(404).json({ message: 'Cupón expirado' });

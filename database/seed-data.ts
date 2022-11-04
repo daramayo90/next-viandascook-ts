@@ -67,6 +67,14 @@ export const initialData: SeedData = {
          allowedEmail: 'damian@gmail.com',
          ussage: 0,
       },
+      {
+         code: 'cyber-viandas',
+         description: 'Descuento del 20% del Cyber Monday',
+         discount_type: 'percentage discount',
+         discount: 20,
+         enabled: true,
+         ussage: 0,
+      },
    ],
 
    users: [
