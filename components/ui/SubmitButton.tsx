@@ -8,7 +8,7 @@ import styles from '../../styles/SubmitButton.module.css';
 interface Props {
    content: string;
    isClicked?: boolean;
-   onClick: () => Promise<void>;
+   onClick?: () => Promise<void>;
 }
 
 export const SubmitButton: FC<Props> = ({ content, isClicked, onClick }) => {
