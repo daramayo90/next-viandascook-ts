@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import { SideMenu, TabMenu } from '../ui';
 import { ShopNavbar } from '../navbar';
 import { pageTitles } from '../../utils';
+import { CartSummary } from '../checkout';
 
 interface Props {
    children: ReactNode;
@@ -43,6 +44,8 @@ export const ShopLayout: FC<Props> = ({ children, title, pageDescription, imageF
             {imageFullUrl && <meta name='og:image' content={imageFullUrl} />}
          </Head>
 
+         {path.includes('checkout') ? <CartSummary /> : <TabMenu />}
+
          <nav>
             <ShopNavbar pageTitle={navTitle} menuPage={menuPage} backCart={backCart} />
          </nav>
@@ -50,7 +53,6 @@ export const ShopLayout: FC<Props> = ({ children, title, pageDescription, imageF
          <main>{children}</main>
 
          <SideMenu />
-         <TabMenu />
       </>
    );
 };

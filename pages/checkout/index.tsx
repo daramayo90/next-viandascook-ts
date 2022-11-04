@@ -45,7 +45,6 @@ const CheckoutPage: NextPage<Props> = ({ user }) => {
                <Posting user={user} />
             </div>
          </section>
-         <CartSummary />
       </ShopLayout>
    );
 };
