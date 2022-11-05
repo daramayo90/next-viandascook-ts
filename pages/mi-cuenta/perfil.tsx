@@ -5,9 +5,9 @@ import { getSession } from 'next-auth/react';
 import { IUser } from '../../interfaces';
 
 import { ShopLayout } from '../../components/layouts';
+import { AddressForm } from '../../components/checkout';
 
 import styles from '../../styles/Address.module.css';
-import Address from '../checkout/address';
 
 const ProfilePage: NextPage = () => {
    const [user, setUser] = useState<IUser | undefined>();
@@ -26,7 +26,7 @@ const ProfilePage: NextPage = () => {
       <ShopLayout title={'Perfil'} pageDescription={''}>
          <section className={styles.address}>
             <div className={styles.container}>
-               <Address userdb={user} />
+               <AddressForm userdb={user} />
             </div>
          </section>
       </ShopLayout>

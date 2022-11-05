@@ -5,7 +5,6 @@ import { useRouter } from 'next/router';
 import { ShopLayout } from '../../components/layouts';
 import { CartContext } from '../../context';
 import { CartList, OrderSummary } from '../../components/cart';
-import { TabMenu } from '../../components/ui';
 
 import styles from '../../styles/Cart.module.css';
 

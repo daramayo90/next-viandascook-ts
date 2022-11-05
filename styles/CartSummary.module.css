@@ -20,6 +20,7 @@
    display: flex;
    align-items: flex-start;
    justify-content: space-between;
+   max-width: 440px;
    width: 80%;
    height: 65%;
    margin: 0 auto;
@@ -75,9 +76,9 @@
    flex-direction: row;
    align-items: center;
    justify-content: space-between;
+   max-width: 440px;
    width: 90%;
-   margin: 0 auto;
-   margin-top: 2rem;
+   margin: 2rem auto;
 }
 
 .fullMenu > .top > .title {
@@ -101,12 +102,12 @@
    display: flex;
    align-items: center;
    justify-content: flex-end;
+   max-width: 440px;
    width: 90%;
    margin: 1rem auto;
 }
 
 .fullMenu > .edit > .editIcon {
-   margin-right: 5px;
    font-size: 0.9rem;
    color: var(--primary);
    cursor: pointer;

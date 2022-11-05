@@ -6,10 +6,9 @@ import { CartContext } from '../../context';
 import { SubmitButton } from '../ui';
 import { currency } from '../../utils';
 
-import { Shipping } from './';
+import { Shipping, Discounts } from './';
 
 import styles from '../../styles/OrderSummary.module.css';
-import { Discounts } from './Discounts';
 
 // interface Props {
 //    orderValues?: {

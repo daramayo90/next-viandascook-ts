@@ -10,14 +10,14 @@
    background-size: cover;
    background-repeat: no-repeat;
    width: 100%;
-   margin-bottom: 5rem;
-
+   max-width: 440px;
+   margin: 5rem auto;
    text-align: left;
 }
 
 .auth > .container > .text {
-   margin-bottom: -4rem;
-   padding-top: 5rem;
+   width: 95%;
+   margin: 0 auto;
    text-align: center;
    color: var(--textColor);
 }
@@ -25,11 +25,10 @@
 .auth > .container > form {
    display: flex;
    flex-direction: column;
+   justify-content: space-between;
    align-items: center;
-   width: 100%;
-   max-width: 410px;
-   margin: 0 auto;
-   padding-top: 5rem;
+   width: 90%;
+   margin: 1rem auto;
 }
 
 .auth > .container > form > .title {
@@ -39,7 +38,7 @@
 }
 
 .auth > .container > form > .userNames {
-   width: 90%;
+   width: 100%;
    display: flex;
    align-items: center;
    justify-content: space-between;
@@ -47,12 +46,13 @@
 
 .auth > .container > form > .userNames > .inputText {
    width: 48%;
+   margin: 0.7rem 0;
 }
 
 .auth > .container > form .inputText {
-   width: 90%;
-   max-width: 410px;
-   margin: 0.9rem 0;
+   width: 100%;
+   max-width: 440px;
+   margin: 0.7rem 0;
 }
 
 .auth > .container > form .inputText > span {
@@ -118,7 +118,7 @@
 .auth > .container > .textProviders {
    display: block;
    width: 90%;
-   margin: 2rem auto;
+   margin: 1rem auto;
    font-size: 0.9rem;
    text-align: center;
    font-weight: 500;
@@ -172,7 +172,7 @@
 
 .auth > .container > .guestButton {
    width: 90%;
-   margin: 3rem auto 2rem auto;
+   margin: 3rem auto;
 }
 
 .auth > .container > .guestButton > button {
@@ -181,11 +181,11 @@
    align-items: center;
    position: relative;
    width: 100%;
-   padding: 13px 55px 13px 40px;
+   padding: 13px 0;
    letter-spacing: 1.5px;
-   border: 1px solid var(--primary);
+   border: 1px solid var(--secondary);
    color: var(--white);
-   background-color: var(--primary);
+   background-color: var(--secondary);
 }
 
 @media (min-width: 720px) {

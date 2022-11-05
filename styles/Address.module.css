@@ -5,7 +5,9 @@
 }
 
 .address > .container {
+   max-width: 440px;
    width: 100%;
+   margin: 0 auto;
    padding-bottom: 4rem;
    text-align: left;
 }
@@ -15,14 +17,11 @@
    flex-direction: column;
    align-items: center;
    width: 100%;
-   max-width: 410px;
-   margin: 0 auto;
    padding-top: 1rem;
 }
 
 .address > .container > form > .inputText {
    width: 90%;
-   max-width: 410px;
    margin: 0.5rem 0;
 }
 

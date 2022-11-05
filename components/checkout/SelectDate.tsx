@@ -60,6 +60,7 @@ export const SelectDate = () => {
             dateFormat='dd/MM/yyyy'
             placeholderText='Elegir fecha de entrega'
             shouldCloseOnSelect={true}
+            autoFocus={false}
             filterDate={isWeekday}
             calendarStartDay={0}
             includeDateIntervals={[

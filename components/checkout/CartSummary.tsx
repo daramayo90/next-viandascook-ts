@@ -7,7 +7,7 @@ import { currency } from '../../utils';
 import { CartList } from '../cart';
 
 import { IoIosClose } from 'react-icons/io';
-import { MdKeyboardArrowUp } from 'react-icons/md';
+import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md';
 import { MdModeEdit } from 'react-icons/md';
 
 import styles from '../../styles/CartSummary.module.css';
@@ -30,7 +30,11 @@ export const CartSummary = () => {
                <div className={styles.info}>
                   <span className={styles.total}>{currency.format(total)}</span>
                   <span className={styles.details}>Ver el Detalle</span>
-                  <MdKeyboardArrowUp className={styles.iconDetails} />
+                  {!touched ? (
+                     <MdKeyboardArrowUp className={styles.iconDetails} />
+                  ) : (
+                     <MdKeyboardArrowDown className={styles.iconDetails} />
+                  )}
                </div>
             </div>
          </div>

@@ -5,7 +5,7 @@
    align-items: center;
    height: 100vh;
    margin-top: 4rem;
-   height: calc(100vh - 4rem);
+   height: calc(100vh - 10rem);
 }
 
 .emptyCart > .icon {

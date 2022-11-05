@@ -1,10 +1,7 @@
-import { GetServerSideProps, NextPage } from 'next';
-import { unstable_getServerSession } from 'next-auth/next';
+import { NextPage } from 'next';
 
-import { authOptions } from '../../pages/api/auth/[...nextauth]';
-
-import { LoginForm, Providers } from '../../components/auth';
 import { AuthLayout } from '../../components/layouts';
+import { LoginForm, Providers } from '../../components/auth';
 import { CommonQuestions } from '../../components/ui';
 
 import styles from '../../styles/Auth.module.css';

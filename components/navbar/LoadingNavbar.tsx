@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import { CartContext, UIContext } from '../../context';
 
-import { HiOutlineMenu, HiOutlineShoppingBag } from 'react-icons/hi';
+import { HiOutlineShoppingBag } from 'react-icons/hi';
 
 import styles from '../../styles/ShopNavbar.module.css';
 
