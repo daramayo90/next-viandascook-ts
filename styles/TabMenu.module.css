@@ -39,3 +39,9 @@
 .tabMenu > .container > .option > .name {
    font-size: 0.85rem;
 }
+
+@media (min-width: 720px) {
+   .tabMenu {
+      display: none;
+   }
+}

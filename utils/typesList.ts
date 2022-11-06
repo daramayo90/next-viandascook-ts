@@ -30,31 +30,6 @@ export const typesList = [
       model: 'vegan',
    },
    {
-      icon: '/type/lowcalories.svg',
-      name: 'Bajo en calorías',
-      model: 'lowcalories',
-   },
-   {
-      icon: '/type/lowcarbs.svg',
-      name: 'Bajo en Carbo',
-      model: 'lowcarbs',
-   },
-   {
-      icon: '/type/glutenfree.svg',
-      name: 'Libre de Gluten',
-      model: 'glutenfree',
-   },
-   {
-      icon: '/type/dairyfree.svg',
-      name: 'Libre de Lácteos',
-      model: 'dairyfree',
-   },
-   {
-      icon: '/type/lowsodium.svg',
-      name: 'Bajo en Sodio',
-      model: 'lowsodium',
-   },
-   {
       icon: '/type/keto.svg',
       name: 'keto',
       model: 'keto',

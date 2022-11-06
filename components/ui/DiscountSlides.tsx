@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { Slide } from 'react-slideshow-image';
+import { Fade } from 'react-slideshow-image';
 
 import 'react-slideshow-image/dist/styles.css';
 import styles from '../../styles/DiscountSlides.module.css';
@@ -36,13 +36,13 @@ export const DiscountSlides = () => {
             </Link>
          </div>
 
-         <Slide easing='ease' duration={4000} indicators>
+         <Fade easing='ease' duration={3000} indicators>
             {discounts.map(({ name, img }) => (
                <div key={name} className={styles.nextImage}>
-                  <Image src={img} alt={name} width={300} height={150} priority={true} />
+                  <Image src={img} alt={name} width={600} height={300} priority={true} />
                </div>
             ))}
-         </Slide>
+         </Fade>
       </div>
    );
 };

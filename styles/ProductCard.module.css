@@ -27,11 +27,14 @@
    justify-content: center;
    cursor: pointer;
    width: 40%;
+   height: 95%;
 }
 
 .product > .card > .nextImage img {
    border-radius: 25px;
    object-fit: cover;
+   width: 100%;
+   height: 100%;
 }
 
 .product > .card > .info {
@@ -101,31 +104,62 @@
    .product {
       width: 30%;
       min-width: 320px;
-      max-height: 410px;
-      margin: 60px 0;
+      height: 540px;
+      margin: 30px 0;
    }
 
    .product > .card {
-      cursor: pointer;
-   }
-
-   .product > .box > .name {
-      margin-bottom: 3px;
-      font-size: 1.22rem;
-      font-weight: 700;
-      color: var(--black);
-      height: 40px;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      height: 100%;
    }
 
-   .product > .box > .container > .selectedQuantity {
-      cursor: pointer;
+   .product > .card > .nextImage {
+      width: 99%;
+      height: 100%;
+      margin-top: 0.6rem;
    }
 
-   .product > .box > .container > .addToCart {
-      bottom: -4.5rem;
+   .product > .card > .nextImage img {
+      border-radius: 15px;
+   }
+
+   .product > .card > .info {
+      width: 100%;
+      display: block;
+      margin: 0;
+      padding: 0;
+   }
+
+   .product > .card > .info > .name {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 90%;
+      height: 50px;
+      margin: 1rem auto;
+      text-align: center;
+      font-size: 1.2rem;
+   }
+
+   .product > .card > .info > .tags {
+      text-align: center;
+      font-size: 1rem;
+   }
+
+   .product > .card > .info > .price {
+      position: absolute;
+      right: 1.5rem;
+      bottom: 1.18rem;
+      width: 85%;
+      font-size: 1.1rem;
+   }
+
+   .product > .addToCart {
+      position: absolute;
+      right: 1.7rem;
+      bottom: 1.18rem;
    }
 }

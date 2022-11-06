@@ -58,3 +58,22 @@
    display: block;
    margin-top: 10px;
 }
+
+@media (min-width: 720px) {
+   .types > .container {
+      align-items: flex-start;
+      max-width: 850px;
+      padding: 0;
+   }
+
+   .types > .container > .type {
+      width: 120px;
+      font-size: 14px;
+      margin: auto;
+   }
+
+   .types > .container > .type > .borderImage {
+      width: 56px;
+      height: 56px;
+   }
+}

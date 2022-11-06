@@ -149,7 +149,7 @@
 @media (min-width: 720px) {
    .sidemenu {
       width: 19%;
-      min-width: 350px;
+      min-width: 640px;
       right: 0;
    }
 
@@ -179,6 +179,7 @@
    }
 
    .sidemenu > .options > .list {
+      width: 55%;
       margin-top: 10rem;
       text-align: left;
    }
