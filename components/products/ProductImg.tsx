@@ -16,8 +16,8 @@ export const ProductImg: FC<Props> = ({ product }) => {
             <Image
                src={`/products/${product.image}`}
                alt={product.name}
-               width={100}
-               height={100}
+               width={800}
+               height={800}
                layout='responsive'
                priority
             />

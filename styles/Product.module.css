@@ -3,10 +3,6 @@
    margin: 3rem auto 5rem auto;
 }
 
-.product > .backDesktop {
-   display: none;
-}
-
 .product > .topSection {
    display: flex;
    flex-direction: column;
@@ -19,8 +15,8 @@
 
 .product > .topSection > .container {
    display: flex;
-   width: 100%;
-   margin-top: 10px;
+   width: 85%;
+   margin: 1rem auto;
 }
 
 .product > .topSection > .container > .title {
@@ -35,7 +31,7 @@
    max-width: 360px;
    height: 70px;
    font-size: 1.5rem;
-   text-align: left;
+   text-align: center;
    transform: translate(-50%, 0);
 }
 
@@ -56,6 +52,7 @@
    height: 40px;
    border-radius: 50%;
    background: var(--black);
+   cursor: pointer;
 }
 
 .product > .topSection > .container > .selectedQuantity > span {
@@ -189,26 +186,13 @@
       max-width: 1200px;
    }
 
-   .product > .backMobile {
-      display: none;
-   }
-
-   .product > .backDesktop {
-      display: flex;
-      align-items: center;
-      margin: 1rem;
-      font-size: 1.2rem;
-      font-weight: 500;
-      color: var(--black);
-      cursor: pointer;
-   }
-
    .product > .topSection {
       flex-direction: row;
       justify-content: flex-start;
       align-items: center;
       position: relative;
-      height: 420px;
+      max-width: 1100px;
+      margin: 5rem auto;
    }
 
    .product > .topSection > .image {
@@ -234,6 +218,7 @@
       align-items: flex-start;
       margin: 3.5rem 0;
       font-size: 2rem;
+      text-align: left;
    }
 
    .product > .topSection > .container > .price {
