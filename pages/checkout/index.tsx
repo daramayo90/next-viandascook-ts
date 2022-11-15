@@ -9,14 +9,7 @@ import { AuthContext, OrdersContext } from '../../context';
 import { IUser } from '../../interfaces';
 
 import { ShopLayout } from '../../components/layouts';
-import {
-   Address,
-   CartSummary,
-   CheckoutSummary,
-   DeliveryDate,
-   Posting,
-   Promos,
-} from '../../components/checkout';
+import { Address, CheckoutSummary, DeliveryDate, Posting, Promos } from '../../components/checkout';
 
 import styles from '../../styles/Checkout.module.css';
 
@@ -34,15 +27,19 @@ const CheckoutPage: NextPage<Props> = ({ user }) => {
       <ShopLayout title={''} pageDescription={''}>
          <section className={styles.checkout}>
             <div className={styles.container}>
-               <Address shipping={shipping} />
+               <div className={styles.selection}>
+                  <Address shipping={shipping} />
 
-               <Promos />
+                  <Promos />
 
-               <DeliveryDate />
+                  <DeliveryDate />
+               </div>
 
-               <CheckoutSummary />
+               <div className={styles.summary}>
+                  <CheckoutSummary />
 
-               <Posting user={user} />
+                  <Posting user={user} />
+               </div>
             </div>
          </section>
       </ShopLayout>

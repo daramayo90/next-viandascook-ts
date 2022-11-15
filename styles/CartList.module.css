@@ -79,4 +79,8 @@
    .cartList {
       width: 45%;
    }
+
+   .cartList > .product {
+      margin-top: 0.9rem;
+   }
 }

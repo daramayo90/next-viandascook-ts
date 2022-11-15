@@ -191,17 +191,24 @@
 @media (min-width: 720px) {
    .auth > .container {
       background-position: center;
+      max-width: 1140px;
    }
 
    .auth > .container > form {
       max-width: 535px;
-      margin: 0 auto;
-      padding-top: 5rem;
+   }
+
+   .auth > .container > form > .userNames {
+      max-width: 480px;
    }
 
    .auth > .container > form .inputText {
       width: 90%;
       max-width: 480px;
       margin: 0.9rem 0;
+   }
+
+   .auth > .container > .guestButton {
+      max-width: 490px;
    }
 }

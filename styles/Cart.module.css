@@ -26,18 +26,20 @@
 
 @media (min-width: 720px) {
    .cart {
-      max-width: 1140px;
-      margin: 0 auto;
-   }
-
-   .cart > .title {
-      margin: 9rem auto 1rem auto;
+      height: 100%;
+      margin: 0;
+      padding: 0;
    }
 
    .cart > .container {
       flex-direction: row;
-      justify-content: space-between;
-      align-items: flex-start;
-      min-height: 70vh;
+      justify-content: space-around;
+      max-width: 1040px;
+      margin: 5rem auto;
+      padding: 0;
    }
+
+   /* .cart > .title {
+      margin: 9rem auto 1rem auto;
+   } */
 }

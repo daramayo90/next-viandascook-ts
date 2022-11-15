@@ -12,9 +12,9 @@
    padding: 1rem 0 4rem 0;
 }
 
-.checkout > .container > .deliveryAddress,
-.checkout > .container > .discounts,
-.checkout > .container > .delivery {
+.checkout > .container > .selection > .deliveryAddress,
+.checkout > .container > .selection > .discounts,
+.checkout > .container > .selection > .delivery {
    width: 100%;
    margin: 2rem 0;
    border-radius: 15px;
@@ -22,7 +22,7 @@
    box-shadow: 0 8px 16px rgb(35 31 32 / 6%);
 }
 
-.checkout > .container > .deliveryAddress {
+.checkout > .container > .selection > .deliveryAddress {
    display: flex;
    flex-direction: column;
    justify-content: center;
@@ -30,7 +30,7 @@
    cursor: pointer;
 }
 
-.checkout > .container > .deliveryAddress > .info {
+.checkout > .container > .selection > .deliveryAddress > .info {
    display: flex;
    flex-direction: column;
    justify-content: space-evenly;
@@ -40,7 +40,7 @@
    margin: 0 auto;
 }
 
-.checkout > .container > .deliveryAddress > .info > .title {
+.checkout > .container > .selection > .deliveryAddress > .info > .title {
    padding-bottom: 15px;
    font-size: 1.1rem;
    font-weight: 600;
@@ -48,16 +48,16 @@
    border-bottom: 1px solid rgb(220, 220, 220);
 }
 
-.checkout > .container > .deliveryAddress > .info > .address {
+.checkout > .container > .selection > .deliveryAddress > .info > .address {
    display: flex;
    align-items: center;
    justify-content: flex-start;
    position: relative;
 }
 
-.checkout > .container > .deliveryAddress > .info > .address > .iconMap,
-.checkout > .container > .discounts > .info > .iconDiscount,
-.checkout > .container > .delivery > .info > .iconDiscount {
+.checkout > .container > .selection > .deliveryAddress > .info > .address > .iconMap,
+.checkout > .container > .selection > .discounts > .info > .iconDiscount,
+.checkout > .container > .selection > .delivery > .info > .iconDiscount {
    width: 30px;
    height: 30px;
    padding: 6px;
@@ -67,23 +67,23 @@
    color: var(--white);
 }
 
-.checkout > .container > .deliveryAddress > .info > .address > .text,
-.checkout > .container > .discounts > .info > .text {
+.checkout > .container > .selection > .deliveryAddress > .info > .address > .text,
+.checkout > .container > .selection > .discounts > .info > .text {
    width: 90%;
    margin-left: 1rem;
    font-size: 0.9rem;
    font-weight: 500;
 }
 
-.checkout > .container > .deliveryAddress > .info > .address > .iconRight,
-.checkout > .container > .discounts > .info > .iconRight {
+.checkout > .container > .selection > .deliveryAddress > .info > .address > .iconRight,
+.checkout > .container > .selection > .discounts > .info > .iconRight {
    font-size: 1.2rem;
    font-weight: 700;
    color: var(--primary);
 }
 
-.checkout > .container > .discounts,
-.checkout > .container > .delivery {
+.checkout > .container > .selection > .discounts,
+.checkout > .container > .selection > .delivery {
    display: flex;
    flex-direction: column;
    justify-content: center;
@@ -91,8 +91,8 @@
    cursor: pointer;
 }
 
-.checkout > .container > .discounts > .info,
-.checkout > .container > .delivery > .info {
+.checkout > .container > .selection > .discounts > .info,
+.checkout > .container > .selection > .delivery > .info {
    display: flex;
    align-items: center;
    justify-content: flex-start;
@@ -101,7 +101,7 @@
    margin: 0 auto;
 }
 
-.checkout > .container > .delivery > .info > .date {
+.checkout > .container > .selection > .delivery > .info > .date {
    width: 90%;
    margin-left: 1rem;
    font-size: 1rem;
@@ -122,4 +122,26 @@
    text-align: center;
    font-size: 0.95rem;
    color: var(--error);
+}
+
+@media (min-width: 720px) {
+   .checkout {
+      height: 100vh;
+   }
+
+   .checkout > .container {
+      display: flex;
+      justify-content: space-evenly;
+      max-width: 1040px;
+      margin: 4rem auto;
+      padding: 0;
+   }
+
+   .checkout > .container > .selection {
+      width: 45%;
+   }
+
+   .checkout > .container > .summary {
+      width: 45%;
+   }
 }
