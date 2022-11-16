@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import { FC, useState } from 'react';
 
-import { IOrder, ShippingAddress } from '../../interfaces';
+import { IOrder } from '../../interfaces';
 import { currency } from '../../utils';
 
 import { AiFillCheckCircle } from 'react-icons/ai';
@@ -27,8 +27,6 @@ export const OrderCard: FC<Props> = ({ order }) => {
       setSelected(true);
 
       const id = JSON.parse(JSON.stringify(order._id));
-
-      console.log(id);
 
       router.push(`/pedidos/${id}`);
    };

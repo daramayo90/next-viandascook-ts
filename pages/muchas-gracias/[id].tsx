@@ -19,19 +19,27 @@ const ThankYouPage: NextPage<Props> = ({ order }) => {
    return (
       <OrderLayout title='¡Muchas Gracias!'>
          <section className={styles.order}>
+            <h1 style={{ textAlign: 'center', paddingTop: '5rem' }}>¡Muchas Gracias!</h1>
+
+            <p style={{ textAlign: 'center' }}>Tu pedido ha sido recibido con éxito</p>
+            <p style={{ textAlign: 'center' }}>A continuación podrás encontrar el detalle</p>
+
             <div className={styles.container}>
-               <h1 style={{ textAlign: 'center' }}>¡Muchas Gracias!</h1>
+               <div className={styles.summary}>
+                  <OrderProducts order={order} repeat={false} />
+               </div>
 
-               <p style={{ textAlign: 'center' }}>Tu pedido ha sido recibido con éxito</p>
-               <p style={{ textAlign: 'center' }}>A continuación podrás encontrar el detalle</p>
+               <div className={styles.info}>
+                  <OrderCheckout order={order} />
 
-               <OrderProducts order={order} repeat={false} />
+                  <OrderAddress order={order} />
 
-               <OrderCheckout order={order} />
-
-               <OrderAddress order={order} />
-
-               <Button href='/pedidos/historial' content='Historial' background='var(--primary)' />
+                  <Button
+                     href='/pedidos/historial'
+                     content='Historial'
+                     background='var(--primary)'
+                  />
+               </div>
             </div>
          </section>
       </OrderLayout>

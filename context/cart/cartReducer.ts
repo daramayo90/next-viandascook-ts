@@ -114,7 +114,7 @@ export const cartReducer = (state: CartState, action: CartActionType): CartState
          return {
             ...state,
             isLoaded: true,
-            cart: [...action.payload],
+            cart: action.payload,
          };
 
       default:

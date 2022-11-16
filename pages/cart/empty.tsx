@@ -2,7 +2,7 @@ import type { NextPage } from 'next';
 import Image from 'next/image';
 
 import { ShopLayout } from '../../components/layouts';
-import { Button, TabMenu } from '../../components/ui';
+import { Button } from '../../components/ui';
 
 import styles from '../../styles/EmptyCart.module.css';
 

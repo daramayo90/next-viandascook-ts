@@ -26,6 +26,15 @@ body {
       sans-serif;
 }
 
+body::-webkit-scrollbar {
+   width: 6px;
+}
+
+body::-webkit-scrollbar-thumb {
+   border-radius: 10px;
+   -webkit-box-shadow: inset 6px 6px 4px var(--primary);
+}
+
 nav {
    position: absolute;
    top: 0;

@@ -1,0 +1,99 @@
+.menu {
+   position: fixed;
+   top: 0;
+   right: 0;
+   min-width: 640px;
+   width: 19%;
+   height: 100vh;
+   z-index: -1;
+}
+
+.menu.open {
+   z-index: 1;
+}
+
+.menu > .cont {
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-start;
+   align-items: center;
+   position: absolute;
+   top: 0;
+   right: 0;
+   width: 100%;
+   height: 100%;
+   color: var(--black);
+   background-color: #fff;
+   transform: translateX(100%);
+   transition: 0.36s cubic-bezier(0.52, 0.01, 0.8, 1);
+   z-index: 50;
+}
+
+.menu > .open {
+   transform: translateX(0%);
+   z-index: 50;
+}
+
+.menu > .open > .fullMenu {
+   margin: 4rem 0;
+   overflow: scroll;
+}
+
+.menu > .open > .fullMenu::-webkit-scrollbar {
+   width: 2px;
+}
+
+.menu > .open > .fullMenu::-webkit-scrollbar-thumb {
+   border-radius: 10px;
+   -webkit-box-shadow: inset 0 0 6px var(--primary);
+}
+
+.fullMenu > .top {
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   justify-content: space-between;
+   max-width: 440px;
+   width: 90%;
+   margin: 2rem auto;
+}
+
+.fullMenu > .top > .title {
+   color: var(--textColor);
+   font-size: 1.1rem;
+}
+
+.fullMenu > .top > .closeMenu {
+   display: flex;
+   cursor: pointer;
+}
+
+.fullMenu > .top > .closeMenu > .icon {
+   font-size: 1.4rem;
+   color: var(--textColor);
+   border: 1px solid var(--textColor);
+   border-radius: 50%;
+}
+
+.fullMenu > .edit {
+   display: flex;
+   align-items: center;
+   justify-content: flex-end;
+   max-width: 440px;
+   width: 90%;
+   margin: 1rem auto;
+}
+
+.fullMenu > .edit > .editIcon {
+   font-size: 0.9rem;
+   color: var(--primary);
+   cursor: pointer;
+}
+
+.fullMenu > .edit > span {
+   font-size: 0.9rem;
+   font-weight: 500;
+   text-decoration: underline;
+   color: var(--primary);
+   cursor: pointer;
+}

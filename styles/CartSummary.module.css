@@ -163,10 +163,6 @@
       background-color: rgb(10, 10, 10);
    }
 
-   .fullMenu > .top > .closeMenu {
-      cursor: pointer;
-   }
-
    .fullMenu > .selectedMeals {
       overflow: visible;
    }

@@ -108,13 +108,13 @@
    font-weight: 500;
 }
 
-.checkout > .container > .submit {
+.checkout > .container > .summary > .submit {
    position: relative;
    width: 99%;
    margin: 2.5rem auto;
 }
 
-.checkout > .container > .submit > .error {
+.checkout > .container > .summary > .submit > .error {
    display: block;
    position: absolute;
    top: -30px;
@@ -124,9 +124,17 @@
    color: var(--error);
 }
 
+.checkout > .container > .selection > .selectedProducts {
+   display: none;
+}
+
 @media (min-width: 720px) {
+   .checkout > .container > .selection > .selectedProducts {
+      display: flex;
+   }
+
    .checkout {
-      height: 100vh;
+      height: calc(100vh - 5rem);
    }
 
    .checkout > .container {

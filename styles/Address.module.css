@@ -82,3 +82,32 @@
    width: 90%;
    margin: 2rem 0 4rem 0;
 }
+
+@media (min-width: 720px) {
+   .address {
+      width: 100%;
+      height: 100%;
+   }
+
+   .address > .container {
+      max-width: 1100px;
+   }
+
+   .address > .container > form {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      width: 90%;
+      margin: 0 auto;
+   }
+
+   .address > .container > form > .inputText {
+      width: 45%;
+   }
+
+   .address > .container > form > .applyButton {
+      width: 45%;
+      margin: 2rem 0 0;
+   }
+}

@@ -123,7 +123,7 @@
 
 @media (min-width: 720px) {
    .orderSummary {
-      width: 40%;
+      width: 100%;
       margin: 1rem;
       max-height: 450px;
       /* margin-top: 2rem; */

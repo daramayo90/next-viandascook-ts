@@ -26,6 +26,7 @@
 
 @media (min-width: 720px) {
    .cart {
+      width: 100%;
       height: 100%;
       margin: 0;
       padding: 0;
@@ -38,8 +39,4 @@
       margin: 5rem auto;
       padding: 0;
    }
-
-   /* .cart > .title {
-      margin: 9rem auto 1rem auto;
-   } */
 }

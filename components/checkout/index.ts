@@ -9,3 +9,4 @@ export * from './PromoCard';
 export * from './Promos';
 export * from './PromosList';
 export * from './SelectDate';
+export * from './SelectedProducts';

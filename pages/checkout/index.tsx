@@ -9,9 +9,17 @@ import { AuthContext, OrdersContext } from '../../context';
 import { IUser } from '../../interfaces';
 
 import { ShopLayout } from '../../components/layouts';
-import { Address, CheckoutSummary, DeliveryDate, Posting, Promos } from '../../components/checkout';
+import {
+   Address,
+   CheckoutSummary,
+   DeliveryDate,
+   Posting,
+   Promos,
+   SelectedProducts,
+} from '../../components/checkout';
 
 import styles from '../../styles/Checkout.module.css';
+import { SideProductsMenu } from '../../components/ui';
 
 interface Props {
    user?: IUser;
@@ -24,13 +32,17 @@ const CheckoutPage: NextPage<Props> = ({ user }) => {
    const shipping = isLoggedIn ? user?.shipping : shippingAddress;
 
    return (
-      <ShopLayout title={''} pageDescription={''}>
+      <ShopLayout title={'Finalizar Compra'} pageDescription={''}>
          <section className={styles.checkout}>
             <div className={styles.container}>
                <div className={styles.selection}>
                   <Address shipping={shipping} />
 
                   <Promos />
+
+                  <SelectedProducts />
+
+                  <SideProductsMenu />
 
                   <DeliveryDate />
                </div>

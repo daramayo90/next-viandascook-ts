@@ -9,6 +9,7 @@ export * from './Intro';
 export * from './Loading';
 export * from './LoadingBars';
 export * from './SideMenu';
+export * from './SideProductsMenu';
 export * from './SubmitButton';
 export * from './TabMenu';
 export * from './Values';

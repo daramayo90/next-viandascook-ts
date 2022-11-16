@@ -6,11 +6,13 @@ interface Props {
 }
 export interface UIState {
    isMenuOpen: boolean;
+   isProductsMenuOpen: boolean;
    deliveryDateSelected: string;
 }
 
 const UI_INITIAL_STATE: UIState = {
    isMenuOpen: false,
+   isProductsMenuOpen: false,
    deliveryDateSelected: '',
 };
 
@@ -21,12 +23,17 @@ export const UIProvider: FC<Props> = ({ children }) => {
       dispatch({ type: '[UI] - Toggle Menu' });
    };
 
+   const toggleProductsMenu = () => {
+      dispatch({ type: '[UI] - Toggle Products Menu' });
+   };
+
    const selectDeliveryDate = (date: string) => {
       dispatch({ type: '[UI] - Select Delivery Date', payload: date });
    };
 
    return (
-      <UIContext.Provider value={{ ...state, toggleSideMenu, selectDeliveryDate }}>
+      <UIContext.Provider
+         value={{ ...state, toggleSideMenu, toggleProductsMenu, selectDeliveryDate }}>
          {children}
       </UIContext.Provider>
    );

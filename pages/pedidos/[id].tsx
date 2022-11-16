@@ -20,11 +20,15 @@ const OrderPage: NextPage<Props> = ({ order }) => {
       <OrderLayout title={''} order={order}>
          <section className={styles.order}>
             <div className={styles.container}>
-               <OrderProducts order={order} />
+               <div className={styles.summary}>
+                  <OrderProducts order={order} />
+               </div>
 
-               <OrderCheckout order={order} />
+               <div className={styles.info}>
+                  <OrderCheckout order={order} />
 
-               <OrderAddress order={order} />
+                  <OrderAddress order={order} />
+               </div>
             </div>
          </section>
       </OrderLayout>

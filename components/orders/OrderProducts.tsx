@@ -7,6 +7,7 @@ import { CartContext } from '../../context/cart';
 
 import styles from '../../styles/Order.module.css';
 import { useRouter } from 'next/router';
+import Cookies from 'js-cookie';
 
 interface Props {
    order: IOrder;
@@ -20,11 +21,11 @@ export const OrderProducts: FC<Props> = ({ order, repeat = true }) => {
    const { repeatOrder } = useContext(CartContext);
 
    const onRepeatOrder = () => {
+      console.log(orderItems);
+      console.log(Cookies.get('cart'));
       repeatOrder(orderItems);
       router.push('/cart');
    };
-
-   console.log(repeat);
 
    return (
       <section className={styles.products}>
