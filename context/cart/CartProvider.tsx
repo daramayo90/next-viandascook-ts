@@ -1,4 +1,5 @@
 import { FC, ReactNode, useEffect, useReducer } from 'react';
+import { useSession } from 'next-auth/react';
 
 import Cookies from 'js-cookie';
 
@@ -6,7 +7,7 @@ import { viandasApi } from '../../api';
 import { coupon, currency, promo } from '../../utils';
 
 import { CartContext, cartReducer } from './';
-import { ICartProduct, ICoupon } from '../../interfaces';
+import { ICartProduct, ICoupon, IUser } from '../../interfaces';
 
 interface Props {
    children: ReactNode;
@@ -21,6 +22,7 @@ export interface CartState {
    discount: number;
    shipping: number;
    couponDiscount: number;
+   points?: number;
    total: number;
 }
 
@@ -33,11 +35,13 @@ const CART_INITIAL_STATE: CartState = {
    discount: 0,
    shipping: 0,
    couponDiscount: 0,
+   points: 0,
    total: 0,
 };
 
 export const CartProvider: FC<Props> = ({ children }) => {
    const [state, dispatch] = useReducer(cartReducer, CART_INITIAL_STATE);
+   const { data, status } = useSession();
 
    // Add Cart products to cookies
    useEffect(() => {
@@ -65,11 +69,12 @@ export const CartProvider: FC<Props> = ({ children }) => {
          Cookies.remove('shipping');
       }
 
+      const points = state.points ? state.points / 30 : 0;
       const shipping = state.shipping;
 
       const couponDiscount = state.coupons?.reduce((p, c) => coupon.calc(c, subTotal) + p, 0) || 0;
 
-      const total = subTotal - discount - couponDiscount + shipping;
+      const total = subTotal - discount - points - couponDiscount + shipping;
 
       const orderSummary = {
          numberOfItems,
@@ -81,7 +86,7 @@ export const CartProvider: FC<Props> = ({ children }) => {
       };
 
       dispatch({ type: '[Cart] - Update Order Summary', payload: orderSummary });
-   }, [state.cart, state.shipping, state.coupons]);
+   }, [state.cart, state.shipping, state.coupons, state.points]);
 
    // Load Cart from Cookies
    useEffect(() => {
@@ -191,17 +196,52 @@ export const CartProvider: FC<Props> = ({ children }) => {
       }
    };
 
+   // Remove coupon from order summary in checkout page
    const removeCoupon = () => {
       Cookies.remove('coupons');
       dispatch({ type: '[Cart] - Remove Coupon' });
    };
 
+   // Order completion
    const orderComplete = () => {
       dispatch({ type: '[Cart] - Order Complete' });
    };
 
+   // Add products to cart from id history order
    const repeatOrder = (orderItems: ICartProduct[]) => {
       dispatch({ type: '[Cart] - Repeat Order', payload: orderItems });
+   };
+
+   // Redeem points
+   const usePoints = async (points: number): Promise<{ error: boolean; msg?: string }> => {
+      if (status !== 'authenticated') {
+         return {
+            error: true,
+            msg: 'Debes estar logueado para canjear puntos',
+         };
+      }
+
+      if (state.subTotal < 6000) {
+         return {
+            error: true,
+            msg: 'Debes tener un mínimo de $6.000 gastados',
+         };
+      }
+
+      const user = data.user as IUser;
+
+      try {
+         await viandasApi.put('/points', { points, user });
+
+         dispatch({ type: '[Cart] - Redeem Points', payload: points });
+
+         return { error: false };
+      } catch (error: any) {
+         return {
+            error: true,
+            msg: error.response.data.message,
+         };
+      }
    };
 
    return (
@@ -216,6 +256,7 @@ export const CartProvider: FC<Props> = ({ children }) => {
             removeCoupon,
             orderComplete,
             repeatOrder,
+            usePoints,
          }}>
          {children}
       </CartContext.Provider>

@@ -13,8 +13,7 @@
 }
 
 .checkout > .container > .selection > .deliveryAddress,
-.checkout > .container > .selection > .discounts,
-.checkout > .container > .selection > .delivery {
+.checkout > .container > .selection > .card {
    width: 100%;
    margin: 2rem 0;
    border-radius: 15px;
@@ -56,8 +55,7 @@
 }
 
 .checkout > .container > .selection > .deliveryAddress > .info > .address > .iconMap,
-.checkout > .container > .selection > .discounts > .info > .iconDiscount,
-.checkout > .container > .selection > .delivery > .info > .iconDiscount {
+.checkout > .container > .selection > .card > .info > .iconDiscount {
    width: 30px;
    height: 30px;
    padding: 6px;
@@ -68,7 +66,7 @@
 }
 
 .checkout > .container > .selection > .deliveryAddress > .info > .address > .text,
-.checkout > .container > .selection > .discounts > .info > .text {
+.checkout > .container > .selection > .card > .info > .text {
    width: 90%;
    margin-left: 1rem;
    font-size: 0.9rem;
@@ -76,14 +74,13 @@
 }
 
 .checkout > .container > .selection > .deliveryAddress > .info > .address > .iconRight,
-.checkout > .container > .selection > .discounts > .info > .iconRight {
+.checkout > .container > .selection > .card > .info > .iconRight {
    font-size: 1.2rem;
    font-weight: 700;
    color: var(--primary);
 }
 
-.checkout > .container > .selection > .discounts,
-.checkout > .container > .selection > .delivery {
+.checkout > .container > .selection > .card {
    display: flex;
    flex-direction: column;
    justify-content: center;
@@ -91,8 +88,7 @@
    cursor: pointer;
 }
 
-.checkout > .container > .selection > .discounts > .info,
-.checkout > .container > .selection > .delivery > .info {
+.checkout > .container > .selection > .card > .info {
    display: flex;
    align-items: center;
    justify-content: flex-start;
@@ -101,7 +97,7 @@
    margin: 0 auto;
 }
 
-.checkout > .container > .selection > .delivery > .info > .date {
+.checkout > .container > .selection > .card > .info > .date {
    width: 90%;
    margin-left: 1rem;
    font-size: 1rem;

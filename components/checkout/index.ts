@@ -4,6 +4,7 @@ export * from './CartSummary';
 export * from './CheckoutSummary';
 export * from './Coupons';
 export * from './DeliveryDate';
+export * from './Points';
 export * from './Posting';
 export * from './PromoCard';
 export * from './Promos';

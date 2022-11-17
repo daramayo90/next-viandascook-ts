@@ -9,11 +9,11 @@ import { TbDiscount2 } from 'react-icons/tb';
 
 import styles from '../../styles/Checkout.module.css';
 
-export const Promos = () => {
+export const Points = () => {
    const { coupons, couponDiscount } = useContext(CartContext);
 
    return (
-      <Link href='/checkout/promociones'>
+      <Link href='/checkout/canjear-puntos'>
          <div className={styles.card}>
             <div className={styles.info}>
                <TbDiscount2 className={styles.iconDiscount} />
@@ -22,7 +22,7 @@ export const Promos = () => {
                      Cupón usado: <u>{coupons[0].code}</u>
                   </p>
                ) : (
-                  <p className={styles.text}>Ver descuentos disponibles</p>
+                  <p className={styles.text}>Canjear Puntos</p>
                )}
                <AiOutlineRight className={styles.iconRight} />
             </div>

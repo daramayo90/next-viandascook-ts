@@ -13,6 +13,7 @@ import {
    Address,
    CheckoutSummary,
    DeliveryDate,
+   Points,
    Posting,
    Promos,
    SelectedProducts,
@@ -39,6 +40,8 @@ const CheckoutPage: NextPage<Props> = ({ user }) => {
                   <Address shipping={shipping} />
 
                   <Promos />
+
+                  <Points />
 
                   <SelectedProducts />
 

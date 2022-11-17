@@ -10,6 +10,7 @@ interface ContextProps {
    discount: number;
    shipping: number;
    couponDiscount: number;
+   points?: number;
    total: number;
    // shippingAddress?: ShippingAddress;
 
@@ -22,6 +23,8 @@ interface ContextProps {
    removeCoupon: () => void;
    orderComplete: () => void;
    repeatOrder: (orderItems: ICartProduct[]) => void;
+
+   usePoints: (points: number) => Promise<{ error: boolean; msg?: string }>;
 }
 
 export const CartContext = createContext({} as ContextProps);

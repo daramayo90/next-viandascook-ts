@@ -25,7 +25,8 @@ type CartActionType =
            total: number;
         };
      }
-   | { type: '[Cart] - Repeat Order'; payload: ICartProduct[] };
+   | { type: '[Cart] - Repeat Order'; payload: ICartProduct[] }
+   | { type: '[Cart] - Redeem Points'; payload: number };
 
 export const cartReducer = (state: CartState, action: CartActionType): CartState => {
    switch (action.type) {
@@ -115,6 +116,12 @@ export const cartReducer = (state: CartState, action: CartActionType): CartState
             ...state,
             isLoaded: true,
             cart: action.payload,
+         };
+
+      case '[Cart] - Redeem Points':
+         return {
+            ...state,
+            points: action.payload,
          };
 
       default:
