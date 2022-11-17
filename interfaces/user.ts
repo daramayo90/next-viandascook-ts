@@ -8,6 +8,8 @@ export interface IUser {
    phone?: string;
    dni?: string;
    password?: string;
+   points: number;
+   redeemPoints: number;
    role: string;
    shipping: IAddress;
    coupons: ICoupon[];

@@ -61,6 +61,16 @@ const createOrder = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
 
       await newOrder.save();
 
+      await User.updateOne(
+         { email: dbUser?.email },
+         {
+            $set: {
+               points: dbUser?.points! + total,
+               redeemPoints: dbUser?.redeemPoints! + total,
+            },
+         },
+      );
+
       await db.disconnect();
 
       return res.status(201).json(newOrder);

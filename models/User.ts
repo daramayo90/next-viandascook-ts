@@ -10,6 +10,9 @@ const userSchema = new Schema(
       dni: { type: String, required: true },
       password: { type: String, required: true },
 
+      points: { type: Number, required: true },
+      redeemPoints: { type: Number, required: true },
+
       role: {
          type: String,
          enum: {

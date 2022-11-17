@@ -20,6 +20,8 @@ interface SeedUser {
    phone?: string;
    dni?: string;
    password?: string;
+   points: number;
+   redeemPoints: number;
    role: string;
    shipping: IAddress;
    coupons: IUserCoupon[];
@@ -86,6 +88,8 @@ export const initialData: SeedData = {
          dni: '38987745',
          password: bcrypt.hashSync('123456', 10),
          role: 'admin',
+         points: 0,
+         redeemPoints: 0,
          shipping: {
             address: 'Baker Street',
             address2: '221B',
@@ -102,6 +106,8 @@ export const initialData: SeedData = {
          dni: '20706485',
          password: bcrypt.hashSync('123456', 10),
          role: 'client',
+         points: 0,
+         redeemPoints: 0,
          shipping: {
             address: 'P Sherman',
             address2: 'Depto: 4A',

@@ -21,8 +21,6 @@ export const OrderProducts: FC<Props> = ({ order, repeat = true }) => {
    const { repeatOrder } = useContext(CartContext);
 
    const onRepeatOrder = () => {
-      console.log(orderItems);
-      console.log(Cookies.get('cart'));
       repeatOrder(orderItems);
       router.push('/cart');
    };

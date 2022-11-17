@@ -34,6 +34,8 @@
 
 # Si no tenes cuenta, se puede usar el cupon de bienvenido10 indefinidamente
 
+# Repetir Pedido: No funciona si el pedido fue realizado con un cupón
+
 warn - No build cache found. Please configure build caching for faster rebuilds. Read more: https://nextjs.org/docs/messages/no-cache
 Attention: Next.js now collects completely anonymous telemetry regarding usage.
 This information is used to shape Next.js' roadmap and prioritize features.
