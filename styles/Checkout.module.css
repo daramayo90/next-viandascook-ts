@@ -135,7 +135,7 @@
 
    .checkout > .container {
       display: flex;
-      justify-content: space-evenly;
+      justify-content: space-between;
       max-width: 1040px;
       margin: 4rem auto;
       padding: 0;

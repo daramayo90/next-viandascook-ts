@@ -21,7 +21,7 @@ const ThankYouPage: NextPage<Props> = ({ order }) => {
          <section className={styles.order}>
             <h1 style={{ textAlign: 'center', paddingTop: '5rem' }}>¡Muchas Gracias!</h1>
 
-            <p style={{ textAlign: 'center' }}>Tu pedido ha sido recibido con éxito</p>
+            <p style={{ textAlign: 'center' }}>Tu pedido se recibió con éxito</p>
             <p style={{ textAlign: 'center' }}>A continuación podrás encontrar el detalle</p>
 
             <div className={styles.container}>

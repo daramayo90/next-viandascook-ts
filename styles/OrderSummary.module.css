@@ -125,7 +125,8 @@
    .orderSummary {
       width: 100%;
       margin: 1rem;
+      max-width: none;
       max-height: 450px;
-      /* margin-top: 2rem; */
+      margin-left: 5rem;
    }
 }

@@ -98,16 +98,16 @@
       flex-direction: row;
       flex-wrap: wrap;
       justify-content: space-between;
-      width: 90%;
+      width: 94%;
       margin: 0 auto;
    }
 
    .address > .container > form > .inputText {
-      width: 45%;
+      width: 47%;
    }
 
    .address > .container > form > .applyButton {
-      width: 45%;
+      width: 47%;
       margin: 2rem 0 0;
    }
 }
