@@ -22,9 +22,10 @@ const PointsPage: NextPage<Props> = ({ user }) => {
    const [errorMsg, setErrorMsg] = useState('');
    const [correctMsg, setCorrectMsg] = useState('');
 
-   const { usePoints } = useContext(CartContext);
+   const { usePoints, points } = useContext(CartContext);
 
-   const { points = 0, redeemPoints = 0 } = (user as IUser) || '';
+   // const { points = 0, redeemPoints = 0 } = (user as IUser) || '';
+   const { redeemPoints = 0 } = (user as IUser) || '';
 
    const onRedeemPoints = async (e: ChangeEvent<HTMLFormElement>) => {
       e.preventDefault();
@@ -58,9 +59,16 @@ const PointsPage: NextPage<Props> = ({ user }) => {
             <div className={styles.container}>
                <div className={styles.balance}>
                   <h3 className={styles.title}>Balance Actual</h3>
-                  <span className={styles.userPoints}>
-                     <strong>{redeemPoints}</strong> Puntos
-                  </span>
+
+                  {!points ? (
+                     <span className={styles.userPoints}>
+                        <strong>{redeemPoints}</strong> Puntos
+                     </span>
+                  ) : (
+                     <span className={styles.userPoints}>
+                        <strong>{redeemPoints - points}</strong> Puntos
+                     </span>
+                  )}
                </div>
 
                <div className={styles.minimun}>

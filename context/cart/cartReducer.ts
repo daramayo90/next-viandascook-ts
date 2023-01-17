@@ -6,6 +6,7 @@ type CartActionType =
    | { type: '[Cart] - Load Cart from Cookies'; payload: ICartProduct[] }
    | { type: '[Cart] - Load Shipping from Cookies'; payload: number }
    | { type: '[Cart] - Load Coupons from Cookies'; payload: ICoupon[] }
+   | { type: '[Cart] - Load Points from Cookies'; payload: number }
    | { type: '[Cart] - Update Products'; payload: ICartProduct[] }
    | { type: '[Cart] - Update Quantity'; payload: ICartProduct[] }
    | { type: '[Cart] - Remove Product'; payload: ICartProduct[] }
@@ -47,6 +48,12 @@ export const cartReducer = (state: CartState, action: CartActionType): CartState
          return {
             ...state,
             coupons: action.payload,
+         };
+
+      case '[Cart] - Load Points from Cookies':
+         return {
+            ...state,
+            points: action.payload,
          };
 
       case '[Cart] - Update Products':
@@ -121,7 +128,7 @@ export const cartReducer = (state: CartState, action: CartActionType): CartState
       case '[Cart] - Redeem Points':
          return {
             ...state,
-            points: action.payload,
+            points: Number(state.points) + Number(action.payload),
          };
 
       default:

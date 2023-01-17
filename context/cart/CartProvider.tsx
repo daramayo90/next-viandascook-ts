@@ -58,6 +58,11 @@ export const CartProvider: FC<Props> = ({ children }) => {
       if (state.coupons.length > 0) Cookies.set('coupons', JSON.stringify(state.coupons));
    }, [state.coupons]);
 
+   // Add Points to cookies
+   useEffect(() => {
+      if (state.points !== 0) Cookies.set('points', JSON.stringify(state.points));
+   }, [state.points]);
+
    // Calculation of: quantity / subTotal / discount / shipping fee / total
    useEffect(() => {
       const numberOfItems = state.cart.reduce((prev, curr) => curr.quantity + prev, 0);
@@ -115,6 +120,16 @@ export const CartProvider: FC<Props> = ({ children }) => {
          dispatch({ type: '[Cart] - Load Coupons from Cookies', payload: cookieCoupons });
       } catch (error) {
          dispatch({ type: '[Cart] - Load Coupons from Cookies', payload: [] });
+      }
+   }, []);
+
+   // Load Points from Cookies
+   useEffect(() => {
+      try {
+         const cookiePoints: number = Number(JSON.parse(Cookies.get('points')!)) || 0;
+         dispatch({ type: '[Cart] - Load Points from Cookies', payload: cookiePoints });
+      } catch (error) {
+         dispatch({ type: '[Cart] - Load Points from Cookies', payload: 0 });
       }
    }, []);
 
