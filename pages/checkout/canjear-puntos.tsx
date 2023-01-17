@@ -22,7 +22,7 @@ const PointsPage: NextPage<Props> = ({ user }) => {
    const [errorMsg, setErrorMsg] = useState('');
    const [correctMsg, setCorrectMsg] = useState('');
 
-   const { usePoints, points } = useContext(CartContext);
+   const { onUsePoints, points } = useContext(CartContext);
 
    // const { points = 0, redeemPoints = 0 } = (user as IUser) || '';
    const { redeemPoints = 0 } = (user as IUser) || '';
@@ -41,7 +41,7 @@ const PointsPage: NextPage<Props> = ({ user }) => {
          return;
       }
 
-      const { error, msg } = await usePoints(redeemPoints);
+      const { error, msg } = await onUsePoints(redeemPoints);
 
       if (error) {
          setIsClicked(false);

@@ -228,7 +228,7 @@ export const CartProvider: FC<Props> = ({ children }) => {
    };
 
    // Redeem points
-   const usePoints = async (points: number): Promise<{ error: boolean; msg?: string }> => {
+   const onUsePoints = async (points: number): Promise<{ error: boolean; msg?: string }> => {
       if (status !== 'authenticated') {
          return {
             error: true,
@@ -271,7 +271,7 @@ export const CartProvider: FC<Props> = ({ children }) => {
             removeCoupon,
             orderComplete,
             repeatOrder,
-            usePoints,
+            onUsePoints,
          }}>
          {children}
       </CartContext.Provider>
