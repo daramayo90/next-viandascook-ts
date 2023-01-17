@@ -23,6 +23,7 @@ export interface CartState {
    shipping: number;
    couponDiscount: number;
    points?: number;
+   pointsDiscount?: number;
    total: number;
 }
 
@@ -36,6 +37,7 @@ const CART_INITIAL_STATE: CartState = {
    shipping: 0,
    couponDiscount: 0,
    points: 0,
+   pointsDiscount: 0,
    total: 0,
 };
 
@@ -74,12 +76,12 @@ export const CartProvider: FC<Props> = ({ children }) => {
          Cookies.remove('shipping');
       }
 
-      const points = state.points ? state.points / 30 : 0;
+      const pointsDiscount = state.points ? state.points / 30 : 0;
       const shipping = state.shipping;
 
       const couponDiscount = state.coupons?.reduce((p, c) => coupon.calc(c, subTotal) + p, 0) || 0;
 
-      const total = subTotal - discount - points - couponDiscount + shipping;
+      const total = subTotal - discount - pointsDiscount - couponDiscount + shipping;
 
       const orderSummary = {
          numberOfItems,
@@ -87,6 +89,7 @@ export const CartProvider: FC<Props> = ({ children }) => {
          discount,
          shipping,
          couponDiscount,
+         pointsDiscount,
          total,
       };
 

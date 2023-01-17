@@ -23,6 +23,7 @@ type CartActionType =
            discount: number;
            shipping: number;
            couponDiscount: number;
+           pointsDiscount: number;
            total: number;
         };
      }

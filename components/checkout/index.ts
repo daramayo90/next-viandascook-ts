@@ -9,5 +9,6 @@ export * from './Posting';
 export * from './PromoCard';
 export * from './Promos';
 export * from './PromosList';
+export * from './RedeemPoints';
 export * from './SelectDate';
 export * from './SelectedProducts';

@@ -11,6 +11,7 @@ interface ContextProps {
    shipping: number;
    couponDiscount: number;
    points?: number;
+   pointsDiscount?: number;
    total: number;
    // shippingAddress?: ShippingAddress;
 

@@ -4,7 +4,7 @@ import { CartContext } from '../../context';
 import { currency } from '../../utils';
 
 import { Discounts } from '../cart';
-import { Coupons } from './';
+import { Coupons, RedeemPoints } from './';
 
 import styles from '../../styles/CheckoutSummary.module.css';
 
@@ -30,6 +30,8 @@ export const CheckoutSummary = () => {
          <Discounts />
 
          <Coupons />
+
+         <RedeemPoints />
 
          <div className={styles.summary}>
             <span>Envío:</span>
