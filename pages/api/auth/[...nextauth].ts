@@ -14,7 +14,10 @@ export const authOptions: NextAuthOptions = {
             password: { label: 'Password:', type: 'password', placeholder: 'Password' },
          },
          async authorize(credentials) {
-            return await dbUsers.checkUserEmailPassword(credentials!.email, credentials!.password);
+            return (await dbUsers.checkUserEmailPassword(
+               credentials!.email,
+               credentials!.password,
+            )) as any;
          },
       }),
       // Google Login
@@ -73,7 +76,7 @@ export const authOptions: NextAuthOptions = {
             token.user = user;
          }
 
-         session.accessToken = token.access_token;
+         (session as any).accessToken = token.access_token;
          session.user = token.user as any;
 
          return session;
