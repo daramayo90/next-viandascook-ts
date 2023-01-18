@@ -194,13 +194,13 @@ export const CartProvider: FC<Props> = ({ children }) => {
          if (state.subTotal < minAmount)
             return {
                error: true,
-               msg: `El sub total debe ser mayor a ${currency.format(minAmount)}`,
+               msg: `El subtotal debe ser mayor a ${currency.format(minAmount)}`,
             };
 
          if (state.subTotal > maxAmount)
             return {
                error: true,
-               msg: `El sub total debe ser menor a ${currency.format(maxAmount)}`,
+               msg: `El subtotal debe ser menor a ${currency.format(maxAmount)}`,
             };
 
          dispatch({ type: '[Cart] - Add Coupon', payload: data });

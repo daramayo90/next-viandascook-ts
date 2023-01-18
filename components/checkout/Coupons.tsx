@@ -3,11 +3,11 @@ import { ChangeEvent, useState, useContext } from 'react';
 import { CartContext } from '../../context';
 
 import { currency } from '../../utils';
+import { SubmitButton } from '../ui';
 
 import { TiDelete } from 'react-icons/ti';
 
 import styles from '../../styles/CheckoutSummary.module.css';
-import { SubmitButton } from '../ui';
 
 // TODO: Ver los errores from db
 export const Coupons = () => {

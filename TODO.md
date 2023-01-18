@@ -36,6 +36,32 @@
 
 # Repetir Pedido: No funciona si el pedido fue realizado con un cupón
 
+---
+
+# Agregar el método de pago en el checkout
+
+# Integración con Mercado Pago
+
+# Integración con Whatsapp
+
+# Crear todo el Admin panel
+
+## Dashboard: ventas, impuestos dependiendo el tipo de venta, cupones, filtros de fechas
+
+## Importación / Exportación masiva de usuarios
+
+## Importación / Exportación masiva de productos
+
+## ABM Productos
+
+## ABM Usuarios
+
+## ABM Cupones
+
+## Listado de pedidos recibidos con páginación y filtros
+
+## ABM Puntos
+
 warn - No build cache found. Please configure build caching for faster rebuilds. Read more: https://nextjs.org/docs/messages/no-cache
 Attention: Next.js now collects completely anonymous telemetry regarding usage.
 This information is used to shape Next.js' roadmap and prioritize features.

@@ -16,7 +16,14 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Data>)
    }
 }
 const createOrder = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
-   const { orderItems, discount = 0, couponDiscount = 0, shipping, total } = req.body as IOrder;
+   const {
+      orderItems,
+      discount = 0,
+      pointsDiscount = 0,
+      couponDiscount = 0,
+      shipping,
+      total,
+   } = req.body as IOrder;
 
    const { user }: any = (await getSession({ req })) || '';
 
@@ -36,7 +43,7 @@ const createOrder = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
          return current.quantity * current.price + prev;
       }, 0);
 
-      const backendTotal = subTotal - discount - couponDiscount + shipping;
+      const backendTotal = subTotal - discount - pointsDiscount - couponDiscount + shipping;
 
       if (total !== backendTotal) {
          throw new Error('El total no suma la cantidad comprada');

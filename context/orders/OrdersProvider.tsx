@@ -23,8 +23,17 @@ const ORDERS_INITIAL_STATE: OrdersState = {
 
 export const OrdersProvider: FC<Props> = ({ children }) => {
    const { deliveryDateSelected } = useContext(UIContext);
-   const { cart, coupons, numberOfItems, subTotal, discount, shipping, couponDiscount, total } =
-      useContext(CartContext);
+   const {
+      cart,
+      coupons,
+      numberOfItems,
+      subTotal,
+      discount,
+      shipping,
+      couponDiscount,
+      pointsDiscount,
+      total,
+   } = useContext(CartContext);
 
    const [state, dispatch] = useReducer(ordersReducer, ORDERS_INITIAL_STATE);
 
@@ -91,6 +100,7 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
          discount,
          shipping,
          couponDiscount,
+         pointsDiscount,
          total,
          isPaid: false,
       };
