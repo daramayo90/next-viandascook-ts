@@ -3,7 +3,7 @@ import { useSession } from 'next-auth/react';
 
 import Cookies from 'js-cookie';
 
-import { viandasApi } from '../../api';
+import { viandasApi } from '../../axiosApi';
 import { coupon, currency, promo } from '../../utils';
 
 import { CartContext, cartReducer } from './';

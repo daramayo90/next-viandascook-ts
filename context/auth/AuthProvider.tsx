@@ -3,7 +3,7 @@ import { useSession, signOut } from 'next-auth/react';
 
 import Cookies from 'js-cookie';
 
-import { viandasApi } from '../../api';
+import { viandasApi } from '../../axiosApi';
 import { IUser, ShippingAddress } from '../../interfaces';
 import { AuthContext, authReducer } from './';
 

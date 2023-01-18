@@ -6,7 +6,7 @@ import Cookies from 'js-cookie';
 import { OrdersContext, ordersReducer } from './';
 import { removeCookies } from '../../utils';
 
-import { viandasApi } from '../../api';
+import { viandasApi } from '../../axiosApi';
 import { ShippingAddress, ICity, IOrder } from '../../interfaces';
 import { CartContext, UIContext } from '../';
 
