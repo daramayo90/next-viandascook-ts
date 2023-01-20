@@ -1,0 +1,23 @@
+.container {
+   width: 90%;
+   margin: 6rem auto 0 auto;
+   background-color: var(--white);
+}
+
+.container > .titleBox {
+   display: flex;
+   align-items: center;
+}
+
+.container > .titleBox > .icon {
+   font-size: 1.55rem;
+   color: var(--black);
+}
+
+.container > .titleBox > .title {
+   margin: 0.3rem 0;
+}
+
+.container > .subTitle {
+   font-weight: 400;
+}
