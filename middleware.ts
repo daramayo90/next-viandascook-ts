@@ -6,13 +6,15 @@ import { getToken } from 'next-auth/jwt';
 
 export async function middleware(req: NextRequest) {
    const cart = req.cookies.get('cart');
-   const session = await getToken({ req });
+   const session: any = await getToken({ req });
    const query = req.nextUrl.searchParams.get('page');
 
    const { pathname = '' } = req.nextUrl;
 
    const url = req.nextUrl.clone();
    url.search = '';
+
+   const validRoles = ['admin', 'super-user', 'seo'];
 
    if (pathname.includes('login-checkout') && session) {
       url.pathname = '/checkout';
@@ -44,11 +46,17 @@ export async function middleware(req: NextRequest) {
       return NextResponse.redirect(url);
    }
 
+   if (pathname.includes('admin') && (!session || !validRoles.includes(session.user.role))) {
+      url.pathname = '/';
+      return NextResponse.redirect(url);
+   }
+
    return NextResponse.next();
 }
 
 export const config = {
    matcher: [
+      '/admin/:path*',
       '/auth/login-checkout/:path*',
       '/auth/login/:path*',
       '/auth/register/:path*',
