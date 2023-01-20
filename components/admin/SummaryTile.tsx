@@ -1,25 +1,27 @@
-import { FC, ReactNode } from 'react';
+import { FC } from 'react';
 
-import styles from '../../styles/Dashboard.module.css';
+import { Grid, Card, CardContent, Typography } from '@mui/material';
 
 interface Props {
    total: string | number;
    description: string;
-   icon: ReactNode;
-   color: string;
+   icon: JSX.Element;
 }
 
-export const SummaryTile: FC<Props> = ({ total, description, icon, color }) => {
+export const SummaryTile: FC<Props> = ({ total, description, icon }) => {
    return (
-      <div className={styles.box} style={{ backgroundColor: color }}>
-         <div className={styles.details}>
-            <div className={styles.icon}>{icon}</div>
-
-            <div className={styles.info}>
-               <span className={styles.description}>{description}</span>
-               <span className={styles.total}>{total}</span>
-            </div>
-         </div>
-      </div>
+      <Grid item xs={12} sm={4} md={3}>
+         <Card sx={{ display: 'flex' }}>
+            <CardContent
+               sx={{ width: 50, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+               {/* <CreditCardOffOutlined color="secondary" sx={{ fontSize: 40 }} /> */}
+               {icon}
+            </CardContent>
+            <CardContent sx={{ flex: '1 0 auto', display: 'flex', flexDirection: 'column' }}>
+               <Typography variant='h3'>{total}</Typography>
+               <Typography variant='caption'>{description}</Typography>
+            </CardContent>
+         </Card>
+      </Grid>
    );
 };

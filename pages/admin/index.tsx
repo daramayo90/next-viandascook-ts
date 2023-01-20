@@ -1,19 +1,24 @@
 import { useState, useEffect } from 'react';
-
 import useSWR from 'swr';
-
-import { DashboardSummaryResponse } from '../../interfaces';
+import {
+   AttachMoneyOutlined,
+   CreditCardOffOutlined,
+   CreditCardOutlined,
+   DashboardOutlined,
+   GroupOutlined,
+   CategoryOutlined,
+   CancelPresentationOutlined,
+   AccessTimeOutlined,
+} from '@mui/icons-material';
 
 import { AdminLayout } from '../../components/layouts';
-import { SummaryTile } from '../../components/admin/SummaryTile';
-
-import { MdOutlineDashboard } from 'react-icons/md';
-
-import styles from '../../styles/Dashboard.module.css';
+import { Grid, Typography } from '@mui/material';
+import { SummaryTile } from '../../components/admin';
+import { DashboardSummaryResponse } from '../../interfaces';
 
 const DashboardPage = () => {
    const { data, error } = useSWR<DashboardSummaryResponse>('/api/admin/dashboard', {
-      refreshInterval: 30 * 1000, // 30 seconds
+      refreshInterval: 30 * 1000, // 30 segundos
    });
 
    const [refreshIn, setRefreshIn] = useState(30);
@@ -33,72 +38,63 @@ const DashboardPage = () => {
 
    if (error) {
       console.log(error);
-      return <span>Error al cargar la información</span>;
+      return <Typography>Error al cargar la información</Typography>;
    }
 
    const {
       numberOfOrders,
       paidOrders,
-      notPaidOrders,
       numberOfClients,
       numberOfProducts,
       productsWithNoInventory,
+      notPaidOrders,
    } = data!;
 
    return (
-      <AdminLayout title='Dashboard' subTitle='Estadísticas' icon={<MdOutlineDashboard />}>
-         <section className={styles.dashboard}>
-            <div className={styles.container}>
-               <SummaryTile
-                  total={numberOfOrders}
-                  description={'Ordenes totales'}
-                  icon={<MdOutlineDashboard />}
-                  color='#40189d'
-               />
+      <AdminLayout title='Dashboard' subTitle='Estadisticas generales' icon={<DashboardOutlined />}>
+         <Grid container spacing={2} sx={{ width: '90%', margin: 'auto', marginTop: 5 }}>
+            <SummaryTile
+               total={numberOfOrders}
+               description='Ordenes totales'
+               icon={<CreditCardOutlined color='secondary' sx={{ fontSize: 40 }} />}
+            />
 
-               <SummaryTile
-                  total={paidOrders}
-                  description={'Ordenes pagadas'}
-                  icon={<MdOutlineDashboard />}
-                  color='#48a9f8'
-               />
+            <SummaryTile
+               total={paidOrders}
+               description='Ordenes pagadas'
+               icon={<AttachMoneyOutlined color='success' sx={{ fontSize: 40 }} />}
+            />
 
-               <SummaryTile
-                  total={notPaidOrders}
-                  description={'Ordenes pendientes'}
-                  icon={<MdOutlineDashboard />}
-                  color='#1bd084'
-               />
+            <SummaryTile
+               total={notPaidOrders}
+               description='Ordenes pendientes'
+               icon={<CreditCardOffOutlined color='error' sx={{ fontSize: 40 }} />}
+            />
 
-               <SummaryTile
-                  total={numberOfClients}
-                  description={'Clientes'}
-                  icon={<MdOutlineDashboard />}
-                  color='#8bc740'
-               />
+            <SummaryTile
+               total={numberOfClients}
+               description='Clientes'
+               icon={<GroupOutlined color='primary' sx={{ fontSize: 40 }} />}
+            />
 
-               <SummaryTile
-                  total={numberOfProducts}
-                  description={'Productos'}
-                  icon={<MdOutlineDashboard />}
-                  color='#fe8024'
-               />
+            <SummaryTile
+               total={numberOfProducts}
+               description='Productos'
+               icon={<CategoryOutlined color='warning' sx={{ fontSize: 40 }} />}
+            />
 
-               <SummaryTile
-                  total={productsWithNoInventory}
-                  description={'Productos sin existencias'}
-                  icon={<MdOutlineDashboard />}
-                  color='#3065d0'
-               />
+            <SummaryTile
+               total={productsWithNoInventory}
+               description='Sin existencias'
+               icon={<CancelPresentationOutlined color='error' sx={{ fontSize: 40 }} />}
+            />
 
-               <SummaryTile
-                  total={refreshIn}
-                  description={'Actualización en:'}
-                  icon={<MdOutlineDashboard />}
-                  color='#e83e8c'
-               />
-            </div>
-         </section>
+            <SummaryTile
+               total={refreshIn}
+               description='Actualización en:'
+               icon={<AccessTimeOutlined color='secondary' sx={{ fontSize: 40 }} />}
+            />
+         </Grid>
       </AdminLayout>
    );
 };

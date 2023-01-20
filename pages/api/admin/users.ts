@@ -32,13 +32,13 @@ const getUsers = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
 const updateUsers = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
    const { userId = '', role = '' } = req.body;
 
-   if (isValidObjectId(userId)) {
+   if (!isValidObjectId(userId)) {
       return res.status(400).json({ message: 'No existe usuario por ese ID' });
    }
 
    const validRoles = ['client', 'admin', 'super-user', 'seo'];
 
-   if (validRoles.includes(role)) {
+   if (!validRoles.includes(role)) {
       return res.status(400).json({ message: 'Rol no permitido: ' + validRoles.join(', ') });
    }
 
