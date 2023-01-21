@@ -47,8 +47,8 @@ export const SelectDate = () => {
    };
 
    const handleDateSelect = (date: Date): void => {
-      const selectedDate = date.toLocaleDateString('es-AR');
-      selectDeliveryDate(selectedDate);
+      // const selectedDate = date.toLocaleDateString('es-AR');
+      selectDeliveryDate(date);
    };
 
    return (

@@ -1,6 +1,6 @@
 import { FC, ReactNode } from 'react';
 
-import { SideMenu } from '../ui';
+import { SideAdminMenu } from '../ui';
 import { AdminNavbar } from '../navbar';
 
 import styles from '../../styles/AdminLayout.module.css';
@@ -31,7 +31,7 @@ export const AdminLayout: FC<Props> = ({ children, title, subTitle, icon }) => {
             <div className='fadeIn'>{children}</div>
          </main>
 
-         <SideMenu />
+         <SideAdminMenu />
       </>
    );
 };

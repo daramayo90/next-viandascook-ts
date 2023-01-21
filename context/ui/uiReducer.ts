@@ -3,8 +3,9 @@ import { UIState } from './';
 type UIActionType =
    | { type: '[UI] - Toggle Menu' }
    | { type: '[UI] - Toggle Products Menu' }
-   | { type: '[UI] - Select Delivery Date'; payload: string }
-   | { type: '[UI] - Load Delivery Date from Cookies'; payload: string };
+   | { type: '[UI] - Toggle Admin Menu' }
+   | { type: '[UI] - Select Delivery Date'; payload: Date }
+   | { type: '[UI] - Load Delivery Date from Cookies'; payload: Date };
 
 export const uiReducer = (state: UIState, action: UIActionType): UIState => {
    switch (action.type) {
@@ -18,6 +19,12 @@ export const uiReducer = (state: UIState, action: UIActionType): UIState => {
          return {
             ...state,
             isProductsMenuOpen: !state.isProductsMenuOpen,
+         };
+
+      case '[UI] - Toggle Admin Menu':
+         return {
+            ...state,
+            isAdminMenuOpen: !state.isAdminMenuOpen,
          };
 
       case '[UI] - Select Delivery Date':
