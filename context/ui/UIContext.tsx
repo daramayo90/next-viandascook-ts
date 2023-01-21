@@ -3,7 +3,7 @@ import { createContext } from 'react';
 interface ContextProps {
    isMenuOpen: boolean;
    isProductsMenuOpen: boolean;
-   deliveryDateSelected: string;
+   deliveryDateSelected: Date;
 
    toggleSideMenu: () => void;
    toggleProductsMenu: () => void;

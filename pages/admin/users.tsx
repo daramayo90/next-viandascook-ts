@@ -41,7 +41,7 @@ const UsersPage = () => {
 
    const columns: GridColDef[] = [
       { field: 'name', headerName: 'Nombre Completo', width: 300 },
-      { field: 'email', headerName: 'Correo', width: 250 },
+      { field: 'email', headerName: 'Correo', width: 300 },
       {
          field: 'role',
          headerName: 'Rol',

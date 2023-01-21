@@ -19,10 +19,6 @@ export const OrderCard: FC<Props> = ({ order }) => {
 
    const { _id, numberOfItems, total, deliveryDate, createdAt } = order;
 
-   const [date] = createdAt!.split('T');
-
-   const [year, month, day] = date.split('-');
-
    const navigate = () => {
       setSelected(true);
 
@@ -39,7 +35,9 @@ export const OrderCard: FC<Props> = ({ order }) => {
                   {`Pedido #${_id!.length > 12 ? _id!.substring(0, 12) + '...' : _id}`}
                </span>
 
-               <span className={styles.date}>{`${day}/${month}/${year}`}</span>
+               <span className={styles.date}>
+                  {new Date(createdAt!).toLocaleDateString('es-AR')}
+               </span>
             </div>
 
             <div className={styles.bottom}>
@@ -50,7 +48,7 @@ export const OrderCard: FC<Props> = ({ order }) => {
 
                <span>{currency.format(total)}</span>
 
-               <span>Fecha Entrega: {deliveryDate}</span>
+               <span>Fecha Entrega: {deliveryDate.toString()}</span>
             </div>
 
             <div className={styles.confirm}>

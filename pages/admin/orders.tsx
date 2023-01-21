@@ -1,6 +1,11 @@
 import { ConfirmationNumberOutlined } from '@mui/icons-material';
 import { Chip, Grid } from '@mui/material';
-import { DataGrid, GridColDef, GridRenderCellParams } from '@mui/x-data-grid';
+import {
+   DataGrid,
+   GridColDef,
+   GridRenderCellParams,
+   GridValueFormatterParams,
+} from '@mui/x-data-grid';
 import useSWR from 'swr';
 
 import { AdminLayout } from '../../components/layouts';
@@ -9,7 +14,19 @@ import { format } from '../../utils/currency';
 
 const columns: GridColDef[] = [
    { field: 'id', headerName: 'Pedido', width: 180 },
-   { field: 'createdAt', headerName: 'Fecha de creación', width: 180 },
+   {
+      field: 'createdAt',
+      headerName: 'Fecha de creación',
+      type: 'dateTime',
+      width: 180,
+      valueFormatter: ({ value }: GridValueFormatterParams<Date>) => {
+         if (value == null) {
+            return '';
+         }
+
+         return new Date(value).toLocaleString('es-AR');
+      },
+   },
    { field: 'name', headerName: 'Nombre Completo', width: 180 },
    { field: 'total', headerName: 'Total', width: 180 },
    {
@@ -30,13 +47,26 @@ const columns: GridColDef[] = [
       width: 180,
       renderCell: ({ row }: GridRenderCellParams) => {
          return (
-            <a href={`/admin/orders/${row.id}`} target='_blank' rel='noreferrer'>
+            <a href={`/admin/pedido/${row.id}`} target='_blank' rel='noreferrer'>
                Ver pedido
             </a>
          );
       },
    },
-   { field: 'deliveryDate', headerName: 'Fecha de entrega', width: 180 },
+   {
+      field: 'deliveryDate',
+      headerName: 'Fecha de entrega',
+      type: 'date',
+      editable: true,
+      width: 180,
+      valueFormatter: ({ value }: GridValueFormatterParams<Date>) => {
+         if (value == null) {
+            return '';
+         }
+
+         return new Date(value).toLocaleDateString('es-AR');
+      },
+   },
 ];
 
 const OrdersPage = () => {
@@ -51,18 +81,9 @@ const OrdersPage = () => {
       total: format(order.total),
       isPaid: order.isPaid,
       noProducts: order.numberOfItems,
-      deliveryDate: order.deliveryDate,
-      createdAt: formatDate(order.createdAt!),
+      deliveryDate: new Date(order.deliveryDate).toLocaleDateString('es-AR'),
+      createdAt: order.createdAt,
    }));
-
-   function formatDate(date: string) {
-      const [dateFormated, time] = date.split('T');
-
-      const [year, month, day] = dateFormated.split('-');
-      const [hour, minutes] = time.split(':');
-
-      return `${day}/${month}/${year} ${hour}:${minutes}hs`;
-   }
 
    return (
       <AdminLayout

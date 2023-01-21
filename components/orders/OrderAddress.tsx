@@ -54,7 +54,7 @@ export const OrderAddress: FC<Props> = ({ order }) => {
          <div className={styles.summary}>
             <AiOutlineCalendar className={styles.icon} />
 
-            <p className={styles.text}>Entrega el día {deliveryDate}</p>
+            <p className={styles.text}>Entrega el día {deliveryDate.toString()}</p>
          </div>
 
          <div className={styles.summary}>

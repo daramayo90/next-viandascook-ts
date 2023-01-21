@@ -3,7 +3,7 @@ import { unstable_getServerSession } from 'next-auth';
 import { authOptions } from '../api/auth/[...nextauth]';
 
 import { dbOrders } from '../../database';
-import { IOrder, IUser } from '../../interfaces';
+import { IOrder } from '../../interfaces';
 
 import { OrderLayout } from '../../components/layouts';
 

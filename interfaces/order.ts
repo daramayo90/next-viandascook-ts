@@ -7,7 +7,7 @@ export interface IOrder {
    shippingAddress: ShippingAddress;
    coupons?: ICoupon[];
 
-   deliveryDate: string;
+   deliveryDate: Date;
 
    numberOfItems: number;
    subTotal: number;
@@ -22,8 +22,8 @@ export interface IOrder {
 
    transactionId?: string;
 
-   createdAt?: string;
-   updatedAt?: string;
+   createdAt?: Date;
+   updatedAt?: Date;
 
    // paymentResult?: string;
 }

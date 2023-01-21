@@ -7,13 +7,13 @@ interface Props {
 export interface UIState {
    isMenuOpen: boolean;
    isProductsMenuOpen: boolean;
-   deliveryDateSelected: string;
+   deliveryDateSelected: Date;
 }
 
 const UI_INITIAL_STATE: UIState = {
    isMenuOpen: false,
    isProductsMenuOpen: false,
-   deliveryDateSelected: '',
+   deliveryDateSelected: new Date(),
 };
 
 export const UIProvider: FC<Props> = ({ children }) => {
