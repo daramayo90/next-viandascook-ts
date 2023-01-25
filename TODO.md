@@ -58,8 +58,6 @@
 
 ## ABM Cupones
 
-## Listado de pedidos recibidos con páginación y filtros
-
 ## ABM Puntos
 
 warn - No build cache found. Please configure build caching for faster rebuilds. Read more: https://nextjs.org/docs/messages/no-cache

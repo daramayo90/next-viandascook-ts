@@ -90,7 +90,7 @@ const OrdersPage = () => {
          title={'Pedidos'}
          subTitle={'Mantenimiento de pedidos'}
          icon={<ConfirmationNumberOutlined />}>
-         <Grid container className='fadeIn' sx={{ width: '90%', margin: 'auto', marginTop: 5 }}>
+         <Grid container className='fadeIn' sx={{ width: '90%', margin: 'auto', mt: 5 }}>
             <Grid item xs={12} sx={{ height: 650, width: '100%' }}>
                <DataGrid rows={rows} columns={columns} pageSize={100} rowsPerPageOptions={[100]} />
             </Grid>

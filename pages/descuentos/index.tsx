@@ -22,6 +22,10 @@ const discounts = [
       name: 'discount 4',
       img: '/offers/discount-4.jpg',
    },
+   {
+      name: 'discount 5',
+      img: '/offers/discount-5.jpg',
+   },
 ];
 
 const DiscountsPage: NextPage = () => {
