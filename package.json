@@ -18,6 +18,7 @@
     "@mui/x-date-pickers-pro": "^5.0.15",
     "@types/bcryptjs": "^2.4.2",
     "@types/jsonwebtoken": "^8.5.9",
+    "@types/mercadopago": "^1.5.8",
     "@types/nprogress": "^0.2.0",
     "@types/react-datepicker": "^4.4.2",
     "axios": "^0.27.2",
@@ -43,7 +44,6 @@
   },
   "devDependencies": {
     "@types/js-cookie": "^3.0.2",
-    "@types/mercadopago": "^1.5.8",
     "@types/node": "18.7.18",
     "@types/react": "18.0.20",
     "@types/react-dom": "18.0.6",

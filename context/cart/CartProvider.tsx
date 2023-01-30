@@ -65,6 +65,11 @@ export const CartProvider: FC<Props> = ({ children }) => {
       if (state.points !== 0) Cookies.set('points', JSON.stringify(state.points));
    }, [state.points]);
 
+   // Add Total to cookies
+   useEffect(() => {
+      if (state.total !== 0) Cookies.set('total', JSON.stringify(state.total));
+   }, [state.total]);
+
    // Calculation of: quantity / subTotal / discount / shipping fee / total
    useEffect(() => {
       const numberOfItems = state.cart.reduce((prev, curr) => curr.quantity + prev, 0);
@@ -133,6 +138,16 @@ export const CartProvider: FC<Props> = ({ children }) => {
          dispatch({ type: '[Cart] - Load Points from Cookies', payload: cookiePoints });
       } catch (error) {
          dispatch({ type: '[Cart] - Load Points from Cookies', payload: 0 });
+      }
+   }, []);
+
+   // Load Total from Cookies
+   useEffect(() => {
+      try {
+         const cookieTotal: number = Number(JSON.parse(Cookies.get('total')!)) || 0;
+         dispatch({ type: '[Cart] - Load Total from Cookies', payload: cookieTotal });
+      } catch (error) {
+         dispatch({ type: '[Cart] - Load Total from Cookies', payload: 0 });
       }
    }, []);
 

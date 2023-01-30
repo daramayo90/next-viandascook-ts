@@ -1,4 +1,5 @@
 import type { AppProps } from 'next/app';
+import Script from 'next/script';
 
 import { SessionProvider } from 'next-auth/react';
 import { CssBaseline, ThemeProvider } from '@mui/material';
@@ -30,7 +31,14 @@ function MyApp({ Component, pageProps }: AppProps) {
                   <CartProvider>
                      <OrdersProvider>
                         <ThemeProvider theme={lightTheme}>
-                           {loading ? <LoadingPage /> : <Component {...pageProps} />}
+                           {loading ? (
+                              <LoadingPage />
+                           ) : (
+                              <>
+                                 <Script src='https://sdk.mercadopago.com/js/v2' />
+                                 <Component {...pageProps} />
+                              </>
+                           )}
                         </ThemeProvider>
                      </OrdersProvider>
                   </CartProvider>

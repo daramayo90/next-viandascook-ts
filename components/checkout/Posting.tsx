@@ -35,6 +35,7 @@ export const Posting: FC<Props> = ({ user }) => {
 
       router.replace(`/muchas-gracias/${message}`);
    };
+
    return (
       <div className={styles.submit}>
          {errorMsg && <span className={styles.error}>{errorMsg}</span>}

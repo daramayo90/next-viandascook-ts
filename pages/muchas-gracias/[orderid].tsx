@@ -1,4 +1,4 @@
-import { GetServerSideProps, NextPage } from 'next';
+import { GetServerSideProps, NextPage, NextApiRequest } from 'next';
 import { unstable_getServerSession } from 'next-auth';
 import { authOptions } from '../api/auth/[...nextauth]';
 
@@ -46,10 +46,35 @@ const ThankYouPage: NextPage<Props> = ({ order }) => {
    );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ req, res, query }) => {
-   const { id = '' } = query;
+export const getServerSideProps: GetServerSideProps = async ({ req, res, params, query }) => {
+   const { id = '', status = '', preference_id = '' } = query;
+   const { orderid } = params as { orderid: string };
 
-   const session: any = await unstable_getServerSession(req, res, authOptions);
+   let order;
+   if (status === 'approved') {
+      order = await dbOrders.createOrder(preference_id as string);
+   } else {
+      order = await dbOrders.getOrderById(id.toString());
+   }
+
+   // if (!order) {
+   //    return {
+   //       redirect: {
+   //          destination: '/pedidos/historial',
+   //          permanent: false,
+   //       },
+   //    };
+   // }
+
+   orderid.replace('orderid', JSON.parse(JSON.stringify(order!._id!)));
+
+   return {
+      props: {
+         order,
+      },
+   };
+
+   // const session: any = await unstable_getServerSession(req, res, authOptions);
 
    // TODO: Probar esta redirección
    // if (!session) {
@@ -60,17 +85,6 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res, query }
    //       },
    //    };
    // }
-
-   const order = await dbOrders.getOrderById(id.toString());
-
-   if (!order) {
-      return {
-         redirect: {
-            destination: '/pedidos/historial',
-            permanent: false,
-         },
-      };
-   }
 
    // TODO: Ver el tema de la compra de un usuario guest, cómo se guarda cuando se loguea por primera vez luego de la compra?
    // La redirección debe ser a otra página
@@ -84,12 +98,6 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res, query }
    //        },
    //     };
    //  }
-
-   return {
-      props: {
-         order,
-      },
-   };
 };
 
 export default ThankYouPage;

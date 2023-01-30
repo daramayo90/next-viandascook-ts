@@ -23,8 +23,6 @@ class MyDocument extends Document {
                   href='https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;1,300&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap'
                   rel='stylesheet'
                />
-               {/* SDK MercadoPago.js */}
-               <script src='https://sdk.mercadopago.com/js/v2'></script>
             </Head>
             <body>
                <Main />
