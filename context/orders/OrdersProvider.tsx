@@ -112,7 +112,7 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
             await viandasApi.put('user/addCoupon', coupons[0]);
          }
 
-         removeCookies();
+         // removeCookies();
 
          return {
             hasError: false,
@@ -126,30 +126,10 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
       }
    };
 
-   const createMPOrder = async (): Promise<{ hasError: boolean; message: string }> => {
-      const { user } = ((await getSession()) as any) || '';
-
-      const shippingAddress = user ? user.shipping : state.shippingAddress;
-
-      // if (!shippingAddress) {
-      //    return {
-      //       hasError: true,
-      //       message: 'Indicanos una dirección de entrega antes de continuar',
-      //    };
-      // }
-
-      // if (!deliveryDateSelected) {
-      //    return {
-      //       hasError: true,
-      //       message: 'Por favor, seleccioná una fecha de entrega',
-      //    };
-      // }
-
-      const body: IOrder = {
+   const createMPOrder = async (orderId: string): Promise<{ id: string; error?: string }> => {
+      const body = {
          orderItems: cart.map((product) => product),
          coupons,
-         shippingAddress,
-         deliveryDate: deliveryDateSelected,
          numberOfItems,
          subTotal,
          discount,
@@ -157,26 +137,19 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
          couponDiscount,
          pointsDiscount,
          total,
-         isPaid: false,
+         orderId,
       };
 
       try {
          const { data } = await viandasApi.post('/mercadopago', body);
 
-         if (coupons.length !== 0) {
-            await viandasApi.put('user/addCoupon', coupons[0]);
-         }
-
-         // removeCookies();
-
          return {
-            hasError: false,
-            message: data.id,
+            id: data.id,
          };
       } catch (error: any) {
          return {
-            hasError: true,
-            message: error.response.data.message,
+            id: '',
+            error: error.response.data.message,
          };
       }
    };

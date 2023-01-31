@@ -45,22 +45,23 @@ const checkoutPro = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
       shipping,
       total,
       shippingAddress,
-   } = req.body as IOrder;
+      orderId,
+   } = req.body;
 
-   const { user }: any = (await getSession({ req })) || '';
+   // const { user }: any = (await getSession({ req })) || '';
 
-   const id = user ? user._id : null;
+   // const id = user ? user._id : null;
 
-   const dbUser = await User.findById(id);
+   // const dbUser = await User.findById(id);
 
-   const orderUser = {
-      _id: id || null,
-      name: dbUser?.name || req.cookies.firstName,
-      lastName: dbUser?.lastName || req.cookies.lastName,
-      email: dbUser?.email || req.cookies.email,
-      phone: dbUser?.phone || req.cookies.phone,
-      dni: dbUser?.dni || req.cookies.dni,
-   };
+   // const orderUser = {
+   //    _id: id || null,
+   //    name: dbUser?.name || req.cookies.firstName,
+   //    lastName: dbUser?.lastName || req.cookies.lastName,
+   //    email: dbUser?.email || req.cookies.email,
+   //    phone: dbUser?.phone || req.cookies.phone,
+   //    dni: dbUser?.dni || req.cookies.dni,
+   // };
 
    const mpItems = (orderItems as ICartProduct[]).map(
       ({
@@ -81,35 +82,35 @@ const checkoutPro = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
    );
 
    mercadopago.configure({
-      access_token: 'TEST-2684575909011712-092220-081c30fc69e0e00987f2b1f913057ebf-147648560',
+      access_token: 'APP_USR-2432288483233489-013111-8494dd3016b8acb5eff1b830a0ec34fb-1299435285',
    });
 
    const preference: CreatePreferencePayload = {
       items: mpItems,
-      payer: {
-         name: orderUser.name,
-         surname: orderUser.lastName,
-         email: orderUser.email,
-         // phone: {
-         //    area_code: '11',
-         //    number: '4444-4444',
-         // },
-         identification: {
-            type: 'DNI',
-            number: orderUser.dni!,
-         },
-      },
-      shipments: {
-         receiver_address: {
-            zip_code: shippingAddress.zipcode,
-            street_name: shippingAddress.address,
-            apartment: shippingAddress.address2,
-            city_name: shippingAddress.city,
-            state_name: 'null',
-         },
-      },
+      // payer: {
+      //    name: orderUser.name,
+      //    surname: orderUser.lastName,
+      //    email: orderUser.email,
+      //    phone: {
+      //       area_code: '11',
+      //       number: '4444-4444',
+      //    },
+      //    identification: {
+      //       type: 'DNI',
+      //       number: orderUser.dni!,
+      //    },
+      // },
+      // shipments: {
+      //    receiver_address: {
+      //       zip_code: shippingAddress.zipcode,
+      //       street_name: shippingAddress.address,
+      //       apartment: shippingAddress.address2,
+      //       city_name: shippingAddress.city,
+      //       state_name: 'null',
+      //    },
+      // },
       back_urls: {
-         success: 'http://localhost:3000/muchas-gracias/orderid',
+         success: `http://localhost:3000/muchas-gracias/${orderId}`,
          failure: 'http://localhost:3000/api/mercadopago/feedback',
          pending: 'http://localhost:3000/api/mercadopago/feedback',
       },

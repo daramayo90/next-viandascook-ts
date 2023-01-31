@@ -50,24 +50,28 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res, params,
    const { id = '', status = '', preference_id = '' } = query;
    const { orderid } = params as { orderid: string };
 
-   let order;
-   if (status === 'approved') {
-      order = await dbOrders.createOrder(preference_id as string);
-   } else {
-      order = await dbOrders.getOrderById(id.toString());
-   }
-
-   // if (!order) {
-   //    return {
-   //       redirect: {
-   //          destination: '/pedidos/historial',
-   //          permanent: false,
-   //       },
-   //    };
+   // let order;
+   // if (status === 'approved') {
+   //    order = await dbOrders.createOrder(preference_id as string);
+   // } else {
+   //    order = await dbOrders.getOrderById(id.toString());
    // }
 
-   orderid.replace('orderid', JSON.parse(JSON.stringify(order!._id!)));
+   // orderid.replace('orderid', JSON.parse(JSON.stringify(order!._id!)));
 
+   const order = await dbOrders.getOrderById(orderid.toString());
+
+   if (!order) {
+      return {
+         redirect: {
+            destination: '/pedidos/historial',
+            permanent: false,
+         },
+      };
+   }
+
+   if (status === 'approved') {
+   }
    return {
       props: {
          order,

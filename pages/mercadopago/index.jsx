@@ -39,7 +39,7 @@ const items = [
 ];
 
 const addCheckout = () => {
-   mp = new MercadoPago('TEST-1278c5e2-078c-436a-9cb2-ee8488fdb947', {
+   mp = new MercadoPago('APP_USR-e4c644d0-351f-4cb0-ab82-c409d0705cd5', {
       locale: 'es-AR',
    });
 };
@@ -57,24 +57,21 @@ export default function Product() {
    }, []);
 
    const getPreferenceId = async () => {
-      const { hasError, message } = await createMPOrder();
+      // const { hasError, message } = await createMPOrder();
 
-      if (hasError) {
-         console.log('ERROR!!', message);
-         return;
-      }
-
-      console.log('MENSAJEEEE', message);
-
-      createCheckoutButton(message);
-
-      // try {
-      //    const { data } = await viandasApi.post('/mercadopago', { items });
-      //    const { id } = data;
-      //    createCheckoutButton(id);
-      // } catch (error) {
-      //    console.log('No se pudo enviar la data al backend');
+      // if (hasError) {
+      //    return;
       // }
+
+      // createCheckoutButton(message);
+
+      try {
+         const { data } = await viandasApi.post('/mercadopago');
+         const { id } = data;
+         createCheckoutButton(id);
+      } catch (error) {
+         console.log('No se pudo enviar la data al backend');
+      }
    };
 
    // Create preference when click on checkout button
