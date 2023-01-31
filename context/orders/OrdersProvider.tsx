@@ -129,14 +129,11 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
    const createMPOrder = async (orderId: string): Promise<{ id: string; error?: string }> => {
       const body = {
          orderItems: cart.map((product) => product),
-         coupons,
          numberOfItems,
-         subTotal,
          discount,
          shipping,
          couponDiscount,
          pointsDiscount,
-         total,
          orderId,
       };
 

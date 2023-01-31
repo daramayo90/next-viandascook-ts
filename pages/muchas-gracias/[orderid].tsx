@@ -1,15 +1,14 @@
-import { GetServerSideProps, NextPage, NextApiRequest } from 'next';
-import { unstable_getServerSession } from 'next-auth';
-import { authOptions } from '../api/auth/[...nextauth]';
+import { GetServerSideProps, NextPage } from 'next';
 
 import { dbOrders } from '../../database';
+
 import { IOrder } from '../../interfaces';
 
 import { OrderLayout } from '../../components/layouts';
-
-import styles from '../../styles/Order.module.css';
 import { OrderProducts, OrderCheckout, OrderAddress } from '../../components/orders';
 import { Button } from '../../components/ui';
+
+import styles from '../../styles/Order.module.css';
 
 interface Props {
    order: IOrder;
@@ -46,18 +45,9 @@ const ThankYouPage: NextPage<Props> = ({ order }) => {
    );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ req, res, params, query }) => {
-   const { id = '', status = '', preference_id = '' } = query;
+export const getServerSideProps: GetServerSideProps = async ({ params, query }) => {
+   const { status = '' } = query;
    const { orderid } = params as { orderid: string };
-
-   // let order;
-   // if (status === 'approved') {
-   //    order = await dbOrders.createOrder(preference_id as string);
-   // } else {
-   //    order = await dbOrders.getOrderById(id.toString());
-   // }
-
-   // orderid.replace('orderid', JSON.parse(JSON.stringify(order!._id!)));
 
    const order = await dbOrders.getOrderById(orderid.toString());
 
@@ -70,8 +60,11 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res, params,
       };
    }
 
+   // It means the payment method is Mercado Pago
    if (status === 'approved') {
+      await dbOrders.payMpOrder(order._id!);
    }
+
    return {
       props: {
          order,

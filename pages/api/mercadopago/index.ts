@@ -6,6 +6,7 @@ import { IOrder } from '../../../interfaces';
 import { getSession } from 'next-auth/react';
 import { User } from '../../../models';
 import { ICartProduct } from '../../../interfaces/cart';
+import { IProduct } from '../../../interfaces/products';
 
 type Data = { message: string } | { id: string };
 
@@ -37,31 +38,38 @@ const checkoutPro = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
 
    // const { items } = req.body;
 
+   mercadopago.configure({
+      access_token: 'APP_USR-2432288483233489-013111-8494dd3016b8acb5eff1b830a0ec34fb-1299435285',
+   });
+
    const {
       orderItems,
+      numberOfItems,
       discount = 0,
       pointsDiscount = 0,
       couponDiscount = 0,
       shipping,
-      total,
-      shippingAddress,
       orderId,
    } = req.body;
 
-   // const { user }: any = (await getSession({ req })) || '';
+   const { user }: any = (await getSession({ req })) || '';
 
-   // const id = user ? user._id : null;
+   const id = user ? user._id : null;
 
-   // const dbUser = await User.findById(id);
+   const dbUser = await User.findById(id);
 
-   // const orderUser = {
-   //    _id: id || null,
-   //    name: dbUser?.name || req.cookies.firstName,
-   //    lastName: dbUser?.lastName || req.cookies.lastName,
-   //    email: dbUser?.email || req.cookies.email,
-   //    phone: dbUser?.phone || req.cookies.phone,
-   //    dni: dbUser?.dni || req.cookies.dni,
-   // };
+   const orderUser = {
+      _id: id || null,
+      name: dbUser?.name || req.cookies.firstName,
+      lastName: dbUser?.lastName || req.cookies.lastName,
+      email: dbUser?.email || req.cookies.email,
+      phone: dbUser?.phone || req.cookies.phone,
+      dni: dbUser?.dni || req.cookies.dni,
+   };
+
+   orderItems.forEach((p: IProduct) => {
+      return (p.price = p.price - (discount + pointsDiscount + couponDiscount) / numberOfItems);
+   });
 
    const mpItems = (orderItems as ICartProduct[]).map(
       ({
@@ -81,16 +89,21 @@ const checkoutPro = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
       }),
    );
 
-   mercadopago.configure({
-      access_token: 'APP_USR-2432288483233489-013111-8494dd3016b8acb5eff1b830a0ec34fb-1299435285',
-   });
-
    const preference: CreatePreferencePayload = {
       items: mpItems,
-      // payer: {
-      //    name: orderUser.name,
-      //    surname: orderUser.lastName,
-      //    email: orderUser.email,
+      payer: {
+         name: orderUser.name,
+         surname: orderUser.lastName,
+         email: orderUser.email,
+         identification: {
+            type: 'DNI',
+            number: orderUser.dni!,
+         },
+      },
+      shipments: {
+         cost: shipping,
+         // free_shipping: shipping === 0 ? true : false,
+      },
       //    phone: {
       //       area_code: '11',
       //       number: '4444-4444',

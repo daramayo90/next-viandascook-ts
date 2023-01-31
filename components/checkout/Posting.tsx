@@ -81,6 +81,7 @@ export const Posting: FC<Props> = ({ user }) => {
             container: '.cho-container', // Class name where the payment button will be displayed
             label: 'Pagar', // Change the payment button text (optional)
          },
+         autoOpen: true,
       });
    };
 
