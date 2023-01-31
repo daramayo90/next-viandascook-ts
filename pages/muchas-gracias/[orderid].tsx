@@ -9,12 +9,20 @@ import { OrderProducts, OrderCheckout, OrderAddress } from '../../components/ord
 import { Button } from '../../components/ui';
 
 import styles from '../../styles/Order.module.css';
+import { useContext, useEffect } from 'react';
+import { CartContext } from '../../context';
 
 interface Props {
    order: IOrder;
 }
 
 const ThankYouPage: NextPage<Props> = ({ order }) => {
+   const { orderComplete } = useContext(CartContext);
+
+   useEffect(() => {
+      orderComplete();
+   }, []);
+
    return (
       <OrderLayout title='¡Muchas Gracias!'>
          <section className={styles.order}>

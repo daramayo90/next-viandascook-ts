@@ -12,6 +12,11 @@ interface Props {
    user?: IUser;
 }
 
+interface Option {
+   value: string;
+   label: string;
+}
+
 declare global {
    interface Window {
       MercadoPago: any;
@@ -19,6 +24,12 @@ declare global {
 }
 
 let mp: any;
+
+const options: Option[] = [
+   { value: 'efetivo', label: 'Efectivo' },
+   { value: 'transferencia', label: 'Transferencia Bancaria' },
+   { value: 'mercadopago', label: 'Mercado Pago' },
+];
 
 const addCheckout = () => {
    mp = new window.MercadoPago('APP_USR-e4c644d0-351f-4cb0-ab82-c409d0705cd5', {
@@ -30,10 +41,11 @@ export const Posting: FC<Props> = ({ user }) => {
    const router = useRouter();
 
    const { createOrder, createMPOrder } = useContext(OrdersContext);
-   const { orderComplete } = useContext(CartContext);
 
    const [isPosting, setIsPosting] = useState(false);
    const [errorMsg, setErrorMsg] = useState('');
+
+   const [paymentMethod, setPaymentMethod] = useState<string>(options[0].value);
 
    useEffect(() => {
       // con el preferenceId en mano, inyectamos el script de mercadoPago
@@ -54,6 +66,11 @@ export const Posting: FC<Props> = ({ user }) => {
          return;
       }
 
+      if (paymentMethod !== 'mercadopago') {
+         router.replace(`/muchas-gracias/${message}`);
+         return;
+      }
+
       const { id, error } = await createMPOrder(message);
 
       if (error) {
@@ -63,16 +80,11 @@ export const Posting: FC<Props> = ({ user }) => {
       }
 
       createCheckoutButton(id);
-
-      // orderComplete();
-
-      // router.replace(`/muchas-gracias/${message}`);
    };
 
    // Create preference when click on checkout button
    const createCheckoutButton = (id: string) => {
       // Initialize the checkout
-      console.log('PREFERENCIAAAA', id);
       mp.checkout({
          preference: {
             id: id,
@@ -85,9 +97,29 @@ export const Posting: FC<Props> = ({ user }) => {
       });
    };
 
+   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      setPaymentMethod(event.target.value);
+   };
+
    return (
       <div className={styles.submit}>
          {errorMsg && <span className={styles.error}>{errorMsg}</span>}
+
+         <form>
+            {options.map((option) => (
+               <div key={option.value}>
+                  <input
+                     type='radio'
+                     id={option.value}
+                     name='options'
+                     value={option.value}
+                     checked={paymentMethod === option.value}
+                     onChange={handleChange}
+                  />
+                  <label htmlFor={option.value}>{option.label}</label>
+               </div>
+            ))}
+         </form>
 
          <SubmitButton content='Finalizar' isClicked={isPosting} onClick={onCreateOrder} />
 

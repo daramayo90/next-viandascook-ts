@@ -112,7 +112,7 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
             await viandasApi.put('user/addCoupon', coupons[0]);
          }
 
-         // removeCookies();
+         removeCookies();
 
          return {
             hasError: false,
