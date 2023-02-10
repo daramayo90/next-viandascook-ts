@@ -1,0 +1,80 @@
+HOME:
+- Ver mail de Onlera
+- Cambiar imágen de platos circulares (para que no queden arriba de otros platos)
+- Cambiar imágen de fondo
+- Agregar botón de wp
+- Ver sidebar que el logo cambia de color en desktop
+- Separar el botón de ¡Quiero! del banner
+- Alinear la burger y el título con como está en /menu
+
+NAVBAR:
+- Cambiar la tipografía de los títulos para que se asemeje a la de Viandas Cook
+
+/MENU:
+- Ver la línea inferior en burger del navbar
+- Agregar info nutricional después de kcal (proteína, carbo..)
+- En Desktop agregar barra del "ver carrito" al momento de agregar un plato al carrito
+- En Desktop desaparecer la barra del "ver carrito" al momento de sacar todos los platos del carrito
+- En Mobile poner la cantidad de platos agregados al carrito en la barra inferior
+
+
+/DESCUENTOS:
+- Cambiar el grid en desktop
+- Agregar los descuentos actuales que pasó Onlera
+
+/PLATO:
+- Ver con los de mkt cómo puedo mejorar el plato a nivel desktop para que no quede tan vacío
+
+/CARRITO:
+- Ver margins de las cantidades en mobile
+- Destacar el motivo por el cual el envío es gratis (14 platos o más)
+
+/CARRITO/EMPTY:
+- Ver una imagen .png
+
+/CHECKOUT:
+- Ver el margin de los platos seleccionados en desktop
+- Agregar estilo a los métodos de pago
+
+/CHECKOUT/PROMOCIONES:
+- Ver errores, que aparezcan en donde tienen que estar
+- Indicar que solo se puede agregar un cupón por compra
+
+/CHECKOUT/CANJEAR-PUNTOS:
+- Ver los puntos, redondearlos
+
+/MUCHAS-GRACIAS:
+- Ver la fecha de "Entrega el día.."
+- Ver el layout en desktop
+
+/PEDIDOS/HISTORIAL
+- Ordenar del más reciente al más viejo
+- Ver la fecha de "Fecha Entrega"
+
+GENERAL:
+- Cambiar el ID de los pedidos
+- Agregar en la orden el tipo de compra (efectivo, trans, mp)
+- Ver el envío de mail automático al finalizar el pedido (mailchimp?)
+- Conexión con Mailchimp
+- Conexión con Google Sheets
+- Crear páginas (Ver links del footer & sidebar):
+	- 404
+	- /como-funciona (ver Cook Unity)
+	- /nosotros
+	- /preguntas
+	- /loyalty
+
+ERRORES:
+- No funciona la creación de cuentas
+- El login después de hacer click en "crar cuenta" te lleva a cualquier lado
+- No funciona el OAuth
+
+
+Mercado Pago:
+Comprador
+user: TEST_USER_1299430354
+pass: m35751nwWI
+
+Vendedor
+user: TEST_USER_1299435285
+pass: MhHogBxOEz

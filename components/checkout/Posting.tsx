@@ -95,6 +95,9 @@ export const Posting: FC<Props> = ({ user }) => {
          },
          autoOpen: true,
       });
+
+      setIsPosting(false);
+      setErrorMsg('');
    };
 
    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {

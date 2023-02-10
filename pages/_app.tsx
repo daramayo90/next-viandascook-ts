@@ -4,6 +4,8 @@ import Script from 'next/script';
 import { SessionProvider } from 'next-auth/react';
 import { CssBaseline, ThemeProvider } from '@mui/material';
 
+import { FloatingWhatsApp } from 'react-floating-whatsapp';
+
 import { SWRConfig } from 'swr';
 import { useLoader } from '../hooks';
 
@@ -35,6 +37,17 @@ function MyApp({ Component, pageProps }: AppProps) {
                               <LoadingPage />
                            ) : (
                               <>
+                                 <FloatingWhatsApp
+                                    phoneNumber='+5491136527688'
+                                    accountName='Mari'
+                                    allowEsc
+                                    allowClickAway
+                                    avatar='/profile/avatar.jpg'
+                                    chatMessage='Hola 👋, te saluda Mari de Viandas Cook.. ¿cómo puedo ayudarte?'
+                                    statusMessage='Atención de 09 a 19hs'
+                                    placeholder='Escribe tu mensaje..'
+                                    darkMode
+                                 />
                                  <Script src='https://sdk.mercadopago.com/js/v2' />
                                  <Component {...pageProps} />
                               </>

@@ -52,6 +52,11 @@ export const SideMenu = () => {
                   <span>Nosotros</span>
                   <MdOutlineKeyboardArrowRight className={styles.iconRight} />
                </li>
+               <li onClick={() => navigateTo('/como-funciona')}>
+                  <AiOutlineQuestionCircle className={styles.icon} />
+                  <span>Cómo Funciona?</span>
+                  <MdOutlineKeyboardArrowRight className={styles.iconRight} />
+               </li>
                <li onClick={() => navigateTo('/loyalty')}>
                   <TbDiscount2 className={styles.icon} />
                   <span>Sumá Puntos</span>

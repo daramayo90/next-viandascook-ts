@@ -15,7 +15,7 @@ export const CommonQuestions = () => {
 
          <div className={styles.button}>
             <Button
-               href='/'
+               href='/preguntas'
                content='Ver Más'
                color='var(--black)'
                border='2px solid var(--black)'

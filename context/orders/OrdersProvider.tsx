@@ -4,7 +4,7 @@ import { getSession } from 'next-auth/react';
 import Cookies from 'js-cookie';
 
 import { OrdersContext, ordersReducer } from './';
-import { removeCookies } from '../../utils';
+// import { removeCookies } from '../../utils';
 
 import { viandasApi } from '../../axiosApi';
 import { ShippingAddress, ICity, IOrder } from '../../interfaces';
@@ -83,7 +83,10 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
          };
       }
 
-      if (!deliveryDateSelected) {
+      if (
+         new Date().getDate() === deliveryDateSelected.getDate() &&
+         new Date().getMonth() === deliveryDateSelected.getMonth()
+      ) {
          return {
             hasError: true,
             message: 'Por favor, seleccioná una fecha de entrega',
@@ -112,7 +115,7 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
             await viandasApi.put('user/addCoupon', coupons[0]);
          }
 
-         removeCookies();
+         // removeCookies();
 
          return {
             hasError: false,
