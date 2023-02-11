@@ -51,7 +51,7 @@
 .banner > .container > .brand > .button {
    width: 60%;
    max-width: 210px;
-   margin: 1.5rem auto;
+   margin: 4.5rem auto 0 auto;
 }
 
 .banner > .container > .bannerDishes {

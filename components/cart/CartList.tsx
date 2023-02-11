@@ -39,8 +39,8 @@ export const CartList: FC<Props> = ({ items, editable = false }) => {
                      <Image
                         src={`/products/${product.image}`}
                         alt={product.name}
-                        width={60}
-                        height={80}
+                        width={320}
+                        height={250}
                         priority={true}
                      />
                   </div>

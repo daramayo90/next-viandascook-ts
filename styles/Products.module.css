@@ -71,6 +71,10 @@
    margin: 0 auto;
 }
 
+.products > .goToCartBtn {
+   display: none;
+}
+
 @media (min-width: 720px) {
    .products {
       margin: 0 auto;
@@ -91,5 +95,25 @@
 
    .products > .searchContainer > .icon {
       left: 3.5rem;
+   }
+
+   .products > .goToCartBtn {
+      display: block;
+      position: fixed;
+      bottom: -5%;
+      left: 50%;
+      width: 260px;
+      height: 45px;
+      transform: translate(-50%, 0);
+      animation: animate-div-move 1s ease-in-out forwards;
+   }
+
+   @keyframes animate-div-move {
+      from {
+         bottom: -5%;
+      }
+      to {
+         bottom: calc(3%);
+      }
    }
 }

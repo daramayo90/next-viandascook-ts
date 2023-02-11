@@ -30,8 +30,7 @@
    display: flex;
    flex-direction: column;
    justify-content: center;
-   cursor: pointer;
-   width: 25%;
+   width: 30%;
 }
 
 .cartList > .product > .details > .nextImage img {
@@ -66,21 +65,30 @@
 
 .cartList > .product > .details > .info > .price > .cartQuantity {
    position: absolute;
-   left: 130px;
+   left: 110px;
    bottom: 0;
 }
 
 .cartList > .product > .details > .info > .price > .quantity {
    position: absolute;
-   left: 130px;
+   left: 110px;
 }
 
 @media (min-width: 720px) {
-   /* .cartList {
-      width: 45%;
-   } */
-
    .cartList > .product {
       margin-top: 0.9rem;
+   }
+
+   .cartList > .product > .details > .info > .price > .cartQuantity {
+      left: 140px;
+   }
+
+   .cartList > .product > .details > .info > .price > .quantity {
+      position: absolute;
+      left: 140px;
+   }
+
+   .cartList > .product > .details > .nextImage {
+      width: 25%;
    }
 }

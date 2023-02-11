@@ -3,6 +3,8 @@ import { IOrder } from '../interfaces';
 
 const orderSchema = new Schema(
    {
+      _id: Number,
+
       user: {
          _id: { type: Schema.Types.ObjectId, ref: 'User' },
          name: { type: String, ref: 'User', required: true },
@@ -53,6 +55,7 @@ const orderSchema = new Schema(
       pointsDiscount: { type: Number },
       total: { type: Number, required: true },
 
+      paymentMethod: { type: String, required: true },
       isPaid: { type: Boolean, required: true, default: false },
       paidAt: { type: String },
 

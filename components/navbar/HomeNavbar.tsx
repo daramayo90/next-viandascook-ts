@@ -4,8 +4,6 @@ import Image from 'next/image';
 
 import { UIContext } from '../../context';
 
-import { HiOutlineMenu } from 'react-icons/hi';
-
 import styles from '../../styles/Navbar.module.css';
 
 export const HomeNavbar = () => {
@@ -26,22 +24,32 @@ export const HomeNavbar = () => {
                         priority={true}
                      />
                   ) : (
-                     <Image
-                        src='/logo/viandascook-logo-primary.png'
-                        alt='viandascook-logo'
-                        width={100}
-                        height={36}
-                        layout='responsive'
-                        priority={true}
-                     />
+                     <>
+                        <div className={styles.openInMobile}>
+                           <Image
+                              src='/logo/viandascook-logo-primary.png'
+                              alt='viandascook-logo'
+                              width={100}
+                              height={36}
+                              layout='responsive'
+                              priority={true}
+                           />
+                        </div>
+                        <div className={styles.openInDesktop}>
+                           <Image
+                              src='/logo/viandascook-logo.png'
+                              alt='viandascook-logo'
+                              width={100}
+                              height={25}
+                              layout='responsive'
+                              priority={true}
+                           />
+                        </div>
+                     </>
                   )}
                </div>
             </Link>
          </div>
-
-         {/* <div className={styles.menu} onClick={toggleSideMenu}>
-            <HiOutlineMenu className={styles.menuIcon} />
-         </div> */}
 
          <div className={styles.hamburgerMenu} onClick={toggleSideMenu}>
             <button className={isMenuOpen ? `${styles.btn} ${styles.open}` : `${styles.btn}`}>

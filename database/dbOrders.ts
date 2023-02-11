@@ -1,14 +1,14 @@
-import { isValidObjectId } from 'mongoose';
+// import { isValidObjectId } from 'mongoose';
 import { IOrder } from '../interfaces';
 import { Order } from '../models';
 import { db } from './';
 
 export const getOrderById = async (id: string): Promise<IOrder | null> => {
-   if (!isValidObjectId(id)) return null;
+   // if (!isValidObjectId(id)) return null;
 
    await db.connect();
 
-   const order = await Order.findById(id).lean();
+   const order = await Order.findById(Number(id)).lean();
 
    await db.disconnect();
 
@@ -20,15 +20,15 @@ export const getOrderById = async (id: string): Promise<IOrder | null> => {
 export const getOrdersByUser = async (email: string): Promise<IOrder[]> => {
    await db.connect();
 
-   const orders = await Order.find({ 'user.email': email }).lean();
+   const orders = await Order.find({ 'user.email': email }).sort({ createdAt: -1 }).lean();
 
    await db.disconnect();
 
    return JSON.parse(JSON.stringify(orders));
 };
 
-export const payMpOrder = async (orderId: string): Promise<IOrder | null> => {
-   if (!isValidObjectId(orderId)) return null;
+export const payMpOrder = async (orderId: number): Promise<IOrder | null> => {
+   // if (!isValidObjectId(orderId)) return null;
 
    await db.connect();
 

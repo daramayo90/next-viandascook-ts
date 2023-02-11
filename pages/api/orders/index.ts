@@ -63,7 +63,9 @@ const createOrder = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
          dni: dbUser?.dni || req.cookies.dni,
       };
 
-      const newOrder = new Order({ ...req.body, isPaid: false, user: orderUser });
+      const orderId = await customIdGenerator();
+
+      const newOrder = new Order({ ...req.body, _id: orderId, isPaid: false, user: orderUser });
 
       newOrder.total = Math.round(newOrder.total * 100) / 100;
 
@@ -73,8 +75,8 @@ const createOrder = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
          { email: dbUser?.email },
          {
             $set: {
-               points: dbUser?.points! + total,
-               redeemPoints: dbUser?.redeemPoints! + total,
+               points: dbUser?.points! + Math.round(total),
+               redeemPoints: dbUser?.redeemPoints! + Math.round(total),
             },
          },
       );
@@ -89,4 +91,16 @@ const createOrder = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
 
       res.status(400).json({ message: 'Existe un error con el pago, contactar al Admin' });
    }
+};
+
+const customIdGenerator = async (): Promise<number> => {
+   await db.connect();
+
+   const lastOrder = await Order.findOne().sort({ createdAt: -1 }).limit(1).lean();
+
+   await db.disconnect();
+
+   const newOrderId = lastOrder!._id + Math.floor(Math.random() * 5) + 1;
+
+   return newOrderId;
 };

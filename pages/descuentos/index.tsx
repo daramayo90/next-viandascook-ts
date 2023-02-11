@@ -7,24 +7,24 @@ import styles from '../../styles/Discounts.module.css';
 
 const discounts = [
    {
-      name: 'discount 1',
-      img: '/offers/discount-1.jpg',
+      name: 'Descuento llevando 14 viandas o más',
+      img: '/discounts/offer-14-viandas.png',
    },
    {
-      name: 'discount 2',
-      img: '/offers/discount-2.jpg',
+      name: 'Descuento llevando 28 viandas o más',
+      img: '/discounts/offer-28-viandas.png',
    },
    {
-      name: 'discount 3',
-      img: '/offers/discount-3.jpg',
+      name: 'Descuento llevando 56 viandas o más',
+      img: '/discounts/offer-56-viandas.png',
    },
    {
-      name: 'discount 4',
-      img: '/offers/discount-4.jpg',
+      name: 'Descuento Cyber Monday',
+      img: '/discounts/offer-cyber-monday.png',
    },
    {
-      name: 'discount 5',
-      img: '/offers/discount-5.jpg',
+      name: 'Descuento Black Friday',
+      img: '/discounts/offer-black-friday.png',
    },
 ];
 
@@ -34,7 +34,7 @@ const DiscountsPage: NextPage = () => {
          <section className={styles.discounts}>
             {discounts.map(({ name, img }) => (
                <div key={name} className={styles.nextImage}>
-                  <Image src={img} alt={name} width={300} height={150} priority={true} />
+                  <Image src={img} alt={name} width={420} height={220} priority={true} />
                </div>
             ))}
          </section>

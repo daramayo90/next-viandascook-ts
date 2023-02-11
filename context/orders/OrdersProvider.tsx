@@ -9,6 +9,7 @@ import { OrdersContext, ordersReducer } from './';
 import { viandasApi } from '../../axiosApi';
 import { ShippingAddress, ICity, IOrder } from '../../interfaces';
 import { CartContext, UIContext } from '../';
+import { IPaymentMethods } from '../../interfaces/order';
 
 interface Props {
    children: ReactNode;
@@ -71,7 +72,9 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
       dispatch({ type: '[Orders] - Add Shipping Address', payload: address });
    };
 
-   const createOrder = async (): Promise<{ hasError: boolean; message: string }> => {
+   const createOrder = async (
+      paymentMethod: IPaymentMethods,
+   ): Promise<{ hasError: boolean; message: string }> => {
       const { user } = ((await getSession()) as any) || '';
 
       const shippingAddress = user ? user.shipping : state.shippingAddress;
@@ -83,15 +86,19 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
          };
       }
 
+      console.log('hola');
       if (
          new Date().getDate() === deliveryDateSelected.getDate() &&
          new Date().getMonth() === deliveryDateSelected.getMonth()
       ) {
+         console.log('entre?');
          return {
             hasError: true,
             message: 'Por favor, seleccioná una fecha de entrega',
          };
       }
+
+      console.log('aver', deliveryDateSelected);
 
       const body: IOrder = {
          orderItems: cart.map((product) => product),
@@ -105,6 +112,7 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
          couponDiscount,
          pointsDiscount,
          total,
+         paymentMethod,
          isPaid: false,
       };
 
@@ -119,7 +127,7 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
 
          return {
             hasError: false,
-            message: data._id!,
+            message: data._id!.toString(),
          };
       } catch (error: any) {
          return {

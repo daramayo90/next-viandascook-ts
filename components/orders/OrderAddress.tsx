@@ -19,6 +19,9 @@ export const OrderAddress: FC<Props> = ({ order }) => {
 
    const { deliveryDate } = order;
 
+   const [year, month, dayToSplit] = deliveryDate.toString().split('-');
+   const [day] = dayToSplit.split('T');
+
    return (
       <section className={styles.address}>
          <h2 className={styles.title}>Detalles de la entrega</h2>
@@ -54,7 +57,7 @@ export const OrderAddress: FC<Props> = ({ order }) => {
          <div className={styles.summary}>
             <AiOutlineCalendar className={styles.icon} />
 
-            <p className={styles.text}>Entrega el día {deliveryDate.toString()}</p>
+            <p className={styles.text}>Entrega el día {`${day}/${month}/${year}`}</p>
          </div>
 
          <div className={styles.summary}>

@@ -55,7 +55,9 @@ export const ProductCard: FC<Props> = ({ product }) => {
                </div>
 
                <div className={styles.tags}>
-                  <span>{info.Calorías}</span>
+                  <span>{info.Calorías} / </span>
+                  <span>{info.Proteína} prot / </span>
+                  <span>{info.Carbohidratos} carbo</span>
                </div>
 
                <div className={styles.price}>

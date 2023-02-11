@@ -41,6 +41,14 @@
    z-index: 200;
 }
 
+.navbar > .logo > .nextImage > .openInMobile {
+   display: block;
+}
+
+.navbar > .logo > .nextImage > .openInDesktop {
+   display: none;
+}
+
 .navbar > .hamburgerMenu {
    margin-right: 15px;
    cursor: pointer;
@@ -74,7 +82,7 @@
 }
 
 .navbar > .hamburgerMenu > .btn > span:nth-child(3) {
-   top: 14px;
+   top: 13.5px;
 }
 
 .navbar > .hamburgerMenu > .open > span:first-child {
@@ -109,6 +117,14 @@
       width: 100%;
       min-width: 220px;
       max-width: 380px;
+   }
+
+   .navbar > .logo > .nextImage > .openInMobile {
+      display: none;
+   }
+
+   .navbar > .logo > .nextImage > .openInDesktop {
+      display: block;
    }
 
    .navbar > .menu {

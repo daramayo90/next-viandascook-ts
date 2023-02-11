@@ -10,7 +10,7 @@
    max-width: 440px;
    width: 90%;
    margin: 0 auto;
-   padding-top: 1rem;
+   padding: 1rem 0 5rem;
 }
 
 .promos > .container > .promo {
@@ -68,7 +68,7 @@
 
 .promos > .container > .error {
    display: block;
-   margin: -1.5rem 0 -1.2rem 0;
+   width: 100%;
    text-align: center;
    font-size: 0.8rem;
    color: var(--error);
@@ -96,5 +96,9 @@
       height: 45px;
       margin: 2rem auto;
       font-size: 1.35rem;
+   }
+
+   .promos > .container > .error {
+      margin-top: 0.1rem;
    }
 }

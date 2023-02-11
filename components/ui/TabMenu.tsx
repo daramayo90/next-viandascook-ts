@@ -1,4 +1,7 @@
+import { useContext } from 'react';
 import { useRouter } from 'next/router';
+
+import { CartContext } from '../../context';
 
 import { AiOutlineUser } from 'react-icons/ai';
 import { HiOutlineClipboardList, HiOutlineShoppingBag } from 'react-icons/hi';
@@ -9,27 +12,29 @@ import styles from '../../styles/TabMenu.module.css';
 const menuItems = [
    {
       nav: '/menu',
-      reacticon: <MdOutlineFoodBank />,
+      icon: <MdOutlineFoodBank />,
       name: 'Menu',
    },
    {
       nav: '/pedidos/historial',
-      reacticon: <HiOutlineClipboardList />,
+      icon: <HiOutlineClipboardList />,
       name: 'Mis Pedidos',
    },
    {
       nav: '/cart',
-      reacticon: <HiOutlineShoppingBag />,
+      icon: <HiOutlineShoppingBag />,
       name: 'Carrito',
    },
    {
       nav: '/mi-cuenta',
-      reacticon: <AiOutlineUser />,
+      icon: <AiOutlineUser />,
       name: 'Mi Cuenta',
    },
 ];
 
 export const TabMenu = () => {
+   const { numberOfItems } = useContext(CartContext);
+
    const router = useRouter();
    const path = router.asPath;
 
@@ -40,13 +45,18 @@ export const TabMenu = () => {
    return (
       <footer className={styles.tabMenu}>
          <div className={styles.container}>
-            {menuItems.map(({ nav, reacticon, name }) => (
+            {menuItems.map(({ nav, icon, name }) => (
                <div key={name} className={styles.option} onClick={() => navigateTo(nav)}>
                   <div
                      className={
                         path.includes(nav) ? `${styles.icon} tabSelected` : `${styles.icon}`
                      }>
-                     {reacticon}
+                     {icon}
+                     {name === 'Carrito' && (
+                        <span className={numberOfItems !== 0 ? `${styles.quantity}` : 'noDisplay'}>
+                           {numberOfItems}
+                        </span>
+                     )}
                   </div>
 
                   <div

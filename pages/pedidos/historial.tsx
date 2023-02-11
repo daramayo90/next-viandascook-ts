@@ -32,14 +32,14 @@ const OrderHistoryPage: NextPage<Props> = ({ orders }) => {
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
    const session: any = await unstable_getServerSession(req, res, authOptions);
 
-   // if (!session) {
-   //    return {
-   //       redirect: {
-   //          destination: '/auth/login?page=/pedidos/historial',
-   //          permanent: false,
-   //       },
-   //    };
-   // }
+   if (!session) {
+      return {
+         redirect: {
+            destination: '/auth/login?page=/pedidos/historial',
+            permanent: false,
+         },
+      };
+   }
 
    const orders = await dbOrders.getOrdersByUser(session!.user.email);
 

@@ -3,10 +3,11 @@ import { useRouter } from 'next/router';
 
 import { IUser } from '../../interfaces';
 
-import { CartContext, OrdersContext } from '../../context';
+import { OrdersContext } from '../../context';
 import { SubmitButton } from '../ui';
 
 import styles from '../../styles/Checkout.module.css';
+import { IPaymentMethods } from '../../interfaces/order';
 
 interface Props {
    user?: IUser;
@@ -26,7 +27,7 @@ declare global {
 let mp: any;
 
 const options: Option[] = [
-   { value: 'efetivo', label: 'Efectivo' },
+   { value: 'efectivo', label: 'Efectivo' },
    { value: 'transferencia', label: 'Transferencia Bancaria' },
    { value: 'mercadopago', label: 'Mercado Pago' },
 ];
@@ -45,7 +46,7 @@ export const Posting: FC<Props> = ({ user }) => {
    const [isPosting, setIsPosting] = useState(false);
    const [errorMsg, setErrorMsg] = useState('');
 
-   const [paymentMethod, setPaymentMethod] = useState<string>(options[0].value);
+   const [paymentMethod, setPaymentMethod] = useState<IPaymentMethods>('efectivo');
 
    useEffect(() => {
       // con el preferenceId en mano, inyectamos el script de mercadoPago
@@ -58,7 +59,7 @@ export const Posting: FC<Props> = ({ user }) => {
 
    const onCreateOrder = async () => {
       setIsPosting(true);
-      const { hasError, message } = await createOrder();
+      const { hasError, message } = await createOrder(paymentMethod);
 
       if (hasError) {
          setIsPosting(false);
@@ -101,16 +102,16 @@ export const Posting: FC<Props> = ({ user }) => {
    };
 
    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-      setPaymentMethod(event.target.value);
+      setPaymentMethod(event.target.value as IPaymentMethods);
    };
 
    return (
       <div className={styles.submit}>
          {errorMsg && <span className={styles.error}>{errorMsg}</span>}
 
-         <form>
+         <form className={styles.paymentMethods}>
             {options.map((option) => (
-               <div key={option.value}>
+               <div key={option.value} className={styles.option}>
                   <input
                      type='radio'
                      id={option.value}

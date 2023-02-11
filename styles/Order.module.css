@@ -97,10 +97,28 @@
    border: 1px solid transparent;
 }
 
+.order .transfTable {
+   display: none;
+}
+
+.order .transfList {
+   width: 90%;
+   margin: 2rem auto 0 auto;
+   list-style-type: none;
+   text-align: center;
+   background-color: var(--primary);
+   padding: 0.5rem;
+}
+
+.order .transfList > li {
+   margin: 1rem 0;
+   color: var(--white);
+}
+
 @media (min-width: 720px) {
    .order {
       width: 100%;
-      height: calc(100vh - 4rem);
+      height: 100%;
    }
 
    .order > .container {
@@ -121,5 +139,50 @@
    .order > .container > .info > .checkout,
    .order > .container > .info > .address {
       padding: 2rem;
+   }
+
+   .order .transfList {
+      display: none;
+   }
+
+   .order .transfTable {
+      display: table;
+      border-collapse: collapse;
+      margin: 25px auto;
+      font-family: sans-serif;
+      min-width: 400px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+   }
+
+   .order .transfTable tr {
+      background-color: var(--primary);
+      color: var(--white);
+      text-align: left;
+   }
+
+   .order .transfTable th {
+      font-weight: bold;
+      padding: 12px 15px;
+   }
+
+   .order .transfTable td {
+      padding: 10px 15px;
+   }
+
+   .order .transfTable tbody tr {
+      border-bottom: 1px solid #dddddd;
+   }
+
+   .order .transfTable tbody tr:nth-of-type(even) {
+      background-color: #f3f3f3;
+   }
+
+   .order .transfTable tbody tr:last-of-type {
+      border-bottom: 2px solid #009879;
+   }
+
+   .order .transfTable tbody tr.active-row {
+      font-weight: bold;
+      color: #009879;
    }
 }

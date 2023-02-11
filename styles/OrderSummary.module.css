@@ -121,7 +121,7 @@
    color: var(--error);
 }
 
-@media (min-width: 720px) {
+@media (min-width: 1000px) {
    .orderSummary {
       width: 100%;
       margin: 1rem;

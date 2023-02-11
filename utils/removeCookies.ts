@@ -14,4 +14,6 @@ export const removeCookies = () => {
    Cookies.remove('cart');
    Cookies.remove('shipping');
    Cookies.remove('coupons');
+   Cookies.remove('points');
+   Cookies.remove('total');
 };

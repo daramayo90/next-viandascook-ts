@@ -1,17 +1,17 @@
+import { ChangeEvent, useContext, useState } from 'react';
 import { GetServerSideProps, NextPage } from 'next/types';
 import { unstable_getServerSession } from 'next-auth';
 import { authOptions } from '../api/auth/[...nextauth]';
+import { useRouter } from 'next/router';
 
 import { dbUsers } from '../../database';
 import { IUser } from '../../interfaces/user';
 
+import { CartContext } from '../../context';
 import { ShopLayout } from '../../components/layouts';
+import { SubmitButton } from '../../components/ui';
 
 import styles from '../../styles/Points.module.css';
-import { SubmitButton } from '../../components/ui';
-import { ChangeEvent, FormEvent, useState } from 'react';
-import { useContext } from 'react';
-import { CartContext } from '../../context';
 
 interface Props {
    user?: IUser;
@@ -22,9 +22,9 @@ const PointsPage: NextPage<Props> = ({ user }) => {
    const [errorMsg, setErrorMsg] = useState('');
    const [correctMsg, setCorrectMsg] = useState('');
 
-   const { onUsePoints, points } = useContext(CartContext);
+   const router = useRouter();
 
-   // const { points = 0, redeemPoints = 0 } = (user as IUser) || '';
+   const { onUsePoints, points } = useContext(CartContext);
    const { redeemPoints = 0 } = (user as IUser) || '';
 
    const onRedeemPoints = async (e: ChangeEvent<HTMLFormElement>) => {
@@ -50,7 +50,11 @@ const PointsPage: NextPage<Props> = ({ user }) => {
       }
 
       setIsClicked(false);
-      setCorrectMsg('Puntos aplicados correctamente');
+      setCorrectMsg('Puntos aplicados correctamente. Redirigiendo...');
+
+      setTimeout(() => {
+         router.push('/checkout');
+      }, 2000);
    };
 
    return (
@@ -66,7 +70,7 @@ const PointsPage: NextPage<Props> = ({ user }) => {
                      </span>
                   ) : (
                      <span className={styles.userPoints}>
-                        <strong>{redeemPoints - points}</strong> Puntos
+                        <strong>{redeemPoints}</strong> Puntos
                      </span>
                   )}
                </div>

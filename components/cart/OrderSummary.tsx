@@ -43,9 +43,13 @@ export const OrderSummary = () => {
          <Discounts />
 
          <div className={styles.summary}>
-            <span>Envío</span>
+            {numberOfItems >= 14 ? (
+               <span className={styles.discount}>Envío (14 platos o más)</span>
+            ) : (
+               <span>Envío</span>
+            )}
 
-            {numberOfItems >= 14 ? <span>Gratis</span> : <Shipping />}
+            {numberOfItems >= 14 ? <span className={styles.discount}>Gratis</span> : <Shipping />}
          </div>
 
          <div className={styles.summary}>

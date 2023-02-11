@@ -1,12 +1,15 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { GetStaticProps, NextPage } from 'next';
 
 import { dbProducts } from '../../database';
 import { IProduct } from '../../interfaces';
 
+import { CartContext } from '../../context';
+
 import { ShopLayout } from '../../components/layouts';
-import { DiscountSlides, TabMenu } from '../../components/ui';
+import { Button, DiscountSlides } from '../../components/ui';
 import { ProductCard, SearchNotFound, SearchProducts, TypesList } from '../../components/products';
+import { SubmitButton } from '../../components/ui/SubmitButton';
 
 import styles from '../../styles/Products.module.css';
 
@@ -18,6 +21,8 @@ interface Props {
 const ProductsPage: NextPage<Props> = ({ products }) => {
    const [searchTerm, setSearchTerm] = useState('');
    const [type, setType] = useState('');
+
+   const { numberOfItems } = useContext(CartContext);
 
    // without accented characters
    const searchProducts = products.filter((p) => {
@@ -61,6 +66,17 @@ const ProductsPage: NextPage<Props> = ({ products }) => {
                   <SearchNotFound />
                )}
             </article>
+
+            {numberOfItems && (
+               <div className={styles.goToCartBtn}>
+                  <Button
+                     href={'/cart'}
+                     content={'Ver Carrito'}
+                     background='var(--primary)'
+                     border='none'
+                  />
+               </div>
+            )}
          </section>
       </ShopLayout>
    );

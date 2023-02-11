@@ -19,6 +19,9 @@ export const OrderCard: FC<Props> = ({ order }) => {
 
    const { _id, numberOfItems, total, deliveryDate, createdAt } = order;
 
+   const [year, month, dayToSplit] = deliveryDate.toString().split('-');
+   const [day] = dayToSplit.split('T');
+
    const navigate = () => {
       setSelected(true);
 
@@ -48,7 +51,7 @@ export const OrderCard: FC<Props> = ({ order }) => {
 
                <span>{currency.format(total)}</span>
 
-               <span>Fecha Entrega: {deliveryDate.toString()}</span>
+               <span>Fecha Entrega: {`${day}/${month}/${year}`}</span>
             </div>
 
             <div className={styles.confirm}>

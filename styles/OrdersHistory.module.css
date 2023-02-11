@@ -82,7 +82,7 @@
 @media (min-width: 720px) {
    .history {
       width: 100%;
-      height: calc(100vh - 5rem);
+      height: 100%;
    }
 
    .history > .container {

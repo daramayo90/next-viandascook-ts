@@ -1,7 +1,7 @@
 import { ICoupon, IUser } from './';
 
 export interface IOrder {
-   _id?: string;
+   _id?: number;
    user?: IUser | string;
    orderItems: IOrderItem[];
    shippingAddress: ShippingAddress;
@@ -17,6 +17,7 @@ export interface IOrder {
    pointsDiscount?: number;
    total: number;
 
+   paymentMethod: IPaymentMethods;
    isPaid: boolean;
    paidAt?: string;
 
@@ -48,5 +49,7 @@ export interface ShippingAddress {
    email: string;
    dni: string;
 }
+
+export type IPaymentMethods = 'efectivo' | 'transferencia' | 'mercadopago';
 
 export type ICity = 'CABA' | 'Buenos Aires';
