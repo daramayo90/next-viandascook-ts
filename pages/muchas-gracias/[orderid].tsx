@@ -46,7 +46,7 @@ const ThankYouPage: NextPage<Props> = ({ order }) => {
                <>
                   <p style={{ textAlign: 'center', marginTop: '2rem' }}>
                      <strong>
-                        A continuación te pasamos los datos para que puedas realizar la{' '}
+                        Te pasamos los datos para que puedas realizar la{' '}
                         <u>Transferencia Bancaria</u>
                      </strong>
                   </p>

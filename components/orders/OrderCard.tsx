@@ -34,7 +34,7 @@ export const OrderCard: FC<Props> = ({ order }) => {
       <div className={selected ? `${styles.order} selected` : ` ${styles.order}`}>
          <div className={styles.card} onClick={navigate}>
             <div className={styles.top}>
-               <span className={styles.number}>{_id}</span>
+               <span className={styles.number}>#{_id}</span>
 
                <span className={styles.date}>
                   {new Date(createdAt!).toLocaleDateString('es-AR')}
