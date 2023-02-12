@@ -14,13 +14,9 @@ export const checkUserEmailPassword = async (email: string, password: string) =>
 
    if (!user) return null;
 
-   console.log('Llego hasta acá. Lo siguiente no se ejecuta');
-   console.log('user', user);
-   console.log('pass', password);
    if (!bcrypt.compareSync(password, user.password!)) return null;
 
    const { _id, name, lastName, phone = '', dni = '', shipping, role } = user;
-   console.log('llego acá ahora?');
 
    // TODO: Acá se pasaría a number los numbers?
    return {

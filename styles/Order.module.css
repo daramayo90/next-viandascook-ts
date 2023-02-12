@@ -167,6 +167,7 @@
 
    .order .transfTable td {
       padding: 10px 15px;
+      color: var(--black);
    }
 
    .order .transfTable tbody tr {
@@ -183,6 +184,6 @@
 
    .order .transfTable tbody tr.active-row {
       font-weight: bold;
-      color: #009879;
+      color: var(--black);
    }
 }

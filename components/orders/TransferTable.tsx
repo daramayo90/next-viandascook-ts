@@ -19,18 +19,20 @@ export const TransferTable: FC<Props> = ({ order }) => {
                   </strong>
                </p>
                <table className={styles.transfTable}>
-                  <tr>
-                     <th>Banco</th>
-                     <th>Nombre de la cuenta</th>
-                     <th>CBU</th>
-                     <th>Alias</th>
-                  </tr>
-                  <tr>
-                     <td>Galicia</td>
-                     <td>Viandas Cook SRL</td>
-                     <td>0070104020000007169700</td>
-                     <td>VIANDAS.COOK.SRL</td>
-                  </tr>
+                  <tbody>
+                     <tr>
+                        <th>Banco</th>
+                        <th>Nombre de la cuenta</th>
+                        <th>CBU</th>
+                        <th>Alias</th>
+                     </tr>
+                     <tr>
+                        <td>Galicia</td>
+                        <td>Viandas Cook SRL</td>
+                        <td>0070104020000007169700</td>
+                        <td>VIANDAS.COOK.SRL</td>
+                     </tr>
+                  </tbody>
                </table>
 
                <ul className={styles.transfList}>
