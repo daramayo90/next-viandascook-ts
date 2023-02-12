@@ -94,11 +94,7 @@ const createOrder = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
 };
 
 const customIdGenerator = async (): Promise<number> => {
-   await db.connect();
-
    const lastOrder = await Order.findOne().sort({ createdAt: -1 }).limit(1).lean();
-
-   await db.disconnect();
 
    const newOrderId = lastOrder!._id + Math.floor(Math.random() * 5) + 1;
 
