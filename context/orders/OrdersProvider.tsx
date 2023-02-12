@@ -86,19 +86,15 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
          };
       }
 
-      console.log('hola');
       if (
          new Date().getDate() === deliveryDateSelected.getDate() &&
          new Date().getMonth() === deliveryDateSelected.getMonth()
       ) {
-         console.log('entre?');
          return {
             hasError: true,
             message: 'Por favor, seleccioná una fecha de entrega',
          };
       }
-
-      console.log('aver', deliveryDateSelected);
 
       const body: IOrder = {
          orderItems: cart.map((product) => product),

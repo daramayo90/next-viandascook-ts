@@ -50,7 +50,7 @@ const registerUser = async (req: NextApiRequest, res: NextApiResponse<Data>) => 
 
    const user = await User.findOne({ email }).lean();
 
-   if (user) {
+   if (user && user.password) {
       await db.disconnect();
       return res.status(400).json({ message: 'Correo electrónico ya registrado' });
    }
@@ -75,11 +75,30 @@ const registerUser = async (req: NextApiRequest, res: NextApiResponse<Data>) => 
    });
 
    try {
-      await newUser.save({ validateBeforeSave: true });
+      // Guest user who already bought sometime in the past
+      if (!user!.password) {
+         await User.updateOne(
+            { email: user!.email },
+            {
+               $set: {
+                  name: newUser.name,
+                  lastName: newUser.lastName,
+                  phone: newUser.phone,
+                  dni: newUser.dni,
+                  password: newUser.password,
+                  points: 0,
+                  redeemPoints: 0,
+                  coupons: user!.coupons.length === 0 ? newUser.coupons : user!.coupons,
+               },
+            },
+         );
+      } else {
+         await newUser.save({ validateBeforeSave: true });
+      }
    } catch (error) {
       await db.disconnect();
       console.log(error);
-      return res.status(500).json({ message: 'Review server logs' });
+      return res.status(500).json({ message: 'Error del servidor. Contactar al Admin' });
    }
 
    await db.disconnect();

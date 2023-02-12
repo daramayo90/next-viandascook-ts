@@ -35,6 +35,7 @@ export const useAuth = () => {
 
       if (hasError) {
          setShowError(true);
+         setIsClicked(false);
          setErrorMessage(message!);
          setTimeout(() => setShowError(false), 3500);
          return;
@@ -53,7 +54,10 @@ export const useAuth = () => {
 
       const res = await signIn('credentials', { redirect: false, email, password });
 
-      if (res!.ok === false) return setShowError(true);
+      if (res!.ok === false) {
+         setIsClicked(false);
+         return setShowError(true);
+      }
 
       return await signIn('credentials', { email, password });
    };

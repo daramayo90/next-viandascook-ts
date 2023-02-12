@@ -14,6 +14,7 @@ export const authOptions: NextAuthOptions = {
             password: { label: 'Password:', type: 'password', placeholder: 'Password' },
          },
          async authorize(credentials) {
+            console.log('credentials', credentials);
             return (await dbUsers.checkUserEmailPassword(
                credentials!.email,
                credentials!.password,

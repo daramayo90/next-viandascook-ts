@@ -33,7 +33,9 @@ const ThankYouPage: NextPage<Props> = ({ order }) => {
             <h1 style={{ textAlign: 'center', paddingTop: '5rem' }}>¡Muchas Gracias!</h1>
 
             <p style={{ textAlign: 'center' }}>Tu pedido se recibió con éxito</p>
-            <p style={{ textAlign: 'center' }}>A continuación podrás encontrar el detalle</p>
+            <p style={{ textAlign: 'center', marginBottom: '-3rem' }}>
+               A continuación podrás encontrar el detalle
+            </p>
 
             {order.paymentMethod === 'efectivo' && (
                <p style={{ textAlign: 'center', marginTop: '2rem' }}>
