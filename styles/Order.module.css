@@ -148,7 +148,7 @@
    .order .transfTable {
       display: table;
       border-collapse: collapse;
-      margin: 25px auto;
+      margin: 2rem auto;
       font-family: sans-serif;
       min-width: 400px;
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);

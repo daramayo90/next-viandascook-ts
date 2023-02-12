@@ -22,8 +22,6 @@ NAVBAR:
 
 
 GENERAL:
-- Agregar en las tarjetas del historial el tipo de compra (efectivo, trans, mp)
-- Si el tipo de compra es Transferencia, agregar los datos para hacer el pedido en /pedidos/[id]
 - Ver el envío de mail automático al finalizar el pedido (mailchimp?)
 - Conexión con Mailchimp
 - Conexión con Google Sheets

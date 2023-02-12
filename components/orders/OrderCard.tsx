@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { FC, useState } from 'react';
+import { FC, useState, useEffect } from 'react';
 
 import { IOrder } from '../../interfaces';
 import { currency } from '../../utils';
@@ -16,11 +16,16 @@ export const OrderCard: FC<Props> = ({ order }) => {
    const router = useRouter();
 
    const [selected, setSelected] = useState(false);
+   const [payment, setPayment] = useState('second');
 
-   const { _id, numberOfItems, total, deliveryDate, createdAt } = order;
+   const { _id, numberOfItems, total, deliveryDate, paymentMethod, createdAt } = order;
 
    const [year, month, dayToSplit] = deliveryDate.toString().split('-');
    const [day] = dayToSplit.split('T');
+
+   useEffect(() => {
+      if (paymentMethod) setPayment(paymentMethod.charAt(0).toUpperCase() + paymentMethod.slice(1));
+   }, [paymentMethod]);
 
    const navigate = () => {
       setSelected(true);
@@ -34,7 +39,7 @@ export const OrderCard: FC<Props> = ({ order }) => {
       <div className={selected ? `${styles.order} selected` : ` ${styles.order}`}>
          <div className={styles.card} onClick={navigate}>
             <div className={styles.top}>
-               <span className={styles.number}>#{_id}</span>
+               <span className={styles.number}># {_id}</span>
 
                <span className={styles.date}>
                   {new Date(createdAt!).toLocaleDateString('es-AR')}
@@ -48,6 +53,8 @@ export const OrderCard: FC<Props> = ({ order }) => {
                </span>
 
                <span>{currency.format(total)}</span>
+
+               <span>Forma de pago: {payment}</span>
 
                <span>Fecha Entrega: {`${day}/${month}/${year}`}</span>
             </div>

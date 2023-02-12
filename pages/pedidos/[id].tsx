@@ -7,7 +7,7 @@ import { dbOrders } from '../../database';
 import { IOrder, IUser } from '../../interfaces';
 
 import { OrderLayout } from '../../components/layouts';
-import { OrderAddress, OrderCheckout, OrderProducts } from '../../components/orders';
+import { OrderAddress, OrderCheckout, OrderProducts, TransferTable } from '../../components/orders';
 
 import styles from '../../styles/Order.module.css';
 
@@ -19,6 +19,8 @@ const OrderPage: NextPage<Props> = ({ order }) => {
    return (
       <OrderLayout title={''} order={order}>
          <section className={styles.order}>
+            <TransferTable order={order} />
+
             <div className={styles.container}>
                <div className={styles.summary}>
                   <OrderProducts order={order} />
@@ -39,16 +41,6 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res, query }
    const { id = '' } = query;
 
    const session: any = await unstable_getServerSession(req, res, authOptions);
-
-   // TODO: Probar esta redirección
-   // if (!session) {
-   //    return {
-   //       redirect: {
-   //          destination: `/auth/login?page=/pedidos/${id}`,
-   //          permanent: false,
-   //       },
-   //    };
-   // }
 
    const order = await dbOrders.getOrderById(id.toString());
 
