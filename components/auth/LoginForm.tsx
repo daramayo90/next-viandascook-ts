@@ -45,9 +45,15 @@ export const LoginForm = () => {
 
          <div className={styles.linksTo}>
             <div className={styles.register}>
-               <Link href={`/auth/register?page=${router.query.page?.toString()}`}>
-                  <span>Crear cuenta</span>
-               </Link>
+               {JSON.stringify(router.query) === '{}' ? (
+                  <Link href={`/auth/register?page=${router.asPath}`}>
+                     <span>Crear cuenta</span>
+                  </Link>
+               ) : (
+                  <Link href={`/auth/register?page=${router.query.page?.toString()}`}>
+                     <span>Crear cuenta</span>
+                  </Link>
+               )}
             </div>
 
             <div className={styles.loginButton}>

@@ -34,10 +34,6 @@ GENERAL:
 	- /preguntas
 	- /loyalty
 
-ERRORES:
-- No funciona la creación de cuentas
-- El login después de hacer click en "crar cuenta" te lleva a cualquier lado
-- No funciona el OAuth
 
 
 Mercado Pago:

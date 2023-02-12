@@ -62,6 +62,8 @@ const registerUser = async (req: NextApiRequest, res: NextApiResponse<Data>) => 
       phone: '-',
       dni: '-',
       password: bcrypt.hashSync(password, 10),
+      points: 0,
+      redeemPoints: 0,
       role: 'client',
       shipping: {
          address: '-',
@@ -69,6 +71,7 @@ const registerUser = async (req: NextApiRequest, res: NextApiResponse<Data>) => 
          zipcode: '-',
          city: 'CABA',
       },
+      coupons: [],
    });
 
    try {

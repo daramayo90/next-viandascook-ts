@@ -49,6 +49,8 @@ export const oAuthToDbUser = async (authEmail: string, authName: string, authLas
       phone: '-',
       dni: '-',
       password: '-',
+      points: 0,
+      redeemPoints: 0,
       role: 'client',
       shipping: {
          address: '-',
@@ -56,6 +58,7 @@ export const oAuthToDbUser = async (authEmail: string, authName: string, authLas
          zipcode: '-',
          city: 'CABA',
       },
+      coupons: [],
    });
 
    await newUser.save();

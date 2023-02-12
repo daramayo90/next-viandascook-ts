@@ -47,6 +47,11 @@ export const SideMenu = () => {
                   <span>Elegí tus Viandas</span>
                   <MdOutlineKeyboardArrowRight className={styles.iconRight} />
                </li>
+               <li onClick={() => navigateTo('/loyalty')}>
+                  <TbDiscount2 className={styles.icon} />
+                  <span>Sumá Puntos</span>
+                  <MdOutlineKeyboardArrowRight className={styles.iconRight} />
+               </li>
                <li onClick={() => navigateTo('/nosotros')}>
                   <BsInfoCircle className={styles.icon} />
                   <span>Nosotros</span>
@@ -54,12 +59,7 @@ export const SideMenu = () => {
                </li>
                <li onClick={() => navigateTo('/como-funciona')}>
                   <AiOutlineQuestionCircle className={styles.icon} />
-                  <span>Cómo Funciona?</span>
-                  <MdOutlineKeyboardArrowRight className={styles.iconRight} />
-               </li>
-               <li onClick={() => navigateTo('/loyalty')}>
-                  <TbDiscount2 className={styles.icon} />
-                  <span>Sumá Puntos</span>
+                  <span>¿Cómo Funciona?</span>
                   <MdOutlineKeyboardArrowRight className={styles.iconRight} />
                </li>
                <li onClick={() => navigateTo('/preguntas')}>

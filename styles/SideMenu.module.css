@@ -146,6 +146,12 @@
    opacity: 1;
 }
 
+.sidemenu > .open li:nth-child(8) {
+   transition-delay: 1.28s;
+   transform: translateX(0px);
+   opacity: 1;
+}
+
 @media (min-width: 720px) {
    .sidemenu {
       width: 19%;
