@@ -66,3 +66,13 @@
    padding-left: 5px;
    color: var(--error);
 }
+
+@media (min-width: 720px) {
+   .newsletter > .text {
+      max-width: 450px;
+   }
+
+   .newsletter > form {
+      max-width: 450px;
+   }
+}
