@@ -1,0 +1,68 @@
+.newsletter {
+   width: 100%;
+   padding: 0.5rem 0;
+}
+
+.newsletter > .title {
+   margin: 1rem 0;
+   text-align: center;
+}
+
+.newsletter > .text {
+   width: 90%;
+   margin: 0 auto;
+   text-align: center;
+}
+
+.newsletter > form {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   align-items: center;
+   width: 90%;
+   margin: 1rem auto;
+}
+
+.newsletter > form > input {
+   display: block;
+   width: 100%;
+   padding: 15px;
+   height: 50px;
+   margin: 0.7rem 0;
+   border-radius: 4px;
+   font-size: 1rem;
+   font-weight: 400;
+   line-height: 1.5;
+   color: #596068;
+   background-color: #fff;
+   background-clip: padding-box;
+   border: 1px solid #ced4da;
+   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.okMessage > span {
+   display: block;
+   font-size: 0.9rem;
+   text-align: center;
+   color: var(--primary);
+}
+
+.errorMessage > span {
+   display: block;
+   font-size: 0.9rem;
+   text-align: center;
+   color: var(--error);
+}
+
+.newsletter > form > .btn {
+   width: 55%;
+   max-width: 185px;
+   margin: 2rem 0;
+}
+
+.error {
+   display: block;
+   margin-top: 5px;
+   padding-left: 5px;
+   color: var(--error);
+}

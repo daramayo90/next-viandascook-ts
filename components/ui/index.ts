@@ -8,6 +8,7 @@ export * from './HowToBuy';
 export * from './Intro';
 export * from './Loading';
 export * from './LoadingBars';
+export * from './Newsletter';
 export * from './SideAdminMenu';
 export * from './SideMenu';
 export * from './SideProductsMenu';

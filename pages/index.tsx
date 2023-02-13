@@ -2,7 +2,7 @@ import { GetStaticProps, NextPage } from 'next';
 
 import { MainLayout } from '../components/layouts';
 import { ProductSlides } from '../components/products';
-import { Banner, CommonQuestions, HowToBuy, Intro, Values } from '../components/ui';
+import { Banner, CommonQuestions, HowToBuy, Intro, Newsletter, Values } from '../components/ui';
 
 import { dbProducts } from '../database';
 import { IProduct } from '../interfaces';
@@ -32,6 +32,8 @@ const LandingPage: NextPage<Props> = ({ products }) => {
             <HowToBuy />
 
             <CommonQuestions />
+
+            <Newsletter />
          </section>
       </MainLayout>
    );

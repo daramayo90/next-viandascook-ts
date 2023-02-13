@@ -35,8 +35,8 @@ export const useAuth = () => {
 
       if (hasError) {
          setShowError(true);
-         setIsClicked(false);
          setErrorMessage(message!);
+         setIsClicked(false);
          setTimeout(() => setShowError(false), 3500);
          return;
       }

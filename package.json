@@ -16,6 +16,7 @@
     "@mui/x-data-grid": "^5.17.20",
     "@mui/x-date-pickers": "^5.0.15",
     "@mui/x-date-pickers-pro": "^5.0.15",
+    "@sendgrid/mail": "^7.7.0",
     "@types/bcryptjs": "^2.4.2",
     "@types/jsonwebtoken": "^8.5.9",
     "@types/mercadopago": "^1.5.8",
