@@ -41,7 +41,7 @@ const addCheckout = () => {
 export const Posting: FC<Props> = ({ user }) => {
    const router = useRouter();
 
-   const { createOrder, createMPOrder } = useContext(OrdersContext);
+   const { createOrder, createMPOrder, addMailchimpClient } = useContext(OrdersContext);
 
    const [isPosting, setIsPosting] = useState(false);
    const [errorMsg, setErrorMsg] = useState('');
@@ -59,6 +59,7 @@ export const Posting: FC<Props> = ({ user }) => {
 
    const onCreateOrder = async () => {
       setIsPosting(true);
+
       const { hasError, message } = await createOrder(paymentMethod);
 
       if (hasError) {
@@ -66,6 +67,8 @@ export const Posting: FC<Props> = ({ user }) => {
          setErrorMsg(message);
          return;
       }
+
+      await addMailchimpClient(message);
 
       if (paymentMethod !== 'mercadopago') {
          router.replace(`/muchas-gracias/${message}`);

@@ -8,6 +8,7 @@ interface ContextProps {
    addGuestAddress: (address: ShippingAddress) => void;
    createOrder: (paymentMethod: IPaymentMethods) => Promise<{ hasError: boolean; message: string }>;
    createMPOrder: (orderId: string) => Promise<{ id: string; error?: string }>;
+   addMailchimpClient: (orderId: string) => Promise<void>;
 }
 
 export const OrdersContext = createContext({} as ContextProps);

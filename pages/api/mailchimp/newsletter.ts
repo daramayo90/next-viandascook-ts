@@ -15,30 +15,28 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 const subscribeUser = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
    const { name, lastName, email } = req.body;
 
-   console.log({ name, lastName, email });
-
    if (!name || !lastName || !email) {
       return res.status(400).json({ error: true, message: 'Favor de completar todos los campos' });
    }
 
+   const AUDIENCE_ID = process.env.MAILCHIMP_AUDIENCE_ID;
+   const API_KEY = process.env.MAILCHIMP_API_KEY;
+   const DATACENTER = process.env.MAILCHIMP_API_SERVER;
+
+   const subscriber = {
+      email_address: email.toLocaleLowerCase(),
+      merge_fields: {
+         FNAME: name.charAt(0).toUpperCase() + name.slice(1),
+         LNAME: lastName.charAt(0).toUpperCase() + lastName.slice(1),
+      },
+      status: 'subscribed',
+   };
+
    try {
-      const AUDIENCE_ID = process.env.MAILCHIMP_AUDIENCE_ID;
-      const API_KEY = process.env.MAILCHIMP_API_KEY;
-      const DATACENTER = process.env.MAILCHIMP_API_SERVER;
-
-      const data = {
-         email_address: email.toLocaleLowerCase(),
-         merge_fields: {
-            FNAME: name.charAt(0).toUpperCase() + name.slice(1),
-            LNAME: lastName.charAt(0).toUpperCase() + lastName.slice(1),
-         },
-         status: 'subscribed',
-      };
-
       const response = await fetch(
          `https://${DATACENTER}.api.mailchimp.com/3.0/lists/${AUDIENCE_ID}/members`,
          {
-            body: JSON.stringify(data),
+            body: JSON.stringify(subscriber),
             headers: {
                Authorization: `apikey ${API_KEY}`,
                'Content-Type': 'application/json',

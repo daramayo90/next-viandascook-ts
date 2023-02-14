@@ -158,8 +158,30 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
       }
    };
 
+   const addMailchimpClient = async (orderId: string) => {
+      const { user } = ((await getSession()) as any) || '';
+
+      try {
+         const { data } = await viandasApi.get('/mailchimp/getSubscriberHash');
+         const { id } = data;
+
+         const subs = {
+            email: user ? user.email : Cookies.get('email'),
+            name: user ? user.name : Cookies.get('firstName'),
+            lastName: user ? user.lastName : Cookies.get('lastName'),
+         };
+
+         if (!id) {
+            await viandasApi.post('/mailchimp/addClient', { subs, orderId, total, cart });
+         } else {
+            await viandasApi.patch('/mailchimp/updateClient', { orderId, total, cart });
+         }
+      } catch (error) {}
+   };
+
    return (
-      <OrdersContext.Provider value={{ ...state, addGuestAddress, createOrder, createMPOrder }}>
+      <OrdersContext.Provider
+         value={{ ...state, addGuestAddress, createOrder, createMPOrder, addMailchimpClient }}>
          {children}
       </OrdersContext.Provider>
    );

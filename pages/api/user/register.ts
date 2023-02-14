@@ -76,7 +76,7 @@ const registerUser = async (req: NextApiRequest, res: NextApiResponse<Data>) => 
 
    try {
       // Guest user who already bought sometime in the past
-      if (!user!.password) {
+      if (user && user.password) {
          await User.updateOne(
             { email: user!.email },
             {
