@@ -11,6 +11,7 @@ const productSchema = new Schema(
       ingredients: [{ type: String }],
       nutritionalInfo: { type: Object },
       howToHeat: { type: String },
+      bestSeller: { type: Boolean },
       type: {
          type: String,
          enum: {

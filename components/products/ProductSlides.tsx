@@ -8,6 +8,7 @@ import { IProduct } from '../../interfaces';
 
 import 'react-slideshow-image/dist/styles.css';
 import styles from '../../styles/ProductSlides.module.css';
+import { Button } from '../ui';
 
 interface Props {
    products: IProduct[];
@@ -16,21 +17,31 @@ interface Props {
 export const ProductSlides: FC<Props> = ({ products }) => {
    return (
       <section className={styles.ourMenu}>
-         <h2 className={styles.title}>Conocé Nuestras Viandas Saludables</h2>
+         <h2 className={styles.title}>Conocé nuestros platos saludables más vendidos</h2>
 
          <div className={styles.container}>
-            <Slide easing='ease' duration={4000} indicators>
+            <Slide easing='ease' duration={3000} indicators>
                {products.map((product) => (
                   <Link key={product._id} href={`/plato/${product.slug}`}>
                      <div className={styles.box}>
                         <div className={styles.nextImage}>
-                           <Image
-                              src={`/products/${product.image}`}
-                              alt={product.name}
-                              width={400}
-                              height={400}
-                              priority={true}
-                           />
+                           <>
+                              <Image
+                                 src={`/products/${product.image}`}
+                                 alt={product.name}
+                                 width={480}
+                                 height={720}
+                                 priority={true}
+                              />
+                              <div className={styles.btn}>
+                                 <Button
+                                    href={`/plato/${product.slug}`}
+                                    content='Ver Plato'
+                                    background='var(--primary)'
+                                    border='none'
+                                 />
+                              </div>
+                           </>
                         </div>
                         <h5 className={styles.title}>{product.name}</h5>
                      </div>

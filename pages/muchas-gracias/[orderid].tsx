@@ -5,15 +5,14 @@ import { dbOrders } from '../../database';
 import { IOrder } from '../../interfaces';
 
 import { CartContext } from '../../context';
+import { removeCookies } from '../../utils';
 
 import { OrderLayout } from '../../components/layouts';
 import { OrderProducts, OrderCheckout, OrderAddress } from '../../components/orders';
+import { TransferTable } from '../../components/orders/TransferTable';
 import { Button } from '../../components/ui';
 
-import { removeCookies } from '../../utils';
-
 import styles from '../../styles/Order.module.css';
-import { TransferTable } from '../../components/orders/TransferTable';
 
 interface Props {
    order: IOrder;
@@ -32,10 +31,14 @@ const ThankYouPage: NextPage<Props> = ({ order }) => {
          <section className={styles.order}>
             <h1 style={{ textAlign: 'center', paddingTop: '5rem' }}>¡Muchas Gracias!</h1>
 
-            <p style={{ textAlign: 'center' }}>Tu pedido se recibió con éxito</p>
-            <p style={{ textAlign: 'center', marginBottom: '-3rem' }}>
-               A continuación podrás encontrar el detalle
+            <p style={{ textAlign: 'center' }}>
+               Tu pedido #{' '}
+               <strong>
+                  <u>{order._id}</u>
+               </strong>{' '}
+               se recibió con éxito
             </p>
+            <p style={{ textAlign: 'center' }}>A continuación podrás encontrar el detalle</p>
 
             {order.paymentMethod === 'efectivo' && (
                <p style={{ textAlign: 'center', marginTop: '2rem' }}>

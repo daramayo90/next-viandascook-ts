@@ -59,14 +59,20 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
 
    // Guest user - Add address to cookies
    const addGuestAddress = (address: ShippingAddress) => {
-      Cookies.set('firstName', address.firstName);
-      Cookies.set('lastName', address.lastName);
+      Cookies.set(
+         'firstName',
+         address.firstName.charAt(0).toUpperCase() + address.firstName.slice(1).toLocaleLowerCase(),
+      );
+      Cookies.set(
+         'lastName',
+         address.lastName.charAt(0).toUpperCase() + address.lastName.slice(1).toLocaleLowerCase(),
+      );
       Cookies.set('address', address.address);
       Cookies.set('address2', address.address2 || '');
       Cookies.set('zipcode', address.zipcode);
       Cookies.set('city', address.city);
       Cookies.set('phone', address.phone);
-      Cookies.set('email', address.email);
+      Cookies.set('email', address.email.toLocaleLowerCase());
       Cookies.set('dni', address.dni);
 
       dispatch({ type: '[Orders] - Add Shipping Address', payload: address });

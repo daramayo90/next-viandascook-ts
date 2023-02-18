@@ -11,6 +11,7 @@ interface SeedProduct {
    ingredients: string[];
    nutritionalInfo: object;
    howToHeat: string;
+   bestSeller?: boolean;
 }
 
 interface SeedUser {
@@ -126,6 +127,7 @@ export const initialData: SeedData = {
          price: 850,
          inStock: true,
          type: 'meat',
+         bestSeller: true,
          ingredients: ['Agnolotis', 'Jamón', 'Ricota', 'Salsa de tomate'],
          nutritionalInfo: {
             Calorías: '281 kcal',
@@ -194,6 +196,7 @@ export const initialData: SeedData = {
          price: 750,
          inStock: true,
          type: 'chicken',
+         bestSeller: true,
          ingredients: [
             'Ají morrón rojo',
             'Arroz yamaní',
@@ -251,6 +254,7 @@ export const initialData: SeedData = {
          price: 900,
          inStock: true,
          type: 'meat',
+         bestSeller: true,
          ingredients: ['Aceite', 'Arroz', 'Bondiola', 'Harina', 'Huevo', 'Jamón', 'Leche'],
          nutritionalInfo: {
             Calorías: '939 kcal',
@@ -317,6 +321,7 @@ export const initialData: SeedData = {
          price: 600,
          inStock: true,
          type: 'pasta',
+         bestSeller: true,
          ingredients: [
             'Ají morrón rojo',
             'Avena',
@@ -364,6 +369,7 @@ export const initialData: SeedData = {
          price: 750,
          inStock: true,
          type: 'pasta',
+         bestSeller: true,
          ingredients: [
             'Acelga',
             'Ají morrón rojo',
@@ -439,6 +445,7 @@ export const initialData: SeedData = {
          price: 750,
          inStock: true,
          type: 'pasta',
+         bestSeller: true,
          ingredients: [
             'Brocoli',
             'Fideos integrales',
@@ -528,6 +535,7 @@ export const initialData: SeedData = {
          price: 850,
          inStock: true,
          type: 'seafood',
+         bestSeller: true,
          ingredients: [
             'Ají morrón rojo',
             'Berenjena',
@@ -606,6 +614,7 @@ export const initialData: SeedData = {
          price: 750,
          inStock: true,
          type: 'vegetarian',
+         bestSeller: true,
          ingredients: [
             'Aceite',
             'Ají morrón rojo',
@@ -679,6 +688,7 @@ export const initialData: SeedData = {
          price: 950,
          inStock: true,
          type: 'pasta',
+         bestSeller: true,
          ingredients: [
             'Ají morrón rojo',
             'Carne picada',
@@ -765,6 +775,7 @@ export const initialData: SeedData = {
          price: 750,
          inStock: true,
          type: 'vegetarian',
+         bestSeller: true,
          ingredients: ['Acelga', 'Calabaza', 'Harina', 'Huevo', 'Leche', 'Pan rallado'],
          nutritionalInfo: {
             Calorías: '395 kcal',
@@ -803,6 +814,7 @@ export const initialData: SeedData = {
          price: 850,
          inStock: true,
          type: 'chicken',
+         bestSeller: true,
          ingredients: ['Calabaza', 'Huevo', 'Pollo', 'Salvado de trigo'],
          nutritionalInfo: {
             Calorías: '465 kcal',

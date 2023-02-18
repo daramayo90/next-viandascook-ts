@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import { FC } from 'react';
 
 import { IOrder } from '../../interfaces';
@@ -9,15 +10,28 @@ interface Props {
 }
 
 export const TransferTable: FC<Props> = ({ order }) => {
+   const router = useRouter();
+   const path = router.asPath;
+
    return (
       <>
          {order.paymentMethod === 'transferencia' && (
             <>
-               <p style={{ textAlign: 'center', paddingTop: '6rem' }}>
-                  <strong>
-                     Te pasamos los datos para que puedas realizar la <u>Transferencia Bancaria</u>
-                  </strong>
-               </p>
+               {path.includes('/muchas-gracias') ? (
+                  <p style={{ textAlign: 'center', paddingTop: '2rem' }}>
+                     <strong>
+                        Te pasamos los datos para que puedas realizar la{' '}
+                        <u>Transferencia Bancaria</u>
+                     </strong>
+                  </p>
+               ) : (
+                  <p style={{ textAlign: 'center', paddingTop: '6rem' }}>
+                     <strong>
+                        Te pasamos los datos para que puedas realizar la{' '}
+                        <u>Transferencia Bancaria</u>
+                     </strong>
+                  </p>
+               )}
                <table className={styles.transfTable}>
                   <tbody>
                      <tr>

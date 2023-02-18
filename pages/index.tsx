@@ -2,7 +2,15 @@ import { GetStaticProps, NextPage } from 'next';
 
 import { MainLayout } from '../components/layouts';
 import { ProductSlides } from '../components/products';
-import { Banner, CommonQuestions, HowToBuy, Intro, Newsletter, Values } from '../components/ui';
+import {
+   Banner,
+   Button,
+   CommonQuestions,
+   HowToBuy,
+   Intro,
+   Newsletter,
+   Values,
+} from '../components/ui';
 
 import { dbProducts } from '../database';
 import { IProduct } from '../interfaces';
@@ -25,11 +33,38 @@ const LandingPage: NextPage<Props> = ({ products }) => {
 
             <Intro />
 
-            <Values />
-
             <ProductSlides products={products} />
 
+            <div className={styles.btn}>
+               <Button
+                  href={'/menu'}
+                  content={'Más platos'}
+                  background='var(--black)'
+                  border='2px solid var(--black)'
+               />
+            </div>
+
+            <Values />
+
+            <div className={styles.btn}>
+               <Button
+                  href={'/menu'}
+                  content={'¡Quiero!'}
+                  background='var(--black)'
+                  border='2px solid var(--black)'
+               />
+            </div>
+
             <HowToBuy />
+
+            <div className={styles.btn}>
+               <Button
+                  href={'/menu'}
+                  content={'¡Comprar!'}
+                  background='var(--black)'
+                  border='2px solid var(--black)'
+               />
+            </div>
 
             <CommonQuestions />
 
@@ -40,7 +75,7 @@ const LandingPage: NextPage<Props> = ({ products }) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-   const products = await dbProducts.getAllProducts();
+   const products = await dbProducts.getAllBestSellersProducts();
 
    return {
       props: { products },

@@ -10,7 +10,7 @@
 
 .ourMenu > .title {
    width: 80%;
-   margin-bottom: 1rem;
+   margin: 1.5rem 0;
    text-align: center;
    color: var(--black);
 }
@@ -29,28 +29,37 @@
    flex-direction: column;
    justify-content: center;
    width: 100%;
-   padding: 10px;
 }
 
 .box > .nextImage {
+   position: relative;
    display: flex;
    flex-direction: column;
    justify-content: center;
-   width: 45%;
+   width: 80%;
    margin: 0 auto;
 }
 
 .box > .nextImage img {
    object-fit: cover;
-   border-radius: 50px;
+   border-radius: 20px;
+}
+
+.box > .nextImage > .btn {
+   position: absolute;
+   bottom: 20px;
+   left: 50%;
+   transform: translate(-50%, 0);
+   width: 70%;
+   max-width: 320px;
 }
 
 .box > .title {
-   width: 55%;
-   margin: 1rem auto;
+   width: 70%;
+   margin: 1rem auto 0 auto;
    text-align: center;
    font-size: 1.15rem;
-   color: var(--black);
+   color: var(--textColor);
 }
 
 @media (min-width: 720px) {
@@ -60,7 +69,23 @@
       cursor: pointer;
    }
 
+   .box > .nextImage {
+      width: 35%;
+      max-width: 450px;
+   }
+
+   .box > .nextImage > .btn {
+      position: absolute;
+      bottom: 35px;
+      left: 50%;
+      transform: translate(-50%, 0);
+      width: 50%;
+      max-width: 320px;
+   }
+
    .box > .title {
       width: 50%;
+      max-width: 380px;
+      font-size: 1.4rem;
    }
 }

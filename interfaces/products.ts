@@ -9,6 +9,7 @@ export interface IProduct {
    ingredients: string[];
    nutritionalInfo: object;
    howToHeat: string;
+   bestSeller?: boolean;
    createdAt?: string;
    updatedAt?: string;
 }
