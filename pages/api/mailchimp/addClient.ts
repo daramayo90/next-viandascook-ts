@@ -24,13 +24,10 @@ const addClient = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
    const DATACENTER = process.env.MAILCHIMP_API_SERVER;
 
    const data = JSON.stringify({
-      email_address: email,
+      email_address: email.toLocaleLowerCase(),
       merge_fields: {
          FNAME: name.charAt(0).toUpperCase() + name.slice(1),
          LNAME: lastName.charAt(0).toUpperCase() + lastName.slice(1),
-         PRODUCT: 'Albondigas',
-         PRICE: 500,
-         PURCHASE_DATE: '13/2/2023',
       },
       status: 'subscribed',
    });
