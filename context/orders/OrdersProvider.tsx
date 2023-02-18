@@ -173,10 +173,10 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
 
          if (!id) {
             await viandasApi.post('/mailchimp/addClient', { subs, orderId, total, cart });
-         } else {
-            await viandasApi.patch('/mailchimp/updateClient', { orderId, total, cart });
          }
-      } catch (error) {}
+      } catch (error) {
+         console.log(error);
+      }
    };
 
    return (

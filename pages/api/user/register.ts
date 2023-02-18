@@ -56,8 +56,8 @@ const registerUser = async (req: NextApiRequest, res: NextApiResponse<Data>) => 
    }
 
    const newUser = new User({
-      name: name.charAt(0).toUpperCase() + name.slice(1),
-      lastName: lastName.charAt(0).toUpperCase() + lastName.slice(1),
+      name: name.charAt(0).toUpperCase() + name.slice(1).toLocaleLowerCase(),
+      lastName: lastName.charAt(0).toUpperCase() + lastName.slice(1).toLocaleLowerCase(),
       email: email.toLocaleLowerCase(),
       phone: '-',
       dni: '-',

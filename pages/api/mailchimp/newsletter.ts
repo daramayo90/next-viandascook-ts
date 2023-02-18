@@ -26,8 +26,8 @@ const subscribeUser = async (req: NextApiRequest, res: NextApiResponse<Data>) =>
    const subscriber = {
       email_address: email.toLocaleLowerCase(),
       merge_fields: {
-         FNAME: name.charAt(0).toUpperCase() + name.slice(1),
-         LNAME: lastName.charAt(0).toUpperCase() + lastName.slice(1),
+         FNAME: name.charAt(0).toUpperCase() + name.slice(1).toLocaleLowerCase(),
+         LNAME: lastName.charAt(0).toUpperCase() + lastName.slice(1).toLocaleLowerCase(),
       },
       status: 'subscribed',
    };

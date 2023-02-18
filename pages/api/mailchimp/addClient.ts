@@ -26,8 +26,9 @@ const addClient = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
    const data = JSON.stringify({
       email_address: email.toLocaleLowerCase(),
       merge_fields: {
-         FNAME: name.charAt(0).toUpperCase() + name.slice(1),
-         LNAME: lastName.charAt(0).toUpperCase() + lastName.slice(1),
+         FNAME: name.charAt(0).toUpperCase() + name.slice(1).toLocaleLowerCase(),
+         LNAME: lastName.charAt(0).toUpperCase() + lastName.slice(1).toLocaleLowerCase(),
+         //  BIRTHDAY: '01/22',
       },
       status: 'subscribed',
    });
@@ -44,12 +45,9 @@ const addClient = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
 
    axios(config)
       .then(function (response) {
-         console.log(JSON.stringify(response.data));
-         return;
+         return res.status(201).json({ message: response.data.id });
       })
       .catch(function (error) {
-         console.log('ERROR', error);
-         console.log(error.error);
-         return;
+         return res.status(201).json({ message: 'Error' });
       });
 };
