@@ -9,3 +9,4 @@ export * from './pageTitles';
 export * from './removeCookies';
 export * from './typesList';
 export * from './zipcodesBA';
+export * from './steps';

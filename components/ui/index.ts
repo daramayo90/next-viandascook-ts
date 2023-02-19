@@ -12,6 +12,8 @@ export * from './Newsletter';
 export * from './SideAdminMenu';
 export * from './SideMenu';
 export * from './SideProductsMenu';
+export * from './Step';
+export * from './Steps';
 export * from './SubmitButton';
 export * from './TabMenu';
 export * from './Values';

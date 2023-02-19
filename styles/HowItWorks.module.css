@@ -1,0 +1,206 @@
+.howItWorks {
+   width: 100vw;
+   height: 100%;
+}
+
+.howItWorks > .intro {
+   background-color: #000;
+}
+
+.howItWorks > .intro > .container {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   width: 100%;
+   margin: 4rem 0;
+}
+
+.howItWorks > .intro > .container > .videoIntro {
+   position: relative;
+   padding: 0;
+   width: 100%;
+   max-width: 100%;
+   height: 303px;
+   overflow: hidden;
+}
+
+.howItWorks > .intro > .container > .videoIntro > video {
+   width: 100%;
+   position: absolute;
+   left: 0;
+   top: 0;
+   height: 100%;
+   object-fit: cover;
+}
+
+.howItWorks > .intro > .container > .textIntro {
+   padding: 35px 20px;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   margin: 0;
+}
+
+.howItWorks > .intro > .container > .textIntro > h1 {
+   color: var(--white);
+   text-align: center;
+   font-size: 1.8rem;
+}
+
+.howItWorks > .intro > .container > .textIntro > p {
+   color: var(--white);
+   text-align: center;
+}
+
+.howItWorks > .intro > .container > .textIntro > .btn {
+   width: 90%;
+   margin: 2rem auto;
+}
+
+.howItWorks > .presentation {
+   width: 90%;
+   margin: 0 auto;
+   padding: 2rem 20px;
+   text-align: center;
+}
+
+.howItWorks > .presentation > h2 {
+   margin: 2rem 0;
+}
+
+.howItWorks > .steps {
+   display: flex;
+   flex-direction: column;
+}
+
+.howItWorks > .steps > .step {
+   padding: 20px 0;
+}
+
+.howItWorks > .steps > .step > .video {
+   position: relative;
+   max-width: 100%;
+   width: 100%;
+   height: 303px;
+   padding: 0;
+   overflow: hidden;
+}
+
+.howItWorks > .steps > .step > .video > video {
+   position: absolute;
+   left: 0;
+   top: 0;
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+}
+
+.howItWorks > .steps > .step > .text {
+   max-width: 100%;
+   width: 100%;
+   margin: 2rem 0;
+   padding: 0 20px;
+   text-align: left;
+}
+
+.howItWorks > .steps > .step > .text > h3 {
+   margin: 0.5rem 0;
+}
+
+.howItWorks > .btn {
+   width: 90%;
+   margin: 0 auto 5rem auto;
+}
+
+@media (min-width: 720px) {
+   .howItWorks {
+      width: 100vw;
+      height: 100%;
+   }
+
+   .howItWorks > .intro > .container {
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: space-between;
+      max-width: 1100px;
+      height: 462px;
+      margin: 0 auto;
+   }
+
+   .howItWorks > .intro > .container > .videoIntro {
+      height: 303px;
+      height: 100%;
+      max-width: 500px;
+   }
+
+   .howItWorks > .intro > .container > .textIntro {
+      max-width: 45%;
+      margin-top: 4rem;
+      padding: 0;
+   }
+
+   .howItWorks > .intro > .container > .textIntro > h1 {
+      color: var(--white);
+      text-align: center;
+      font-size: 2.5rem;
+   }
+
+   .howItWorks > .intro > .container > .textIntro > p {
+      color: var(--white);
+      text-align: center;
+   }
+
+   .howItWorks > .intro > .container > .textIntro > .btn {
+      width: 50%;
+      margin: 2rem auto;
+      max-width: 480px;
+   }
+
+   .howItWorks > .presentation > h2 {
+      margin: 2rem 0;
+   }
+
+   .howItWorks > .steps {
+      max-width: 1100px;
+      margin: 1rem auto 4rem;
+      padding: 0;
+   }
+
+   .howItWorks > .steps > .step {
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: space-between;
+      padding: 2rem;
+   }
+
+   .howItWorks > .steps > .stepReverse {
+      flex-direction: row;
+   }
+
+   .howItWorks > .steps > .step > .video {
+      max-width: 480px;
+      height: 267px;
+   }
+
+   .howItWorks > .steps > .step > .text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 480px;
+      margin: 0;
+   }
+
+   .howItWorks > .steps > .step > .text > h3 {
+      margin: 1rem 0;
+   }
+
+   .howItWorks > .steps > .step > .text > p {
+      line-height: 25px;
+   }
+
+   .howItWorks > .btn {
+      width: 50%;
+      margin: 0 auto 5rem auto;
+      max-width: 380px;
+   }
+}
