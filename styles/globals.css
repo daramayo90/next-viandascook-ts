@@ -338,6 +338,6 @@ button.nav.default-nav {
    color: var(--white);
 }
 
-.styles-module_whatsappButton__tVits.floating-whatsapp-button {
-   margin-top: 3rem;
+.styles-module_floatingWhatsapp__yWF5K > .styles-module_whatsappButton__tVits {
+   bottom: 5rem;
 }

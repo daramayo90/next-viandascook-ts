@@ -1,12 +1,13 @@
-export * as promo from './discountCalculation';
 export * as coupon from './couponCalculation';
 export * as currency from './currency';
 export * as jwt from './jwt';
+export * as promo from './discountCalculation';
 export * as validations from './validations';
 export * from './commonQuestions';
 export * from './holidays';
 export * from './pageTitles';
 export * from './removeCookies';
+export * from './sectionsUs';
+export * from './steps';
 export * from './typesList';
 export * from './zipcodesBA';
-export * from './steps';

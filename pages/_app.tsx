@@ -42,11 +42,12 @@ function MyApp({ Component, pageProps }: AppProps) {
                                     accountName='Mari'
                                     allowEsc
                                     allowClickAway
-                                    avatar='/profile/avatar.jpg'
+                                    avatar='/logo/wp-logo.jpg'
                                     chatMessage='Hola 👋, te saluda Mari de Viandas Cook.. ¿cómo puedo ayudarte?'
                                     statusMessage='Atención de 09 a 19hs'
                                     placeholder='Escribe tu mensaje..'
                                     darkMode
+                                    chatboxStyle={{ bottom: '9rem' }}
                                  />
                                  <Script src='https://sdk.mercadopago.com/js/v2' />
                                  <Component {...pageProps} />

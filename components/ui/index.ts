@@ -9,6 +9,8 @@ export * from './Intro';
 export * from './Loading';
 export * from './LoadingBars';
 export * from './Newsletter';
+export * from './SectionsUs';
+export * from './SectionUs';
 export * from './SideAdminMenu';
 export * from './SideMenu';
 export * from './SideProductsMenu';

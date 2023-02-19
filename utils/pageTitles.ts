@@ -13,4 +13,5 @@ export const pageTitles = {
    '/mi-cuenta/perfil': 'Perfil',
    '/mi-cuenta/invitar-amigos': 'Invitar Amigos',
    '/como-funciona': '¿Cómo Funciona?',
+   '/nosotros': 'Nosotros',
 };
