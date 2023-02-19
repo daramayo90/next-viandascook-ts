@@ -43,8 +43,6 @@ export const getAllBestSellersProducts = async (): Promise<IProduct[] | null> =>
 
    const products = await Product.find({ bestSeller: true }).lean();
 
-   console.log(products);
-
    await db.disconnect();
 
    if (!products) return null;

@@ -77,7 +77,6 @@ export default function Product() {
    // Create preference when click on checkout button
    const createCheckoutButton = (preferenceId) => {
       // Initialize the checkout
-      console.log('PREFERENCIAAAA', preferenceId);
       mp.checkout({
          preference: {
             id: preferenceId,
