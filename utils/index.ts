@@ -6,6 +6,7 @@ export * as validations from './validations';
 export * from './commonQuestions';
 export * from './holidays';
 export * from './pageTitles';
+export * from './questions';
 export * from './removeCookies';
 export * from './sectionsUs';
 export * from './steps';

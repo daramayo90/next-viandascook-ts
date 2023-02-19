@@ -2,7 +2,7 @@ import { useState, FC } from 'react';
 
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 
-import styles from '../../styles/CommonQuestions.module.css';
+import styles from '../../styles/Accordion.module.css';
 
 interface Props {
    title: string;
