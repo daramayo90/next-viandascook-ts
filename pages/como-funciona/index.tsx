@@ -1,4 +1,4 @@
-import { ShopLayout } from '../../components/layouts';
+import { HomeLayout } from '../../components/layouts';
 
 import { Button, Newsletter, Steps } from '../../components/ui';
 
@@ -6,7 +6,7 @@ import styles from '../../styles/HowItWorks.module.css';
 
 const ComoFuncionaPage = () => {
    return (
-      <ShopLayout title={'¿Cómo Funciona?'} pageDescription={''}>
+      <HomeLayout title={'¿Cómo Funciona?'} pageDescription={''}>
          <section className={styles.howItWorks}>
             <div className={styles.intro}>
                <div className={styles.container}>
@@ -17,7 +17,7 @@ const ComoFuncionaPage = () => {
                   </div>
 
                   <div className={styles.textIntro}>
-                     <h1>Comidas saludables listas para comer elaboradas por expertos</h1>
+                     <h1>Platos saludables listos para comer elaborados por expertos</h1>
                      <p>
                         Nuestros cocineros te llevan a tu mesa una variedad de comidas frescas y
                         saludables todos los días
@@ -55,7 +55,7 @@ const ComoFuncionaPage = () => {
 
             <Newsletter />
          </section>
-      </ShopLayout>
+      </HomeLayout>
    );
 };
 

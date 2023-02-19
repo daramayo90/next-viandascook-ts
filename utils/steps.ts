@@ -20,7 +20,7 @@ export const steps = [
       poster: '/howItWorks/img-step3.jpg',
       source: '/howItWorks/video-step3.mp4',
       title: '03 | Recibí tu pedido',
-      text1: 'Los platos congelados envasados al vacío se enviarán directamente a tu puerta, con fechas de vencimiento e instrucciones para calentar. Le enviaremos un mensaje de texto cuando sus comidas estén en camino.',
+      text1: 'Los platos congelados envasados al vacío se enviarán directamente a tu puerta, con fechas de vencimiento e instrucciones para calentar. Te estaremos enviando un mensaje de texto cuando tus comidas estén en camino.',
       text2: 'Cuando el pedido llegue, colocá los platos en el freezer.',
    },
    {

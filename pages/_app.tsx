@@ -38,7 +38,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                            ) : (
                               <>
                                  <FloatingWhatsApp
-                                    phoneNumber='+5491136527688'
+                                    phoneNumber='+5491171080193'
                                     accountName='Mari'
                                     allowEsc
                                     allowClickAway

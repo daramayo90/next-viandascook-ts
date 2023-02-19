@@ -1,14 +1,14 @@
 import type { NextPage } from 'next';
 import Link from 'next/link';
 
-import { ShopLayout } from '../components/layouts';
+import { HomeLayout } from '../components/layouts';
 import { Button } from '../components/ui';
 
 import styles from '../styles/Error.module.css';
 
 const Custom404: NextPage = () => {
    return (
-      <ShopLayout title='Página no encontrada' pageDescription='Nada que mostrar por acá'>
+      <HomeLayout title='Página no encontrada' pageDescription='Nada que mostrar por acá'>
          <section className={styles.error404}>
             <div className={styles.container}>
                <h1 className={styles.title}>404</h1>
@@ -32,7 +32,7 @@ const Custom404: NextPage = () => {
                </p>
             </div>
          </section>
-      </ShopLayout>
+      </HomeLayout>
    );
 };
 

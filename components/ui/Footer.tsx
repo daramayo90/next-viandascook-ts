@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 import { AiOutlineInstagram, AiOutlineWhatsApp } from 'react-icons/ai';
 import { BsFacebook } from 'react-icons/bs';
@@ -19,12 +20,20 @@ export const Footer = () => {
 
             <div className={styles.columnList}>
                <ul className={styles.list}>
-                  <li>¿Cómo funciona?</li>
-                  <li>Nosotros</li>
+                  <Link href={'/como-funciona'}>
+                     <li>¿Cómo funciona?</li>
+                  </Link>
+                  <Link href={'/nosotros'}>
+                     <li>Nosotros</li>
+                  </Link>
                </ul>
                <ul className={styles.list}>
-                  <li>¿Preguntas?</li>
-                  <li>Sumá puntos</li>
+                  <Link href={'/preguntas'}>
+                     <li>¿Preguntas?</li>
+                  </Link>
+                  <Link href={'/loyalty'}>
+                     <li>Sumá puntos</li>
+                  </Link>
                </ul>
             </div>
 
@@ -43,9 +52,21 @@ export const Footer = () => {
                </div>
 
                <div className={styles.socialMedia}>
-                  <AiOutlineInstagram className={styles.icon} />
-                  <BsFacebook className={styles.icon} />
-                  <AiOutlineWhatsApp className={styles.icon} />
+                  <Link href={'https://instagram.com/viandascook'} passHref>
+                     <a target='_blank'>
+                        <AiOutlineInstagram className={styles.icon} />
+                     </a>
+                  </Link>
+                  <Link href={'https://facebook.com/viandas.cook'} passHref>
+                     <a target='_blank'>
+                        <BsFacebook className={styles.icon} />
+                     </a>
+                  </Link>
+                  <Link href={'https://wa.link/3dkum4'} passHref>
+                     <a target='_blank'>
+                        <AiOutlineWhatsApp className={styles.icon} />
+                     </a>
+                  </Link>
                </div>
             </div>
          </div>
