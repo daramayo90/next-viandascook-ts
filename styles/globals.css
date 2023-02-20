@@ -276,8 +276,31 @@ textarea {
 }
 
 /* React Slideshow library */
-button.nav.default-nav {
-   display: none;
+button.nav.default-nav,
+.react-slideshow-container .default-nav:first-of-type,
+.react-slideshow-container .default-nav:last-of-type {
+   border: 2px var(--textColor) solid;
+   border: none;
+   width: 4.2rem;
+   height: 3.5rem;
+}
+
+.react-slideshow-container .default-nav:first-of-type {
+   left: -40px;
+}
+
+.react-slideshow-container .default-nav:last-of-type {
+   right: -40px;
+}
+
+@media (min-width: 720px) {
+   .react-slideshow-container .default-nav:first-of-type {
+      left: -20px;
+   }
+
+   .react-slideshow-container .default-nav:last-of-type {
+      right: -20px;
+   }
 }
 
 /* React Datepicker */

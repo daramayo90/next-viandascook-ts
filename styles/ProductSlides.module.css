@@ -63,6 +63,12 @@
 }
 
 @media (min-width: 720px) {
+   .ourMenu {
+      width: 80%;
+      max-width: 750px;
+      margin: 0 auto;
+   }
+
    .box {
       width: 80%;
       margin: 0 auto;
@@ -70,7 +76,7 @@
    }
 
    .box > .nextImage {
-      width: 35%;
+      width: 100%;
       max-width: 450px;
    }
 
