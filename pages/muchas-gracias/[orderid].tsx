@@ -27,7 +27,7 @@ const ThankYouPage: NextPage<Props> = ({ order }) => {
    }, []);
 
    return (
-      <OrderLayout title='¡Muchas Gracias!'>
+      <OrderLayout title='Viandas Cook - ¡Muchas Gracias!'>
          <section className={styles.order}>
             <h1 style={{ textAlign: 'center', paddingTop: '5rem' }}>¡Muchas Gracias!</h1>
 

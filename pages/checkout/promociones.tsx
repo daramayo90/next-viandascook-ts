@@ -7,7 +7,7 @@ import styles from '../../styles/Promos.module.css';
 
 const PromosPage: NextPage = () => {
    return (
-      <ShopLayout title={''} pageDescription={''}>
+      <ShopLayout title={'Viandas Cook - Promociones'} pageDescription={''}>
          <section className={styles.promos}>
             <PromosList />
          </section>

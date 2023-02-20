@@ -30,7 +30,7 @@ const discounts = [
 
 const DiscountsPage: NextPage = () => {
    return (
-      <ShopLayout title={''} pageDescription={''}>
+      <ShopLayout title={'Viandas Cook - Descuentos'} pageDescription={''}>
          <section className={styles.discounts}>
             {discounts.map(({ name, img }) => (
                <div key={name} className={styles.nextImage}>

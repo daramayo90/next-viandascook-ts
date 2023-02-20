@@ -6,10 +6,12 @@ import { useContext, useState } from 'react';
 import { AiOutlineUser, AiOutlineUserAdd, AiOutlineEye } from 'react-icons/ai';
 import { BsToggleOff, BsToggleOn } from 'react-icons/bs';
 import { FiMapPin } from 'react-icons/fi';
-import { HiOutlineLogout } from 'react-icons/hi';
+import { HiOutlineClipboardList, HiOutlineLogout } from 'react-icons/hi';
 import { MdOutlineKeyboardArrowRight } from 'react-icons/md';
 
 import styles from '../../styles/Account.module.css';
+import { TbDiscount2 } from 'react-icons/tb';
+import { RiLockPasswordLine } from 'react-icons/ri';
 
 export const Options = () => {
    const { logout } = useContext(AuthContext);
@@ -30,18 +32,34 @@ export const Options = () => {
             </div>
          </Link>
 
-         {/* <Link href='/mi-cuenta/direccion'>
+         <Link href='/pedidos/historial'>
             <div className={styles.option}>
-               <FiMapPin className={styles.icon} />
-               <span>Dirección</span>
+               <HiOutlineClipboardList className={styles.icon} />
+               <span>Mis Pedidos</span>
                <MdOutlineKeyboardArrowRight className={styles.rightIcon} />
             </div>
-         </Link> */}
+         </Link>
+
+         <Link href='/mi-cuenta/puntos'>
+            <div className={styles.option}>
+               <TbDiscount2 className={styles.icon} />
+               <span>Puntos Acumulados</span>
+               <MdOutlineKeyboardArrowRight className={styles.rightIcon} />
+            </div>
+         </Link>
 
          <Link href='/mi-cuenta/invitar-amigos'>
             <div className={styles.option}>
                <AiOutlineUserAdd className={styles.icon} />
                <span>Invitar Amigos</span>
+               <MdOutlineKeyboardArrowRight className={styles.rightIcon} />
+            </div>
+         </Link>
+
+         <Link href='/mi-cuenta/password'>
+            <div className={styles.option}>
+               <RiLockPasswordLine className={styles.icon} />
+               <span>Cambiar Clave</span>
                <MdOutlineKeyboardArrowRight className={styles.rightIcon} />
             </div>
          </Link>

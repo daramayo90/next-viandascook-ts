@@ -33,7 +33,7 @@ const CheckoutPage: NextPage<Props> = ({ user }) => {
    const shipping = isLoggedIn ? user?.shipping : shippingAddress;
 
    return (
-      <ShopLayout title={'Finalizar Compra'} pageDescription={''}>
+      <ShopLayout title={'Viandas Cook - Finalizar Compra'} pageDescription={''}>
          <section className={styles.checkout}>
             <div className={styles.container}>
                <div className={styles.selection}>

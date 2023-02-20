@@ -83,9 +83,9 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
    ): Promise<{ hasError: boolean; message: string }> => {
       const { user } = ((await getSession()) as any) || '';
 
-      const shippingAddress = user ? user.shipping : state.shippingAddress;
+      const shippingAddress: ShippingAddress = user ? user.shipping : state.shippingAddress;
 
-      if (!shippingAddress) {
+      if (shippingAddress.address.length < 4) {
          return {
             hasError: true,
             message: 'Indicanos una dirección de entrega antes de continuar',

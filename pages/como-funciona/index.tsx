@@ -6,7 +6,7 @@ import styles from '../../styles/HowItWorks.module.css';
 
 const ComoFuncionaPage = () => {
    return (
-      <HomeLayout title={'¿Cómo Funciona?'} pageDescription={''}>
+      <HomeLayout title={'Viandas Cook - ¿Cómo Funciona?'} pageDescription={''}>
          <section className={styles.howItWorks}>
             <div className={styles.intro}>
                <div className={styles.container}>

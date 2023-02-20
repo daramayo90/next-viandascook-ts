@@ -45,7 +45,7 @@ const ProductsPage: NextPage<Props> = ({ products }) => {
          : products;
 
    return (
-      <ShopLayout title={''} pageDescription={''}>
+      <ShopLayout title={'Viandas Cook - Menú'} pageDescription={''}>
          <section className={styles.products}>
             <SearchProducts searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
 

@@ -5,7 +5,7 @@ import styles from '../../styles/Questions.module.css';
 
 const QuestionsPage = () => {
    return (
-      <HomeLayout title={'¿Dudas? ¿Preguntas?'} pageDescription={''}>
+      <HomeLayout title={'Viandas Cook - ¿Dudas?'} pageDescription={''}>
          <section className={styles.questions}>
             <div className={styles.container}>
                <Questions />

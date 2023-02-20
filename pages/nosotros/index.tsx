@@ -6,7 +6,7 @@ import styles from '../../styles/Nosotros.module.css';
 
 const NosotrosPage = () => {
    return (
-      <HomeLayout title={'Nosotros'} pageDescription={''}>
+      <HomeLayout title={'Viandas Cook - Nosotros'} pageDescription={''}>
          <section className={styles.us}>
             <div className={styles.intro}>
                <div className={styles.container}>

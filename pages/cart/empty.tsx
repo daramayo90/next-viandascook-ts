@@ -8,7 +8,7 @@ import styles from '../../styles/EmptyCart.module.css';
 
 const EmptyPage: NextPage = () => {
    return (
-      <ShopLayout title={'Carrito vacío'} pageDescription={''}>
+      <ShopLayout title={'Viandas Cook - Carrito vacío'} pageDescription={''}>
          <section className={styles.emptyCart}>
             <div className={styles.icon}>
                <Image

@@ -3,7 +3,7 @@ import { ShopLayout } from '../../components/layouts';
 
 const FriendsPage: NextPage = () => {
    return (
-      <ShopLayout title={''} pageDescription={''}>
+      <ShopLayout title={'Viandas Cook - Referidos'} pageDescription={''}>
          <section>
             <div>Invitar Amigos</div>
          </section>

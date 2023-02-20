@@ -20,7 +20,7 @@ export const HomeNavbar: FC<Props> = ({ pageTitle }) => {
    const { numberOfItems } = useContext(CartContext);
 
    const navigation = () => {
-      router.push('/');
+      router.back();
    };
 
    return (

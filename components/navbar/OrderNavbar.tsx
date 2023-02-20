@@ -20,9 +20,7 @@ export const OrderNavbar: FC<Props> = ({ pageTitle }) => {
    const { numberOfItems } = useContext(CartContext);
 
    const navigation = () => {
-      if (router.asPath === '/pedidos/historial') return router.push('/menu');
-
-      router.push('/pedidos/historial');
+      router.back();
    };
 
    return (

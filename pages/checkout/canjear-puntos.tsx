@@ -58,7 +58,7 @@ const PointsPage: NextPage<Props> = ({ user }) => {
    };
 
    return (
-      <ShopLayout title={''} pageDescription={''}>
+      <ShopLayout title={'Viandas Cook - Canjear Puntos'} pageDescription={''}>
          <section className={styles.points}>
             <div className={styles.container}>
                <div className={styles.balance}>

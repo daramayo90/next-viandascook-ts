@@ -18,7 +18,7 @@ interface Props {
 
 const OrderHistoryPage: NextPage<Props> = ({ orders }) => {
    return (
-      <OrderLayout title={'Historial de Pedidos'}>
+      <OrderLayout title={'Viandas Cook - Historial de Pedidos'}>
          <section className={styles.history}>
             <div className={styles.container}>
                {orders?.length === 0 ? (

@@ -283,6 +283,7 @@ button.nav.default-nav,
    height: 3.5rem;
    border: none;
    background-color: transparent;
+   z-index: 1;
 }
 
 .react-slideshow-container .default-nav:first-of-type {
@@ -362,5 +363,6 @@ button.nav.default-nav,
 }
 
 .styles-module_floatingWhatsapp__yWF5K > .styles-module_whatsappButton__tVits {
+   right: 3rem;
    bottom: 5rem;
 }

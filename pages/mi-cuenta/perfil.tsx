@@ -23,7 +23,7 @@ const ProfilePage: NextPage = () => {
    if (!user) return <></>;
 
    return (
-      <ShopLayout title={'Perfil'} pageDescription={''}>
+      <ShopLayout title={'Viandas Cook - Mi Perfil'} pageDescription={''}>
          <section className={styles.address}>
             <div className={styles.container}>
                <AddressForm userdb={user} />

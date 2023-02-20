@@ -20,7 +20,7 @@ interface Props {
 
 const ProductPage: NextPage<Props> = ({ product }) => {
    return (
-      <ProductLayout title={product.name} pageDescription={''}>
+      <ProductLayout title={'Viandas Cook - ' + product.name} pageDescription={''}>
          <article className={styles.product}>
             <div className={styles.topSection}>
                <ProductImg product={product} />
