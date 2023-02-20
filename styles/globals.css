@@ -279,10 +279,10 @@ textarea {
 button.nav.default-nav,
 .react-slideshow-container .default-nav:first-of-type,
 .react-slideshow-container .default-nav:last-of-type {
-   border: 2px var(--textColor) solid;
-   border: none;
    width: 4.2rem;
    height: 3.5rem;
+   border: none;
+   background-color: transparent;
 }
 
 .react-slideshow-container .default-nav:first-of-type {
