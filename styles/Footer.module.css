@@ -148,6 +148,7 @@
 
    .footer > .info > .columnList > .list > li {
       margin: 20px 0;
+      cursor: pointer;
    }
 
    .footer > .info > .contact > .support {

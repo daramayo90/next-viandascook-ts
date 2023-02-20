@@ -37,6 +37,7 @@
 
 @media (min-width: 720px) {
    .error404 {
+      width: 100%;
       height: calc(100vh - 10rem);
    }
 

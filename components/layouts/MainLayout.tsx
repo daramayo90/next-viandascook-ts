@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import Head from 'next/head';
 
 import { Footer, SideMenu } from '../ui';
-import { HomeNavbar, Navbar } from '../navbar';
+import { MainNavbar, Navbar } from '../navbar';
 
 interface Props {
    children: ReactNode;
@@ -27,7 +27,7 @@ export const MainLayout: FC<Props> = ({ children, title, pageDescription, imageF
             {imageFullUrl && <meta name='og:image' content={imageFullUrl} />}
          </Head>
 
-         <nav>{router.asPath === '/' ? <HomeNavbar /> : <Navbar />}</nav>
+         <nav>{router.asPath === '/' ? <MainNavbar /> : <Navbar />}</nav>
 
          <SideMenu />
 

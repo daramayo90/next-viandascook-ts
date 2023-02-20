@@ -15,4 +15,5 @@ export const pageTitles = {
    '/como-funciona': '¿Cómo Funciona?',
    '/nosotros': 'Nosotros',
    '/preguntas': '¿Preguntas?',
+   '/loyalty': '¡Sumá puntos!',
 };

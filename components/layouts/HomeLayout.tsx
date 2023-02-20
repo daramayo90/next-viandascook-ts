@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 
 import { pageTitles } from '../../utils';
 
-import { ShopNavbar } from '../navbar';
+import { HomeNavbar } from '../navbar';
 import { Footer, SideMenu } from '../ui';
 
 interface Props {
@@ -19,14 +19,10 @@ export const HomeLayout: FC<Props> = ({ children, title, pageDescription, imageF
    const path = router.asPath;
 
    let navTitle = '';
-   let menuPage = false;
-   let backCart = false;
 
    const setPath = (routerPath: string) => {
       Object.entries(pageTitles).forEach(([path, title]): void => {
          if (routerPath === path) navTitle = title;
-         if (routerPath === '/menu') menuPage = true;
-         if (routerPath === '/cart') backCart = true;
       });
    };
 
@@ -45,7 +41,7 @@ export const HomeLayout: FC<Props> = ({ children, title, pageDescription, imageF
          </Head>
 
          <nav>
-            <ShopNavbar pageTitle={navTitle} menuPage={menuPage} backCart={backCart} />
+            <HomeNavbar pageTitle={navTitle} />
          </nav>
 
          <main>{children}</main>

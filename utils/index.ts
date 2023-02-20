@@ -8,6 +8,7 @@ export * from './holidays';
 export * from './pageTitles';
 export * from './questions';
 export * from './removeCookies';
+export * from './rewards';
 export * from './sectionsUs';
 export * from './steps';
 export * from './typesList';
