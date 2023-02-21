@@ -276,11 +276,11 @@ textarea {
 }
 
 /* React Slideshow library */
-/* button.nav.default-nav,
+button.nav.default-nav,
 .react-slideshow-container .default-nav:first-of-type,
 .react-slideshow-container .default-nav:last-of-type {
-   width: 4.2rem;
-   height: 3.5rem;
+   /* width: 4.2rem;
+   height: 3.5rem; */
    border: none;
    background-color: transparent;
    z-index: 1;
@@ -302,7 +302,7 @@ textarea {
    .react-slideshow-container .default-nav:last-of-type {
       right: -20px;
    }
-} */
+}
 
 /* React Datepicker */
 .react-datepicker__input-container > input {
