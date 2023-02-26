@@ -9,6 +9,7 @@ type Data = { message: string };
 interface ChangePasswordRequestBody {
    oldPassword: string;
    newPassword: string;
+   repeatNewPassword: string;
 }
 
 export default function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
@@ -28,7 +29,7 @@ const changePassword = async (req: NextApiRequest, res: NextApiResponse) => {
       return res.status(401).json({ error: 'Unauthorized' });
    }
 
-   const { oldPassword, newPassword }: ChangePasswordRequestBody = req.body;
+   const { oldPassword, newPassword, repeatNewPassword }: ChangePasswordRequestBody = req.body;
 
    await db.connect();
 
@@ -43,8 +44,14 @@ const changePassword = async (req: NextApiRequest, res: NextApiResponse) => {
 
    const passwordMatch = bcrypt.compareSync(oldPassword, user.password!);
 
+   console.log(oldPassword, user.password);
+
    if (!passwordMatch) {
       return res.status(400).json({ message: 'La contraseña actual es incorrecta' });
+   }
+
+   if (newPassword !== repeatNewPassword) {
+      return res.status(400).json({ message: 'La contraseña nueva no coincide' });
    }
 
    // Hash the new password

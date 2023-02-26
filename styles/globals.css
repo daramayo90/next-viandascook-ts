@@ -286,13 +286,13 @@ button.nav.default-nav,
    z-index: 1;
 }
 
-.react-slideshow-container .default-nav:first-of-type {
+/* .react-slideshow-container .default-nav:first-of-type {
    left: -15px;
 }
 
 .react-slideshow-container .default-nav:last-of-type {
    right: -15px;
-}
+} */
 
 @media (min-width: 720px) {
    .react-slideshow-container .default-nav:first-of-type {
@@ -363,6 +363,5 @@ button.nav.default-nav,
 }
 
 .styles-module_floatingWhatsapp__yWF5K > .styles-module_whatsappButton__tVits {
-   right: 3rem;
    bottom: 5rem;
 }

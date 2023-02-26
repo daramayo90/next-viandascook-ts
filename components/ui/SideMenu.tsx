@@ -28,6 +28,11 @@ export const SideMenu = () => {
       <section className={isMenuOpen ? `${styles.sidemenu} ${styles.open}` : `${styles.sidemenu}`}>
          <div className={isMenuOpen ? `${styles.options} ${styles.open}` : `${styles.options}`}>
             <ul className={styles.list}>
+               <li onClick={() => navigateTo('/menu')}>
+                  <MdOutlineFoodBank className={styles.icon} />
+                  <span>Elegí tus Viandas</span>
+                  <MdOutlineKeyboardArrowRight className={styles.iconRight} />
+               </li>
                {isLoggedIn && (
                   <>
                      <li onClick={() => navigateTo('/mi-cuenta')}>
@@ -42,11 +47,6 @@ export const SideMenu = () => {
                      </li>
                   </>
                )}
-               <li onClick={() => navigateTo('/menu')}>
-                  <MdOutlineFoodBank className={styles.icon} />
-                  <span>Elegí tus Viandas</span>
-                  <MdOutlineKeyboardArrowRight className={styles.iconRight} />
-               </li>
                <li onClick={() => navigateTo('/loyalty')}>
                   <TbDiscount2 className={styles.icon} />
                   <span>Sumá Puntos</span>
