@@ -44,8 +44,6 @@ const changePassword = async (req: NextApiRequest, res: NextApiResponse) => {
 
    const passwordMatch = bcrypt.compareSync(oldPassword, user.password!);
 
-   console.log(oldPassword, user.password);
-
    if (!passwordMatch) {
       return res.status(400).json({ message: 'La contraseña actual es incorrecta' });
    }

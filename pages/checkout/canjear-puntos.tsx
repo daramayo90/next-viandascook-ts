@@ -9,7 +9,7 @@ import { IUser } from '../../interfaces/user';
 
 import { CartContext } from '../../context';
 import { ShopLayout } from '../../components/layouts';
-import { SubmitButton } from '../../components/ui';
+import { QuestionsLoyalty, SubmitButton } from '../../components/ui';
 
 import styles from '../../styles/Points.module.css';
 
@@ -98,6 +98,8 @@ const PointsPage: NextPage<Props> = ({ user }) => {
                <div className={styles.conversion}>
                   <span>30 puntos equivalen a $1</span>
                </div>
+
+               <QuestionsLoyalty />
             </div>
          </section>
       </ShopLayout>

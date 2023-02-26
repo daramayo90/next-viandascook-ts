@@ -7,6 +7,7 @@ export * from './commonQuestions';
 export * from './holidays';
 export * from './pageTitles';
 export * from './questions';
+export * from './questionsLoyalty';
 export * from './removeCookies';
 export * from './rewards';
 export * from './sectionsUs';

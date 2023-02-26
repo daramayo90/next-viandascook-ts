@@ -8,7 +8,7 @@ import { CartContext } from '../../context';
 import { ShopLayout } from '../../components/layouts';
 
 import styles from '../../styles/Points.module.css';
-import { Button } from '../../components/ui';
+import { Button, QuestionsLoyalty } from '../../components/ui';
 
 const MyPointsPage: NextPage = () => {
    const [user, setUser] = useState<IUser | undefined>();
@@ -54,14 +54,7 @@ const MyPointsPage: NextPage = () => {
                   <span>30 puntos equivalen a $1</span>
                </div>
 
-               <div className={styles.btn}>
-                  <Button
-                     href={'/loyalty'}
-                     content={'Ver Más'}
-                     color='var(--textColor)'
-                     border='2px solid var(--textColor)'
-                  />
-               </div>
+               <QuestionsLoyalty />
             </div>
          </section>
       </ShopLayout>
