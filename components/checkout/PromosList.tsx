@@ -57,8 +57,11 @@ export const PromosList = () => {
       const { error, msg } = await addCoupon(promo);
 
       if (error) {
-         setErrorMsg(msg!);
          setIsClicked(false);
+         setErrorMsg(msg!);
+         setTimeout(() => {
+            setErrorMsg('');
+         }, 2500);
          return;
       }
 
@@ -68,6 +71,8 @@ export const PromosList = () => {
 
    return (
       <div className={styles.container}>
+         <h1 className={styles.title}>Solo es posible utilizar un cupón a la vez</h1>
+
          {promosList.map(({ icon, title, text, coupon }) => (
             <PromoCard
                key={coupon}

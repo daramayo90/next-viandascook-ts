@@ -7,10 +7,17 @@
 }
 
 .promos > .container {
+   position: relative;
    max-width: 440px;
    width: 90%;
    margin: 0 auto;
    padding: 1rem 0 5rem;
+}
+
+.promos > .container > .title {
+   width: 100%;
+   text-align: center;
+   font-size: 1.2rem;
 }
 
 .promos > .container > .promo {
@@ -63,14 +70,16 @@
 }
 
 .promos > .container > .applyButton {
-   margin: 2rem 0 4rem 0;
+   margin: 3.5rem 0 4rem 0;
 }
 
 .promos > .container > .error {
+   position: absolute;
+   bottom: 12.5rem;
    display: block;
    width: 100%;
    text-align: center;
-   font-size: 0.8rem;
+   font-size: 0.95rem;
    color: var(--error);
 }
 
@@ -99,6 +108,7 @@
    }
 
    .promos > .container > .error {
-      margin-top: 0.1rem;
+      bottom: 10.5rem;
+      font-size: 1.1rem;
    }
 }

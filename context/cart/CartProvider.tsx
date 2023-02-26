@@ -201,6 +201,12 @@ export const CartProvider: FC<Props> = ({ children }) => {
 
    // Add a coupon in checkout page
    const addCoupon = async (couponCode: string): Promise<{ error: boolean; msg?: string }> => {
+      if (!couponCode)
+         return {
+            error: true,
+            msg: `Ningún cupón seleccionado`,
+         };
+
       try {
          const { data } = await viandasApi.get('/coupon', { params: { code: couponCode } });
 
