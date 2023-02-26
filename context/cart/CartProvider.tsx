@@ -283,6 +283,35 @@ export const CartProvider: FC<Props> = ({ children }) => {
       }
    };
 
+   const onUseRefCoupon = async (couponCode: string): Promise<{ error: boolean; msg?: string }> => {
+      try {
+         const { data } = await viandasApi.get('/refCoupon', { params: { code: couponCode } });
+
+         const { minAmount, maxAmount } = data;
+
+         if (state.subTotal < minAmount)
+            return {
+               error: true,
+               msg: `El subtotal debe ser mayor a ${currency.format(minAmount)}`,
+            };
+
+         if (state.subTotal > maxAmount)
+            return {
+               error: true,
+               msg: `El subtotal debe ser menor a ${currency.format(maxAmount)}`,
+            };
+
+         dispatch({ type: '[Cart] - Add Coupon', payload: data });
+
+         return { error: false };
+      } catch (error: any) {
+         return {
+            error: true,
+            msg: error.response.data.message,
+         };
+      }
+   };
+
    return (
       <CartContext.Provider
          value={{
@@ -296,6 +325,7 @@ export const CartProvider: FC<Props> = ({ children }) => {
             orderComplete,
             repeatOrder,
             onUsePoints,
+            onUseRefCoupon,
          }}>
          {children}
       </CartContext.Provider>

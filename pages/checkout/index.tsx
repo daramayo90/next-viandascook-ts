@@ -16,6 +16,7 @@ import {
    Points,
    Posting,
    Promos,
+   ReferralCodes,
    SelectedProducts,
 } from '../../components/checkout';
 
@@ -40,6 +41,8 @@ const CheckoutPage: NextPage<Props> = ({ user }) => {
                   <Address shipping={shipping} />
 
                   <Promos />
+
+                  <ReferralCodes />
 
                   <Points />
 

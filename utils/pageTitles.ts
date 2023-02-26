@@ -7,6 +7,7 @@ export const pageTitles = {
    '/checkout': '¡Último Paso!',
    '/checkout/address': 'Dirección de envío',
    '/checkout/promociones': 'Promos Vigentes',
+   '/checkout/referido': 'Referido',
    '/checkout/canjear-puntos': 'Canjear Puntos',
    '/checkout/delivery': 'Fecha de Entrega',
    '/mi-cuenta': 'Mi Cuenta',

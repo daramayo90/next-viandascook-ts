@@ -1,0 +1,107 @@
+.applyReferral {
+   width: 100vw;
+   height: calc(100vh - 4rem);
+   background-color: var(--white);
+}
+
+.applyReferral > .container {
+   max-width: 440px;
+   width: 90%;
+   margin: 5rem auto;
+}
+
+.applyReferral > .container > .title {
+   text-align: center;
+   margin: 2rem 0;
+   color: var(--black);
+}
+
+.applyReferral > .container > .text {
+   margin: 1rem 0;
+   text-align: center;
+   line-height: 27px;
+}
+
+.applyReferral > .container > .applyCoupon {
+   display: flex;
+   align-items: flex-end;
+   justify-content: space-around;
+   width: 100%;
+   margin: 1rem 0;
+}
+
+.applyReferral > .container > .applyCoupon > label {
+   width: 50%;
+}
+
+.applyReferral > .container > .applyCoupon p {
+   margin: 0.4rem 0.3rem;
+   color: var(--textColor);
+}
+
+.applyReferral > .container > .applyCoupon input {
+   display: block;
+   width: 100%;
+   padding: 15px;
+   height: 40px;
+   border-radius: 4px;
+   font-size: 1rem;
+   font-weight: 400;
+   line-height: 1.5;
+   color: #596068;
+   background-color: #fff;
+   background-clip: padding-box;
+   border: 1px solid #ced4da;
+   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.applyReferral > .container > .applyCoupon input::placeholder {
+   color: rgba(170, 170, 170, 0.9);
+   font-size: 0.95rem;
+}
+
+.applyReferral > .container > .applyCoupon input:focus {
+   color: #495057;
+   background-color: #fff;
+   border-color: #80bdff;
+   outline: 0;
+   box-shadow: 0 0 0 0.2rem rgb(0 123 255 / 25%);
+}
+
+.applyReferral > .container > .applyCoupon > .btn {
+   width: 45%;
+}
+
+.applyReferral > .container > .error {
+   display: inline-block;
+   width: 100%;
+   font-size: 0.9rem;
+   text-align: center;
+   color: var(--error);
+}
+
+.applyReferral > .container > .correct {
+   display: inline-block;
+   width: 100%;
+   font-size: 0.9rem;
+   text-align: center;
+   color: var(--primary);
+}
+
+@media (min-width: 720px) {
+   .applyReferral {
+      width: 100%;
+      height: 100%;
+      padding-bottom: 1rem;
+   }
+
+   .applyReferral > .container {
+      max-width: 720px;
+      padding: 0;
+   }
+
+   .applyReferral > .container > .applyCoupon {
+      max-width: 490px;
+      margin: 0 auto;
+   }
+}

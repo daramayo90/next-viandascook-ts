@@ -26,6 +26,7 @@ interface ContextProps {
    repeatOrder: (orderItems: ICartProduct[]) => void;
 
    onUsePoints: (points: number) => Promise<{ error: boolean; msg?: string }>;
+   onUseRefCoupon: (couponCode: string) => Promise<{ error: boolean; msg?: string }>;
 }
 
 export const CartContext = createContext({} as ContextProps);

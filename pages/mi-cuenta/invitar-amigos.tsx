@@ -1,11 +1,20 @@
 import { useRef, useState } from 'react';
-import { NextPage } from 'next';
+import { GetServerSideProps, NextPage } from 'next';
+import { unstable_getServerSession } from 'next-auth';
+
+import { authOptions } from '../api/auth/[...nextauth]';
+
+import { dbUsers } from '../../database';
 
 import { ShopLayout } from '../../components/layouts';
 
 import styles from '../../styles/Referrals.module.css';
 
-const FriendsPage: NextPage = () => {
+interface Props {
+   userRefCode: string;
+}
+
+const FriendsPage: NextPage<Props> = ({ userRefCode }) => {
    const [couponToCopy, setCouponToCopy] = useState<string>('');
    const couponRef = useRef<HTMLSpanElement>(null);
 
@@ -34,7 +43,7 @@ const FriendsPage: NextPage = () => {
       <ShopLayout title={'Viandas Cook - Referidos'} pageDescription={''}>
          <section className={styles.referrals}>
             <div className={styles.container}>
-               <h1 className={styles.title}>Recibí 10.000 puntos de regalo</h1>
+               <h1 className={styles.title}>Invitá a un amigo a ser un ViandLover</h1>
                <p className={styles.text}>
                   Por cada amigo que haga su primer pedido con tu código, recibís{' '}
                   <strong>10.000 puntos</strong> de regalo y tu amigo recibe un{' '}
@@ -46,7 +55,7 @@ const FriendsPage: NextPage = () => {
 
                <div className={styles.referralContainer}>
                   <span className={styles.coupon} ref={couponRef}>
-                     REF-VC3293F
+                     {userRefCode}
                   </span>
                   <button className={styles.copy} onClick={handleCopyClick}>
                      Copiar
@@ -60,6 +69,35 @@ const FriendsPage: NextPage = () => {
          </section>
       </ShopLayout>
    );
+};
+
+export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
+   const session: any = await unstable_getServerSession(req, res, authOptions);
+
+   if (!session) {
+      return {
+         redirect: {
+            destination: '/auth/login?page=/mi-cuenta/invitar-amigos',
+            permanent: false,
+         },
+      };
+   }
+   const user = await dbUsers.getUser(session.user.email);
+
+   if (!user) {
+      return {
+         redirect: {
+            destination: '/auth/login?page=/mi-cuenta/invitar-amigos',
+            permanent: false,
+         },
+      };
+   }
+
+   const userRefCode = user.referralCode;
+
+   return {
+      props: { userRefCode },
+   };
 };
 
 export default FriendsPage;
