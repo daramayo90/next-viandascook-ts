@@ -28,7 +28,6 @@ export const SearchProducts: FC<Props> = ({ searchTerm, setSearchTerm }) => {
             placeholder='Buscar...'
             value={searchTerm}
             onChange={onSearchTerm}
-            onKeyPress={(e) => (e.key === 'Enter' ? onSearchTerm : null)}
          />
       </form>
    );

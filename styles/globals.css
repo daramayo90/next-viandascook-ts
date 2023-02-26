@@ -279,20 +279,20 @@ textarea {
 button.nav.default-nav,
 .react-slideshow-container .default-nav:first-of-type,
 .react-slideshow-container .default-nav:last-of-type {
-   width: 4.2rem;
-   height: 3.5rem;
+   width: 3.9rem;
+   height: 2.5rem;
    border: none;
    background-color: transparent;
    z-index: 1;
 }
 
-/* .react-slideshow-container .default-nav:first-of-type {
-   left: -40px;
+.react-slideshow-container .default-nav:first-of-type {
+   left: -15px;
 }
 
 .react-slideshow-container .default-nav:last-of-type {
-   right: -40px;
-} */
+   right: -15px;
+}
 
 @media (min-width: 720px) {
    .react-slideshow-container .default-nav:first-of-type {
