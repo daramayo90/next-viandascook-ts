@@ -11,6 +11,7 @@ export interface IUser {
    points: number;
    redeemPoints: number;
    role: string;
+   referralCode?: string;
    shipping: IAddress;
    coupons: ICoupon[];
    createdAt?: string;

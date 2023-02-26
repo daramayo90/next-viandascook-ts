@@ -4,6 +4,7 @@ import bcrypt from 'bcryptjs';
 import { db } from '.';
 import { User } from '../models';
 import { IUser } from '../interfaces';
+import crypto from 'crypto';
 
 export const checkUserEmailPassword = async (email: string, password: string) => {
    await db.connect();
@@ -43,6 +44,8 @@ export const oAuthToDbUser = async (authEmail: string, authName: string, authLas
       return { _id, name, lastName, email, phone, dni, shipping, role };
    }
 
+   const refCode = generateUniqueReferralCode();
+
    const newUser = new User({
       name: authName,
       lastName: authLastName,
@@ -59,6 +62,7 @@ export const oAuthToDbUser = async (authEmail: string, authName: string, authLas
          zipcode: '-',
          city: 'CABA',
       },
+      referralCode: refCode,
       coupons: [],
    });
 
@@ -97,4 +101,26 @@ export const getAddress = async (user: string): Promise<IUser | null> => {
    if (!userdb) return null;
 
    return JSON.parse(JSON.stringify(userdb));
+};
+
+export const generateUniqueReferralCode = async (): Promise<string> => {
+   const prefix = 'ref-vc';
+
+   while (true) {
+      const randomNumber = crypto.randomInt(1000, 9999);
+
+      const randomLetters = crypto.randomBytes(3).toString('hex').toLowerCase();
+
+      const code = `${prefix}-${randomLetters}-${randomNumber}`;
+
+      await db.connect();
+
+      const existingUser = await User.findOne({ referralCode: code });
+
+      await db.disconnect();
+
+      if (!existingUser) {
+         return code;
+      }
+   }
 };

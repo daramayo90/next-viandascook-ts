@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import bcrypt from 'bcryptjs';
 
-import { db } from '../../../database';
+import { db, dbUsers } from '../../../database';
 import { User } from '../../../models';
 import { jwt, validations } from '../../../utils';
 
@@ -55,6 +55,8 @@ const registerUser = async (req: NextApiRequest, res: NextApiResponse<Data>) => 
       return res.status(400).json({ message: 'Correo electrónico ya registrado' });
    }
 
+   const refCode = dbUsers.generateUniqueReferralCode();
+
    const newUser = new User({
       name: name.charAt(0).toUpperCase() + name.slice(1).toLocaleLowerCase(),
       lastName: lastName.charAt(0).toUpperCase() + lastName.slice(1).toLocaleLowerCase(),
@@ -71,6 +73,7 @@ const registerUser = async (req: NextApiRequest, res: NextApiResponse<Data>) => 
          zipcode: '-',
          city: 'CABA',
       },
+      referralCode: refCode,
       coupons: [],
    });
 

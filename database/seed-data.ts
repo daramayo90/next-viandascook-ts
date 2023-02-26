@@ -24,6 +24,7 @@ interface SeedUser {
    points: number;
    redeemPoints: number;
    role: string;
+   referralCode?: string;
    shipping: IAddress;
    coupons: IUserCoupon[];
 }
@@ -97,6 +98,7 @@ export const initialData: SeedData = {
             zipcode: '7933',
             city: 'CABA',
          },
+         referralCode: 'ref-vc1000',
          coupons: [],
       },
       {

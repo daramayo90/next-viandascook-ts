@@ -46,7 +46,7 @@ const FriendsPage: NextPage = () => {
 
                <div className={styles.referralContainer}>
                   <span className={styles.coupon} ref={couponRef}>
-                     DISFRUTA-GC3293F
+                     REF-VC3293F
                   </span>
                   <button className={styles.copy} onClick={handleCopyClick}>
                      Copiar

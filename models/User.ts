@@ -13,6 +13,8 @@ const userSchema = new Schema(
       points: { type: Number, required: true },
       redeemPoints: { type: Number, required: true },
 
+      referralCode: { type: String, unique: true },
+
       role: {
          type: String,
          enum: {
