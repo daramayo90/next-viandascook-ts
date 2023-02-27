@@ -5,11 +5,13 @@ interface ContextProps {
    isLoaded: boolean;
    cart: ICartProduct[];
    coupons: ICoupon[];
+   hasReferralCoupon?: boolean;
    numberOfItems: number;
    subTotal: number;
    discount: number;
    shipping: number;
    couponDiscount: number;
+   referralDiscount: number;
    points?: number;
    pointsDiscount?: number;
    total: number;

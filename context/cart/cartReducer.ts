@@ -25,11 +25,13 @@ type CartActionType =
            shipping: number;
            couponDiscount: number;
            pointsDiscount: number;
+           referralDiscount: number;
            total: number;
         };
      }
    | { type: '[Cart] - Repeat Order'; payload: ICartProduct[] }
-   | { type: '[Cart] - Redeem Points'; payload: number };
+   | { type: '[Cart] - Redeem Points'; payload: number }
+   | { type: '[Cart] - Add Referral Coupon'; payload: boolean };
 
 export const cartReducer = (state: CartState, action: CartActionType): CartState => {
    switch (action.type) {
@@ -137,6 +139,12 @@ export const cartReducer = (state: CartState, action: CartActionType): CartState
          return {
             ...state,
             points: Number(state.points) + Number(action.payload),
+         };
+
+      case '[Cart] - Add Referral Coupon':
+         return {
+            ...state,
+            hasReferralCoupon: action.payload,
          };
 
       default:

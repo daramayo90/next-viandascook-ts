@@ -3,60 +3,44 @@ import { unstable_getServerSession } from 'next-auth/next';
 import { authOptions } from '../auth/[...nextauth]';
 
 import { db } from '../../../database';
-import { ICoupon, IUser } from '../../../interfaces';
+import { ICoupon } from '../../../interfaces';
 
-import { Coupon, User } from '../../../models';
+import { User } from '../../../models';
 
 type Data = { message: string } | ICoupon;
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
    switch (req.method) {
       case 'GET':
-         return getCoupon(req, res);
+         return validateCoupon(req, res);
 
       default:
          return res.status(400).json({ message: 'Bad request' });
    }
 }
 
-// TODO: Ver uso de cupones cuando no hay login
-const getCoupon = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
+const validateCoupon = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
    const { user }: any = (await unstable_getServerSession(req, res, authOptions)) || '';
    const { code }: any = req.query;
 
-   if (req.cookies.coupons?.includes(code)) {
-      return res.status(404).json({ message: 'Cupón ya utilizado' });
-   }
-
-   const email = user?.email;
-
    await db.connect();
 
-   const coupon = await Coupon.findOne({ code }).lean();
-   const userCoupon = await User.findOne({ email, 'coupons._id': coupon?._id }).lean();
+   const userdb = await User.findOne({ email: user!.email });
+   const referralCode = await User.findOne({ referralCode: code });
 
    await db.disconnect();
 
-   if (!coupon) return res.status(404).json({ message: 'Cupón no válido' });
-
-   if (coupon.enabled === false || (coupon.expirationDate && coupon.expirationDate < new Date())) {
-      return res.status(404).json({ message: 'Cupón expirado' });
+   if (!userdb) {
+      return res.status(404).json({ message: 'No existe el cliente' });
    }
 
-   if (coupon.allowedEmail && coupon.allowedEmail !== user.email) {
-      return res.status(404).json({ message: 'Este cupón no se puede usar con el email indicado' });
+   if (!referralCode) {
+      return res.status(404).json({ message: 'Este cupón de referidos no existe' });
    }
 
-   const userLimit = validateCouponUssage(userCoupon!, coupon);
-   if (userLimit) return res.status(404).json({ message: 'Ya alcanzaste el límite permitido' });
+   if (code === userdb.referralCode) {
+      return res.status(404).json({ message: 'No podés utilizar tu propio cupón' });
+   }
 
-   res.status(200).json(coupon);
-};
-
-const validateCouponUssage = (user: IUser, coupon: ICoupon) => {
-   if (!user) return null;
-
-   if (coupon.userLimit === undefined) return null;
-
-   return user.coupons.find(({ ussage }) => ussage >= coupon.userLimit!);
+   res.status(200).json({ message: `Cupón ${code} aplicado correctamente` });
 };

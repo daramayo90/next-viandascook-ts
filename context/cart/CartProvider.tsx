@@ -17,11 +17,13 @@ export interface CartState {
    isLoaded: boolean;
    cart: ICartProduct[];
    coupons: ICoupon[];
+   hasReferralCoupon?: boolean;
    numberOfItems: number;
    subTotal: number;
    discount: number;
    shipping: number;
    couponDiscount: number;
+   referralDiscount: number;
    points?: number;
    pointsDiscount?: number;
    total: number;
@@ -31,11 +33,13 @@ const CART_INITIAL_STATE: CartState = {
    isLoaded: false,
    cart: [],
    coupons: [],
+   hasReferralCoupon: false,
    numberOfItems: 0,
    subTotal: 0,
    discount: 0,
    shipping: 0,
    couponDiscount: 0,
+   referralDiscount: 0,
    points: 0,
    pointsDiscount: 0,
    total: 0,
@@ -85,8 +89,10 @@ export const CartProvider: FC<Props> = ({ children }) => {
       const shipping = state.shipping;
 
       const couponDiscount = state.coupons?.reduce((p, c) => coupon.calc(c, subTotal) + p, 0) || 0;
+      const referralDiscount = state.hasReferralCoupon ? state.subTotal * 0.05 : 0;
 
-      const total = subTotal - discount - pointsDiscount - couponDiscount + shipping;
+      const total =
+         subTotal - discount - pointsDiscount - couponDiscount - referralDiscount + shipping;
 
       const orderSummary = {
          numberOfItems,
@@ -95,6 +101,7 @@ export const CartProvider: FC<Props> = ({ children }) => {
          shipping,
          couponDiscount,
          pointsDiscount,
+         referralDiscount,
          total,
       };
 
@@ -284,26 +291,18 @@ export const CartProvider: FC<Props> = ({ children }) => {
    };
 
    const onUseRefCoupon = async (couponCode: string): Promise<{ error: boolean; msg?: string }> => {
+      console.log('Que onda esto?');
       try {
-         const { data } = await viandasApi.get('/refCoupon', { params: { code: couponCode } });
+         const { data } = await viandasApi.get('/coupon/refCoupon', {
+            params: { code: couponCode },
+         });
 
-         const { minAmount, maxAmount } = data;
+         dispatch({ type: '[Cart] - Add Referral Coupon', payload: true });
 
-         if (state.subTotal < minAmount)
-            return {
-               error: true,
-               msg: `El subtotal debe ser mayor a ${currency.format(minAmount)}`,
-            };
-
-         if (state.subTotal > maxAmount)
-            return {
-               error: true,
-               msg: `El subtotal debe ser menor a ${currency.format(maxAmount)}`,
-            };
-
-         dispatch({ type: '[Cart] - Add Coupon', payload: data });
-
-         return { error: false };
+         return {
+            error: false,
+            msg: data,
+         };
       } catch (error: any) {
          return {
             error: true,

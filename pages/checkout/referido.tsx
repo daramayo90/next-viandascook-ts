@@ -43,11 +43,19 @@ const ReferralPage: NextPage<Props> = ({ message }) => {
          return;
       }
 
+      console.log('llego hasta aca?');
+
       const { error, msg } = await onUseRefCoupon(refCoupon);
+
+      console.log('ERROR', error);
+      console.log('MSG', msg);
 
       if (error) {
          setIsClicked(false);
          setErrorMsg(msg!);
+         setTimeout(() => {
+            setErrorMsg('');
+         }, 2500);
          return;
       }
 
@@ -59,7 +67,7 @@ const ReferralPage: NextPage<Props> = ({ message }) => {
       }, 2000);
    };
 
-   console.log(message);
+   console.log(errorMsg);
 
    if (message) {
       return <h1>{message}</h1>;
