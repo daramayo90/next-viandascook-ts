@@ -14,6 +14,7 @@ export interface IOrder {
    discount?: number;
    shipping: number;
    couponDiscount?: number;
+   referralDiscount?: number;
    pointsDiscount?: number;
    total: number;
 

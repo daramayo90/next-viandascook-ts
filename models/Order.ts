@@ -52,6 +52,7 @@ const orderSchema = new Schema(
       discount: { type: Number },
       shipping: { type: Number, required: true },
       couponDiscount: { type: Number },
+      referralDiscount: { type: Number },
       pointsDiscount: { type: Number },
       total: { type: Number, required: true },
 

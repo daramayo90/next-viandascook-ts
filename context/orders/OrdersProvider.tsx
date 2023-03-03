@@ -32,6 +32,7 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
       discount,
       shipping,
       couponDiscount,
+      referralDiscount,
       pointsDiscount,
       total,
    } = useContext(CartContext);
@@ -112,6 +113,7 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
          discount,
          shipping,
          couponDiscount,
+         referralDiscount,
          pointsDiscount,
          total,
          paymentMethod,
