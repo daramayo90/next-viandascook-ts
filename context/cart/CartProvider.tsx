@@ -19,7 +19,6 @@ export interface CartState {
    cart: ICartProduct[];
    coupons: ICoupon[];
    referralCoupon: string;
-   hasReferralCoupon?: boolean;
    numberOfItems: number;
    subTotal: number;
    discount: number;
@@ -36,7 +35,6 @@ const CART_INITIAL_STATE: CartState = {
    cart: [],
    coupons: [],
    referralCoupon: '',
-   hasReferralCoupon: false,
    numberOfItems: 0,
    subTotal: 0,
    discount: 0,
@@ -103,7 +101,7 @@ export const CartProvider: FC<Props> = ({ children }) => {
       const shipping = state.shipping;
 
       const couponDiscount = state.coupons?.reduce((p, c) => coupon.calc(c, subTotal) + p, 0) || 0;
-      const referralDiscount = state.hasReferralCoupon ? state.subTotal * 0.05 : 0;
+      const referralDiscount = state.referralCoupon ? state.subTotal * 0.05 : 0;
 
       const total =
          subTotal - discount - pointsDiscount - couponDiscount - referralDiscount + shipping;
@@ -125,7 +123,7 @@ export const CartProvider: FC<Props> = ({ children }) => {
       state.shipping,
       state.coupons,
       state.points,
-      state.hasReferralCoupon,
+      state.referralCoupon,
       state.referralDiscount,
    ]);
 
@@ -172,9 +170,8 @@ export const CartProvider: FC<Props> = ({ children }) => {
    // Load Referral Discount from Cookies
    useEffect(() => {
       try {
-         const cookieReferralDiscount: number = JSON.parse(Cookies.get('referralDiscount')!) || 0;
+         const cookieReferralDiscount: number = JSON.parse(Cookies.get('referralDiscount')!);
          dispatch({ type: '[Cart] - Load Ref Disc from Cookies', payload: cookieReferralDiscount });
-         console.log(state.referralDiscount);
       } catch (error) {
          dispatch({ type: '[Cart] - Load Ref Disc from Cookies', payload: 0 });
       }

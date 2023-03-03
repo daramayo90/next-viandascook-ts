@@ -9,8 +9,7 @@ import { TiDelete } from 'react-icons/ti';
 import styles from '../../styles/CheckoutSummary.module.css';
 
 export const ReferralCoupon = () => {
-   const { hasReferralCoupon, referralCoupon, referralDiscount, removeReferralCoupon } =
-      useContext(CartContext);
+   const { referralCoupon, referralDiscount, removeReferralCoupon } = useContext(CartContext);
 
    const onRemoveCoupon = () => {
       removeReferralCoupon();
@@ -18,7 +17,7 @@ export const ReferralCoupon = () => {
 
    return (
       <div className={styles.summary}>
-         {hasReferralCoupon && (
+         {referralCoupon && (
             <>
                <span>
                   Cupón invitado: <u>{referralCoupon}</u>

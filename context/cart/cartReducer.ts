@@ -60,7 +60,6 @@ export const cartReducer = (state: CartState, action: CartActionType): CartState
       case '[Cart] - Load Ref Coupon from Cookies':
          return {
             ...state,
-            hasReferralCoupon: true,
             referralCoupon: action.payload,
          };
 
@@ -135,7 +134,7 @@ export const cartReducer = (state: CartState, action: CartActionType): CartState
          return {
             ...state,
             referralCoupon: '',
-            hasReferralCoupon: false,
+            referralDiscount: 0,
          };
 
       case '[Cart] - Order Complete':
@@ -167,7 +166,6 @@ export const cartReducer = (state: CartState, action: CartActionType): CartState
       case '[Cart] - Add Referral Coupon':
          return {
             ...state,
-            hasReferralCoupon: true,
             referralCoupon: action.payload,
          };
 

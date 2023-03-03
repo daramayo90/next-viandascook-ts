@@ -23,6 +23,7 @@ export const ShopNavbar: FC<Props> = ({ pageTitle, menuPage, backCart }) => {
 
    const navigation = () => {
       if (backCart) return router.push('/menu');
+      if (router.asPath === '/checkout') return router.push('/cart');
       if (router.asPath.includes('/checkout')) return router.push('/checkout');
 
       router.back();

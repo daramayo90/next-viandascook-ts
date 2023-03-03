@@ -6,7 +6,6 @@ interface ContextProps {
    cart: ICartProduct[];
    coupons: ICoupon[];
    referralCoupon: string;
-   hasReferralCoupon?: boolean;
    numberOfItems: number;
    subTotal: number;
    discount: number;
