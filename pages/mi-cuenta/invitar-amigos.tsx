@@ -47,10 +47,10 @@ const FriendsPage: NextPage<Props> = ({ userRefCode }) => {
                <p className={styles.text}>
                   Por cada amigo que haga su primer pedido con tu código, recibís{' '}
                   <strong>10.000 puntos</strong> de regalo y tu amigo recibe un{' '}
-                  <strong>5% de descuento</strong> en su compra.
+                  <strong>5% de descuento</strong> en su primera compra.
                </p>
                <p className={styles.text}>
-                  ¡Con Viandas Cook, hacé que tus días y de tus amigos tengan sabor!
+                  ¡Con Viandas Cook, hacé que tus días y los de tus amigos tengan sabor!
                </p>
 
                <div className={styles.referralContainer}>

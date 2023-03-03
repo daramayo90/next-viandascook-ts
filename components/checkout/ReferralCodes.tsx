@@ -10,16 +10,16 @@ import { TbDiscount2 } from 'react-icons/tb';
 import styles from '../../styles/Checkout.module.css';
 
 export const ReferralCodes = () => {
-   const { coupons, couponDiscount } = useContext(CartContext);
+   const { hasReferralCoupon, referralCoupon } = useContext(CartContext);
 
    return (
       <Link href='/checkout/referido'>
          <div className={styles.card}>
             <div className={styles.info}>
                <TbDiscount2 className={styles.iconDiscount} />
-               {couponDiscount !== 0 ? (
+               {hasReferralCoupon ? (
                   <p className={styles.text}>
-                     Cupón usado: <u>{coupons[0].code}</u>
+                     Cupón de amigo: <u>{referralCoupon}</u>
                   </p>
                ) : (
                   <p className={styles.text}>¿Te invitó un amigo?</p>

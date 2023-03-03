@@ -43,12 +43,7 @@ const ReferralPage: NextPage<Props> = ({ message }) => {
          return;
       }
 
-      console.log('llego hasta aca?');
-
       const { error, msg } = await onUseRefCoupon(refCoupon);
-
-      console.log('ERROR', error);
-      console.log('MSG', msg);
 
       if (error) {
          setIsClicked(false);
@@ -66,8 +61,6 @@ const ReferralPage: NextPage<Props> = ({ message }) => {
          router.push('/checkout');
       }, 2000);
    };
-
-   console.log(errorMsg);
 
    if (message) {
       return <h1>{message}</h1>;

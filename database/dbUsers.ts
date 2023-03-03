@@ -104,12 +104,12 @@ export const getAddress = async (user: string): Promise<IUser | null> => {
 };
 
 export const generateUniqueReferralCode = async (): Promise<string> => {
-   const prefix = 'ref-vc';
+   const prefix = 'vc';
 
    while (true) {
-      const randomNumber = crypto.randomInt(1000, 9999);
+      const randomNumber = crypto.randomInt(100, 999);
 
-      const randomLetters = crypto.randomBytes(3).toString('hex').toLowerCase();
+      const randomLetters = crypto.randomBytes(2).toString('hex').toLowerCase();
 
       const code = `${prefix}-${randomLetters}-${randomNumber}`;
 

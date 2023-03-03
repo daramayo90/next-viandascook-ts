@@ -11,5 +11,6 @@ export * from './Promos';
 export * from './PromosList';
 export * from './RedeemPoints';
 export * from './ReferralCodes';
+export * from './ReferralCoupon';
 export * from './SelectDate';
 export * from './SelectedProducts';

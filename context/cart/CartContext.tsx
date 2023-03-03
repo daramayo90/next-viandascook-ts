@@ -5,6 +5,7 @@ interface ContextProps {
    isLoaded: boolean;
    cart: ICartProduct[];
    coupons: ICoupon[];
+   referralCoupon: string;
    hasReferralCoupon?: boolean;
    numberOfItems: number;
    subTotal: number;
@@ -24,6 +25,7 @@ interface ContextProps {
 
    addCoupon: (couponCode: string) => Promise<{ error: boolean; msg?: string }>;
    removeCoupon: () => void;
+   removeReferralCoupon: () => void;
    orderComplete: () => void;
    repeatOrder: (orderItems: ICartProduct[]) => void;
 

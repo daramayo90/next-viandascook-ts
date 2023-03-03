@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { FC, ReactNode, useEffect, useReducer } from 'react';
 import { useSession } from 'next-auth/react';
 
@@ -17,6 +18,7 @@ export interface CartState {
    isLoaded: boolean;
    cart: ICartProduct[];
    coupons: ICoupon[];
+   referralCoupon: string;
    hasReferralCoupon?: boolean;
    numberOfItems: number;
    subTotal: number;
@@ -33,6 +35,7 @@ const CART_INITIAL_STATE: CartState = {
    isLoaded: false,
    cart: [],
    coupons: [],
+   referralCoupon: '',
    hasReferralCoupon: false,
    numberOfItems: 0,
    subTotal: 0,
@@ -63,6 +66,17 @@ export const CartProvider: FC<Props> = ({ children }) => {
    useEffect(() => {
       if (state.coupons.length > 0) Cookies.set('coupons', JSON.stringify(state.coupons));
    }, [state.coupons]);
+
+   // Add Referral Coupon to cookies
+   useEffect(() => {
+      if (state.referralCoupon) Cookies.set('referralCoupon', JSON.stringify(state.referralCoupon));
+   }, [state.referralCoupon]);
+
+   // Add Referral Discount to cookies
+   useEffect(() => {
+      if (state.referralDiscount)
+         Cookies.set('referralDiscount', JSON.stringify(state.referralDiscount));
+   }, [state.referralDiscount]);
 
    // Add Points to cookies
    useEffect(() => {
@@ -106,7 +120,14 @@ export const CartProvider: FC<Props> = ({ children }) => {
       };
 
       dispatch({ type: '[Cart] - Update Order Summary', payload: orderSummary });
-   }, [state.cart, state.shipping, state.coupons, state.points]);
+   }, [
+      state.cart,
+      state.shipping,
+      state.coupons,
+      state.points,
+      state.hasReferralCoupon,
+      state.referralDiscount,
+   ]);
 
    // Load Cart from Cookies
    useEffect(() => {
@@ -135,6 +156,27 @@ export const CartProvider: FC<Props> = ({ children }) => {
          dispatch({ type: '[Cart] - Load Coupons from Cookies', payload: cookieCoupons });
       } catch (error) {
          dispatch({ type: '[Cart] - Load Coupons from Cookies', payload: [] });
+      }
+   }, []);
+
+   // Load Referral Coupon from Cookies
+   useEffect(() => {
+      try {
+         const cookieReferralCoupon: string = JSON.parse(Cookies.get('referralCoupon')!) || '';
+         dispatch({ type: '[Cart] - Load Ref Coupon from Cookies', payload: cookieReferralCoupon });
+      } catch (error) {
+         dispatch({ type: '[Cart] - Load Ref Coupon from Cookies', payload: '' });
+      }
+   }, []);
+
+   // Load Referral Discount from Cookies
+   useEffect(() => {
+      try {
+         const cookieReferralDiscount: number = JSON.parse(Cookies.get('referralDiscount')!) || 0;
+         dispatch({ type: '[Cart] - Load Ref Disc from Cookies', payload: cookieReferralDiscount });
+         console.log(state.referralDiscount);
+      } catch (error) {
+         dispatch({ type: '[Cart] - Load Ref Disc from Cookies', payload: 0 });
       }
    }, []);
 
@@ -248,6 +290,12 @@ export const CartProvider: FC<Props> = ({ children }) => {
       dispatch({ type: '[Cart] - Remove Coupon' });
    };
 
+   // Remove referral coupon from order summary in checkout page
+   const removeReferralCoupon = () => {
+      Cookies.remove('referralCoupon');
+      dispatch({ type: '[Cart] - Remove Referral Coupon' });
+   };
+
    // Order completion
    const orderComplete = () => {
       dispatch({ type: '[Cart] - Order Complete' });
@@ -290,14 +338,14 @@ export const CartProvider: FC<Props> = ({ children }) => {
       }
    };
 
+   // Validate referral coupon
    const onUseRefCoupon = async (couponCode: string): Promise<{ error: boolean; msg?: string }> => {
-      console.log('Que onda esto?');
       try {
          const { data } = await viandasApi.get('/coupon/refCoupon', {
             params: { code: couponCode },
          });
 
-         dispatch({ type: '[Cart] - Add Referral Coupon', payload: true });
+         dispatch({ type: '[Cart] - Add Referral Coupon', payload: couponCode });
 
          return {
             error: false,
@@ -321,6 +369,7 @@ export const CartProvider: FC<Props> = ({ children }) => {
             calculateShipping,
             addCoupon,
             removeCoupon,
+            removeReferralCoupon,
             orderComplete,
             repeatOrder,
             onUsePoints,

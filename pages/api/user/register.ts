@@ -55,7 +55,7 @@ const registerUser = async (req: NextApiRequest, res: NextApiResponse<Data>) => 
       return res.status(400).json({ message: 'Correo electrónico ya registrado' });
    }
 
-   const refCode = dbUsers.generateUniqueReferralCode();
+   const refCode = await dbUsers.generateUniqueReferralCode();
 
    const newUser = new User({
       name: name.charAt(0).toUpperCase() + name.slice(1).toLocaleLowerCase(),

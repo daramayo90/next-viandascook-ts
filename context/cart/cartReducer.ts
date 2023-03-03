@@ -6,6 +6,8 @@ type CartActionType =
    | { type: '[Cart] - Load Cart from Cookies'; payload: ICartProduct[] }
    | { type: '[Cart] - Load Shipping from Cookies'; payload: number }
    | { type: '[Cart] - Load Coupons from Cookies'; payload: ICoupon[] }
+   | { type: '[Cart] - Load Ref Coupon from Cookies'; payload: string }
+   | { type: '[Cart] - Load Ref Disc from Cookies'; payload: number }
    | { type: '[Cart] - Load Points from Cookies'; payload: number }
    | { type: '[Cart] - Load Total from Cookies'; payload: number }
    | { type: '[Cart] - Update Products'; payload: ICartProduct[] }
@@ -15,6 +17,7 @@ type CartActionType =
    | { type: '[Cart] - Calculate Shipping'; payload: number }
    | { type: '[Cart] - Add Coupon'; payload: ICoupon }
    | { type: '[Cart] - Remove Coupon' }
+   | { type: '[Cart] - Remove Referral Coupon' }
    | { type: '[Cart] - Order Complete' }
    | {
         type: '[Cart] - Update Order Summary';
@@ -24,14 +27,14 @@ type CartActionType =
            discount: number;
            shipping: number;
            couponDiscount: number;
-           pointsDiscount: number;
            referralDiscount: number;
+           pointsDiscount: number;
            total: number;
         };
      }
    | { type: '[Cart] - Repeat Order'; payload: ICartProduct[] }
    | { type: '[Cart] - Redeem Points'; payload: number }
-   | { type: '[Cart] - Add Referral Coupon'; payload: boolean };
+   | { type: '[Cart] - Add Referral Coupon'; payload: string };
 
 export const cartReducer = (state: CartState, action: CartActionType): CartState => {
    switch (action.type) {
@@ -52,6 +55,19 @@ export const cartReducer = (state: CartState, action: CartActionType): CartState
          return {
             ...state,
             coupons: action.payload,
+         };
+
+      case '[Cart] - Load Ref Coupon from Cookies':
+         return {
+            ...state,
+            hasReferralCoupon: true,
+            referralCoupon: action.payload,
+         };
+
+      case '[Cart] - Load Ref Disc from Cookies':
+         return {
+            ...state,
+            referralDiscount: action.payload,
          };
 
       case '[Cart] - Load Points from Cookies':
@@ -115,6 +131,13 @@ export const cartReducer = (state: CartState, action: CartActionType): CartState
             couponDiscount: 0,
          };
 
+      case '[Cart] - Remove Referral Coupon':
+         return {
+            ...state,
+            referralCoupon: '',
+            hasReferralCoupon: false,
+         };
+
       case '[Cart] - Order Complete':
          return {
             ...state,
@@ -144,7 +167,8 @@ export const cartReducer = (state: CartState, action: CartActionType): CartState
       case '[Cart] - Add Referral Coupon':
          return {
             ...state,
-            hasReferralCoupon: action.payload,
+            hasReferralCoupon: true,
+            referralCoupon: action.payload,
          };
 
       default:
