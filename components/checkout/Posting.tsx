@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 
 import { IUser } from '../../interfaces';
 
-import { OrdersContext } from '../../context';
+import { CartContext, OrdersContext } from '../../context';
 import { SubmitButton } from '../ui';
 
 import styles from '../../styles/Checkout.module.css';
@@ -41,7 +41,9 @@ const addCheckout = () => {
 export const Posting: FC<Props> = ({ user }) => {
    const router = useRouter();
 
-   const { createOrder, createMPOrder, addMailchimpClient } = useContext(OrdersContext);
+   const { referralCoupon } = useContext(CartContext);
+   const { createOrder, createMPOrder, addMailchimpClient, addReferralPoints } =
+      useContext(OrdersContext);
 
    const [isPosting, setIsPosting] = useState(false);
    const [errorMsg, setErrorMsg] = useState('');
@@ -69,6 +71,8 @@ export const Posting: FC<Props> = ({ user }) => {
       }
 
       await addMailchimpClient(message);
+
+      if (referralCoupon) await addReferralPoints(referralCoupon);
 
       if (paymentMethod !== 'mercadopago') {
          router.replace(`/muchas-gracias/${message}`);

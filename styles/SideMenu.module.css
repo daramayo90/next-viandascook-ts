@@ -7,7 +7,7 @@
 }
 
 .sidemenu.open {
-   z-index: 1;
+   z-index: 10;
 }
 
 .sidemenu > .options {
@@ -131,6 +131,12 @@
 
 .sidemenu > .open li:nth-child(8) {
    transition-delay: 1.28s;
+   transform: translateX(0px);
+   opacity: 1;
+}
+
+.sidemenu > .open li:nth-child(9) {
+   transition-delay: 1.44s;
    transform: translateX(0px);
    opacity: 1;
 }

@@ -187,9 +187,22 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
       }
    };
 
+   const addReferralPoints = async (referralCoupon: string) => {
+      try {
+         await viandasApi.patch('/orders/addReferralPoints', { referralCoupon });
+      } catch (error) {}
+   };
+
    return (
       <OrdersContext.Provider
-         value={{ ...state, addGuestAddress, createOrder, createMPOrder, addMailchimpClient }}>
+         value={{
+            ...state,
+            addGuestAddress,
+            createOrder,
+            createMPOrder,
+            addMailchimpClient,
+            addReferralPoints,
+         }}>
          {children}
       </OrdersContext.Provider>
    );

@@ -6,7 +6,7 @@ import { AuthContext, UIContext } from '../../context';
 import { FiLogIn } from 'react-icons/fi';
 import { TbDiscount2 } from 'react-icons/tb';
 import { BsInfoCircle } from 'react-icons/bs';
-import { AiOutlineQuestionCircle, AiOutlineUser } from 'react-icons/ai';
+import { AiOutlineHome, AiOutlineQuestionCircle, AiOutlineUser } from 'react-icons/ai';
 import { HiOutlineClipboardList, HiOutlineLogout } from 'react-icons/hi';
 import { MdOutlineFoodBank, MdOutlineKeyboardArrowRight } from 'react-icons/md';
 
@@ -28,6 +28,12 @@ export const SideMenu = () => {
       <section className={isMenuOpen ? `${styles.sidemenu} ${styles.open}` : `${styles.sidemenu}`}>
          <div className={isMenuOpen ? `${styles.options} ${styles.open}` : `${styles.options}`}>
             <ul className={styles.list}>
+               <li onClick={() => navigateTo('/')}>
+                  <AiOutlineHome className={styles.icon} />
+                  <span>Inicio</span>
+                  <MdOutlineKeyboardArrowRight className={styles.iconRight} />
+               </li>
+
                <li onClick={() => navigateTo('/menu')}>
                   <MdOutlineFoodBank className={styles.icon} />
                   <span>Elegí tus Viandas</span>

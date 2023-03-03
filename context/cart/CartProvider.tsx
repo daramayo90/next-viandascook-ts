@@ -290,6 +290,7 @@ export const CartProvider: FC<Props> = ({ children }) => {
    // Remove referral coupon from order summary in checkout page
    const removeReferralCoupon = () => {
       Cookies.remove('referralCoupon');
+      Cookies.remove('referralDiscount');
       dispatch({ type: '[Cart] - Remove Referral Coupon' });
    };
 
