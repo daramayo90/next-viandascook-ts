@@ -44,7 +44,7 @@ export const oAuthToDbUser = async (authEmail: string, authName: string, authLas
       return { _id, name, lastName, email, phone, dni, shipping, role };
    }
 
-   const refCode = generateUniqueReferralCode();
+   const refCode = await generateUniqueReferralCode();
 
    const newUser = new User({
       name: authName,
