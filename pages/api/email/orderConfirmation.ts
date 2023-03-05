@@ -11,22 +11,30 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
    const {
       name,
       orderId,
-      points,
       address,
       deliveryDate,
       cart,
       numberOfItems,
       subTotal,
+      discount,
+      couponDiscount,
+      referralDiscount,
+      pointsDiscount,
       shipping,
       paymentMethod,
       total,
    } = req.body;
+
+   const [year, month, dayToSplit] = deliveryDate.toString().split('-');
+   const [day] = dayToSplit.split('T');
 
    const products = cart.map(({ name, quantity, price }: ICartProduct) => ({
       name,
       quantity,
       price: currency.format(price * quantity),
    }));
+
+   const discounts = discount + couponDiscount + referralDiscount + pointsDiscount;
 
    sgMail.setApiKey(process.env.SENDGRID_API_KEY!);
 
@@ -44,12 +52,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
          subject: `¡Tu pedido #${orderId} ya está completo!`,
          name,
          orderId,
-         points,
+         points: Math.round(total - shipping),
          address,
-         deliveryDate: deliveryDate.split('T')[0],
+         deliveryDate: `${day}/${month}/${year}`,
          products,
          numberOfItems,
          subTotal: currency.format(Number(subTotal)),
+         discounts: currency.format(Number(discounts)),
          shipping: shipping !== 0 ? currency.format(Number(shipping)) : 'Gratis',
          paymentMethod:
             paymentMethod.toString().charAt(0).toUpperCase() + paymentMethod.toString().slice(1),

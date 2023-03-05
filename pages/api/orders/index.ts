@@ -77,8 +77,10 @@ const createOrder = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
          { email: dbUser?.email },
          {
             $set: {
-               points: dbUser?.points ? dbUser.points + Math.round(total) : 0,
-               redeemPoints: dbUser?.redeemPoints ? dbUser.points + Math.round(total) : 0,
+               points: dbUser?.points ? dbUser.points + Math.round(total - shipping) : 0,
+               redeemPoints: dbUser?.redeemPoints
+                  ? dbUser.points + Math.round(total - shipping)
+                  : 0,
             },
          },
       );

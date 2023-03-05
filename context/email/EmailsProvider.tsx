@@ -23,7 +23,17 @@ export const EmailsProvider: FC<Props> = ({ children }) => {
 
    const { shippingAddress, orderId, paymentMethod } = useContext(OrdersContext);
    const { deliveryDateSelected } = useContext(UIContext);
-   const { points, cart, numberOfItems, subTotal, shipping, total } = useContext(CartContext);
+   const {
+      cart,
+      numberOfItems,
+      subTotal,
+      discount,
+      couponDiscount,
+      referralDiscount,
+      pointsDiscount,
+      shipping,
+      total,
+   } = useContext(CartContext);
 
    const sendOrderConfirmationEmail = async () => {
       const { user } = ((await getSession()) as any) || '';
@@ -33,12 +43,15 @@ export const EmailsProvider: FC<Props> = ({ children }) => {
       const body = {
          name: user.name,
          orderId,
-         points,
          address: `${ship.address}, Casa/Depto: ${ship.address2}`,
          deliveryDate: deliveryDateSelected,
          cart,
          numberOfItems,
          subTotal,
+         discount,
+         couponDiscount,
+         referralDiscount,
+         pointsDiscount,
          shipping,
          paymentMethod,
          total,
