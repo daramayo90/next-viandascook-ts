@@ -5,11 +5,10 @@ import { authOptions } from '../api/auth/[...nextauth]';
 import { useRouter } from 'next/router';
 
 import { dbOrders, dbUsers } from '../../database';
-import { IUser } from '../../interfaces/user';
 
 import { CartContext } from '../../context';
 import { ShopLayout } from '../../components/layouts';
-import { QuestionsLoyalty, SubmitButton } from '../../components/ui';
+import { SubmitButton } from '../../components/ui';
 
 import styles from '../../styles/ApplyReferralCoupon.module.css';
 
@@ -63,7 +62,15 @@ const ReferralPage: NextPage<Props> = ({ message }) => {
    };
 
    if (message) {
-      return <h1>{message}</h1>;
+      return (
+         <ShopLayout title={'Viandas Cook - Cupón Referido'} pageDescription={''}>
+            <section className={styles.applyReferral}>
+               <div className={styles.container}>
+                  <h2 className={styles.title}>{message}</h2>
+               </div>
+            </section>
+         </ShopLayout>
+      );
    }
 
    return (

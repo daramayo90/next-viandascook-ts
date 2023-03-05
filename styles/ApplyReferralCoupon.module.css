@@ -7,7 +7,8 @@
 .applyReferral > .container {
    max-width: 440px;
    width: 90%;
-   margin: 5rem auto;
+   margin: 0 auto;
+   padding: 4rem 0;
 }
 
 .applyReferral > .container > .title {
@@ -97,7 +98,6 @@
 
    .applyReferral > .container {
       max-width: 720px;
-      padding: 0;
    }
 
    .applyReferral > .container > .applyCoupon {
