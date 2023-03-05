@@ -96,9 +96,9 @@ const createOrder = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
 };
 
 const customIdGenerator = async (): Promise<number> => {
-   // const lastOrder = await Order.findOne().sort({ createdAt: -1 }).limit(1).lean();
+   const lastOrder = await Order.findOne().sort({ createdAt: -1 }).limit(1).lean();
 
-   // const newOrderId = lastOrder!._id + Math.floor(Math.random() * 5) + 1;
+   const newOrderId = lastOrder!._id + Math.floor(Math.random() * 5) + 1;
 
-   return 29000;
+   return newOrderId;
 };

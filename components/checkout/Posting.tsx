@@ -72,7 +72,7 @@ export const Posting: FC<Props> = ({ user }) => {
 
       await addMailchimpClient(message);
 
-      if (referralCoupon) await addReferralPoints(referralCoupon);
+      //if (referralCoupon) await addReferralPoints(referralCoupon);
 
       if (paymentMethod !== 'mercadopago') {
          router.replace(`/muchas-gracias/${message}`);

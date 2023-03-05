@@ -16,10 +16,14 @@ interface Props {
 }
 export interface OrdersState {
    shippingAddress?: ShippingAddress;
+   orderId: number;
+   paymentMethod: IPaymentMethods;
 }
 
 const ORDERS_INITIAL_STATE: OrdersState = {
    shippingAddress: undefined,
+   orderId: 0,
+   paymentMethod: 'efectivo',
 };
 
 export const OrdersProvider: FC<Props> = ({ children }) => {
@@ -127,7 +131,12 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
             await viandasApi.put('user/addCoupon', coupons[0]);
          }
 
-         // removeCookies();
+         const orderData = {
+            orderId: data._id!,
+            paymentMethod: data.paymentMethod,
+         };
+
+         dispatch({ type: '[Orders] - Order Complete', payload: orderData });
 
          return {
             hasError: false,

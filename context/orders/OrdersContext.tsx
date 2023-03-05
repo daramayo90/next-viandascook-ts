@@ -4,6 +4,8 @@ import { IPaymentMethods } from '../../interfaces/order';
 
 interface ContextProps {
    shippingAddress?: ShippingAddress;
+   orderId: number;
+   paymentMethod: IPaymentMethods;
 
    addGuestAddress: (address: ShippingAddress) => void;
    createOrder: (paymentMethod: IPaymentMethods) => Promise<{ hasError: boolean; message: string }>;

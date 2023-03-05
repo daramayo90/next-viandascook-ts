@@ -1,10 +1,11 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useContext, useEffect } from 'react';
 import { GetServerSideProps, NextPage } from 'next';
 
 import { dbOrders } from '../../database';
 import { IOrder } from '../../interfaces';
 
-import { CartContext } from '../../context';
+import { CartContext, OrdersContext, EmailsContext } from '../../context';
 import { removeCookies } from '../../utils';
 
 import { OrderLayout } from '../../components/layouts';
@@ -19,11 +20,19 @@ interface Props {
 }
 
 const ThankYouPage: NextPage<Props> = ({ order }) => {
-   const { orderComplete } = useContext(CartContext);
+   const { referralCoupon, orderComplete } = useContext(CartContext);
+   const { addReferralPoints } = useContext(OrdersContext);
+   const { sendOrderConfirmationEmail } = useContext(EmailsContext);
 
    useEffect(() => {
-      orderComplete();
-      removeCookies();
+      const onOrderComplete = async () => {
+         if (referralCoupon) await addReferralPoints(referralCoupon);
+         await sendOrderConfirmationEmail();
+         orderComplete();
+         removeCookies();
+      };
+
+      onOrderComplete();
    }, []);
 
    return (

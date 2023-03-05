@@ -9,7 +9,7 @@ import { FloatingWhatsApp } from 'react-floating-whatsapp';
 import { SWRConfig } from 'swr';
 import { useLoader } from '../hooks';
 
-import { AuthProvider, CartProvider } from '../context';
+import { AuthProvider, CartProvider, EmailsProvider } from '../context';
 import { UIProvider } from '../context/ui';
 import { OrdersProvider } from '../context/orders';
 
@@ -32,28 +32,30 @@ function MyApp({ Component, pageProps }: AppProps) {
                <UIProvider>
                   <CartProvider>
                      <OrdersProvider>
-                        <ThemeProvider theme={lightTheme}>
-                           {loading ? (
-                              <LoadingPage />
-                           ) : (
-                              <>
-                                 <FloatingWhatsApp
-                                    phoneNumber='+5491171080193'
-                                    accountName='Mari'
-                                    allowEsc
-                                    allowClickAway
-                                    avatar='/logo/wp-logo.jpg'
-                                    chatMessage='Hola 👋, te saluda Mari de Viandas Cook.. ¿cómo puedo ayudarte?'
-                                    statusMessage='Atención de 09 a 19hs'
-                                    placeholder='Escribe tu mensaje..'
-                                    darkMode
-                                    chatboxStyle={{ bottom: '9rem' }}
-                                 />
-                                 <Script src='https://sdk.mercadopago.com/js/v2' />
-                                 <Component {...pageProps} />
-                              </>
-                           )}
-                        </ThemeProvider>
+                        <EmailsProvider>
+                           <ThemeProvider theme={lightTheme}>
+                              {loading ? (
+                                 <LoadingPage />
+                              ) : (
+                                 <>
+                                    <FloatingWhatsApp
+                                       phoneNumber='+5491171080193'
+                                       accountName='Mari'
+                                       allowEsc
+                                       allowClickAway
+                                       avatar='/logo/wp-logo.jpg'
+                                       chatMessage='Hola 👋, te saluda Mari de Viandas Cook.. ¿cómo puedo ayudarte?'
+                                       statusMessage='Atención de 09 a 19hs'
+                                       placeholder='Escribe tu mensaje..'
+                                       darkMode
+                                       chatboxStyle={{ bottom: '9rem' }}
+                                    />
+                                    <Script src='https://sdk.mercadopago.com/js/v2' />
+                                    <Component {...pageProps} />
+                                 </>
+                              )}
+                           </ThemeProvider>
+                        </EmailsProvider>
                      </OrdersProvider>
                   </CartProvider>
                </UIProvider>
