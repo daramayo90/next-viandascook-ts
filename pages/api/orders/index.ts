@@ -73,17 +73,19 @@ const createOrder = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
 
       await newOrder.save();
 
-      await User.updateOne(
-         { email: dbUser?.email },
-         {
-            $set: {
-               points: dbUser?.points ? dbUser.points + Math.round(total - shipping) : 0,
-               redeemPoints: dbUser?.redeemPoints
-                  ? dbUser.points + Math.round(total - shipping)
-                  : 0,
+      if (pointsDiscount === 0) {
+         await User.updateOne(
+            { email: dbUser?.email },
+            {
+               $set: {
+                  points: dbUser?.points ? dbUser.points + Math.round(total - shipping) : 0,
+                  redeemPoints: dbUser?.redeemPoints
+                     ? dbUser.points + Math.round(total - shipping)
+                     : 0,
+               },
             },
-         },
-      );
+         );
+      }
 
       await db.disconnect();
 
