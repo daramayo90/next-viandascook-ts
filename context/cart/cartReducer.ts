@@ -142,11 +142,15 @@ export const cartReducer = (state: CartState, action: CartActionType): CartState
             ...state,
             cart: [],
             coupons: [],
+            referralCoupon: '',
             numberOfItems: 0,
             subTotal: 0,
             discount: 0,
             shipping: 0,
             couponDiscount: 0,
+            referralDiscount: 0,
+            points: 0,
+            pointsDiscount: 0,
             total: 0,
          };
 
