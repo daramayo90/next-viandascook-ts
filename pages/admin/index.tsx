@@ -53,7 +53,7 @@ const DashboardPage = () => {
       };
 
       getData();
-   }, []);
+   }, [miFecha]);
 
    if (!info) {
       return <></>;

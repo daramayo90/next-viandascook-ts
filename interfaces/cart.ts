@@ -6,6 +6,6 @@ export interface ICartProduct {
    name: string;
    // slug: string;
    price: number;
-   type?: IType;
+   type: IType[];
    quantity: number;
 }

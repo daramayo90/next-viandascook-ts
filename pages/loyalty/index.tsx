@@ -25,7 +25,7 @@ const LoyaltyPage = () => {
                      </p>
                      <div className={styles.btn}>
                         <Button
-                           href={'/menu'}
+                           href={'/mi-cuenta/puntos'}
                            content={'Mis Puntos'}
                            color='var(--white)'
                            border='2px solid var(--white)'
@@ -50,7 +50,7 @@ const LoyaltyPage = () => {
 
             <div className={styles.btn}>
                <Button
-                  href={'/menu'}
+                  href={'/mi-cuenta/puntos'}
                   content={'Mis Puntos'}
                   color='var(--black)'
                   border='2px solid var(--black)'
