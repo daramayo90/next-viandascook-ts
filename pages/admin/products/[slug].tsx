@@ -152,7 +152,8 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
    //  };
 
    const onSubmit = async (form: FormData) => {
-      if (form.image.length < 2) return alert('Mínimo 2 imagenes');
+      if (!form.image) return alert('Mínimo 1 imagen');
+
       setIsSaving(true);
 
       try {
