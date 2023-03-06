@@ -12,26 +12,28 @@ const productSchema = new Schema(
       nutritionalInfo: { type: Object },
       howToHeat: { type: String },
       bestSeller: { type: Boolean },
-      type: {
-         type: String,
-         enum: {
-            values: [
-               'chicken',
-               'dairyfree',
-               'glutenfree',
-               'keto',
-               'lowcalories',
-               'lowcarbs',
-               'lowsodium',
-               'meat',
-               'pasta',
-               'seafood',
-               'vegan',
-               'vegetarian',
-            ],
+      type: [
+         {
+            type: String,
+            enum: {
+               values: [
+                  'chicken',
+                  'dairyfree',
+                  'glutenfree',
+                  'keto',
+                  'lowcalories',
+                  'lowcarbs',
+                  'lowsodium',
+                  'meat',
+                  'pasta',
+                  'seafood',
+                  'vegan',
+                  'vegetarian',
+               ],
+            },
+            message: '{VALUE} is not a valid type',
          },
-         message: '{VALUE} is not a valid type',
-      },
+      ],
    },
    { timestamps: true },
 );

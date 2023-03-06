@@ -5,7 +5,7 @@ export interface IProduct {
    slug: string;
    price: number;
    inStock: boolean;
-   type: IType;
+   type: IType[];
    ingredients: string[];
    nutritionalInfo: object;
    howToHeat: string;

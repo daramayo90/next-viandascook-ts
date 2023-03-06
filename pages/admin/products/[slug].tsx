@@ -55,7 +55,7 @@ interface FormData {
    slug: string;
    price: number;
    inStock: boolean;
-   type: IType;
+   type: IType[];
    ingredients: string[];
    nutritionalInfo: object;
    howToHeat: string;
@@ -68,7 +68,7 @@ interface Props {
 const ProductAdminPage: FC<Props> = ({ product }) => {
    const router = useRouter();
    const fileInputRef = useRef<HTMLInputElement>(null);
-   const [newTagValue, setNewTagValue] = useState('');
+   const [newIngredientValue, setNewIngredientValue] = useState('');
    const [isSaving, setIsSaving] = useState(false);
 
    const {
@@ -86,43 +86,43 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
       const subscription = watch((value, { name, type }) => {
          if (name === 'name') {
             const newSlug =
-               value.name?.trim().replaceAll(' ', '_').replaceAll("'", '').toLocaleLowerCase() ||
+               value.name?.trim().replaceAll(' ', '-').replaceAll("'", '').toLocaleLowerCase() ||
                '';
 
             setValue('slug', newSlug);
          }
       });
+
       return () => subscription.unsubscribe();
    }, [watch, setValue]);
 
-   //  const onChangeSize = (size: string) => {
-   //     const currentSizes = getValues('sizes');
-   //     if (currentSizes.includes(size)) {
-   //        return setValue(
-   //           'sizes',
-   //           currentSizes.filter((s) => s !== size),
-   //           { shouldValidate: true },
-   //        );
-   //     }
+   const onChangeType = (type: IType) => {
+      const currentTypes = getValues('type');
+      if (currentTypes.includes(type)) {
+         return setValue(
+            'type',
+            currentTypes.filter((t) => t !== type),
+            { shouldValidate: true },
+         );
+      }
+      setValue('type', [...currentTypes, type], { shouldValidate: true });
+   };
 
-   //     setValue('sizes', [...currentSizes, size], { shouldValidate: true });
-   //  };
-
-   const onNewTag = () => {
-      const newTag = newTagValue.trim().toLocaleLowerCase();
-      setNewTagValue('');
+   const onNewIngredient = () => {
+      const newIngredient = newIngredientValue.trim().toLocaleLowerCase();
+      setNewIngredientValue('');
       const currentTags = getValues('ingredients');
 
-      if (currentTags.includes(newTag)) {
+      if (currentTags.includes(newIngredient)) {
          return;
       }
 
-      currentTags.push(newTag);
+      currentTags.push(newIngredient);
    };
 
-   const onDeleteTag = (tag: string) => {
-      const updatedTags = getValues('ingredients').filter((t) => t !== tag);
-      setValue('ingredients', updatedTags, { shouldValidate: true });
+   const onDeleteIngredient = (tag: string) => {
+      const updatedIngredients = getValues('ingredients').filter((t) => t !== tag);
+      setValue('ingredients', updatedIngredients, { shouldValidate: true });
    };
 
    //  const onFilesSelected = async ({ target }: ChangeEvent<HTMLInputElement>) => {
@@ -279,7 +279,7 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
 
                      <Divider sx={{ my: 2 }} />
 
-                     <FormControl sx={{ mb: 1 }}>
+                     {/* <FormControl sx={{ mb: 1 }}>
                         <FormLabel>Tipo de plato</FormLabel>
                         <RadioGroup
                            row
@@ -297,22 +297,23 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
                               />
                            ))}
                         </RadioGroup>
-                     </FormControl>
+                     </FormControl> */}
 
-                     {/* <FormGroup>
-                     <FormLabel>Tallas</FormLabel>
-                     {validSizes.map((size) => (
-                        <FormControlLabel
-                           key={size}
-                           control={<Checkbox checked={getValues('sizes').includes(size)} />}
-                           label={size}
-                           onChange={() => onChangeSize(size)}
-                        />
-                     ))}
-                  </FormGroup> */}
+                     <FormLabel>Tipo de plato</FormLabel>
+                     <FormGroup sx={{ mb: 1, flexDirection: 'row' }}>
+                        {validTypes.map((type) => (
+                           <FormControlLabel
+                              key={type}
+                              control={<Checkbox checked={getValues('type').includes(type)} />}
+                              label={type}
+                              onChange={() => onChangeType(type)}
+                              sx={{ minWidth: 130 }}
+                           />
+                        ))}
+                     </FormGroup>
                   </Grid>
 
-                  {/* Tags e imagenes */}
+                  {/* Slug */}
                   <Grid item xs={12} sm={6}>
                      <TextField
                         label='Slug - URL'
@@ -330,17 +331,17 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
                         helperText={errors.slug?.message}
                      />
 
+                     {/* Ingredients */}
                      <TextField
                         label='Ingredientes'
                         variant='filled'
                         fullWidth
                         sx={{ mb: 1 }}
-                        helperText='Presiona [spacebar] para agregar'
-                        value={newTagValue}
-                        onChange={({ target }) => setNewTagValue(target.value)}
-                        onKeyUp={({ code }) => (code === 'Space' ? onNewTag() : undefined)}
+                        helperText='Presioná [Enter] para agregar'
+                        value={newIngredientValue}
+                        onChange={({ target }) => setNewIngredientValue(target.value)}
+                        onKeyUp={({ code }) => (code === 'Enter' ? onNewIngredient() : undefined)}
                      />
-
                      <Box
                         sx={{
                            display: 'flex',
@@ -355,7 +356,7 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
                               <Chip
                                  key={tag}
                                  label={tag}
-                                 onDelete={() => onDeleteTag(tag)}
+                                 onDelete={() => onDeleteIngredient(tag)}
                                  color='primary'
                                  size='small'
                                  sx={{ ml: 1, mt: 1 }}
