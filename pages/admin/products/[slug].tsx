@@ -125,31 +125,30 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
       setValue('ingredients', updatedIngredients, { shouldValidate: true });
    };
 
-   //  const onFilesSelected = async ({ target }: ChangeEvent<HTMLInputElement>) => {
-   //     if (!target.files || target.files.length === 0) {
-   //        return;
-   //     }
+   const onFilesSelected = async ({ target }: ChangeEvent<HTMLInputElement>) => {
+      if (!target.files || target.files.length === 0) {
+         return;
+      }
 
-   //     try {
-   //        // console.log( file );
-   //        for (const file of target.files) {
-   //           const formData = new FormData();
-   //           formData.append('file', file);
-   //           const { data } = await viandasApi.post<{ message: string }>('/admin/upload', formData);
-   //           setValue('image', [...getValues('image'), data.message], { shouldValidate: true });
-   //        }
-   //     } catch (error) {
-   //        console.log({ error });
-   //     }
-   //  };
+      try {
+         for (const file of target.files) {
+            const formData = new FormData();
+            formData.append('file', file);
+            const { data } = await viandasApi.post<{ message: string }>('/admin/upload', formData);
+            setValue('image', [...getValues('image'), data.message], { shouldValidate: true });
+         }
+      } catch (error) {
+         console.log({ error });
+      }
+   };
 
-   //  const onDeleteImage = (image: string) => {
-   //     setValue(
-   //        'image',
-   //        getValues('image').filter((img) => img !== image),
-   //        { shouldValidate: true },
-   //     );
-   //  };
+   const onDeleteImage = (image: string) => {
+      setValue(
+         'image',
+         getValues('image').filter((img) => img !== image),
+         { shouldValidate: true },
+      );
+   };
 
    const onSubmit = async (form: FormData) => {
       if (!form.image) return alert('Mínimo 1 imagen');
@@ -372,7 +371,7 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
                            multiple
                            accept='image/png, image/gif, image/jpeg'
                            style={{ display: 'none' }}
-                           // onChange={onFilesSelected}
+                           onChange={onFilesSelected}
                         />
 
                         <Chip
