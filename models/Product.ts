@@ -3,15 +3,15 @@ import { IProduct } from '../interfaces';
 
 const productSchema = new Schema(
    {
-      image: { type: String },
-      name: { type: String, required: true },
-      slug: { type: String, required: true },
+      image: { type: String, unique: true },
+      name: { type: String, required: true, unique: true },
+      slug: { type: String, required: true, unique: true },
       price: { type: Number, required: true, default: 0 },
-      inStock: { type: Boolean, required: true },
+      inStock: { type: Boolean, required: true, default: true },
       ingredients: [{ type: String }],
       nutritionalInfo: { type: Object },
-      howToHeat: { type: String },
-      bestSeller: { type: Boolean },
+      howToHeat: { type: String, default: '' },
+      bestSeller: { type: Boolean, default: false },
       type: [
          {
             type: String,

@@ -15,6 +15,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Data>)
          return updateProduct(req, res);
 
       case 'POST':
+         return createProduct(req, res);
 
       default:
          return res.status(200).json({ message: 'Bad Request' });
@@ -32,7 +33,7 @@ const getProducts = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
 };
 
 const updateProduct = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
-   const { _id = '', image } = req.body as IProduct;
+   const { _id = '', image = '' } = req.body as IProduct;
 
    if (!isValidObjectId) {
       return res.status(400).json({ message: 'El id del producto no es válido' });
@@ -61,5 +62,36 @@ const updateProduct = async (req: NextApiRequest, res: NextApiResponse<Data>) =>
       console.log(error);
       await db.disconnect();
       return res.status(400).json({ message: 'Revisar la consola del servidor' });
+   }
+};
+
+const createProduct = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
+   const { image = '' } = req.body as IProduct;
+
+   if (!image) {
+      return res.status(400).json({ message: 'Es necesario al menos una imágen' });
+   }
+
+   try {
+      await db.connect();
+
+      const productInDb = await Product.findOne({ slug: req.body.slug });
+
+      if (productInDb) {
+         await db.disconnect();
+         return res.status(400).json({ message: 'Ya existe un producto con ese slug' });
+      }
+
+      const product = new Product(req.body);
+
+      await product.save();
+
+      await db.disconnect();
+
+      return res.status(201).json(product);
+   } catch (error) {
+      console.log(error);
+      await db.disconnect();
+      return res.status(400).json({ message: 'Revisar logs del servidor' });
    }
 };

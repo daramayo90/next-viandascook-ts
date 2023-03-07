@@ -175,6 +175,7 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
       }
    };
 
+   console.log(getValues('image'));
    return (
       <AdminLayout
          title={'Producto'}
@@ -199,7 +200,7 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
                </Box>
 
                <Grid container spacing={2}>
-                  {/* Data */}
+                  {/* Name */}
                   <Grid item xs={12} sm={6}>
                      <TextField
                         label='Nombre'
@@ -214,6 +215,7 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
                         helperText={errors.name?.message}
                      />
 
+                     {/* How to heat? */}
                      <TextField
                         label='¿Cómo calentar?'
                         variant='filled'
@@ -227,6 +229,7 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
                         helperText={errors.howToHeat?.message}
                      />
 
+                     {/* Price */}
                      <TextField
                         label='Precio'
                         type='number'
@@ -241,6 +244,7 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
                         helperText={errors.price?.message}
                      />
 
+                     {/* Inventary */}
                      <TextField
                         label='Inventario'
                         type='boolean'
@@ -256,9 +260,10 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
 
                      <Divider sx={{ my: 1 }} />
 
-                     <Grid container xs={12} sm={12}>
+                     {/* Nutritional Info */}
+                     <Grid container>
                         <FormLabel>Información nutricional</FormLabel>
-                        <Grid item display='flex' justifyContent='center'>
+                        <Grid item display='flex' justifyContent='center' xs={12} sm={12}>
                            {Object.entries(product.nutritionalInfo).map((option, index) => (
                               <TextField
                                  key={index}
@@ -280,26 +285,7 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
 
                      <Divider sx={{ my: 2 }} />
 
-                     {/* <FormControl sx={{ mb: 1 }}>
-                        <FormLabel>Tipo de plato</FormLabel>
-                        <RadioGroup
-                           row
-                           value={getValues('type')}
-                           onChange={({ target }) =>
-                              setValue('type', target.value as IType, { shouldValidate: true })
-                           }>
-                           {validTypes.map((option) => (
-                              <FormControlLabel
-                                 key={option}
-                                 value={option}
-                                 control={<Radio color='secondary' />}
-                                 label={capitalize(option)}
-                                 sx={{ minWidth: 130 }}
-                              />
-                           ))}
-                        </RadioGroup>
-                     </FormControl> */}
-
+                     {/* Type */}
                      <FormLabel>Tipo de plato</FormLabel>
                      <FormGroup sx={{ mb: 1, flexDirection: 'row' }}>
                         {validTypes.map((type) => (
@@ -368,55 +354,75 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
 
                      <Divider sx={{ my: 2 }} />
 
-                     {/* <Box display='flex' flexDirection='column'>
-                     <FormLabel sx={{ mb: 1 }}>Imágenes</FormLabel>
-                     <Button
-                        color='secondary'
-                        fullWidth
-                        startIcon={<UploadOutlined />}
-                        sx={{ mb: 3 }}
-                        onClick={() => fileInputRef.current?.click()}>
-                        Cargar imagen
-                     </Button>
-                     <input
-                        ref={fileInputRef}
-                        type='file'
-                        multiple
-                        accept='image/png, image/gif, image/jpeg'
-                        style={{ display: 'none' }}
-                        onChange={onFilesSelected}
-                     />
+                     {/* Image */}
+                     <Box display='flex' flexDirection='column'>
+                        <FormLabel sx={{ mb: 1 }}>Imágenes</FormLabel>
+                        <Button
+                           color='secondary'
+                           fullWidth
+                           startIcon={<UploadOutlined />}
+                           sx={{ mb: 3 }}
+                           onClick={() => fileInputRef.current?.click()}>
+                           Cargar imagen
+                        </Button>
+                        <input
+                           ref={fileInputRef}
+                           type='file'
+                           multiple
+                           accept='image/png, image/gif, image/jpeg'
+                           style={{ display: 'none' }}
+                           // onChange={onFilesSelected}
+                        />
 
-                     <Chip
-                        label='Es necesario al 2 imagenes'
-                        color='error'
-                        variant='outlined'
-                        sx={{ display: getValues('image').length < 2 ? 'flex' : 'none' }}
-                     />
+                        <Chip
+                           label='Es necesario al 2 imagenes'
+                           color='error'
+                           variant='outlined'
+                           sx={{ display: getValues('image').length < 1 ? 'flex' : 'none' }}
+                        />
 
-                     <Grid container spacing={2}>
-                        {getValues('image').map((img) => (
-                           <Grid item xs={4} sm={3} key={img}>
+                        <Grid container spacing={2}>
+                           <Grid item xs={4} sm={3}>
                               <Card>
                                  <CardMedia
                                     component='img'
                                     className='fadeIn'
-                                    image={img}
-                                    alt={img}
+                                    image={`/products/${getValues('image')}`}
+                                    alt={getValues('name')}
                                  />
                                  <CardActions>
                                     <Button
                                        fullWidth
                                        color='error'
-                                       onClick={() => onDeleteImage(img)}>
+                                       // onClick={() => onDeleteImage(img)}
+                                    >
                                        Borrar
                                     </Button>
                                  </CardActions>
                               </Card>
                            </Grid>
-                        ))}
-                     </Grid>
-                  </Box> */}
+                        </Grid>
+
+                        {/* <FormControl sx={{ mb: 1 }}>
+                        <FormLabel>Tipo de plato</FormLabel>
+                        <RadioGroup
+                           row
+                           value={getValues('type')}
+                           onChange={({ target }) =>
+                              setValue('type', target.value as IType, { shouldValidate: true })
+                           }>
+                           {validTypes.map((option) => (
+                              <FormControlLabel
+                                 key={option}
+                                 value={option}
+                                 control={<Radio color='secondary' />}
+                                 label={capitalize(option)}
+                                 sx={{ minWidth: 130 }}
+                              />
+                           ))}
+                        </RadioGroup>
+                     </FormControl> */}
+                     </Box>
                   </Grid>
                </Grid>
             </Grid>

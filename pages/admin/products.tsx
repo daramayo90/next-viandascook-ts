@@ -50,7 +50,7 @@ const ProductsPage = () => {
 
    const rows = data!.map((product) => ({
       id: product._id,
-      img: product.image[0],
+      img: product.image,
       name: product.name,
       type: product.type,
       inStock: product.inStock,
