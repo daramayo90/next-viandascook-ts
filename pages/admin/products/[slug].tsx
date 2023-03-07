@@ -135,20 +135,16 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
             const formData = new FormData();
             formData.append('file', file);
             const { data } = await viandasApi.post<{ message: string }>('/admin/upload', formData);
-            // setValue('image', [...getValues('image'), data.message], { shouldValidate: true });
+            setValue('image', data.message, { shouldValidate: true });
          }
       } catch (error) {
          console.log({ error });
       }
    };
 
-   // const onDeleteImage = (image: string) => {
-   //    setValue(
-   //       'image',
-   //       getValues('image').filter((img) => img !== image),
-   //       { shouldValidate: true },
-   //    );
-   // };
+   const onDeleteImage = () => {
+      setValue('image', '', { shouldValidate: true });
+   };
 
    const onSubmit = async (form: FormData) => {
       if (!form.image) return alert('Mínimo 1 imagen');
@@ -173,7 +169,6 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
       }
    };
 
-   console.log(getValues('image'));
    return (
       <AdminLayout
          title={'Producto'}
@@ -375,7 +370,7 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
                         />
 
                         <Chip
-                           label='Es necesario al 2 imagenes'
+                           label='Es necesario 1 imágen'
                            color='error'
                            variant='outlined'
                            sx={{ display: getValues('image').length < 1 ? 'flex' : 'none' }}
@@ -387,15 +382,11 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
                                  <CardMedia
                                     component='img'
                                     className='fadeIn'
-                                    image={`/products/${getValues('image')}`}
+                                    image={`${getValues('image')}`}
                                     alt={getValues('name')}
                                  />
                                  <CardActions>
-                                    <Button
-                                       fullWidth
-                                       color='error'
-                                       // onClick={() => onDeleteImage(img)}
-                                    >
+                                    <Button fullWidth color='error' onClick={() => onDeleteImage()}>
                                        Borrar
                                     </Button>
                                  </CardActions>

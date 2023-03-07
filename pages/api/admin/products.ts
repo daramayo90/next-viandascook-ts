@@ -3,6 +3,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { db } from '../../../database';
 import { IProduct } from '../../../interfaces';
 import { Product } from '../../../models';
+import { v2 as cloudinary } from 'cloudinary';
 
 type Data = { message: string } | IProduct[] | IProduct;
 
@@ -51,6 +52,13 @@ const updateProduct = async (req: NextApiRequest, res: NextApiResponse<Data>) =>
       if (!product) {
          await db.disconnect();
          return res.status(400).json({ message: 'No existe un producto con ese id' });
+      }
+
+      // https://res.cloudinary.com/viandascook/image/upload/v1678220438/rssbcuykhlvt6druj17f.jpg
+      if (!product.image.includes(image)) {
+         const img = product.image;
+         const [fileId, extension] = img.substring(img.lastIndexOf('/') + 1).split('.');
+         await cloudinary.uploader.destroy(fileId);
       }
 
       await product.update(req.body);
