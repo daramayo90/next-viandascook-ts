@@ -163,7 +163,6 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
             data: form,
          });
 
-         console.log({ data });
          if (!form._id) {
             router.replace(`/admin/products/${form.slug}`);
          } else {
@@ -263,24 +262,26 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
                      {/* Nutritional Info */}
                      <Grid container>
                         <FormLabel>Información nutricional</FormLabel>
-                        <Grid item display='flex' justifyContent='center' xs={12} sm={12}>
-                           {Object.entries(product.nutritionalInfo).map((option, index) => (
-                              <TextField
-                                 key={index}
-                                 type='text'
-                                 variant='filled'
-                                 label={option[0]}
-                                 value={option[1]}
-                                 fullWidth
-                                 sx={{ mx: 0.5, mt: 1 }}
-                                 //  {...register('nutritionalInfo', {
-                                 //     required: 'Este campo es requerido',
-                                 //  })}
-                                 //  error={!!errors.nutritionalInfo}
-                                 //  helperText={errors.nutritionalInfo?.message}
-                              />
-                           ))}
-                        </Grid>
+                        {product.nutritionalInfo && (
+                           <Grid item display='flex' justifyContent='center' xs={12} sm={12}>
+                              {Object.entries(product.nutritionalInfo).map((option, index) => (
+                                 <TextField
+                                    key={index}
+                                    type='text'
+                                    variant='filled'
+                                    label={option[0]}
+                                    value={option[1]}
+                                    fullWidth
+                                    sx={{ mx: 0.5, mt: 1 }}
+                                    //  {...register('nutritionalInfo', {
+                                    //     required: 'Este campo es requerido',
+                                    //  })}
+                                    //  error={!!errors.nutritionalInfo}
+                                    //  helperText={errors.nutritionalInfo?.message}
+                                 />
+                              ))}
+                           </Grid>
+                        )}
                      </Grid>
 
                      <Divider sx={{ my: 2 }} />
@@ -440,7 +441,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
       // crear un producto
       const tempProduct = JSON.parse(JSON.stringify(new Product()));
       delete tempProduct._id;
-      tempProduct.image = ['img1.jpg', 'img2.jpg'];
+      tempProduct.image = 'img-temp.jpg';
       product = tempProduct;
    } else {
       product = await dbProducts.getProductBySlug(slug.toString());

@@ -1,4 +1,5 @@
 import React, { FC, useContext } from 'react';
+import { useRouter } from 'next/router';
 
 import { IOrder } from '../../interfaces';
 
@@ -6,8 +7,6 @@ import { CartList } from '../cart';
 import { CartContext } from '../../context/cart';
 
 import styles from '../../styles/Order.module.css';
-import { useRouter } from 'next/router';
-import Cookies from 'js-cookie';
 
 interface Props {
    order: IOrder;

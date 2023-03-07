@@ -4,12 +4,12 @@ import { IProduct } from '../interfaces';
 const productSchema = new Schema(
    {
       image: { type: String, unique: true },
-      name: { type: String, required: true, unique: true },
+      name: { type: String, required: true, unique: true, default: '' },
       slug: { type: String, required: true, unique: true },
       price: { type: Number, required: true, default: 0 },
       inStock: { type: Boolean, required: true, default: true },
       ingredients: [{ type: String }],
-      nutritionalInfo: { type: Object },
+      nutritionalInfo: { type: Object, default: {} },
       howToHeat: { type: String, default: '' },
       bestSeller: { type: Boolean, default: false },
       type: [
