@@ -83,7 +83,7 @@ const checkoutPro = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
          id,
          title,
          picture_url,
-         category_id,
+         category_id: '',
          unit_price,
          ...rest,
       }),

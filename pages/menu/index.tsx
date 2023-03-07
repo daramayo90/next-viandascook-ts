@@ -34,7 +34,7 @@ const ProductsPage: NextPage<Props> = ({ products }) => {
    });
 
    const typeProducts = products.filter((p) => {
-      return p.type === type;
+      return p.type.some((t) => type.includes(t));
    });
 
    const productsToShow =
