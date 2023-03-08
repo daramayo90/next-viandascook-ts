@@ -61,7 +61,7 @@ const updateProduct = async (req: NextApiRequest, res: NextApiResponse<Data>) =>
          await cloudinary.uploader.destroy(fileId);
       }
 
-      await product.update(req.body);
+      await Product.updateOne({ _id: product._id }, req.body);
 
       await db.disconnect();
 

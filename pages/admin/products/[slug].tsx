@@ -96,6 +96,22 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
       return () => subscription.unsubscribe();
    }, [watch, setValue]);
 
+   const onChangeNutritionalInfo = (nameToUpdate: string, newValue: string) => {
+      const updatedNutritionalInfo = Object.entries(getValues('nutritionalInfo')).reduce(
+         (acc: { [key: string]: string }, [name, value]) => {
+            if (nameToUpdate === name) {
+               acc[nameToUpdate] = newValue;
+            } else {
+               acc[name] = value;
+            }
+            return acc;
+         },
+         {},
+      );
+
+      setValue('nutritionalInfo', updatedNutritionalInfo, { shouldValidate: true });
+   };
+
    const onChangeType = (type: IType) => {
       const currentTypes = getValues('type');
       if (currentTypes.includes(type)) {
@@ -258,15 +274,18 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
                         <FormLabel>Información nutricional</FormLabel>
                         {product.nutritionalInfo && (
                            <Grid item display='flex' justifyContent='center' xs={12} sm={12}>
-                              {Object.entries(product.nutritionalInfo).map((option, index) => (
+                              {Object.entries(getValues('nutritionalInfo')).map((option, index) => (
                                  <TextField
                                     key={index}
                                     type='text'
                                     variant='filled'
                                     label={option[0]}
                                     value={option[1]}
-                                    fullWidth
+                                    onChange={(e) =>
+                                       onChangeNutritionalInfo(option[0], e.target.value)
+                                    }
                                     sx={{ mx: 0.5, mt: 1 }}
+                                    fullWidth
                                     //  {...register('nutritionalInfo', {
                                     //     required: 'Este campo es requerido',
                                     //  })}
