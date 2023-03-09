@@ -30,42 +30,34 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Data>)
 const registerUser = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
    const { email = '', name = '', lastName = '', password = '' } = req.body;
 
-   console.log('test1');
-
    if (password.length < 6) {
       return res.status(400).json({ message: 'La contraseña debe tener al menos 6 caracteres.' });
    }
-   console.log('test2');
 
    if (name.length < 2) {
       return res.status(400).json({ message: 'El nombre debe tener al menos 2 caracteres' });
    }
-   console.log('test3');
 
    if (lastName.length < 2) {
       return res.status(400).json({ message: 'El apellido debe tener al menos 2 caracteres' });
    }
-   console.log('test4');
 
    if (!validations.isValidEmail(email)) {
       return res.status(400).json({ message: 'No es un email válido' });
    }
-   console.log('test5');
 
    await db.connect();
-   console.log('test6');
 
    const user = await User.findOne({ email }).lean();
-   console.log('test7');
 
    if (user && user.password) {
       await db.disconnect();
       return res.status(400).json({ message: 'Correo electrónico ya registrado' });
    }
-   console.log('test8');
 
    const refCode = await dbUsers.generateUniqueReferralCode();
-   console.log('test9');
+
+   await db.connect();
 
    const newUser = new User({
       name: name.charAt(0).toUpperCase() + name.slice(1).toLocaleLowerCase(),
@@ -86,14 +78,10 @@ const registerUser = async (req: NextApiRequest, res: NextApiResponse<Data>) => 
       referralCode: refCode,
       coupons: [],
    });
-   console.log('test10');
 
    try {
-      console.log('test11');
       // Guest user who already bought sometime in the past
       if (user && user.password) {
-         console.log('test12');
-
          await User.updateOne(
             { email: user!.email },
             {
@@ -110,22 +98,13 @@ const registerUser = async (req: NextApiRequest, res: NextApiResponse<Data>) => 
             },
          );
       } else {
-         console.log('test14');
-
          await newUser.save({ validateBeforeSave: true });
       }
    } catch (error) {
-      console.log('test15');
-
       await db.disconnect();
-      console.log('test16');
-
       console.log(error);
-      console.log('test17');
-
       return res.status(500).json({ message: 'Error del servidor. Contactar al Admin' });
    }
-   console.log('test18');
 
    await db.disconnect();
 
