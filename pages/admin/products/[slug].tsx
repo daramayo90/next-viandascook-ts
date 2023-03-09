@@ -272,29 +272,27 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
                      {/* Nutritional Info */}
                      <Grid container>
                         <FormLabel>Información nutricional</FormLabel>
-                        {product.nutritionalInfo && (
-                           <Grid item display='flex' justifyContent='center' xs={12} sm={12}>
-                              {Object.entries(getValues('nutritionalInfo')).map((option, index) => (
-                                 <TextField
-                                    key={index}
-                                    type='text'
-                                    variant='filled'
-                                    label={option[0]}
-                                    value={option[1]}
-                                    onChange={(e) =>
-                                       onChangeNutritionalInfo(option[0], e.target.value)
-                                    }
-                                    sx={{ mx: 0.5, mt: 1 }}
-                                    fullWidth
-                                    //  {...register('nutritionalInfo', {
-                                    //     required: 'Este campo es requerido',
-                                    //  })}
-                                    //  error={!!errors.nutritionalInfo}
-                                    //  helperText={errors.nutritionalInfo?.message}
-                                 />
-                              ))}
-                           </Grid>
-                        )}
+                        <Grid item display='flex' justifyContent='center' xs={12} sm={12}>
+                           {Object.entries(getValues('nutritionalInfo')).map((option, index) => (
+                              <TextField
+                                 key={index}
+                                 type='text'
+                                 variant='filled'
+                                 label={option[0]}
+                                 value={option[1]}
+                                 onChange={(e) =>
+                                    onChangeNutritionalInfo(option[0], e.target.value)
+                                 }
+                                 sx={{ mx: 0.5, mt: 1 }}
+                                 fullWidth
+                                 //  {...register('nutritionalInfo', {
+                                 //     required: 'Este campo es requerido',
+                                 //  })}
+                                 //  error={!!errors.nutritionalInfo}
+                                 //  helperText={errors.nutritionalInfo?.message}
+                              />
+                           ))}
+                        </Grid>
                      </Grid>
 
                      <Divider sx={{ my: 2 }} />

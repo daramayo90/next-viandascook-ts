@@ -9,7 +9,18 @@ const productSchema = new Schema(
       price: { type: Number, required: true, default: 0 },
       inStock: { type: Boolean, required: true, default: true },
       ingredients: [{ type: String }],
-      nutritionalInfo: { type: Object, default: {} },
+      nutritionalInfo: {
+         type: Object,
+         default: {
+            Calorías: '0 kcal',
+            Proteína: '0 g',
+            Colesterol: '0 g',
+            Fibras: '0 g',
+            Sodio: '0 mg',
+            Carbohidratos: '0 g',
+            Grasas: '0 g',
+         },
+      },
       howToHeat: { type: String, default: '' },
       bestSeller: { type: Boolean, default: false },
       type: [
