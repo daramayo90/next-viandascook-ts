@@ -10,7 +10,7 @@ type Data = { message: string } | IProduct[] | IProduct;
 export default function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
    switch (req.method) {
       case 'GET':
-         return getProducts(req, res);
+         return getProducts(res);
 
       case 'PUT':
          return updateProduct(req, res);
@@ -23,7 +23,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Data>)
    }
 }
 
-const getProducts = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
+const getProducts = async (res: NextApiResponse<Data>) => {
    await db.connect();
 
    const products = await Product.find().sort({ title: 'asc' }).lean();

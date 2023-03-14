@@ -35,7 +35,7 @@ export const Discounts: FC<Props> = ({ orderItems, orderPromo }) => {
             <div className={styles.summary}>
                <span className={styles.discount}>Promo 56 platos o más (15%)</span>
 
-               <span className={styles.discount}>{currency.format(promo)}</span>
+               <span className={styles.discount}>-{currency.format(promo)}</span>
             </div>
          )}
       </>

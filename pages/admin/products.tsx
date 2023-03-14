@@ -13,6 +13,7 @@ const columns: GridColDef[] = [
    {
       field: 'img',
       headerName: 'Foto',
+      width: 65,
       renderCell: ({ row }: GridRenderCellParams) => {
          return (
             <a href={`/plato/${row.slug}`} target='_blank' rel='noreferrer'>
@@ -20,7 +21,8 @@ const columns: GridColDef[] = [
                   component='img'
                   alt={row.name}
                   className='fadeIn'
-                  image={`/products/${row.slug}.jpg`}
+                  image={row.img}
+                  height='55'
                />
             </a>
          );
@@ -29,7 +31,7 @@ const columns: GridColDef[] = [
    {
       field: 'name',
       headerName: 'Nombre',
-      width: 250,
+      width: 450,
       renderCell: ({ row }: GridRenderCellParams) => {
          return (
             <NextLink href={`/admin/products/${row.slug}`} passHref>
@@ -38,9 +40,10 @@ const columns: GridColDef[] = [
          );
       },
    },
-   { field: 'type', headerName: 'Tipo' },
-   { field: 'inStock', headerName: 'Inventario' },
-   { field: 'price', headerName: 'Precio' },
+   { field: 'type', width: 180, headerName: 'Tipo' },
+   { field: 'inStock', width: 180, headerName: 'Inventario' },
+   { field: 'bestSeller', width: 180, headerName: 'Más vendido' },
+   { field: 'price', width: 180, headerName: 'Precio' },
 ];
 
 const ProductsPage = () => {
@@ -54,8 +57,9 @@ const ProductsPage = () => {
       name: product.name,
       type: product.type,
       inStock: product.inStock,
-      price: product.price,
+      price: `$ ${product.price}`,
       slug: product.slug,
+      bestSeller: product.bestSeller,
    }));
 
    return (
@@ -65,13 +69,22 @@ const ProductsPage = () => {
          icon={<CategoryOutlined />}>
          <Grid container className='fadeIn' sx={{ width: '90%', margin: 'auto', mt: 5 }}>
             <Box display='flex' justifyContent='end' sx={{ mb: 2 }}>
-               <Button startIcon={<AddOutlined />} color='secondary' href='/admin/products/new'>
+               <Button
+                  startIcon={<AddOutlined sx={{ color: 'white' }} />}
+                  color='secondary'
+                  href='/admin/products/new'>
                   Crear producto
                </Button>
             </Box>
 
-            <Grid item xs={12} sx={{ height: 650, width: '100%' }}>
-               <DataGrid rows={rows} columns={columns} pageSize={10} rowsPerPageOptions={[10]} />
+            <Grid item xs={12} sx={{ height: 720, width: '100%' }}>
+               <DataGrid
+                  rowHeight={65}
+                  rows={rows}
+                  columns={columns}
+                  pageSize={100}
+                  rowsPerPageOptions={[25, 50, 100]}
+               />
             </Grid>
          </Grid>
       </AdminLayout>

@@ -1,7 +1,7 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import Link from 'next/link';
 
-import { CartContext } from '../../context';
+import { CartContext, UIContext } from '../../context';
 import { currency } from '../../utils';
 
 import { CartList } from '../cart';
@@ -14,14 +14,13 @@ import styles from '../../styles/CartSummary.module.css';
 
 export const CartSummary = () => {
    const { numberOfItems, total } = useContext(CartContext);
-
-   const [touched, setTouched] = useState(false);
+   const { isCartSummaryOpen, toggleCartSummary } = useContext(UIContext);
 
    return (
       <>
          <div
-            className={touched ? `${styles.cartSummary}` : `${styles.cartSummary} hide`}
-            onClick={() => setTouched(!touched)}>
+            className={isCartSummaryOpen ? `${styles.cartSummary}` : `${styles.cartSummary} hide`}
+            onClick={toggleCartSummary}>
             <div className={styles.container}>
                <span className={styles.quantity}>
                   {numberOfItems > 1 ? `${numberOfItems} viandas` : `${numberOfItems} vianda`}
@@ -30,7 +29,7 @@ export const CartSummary = () => {
                <div className={styles.info}>
                   <span className={styles.total}>{currency.format(total)}</span>
                   <span className={styles.details}>Ver el Detalle</span>
-                  {!touched ? (
+                  {!isCartSummaryOpen ? (
                      <MdKeyboardArrowUp className={styles.iconDetails} />
                   ) : (
                      <MdKeyboardArrowDown className={styles.iconDetails} />
@@ -39,14 +38,14 @@ export const CartSummary = () => {
             </div>
          </div>
 
-         {touched && (
+         {isCartSummaryOpen && (
             <div className={styles.fullMenu}>
                <div className={styles.top}>
                   <div className={styles.title}>
                      <h4>Platos elegidos</h4>
                   </div>
 
-                  <div className={styles.closeMenu} onClick={() => setTouched(!touched)}>
+                  <div className={styles.closeMenu} onClick={toggleCartSummary}>
                      <IoIosClose className={styles.icon} />
                   </div>
                </div>

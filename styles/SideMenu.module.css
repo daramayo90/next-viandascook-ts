@@ -7,7 +7,7 @@
 }
 
 .sidemenu.open {
-   z-index: 10;
+   z-index: 25;
 }
 
 .sidemenu > .options {

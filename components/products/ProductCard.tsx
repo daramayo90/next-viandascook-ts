@@ -36,7 +36,7 @@ export const ProductCard: FC<Props> = ({ product }) => {
             <Link href={`/plato/${product.slug}`} prefetch={false}>
                <div className={styles.nextImage}>
                   <Image
-                     src={`/products/${product.image}`}
+                     src={product.image}
                      alt={product.name}
                      width={750}
                      height={900}

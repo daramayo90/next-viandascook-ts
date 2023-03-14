@@ -6,6 +6,7 @@ interface Props {
 }
 export interface UIState {
    isMenuOpen: boolean;
+   isCartSummaryOpen: boolean;
    isProductsMenuOpen: boolean;
    isAdminMenuOpen: boolean;
    deliveryDateSelected: Date;
@@ -13,6 +14,7 @@ export interface UIState {
 
 const UI_INITIAL_STATE: UIState = {
    isMenuOpen: false,
+   isCartSummaryOpen: false,
    isProductsMenuOpen: false,
    isAdminMenuOpen: false,
    deliveryDateSelected: new Date(),
@@ -23,6 +25,10 @@ export const UIProvider: FC<Props> = ({ children }) => {
 
    const toggleSideMenu = () => {
       dispatch({ type: '[UI] - Toggle Menu' });
+   };
+
+   const toggleCartSummary = () => {
+      dispatch({ type: '[UI] - Toggle Cart Summary' });
    };
 
    const toggleProductsMenu = () => {
@@ -42,6 +48,7 @@ export const UIProvider: FC<Props> = ({ children }) => {
          value={{
             ...state,
             toggleSideMenu,
+            toggleCartSummary,
             toggleProductsMenu,
             toggleAdminMenu,
             selectDeliveryDate,

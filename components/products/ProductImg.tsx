@@ -14,7 +14,7 @@ export const ProductImg: FC<Props> = ({ product }) => {
       <div className={styles.image}>
          <div className={styles.nextImage}>
             <Image
-               src={`/products/${product.image}`}
+               src={product.image}
                alt={product.name}
                width={800}
                height={800}

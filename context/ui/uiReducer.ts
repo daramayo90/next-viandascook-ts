@@ -2,6 +2,7 @@ import { UIState } from './';
 
 type UIActionType =
    | { type: '[UI] - Toggle Menu' }
+   | { type: '[UI] - Toggle Cart Summary' }
    | { type: '[UI] - Toggle Products Menu' }
    | { type: '[UI] - Toggle Admin Menu' }
    | { type: '[UI] - Select Delivery Date'; payload: Date }
@@ -13,6 +14,12 @@ export const uiReducer = (state: UIState, action: UIActionType): UIState => {
          return {
             ...state,
             isMenuOpen: !state.isMenuOpen,
+         };
+
+      case '[UI] - Toggle Cart Summary':
+         return {
+            ...state,
+            isCartSummaryOpen: !state.isCartSummaryOpen,
          };
 
       case '[UI] - Toggle Products Menu':

@@ -18,7 +18,7 @@ interface Props {
 export const ShopNavbar: FC<Props> = ({ pageTitle, menuPage, backCart }) => {
    const router = useRouter();
 
-   const { isMenuOpen, toggleSideMenu } = useContext(UIContext);
+   const { isCartSummaryOpen, isMenuOpen, toggleSideMenu } = useContext(UIContext);
    const { numberOfItems } = useContext(CartContext);
 
    const navigation = () => {
@@ -28,6 +28,10 @@ export const ShopNavbar: FC<Props> = ({ pageTitle, menuPage, backCart }) => {
 
       router.back();
    };
+
+   if (isCartSummaryOpen) {
+      return <></>;
+   }
 
    return (
       <section className={styles.shopNavbar}>

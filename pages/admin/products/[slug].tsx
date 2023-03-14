@@ -6,23 +6,16 @@ import { useForm } from 'react-hook-form';
 import {
    Box,
    Button,
-   capitalize,
    Card,
    CardActions,
    CardMedia,
    Checkbox,
    Chip,
    Divider,
-   FormControl,
    FormControlLabel,
    FormGroup,
    FormLabel,
    Grid,
-   Input,
-   ListItem,
-   Paper,
-   Radio,
-   RadioGroup,
    TextField,
 } from '@mui/material';
 import { DriveFileRenameOutline, SaveOutlined, UploadOutlined } from '@mui/icons-material';
@@ -125,7 +118,10 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
    };
 
    const onNewIngredient = () => {
-      const newIngredient = newIngredientValue.trim().toLocaleLowerCase();
+      const newIngredient =
+         newIngredientValue.trim().charAt(0).toUpperCase() +
+         newIngredientValue.slice(1).toLocaleLowerCase();
+
       setNewIngredientValue('');
       const currentTags = getValues('ingredients');
 
@@ -358,7 +354,13 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
                                  onDelete={() => onDeleteIngredient(tag)}
                                  color='primary'
                                  size='small'
-                                 sx={{ ml: 1, mt: 1 }}
+                                 sx={{
+                                    ml: 1,
+                                    mt: 1,
+                                    '& .MuiChip-label': {
+                                       color: 'white',
+                                    },
+                                 }}
                               />
                            );
                         })}
@@ -372,7 +374,7 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
                         <Button
                            color='secondary'
                            fullWidth
-                           startIcon={<UploadOutlined />}
+                           startIcon={<UploadOutlined sx={{ color: 'white' }} />}
                            sx={{ mb: 3 }}
                            onClick={() => fileInputRef.current?.click()}>
                            Cargar imagen
@@ -399,7 +401,7 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
                                  <CardMedia
                                     component='img'
                                     className='fadeIn'
-                                    image={`${getValues('image')}`}
+                                    image={getValues('image')}
                                     alt={getValues('name')}
                                  />
                                  <CardActions>

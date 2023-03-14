@@ -26,7 +26,8 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Data>)
 
 const saveFile = async (file: formidable.File): Promise<string> => {
    const { secure_url } = await cloudinary.uploader.upload(file.filepath);
-   return secure_url;
+   const file_url = secure_url.split('/upload');
+   return file_url[1];
 };
 
 const parseFiles = async (req: NextApiRequest): Promise<string> => {

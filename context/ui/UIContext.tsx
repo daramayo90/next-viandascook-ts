@@ -2,11 +2,13 @@ import { createContext } from 'react';
 
 interface ContextProps {
    isMenuOpen: boolean;
+   isCartSummaryOpen: boolean;
    isProductsMenuOpen: boolean;
    isAdminMenuOpen: boolean;
    deliveryDateSelected: Date;
 
    toggleSideMenu: () => void;
+   toggleCartSummary: () => void;
    toggleProductsMenu: () => void;
    toggleAdminMenu: () => void;
    selectDeliveryDate: (date: Date) => void;

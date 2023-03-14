@@ -20,6 +20,7 @@ export const lightTheme = createTheme({
             underline: 'none',
          },
       },
+
       MuiAppBar: {
          defaultProps: {
             elevation: 0,
@@ -60,6 +61,7 @@ export const lightTheme = createTheme({
          styleOverrides: {
             root: {
                textTransform: 'none',
+               color: '#fff',
                boxShadow: 'none',
                borderRadius: 10,
                ':hover': {

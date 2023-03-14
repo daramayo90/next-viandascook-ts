@@ -27,7 +27,7 @@ export const ProductSlides: FC<Props> = ({ products }) => {
                         <div className={styles.nextImage}>
                            <>
                               <Image
-                                 src={`/products/${product.image}`}
+                                 src={product.image}
                                  alt={product.name}
                                  width={480}
                                  height={720}
