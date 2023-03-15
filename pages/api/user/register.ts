@@ -66,6 +66,7 @@ const registerUser = async (req: NextApiRequest, res: NextApiResponse<Data>) => 
       phone: '-',
       dni: '-',
       password: bcrypt.hashSync(password, 10),
+      avatar: '/avatars/VC-Avatars-00.png',
       points: 0,
       redeemPoints: 0,
       role: 'client',

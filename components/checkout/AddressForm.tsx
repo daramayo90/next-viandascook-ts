@@ -107,17 +107,24 @@ export const AddressForm: FC<Props> = ({ userdb }) => {
             {errors.phone && <span className={styles.error}>{errors.phone?.message}</span>}
          </label>
 
-         <label className={styles.inputText}>
-            <span>Dirección de Correo Electrónico</span>
-            <input
-               {...register('email', {
-                  required: 'El email es un campo requerido',
-                  validate: validations.isEmail,
-               })}
-               type='text'
-            />
-            {errors.email && <span className={styles.error}>{errors.email?.message}</span>}
-         </label>
+         {userdb ? (
+            <label className={styles.inputText}>
+               <span>Dirección de Correo Electrónico</span>
+               <input {...register('email')} type='text' readOnly />
+            </label>
+         ) : (
+            <label className={styles.inputText}>
+               <span>Dirección de Correo Electrónico</span>
+               <input
+                  {...register('email', {
+                     required: 'El email es un campo requerido',
+                     validate: validations.isEmail,
+                  })}
+                  type='text'
+               />
+               {errors.email && <span className={styles.error}>{errors.email?.message}</span>}
+            </label>
+         )}
 
          <label className={styles.inputText}>
             <span>DNI / CUIT</span>

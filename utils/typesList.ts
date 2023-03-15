@@ -2,32 +2,32 @@ export const typesList = [
    {
       icon: '/type/all.svg',
       name: 'Todos',
-      model: ' ',
+      model: '',
    },
    {
       icon: '/type/seafood.svg',
-      name: 'Pescados',
-      model: 'seafood',
+      name: 'Pescado',
+      model: 'Pescado',
    },
    {
       icon: '/type/meat.svg',
       name: 'Carne',
-      model: 'meat',
+      model: 'Carne',
    },
    {
       icon: '/type/chicken.svg',
       name: 'Pollo',
-      model: 'chicken',
+      model: 'Pollo',
    },
    {
       icon: '/type/vegetarian.svg',
       name: 'Vegetariano',
-      model: 'vegetarian',
+      model: 'Vegetariano',
    },
    {
       icon: '/type/vegan.svg',
       name: 'Vegano',
-      model: 'vegan',
+      model: 'Vegano',
    },
    {
       icon: '/type/keto.svg',
@@ -37,6 +37,6 @@ export const typesList = [
    {
       icon: '/type/pork.svg',
       name: 'Cerdo',
-      model: 'pork',
+      model: 'Cerdo',
    },
 ];

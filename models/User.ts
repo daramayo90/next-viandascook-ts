@@ -9,7 +9,7 @@ const userSchema = new Schema(
       phone: { type: String, required: true },
       dni: { type: String, required: true },
       password: { type: String, required: true },
-      avatar: { type: String },
+      avatar: { type: String, required: true },
 
       points: { type: Number, required: true },
       redeemPoints: { type: Number, required: true },

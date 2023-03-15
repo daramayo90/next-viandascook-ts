@@ -53,6 +53,7 @@ export const oAuthToDbUser = async (authEmail: string, authName: string, authLas
       phone: '-',
       dni: '-',
       password: '-',
+      avatar: '/avatars/VC-Avatars-00.png',
       points: 0,
       redeemPoints: 0,
       role: 'client',

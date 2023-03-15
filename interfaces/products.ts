@@ -15,15 +15,15 @@ export interface IProduct {
 }
 
 export type IType =
-   | 'chicken'
-   | 'dairyfree'
-   | 'glutenfree'
-   | 'keto'
-   | 'lowcalories'
-   | 'lowcarbs'
-   | 'lowsodium'
-   | 'meat'
-   | 'pasta'
-   | 'seafood'
-   | 'vegan'
-   | 'vegetarian';
+   | 'Pollo'
+   | 'Libre de lácteos'
+   | 'Libre de glúten'
+   | 'Keto'
+   | 'Bajo en calorías'
+   | 'Bajo en carbo'
+   | 'Bajo en sodio'
+   | 'Carne'
+   | 'Pasta'
+   | 'Pescado'
+   | 'Vegano'
+   | 'Vegetariano';

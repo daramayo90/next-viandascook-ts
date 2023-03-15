@@ -27,18 +27,18 @@ import { viandasApi } from '../../../axiosApi';
 import { Product } from '../../../models';
 
 const validTypes: IType[] = [
-   'chicken',
-   'dairyfree',
-   'glutenfree',
-   'keto',
-   'lowcalories',
-   'lowcarbs',
-   'lowsodium',
-   'meat',
-   'pasta',
-   'seafood',
-   'vegan',
-   'vegetarian',
+   'Pollo',
+   'Libre de lácteos',
+   'Libre de glúten',
+   'Keto',
+   'Bajo en calorías',
+   'Bajo en carbo',
+   'Bajo en sodio',
+   'Carne',
+   'Pasta',
+   'Pescado',
+   'Vegano',
+   'Vegetariano',
 ];
 
 interface FormData {
@@ -302,7 +302,7 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
                               control={<Checkbox checked={getValues('type').includes(type)} />}
                               label={type}
                               onChange={() => onChangeType(type)}
-                              sx={{ minWidth: 130 }}
+                              sx={{ minWidth: 165 }}
                            />
                         ))}
                      </FormGroup>
