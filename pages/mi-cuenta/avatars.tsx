@@ -56,9 +56,17 @@ const AvatarsPage: NextPage = () => {
          <section className={styles.avatars}>
             <p className={styles.title}>Seleccioná el Avatar para tu cuenta que más te guste</p>
 
-            {avatars.map(({ name, img }) => (
-               <Avatar key={name} name={name} img={img} avatar={avatar} select={onSelectAvatar} />
-            ))}
+            <div className={styles.container}>
+               {avatars.map(({ name, img }) => (
+                  <Avatar
+                     key={name}
+                     name={name}
+                     img={img}
+                     avatar={avatar}
+                     select={onSelectAvatar}
+                  />
+               ))}
+            </div>
 
             <div className={styles.applyBtn}>
                <SubmitButton content='Aplicar' onClick={onSubmit} isClicked={isClicked} />

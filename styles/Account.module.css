@@ -23,6 +23,7 @@
    flex-direction: column;
    justify-content: center;
    width: 20%;
+   cursor: pointer;
 }
 
 .account > .container > .account > .nextImage img {
