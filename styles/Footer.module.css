@@ -19,7 +19,7 @@
 
 .footer > .info > .footerBrand > .title {
    text-align: center;
-   font-family: 'Gilroy';
+   font-family: 'Oswald';
    font-style: normal;
    font-size: 24px;
    font-weight: 800;
@@ -30,12 +30,12 @@
    display: flex;
    justify-content: center;
    margin: -10px 0 30px;
-   font-family: 'Reinata';
+   font-family: 'Pretty Queen';
    font-style: normal;
    font-weight: 400;
-   font-size: 78.0059px;
-   line-height: 94px;
-   color: var(--secondary);
+   font-size: 3.5rem;
+   line-height: 170px;
+   color: var(--white);
    transform: rotate(-3.43deg);
 }
 

@@ -7,6 +7,14 @@
    height: 660px;
 }
 
+.banner > .overlay {
+   position: absolute;
+   top: 0;
+   height: 100%;
+   width: 100%;
+   background-color: rgba(0, 0, 0, 0.6);
+}
+
 .banner > .container {
    display: flex;
    flex-direction: column;
@@ -19,6 +27,7 @@
 .banner > .container > .brand {
    width: 100%;
    margin-top: 6rem;
+   z-index: 10;
 }
 
 .banner > .container > .brand > .title {
@@ -29,29 +38,30 @@
    font-size: 3rem;
    line-height: 110%;
    letter-spacing: -0.02em;
-   color: var(--white);
+   color: white;
 }
 
 .banner > .container > .brand > .slogan {
-   width: 85%;
+   width: 100%;
    margin: 2rem auto;
    text-align: center;
    transform: rotate(-4.91deg);
+   color: white;
 }
 
 .banner > .container > .brand > .slogan > span {
-   font-family: 'Reinata';
+   font-family: 'Pretty Queen';
    font-style: normal;
-   font-size: 4rem;
-   line-height: 80%;
-   letter-spacing: 5px;
-   color: var(--white);
+   font-size: 2.5rem;
+   line-height: 150%;
+   color: white;
 }
 
 .banner > .container > .brand > .button {
    width: 60%;
    max-width: 210px;
    margin: 4.5rem auto 0 auto;
+   color: white;
 }
 
 .banner > .container > .bannerDishes {
@@ -108,7 +118,6 @@
       font-weight: 400;
       font-size: 7rem;
       line-height: 97.5%;
-      letter-spacing: -0.02em;
    }
 
    .banner > .container > .bannerDishes {

@@ -26,7 +26,8 @@ export const Price: FC<Props> = ({ product }) => {
             <div
                className={styles.selectedQuantity}
                onClick={() => startSelecting(cartProduct! as ICartProduct)}>
-               <span>+</span>
+               <span className={styles.addToCartMobile}>+</span>
+               <span className={styles.addToCartDesktop}>Agregar al carrito</span>
             </div>
          ) : (
             <ItemCounter

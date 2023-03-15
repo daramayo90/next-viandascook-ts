@@ -15,12 +15,29 @@ interface Props {
 }
 
 export const ProductSlides: FC<Props> = ({ products }) => {
+   const responsiveSettings = [
+      {
+         breakpoint: 1100,
+         settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+         },
+      },
+      {
+         breakpoint: 720,
+         settings: {
+            slidesToShow: 3,
+            slidesToScroll: 3,
+         },
+      },
+   ];
+
    return (
       <section className={styles.ourMenu}>
          <h2 className={styles.title}>Conocé nuestros platos saludables más vendidos</h2>
 
          <div className={styles.container}>
-            <Slide easing='ease' duration={3000} indicators>
+            <Slide easing='ease' duration={3000} indicators={true} responsive={responsiveSettings}>
                {products.map((product) => (
                   <Link key={product._id} href={`/plato/${product.slug}`}>
                      <div className={styles.box}>

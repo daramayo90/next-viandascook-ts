@@ -15,6 +15,7 @@ class MyDocument extends Document {
                <link href='https://fonts.cdnfonts.com' />
                <link href='https://fonts.cdnfonts.com/css/gilroy-bold' rel='stylesheet' />
                <link href='https://fonts.cdnfonts.com/css/reinata' rel='stylesheet' />
+               <link href='https://fonts.cdnfonts.com/css/pretty-queen' rel='stylesheet' />
                <link
                   rel='stylesheet'
                   href='https://fonts.googleapis.com/icon?family=Material+Icons'

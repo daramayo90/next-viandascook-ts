@@ -5,9 +5,9 @@ export const Intro = () => {
       <section className={styles.intro}>
          <div className={styles.text}>
             <p>
-               En <strong>Viandas Cook</strong> te ofrecemos comidas prácticas, rápidas, caseras,
-               ricas y saludables para hacer tu vida más fácil. Elaboramos nuestras viandas
-               congeladas con ingredientes de la mejor calidad.
+               En <strong>Viandas Cook</strong> te ofrecemos comidas prácticas, rápidas, caseras, y
+               saludables para hacer tu vida más fácil y rica. Elaboramos nuestras viandas
+               congeladas con ingredientes de la mejor calidad. ¡De freezer a tu mesa en 15 minutos
             </p>
          </div>
       </section>

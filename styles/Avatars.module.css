@@ -33,6 +33,7 @@
 
    .avatars > .container {
       display: flex;
+      flex-wrap: wrap;
       max-width: 1100px;
       margin: 2rem auto;
    }

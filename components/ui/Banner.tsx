@@ -7,16 +7,17 @@ import styles from '../../styles/Banner.module.css';
 export const Banner = () => {
    return (
       <section className={styles.banner}>
+         <div className={styles.overlay}></div>
          <div className={styles.container}>
             <div className={styles.brand}>
                <h1 className={styles.title}>Viandas Saludables</h1>
                <p className={styles.slogan}>
-                  <span>¡Hacé que tu día</span>
+                  <span>Hace que tu dia</span>
                   <span> tenga sabor!</span>
                </p>
 
                <div className={styles.button}>
-                  <Button href='/menu' content='¡Quiero!' />
+                  <Button href='/menu' content='¡Quiero!' color='white' border='2px white solid' />
                </div>
             </div>
 

@@ -32,6 +32,26 @@ const avatars = [
       name: 'Avatar 5',
       img: '/avatars/VC-Avatars-05.png',
    },
+   {
+      name: 'Avatar 6',
+      img: '/avatars/VC-Avatars-06.png',
+   },
+   {
+      name: 'Avatar 7',
+      img: '/avatars/VC-Avatars-07.png',
+   },
+   {
+      name: 'Avatar 8',
+      img: '/avatars/VC-Avatars-08.png',
+   },
+   {
+      name: 'Avatar 9',
+      img: '/avatars/VC-Avatars-09.png',
+   },
+   {
+      name: 'Avatar 10',
+      img: '/avatars/VC-Avatars-10.png',
+   },
 ];
 
 const AvatarsPage: NextPage = () => {

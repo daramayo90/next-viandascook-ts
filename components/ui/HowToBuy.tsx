@@ -8,23 +8,23 @@ import styles from '../../styles/HowToBuy.module.css';
 const slides = [
    {
       icon: '/img/icons/comida-deliciosa.svg',
-      alt: 'Elegí tus platos',
+      alt: 'Elección de platos',
       title: 'LIBRE ELECCIÓN',
-      lead: 'Elegí tus Platos',
-      text: 'Seleccioná tu menú y platos favoritos a un precio imbatible. Accedé a un descuento adicional, llevando más de 14 de una misma categoría.',
+      lead: 'Colocá la cantidad que desees',
+      text: 'Seleccioná tu menú y platos favoritos a un precio imbatible. Llevando más de 14 tenés envío gratis. Adquiriendo 28 un 10%off  y en 56 un 15%off! ¡Aprovechalos!',
    },
    {
       icon: '/img/icons/facil-y-rapido.svg',
-      alt: 'Fecha de Entrega',
+      alt: 'Fecha de entrega',
       title: 'DELIVERY',
-      lead: 'Fecha de Entrega',
-      text: 'Recibimos pedidos con 48hs de anticipación. ¡Seguí tu entrega en tiempo real con nuestro exclusivo sistema de alertas!',
+      lead: 'Seleccioná la fecha de Entrega',
+      text: 'Recibimos pedidos con 48hs de anticipación para poder prepararlos especialmente para vos. ¡Seguí tu entrega en tiempo real con nuestro exclusivo sistema de alertas!',
    },
    {
       icon: '/img/icons/variedad.svg',
-      alt: 'Formas de Pago',
+      alt: 'Forma de pago',
       title: 'PAGO',
-      lead: 'Formas de Pago',
+      lead: 'Elegí lo más cómodo para vos',
       text: 'Tarjetas de crédito/débito utilizando Mercado Pago. Transferencia bancaria, adjuntando el comprobante. Efectivo al momento de la entrega.',
    },
 ];

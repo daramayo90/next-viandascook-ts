@@ -54,8 +54,7 @@ export const Newsletter = () => {
       <section className={styles.newsletter}>
          <h2 className={styles.title}>Newsletter</h2>
          <p className={styles.text}>
-            ¿Querés recibir información útil sobre nutrición y estar al día con nuestras novedades?{' '}
-            <strong>Suscribite</strong>
+            <strong>Suscribite</strong> y entrá a la comunidad Viandlover
          </p>
          <form onSubmit={handleSubmit(subscribeUser)}>
             <input

@@ -49,7 +49,7 @@ const LandingPage: NextPage<Props> = ({ products }) => {
             <div className={styles.btn}>
                <Button
                   href={'/menu'}
-                  content={'¡Quiero!'}
+                  content={'¡Comprar!'}
                   background='var(--black)'
                   border='2px solid var(--black)'
                />
