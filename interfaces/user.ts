@@ -8,6 +8,7 @@ export interface IUser {
    phone?: string;
    dni?: string;
    password?: string;
+   avatar?: string;
    points: number;
    redeemPoints: number;
    role: string;

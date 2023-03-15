@@ -1,17 +1,16 @@
+import { useContext, useState } from 'react';
 import Link from 'next/link';
 
 import { AuthContext } from '../../context';
 
-import { useContext, useState } from 'react';
 import { AiOutlineUser, AiOutlineUserAdd, AiOutlineEye } from 'react-icons/ai';
 import { BsToggleOff, BsToggleOn } from 'react-icons/bs';
-import { FiMapPin } from 'react-icons/fi';
 import { HiOutlineClipboardList, HiOutlineLogout } from 'react-icons/hi';
-import { MdOutlineKeyboardArrowRight } from 'react-icons/md';
-
-import styles from '../../styles/Account.module.css';
+import { MdTagFaces, MdOutlineKeyboardArrowRight } from 'react-icons/md';
 import { TbDiscount2 } from 'react-icons/tb';
 import { RiLockPasswordLine } from 'react-icons/ri';
+
+import styles from '../../styles/Account.module.css';
 
 export const Options = () => {
    const { logout } = useContext(AuthContext);
@@ -28,6 +27,14 @@ export const Options = () => {
             <div className={styles.option}>
                <AiOutlineUser className={styles.icon} />
                <span>Perfil</span>
+               <MdOutlineKeyboardArrowRight className={styles.rightIcon} />
+            </div>
+         </Link>
+
+         <Link href='/mi-cuenta/avatars'>
+            <div className={styles.option}>
+               <MdTagFaces className={styles.icon} />
+               <span>Seleccionar Avatar</span>
                <MdOutlineKeyboardArrowRight className={styles.rightIcon} />
             </div>
          </Link>

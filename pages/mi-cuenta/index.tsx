@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
-import { NextPage } from 'next';
+import { GetServerSideProps, NextPage } from 'next';
 import { getSession } from 'next-auth/react';
 
+import { dbUsers } from '../../database';
 import { IUser } from '../../interfaces/user';
 
 import { ShopLayout } from '../../components/layouts';
@@ -9,30 +9,40 @@ import { Account, Options } from '../../components/account';
 
 import styles from '../../styles/Account.module.css';
 
-const ProfilePage: NextPage = () => {
-   const [user, setUser] = useState<IUser | undefined>();
+interface Props {
+   userDb: IUser;
+}
 
-   useEffect(() => {
-      const userSession = async () => {
-         const session = (await getSession()) as any;
-         setUser(session.user);
-      };
-      userSession();
-   }, []);
-
-   if (!user) return <></>;
-
+const ProfilePage: NextPage<Props> = ({ userDb }) => {
    return (
       <ShopLayout title={'Viandas Cook - Mi Cuenta'} pageDescription={''}>
          <section className={styles.account}>
             <div className={styles.container}>
-               <Account user={user} />
+               <Account user={userDb} />
 
                <Options />
             </div>
          </section>
       </ShopLayout>
    );
+};
+
+export const getServerSideProps: GetServerSideProps = async ({ req }) => {
+   const { user }: any = (await getSession({ req })) || '';
+
+   if (!user)
+      return {
+         redirect: {
+            destination: '/auth/login?page=/mi-cuenta',
+            permanent: false,
+         },
+      };
+
+   const userDb = await dbUsers.getUser(user.email);
+
+   return {
+      props: { userDb },
+   };
 };
 
 export default ProfilePage;

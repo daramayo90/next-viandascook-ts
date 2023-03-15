@@ -44,7 +44,7 @@
    font-weight: 500;
 }
 
-.account > .container > .account > .editIcon {
+.account > .container > .account .editIcon {
    position: absolute;
    right: 1rem;
    font-size: 1.5rem;

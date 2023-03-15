@@ -12,6 +12,7 @@ export const pageTitles = {
    '/checkout/delivery': 'Fecha de Entrega',
    '/mi-cuenta': 'Mi Cuenta',
    '/mi-cuenta/perfil': 'Perfil',
+   '/mi-cuenta/avatars': 'Mi Avatar',
    '/mi-cuenta/puntos': 'Puntos Acumulados',
    '/mi-cuenta/invitar-amigos': 'Invitar Amigos',
    '/mi-cuenta/password': 'Cambiar Clave',
