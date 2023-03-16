@@ -25,6 +25,8 @@ const ThankYouPage: NextPage<Props> = ({ order }) => {
    const { sendOrderConfirmationEmail } = useContext(EmailsContext);
 
    useEffect(() => {
+      const alreadyExecuted = sessionStorage.getItem('effectExecuted');
+
       const onOrderComplete = async () => {
          if (referralCoupon) await addReferralPoints(referralCoupon);
          await sendOrderConfirmationEmail();
@@ -33,7 +35,11 @@ const ThankYouPage: NextPage<Props> = ({ order }) => {
          removeCookies();
       };
 
-      onOrderComplete();
+      if (!alreadyExecuted) {
+         console.log('hola');
+         onOrderComplete();
+         sessionStorage.setItem('effectExecuted', true.toString());
+      }
    }, []);
 
    return (
