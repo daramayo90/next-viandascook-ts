@@ -13,6 +13,6 @@ export const signToken = (_id: string, email: string) => {
       process.env.JWT_SECRET_SEED,
 
       // options
-      { expiresIn: '30d' },
+      { expiresIn: '30d', algorithm: 'RS256', allowInsecureKeySizes: true },
    );
 };

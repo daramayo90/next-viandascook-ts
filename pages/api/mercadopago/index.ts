@@ -2,7 +2,6 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import mercadopago from 'mercadopago';
 import { CreatePreferencePayload } from 'mercadopago/models/preferences/create-payload.model';
 import { PreferenceCreateResponse } from 'mercadopago/resources/preferences';
-import { IOrder } from '../../../interfaces';
 import { getSession } from 'next-auth/react';
 import { User } from '../../../models';
 import { ICartProduct } from '../../../interfaces/cart';

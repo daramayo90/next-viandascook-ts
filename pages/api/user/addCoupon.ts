@@ -7,6 +7,12 @@ import { getSession } from 'next-auth/react';
 
 type Data = { message: string } | IUser;
 
+interface IUserCoupon {
+   _id: string;
+   code: string;
+   ussage: number;
+}
+
 export default function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
    switch (req.method) {
       case 'PUT':
@@ -33,7 +39,7 @@ const addCoupon = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
    // }
 
    // TODO: Ver cuando el usuario es guest
-   const dbUssage = dbUser?.coupons.find((c) => c.code === code)?.ussage || 0;
+   const dbUssage = dbUser?.coupons.find((c: IUserCoupon) => c.code === code)?.ussage || 0;
 
    await User.updateOne(
       { email: dbUser?.email || req.cookies.email },
