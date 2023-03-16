@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { getSession } from 'next-auth/react';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '../auth/[...nextauth]';
 import { User } from '../../../models';
 import { db } from '../../../database';
 import bcrypt from 'bcryptjs';
@@ -23,7 +24,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Data>)
 }
 
 const changePassword = async (req: NextApiRequest, res: NextApiResponse) => {
-   const session = (await getSession({ req })) as any;
+   const session: any = await getServerSession(req, res, authOptions);
 
    if (!session) {
       return res.status(401).json({ error: 'Unauthorized' });

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import type { GetServerSideProps, NextPage } from 'next';
-import { getSession } from 'next-auth/react';
+import { authOptions } from '../api/auth/[...nextauth]';
+import { getServerSession } from 'next-auth';
 
 import { useRouter } from 'next/router';
 import { viandasApi } from '../../axiosApi';
@@ -96,8 +97,8 @@ const AvatarsPage: NextPage = () => {
    );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ req }) => {
-   const { user }: any = (await getSession({ req })) || '';
+export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
+   const { user }: any = (await getServerSession(req, res, authOptions)) || '';
 
    if (!user)
       return {

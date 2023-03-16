@@ -2,7 +2,8 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import mercadopago from 'mercadopago';
 import { CreatePreferencePayload } from 'mercadopago/models/preferences/create-payload.model';
 import { PreferenceCreateResponse } from 'mercadopago/resources/preferences';
-import { getSession } from 'next-auth/react';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '../auth/[...nextauth]';
 import { User } from '../../../models';
 import { ICartProduct } from '../../../interfaces/cart';
 import { IProduct } from '../../../interfaces/products';
@@ -51,7 +52,7 @@ const checkoutPro = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
       orderId,
    } = req.body;
 
-   const { user }: any = (await getSession({ req })) || '';
+   const { user }: any = (await getServerSession(req, res, authOptions)) || '';
 
    const id = user ? user._id : null;
 

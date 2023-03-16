@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { getSession } from 'next-auth/react';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '../auth/[...nextauth]';
 import { db } from '../../../database';
 import { IOrder } from '../../../interfaces';
 import { Order, Product, User } from '../../../models';
@@ -27,7 +28,7 @@ const createOrder = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
       total,
    } = req.body as IOrder;
 
-   const { user }: any = (await getSession({ req })) || '';
+   const { user }: any = (await getServerSession(req, res, authOptions)) || '';
 
    const productsIds = orderItems.map((product) => product._id);
 

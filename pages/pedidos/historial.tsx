@@ -1,6 +1,5 @@
 import { GetServerSideProps, NextPage } from 'next';
-import { unstable_getServerSession } from 'next-auth';
-
+import { getServerSession } from 'next-auth';
 import { authOptions } from '../api/auth/[...nextauth]';
 
 import { dbOrders } from '../../database';
@@ -8,9 +7,9 @@ import { IOrder } from '../../interfaces';
 
 import { OrderLayout } from '../../components/layouts';
 import { OrderCard } from '../../components/orders';
+import { Button } from '../../components/ui';
 
 import styles from '../../styles/OrdersHistory.module.css';
-import { Button } from '../../components/ui';
 
 interface Props {
    orders?: IOrder[];
@@ -44,7 +43,7 @@ const OrderHistoryPage: NextPage<Props> = ({ orders }) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
-   const session: any = await unstable_getServerSession(req, res, authOptions);
+   const session: any = await getServerSession(req, res, authOptions);
 
    if (!session) {
       return {

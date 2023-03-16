@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { unstable_getServerSession } from 'next-auth/next';
+import { getServerSession } from 'next-auth/next';
 import { authOptions } from '../auth/[...nextauth]';
 
 import { db } from '../../../database';
@@ -20,7 +20,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 }
 
 const validateCoupon = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
-   const { user }: any = (await unstable_getServerSession(req, res, authOptions)) || '';
+   const { user }: any = (await getServerSession(req, res, authOptions)) || '';
    const { code }: any = req.query;
 
    await db.connect();

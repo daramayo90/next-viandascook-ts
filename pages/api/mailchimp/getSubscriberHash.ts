@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { getSession } from 'next-auth/react';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '../auth/[...nextauth]';
 import axios from 'axios';
 
 type Data = { message: string } | { id: string };
@@ -15,7 +16,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 }
 
 const getSubscriberHash = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
-   const { user }: any = (await getSession({ req })) || '';
+   const { user }: any = (await getServerSession(req, res, authOptions)) || '';
 
    const subscriberEmail = user ? user.email : req.cookies.email;
 

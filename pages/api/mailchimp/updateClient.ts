@@ -1,6 +1,7 @@
 import axios from 'axios';
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { getSession } from 'next-auth/react';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '../auth/[...nextauth]';
 
 type Data = {
    message: string;
@@ -18,7 +19,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 
 const addClient = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
    const { id, orderId, total, cart } = req.body;
-   const { user }: any = (await getSession({ req })) || '';
+   const { user }: any = (await getServerSession(req, res, authOptions)) || '';
 
    const subscriber = {
       name: user ? user.name : req.cookies.name,

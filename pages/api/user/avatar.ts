@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { getSession } from 'next-auth/react';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '../auth/[...nextauth]';
 import { db } from '../../../database';
 import { User } from '../../../models';
 
@@ -16,7 +17,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Data>)
 }
 
 const addAvatar = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
-   const { user }: any = (await getSession({ req })) || '';
+   const { user }: any = (await getServerSession(req, res, authOptions)) || '';
    const { avatar } = req.body;
 
    await db.connect();

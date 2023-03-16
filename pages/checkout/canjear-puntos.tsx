@@ -1,6 +1,6 @@
 import { ChangeEvent, useContext, useState } from 'react';
 import { GetServerSideProps, NextPage } from 'next/types';
-import { unstable_getServerSession } from 'next-auth';
+import { getServerSession } from 'next-auth';
 import { authOptions } from '../api/auth/[...nextauth]';
 import { useRouter } from 'next/router';
 
@@ -107,7 +107,7 @@ const PointsPage: NextPage<Props> = ({ user }) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
-   const session: any = await unstable_getServerSession(req, res, authOptions);
+   const session: any = await getServerSession(req, res, authOptions);
 
    if (!session)
       return {

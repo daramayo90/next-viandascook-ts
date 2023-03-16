@@ -1,9 +1,10 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '../auth/[...nextauth]';
 
 import { db } from '../../../database';
 import { User } from '../../../models';
 import { IUser } from '../../../interfaces';
-import { getSession } from 'next-auth/react';
 
 type Data = { message: string } | IUser;
 
@@ -24,7 +25,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Data>)
 }
 
 const addCoupon = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
-   const { user }: any = (await getSession({ req })) || '';
+   const { user }: any = (await getServerSession(req, res, authOptions)) || '';
 
    const { _id, code } = req.body;
 
