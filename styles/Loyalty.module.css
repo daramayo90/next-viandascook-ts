@@ -4,7 +4,7 @@
 }
 
 .loyalty > .intro {
-   background-color: #000;
+   background-color: var(--primaryHover);
 }
 
 .loyalty > .intro > .container {

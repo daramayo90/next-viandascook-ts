@@ -69,6 +69,10 @@ span {
    color: var(--textColor);
 }
 
+strong {
+   color: var(--primary);
+}
+
 a {
    background-color: transparent;
    color: inherit;
