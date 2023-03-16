@@ -56,7 +56,7 @@ const CheckoutPage: NextPage<Props> = ({ user }) => {
                <div className={styles.summary}>
                   <CheckoutSummary />
 
-                  <Posting user={user} />
+                  <Posting />
                </div>
             </div>
          </section>

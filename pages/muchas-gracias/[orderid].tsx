@@ -21,13 +21,14 @@ interface Props {
 
 const ThankYouPage: NextPage<Props> = ({ order }) => {
    const { referralCoupon, orderComplete } = useContext(CartContext);
-   const { addReferralPoints } = useContext(OrdersContext);
+   const { addReferralPoints, orderToSpreadsheet } = useContext(OrdersContext);
    const { sendOrderConfirmationEmail } = useContext(EmailsContext);
 
    useEffect(() => {
       const onOrderComplete = async () => {
          if (referralCoupon) await addReferralPoints(referralCoupon);
          await sendOrderConfirmationEmail();
+         await orderToSpreadsheet();
          orderComplete();
          removeCookies();
       };

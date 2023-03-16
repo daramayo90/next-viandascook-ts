@@ -3,13 +3,12 @@ import { getSession } from 'next-auth/react';
 
 import Cookies from 'js-cookie';
 
-import { OrdersContext, ordersReducer } from './';
-// import { removeCookies } from '../../utils';
-
 import { viandasApi } from '../../axiosApi';
 import { ShippingAddress, ICity, IOrder } from '../../interfaces';
-import { CartContext, UIContext } from '../';
 import { IPaymentMethods } from '../../interfaces/order';
+
+import { CartContext, UIContext } from '../';
+import { OrdersContext, ordersReducer } from './';
 
 interface Props {
    children: ReactNode;
@@ -202,6 +201,36 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
       } catch (error) {}
    };
 
+   const orderToSpreadsheet = async (): Promise<void> => {
+      const { user } = ((await getSession()) as any) || '';
+
+      const shippingAddress: ShippingAddress = user ? user.shipping : state.shippingAddress;
+
+      const { address, address2, city } = shippingAddress;
+
+      const body = {
+         user,
+         orderId: state.orderId,
+         today: new Date().toLocaleDateString('es-AR', {
+            timeZone: 'America/Argentina/Buenos_Aires',
+         }),
+         address,
+         address2,
+         city,
+         paymentMethod: state.paymentMethod.charAt(0).toUpperCase() + state.paymentMethod.slice(1),
+         total,
+         deliveryDate: deliveryDateSelected.toLocaleDateString('es-AR', {
+            timeZone: 'America/Argentina/Buenos_Aires',
+         }),
+      };
+
+      try {
+         await viandasApi.post('/orders/spreadsheet', body);
+      } catch (error) {
+         console.log(error);
+      }
+   };
+
    return (
       <OrdersContext.Provider
          value={{
@@ -211,6 +240,7 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
             createMPOrder,
             addMailchimpClient,
             addReferralPoints,
+            orderToSpreadsheet,
          }}>
          {children}
       </OrdersContext.Provider>

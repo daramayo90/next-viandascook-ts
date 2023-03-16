@@ -28,6 +28,8 @@
     "crypto": "^1.0.1",
     "dayjs": "^1.11.7",
     "formidable": "^2.1.1",
+    "google-spreadsheet": "^3.3.0",
+    "googleapis": "^113.0.0",
     "js-cookie": "^3.0.1",
     "jsonwebtoken": "^8.5.1",
     "mercadopago": "^1.5.14",
@@ -49,6 +51,7 @@
   },
   "devDependencies": {
     "@types/formidable": "^2.0.5",
+    "@types/google-spreadsheet": "^3.3.1",
     "@types/js-cookie": "^3.0.2",
     "@types/node": "18.7.18",
     "@types/react": "18.0.20",

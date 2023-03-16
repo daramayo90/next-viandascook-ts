@@ -1,17 +1,12 @@
 import { FC, useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 
-import { IUser } from '../../interfaces';
+import { IPaymentMethods } from '../../interfaces/order';
 
-import { CartContext, OrdersContext } from '../../context';
+import { OrdersContext } from '../../context';
 import { SubmitButton } from '../ui';
 
 import styles from '../../styles/Checkout.module.css';
-import { IPaymentMethods } from '../../interfaces/order';
-
-interface Props {
-   user?: IUser;
-}
 
 interface Option {
    value: string;
@@ -38,10 +33,9 @@ const addCheckout = () => {
    });
 };
 
-export const Posting: FC<Props> = ({ user }) => {
+export const Posting: FC = () => {
    const router = useRouter();
 
-   const { referralCoupon } = useContext(CartContext);
    const { createOrder, createMPOrder, addMailchimpClient, addReferralPoints } =
       useContext(OrdersContext);
 
@@ -71,8 +65,6 @@ export const Posting: FC<Props> = ({ user }) => {
       }
 
       await addMailchimpClient(message);
-
-      //if (referralCoupon) await addReferralPoints(referralCoupon);
 
       if (paymentMethod !== 'mercadopago') {
          router.replace(`/muchas-gracias/${message}`);

@@ -28,7 +28,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
    const [year, month, dayToSplit] = deliveryDate.toString().split('-');
    const [day] = dayToSplit.split('T');
 
-   const products = cart.map(({ name, quantity, price }: ICartProduct) => ({
+   const products = cart.map(({ image, name, quantity, price }: ICartProduct) => ({
+      image,
       name,
       quantity,
       price: currency.format(price * quantity),

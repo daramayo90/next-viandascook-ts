@@ -58,7 +58,7 @@ const FriendsPage: NextPage<Props> = ({ userRefCode }) => {
                      {userRefCode}
                   </span>
                   <button className={styles.copy} onClick={handleCopyClick}>
-                     Copiar
+                     <span className='fadeIn'>{couponToCopy ? 'Copiado' : 'Copiar'}</span>
                   </button>
                </div>
 

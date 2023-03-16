@@ -130,6 +130,7 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
       }
 
       currentTags.push(newIngredient);
+      currentTags.sort();
    };
 
    const onDeleteIngredient = (tag: string) => {
