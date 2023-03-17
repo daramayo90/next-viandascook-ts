@@ -63,10 +63,7 @@ const ProductsPage = () => {
    }));
 
    return (
-      <AdminLayout
-         title={`Productos (${data?.length})`}
-         subTitle={'Mantenimiento de productos'}
-         icon={<CategoryOutlined />}>
+      <AdminLayout title={`Productos (${data?.length})`} subTitle={''} icon={<CategoryOutlined />}>
          <Grid container className='fadeIn' sx={{ width: '90%', margin: 'auto', mt: 5 }}>
             <Box display='flex' justifyContent='end' sx={{ mb: 2 }}>
                <Button

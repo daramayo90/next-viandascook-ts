@@ -10,6 +10,9 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Data>)
       case 'GET':
          return getOrders(req, res);
 
+      case 'PUT':
+         return updateOrder(req, res);
+
       default:
          return res.status(400).json({ message: 'Bad request' });
    }
@@ -26,4 +29,25 @@ const getOrders = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
    await db.disconnect();
 
    return res.status(200).json(orders);
+};
+
+const updateOrder = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
+   const { id, deliveryDate } = req.body;
+
+   await db.connect();
+
+   await Order.updateOne(
+      {
+         _id: id,
+      },
+      {
+         $set: {
+            deliveryDate,
+         },
+      },
+   );
+
+   await db.disconnect();
+
+   return res.status(200).json({ message: 'todo ok' });
 };

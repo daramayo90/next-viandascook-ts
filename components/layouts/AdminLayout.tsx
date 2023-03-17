@@ -23,9 +23,10 @@ export const AdminLayout: FC<Props> = ({ children, title, subTitle, icon }) => {
             <div className={styles.container}>
                <div className={styles.titleBox}>
                   <span className={styles.icon}>{icon}</span>
-                  <h1 className={styles.title}>{title}</h1>
+                  <h1 className={styles.title}>
+                     {title} {subTitle}
+                  </h1>
                </div>
-               <h2 className={styles.subTitle}>{subTitle}</h2>
             </div>
 
             <div className='fadeIn'>{children}</div>
