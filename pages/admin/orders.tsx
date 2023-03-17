@@ -5,7 +5,6 @@ import {
    GridColDef,
    GridRenderCellParams,
    GridValueFormatterParams,
-   GridRowsProp,
    GridRowModel,
 } from '@mui/x-data-grid';
 
@@ -23,7 +22,7 @@ const OrdersPage = () => {
 
    if (!data && !error) return <></>;
 
-   const rows: GridRowsProp = data!.map((order) => ({
+   const rows = data!.map((order) => ({
       id: order._id,
       email: (order.user as IUser).email,
       name: `${(order.user as IUser).name} ${(order.user as IUser).lastName}`,
