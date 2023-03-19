@@ -36,7 +36,6 @@ const ThankYouPage: NextPage<Props> = ({ order }) => {
       };
 
       if (!alreadyExecuted) {
-         console.log('hola');
          onOrderComplete();
          sessionStorage.setItem('effectExecuted', true.toString());
       }
