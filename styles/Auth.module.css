@@ -86,6 +86,12 @@
    box-shadow: 0 0 0 0.2rem rgb(0 123 255 / 25%);
 }
 
+.auth > .container > form > .forgotPassword {
+   color: var(--primary);
+   text-decoration: underline;
+   cursor: pointer;
+}
+
 .auth > .container > form > .linksTo {
    display: flex;
    align-items: center;

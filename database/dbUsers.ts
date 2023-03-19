@@ -65,6 +65,8 @@ export const oAuthToDbUser = async (authEmail: string, authName: string, authLas
       },
       referralCode: refCode,
       coupons: [],
+      resetPasswordToken: undefined,
+      resetPasswordExpires: undefined,
    });
 
    await newUser.save();

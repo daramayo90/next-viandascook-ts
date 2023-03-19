@@ -21,12 +21,7 @@ export async function middleware(req: NextRequest) {
       return NextResponse.redirect(url);
    }
 
-   if (pathname.includes('login') && session) {
-      url.pathname = query || '/menu';
-      return NextResponse.redirect(url);
-   }
-
-   if (pathname.includes('register') && session) {
+   if (pathname.includes('auth') && session) {
       url.pathname = query || '/menu';
       return NextResponse.redirect(url);
    }
@@ -58,8 +53,7 @@ export const config = {
    matcher: [
       '/admin/:path*',
       '/auth/login-checkout/:path*',
-      '/auth/login/:path*',
-      '/auth/register/:path*',
+      '/auth/:path*',
       '/mi-cuenta/:path*',
       '/pedidos/:path*',
       '/checkout/:path*',

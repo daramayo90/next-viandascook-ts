@@ -43,6 +43,12 @@ export const LoginForm = () => {
             {errors.password && <span className={styles.error}>{errors.password?.message}</span>}
          </label>
 
+         <Link href='/auth/olvide-clave'>
+            <div className={styles.forgotPassword}>
+               <span>Olvidé mi clave</span>
+            </div>
+         </Link>
+
          <div className={styles.linksTo}>
             <div className={styles.register}>
                {JSON.stringify(router.query) === '{}' ? (

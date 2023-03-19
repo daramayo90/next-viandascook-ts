@@ -64,6 +64,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
          paymentMethod:
             paymentMethod.toString().charAt(0).toUpperCase() + paymentMethod.toString().slice(1),
          total: currency.format(Number(total)),
+         orderLink: `${req.headers.origin}/pedidos/${orderId}`,
       },
    };
 

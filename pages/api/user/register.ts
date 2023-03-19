@@ -78,6 +78,8 @@ const registerUser = async (req: NextApiRequest, res: NextApiResponse<Data>) => 
       },
       referralCode: refCode,
       coupons: [],
+      resetPasswordToken: undefined,
+      resetPasswordExpires: undefined,
    });
 
    try {

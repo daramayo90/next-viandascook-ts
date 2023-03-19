@@ -15,6 +15,8 @@ export interface IUser {
    referralCode?: string;
    shipping: IAddress;
    coupons: ICoupon[];
+   resetPasswordToken?: string | undefined;
+   resetPasswordExpires?: Date | undefined;
    createdAt?: string;
    updatedAt?: string;
 }
