@@ -32,22 +32,31 @@ const resetPassword = async (req: NextApiRequest, res: NextApiResponse<Data>) =>
       });
 
       if (!user) {
+         db.disconnect();
          return res.status(400).json({ message: 'Token inválido o expirado' });
       }
 
       const hashedPassword = await bcrypt.hash(newPassword, 10);
-      user.password = hashedPassword;
-      user.resetPasswordToken = undefined;
-      user.resetPasswordExpires = undefined;
+      await User.updateOne(
+         { email: user.email },
+         {
+            $set: {
+               password: hashedPassword,
+               resetPasswordToken: null,
+               resetPasswordExpires: null,
+            },
+         },
+      );
+      // user.password = hashedPassword;
+      // user.resetPasswordToken = null;
+      // user.resetPasswordExpires = null;
 
-      await user.save();
+      // await user.save();
       db.disconnect();
 
-      return res
-         .status(200)
-         .json({
-            message: 'Contraseña reseteada éxitosamente. Podes volver a loguearte a continuación',
-         });
+      return res.status(200).json({
+         message: 'Contraseña reseteada éxitosamente. Podes volver a loguearte a continuación',
+      });
    } catch (error) {
       db.disconnect();
       console.error(error);

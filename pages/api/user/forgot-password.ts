@@ -36,9 +36,18 @@ const forgotPassword = async (req: NextApiRequest, res: NextApiResponse<Data>) =
    try {
       // Save the token and expiration date in the user's document
       db.connect();
-      user.resetPasswordToken = resetPasswordToken;
-      user.resetPasswordExpires = resetPasswordExpires;
-      await user.save();
+      await User.updateOne(
+         { email: user.email },
+         {
+            $set: {
+               resetPasswordToken,
+               resetPasswordExpires,
+            },
+         },
+      );
+      // user.resetPasswordToken = resetPasswordToken;
+      // user.resetPasswordExpires = resetPasswordExpires;
+      // await user.save();
       db.disconnect();
 
       sgMail.setApiKey(process.env.SENDGRID_API_KEY!);
@@ -54,7 +63,7 @@ const forgotPassword = async (req: NextApiRequest, res: NextApiResponse<Data>) =
             name: 'Viandas Cook',
          },
          subject: 'Restablecimiento de clave',
-         text: 'A ver estoalksnd',
+         text: 'Viandas Cook - Restablecer Contraseña',
          html: `
       <p>Solicitaste restablecer tu contraseña en Viandas Cook. Hacé click en el siguiente enlace para restablecer tu contraseña:</p>
       <p><a href="${resetLink}">${resetLink}</a></p>
