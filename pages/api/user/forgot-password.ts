@@ -34,7 +34,6 @@ const forgotPassword = async (req: NextApiRequest, res: NextApiResponse<Data>) =
    const resetPasswordExpires = new Date(Date.now() + 3600000);
 
    try {
-      // Save the token and expiration date in the user's document
       db.connect();
       await User.updateOne(
          { email: user.email },
@@ -45,9 +44,6 @@ const forgotPassword = async (req: NextApiRequest, res: NextApiResponse<Data>) =
             },
          },
       );
-      // user.resetPasswordToken = resetPasswordToken;
-      // user.resetPasswordExpires = resetPasswordExpires;
-      // await user.save();
       db.disconnect();
 
       sgMail.setApiKey(process.env.SENDGRID_API_KEY!);
@@ -71,7 +67,7 @@ const forgotPassword = async (req: NextApiRequest, res: NextApiResponse<Data>) =
       `,
       };
 
-      sgMail.send(msg);
+      await sgMail.send(msg);
 
       return res.status(200).json({
          message: 'Se ha enviado un email a tu casilla de correo para restablecer la contraseña',
@@ -79,7 +75,9 @@ const forgotPassword = async (req: NextApiRequest, res: NextApiResponse<Data>) =
    } catch (error) {
       db.disconnect();
       console.error(error);
-      return res.status(500).json({ message: 'Error en el servidor' });
+      return res
+         .status(500)
+         .json({ message: 'Error en el servidor. Recargá la página e intentá nuevamente' });
    }
 };
 

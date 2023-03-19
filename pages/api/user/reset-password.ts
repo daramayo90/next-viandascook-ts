@@ -47,11 +47,6 @@ const resetPassword = async (req: NextApiRequest, res: NextApiResponse<Data>) =>
             },
          },
       );
-      // user.password = hashedPassword;
-      // user.resetPasswordToken = null;
-      // user.resetPasswordExpires = null;
-
-      // await user.save();
       db.disconnect();
 
       return res.status(200).json({
@@ -60,6 +55,8 @@ const resetPassword = async (req: NextApiRequest, res: NextApiResponse<Data>) =>
    } catch (error) {
       db.disconnect();
       console.error(error);
-      return res.status(500).json({ message: 'Error en el servidor' });
+      return res
+         .status(500)
+         .json({ message: 'Error en el servidor. Recargá la página e intentá nuevamente' });
    }
 };
