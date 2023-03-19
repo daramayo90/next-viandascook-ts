@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import { PeopleOutline } from '@mui/icons-material';
+import { AddOutlined, PeopleOutline } from '@mui/icons-material';
 import useSWR from 'swr';
 
 import { DataGrid, GridColDef, GridRenderCellParams } from '@mui/x-data-grid';
-import { Grid, Select, MenuItem } from '@mui/material';
+import { Grid, Select, MenuItem, Box, Button } from '@mui/material';
 
 import { AdminLayout } from '../../components/layouts';
 import { IUser } from '../../interfaces';
@@ -71,13 +71,26 @@ const UsersPage = () => {
    }));
 
    return (
-      <AdminLayout
-         title={'Usuarios'}
-         subTitle={'Mantenimiento de usuarios'}
-         icon={<PeopleOutline />}>
+      <AdminLayout title={'Mantenimiento de usuarios'} subTitle={''} icon={<PeopleOutline />}>
          <Grid container className='fadeIn' sx={{ width: '90%', margin: 'auto', marginTop: 5 }}>
+            <Box display='flex' justifyContent='space-between' sx={{ mb: 2, width: 320 }}>
+               <Button
+                  startIcon={<AddOutlined sx={{ color: 'white' }} />}
+                  color='secondary'
+                  href='/admin/users/new'>
+                  Nuevo usuario
+               </Button>
+
+               <Button
+                  startIcon={<AddOutlined sx={{ color: 'white' }} />}
+                  color='secondary'
+                  href='/admin/users/importacion-masiva'>
+                  Importación masiva
+               </Button>
+            </Box>
+
             <Grid item xs={12} sx={{ height: 650, width: '100%' }}>
-               <DataGrid rows={rows} columns={columns} pageSize={10} rowsPerPageOptions={[100]} />
+               <DataGrid rows={rows} columns={columns} pageSizeOptions={[25, 50, 100]} />
             </Grid>
          </Grid>
       </AdminLayout>

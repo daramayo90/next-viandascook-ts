@@ -79,8 +79,7 @@ const ProductsPage = () => {
                   rowHeight={65}
                   rows={rows}
                   columns={columns}
-                  pageSize={100}
-                  rowsPerPageOptions={[25, 50, 100]}
+                  pageSizeOptions={[25, 50, 100]}
                />
             </Grid>
          </Grid>

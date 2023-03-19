@@ -45,12 +45,11 @@ const OrdersPage = () => {
          subTitle={''}
          icon={<ConfirmationNumberOutlined />}>
          <Grid container className='fadeIn' sx={{ width: '90%', margin: 'auto', mt: 5 }}>
-            <Grid item xs={12} sx={{ height: 720, width: '100%' }}>
+            <Grid item xs={12} sx={{ height: 790, width: '100%' }}>
                <DataGrid
                   rows={rows}
                   columns={columns}
-                  pageSize={100}
-                  rowsPerPageOptions={[100]}
+                  pageSizeOptions={[25, 50, 100]}
                   processRowUpdate={processRowUpdate}
                />
             </Grid>
