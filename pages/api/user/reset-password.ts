@@ -8,6 +8,16 @@ type Data = {
 };
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
+   switch (req.method) {
+      case 'POST':
+         return resetPassword(req, res);
+
+      default:
+         return res.status(400).json({ message: 'Bad request' });
+   }
+}
+
+const resetPassword = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
    const { token, newPassword } = req.body;
 
    if (!token || !newPassword) {
@@ -31,8 +41,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
       {
          $set: {
             password: hashedPassword,
-            resetPasswordToken: null,
-            resetPasswordExpires: null,
+            resetPasswordToken: undefined,
+            resetPasswordExpires: undefined,
          },
       },
    );
@@ -41,4 +51,4 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
    return res.status(200).json({
       message: 'Contraseña reseteada éxitosamente. Podes volver a loguearte a continuación',
    });
-}
+};

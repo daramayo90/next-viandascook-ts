@@ -1,8 +1,9 @@
 import type { AppProps } from 'next/app';
+import { useRouter } from 'next/router';
 import Script from 'next/script';
 
 import { SessionProvider } from 'next-auth/react';
-import { CssBaseline, ThemeProvider } from '@mui/material';
+import { ThemeProvider } from '@mui/material';
 
 import { FloatingWhatsApp } from 'react-floating-whatsapp';
 
@@ -22,6 +23,10 @@ import '../styles/globals.css';
 function MyApp({ Component, pageProps }: AppProps) {
    const { loading } = useLoader();
 
+   const router = useRouter();
+
+   const isHideFloatingWhatsApp = router.pathname.startsWith('/admin');
+
    return (
       <SessionProvider>
          <SWRConfig
@@ -38,18 +43,20 @@ function MyApp({ Component, pageProps }: AppProps) {
                                  <LoadingPage />
                               ) : (
                                  <>
-                                    <FloatingWhatsApp
-                                       phoneNumber='+5491171080193'
-                                       accountName='Mari'
-                                       allowEsc
-                                       allowClickAway
-                                       avatar='/logo/wp-logo.jpg'
-                                       chatMessage='Hola 👋, te saluda Mari de Viandas Cook.. ¿cómo puedo ayudarte?'
-                                       statusMessage='Atención de 09 a 19hs'
-                                       placeholder='Escribe tu mensaje..'
-                                       darkMode
-                                       chatboxStyle={{ bottom: '9rem' }}
-                                    />
+                                    {!isHideFloatingWhatsApp && (
+                                       <FloatingWhatsApp
+                                          phoneNumber='+5491171080193'
+                                          accountName='Mari'
+                                          allowEsc
+                                          allowClickAway
+                                          avatar='/logo/wp-logo.jpg'
+                                          chatMessage='Hola 👋, te saluda Mari de Viandas Cook.. ¿cómo puedo ayudarte?'
+                                          statusMessage='Atención de 09 a 19hs'
+                                          placeholder='Escribe tu mensaje..'
+                                          darkMode
+                                          chatboxStyle={{ bottom: '9rem' }}
+                                       />
+                                    )}
                                     <Script src='https://sdk.mercadopago.com/js/v2' />
                                     <Component {...pageProps} />
                                  </>

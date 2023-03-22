@@ -68,8 +68,8 @@ export const SelectDate = () => {
             ]}
             excludeDates={holidays}
             selected={deliveryDate}
-            onSelect={handleDateSelect} //when day is clicked
             onChange={handleDateChange} //only when value has changed
+            onSelect={handleDateSelect} //when day is clicked
          >
             <span className='time'>
                Horario de entrega: <u>20-23hs</u>

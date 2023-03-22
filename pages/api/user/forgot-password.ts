@@ -56,7 +56,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
       `,
    };
 
-   sgMail.send(msg);
+   await sgMail.send(msg);
 
    return res.status(200).json({
       message: 'Se ha enviado un email a tu casilla de correo para restablecer la contraseña',

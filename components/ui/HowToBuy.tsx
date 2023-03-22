@@ -7,21 +7,21 @@ import styles from '../../styles/HowToBuy.module.css';
 
 const slides = [
    {
-      icon: '/img/icons/comida-deliciosa.svg',
+      icon: '/icon/comida-deliciosa.svg',
       alt: 'Elección de platos',
       title: 'LIBRE ELECCIÓN',
       lead: 'Colocá la cantidad que desees',
       text: 'Seleccioná tu menú y platos favoritos a un precio imbatible. Llevando más de 14 tenés envío gratis. Adquiriendo 28 un 10%off  y en 56 un 15%off! ¡Aprovechalos!',
    },
    {
-      icon: '/img/icons/facil-y-rapido.svg',
+      icon: '/icon/facil-y-rapido.svg',
       alt: 'Fecha de entrega',
       title: 'DELIVERY',
       lead: 'Seleccioná la fecha de Entrega',
       text: 'Recibimos pedidos con 48hs de anticipación para poder prepararlos especialmente para vos. ¡Seguí tu entrega en tiempo real con nuestro exclusivo sistema de alertas!',
    },
    {
-      icon: '/img/icons/variedad.svg',
+      icon: '/icon/variedad.svg',
       alt: 'Forma de pago',
       title: 'PAGO',
       lead: 'Elegí lo más cómodo para vos',

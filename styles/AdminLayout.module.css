@@ -1,22 +1,122 @@
-.container {
+.layout {
    width: 90%;
    margin: 6rem auto 2rem auto;
 }
 
-.container > .titleBox {
+.layout > .titleBox {
    display: flex;
    align-items: center;
 }
 
-.container > .titleBox > .icon {
+.layout > .titleBox > .icon {
    font-size: 1.55rem;
    color: var(--black);
 }
 
-.container > .titleBox > .title {
+/* .layout > .titleBox > .title {
    margin: 0.3rem 0.5rem;
+} */
+
+.layout > .subTitle {
+   font-weight: 400;
 }
 
-.container > .subTitle {
-   font-weight: 400;
+.cooking {
+   width: 95vw;
+   height: auto;
+   margin: -2rem auto;
+}
+
+.cooking > .title {
+   width: 93vw;
+   margin: 0.5rem 0;
+   margin-left: auto;
+}
+
+.cooking > .card {
+   width: 100%;
+   border-radius: 15px;
+   background-color: #fff;
+   border: 1px solid var(--textColor);
+   box-shadow: 0 8px 16px rgba(14, 12, 12, 0.06);
+}
+
+.cooking > .card > .dateInput {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-evenly;
+   position: relative;
+   width: 90%;
+   height: 90%;
+   margin: 0 auto;
+}
+
+.cooking > .products {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   width: 90%;
+   max-width: 440px;
+   margin: 1rem auto;
+}
+
+.cooking > .products > .product {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   position: relative;
+   width: 100%;
+   height: 140px;
+   margin: 0.6rem 0;
+   border-radius: 25px;
+   background-color: #fff;
+   box-shadow: 0 8px 16px rgb(35 31 32 / 6%);
+}
+
+.cooking > .products > .product > .card {
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   justify-content: space-around;
+   width: 95%;
+   height: 90%;
+}
+
+.cooking > .products > .product > .card > .nextImage {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   cursor: pointer;
+   width: 40%;
+   height: 95%;
+}
+
+.cooking > .products > .product > .card > .nextImage img {
+   border-radius: 25px;
+   object-fit: cover;
+   width: 100%;
+   height: 100%;
+}
+
+.cooking > .products > .product > .card > .info {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-evenly;
+   align-items: flex-start;
+   width: 60%;
+   height: 100%;
+   margin-left: 0.5rem;
+   padding: 1rem 0;
+}
+
+.cooking > .products > .product > .card > .info > .name {
+   width: 90%;
+}
+
+.cooking > .products > .product > .card > .info > .quantity {
+   font-size: 1.5rem;
+   font-weight: 500;
+   color: var(--primary);
 }

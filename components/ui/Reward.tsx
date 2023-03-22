@@ -12,7 +12,7 @@ export const Reward: FC<Props> = ({ img, title, text }) => {
    return (
       <div className={styles.reward}>
          <div className={styles.nextImage}>
-            <Image src={img} alt='' width={80} height={80} priority={true} />
+            <Image src={img} alt='' width={120} height={120} priority={true} />
          </div>
          <h3 className={styles.title}>{title}</h3>
          <p className={styles.text}>{text}</p>

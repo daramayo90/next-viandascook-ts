@@ -35,7 +35,7 @@ const ResetPasswordPage: NextPage = () => {
       setIsClicked(true);
 
       try {
-         const { data } = await viandasApi.put('/user/reset-password', { token, newPassword });
+         const { data } = await viandasApi.post('/user/reset-password', { token, newPassword });
 
          if (data) {
             setIsClicked(false);

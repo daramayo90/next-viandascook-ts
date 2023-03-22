@@ -72,7 +72,10 @@
 }
 
 .loyalty > .rewards > .reward {
-   padding: 20px 0;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: space-between;
 }
 
 .loyalty > .rewards > .reward > .nextImage {
@@ -91,9 +94,8 @@
 .loyalty > .rewards > .reward > .title {
    max-width: 100%;
    width: 100%;
-   margin: 2rem 0;
-   padding: 0 20px;
    text-align: center;
+   color: var(--secondary);
 }
 
 .loyalty > .rewards > .reward > .text {

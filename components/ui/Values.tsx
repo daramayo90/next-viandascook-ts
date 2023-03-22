@@ -4,19 +4,19 @@ import styles from '../../styles/Values.module.css';
 
 const valueList = [
    {
-      src: '/img/icons/comida-deliciosa.svg',
+      src: '/icon/comida-deliciosa.svg',
       alt: 'Comida Deliciosa',
       title: 'Comida Deliciosa',
       text: 'Nuestros platos son elaborados en casa, con ingredientes de la mejor calidad. Tan ricos como la comida de tu abuela. ¡Probá nuestros platos y sentí el amor que ponemos en cada bocado!',
    },
    {
-      src: '/img/icons/variedad.svg',
+      src: '/icon/variedad.svg',
       alt: 'Variedad de Comidas',
       title: 'Variedad al mejor precio',
       text: 'Organizá tu menú semanal con nuestras viandas, tenemos opciones para todos los paladares desde carne hasta menúes veganos y vegetarianos.',
    },
    {
-      src: '/img/icons/facil-y-rapido.svg',
+      src: '/icon/facil-y-rapido.svg',
       alt: 'Fácil y Rápido',
       title: 'Fácil y Rápido',
       text: 'Disfrutá de más tiempo para vos mientras nosotros nos encargamos de la comida. Recibimos pedidos con 48hs de anticipación. ¡Seguí tu entrega en tiempo real con nuestro exclusivo sistema de alertas!',

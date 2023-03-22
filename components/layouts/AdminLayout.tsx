@@ -20,7 +20,7 @@ export const AdminLayout: FC<Props> = ({ children, title, subTitle, icon }) => {
          </nav>
 
          <main>
-            <div className={styles.container}>
+            <div className={styles.layout}>
                <div className={styles.titleBox}>
                   <span className={styles.icon}>{icon}</span>
                   <h1 className={styles.title}>

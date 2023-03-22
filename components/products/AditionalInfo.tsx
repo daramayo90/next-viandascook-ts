@@ -9,7 +9,7 @@ export const AditionalInfo = () => {
             <div className={styles.icon}>
                <div className={styles.nextImage}>
                   <Image
-                     src='/img/icons/frozen.png'
+                     src='/icon/frozen.png'
                      alt='Platos Congelados'
                      width={100}
                      height={100}
@@ -31,7 +31,7 @@ export const AditionalInfo = () => {
             <div className={styles.icon}>
                <div className={styles.nextImage}>
                   <Image
-                     src='/img/icons/heat.png'
+                     src='/icon/heat.png'
                      alt='Como calentar'
                      width={100}
                      height={100}

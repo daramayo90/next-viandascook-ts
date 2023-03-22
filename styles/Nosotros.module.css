@@ -4,7 +4,7 @@
 }
 
 .us > .intro {
-   background-color: #000;
+   background-color: var(--primaryHover);
 }
 
 .us > .intro > .container {
