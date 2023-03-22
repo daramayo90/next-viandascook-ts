@@ -47,9 +47,17 @@
    font-size: 1.8rem;
 }
 
+.us > .intro > .container > .textIntro > h1 > strong {
+   color: var(--white);
+}
+
 .us > .intro > .container > .textIntro > p {
    color: var(--white);
    text-align: center;
+}
+
+.us > .intro > .container > .textIntro > p > strong {
+   color: var(--white);
 }
 
 .us > .intro > .container > .textIntro > .btn {
