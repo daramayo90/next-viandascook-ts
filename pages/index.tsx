@@ -36,34 +36,19 @@ const LandingPage: NextPage<Props> = ({ products }) => {
             <ProductSlides products={products} />
 
             <div className={styles.btn}>
-               <Button
-                  href={'/menu'}
-                  content={'Más platos'}
-                  background='var(--black)'
-                  border='2px solid var(--black)'
-               />
+               <Button href={'/menu'} content={'Más platos'} background='var(--secondary)' />
             </div>
 
             <Values />
 
             <div className={styles.btn}>
-               <Button
-                  href={'/menu'}
-                  content={'¡Comprar!'}
-                  background='var(--black)'
-                  border='2px solid var(--black)'
-               />
+               <Button href={'/menu'} content={'¡Comprar!'} background='var(--secondary)' />
             </div>
 
             <HowToBuy />
 
             <div className={styles.btn}>
-               <Button
-                  href={'/menu'}
-                  content={'¡Comprar!'}
-                  background='var(--black)'
-                  border='2px solid var(--black)'
-               />
+               <Button href={'/menu'} content={'¡Comprar!'} background='var(--secondary)' />
             </div>
 
             <CommonQuestions />

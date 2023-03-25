@@ -57,8 +57,9 @@ const NosotrosPage = () => {
                <Button
                   href={'/menu'}
                   content={'Ver Platos'}
-                  color='var(--black)'
-                  border='2px solid var(--black)'
+                  color='var(--white)'
+                  background='var(--secondary)'
+                  border='2px solid var(--secondary)'
                />
             </div>
 

@@ -86,7 +86,7 @@
       left: 50%;
       transform: translate(-50%, 0);
       width: 100%;
-      max-width: 170px;
+      max-width: 180px;
    }
 
    .box > .title {

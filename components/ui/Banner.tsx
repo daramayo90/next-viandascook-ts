@@ -24,7 +24,7 @@ export const Banner = () => {
             <div className={styles.bannerDishes}>
                <div className={styles.nextImage}>
                   <Image
-                     src='/img/banner-dishes.png'
+                     src='/img/banner-platos.png'
                      alt='viandascook-banner-back'
                      width={800}
                      height={800}

@@ -51,7 +51,7 @@
    width: 45px;
    height: 40px;
    border-radius: 50%;
-   background: var(--black);
+   background: var(--primaryHover);
 }
 
 .product > .topSection > .container > .selectedQuantity > span {

@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { AiOutlineInstagram, AiOutlineWhatsApp } from 'react-icons/ai';
-import { BsFacebook } from 'react-icons/bs';
+import { FiFacebook } from 'react-icons/fi';
 
 import styles from '../../styles/Footer.module.css';
 
@@ -29,7 +29,7 @@ export const Footer = () => {
                </ul>
                <ul className={styles.list}>
                   <Link href={'/preguntas'}>
-                     <li>¿Preguntas?</li>
+                     <li>¿Dudas?</li>
                   </Link>
                   <Link href={'/loyalty'}>
                      <li>Sumá puntos</li>
@@ -59,7 +59,7 @@ export const Footer = () => {
                   </Link>
                   <Link href={'https://facebook.com/viandas.cook'} passHref>
                      <a target='_blank'>
-                        <BsFacebook className={styles.icon} />
+                        <FiFacebook className={styles.icon} />
                      </a>
                   </Link>
                   <Link href={'https://wa.link/3dkum4'} passHref>

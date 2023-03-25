@@ -3,7 +3,7 @@
    --black: rgba(20, 20, 20, 0.9);
    --primary: rgb(118, 144, 46);
    --primaryHover: rgb(100, 120, 10);
-   --secondary: rgb(250, 92, 71);
+   --secondary: rgb(250, 80, 60);
    --textColor: rgb(77, 77, 79);
    --borderGrey: rgb(230, 230, 230);
    --adminPanel: rgb(20, 20, 25);
@@ -56,11 +56,13 @@ h1 {
    font-size: 2em;
    margin: 0.67em 0;
    color: var(--black);
+   text-transform: uppercase;
 }
 
 h2 {
    font-size: 1.7rem;
    color: var(--black);
+   text-transform: uppercase;
 }
 
 p,

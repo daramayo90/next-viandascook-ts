@@ -41,14 +41,14 @@ export const SideMenu = () => {
                </li>
                {isLoggedIn && (
                   <>
-                     <li onClick={() => navigateTo('/mi-cuenta')}>
-                        <AiOutlineUser className={styles.icon} />
-                        <span>Mi Cuenta</span>
-                        <MdOutlineKeyboardArrowRight className={styles.iconRight} />
-                     </li>
                      <li onClick={() => navigateTo('/pedidos/historial')}>
                         <HiOutlineClipboardList className={styles.icon} />
                         <span>Mis Pedidos</span>
+                        <MdOutlineKeyboardArrowRight className={styles.iconRight} />
+                     </li>
+                     <li onClick={() => navigateTo('/mi-cuenta')}>
+                        <AiOutlineUser className={styles.icon} />
+                        <span>Mi Cuenta</span>
                         <MdOutlineKeyboardArrowRight className={styles.iconRight} />
                      </li>
                   </>
@@ -70,7 +70,7 @@ export const SideMenu = () => {
                </li>
                <li onClick={() => navigateTo('/preguntas')}>
                   <AiOutlineQuestionCircle className={styles.icon} />
-                  <span>¿Preguntas?</span>
+                  <span>¿Dudas?</span>
                   <MdOutlineKeyboardArrowRight className={styles.iconRight} />
                </li>
 

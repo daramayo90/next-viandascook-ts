@@ -17,7 +17,7 @@ const LoyaltyPage = () => {
 
                   <div className={styles.textIntro}>
                      <h1>
-                        VC Loyalty:<br></br> El programa de puntos que te ayuda a comer rico,
+                        VC Loyalty<br></br> El programa de puntos que te ayuda a comer rico,
                         práctico y saludable
                      </h1>
                      <p>

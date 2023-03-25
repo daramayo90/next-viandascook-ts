@@ -34,8 +34,9 @@
    width: 60%;
    margin: auto;
    text-align: center;
-   font-family: 'Gilroy';
-   font-size: 3rem;
+   /* font-family: 'Gilroy'; */
+   font-weight: 600;
+   font-size: 2.5rem;
    line-height: 110%;
    letter-spacing: -0.02em;
    color: white;
@@ -106,8 +107,7 @@
    .banner > .container > .brand > .title {
       width: 100%;
       margin: 0;
-      font-weight: 800;
-      font-size: 3.7rem;
+      font-size: 3.5rem;
       line-height: 97.5%;
    }
 

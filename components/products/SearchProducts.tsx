@@ -25,7 +25,7 @@ export const SearchProducts: FC<Props> = ({ searchTerm, setSearchTerm }) => {
             className={styles.search}
             type='text'
             name='query'
-            placeholder='Buscar...'
+            placeholder='Buscar por nombre, ingrediente o tipo...'
             value={searchTerm}
             onChange={onSearchTerm}
          />

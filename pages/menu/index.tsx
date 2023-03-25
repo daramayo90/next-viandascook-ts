@@ -79,7 +79,7 @@ const ProductsPage: NextPage<Props> = ({ products }) => {
                )}
             </article>
 
-            {numberOfItems && (
+            {numberOfItems > 0 && (
                <div className={styles.goToCartBtn}>
                   <Button
                      href={'/cart'}

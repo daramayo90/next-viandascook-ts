@@ -29,7 +29,7 @@ const PrepararPlatosPage: NextPage = () => {
    };
 
    const handleDateSelect = async (date: Date) => {
-      const { data } = await viandasApi.post<IProduct[]>('/admin/totalProductsByDate', { date });
+      const { data } = await viandasApi.post<IProduct[]>('/admin/productsByDate', { date });
       setProducts(data);
    };
 
