@@ -1,0 +1,45 @@
+.orderDialog {
+   position: fixed;
+   top: 5px;
+   left: 50%;
+   transform: translateX(-50%);
+   width: 98vw;
+   height: 98vh;
+   background-color: rgba(250, 250, 250);
+   border-radius: 25px;
+   border: 1px solid var(--textColor);
+   z-index: 100;
+}
+
+.orderDialog > .container {
+   width: 90%;
+   margin: 1rem auto;
+}
+
+.orderDialog > .container > .title {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   margin: 0.5rem 0;
+}
+
+.orderDialog > .container > .title > .closeDialog {
+   color: var(--primary);
+   font-size: 1.2rem;
+}
+
+.orderDialog > .container > .details,
+.orderDialog > .container > .products {
+   padding: 1.5rem 0;
+   border-top: 1px solid var(--textColor);
+}
+
+.orderDialog > .container > .details > h3,
+.orderDialog > .container > .products > h3 {
+   margin: 0.5rem 0;
+   color: var(--black);
+}
+
+.orderDialog > .container > .products > .product {
+   margin: 0.5rem 0;
+}
