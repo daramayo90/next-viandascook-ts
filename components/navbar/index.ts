@@ -6,3 +6,4 @@ export * from './MainNavbar';
 export * from './Navbar';
 export * from './OrderNavbar';
 export * from './ShopNavbar';
+export * from './KitchenNavbar';

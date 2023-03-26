@@ -9,6 +9,7 @@ export interface UIState {
    isCartSummaryOpen: boolean;
    isProductsMenuOpen: boolean;
    isAdminMenuOpen: boolean;
+   isKitchenMenuOpen: boolean;
    deliveryDateSelected: Date;
 }
 
@@ -17,6 +18,7 @@ const UI_INITIAL_STATE: UIState = {
    isCartSummaryOpen: false,
    isProductsMenuOpen: false,
    isAdminMenuOpen: false,
+   isKitchenMenuOpen: false,
    deliveryDateSelected: new Date(),
 };
 
@@ -39,6 +41,10 @@ export const UIProvider: FC<Props> = ({ children }) => {
       dispatch({ type: '[UI] - Toggle Admin Menu' });
    };
 
+   const toggleKitchenMenu = () => {
+      dispatch({ type: '[UI] - Toggle Kitchen Menu' });
+   };
+
    const selectDeliveryDate = (date: Date) => {
       dispatch({ type: '[UI] - Select Delivery Date', payload: date });
    };
@@ -51,6 +57,7 @@ export const UIProvider: FC<Props> = ({ children }) => {
             toggleCartSummary,
             toggleProductsMenu,
             toggleAdminMenu,
+            toggleKitchenMenu,
             selectDeliveryDate,
          }}>
          {children}

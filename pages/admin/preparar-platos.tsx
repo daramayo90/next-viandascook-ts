@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import { NextPage } from 'next';
 import Image from 'next/image';
+import Link from 'next/link';
 
 import DatePicker, { registerLocale } from 'react-datepicker';
 import es from 'date-fns/locale/es';
 
 import { viandasApi } from '../../axiosApi';
 
-import { AdminLayout } from '../../components/layouts';
+import { KitchenLayout } from '../../components/layouts';
 
 import 'react-datepicker/dist/react-datepicker.css';
 import styles from '../../styles/AdminLayout.module.css';
@@ -34,25 +35,31 @@ const PrepararPlatosPage: NextPage = () => {
    };
 
    return (
-      <AdminLayout title={'Preparar platos'} subTitle={''}>
+      <KitchenLayout title={'Preparar platos'}>
          <section className={styles.cooking}>
             <p className={styles.title}>Elegir la fecha de entrega del pedido</p>
-            <div className={styles.card}>
-               <div className={styles.dateInput}>
-                  <DatePicker
-                     // inline
-                     fixedHeight
-                     locale='es'
-                     dateFormat='dd/MM/yyyy'
-                     placeholderText='Elegir fecha de entrega'
-                     shouldCloseOnSelect={true}
-                     autoFocus={false}
-                     calendarStartDay={0}
-                     selected={deliveryDate}
-                     onChange={handleDateChange} //only when value has changed
-                     onSelect={handleDateSelect} //when day is clicked
-                  />
+            <div className={styles.container}>
+               <div className={styles.card}>
+                  <div className={styles.dateInput}>
+                     <DatePicker
+                        // inline
+                        fixedHeight
+                        locale='es'
+                        dateFormat='dd/MM/yyyy'
+                        placeholderText='Elegir fecha de entrega'
+                        shouldCloseOnSelect={true}
+                        autoFocus={false}
+                        calendarStartDay={0}
+                        selected={deliveryDate}
+                        onChange={handleDateChange} //only when value has changed
+                        onSelect={handleDateSelect} //when day is clicked
+                     />
+                  </div>
                </div>
+
+               {/* <Link href='/admin/preparar-pedidos'>
+                  <button className={styles.linkToBtn}>Preparar pedidos</button>
+               </Link> */}
             </div>
 
             {products && (
@@ -83,7 +90,7 @@ const PrepararPlatosPage: NextPage = () => {
                </div>
             )}
          </section>
-      </AdminLayout>
+      </KitchenLayout>
    );
 };
 

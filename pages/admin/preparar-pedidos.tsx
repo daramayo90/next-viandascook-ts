@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { NextPage } from 'next';
+import Link from 'next/link';
 
 import DatePicker, { registerLocale } from 'react-datepicker';
 import es from 'date-fns/locale/es';
@@ -8,7 +9,7 @@ import { IOrder } from '../../interfaces';
 
 import { viandasApi } from '../../axiosApi';
 
-import { AdminLayout } from '../../components/layouts';
+import { KitchenLayout } from '../../components/layouts';
 import { OrderCard, OrderDialog } from '../../components/admin';
 
 import 'react-datepicker/dist/react-datepicker.css';
@@ -33,25 +34,30 @@ const PrepararPedidosPage: NextPage = () => {
 
    return (
       <>
-         <AdminLayout title={'Preparar pedidos'} subTitle={''}>
+         <KitchenLayout title={'Preparar pedidos'}>
             <section className={styles.cooking}>
                <p className={styles.title}>Elegir la fecha de entrega del pedido</p>
-               <div className={styles.card}>
-                  <div className={styles.dateInput}>
-                     <DatePicker
-                        // inline
-                        fixedHeight
-                        locale='es'
-                        dateFormat='dd/MM/yyyy'
-                        placeholderText='Elegir fecha'
-                        shouldCloseOnSelect={true}
-                        autoFocus={false}
-                        calendarStartDay={0}
-                        selected={deliveryDate}
-                        onChange={handleDateChange} //only when value has changed
-                        onSelect={handleDateSelect} //when day is clicked
-                     />
+               <div className={styles.container}>
+                  <div className={styles.card}>
+                     <div className={styles.dateInput}>
+                        <DatePicker
+                           // inline
+                           fixedHeight
+                           locale='es'
+                           dateFormat='dd/MM/yyyy'
+                           placeholderText='Elegir fecha'
+                           shouldCloseOnSelect={true}
+                           autoFocus={false}
+                           calendarStartDay={0}
+                           selected={deliveryDate}
+                           onChange={handleDateChange} //only when value has changed
+                           onSelect={handleDateSelect} //when day is clicked
+                        />
+                     </div>
                   </div>
+                  {/* <Link href='/admin/preparar-platos'>
+                     <button className={styles.linkToBtn}>Preparar platos</button>
+                  </Link> */}
                </div>
 
                {orders && (
@@ -67,7 +73,7 @@ const PrepararPedidosPage: NextPage = () => {
                   </div>
                )}
             </section>
-         </AdminLayout>
+         </KitchenLayout>
 
          {showOrder && <OrderDialog order={order} setShowOrder={setShowOrder} />}
       </>

@@ -13,12 +13,34 @@
    color: var(--black);
 }
 
-/* .layout > .titleBox > .title {
-   margin: 0.3rem 0.5rem;
-} */
+.layout > .titleBox > .title {
+   font-size: 1.8rem;
+}
 
 .layout > .subTitle {
    font-weight: 400;
+}
+
+.kitchen {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   width: 90%;
+   height: auto;
+   margin: -2rem auto;
+}
+
+.kitchen > .linkToBtn {
+   max-width: 240px;
+   width: 100%;
+   height: 50px;
+   margin: 2rem 0;
+   font-size: 1.2rem;
+   border-radius: 25px;
+   background-color: var(--primary);
+   border: 1px solid var(--primary);
+   box-shadow: 0 8px 16px rgba(14, 12, 12, 0.06);
+   cursor: pointer;
 }
 
 .cooking {
@@ -33,7 +55,12 @@
    margin-left: auto;
 }
 
-.cooking > .card {
+.cooking > .container {
+   display: flex;
+   align-items: center;
+}
+
+.cooking > .container > .card {
    max-width: 115px;
    width: 100%;
    border-radius: 15px;
@@ -42,7 +69,7 @@
    box-shadow: 0 8px 16px rgba(14, 12, 12, 0.06);
 }
 
-.cooking > .card > .dateInput {
+.cooking > .container > .card > .dateInput {
    display: flex;
    flex-direction: column;
    justify-content: space-evenly;
@@ -139,6 +166,7 @@
    border-radius: 25px;
    background-color: #fff;
    box-shadow: 0 8px 16px rgb(35 31 32 / 6%);
+   cursor: pointer;
 }
 
 .cooking > .orders > .order > .card {
@@ -159,6 +187,15 @@
 }
 
 @media (min-width: 720px) {
+   .kitchen {
+      flex-direction: row;
+      align-items: center;
+   }
+
+   .kitchen > .linkToBtn {
+      margin-right: 3rem;
+   }
+
    .cooking > .products,
    .cooking > .orders {
       max-width: none;

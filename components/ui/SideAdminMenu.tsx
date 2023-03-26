@@ -7,8 +7,10 @@ import { AiOutlineUser } from 'react-icons/ai';
 import { HiOutlineClipboardList, HiOutlineLogout } from 'react-icons/hi';
 import { MdOutlineKeyboardArrowRight, MdOutlineSpaceDashboard } from 'react-icons/md';
 import { TfiDropbox } from 'react-icons/tfi';
+import { TbChefHat } from 'react-icons/tb';
 
 import styles from '../../styles/SideMenu.module.css';
+import { BsBagCheck } from 'react-icons/bs';
 
 export const SideAdminMenu = () => {
    const router = useRouter();
@@ -49,6 +51,18 @@ export const SideAdminMenu = () => {
                <li onClick={() => navigateTo('/admin/users')}>
                   <AiOutlineUser className={styles.icon} />
                   <span>Usuarios</span>
+                  <MdOutlineKeyboardArrowRight className={styles.iconRight} />
+               </li>
+
+               <li onClick={() => navigateTo('/admin/preparar-platos')}>
+                  <TbChefHat className={styles.icon} />
+                  <span>Preparar platos</span>
+                  <MdOutlineKeyboardArrowRight className={styles.iconRight} />
+               </li>
+
+               <li onClick={() => navigateTo('/admin/preparar-pedidos')}>
+                  <BsBagCheck className={styles.icon} />
+                  <span>Preparar pedidos</span>
                   <MdOutlineKeyboardArrowRight className={styles.iconRight} />
                </li>
 
