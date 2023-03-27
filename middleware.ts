@@ -14,7 +14,8 @@ export async function middleware(req: NextRequest) {
    const url = req.nextUrl.clone();
    url.search = '';
 
-   const validRoles = ['admin', 'super-user', 'seo'];
+   const adminRole = ['admin'];
+   const kitchenRole = ['admin', 'kitchen'];
 
    if (pathname.includes('login-checkout') && session) {
       url.pathname = '/checkout';
@@ -41,7 +42,16 @@ export async function middleware(req: NextRequest) {
       return NextResponse.redirect(url);
    }
 
-   if (pathname.includes('admin') && (!session || !validRoles.includes(session.user.role))) {
+   console.log('path', pathname.includes('cocina'));
+   console.log('session', !session);
+   console.log('kitchenRole', !kitchenRole.includes(session.user.role));
+
+   if (pathname.includes('cocina') && (!session || !kitchenRole.includes(session.user.role))) {
+      url.pathname = '/';
+      return NextResponse.redirect(url);
+   }
+
+   if (pathname.includes('admin') && (!session || !adminRole.includes(session.user.role))) {
       url.pathname = '/';
       return NextResponse.redirect(url);
    }
@@ -51,6 +61,7 @@ export async function middleware(req: NextRequest) {
 
 export const config = {
    matcher: [
+      '/admin/cocina/:path*',
       '/admin/:path*',
       '/auth/login-checkout/:path*',
       '/auth/:path*',

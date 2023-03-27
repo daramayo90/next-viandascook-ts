@@ -30,13 +30,13 @@ export const SideKitchenMenu = () => {
                isKitchenMenuOpen ? `${styles.options} ${styles.open}` : `${styles.options}`
             }>
             <ul className={styles.list}>
-               <li onClick={() => navigateTo('/admin/preparar-platos')}>
+               <li onClick={() => navigateTo('/admin/cocina/preparar-platos')}>
                   <TbChefHat className={styles.icon} />
                   <span>Preparar platos</span>
                   <MdOutlineKeyboardArrowRight className={styles.iconRight} />
                </li>
 
-               <li onClick={() => navigateTo('/admin/preparar-pedidos')}>
+               <li onClick={() => navigateTo('/admin/cocina/preparar-pedidos')}>
                   <BsBagCheck className={styles.icon} />
                   <span>Preparar pedidos</span>
                   <MdOutlineKeyboardArrowRight className={styles.iconRight} />
