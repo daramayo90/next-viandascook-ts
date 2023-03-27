@@ -4,7 +4,7 @@
 }
 
 .howItWorks > .intro {
-   background-color: #000;
+   background-color: var(--primaryHover);
 }
 
 .howItWorks > .intro > .container {
@@ -64,8 +64,9 @@
    text-align: center;
 }
 
-.howItWorks > .presentation > h2 {
+.howItWorks > .presentation > .subTitle {
    margin: 2rem 0;
+   color: var(--primary);
 }
 
 .howItWorks > .steps {
@@ -105,6 +106,7 @@
 
 .howItWorks > .steps > .step > .text > h3 {
    margin: 0.5rem 0;
+   color: var(--primary);
 }
 
 .howItWorks > .btn {
