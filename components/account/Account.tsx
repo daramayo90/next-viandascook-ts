@@ -29,10 +29,14 @@ export const Account: FC<Props> = ({ user }) => {
          </Link>
 
          <div className={styles.info}>
-            <span className={styles.name}>
-               {user.name} {user.lastName}
-            </span>
-            <span>{user.email}</span>
+            <div className={styles.name}>
+               <span>
+                  {user.name} {user.lastName}
+               </span>
+            </div>
+            <div className={styles.email}>
+               <span>{user.email}</span>
+            </div>
          </div>
 
          <Link href='/mi-cuenta/perfil'>

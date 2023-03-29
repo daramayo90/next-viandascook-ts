@@ -38,11 +38,25 @@
    margin-left: 1rem;
    width: 80%;
    height: 70px;
+   overflow: hidden;
+   white-space: nowrap;
+   text-overflow: ellipsis;
 }
 
 .account > .container > .account > .info > .name {
+   width: 85%;
    font-size: 1.3rem;
    font-weight: 500;
+   overflow: hidden;
+   white-space: nowrap;
+   text-overflow: ellipsis;
+}
+
+.account > .container > .account > .info > .email {
+   width: 85%;
+   overflow: hidden;
+   white-space: nowrap;
+   text-overflow: ellipsis;
 }
 
 .account > .container > .account .editIcon {

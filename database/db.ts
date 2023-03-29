@@ -1,17 +1,22 @@
 import mongoose from 'mongoose';
 
-/**
- * 0 = disconnected
- * 1 = connected
- * 2 = connecting
- * 3 = disconnecting
- */
+// Set the value of `strictQuery` explicitly
+// Choose either true or false based on your preference
+mongoose.set('strictQuery', true);
+
+const CONNECTION_STATES = {
+   DISCONNECTED: 0,
+   CONNECTED: 1,
+   CONNECTING: 2,
+   DISCONNECTING: 3,
+};
+
 const mongoConnection = {
-   isConnected: 0,
+   isConnected: CONNECTION_STATES.DISCONNECTED,
 };
 
 export const connect = async () => {
-   if (mongoConnection.isConnected) {
+   if (mongoConnection.isConnected === CONNECTION_STATES.CONNECTED) {
       console.log('We are already connected');
       return;
    }
@@ -19,7 +24,7 @@ export const connect = async () => {
    if (mongoose.connections.length > 0) {
       mongoConnection.isConnected = mongoose.connections[0].readyState;
 
-      if (mongoConnection.isConnected === 1) {
+      if (mongoConnection.isConnected === CONNECTION_STATES.CONNECTED) {
          console.log('Using previous connection');
          return;
       }
@@ -27,18 +32,22 @@ export const connect = async () => {
       await mongoose.disconnect();
    }
 
-   await mongoose.connect(process.env.MONGO_URL || '');
-   mongoConnection.isConnected = 1;
-   console.log('Connected to MongoDB:', process.env.MONGO_URL);
+   try {
+      await mongoose.connect(process.env.MONGO_URL || '');
+      mongoConnection.isConnected = CONNECTION_STATES.CONNECTED;
+      console.log('Connected to MongoDB:', process.env.MONGO_URL);
+   } catch (error) {
+      console.error('Error connecting to MongoDB:', error);
+   }
 };
 
 export const disconnect = async () => {
    if (process.env.NODE_ENV === 'development') return;
 
-   if (mongoConnection.isConnected === 0) return;
+   if (mongoConnection.isConnected === CONNECTION_STATES.DISCONNECTED) return;
 
    await mongoose.disconnect();
-   mongoConnection.isConnected = 0;
+   mongoConnection.isConnected = CONNECTION_STATES.DISCONNECTED;
 
    console.log('Disconnected from MongoDB');
 };
