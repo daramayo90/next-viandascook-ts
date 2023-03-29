@@ -8,7 +8,7 @@ import styles from '../../styles/Auth.module.css';
 
 const LoginPage: NextPage = () => {
    return (
-      <AuthLayout title={'Viandas Cook - Iniciar Sesión'}>
+      <AuthLayout title={'Iniciar Sesión'}>
          <section className={styles.auth}>
             <div className={styles.container}>
                <LoginForm />

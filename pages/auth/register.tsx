@@ -8,7 +8,7 @@ import styles from '../../styles/Auth.module.css';
 
 const RegisterPage: NextPage = () => {
    return (
-      <AuthLayout title={'Viandas Cook - Registrarse'}>
+      <AuthLayout title={'Registrarse'}>
          <section className={styles.auth}>
             <div className={styles.container}>
                <RegisterForm />

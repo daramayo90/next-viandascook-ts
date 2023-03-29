@@ -42,17 +42,13 @@ export async function middleware(req: NextRequest) {
       return NextResponse.redirect(url);
    }
 
-   console.log('path', pathname.includes('cocina'));
-   console.log('session', !session);
-   console.log('kitchenRole', !kitchenRole.includes(session.user.role));
-
-   if (pathname.includes('cocina') && (!session || !kitchenRole.includes(session.user.role))) {
-      url.pathname = '/';
+   if (pathname.includes('admin') && (!session || !adminRole.includes(session.user.role))) {
+      url.pathname = '/auth/login-viandascook';
       return NextResponse.redirect(url);
    }
 
-   if (pathname.includes('admin') && (!session || !adminRole.includes(session.user.role))) {
-      url.pathname = '/';
+   if (pathname.includes('cocina') && (!session || !kitchenRole.includes(session.user.role))) {
+      url.pathname = '/auth/login-viandascook';
       return NextResponse.redirect(url);
    }
 
@@ -61,12 +57,12 @@ export async function middleware(req: NextRequest) {
 
 export const config = {
    matcher: [
-      '/admin/cocina/:path*',
       '/admin/:path*',
-      '/auth/login-checkout/:path*',
       '/auth/:path*',
+      '/auth/login-checkout/:path*',
+      '/checkout/:path*',
+      '/cocina/:path*',
       '/mi-cuenta/:path*',
       '/pedidos/:path*',
-      '/checkout/:path*',
    ],
 };

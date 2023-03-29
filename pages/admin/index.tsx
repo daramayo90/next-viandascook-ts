@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import useSWR from 'swr';
+import { NextPage } from 'next';
+
 import {
    AttachMoneyOutlined,
    CreditCardOffOutlined,
@@ -17,7 +18,7 @@ import { SummaryTile } from '../../components/admin';
 import { DashboardSummaryResponse } from '../../interfaces';
 import viandasApi from '../../axiosApi/viandasApi';
 
-const DashboardPage = () => {
+const DashboardPage: NextPage = () => {
    // const { data, error } = useSWR<DashboardSummaryResponse>('/api/admin/dashboard', {
    //    refreshInterval: 30 * 1000, // 30 segundos
    // });

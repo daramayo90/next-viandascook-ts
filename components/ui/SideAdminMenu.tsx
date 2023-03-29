@@ -54,13 +54,13 @@ export const SideAdminMenu = () => {
                   <MdOutlineKeyboardArrowRight className={styles.iconRight} />
                </li>
 
-               <li onClick={() => navigateTo('/admin/cocina/preparar-platos')}>
+               <li onClick={() => navigateTo('/cocina/preparar-platos')}>
                   <TbChefHat className={styles.icon} />
                   <span>Preparar platos</span>
                   <MdOutlineKeyboardArrowRight className={styles.iconRight} />
                </li>
 
-               <li onClick={() => navigateTo('/admin/cocina/preparar-pedidos')}>
+               <li onClick={() => navigateTo('/cocina/preparar-pedidos')}>
                   <BsBagCheck className={styles.icon} />
                   <span>Preparar pedidos</span>
                   <MdOutlineKeyboardArrowRight className={styles.iconRight} />
