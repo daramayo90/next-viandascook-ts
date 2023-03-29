@@ -5,7 +5,7 @@ const LoadingPage = () => {
    return (
       <LoadingLayout>
          <section className='loading'>
-            <ClipLoader color={'var(--primary)'} size={55} speedMultiplier={1} />
+            <ClipLoader color={'var(--primaryHover)'} size={55} speedMultiplier={1} />
          </section>
       </LoadingLayout>
    );

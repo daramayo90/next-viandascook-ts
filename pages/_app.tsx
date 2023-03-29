@@ -25,7 +25,8 @@ function MyApp({ Component, pageProps }: AppProps) {
 
    const router = useRouter();
 
-   const isHideFloatingWhatsApp = router.pathname.startsWith('/admin');
+   const isHideFloatingWhatsApp =
+      router.pathname.startsWith('/admin') || router.pathname.startsWith('/cocina');
 
    return (
       <SessionProvider>

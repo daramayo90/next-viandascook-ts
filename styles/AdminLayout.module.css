@@ -1,6 +1,6 @@
 .layout {
    width: 90%;
-   margin: 6rem auto 2rem auto;
+   margin: 6rem auto 1rem auto;
 }
 
 .layout > .titleBox {
@@ -46,13 +46,11 @@
 .cooking {
    width: 90%;
    height: auto;
-   margin: -2rem auto;
+   margin: 0 auto;
 }
 
 .cooking > .title {
-   width: 93vw;
    margin: 0.5rem 0;
-   margin-left: auto;
 }
 
 .cooking > .container {

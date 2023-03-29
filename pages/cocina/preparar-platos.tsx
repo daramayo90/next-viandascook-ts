@@ -45,7 +45,7 @@ const PrepararPlatosPage: NextPage = () => {
                         fixedHeight
                         locale='es'
                         dateFormat='dd/MM/yyyy'
-                        placeholderText='Elegir fecha de entrega'
+                        placeholderText='Elegir fecha'
                         shouldCloseOnSelect={true}
                         autoFocus={false}
                         calendarStartDay={0}
