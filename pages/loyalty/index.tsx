@@ -11,7 +11,10 @@ const LoyaltyPage = () => {
                <div className={styles.container}>
                   <div className={styles.videoIntro}>
                      <video autoPlay muted loop playsInline poster='/img/loyalty-intro.jpg'>
-                        <source src='/video/loyalty-intro.mp4' type='video/mp4' />
+                        <source
+                           src='https://res.cloudinary.com/viandascook/video/upload/v1680120195/videos/f0fanvgrj3ocy6hyfg8u.mp4'
+                           type='video/mp4'
+                        />
                      </video>
                   </div>
 

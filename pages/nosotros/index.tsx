@@ -12,7 +12,10 @@ const NosotrosPage = () => {
                <div className={styles.container}>
                   <div className={styles.videoIntro}>
                      <video autoPlay muted loop playsInline poster='/img/nosotros-envasado.jpg'>
-                        <source src='/video/nosotros-intro.mp4' type='video/mp4' />
+                        <source
+                           src='https://res.cloudinary.com/viandascook/video/upload/v1680120193/videos/zgx6uoz6jwvhrcanfyzz.mp4'
+                           type='video/mp4'
+                        />
                      </video>
                   </div>
 

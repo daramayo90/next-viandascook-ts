@@ -12,7 +12,10 @@ const ComoFuncionaPage = () => {
                <div className={styles.container}>
                   <div className={styles.videoIntro}>
                      <video autoPlay muted loop playsInline poster='/img/como-funciona-intro.jpg'>
-                        <source src='/video/como-funciona-intro.mp4' type='video/mp4' />
+                        <source
+                           src='https://res.cloudinary.com/viandascook/video/upload/v1680120195/videos/in1klme0ztwkkmu60ijp.mp4'
+                           type='video/mp4'
+                        />
                      </video>
                   </div>
 
