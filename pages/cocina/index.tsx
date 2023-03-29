@@ -1,7 +1,7 @@
 import { NextPage } from 'next';
 import Link from 'next/link';
 
-import { KitchenLayout } from '../../../components/layouts';
+import { KitchenLayout } from '../../components/layouts';
 
 import styles from '../../styles/AdminLayout.module.css';
 

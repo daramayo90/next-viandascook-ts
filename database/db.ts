@@ -1,7 +1,6 @@
 import mongoose from 'mongoose';
 
 // Set the value of `strictQuery` explicitly
-// Choose either true or false based on your preference
 mongoose.set('strictQuery', true);
 
 const CONNECTION_STATES = {

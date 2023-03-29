@@ -5,9 +5,9 @@ import Image from 'next/image';
 import DatePicker, { registerLocale } from 'react-datepicker';
 import es from 'date-fns/locale/es';
 
-import { viandasApi } from '../../../axiosApi';
+import { viandasApi } from '../../axiosApi';
 
-import { KitchenLayout } from '../../../components/layouts';
+import { KitchenLayout } from '../../components/layouts';
 
 import 'react-datepicker/dist/react-datepicker.css';
 import styles from '../../styles/AdminLayout.module.css';

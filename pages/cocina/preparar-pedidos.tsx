@@ -4,12 +4,12 @@ import { NextPage } from 'next';
 import DatePicker, { registerLocale } from 'react-datepicker';
 import es from 'date-fns/locale/es';
 
-import { IOrder } from '../../../interfaces';
+import { IOrder } from '../../interfaces';
 
-import { viandasApi } from '../../../axiosApi';
+import { viandasApi } from '../../axiosApi';
 
-import { KitchenLayout } from '../../../components/layouts';
-import { OrderCard, OrderDialog } from '../../../components/admin';
+import { KitchenLayout } from '../../components/layouts';
+import { OrderCard, OrderDialog } from '../../components/admin';
 
 import 'react-datepicker/dist/react-datepicker.css';
 import styles from '../../styles/AdminLayout.module.css';
