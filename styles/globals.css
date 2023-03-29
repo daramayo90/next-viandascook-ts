@@ -314,7 +314,7 @@ button.nav.default-nav,
 .react-datepicker__input-container > input {
    width: 90%;
    padding: 0.5rem 0;
-   font-size: 0.95rem;
+   font-size: 16px;
    margin-left: 2px;
    font-weight: 500;
    border: none;
@@ -324,7 +324,7 @@ button.nav.default-nav,
 
 .react-datepicker__input-container > input::placeholder {
    width: 90%;
-   font-size: 0.95rem;
+   font-size: 16px;
    margin-left: 2px;
    font-weight: 500;
    border: none;
