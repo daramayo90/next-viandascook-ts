@@ -9,6 +9,7 @@ import { FloatingWhatsApp } from 'react-floating-whatsapp';
 
 import { SWRConfig } from 'swr';
 import { useLoader } from '../hooks';
+import { pageview } from '../utils/ga4';
 
 import { AuthProvider, CartProvider, EmailsProvider } from '../context';
 import { UIProvider } from '../context/ui';
@@ -19,6 +20,7 @@ import { lightTheme } from '../themes';
 import LoadingPage from '../components/ui/Loading';
 
 import '../styles/globals.css';
+import { useEffect } from 'react';
 
 function MyApp({ Component, pageProps }: AppProps) {
    const { loading } = useLoader();
@@ -27,6 +29,17 @@ function MyApp({ Component, pageProps }: AppProps) {
 
    const isHideFloatingWhatsApp =
       router.pathname.startsWith('/admin') || router.pathname.startsWith('/cocina');
+
+   useEffect(() => {
+      const handleRouteChange = (url: string) => {
+         pageview(url);
+      };
+
+      router.events.on('routeChangeComplete', handleRouteChange);
+      return () => {
+         router.events.off('routeChangeComplete', handleRouteChange);
+      };
+   }, [router.events]);
 
    return (
       <SessionProvider>
