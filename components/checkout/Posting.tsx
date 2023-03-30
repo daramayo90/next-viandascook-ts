@@ -1,4 +1,4 @@
-import { FC, useContext, useEffect, useState } from 'react';
+import { FC, useContext, useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 
 import { IPaymentMethods } from '../../interfaces/order';
@@ -9,17 +9,24 @@ import { SubmitButton } from '../ui';
 import styles from '../../styles/Checkout.module.css';
 
 interface Option {
-   value: string;
+   value: IPaymentMethods;
    label: string;
+}
+
+interface MercadoPago {
+   new (publicKey: string, options: { locale: string }): MercadoPago;
+   checkout: (options: {
+      preference: { id: string };
+      render: { container: string; label?: string };
+      autoOpen: boolean;
+   }) => void;
 }
 
 declare global {
    interface Window {
-      MercadoPago: any;
+      MercadoPago: MercadoPago;
    }
 }
-
-let mp: any;
 
 const options: Option[] = [
    { value: 'efectivo', label: 'Efectivo' },
@@ -27,29 +34,34 @@ const options: Option[] = [
    { value: 'mercadopago', label: 'Mercado Pago' },
 ];
 
-const addCheckout = () => {
-   mp = new window.MercadoPago(process.env.NEXT_MP_PUBLIC_KEY, {
+const addCheckout = (publicKey: string) => {
+   const mp = new window.MercadoPago(publicKey, {
       locale: 'es-AR',
    });
+   return mp;
 };
 
 export const Posting: FC = () => {
    const router = useRouter();
 
-   const { createOrder, createMPOrder, addMailchimpClient, addReferralPoints } =
-      useContext(OrdersContext);
+   const { createOrder, createMPOrder, addMailchimpClient } = useContext(OrdersContext);
 
    const [isPosting, setIsPosting] = useState(false);
    const [errorMsg, setErrorMsg] = useState('');
 
    const [paymentMethod, setPaymentMethod] = useState<IPaymentMethods>('efectivo');
 
+   const mpRef = useRef<MercadoPago | null>(null);
+
    useEffect(() => {
       // con el preferenceId en mano, inyectamos el script de mercadoPago
       const script = document.createElement('script');
       script.type = 'text/javascript';
       script.src = 'https://sdk.mercadopago.com/js/v2';
-      script.addEventListener('load', addCheckout); // Cuando cargue el script, se ejecutará la función addCheckout
+      script.addEventListener('load', () => {
+         const publicKey = process.env.NEXT_PUBLIC_MP_PUBLIC_KEY!;
+         mpRef.current = addCheckout(publicKey);
+      });
       document.body.appendChild(script);
    }, []);
 
@@ -85,7 +97,7 @@ export const Posting: FC = () => {
    // Create preference when click on checkout button
    const createCheckoutButton = (id: string) => {
       // Initialize the checkout
-      mp.checkout({
+      mpRef.current?.checkout({
          preference: {
             id: id,
          },
