@@ -39,7 +39,7 @@ const checkoutPro = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
    // const { items } = req.body;
 
    mercadopago.configure({
-      access_token: 'APP_USR-2432288483233489-013111-8494dd3016b8acb5eff1b830a0ec34fb-1299435285',
+      access_token: process.env.MP_ACCESS_TOKEN!,
    });
 
    const {

@@ -28,7 +28,7 @@ const options: Option[] = [
 ];
 
 const addCheckout = () => {
-   mp = new window.MercadoPago('APP_USR-e4c644d0-351f-4cb0-ab82-c409d0705cd5', {
+   mp = new window.MercadoPago(process.env.NEXT_MP_PUBLIC_KEY, {
       locale: 'es-AR',
    });
 };
