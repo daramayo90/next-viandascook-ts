@@ -38,10 +38,9 @@ const checkoutPro = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
 
    const { user }: any = (await getServerSession(req, res, authOptions)) || '';
 
-   const id = user ? user._id : null;
-
-   db.connect();
-   const dbUser = await User.findById(id);
+   await db.connect();
+   const dbUser = user ? await User.findById(user._id) : null;
+   await db.disconnect();
 
    const orderUser = {
       _id: dbUser?._id || null,
@@ -88,8 +87,6 @@ const checkoutPro = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
       auto_return: 'approved',
       statement_descriptor: 'VIANDAS COOK S.R.L',
    };
-
-   db.disconnect();
 
    try {
       const response: PreferenceCreateResponse = await mercadopago.preferences.create(
