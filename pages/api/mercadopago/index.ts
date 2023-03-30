@@ -22,9 +22,11 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Data>)
 }
 
 const checkoutPro = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
+   console.log('1');
    mercadopago.configure({
       access_token: process.env.MP_ACCESS_TOKEN!,
    });
+   console.log('2');
 
    const {
       orderItems,
@@ -35,12 +37,19 @@ const checkoutPro = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
       shipping,
       orderId,
    } = req.body;
+   console.log('3');
 
    const { user }: any = (await getServerSession(req, res, authOptions)) || '';
+   console.log('4');
 
    db.connect();
+   console.log('5');
+
    const dbUser = user ? await User.findById(user._id) : null;
+   console.log('6');
+
    db.disconnect();
+   console.log('7');
 
    const orderUser = {
       _id: dbUser?._id || null,
@@ -50,11 +59,13 @@ const checkoutPro = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
       phone: dbUser?.phone || req.cookies.phone,
       dni: dbUser?.dni || req.cookies.dni,
    };
+   console.log('8');
 
    const adjustedOrderItems = orderItems.map((product: IProduct) => {
       const price = product.price - (discount + pointsDiscount + couponDiscount) / numberOfItems;
       return { ...product, price };
    });
+   console.log('9');
 
    const mpItems = adjustedOrderItems.map(({ _id, name, image, price, ...rest }: ICartProduct) => ({
       id: _id,
@@ -64,6 +75,7 @@ const checkoutPro = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
       unit_price: price,
       ...rest,
    }));
+   console.log('10');
 
    const preference: CreatePreferencePayload = {
       items: mpItems,
@@ -87,6 +99,7 @@ const checkoutPro = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
       auto_return: 'approved',
       statement_descriptor: 'VIANDAS COOK S.R.L',
    };
+   console.log('11');
 
    try {
       const response: PreferenceCreateResponse = await mercadopago.preferences.create(
