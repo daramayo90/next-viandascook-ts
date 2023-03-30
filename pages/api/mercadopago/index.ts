@@ -7,6 +7,7 @@ import { authOptions } from '../auth/[...nextauth]';
 import { User } from '../../../models';
 import { ICartProduct } from '../../../interfaces/cart';
 import { IProduct } from '../../../interfaces/products';
+import { db } from '../../../database';
 
 type Data = { message: string } | { id: string };
 
@@ -21,23 +22,6 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Data>)
 }
 
 const checkoutPro = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
-   // const body: IOrder = {
-   //    orderItems: cart.map((product) => product),
-   //    coupons,
-   //    shippingAddress,
-   //    deliveryDate: deliveryDateSelected,
-   //    numberOfItems,
-   //    subTotal,
-   //    discount,
-   //    shipping,
-   //    couponDiscount,
-   //    pointsDiscount,
-   //    total,
-   //    isPaid: false,
-   // };
-
-   // const { items } = req.body;
-
    mercadopago.configure({
       access_token: process.env.MP_ACCESS_TOKEN!,
    });
@@ -54,12 +38,12 @@ const checkoutPro = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
 
    const { user }: any = (await getServerSession(req, res, authOptions)) || '';
 
-   const id = user ? user._id : null;
-
-   const dbUser = await User.findById(id);
+   db.connect();
+   const dbUser = user ? await User.findById(user._id) : null;
+   db.disconnect();
 
    const orderUser = {
-      _id: id || null,
+      _id: dbUser?._id || null,
       name: dbUser?.name || req.cookies.firstName,
       lastName: dbUser?.lastName || req.cookies.lastName,
       email: dbUser?.email || req.cookies.email,
@@ -67,27 +51,19 @@ const checkoutPro = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
       dni: dbUser?.dni || req.cookies.dni,
    };
 
-   orderItems.forEach((p: IProduct) => {
-      return (p.price = p.price - (discount + pointsDiscount + couponDiscount) / numberOfItems);
+   const adjustedOrderItems = orderItems.map((product: IProduct) => {
+      const price = product.price - (discount + pointsDiscount + couponDiscount) / numberOfItems;
+      return { ...product, price };
    });
 
-   const mpItems = (orderItems as ICartProduct[]).map(
-      ({
-         _id: id,
-         name: title,
-         image: picture_url,
-         type: category_id,
-         price: unit_price,
-         ...rest
-      }) => ({
-         id,
-         title,
-         picture_url,
-         category_id: '',
-         unit_price,
-         ...rest,
-      }),
-   );
+   const mpItems = adjustedOrderItems.map(({ _id, name, image, price, ...rest }: ICartProduct) => ({
+      id: _id,
+      title: name,
+      picture_url: image,
+      category_id: '',
+      unit_price: price,
+      ...rest,
+   }));
 
    const preference: CreatePreferencePayload = {
       items: mpItems,
@@ -102,26 +78,7 @@ const checkoutPro = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
       },
       shipments: {
          cost: shipping,
-         // free_shipping: shipping === 0 ? true : false,
       },
-      //    phone: {
-      //       area_code: '11',
-      //       number: '4444-4444',
-      //    },
-      //    identification: {
-      //       type: 'DNI',
-      //       number: orderUser.dni!,
-      //    },
-      // },
-      // shipments: {
-      //    receiver_address: {
-      //       zip_code: shippingAddress.zipcode,
-      //       street_name: shippingAddress.address,
-      //       apartment: shippingAddress.address2,
-      //       city_name: shippingAddress.city,
-      //       state_name: 'null',
-      //    },
-      // },
       back_urls: {
          success: `http://localhost:3000/muchas-gracias/${orderId}`,
          failure: 'http://localhost:3000/api/mercadopago/feedback',
