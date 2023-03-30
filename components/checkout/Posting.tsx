@@ -68,7 +68,7 @@ export const Posting: FC = () => {
    const onCreateOrder = async () => {
       setIsPosting(true);
 
-      const { hasError, message } = await createOrder(paymentMethod);
+      const { hasError, message, token = '' } = await createOrder(paymentMethod);
 
       if (hasError) {
          setIsPosting(false);
@@ -79,11 +79,11 @@ export const Posting: FC = () => {
       await addMailchimpClient(message);
 
       if (paymentMethod !== 'mercadopago') {
-         router.replace(`/muchas-gracias/${message}`);
+         router.replace(`/muchas-gracias/${message}/?viandasToken=${token}`);
          return;
       }
 
-      const { id, error } = await createMPOrder(message);
+      const { id, error } = await createMPOrder(message, token);
 
       if (error) {
          setIsPosting(false);

@@ -1,5 +1,4 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import mercadopago from 'mercadopago';
 import { CreatePreferencePayload } from 'mercadopago/models/preferences/create-payload.model';
 import { PreferenceCreateResponse } from 'mercadopago/resources/preferences';
 import { getServerSession } from 'next-auth';
@@ -8,6 +7,8 @@ import { User } from '../../../models';
 import { ICartProduct } from '../../../interfaces/cart';
 import { IProduct } from '../../../interfaces/products';
 import { db } from '../../../database';
+import mercadopago from 'mercadopago';
+import crypto from 'crypto';
 
 type Data = { message: string } | { id: string };
 
@@ -34,6 +35,7 @@ const checkoutPro = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
       couponDiscount = 0,
       shipping,
       orderId,
+      token,
    } = req.body;
 
    const { user }: any = (await getServerSession(req, res, authOptions)) || '';
@@ -80,7 +82,7 @@ const checkoutPro = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
          cost: shipping,
       },
       back_urls: {
-         success: `http://localhost:3000/muchas-gracias/${orderId}`,
+         success: `http://localhost:3000/muchas-gracias/${orderId}/?viandasToken=${token}`,
          failure: 'http://localhost:3000/api/mercadopago/feedback',
          pending: 'http://localhost:3000/api/mercadopago/feedback',
       },

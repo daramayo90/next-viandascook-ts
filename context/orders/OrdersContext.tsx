@@ -8,8 +8,10 @@ interface ContextProps {
    paymentMethod: IPaymentMethods;
 
    addGuestAddress: (address: ShippingAddress) => void;
-   createOrder: (paymentMethod: IPaymentMethods) => Promise<{ hasError: boolean; message: string }>;
-   createMPOrder: (orderId: string) => Promise<{ id: string; error?: string }>;
+   createOrder: (
+      paymentMethod: IPaymentMethods,
+   ) => Promise<{ hasError: boolean; message: string; token?: string }>;
+   createMPOrder: (orderId: string, token: string) => Promise<{ id: string; error?: string }>;
    addMailchimpClient: (orderId: string) => Promise<void>;
    addReferralPoints: (referralCoupon: string) => Promise<void>;
    orderToSpreadsheet: () => Promise<void>;

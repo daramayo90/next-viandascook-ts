@@ -5,6 +5,8 @@ const orderSchema = new Schema(
    {
       _id: Number,
 
+      token: { type: String },
+
       user: {
          _id: { type: Schema.Types.ObjectId, ref: 'User' },
          name: { type: String, ref: 'User', required: true },

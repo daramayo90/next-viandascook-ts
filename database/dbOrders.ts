@@ -24,7 +24,7 @@ export const getOrdersByUser = async (email: string): Promise<IOrder[]> => {
    return JSON.parse(JSON.stringify(orders));
 };
 
-export const payMpOrder = async (orderId: number): Promise<IOrder | null> => {
+export const payOrder = async (orderId: number): Promise<IOrder | null> => {
    // if (!isValidObjectId(orderId)) return null;
 
    await db.connect();
@@ -41,4 +41,16 @@ export const payMpOrder = async (orderId: number): Promise<IOrder | null> => {
    await db.disconnect();
 
    return JSON.parse(JSON.stringify(order));
+};
+
+export const verifyToken = async (orderId: string, token: string): Promise<boolean> => {
+   await db.connect();
+
+   const order = await Order.findById(Number(orderId)).lean();
+
+   if (!order) return false;
+
+   if (token === order.token) return true;
+
+   return false;
 };

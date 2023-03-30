@@ -2,6 +2,7 @@ import { ICoupon, IUser } from './';
 
 export interface IOrder {
    _id?: number;
+   token?: string;
    user?: IUser | string;
    orderItems: IOrderItem[];
    shippingAddress: ShippingAddress;

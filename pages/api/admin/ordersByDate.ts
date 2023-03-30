@@ -24,7 +24,7 @@ const getOrdersByDate = async (req: NextApiRequest, res: NextApiResponse<Data>) 
    try {
       await db.connect();
 
-      const orders: IOrder[] = await Order.find({ deliveryDate: date });
+      const orders: IOrder[] = await Order.find({ deliveryDate: date, isPaid: true });
 
       await db.disconnect();
 

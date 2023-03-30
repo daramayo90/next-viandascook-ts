@@ -96,10 +96,21 @@ const ThankYouPage: NextPage<Props> = ({ order }) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async ({ params, query }) => {
-   const { status = '' } = query;
+   const { viandasToken = '', status = '' } = query as { viandasToken: string; status: string };
    const { orderid } = params as { orderid: string };
 
    const order = await dbOrders.getOrderById(orderid.toString());
+
+   const isValidToken = await dbOrders.verifyToken(orderid, viandasToken);
+
+   if (!isValidToken) {
+      return {
+         redirect: {
+            destination: '/',
+            permanent: false,
+         },
+      };
+   }
 
    if (!order) {
       return {
@@ -110,9 +121,9 @@ export const getServerSideProps: GetServerSideProps = async ({ params, query }) 
       };
    }
 
-   // It means the payment method is Mercado Pago
-   if (status === 'approved') {
-      await dbOrders.payMpOrder(order._id!);
+   // status === 'approved' means the payment method is Mercado Pago
+   if (order.paymentMethod !== 'mercadopago' || status === 'approved') {
+      await dbOrders.payOrder(order._id!);
    }
 
    return {

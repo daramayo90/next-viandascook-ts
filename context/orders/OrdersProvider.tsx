@@ -2,6 +2,7 @@ import { FC, ReactNode, useEffect, useReducer, useContext } from 'react';
 import { getSession } from 'next-auth/react';
 
 import Cookies from 'js-cookie';
+import crypto from 'crypto';
 
 import { viandasApi } from '../../axiosApi';
 import { ShippingAddress, ICity, IOrder } from '../../interfaces';
@@ -84,7 +85,7 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
 
    const createOrder = async (
       paymentMethod: IPaymentMethods,
-   ): Promise<{ hasError: boolean; message: string }> => {
+   ): Promise<{ hasError: boolean; message: string; token?: string }> => {
       const { user } = ((await getSession()) as any) || '';
 
       const shippingAddress: ShippingAddress = user ? user.shipping : state.shippingAddress;
@@ -106,7 +107,10 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
          };
       }
 
+      const token = crypto.randomBytes(32).toString('hex');
+
       const body: IOrder = {
+         token,
          orderItems: cart.map((product) => product),
          coupons,
          shippingAddress,
@@ -140,6 +144,7 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
          return {
             hasError: false,
             message: data._id!.toString(),
+            token,
          };
       } catch (error: any) {
          return {
@@ -149,7 +154,10 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
       }
    };
 
-   const createMPOrder = async (orderId: string): Promise<{ id: string; error?: string }> => {
+   const createMPOrder = async (
+      orderId: string,
+      token: string,
+   ): Promise<{ id: string; error?: string }> => {
       const body = {
          orderItems: cart.map((product) => product),
          numberOfItems,

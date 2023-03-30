@@ -13,7 +13,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
    try {
       await db.connect();
 
-      const orders = await Order.find({ deliveryDate: date });
+      const orders = await Order.find({ deliveryDate: date, isPaid: true });
 
       await db.disconnect();
 

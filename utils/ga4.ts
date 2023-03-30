@@ -10,13 +10,13 @@ export const GA_MEASUREMENT_ID = 'G-XXXXXXXXXX'; // Replace 'G-XXXXXXXXXX' with 
 export const pageview = (url: string) => {
    if (typeof window === 'undefined' || !GA_MEASUREMENT_ID) return;
 
-   window.gtag('config', GA_MEASUREMENT_ID, {
-      page_path: url,
-   });
+   // window.gtag('config', GA_MEASUREMENT_ID, {
+   //    page_path: url,
+   // });
 };
 
 export const event = (action: string, params: any = {}) => {
    if (typeof window === 'undefined' || !GA_MEASUREMENT_ID) return;
 
-   window.gtag('event', action, params);
+   // window.gtag('event', action, params);
 };

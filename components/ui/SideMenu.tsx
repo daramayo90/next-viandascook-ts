@@ -8,14 +8,18 @@ import { TbDiscount2 } from 'react-icons/tb';
 import { BsInfoCircle } from 'react-icons/bs';
 import { AiOutlineHome, AiOutlineQuestionCircle, AiOutlineUser } from 'react-icons/ai';
 import { HiOutlineClipboardList, HiOutlineLogout } from 'react-icons/hi';
-import { MdOutlineFoodBank, MdOutlineKeyboardArrowRight } from 'react-icons/md';
+import {
+   MdOutlineAdminPanelSettings,
+   MdOutlineFoodBank,
+   MdOutlineKeyboardArrowRight,
+} from 'react-icons/md';
 
 import styles from '../../styles/SideMenu.module.css';
 
 export const SideMenu = () => {
    const router = useRouter();
 
-   const { isLoggedIn, logout } = useContext(AuthContext);
+   const { isLoggedIn, logout, user } = useContext(AuthContext);
 
    const { isMenuOpen, toggleSideMenu } = useContext(UIContext);
 
@@ -28,6 +32,14 @@ export const SideMenu = () => {
       <section className={isMenuOpen ? `${styles.sidemenu} ${styles.open}` : `${styles.sidemenu}`}>
          <div className={isMenuOpen ? `${styles.options} ${styles.open}` : `${styles.options}`}>
             <ul className={styles.list}>
+               {isLoggedIn && user!.role === 'admin' && (
+                  <li onClick={() => navigateTo('/admin')}>
+                     <MdOutlineAdminPanelSettings className={styles.icon} />
+                     <span>Admin</span>
+                     <MdOutlineKeyboardArrowRight className={styles.iconRight} />
+                  </li>
+               )}
+
                <li onClick={() => navigateTo('/')}>
                   <AiOutlineHome className={styles.icon} />
                   <span>Inicio</span>
