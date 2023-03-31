@@ -166,6 +166,7 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
          couponDiscount,
          pointsDiscount,
          orderId,
+         token,
       };
 
       try {

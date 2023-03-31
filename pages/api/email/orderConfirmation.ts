@@ -9,8 +9,9 @@ type Data = {
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
    const {
-      name,
       orderId,
+      name,
+      toEmail,
       address,
       deliveryDate,
       cart,
@@ -41,7 +42,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 
    const msg = {
       to: {
-         email: 'da.aramayo1990@gmail.com',
+         email: toEmail,
          name,
       },
       from: {

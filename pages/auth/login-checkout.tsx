@@ -15,7 +15,7 @@ const LoginCheckoutPage: NextPage = () => {
    };
 
    return (
-      <AuthLayout title={'Viandas Cook - Iniciar Sesión'}>
+      <AuthLayout title={'Iniciar Sesión'}>
          <section className={styles.auth}>
             <div className={styles.container}>
                <p className={styles.text}>

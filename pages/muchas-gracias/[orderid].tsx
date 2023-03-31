@@ -22,23 +22,27 @@ interface Props {
 const ThankYouPage: NextPage<Props> = ({ order }) => {
    const { referralCoupon, orderComplete } = useContext(CartContext);
    const { addReferralPoints, orderToSpreadsheet } = useContext(OrdersContext);
-   const { sendOrderConfirmationEmail } = useContext(EmailsContext);
+   const { sendOrderConfirmationEmail, sendWireTransferInfo } = useContext(EmailsContext);
+
+   const { _id, paymentMethod } = order;
 
    useEffect(() => {
-      const alreadyExecuted = sessionStorage.getItem('effectExecuted');
+      const alreadyExecuted = sessionStorage.getItem(`effectExecuted ${_id}`);
 
       const onOrderComplete = async () => {
          if (referralCoupon) await addReferralPoints(referralCoupon);
-         await sendOrderConfirmationEmail();
+         if (paymentMethod === 'transferencia') await sendWireTransferInfo(order);
+         await sendOrderConfirmationEmail(order);
          await orderToSpreadsheet();
-         orderComplete();
-         removeCookies();
       };
 
       if (!alreadyExecuted) {
          onOrderComplete();
-         sessionStorage.setItem('effectExecuted', true.toString());
+         sessionStorage.setItem(`effectExecuted ${_id}`, true.toString());
       }
+
+      orderComplete();
+      removeCookies();
    }, []);
 
    return (

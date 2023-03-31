@@ -81,10 +81,11 @@ const checkoutPro = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
       shipments: {
          cost: shipping,
       },
+      external_reference: orderId,
       back_urls: {
-         success: `http://localhost:3000/muchas-gracias/${orderId}/?viandasToken=${token}`,
-         failure: 'http://localhost:3000/api/mercadopago/feedback',
-         pending: 'http://localhost:3000/api/mercadopago/feedback',
+         success: `${req.headers.origin}/muchas-gracias/${orderId}/?viandasToken=${token}`,
+         failure: `${req.headers.origin}/api/mercadopago/feedback`,
+         pending: `${req.headers.origin}/api/mercadopago/feedback`,
       },
       auto_return: 'approved',
       statement_descriptor: 'VIANDAS COOK S.R.L',

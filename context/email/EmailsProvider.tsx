@@ -1,11 +1,7 @@
-import { FC, ReactNode, useReducer, useContext } from 'react';
+import { FC, ReactNode, useReducer } from 'react';
 import { EmailsContext, emailsReducer } from './';
-import { OrdersContext } from '../orders';
 import { viandasApi } from '../../axiosApi';
-import { getSession } from 'next-auth/react';
-import { ShippingAddress } from '../../interfaces';
-import { CartContext } from '../cart';
-import { UIContext } from '../ui';
+import { IOrder, IUser, ShippingAddress } from '../../interfaces';
 
 interface Props {
    children: ReactNode;
@@ -21,31 +17,34 @@ const EMAILS_INITIAL_STATE: EmailsState = {
 export const EmailsProvider: FC<Props> = ({ children }) => {
    const [state, dispatch] = useReducer(emailsReducer, EMAILS_INITIAL_STATE);
 
-   const { shippingAddress, orderId, paymentMethod } = useContext(OrdersContext);
-   const { deliveryDateSelected } = useContext(UIContext);
-   const {
-      cart,
-      numberOfItems,
-      subTotal,
-      discount,
-      couponDiscount,
-      referralDiscount,
-      pointsDiscount,
-      shipping,
-      total,
-   } = useContext(CartContext);
+   const sendOrderConfirmationEmail = async (order: IOrder) => {
+      // const ship: ShippingAddress = user ? user.shipping : shippingAddress;
+      const { name, email } = order.user as IUser;
 
-   const sendOrderConfirmationEmail = async () => {
-      const { user } = ((await getSession()) as any) || '';
+      const { address, address2 } = order.shippingAddress as ShippingAddress;
 
-      const ship: ShippingAddress = user ? user.shipping : shippingAddress;
+      const {
+         _id,
+         deliveryDate,
+         orderItems,
+         numberOfItems,
+         subTotal,
+         discount,
+         couponDiscount,
+         referralDiscount,
+         pointsDiscount,
+         shipping,
+         paymentMethod,
+         total,
+      } = order;
 
       const body = {
-         name: user.name,
-         orderId,
-         address: `${ship.address}, Casa/Depto: ${ship.address2}`,
-         deliveryDate: deliveryDateSelected,
-         cart,
+         orderId: _id,
+         name,
+         toEmail: email,
+         address: `${address}, Casa/Depto: ${address2}`,
+         deliveryDate,
+         cart: orderItems,
          numberOfItems,
          subTotal,
          discount,
@@ -60,8 +59,16 @@ export const EmailsProvider: FC<Props> = ({ children }) => {
       await viandasApi.post('/email/orderConfirmation', body);
    };
 
+   const sendWireTransferInfo = async (order: IOrder) => {
+      const { name, email } = order.user as IUser;
+      const { _id, total } = order;
+
+      await viandasApi.post('/email/wireTransferInfo', { name, email, _id, total });
+   };
+
    return (
-      <EmailsContext.Provider value={{ ...state, sendOrderConfirmationEmail }}>
+      <EmailsContext.Provider
+         value={{ ...state, sendOrderConfirmationEmail, sendWireTransferInfo }}>
          {children}
       </EmailsContext.Provider>
    );
