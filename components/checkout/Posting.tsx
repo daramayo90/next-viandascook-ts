@@ -65,12 +65,6 @@ export const Posting: FC = () => {
       document.body.appendChild(script);
    }, []);
 
-   const isMobile = () => {
-      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-         navigator.userAgent,
-      );
-   };
-
    const onCreateOrder = async () => {
       setIsPosting(true);
 
@@ -100,10 +94,17 @@ export const Posting: FC = () => {
       createCheckoutButton(id, init_point);
    };
 
+   const isMobile = () => {
+      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+         navigator.userAgent,
+      );
+   };
+
    // Create preference when click on checkout button
    const createCheckoutButton = (id: string, init_point: string) => {
       if (isMobile()) {
-         const mercadoPagoAppUrl = `mercadopago://checkout?url=${encodeURIComponent(init_point)}`;
+         // Create a URL to open the MercadoPago app with the preference ID
+         const mercadoPagoAppUrl = `mercadopago://checkout?preference_id=${id}`;
          window.location.href = mercadoPagoAppUrl;
       } else {
          // Initialize the checkout for non-mobile devices
