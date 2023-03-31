@@ -19,7 +19,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
    }
 }
 
-// TODO: Ver uso de cupones cuando no hay login
 const getCoupon = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
    const { user }: any = (await getServerSession(req, res, authOptions)) || '';
    const { code }: any = req.query;
@@ -28,7 +27,7 @@ const getCoupon = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
       return res.status(404).json({ message: 'Cupón ya utilizado' });
    }
 
-   const email = user?.email;
+   const email = user ? user.email : req.cookies.email;
 
    await db.connect();
 
