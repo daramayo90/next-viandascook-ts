@@ -104,7 +104,7 @@ export const Posting: FC = () => {
    const createCheckoutButton = (id: string, init_point: string) => {
       if (isMobile()) {
          // Create a URL to open the MercadoPago app with the preference ID
-         const mercadoPagoAppUrl = `http://mpago.la/${encodeURIComponent(init_point)}`;
+         const mercadoPagoAppUrl = `http://mpago.la/${init_point}`;
          window.location.href = mercadoPagoAppUrl;
       } else {
          // Initialize the checkout for non-mobile devices
