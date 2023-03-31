@@ -157,7 +157,7 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
    const createMPOrder = async (
       orderId: string,
       token: string,
-   ): Promise<{ id: string; error?: string }> => {
+   ): Promise<{ id: string; init_point: string; error?: string }> => {
       const body = {
          orderItems: cart.map((product) => product),
          numberOfItems,
@@ -174,10 +174,12 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
 
          return {
             id: data.id,
+            init_point: data.init_point,
          };
       } catch (error: any) {
          return {
             id: '',
+            init_point: '',
             error: error.response.data.message,
          };
       }

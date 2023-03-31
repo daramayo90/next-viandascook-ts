@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import sgMail from '@sendgrid/mail';
+import { currency } from '../../../utils';
 
 type Data = {
    message: string;
@@ -28,7 +29,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         <p><strong>Banco:</strong> Galicia</p>
         <p><strong>CBU:</strong> 00701040-20000007169700</p>
         <p><strong>Alias:</strong> VIANDAS.COOK.SRL</p>
-        <p><strong>Monto:</strong> ${total}</p>
+        <p><strong>Monto:</strong> ${currency.format(Number(total))}</p>
         <br></br>
         <p>Muchas gracias por tu compra y confiar en nosotros.</p>
       `,

@@ -10,7 +10,7 @@ import { db } from '../../../database';
 import mercadopago from 'mercadopago';
 import crypto from 'crypto';
 
-type Data = { message: string } | { id: string };
+type Data = { message: string } | { id: string; init_point: string };
 
 export default function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
    switch (req.method) {
@@ -96,7 +96,7 @@ const checkoutPro = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
          preference as CreatePreferencePayload,
       );
 
-      return res.status(200).json({ id: response.body.id });
+      return res.status(200).json({ id: response.body.id, init_point: response.body.init_point });
    } catch (error) {
       return res.status(501).json({
          message: 'Estamos teniendo un error en la creación de la preferencia del backend',

@@ -65,6 +65,12 @@ export const Posting: FC = () => {
       document.body.appendChild(script);
    }, []);
 
+   const isMobile = () => {
+      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+         navigator.userAgent,
+      );
+   };
+
    const onCreateOrder = async () => {
       setIsPosting(true);
 
@@ -83,7 +89,7 @@ export const Posting: FC = () => {
          return;
       }
 
-      const { id, error } = await createMPOrder(message, token);
+      const { id, init_point, error } = await createMPOrder(message, token);
 
       if (error) {
          setIsPosting(false);
@@ -91,22 +97,27 @@ export const Posting: FC = () => {
          return;
       }
 
-      createCheckoutButton(id);
+      createCheckoutButton(id, init_point);
    };
 
    // Create preference when click on checkout button
-   const createCheckoutButton = (id: string) => {
-      // Initialize the checkout
-      mpRef.current?.checkout({
-         preference: {
-            id: id,
-         },
-         render: {
-            container: '.cho-container', // Class name where the payment button will be displayed
-            label: 'Pagar', // Change the payment button text (optional)
-         },
-         autoOpen: true,
-      });
+   const createCheckoutButton = (id: string, init_point: string) => {
+      if (isMobile()) {
+         const mercadoPagoAppUrl = `mercadopago://checkout?url=${encodeURIComponent(init_point)}`;
+         window.location.href = mercadoPagoAppUrl;
+      } else {
+         // Initialize the checkout for non-mobile devices
+         mpRef.current?.checkout({
+            preference: {
+               id: id,
+            },
+            render: {
+               container: '.cho-container', // Class name where the payment button will be displayed
+               label: 'Pagar', // Change the payment button text (optional)
+            },
+            autoOpen: true,
+         });
+      }
 
       setIsPosting(false);
       setErrorMsg('');
