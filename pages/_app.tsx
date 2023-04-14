@@ -9,7 +9,7 @@ import { FloatingWhatsApp } from 'react-floating-whatsapp';
 
 import { SWRConfig } from 'swr';
 import { useLoader } from '../hooks';
-import { ga } from '../utils';
+import { ga, meta } from '../utils';
 
 import { AuthProvider, CartProvider, EmailsProvider } from '../context';
 import { UIProvider } from '../context/ui';
@@ -23,6 +23,7 @@ import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
    ga.useGoogleAnalytics();
+   meta.useMetaPixel();
 
    const { loading } = useLoader();
 

@@ -2,6 +2,7 @@ export * as coupon from './couponCalculation';
 export * as currency from './currency';
 export * as ga from './ga4';
 export * as jwt from './jwt';
+export * as meta from './meta';
 export * as promo from './discountCalculation';
 export * as validations from './validations';
 export * from './commonQuestions';
