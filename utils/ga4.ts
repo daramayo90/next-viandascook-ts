@@ -2,10 +2,10 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 
-export const GA_TRACKING_ID = 'G-360949087'; // Replace with your measurement ID
+export const GA_TRACKING_ID = process.env.GA_TRACKING_ID; // Replace with your measurement ID
 
 export const pageview = (url: string): void => {
-   window.gtag('config', GA_TRACKING_ID, {
+   window.gtag('config', GA_TRACKING_ID!, {
       page_path: url,
    });
 };
