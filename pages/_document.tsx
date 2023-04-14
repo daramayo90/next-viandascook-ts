@@ -3,6 +3,8 @@ import Script from 'next/script';
 
 import { GA_TRACKING_ID } from '../utils/ga4';
 
+console.log(GA_TRACKING_ID);
+
 class MyDocument extends Document {
    static async getInitialProps(ctx: DocumentContext) {
       const initalProps = await Document.getInitialProps(ctx);
