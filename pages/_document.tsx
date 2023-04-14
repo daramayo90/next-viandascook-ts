@@ -14,24 +14,20 @@ class MyDocument extends Document {
       return (
          <Html>
             <Head>
-               {GA_TRACKING_ID && (
-                  <>
-                     <script
-                        async
-                        src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
-                     />
-                     <script
-                        dangerouslySetInnerHTML={{
-                           __html: `
-                    window.dataLayer = window.dataLayer || [];
-                    function gtag(){dataLayer.push(arguments);}
-                    gtag('js', new Date());
-                    gtag('config', '${GA_TRACKING_ID}');
-                  `,
-                        }}
-                     />
-                  </>
-               )}
+               {/* Start Google Analytics 4 */}
+               <Script
+                  src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+                  strategy='afterInteractive'
+               />
+               <Script id='google-analytics' strategy='afterInteractive'>
+                  {`
+                     window.dataLayer = window.dataLayer || [];
+                     function gtag(){window.dataLayer.push(arguments);}
+                     gtag('js', new Date());
+
+                     gtag('config', '${GA_TRACKING_ID}');
+                  `}
+               </Script>
                {/* End Google Analytics 4 */}
 
                <link href='https://fonts.googleapis.com' />
