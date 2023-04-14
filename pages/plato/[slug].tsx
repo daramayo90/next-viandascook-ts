@@ -1,7 +1,10 @@
+import { useEffect } from 'react';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 
 import { dbProducts } from '../../database';
 import { IProduct } from '../../interfaces';
+
+import { ga, currency } from '../../utils';
 
 import { ProductLayout } from '../../components/layouts';
 import {
@@ -19,6 +22,14 @@ interface Props {
 }
 
 const ProductPage: NextPage<Props> = ({ product }) => {
+   useEffect(() => {
+      ga.event({
+         action: 'view_product',
+         category: 'Product',
+         label: product.name,
+      });
+   }, [product]);
+
    return (
       <ProductLayout title={'Viandas Cook - ' + product.name} pageDescription={''}>
          <article className={styles.product}>

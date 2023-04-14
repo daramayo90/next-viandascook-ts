@@ -1,9 +1,7 @@
 import Document, { DocumentContext, Html, Head, Main, NextScript } from 'next/document';
 import Script from 'next/script';
 
-import { GA_TRACKING_ID } from '../utils/ga4';
-
-console.log(GA_TRACKING_ID);
+import { ga } from '../utils';
 
 class MyDocument extends Document {
    static async getInitialProps(ctx: DocumentContext) {
@@ -18,7 +16,8 @@ class MyDocument extends Document {
             <Head>
                {/* Start Google Analytics 4 */}
                <Script
-                  src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+                  async={true}
+                  src={`https://www.googletagmanager.com/gtag/js?id=${ga.GA_TRACKING_ID}`}
                   strategy='afterInteractive'
                />
                <Script id='google-analytics' strategy='afterInteractive'>
@@ -27,7 +26,7 @@ class MyDocument extends Document {
                      function gtag(){window.dataLayer.push(arguments);}
                      gtag('js', new Date());
 
-                     gtag('config', '${GA_TRACKING_ID}');
+                     gtag('config', '${ga.GA_TRACKING_ID}');
                   `}
                </Script>
                {/* End Google Analytics 4 */}
