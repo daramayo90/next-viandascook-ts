@@ -1,7 +1,7 @@
 import Document, { DocumentContext, Html, Head, Main, NextScript } from 'next/document';
 import Script from 'next/script';
 
-import { GA_MEASUREMENT_ID } from '../utils/ga4';
+import { GA_TRACKING_ID } from '../utils/ga4';
 
 class MyDocument extends Document {
    static async getInitialProps(ctx: DocumentContext) {
@@ -14,23 +14,22 @@ class MyDocument extends Document {
       return (
          <Html>
             <Head>
-               <Script id='gtm-head'>{`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-               new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-               j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-               'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-               })(window,document,'script','dataLayer','GTM-WWP3752');`}</Script>
-
-               {/* Google Analytics 4 */}
-               {GA_MEASUREMENT_ID && (
+               {GA_TRACKING_ID && (
                   <>
-                     <Script
+                     <script
                         async
-                        src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+                        src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
                      />
-                     <Script id='ga4'>{`window.dataLayer = window.dataLayer || [];
-                     function gtag(){dataLayer.push(arguments);}
-                     gtag('js', new Date());
-                     gtag('config', '${GA_MEASUREMENT_ID}');`}</Script>
+                     <script
+                        dangerouslySetInnerHTML={{
+                           __html: `
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+                    gtag('js', new Date());
+                    gtag('config', '${GA_TRACKING_ID}');
+                  `,
+                        }}
+                     />
                   </>
                )}
                {/* End Google Analytics 4 */}

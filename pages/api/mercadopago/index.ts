@@ -84,8 +84,8 @@ const checkoutPro = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
       external_reference: orderId,
       back_urls: {
          success: `${req.headers.origin}/muchas-gracias/${orderId}/?viandasToken=${token}`,
-         failure: `${req.headers.origin}/api/mercadopago/feedback`,
-         pending: `${req.headers.origin}/api/mercadopago/feedback`,
+         failure: `${req.headers.origin}/checkout`,
+         pending: `${req.headers.origin}/checkout`,
       },
       auto_return: 'approved',
       statement_descriptor: 'VIANDAS COOK S.R.L',

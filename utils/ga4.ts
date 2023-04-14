@@ -1,22 +1,31 @@
-// Add this interface to extend the Window interface with 'gtag'
-interface GA4Window extends Window {
-   gtag: (command: string, targetId: string | undefined, config?: any) => void;
-}
+// lib/analytics.ts
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 
-declare let window: GA4Window;
+export const GA_TRACKING_ID = 'G-360949087'; // Replace with your measurement ID
 
-export const GA_MEASUREMENT_ID = 'G-XXXXXXXXXX'; // Replace 'G-XXXXXXXXXX' with your GA4 measurement ID.
-
-export const pageview = (url: string) => {
-   if (typeof window === 'undefined' || !GA_MEASUREMENT_ID) return;
-
-   // window.gtag('config', GA_MEASUREMENT_ID, {
-   //    page_path: url,
-   // });
+export const pageview = (url: string): void => {
+   window.gtag('config', GA_TRACKING_ID, {
+      page_path: url,
+   });
 };
 
-export const event = (action: string, params: any = {}) => {
-   if (typeof window === 'undefined' || !GA_MEASUREMENT_ID) return;
+export const useGoogleAnalytics = (): void => {
+   const router = useRouter();
 
-   // window.gtag('event', action, params);
+   useEffect(() => {
+      if (!window.gtag) {
+         return;
+      }
+
+      const handleRouteChange = (url: string) => {
+         pageview(url);
+      };
+
+      router.events.on('routeChangeComplete', handleRouteChange);
+
+      return () => {
+         router.events.off('routeChangeComplete', handleRouteChange);
+      };
+   }, [router.events]);
 };
