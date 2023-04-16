@@ -9,7 +9,7 @@ interface ProductSlug {
 export const getAllProducts = async (): Promise<IProduct[]> => {
    await db.connect();
 
-   const products = await Product.find().lean();
+   const products = await Product.find().sort({ name: 1 }).lean();
 
    await db.disconnect();
 

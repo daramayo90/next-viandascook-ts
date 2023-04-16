@@ -18,14 +18,14 @@ const discounts = [
       name: 'Descuento llevando 56 viandas o más',
       img: '/discounts/offer-56-viandas.png',
    },
-   {
-      name: 'Descuento Cyber Monday',
-      img: '/discounts/offer-cyber-monday.png',
-   },
-   {
-      name: 'Descuento Black Friday',
-      img: '/discounts/offer-black-friday.png',
-   },
+   // {
+   //    name: 'Descuento Cyber Monday',
+   //    img: '/discounts/offer-cyber-monday.png',
+   // },
+   // {
+   //    name: 'Descuento Black Friday',
+   //    img: '/discounts/offer-black-friday.png',
+   // },
 ];
 
 const DiscountsPage: NextPage = () => {

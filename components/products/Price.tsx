@@ -35,6 +35,7 @@ export const Price: FC<Props> = ({ product }) => {
                updatedQuantity={(quantity) =>
                   onNewCartQuantityValue(cartProduct as ICartProduct, quantity)
                }
+               product={product}
             />
          )}
       </div>

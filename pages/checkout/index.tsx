@@ -1,14 +1,17 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 
 import { GetServerSideProps, NextPage } from 'next';
 import { getServerSession } from 'next-auth/next';
 
 import { authOptions } from '../../pages/api/auth/[...nextauth]';
-import { AuthContext, OrdersContext } from '../../context';
+import { AuthContext, CartContext, OrdersContext } from '../../context';
 
 import { IUser } from '../../interfaces';
 
+import { ga } from '../../utils';
+
 import { ShopLayout } from '../../components/layouts';
+import { SideProductsMenu } from '../../components/ui';
 import {
    Address,
    CheckoutSummary,
@@ -21,7 +24,6 @@ import {
 } from '../../components/checkout';
 
 import styles from '../../styles/Checkout.module.css';
-import { SideProductsMenu } from '../../components/ui';
 
 interface Props {
    user?: IUser;
@@ -30,8 +32,21 @@ interface Props {
 const CheckoutPage: NextPage<Props> = ({ user }) => {
    const { shippingAddress } = useContext(OrdersContext);
    const { isLoggedIn } = useContext(AuthContext);
+   const { total, cart } = useContext(CartContext);
 
    const shipping = isLoggedIn ? user?.shipping : shippingAddress;
+
+   useEffect(() => {
+      ga.event({
+         action: 'begin_checkout',
+         category: 'Checkout',
+         label: user ? user.email : shippingAddress?.email,
+         value: total,
+         params: {
+            items: cart,
+         },
+      });
+   }, [user, shippingAddress, total, cart]);
 
    return (
       <ShopLayout title={'Viandas Cook - Finalizar Compra'} pageDescription={''}>

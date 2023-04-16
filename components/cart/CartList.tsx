@@ -64,6 +64,7 @@ export const CartList: FC<Props> = ({ items, editable = false }) => {
                                  updatedQuantity={(quantity) =>
                                     onNewCartQuantityValue(product as ICartProduct, quantity)
                                  }
+                                 product={product}
                               />
                            </div>
                         ) : (

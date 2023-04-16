@@ -1,6 +1,5 @@
 import Document, { DocumentContext, Html, Head, Main, NextScript } from 'next/document';
 import Script from 'next/script';
-import Image from 'next/image';
 
 import { ga, meta } from '../utils';
 
@@ -55,6 +54,7 @@ class MyDocument extends Document {
                      style={{ display: 'none', visibility: 'hidden' }}></iframe>
                </noscript>
                {/* End Meta Pixel */}
+               <link rel='icon' href='/logo/viandas-icon.png' />
 
                <link href='https://fonts.googleapis.com' />
                <link href='https://fonts.cdnfonts.com' />

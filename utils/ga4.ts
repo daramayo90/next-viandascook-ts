@@ -8,6 +8,7 @@ interface EventData {
    category?: string;
    label?: string;
    value?: number;
+   params?: object;
 }
 
 export const pageview = (url: string): void => {
@@ -36,16 +37,13 @@ export const useGoogleAnalytics = (): void => {
    }, [router.events]);
 };
 
-export const event = ({ action, category, label, value }: EventData): void => {
-   console.log('Google Analytics action', action);
-   console.log('Google Analytics category', category);
-   console.log('Google Analytics label', label);
-   console.log('Google Analytics value', value);
+export const event = ({ action, category, label, value, params }: EventData): void => {
    if (window.gtag) {
       window.gtag('event', action, {
          event_category: category,
          event_label: label,
-         value: value,
+         event_value: value,
+         event_items: params,
       });
    }
 };

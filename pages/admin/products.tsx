@@ -40,10 +40,10 @@ const columns: GridColDef[] = [
          );
       },
    },
-   { field: 'type', width: 180, headerName: 'Tipo' },
    { field: 'inStock', width: 180, headerName: 'Inventario' },
    { field: 'bestSeller', width: 180, headerName: 'Más vendido' },
    { field: 'price', width: 180, headerName: 'Precio' },
+   { field: 'type', width: 840, headerName: 'Tipo' },
 ];
 
 const ProductsPage = () => {
@@ -80,6 +80,12 @@ const ProductsPage = () => {
                   rows={rows}
                   columns={columns}
                   pageSizeOptions={[25, 50, 100]}
+                  sortModel={[
+                     {
+                        field: 'name',
+                        sort: 'asc',
+                     },
+                  ]}
                />
             </Grid>
          </Grid>

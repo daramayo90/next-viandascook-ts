@@ -16,7 +16,6 @@ interface Props {
    products: IProduct[];
 }
 
-// TODO: Hacer un refactor de la página
 const ProductsPage: NextPage<Props> = ({ products }) => {
    const [searchTerm, setSearchTerm] = useState<string>('');
    const [searchProducts, setSearchProducts] = useState<IProduct[]>([]);

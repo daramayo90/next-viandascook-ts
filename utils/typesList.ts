@@ -5,9 +5,9 @@ export const typesList = [
       model: '',
    },
    {
-      icon: '/type/seafood.svg',
-      name: 'Pescado',
-      model: 'Pescado',
+      icon: '/type/chicken.svg',
+      name: 'Pollo',
+      model: 'Pollo',
    },
    {
       icon: '/type/meat.svg',
@@ -15,9 +15,19 @@ export const typesList = [
       model: 'Carne',
    },
    {
-      icon: '/type/chicken.svg',
-      name: 'Pollo',
-      model: 'Pollo',
+      icon: '/type/seafood.svg',
+      name: 'Pescado',
+      model: 'Pescado',
+   },
+   {
+      icon: '/type/all.svg',
+      name: 'Tarta',
+      model: 'Tarta',
+   },
+   {
+      icon: '/type/all.svg',
+      name: 'Empanada',
+      model: 'Empanada',
    },
    {
       icon: '/type/vegetarian.svg',
@@ -30,13 +40,23 @@ export const typesList = [
       model: 'Vegano',
    },
    {
-      icon: '/type/keto.svg',
-      name: 'keto',
-      model: 'keto',
+      icon: '/type/lowcalories.svg',
+      name: 'Bajo en calorías',
+      model: 'Bajo en calorías',
    },
    {
-      icon: '/type/pork.svg',
-      name: 'Cerdo',
-      model: 'Cerdo',
+      icon: '/type/lowcarbs.svg',
+      name: 'Bajo en carbo',
+      model: 'Bajo en carbo',
+   },
+   {
+      icon: '/type/lowsodium.svg',
+      name: 'Bajo en sodio',
+      model: 'Bajo en sodio',
+   },
+   {
+      icon: '/type/dairyfree.svg',
+      name: 'Libre de lácteos',
+      model: 'Libre de lácteos',
    },
 ];

@@ -6,7 +6,7 @@ import { dbOrders } from '../../database';
 import { IOrder } from '../../interfaces';
 
 import { CartContext, OrdersContext, EmailsContext } from '../../context';
-import { removeCookies } from '../../utils';
+import { ga, removeCookies } from '../../utils';
 
 import { OrderLayout } from '../../components/layouts';
 import { OrderProducts, OrderCheckout, OrderAddress } from '../../components/orders';
@@ -24,7 +24,23 @@ const ThankYouPage: NextPage<Props> = ({ order }) => {
    const { addReferralPoints, orderToSpreadsheet } = useContext(OrdersContext);
    const { sendOrderConfirmationEmail, sendWireTransferInfo } = useContext(EmailsContext);
 
-   const { _id, paymentMethod } = order;
+   const { _id, paymentMethod, total } = order;
+
+   const onPurchaseEvent = () => {
+      ga.event({
+         action: 'purchase',
+         category: 'Purchase',
+         label: _id!.toString(),
+         value: total,
+         params: {
+            user: order.user,
+            items: order.orderItems,
+            numberOfItems: order.numberOfItems,
+            coupons: order.coupons,
+            method: paymentMethod,
+         },
+      });
+   };
 
    useEffect(() => {
       const alreadyExecuted = sessionStorage.getItem(`effectExecuted ${_id}`);
@@ -32,6 +48,7 @@ const ThankYouPage: NextPage<Props> = ({ order }) => {
       const onOrderComplete = async () => {
          if (referralCoupon) await addReferralPoints(referralCoupon);
          if (paymentMethod === 'transferencia') await sendWireTransferInfo(order);
+         onPurchaseEvent();
          await sendOrderConfirmationEmail(order);
          await orderToSpreadsheet();
       };

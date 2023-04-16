@@ -27,16 +27,18 @@ import { viandasApi } from '../../../axiosApi';
 import { Product } from '../../../models';
 
 const validTypes: IType[] = [
-   'Pollo',
-   'Libre de lácteos',
-   'Libre de glúten',
-   'Keto',
    'Bajo en calorías',
    'Bajo en carbo',
    'Bajo en sodio',
    'Carne',
+   'Empanada',
+   'Keto',
+   'Libre de glúten',
+   'Libre de lácteos',
    'Pasta',
    'Pescado',
+   'Pollo',
+   'Tarta',
    'Vegano',
    'Vegetariano',
 ];

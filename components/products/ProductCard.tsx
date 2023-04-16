@@ -79,6 +79,7 @@ export const ProductCard: FC<Props> = ({ product }) => {
                   updatedQuantity={(quantity) =>
                      onNewCartQuantityValue(cartProduct as ICartProduct, quantity)
                   }
+                  product={product}
                />
             ) : (
                <div className={styles.selectedQuantity} onClick={() => setIsSelecting(true)}>

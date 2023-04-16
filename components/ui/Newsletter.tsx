@@ -2,9 +2,10 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { viandasApi } from '../../axiosApi';
 
-import styles from '../../styles/Newsletter.module.css';
-import { validations } from '../../utils';
+import { ga, validations } from '../../utils';
 import { SubmitButton } from './SubmitButton';
+
+import styles from '../../styles/Newsletter.module.css';
 
 type FormData = {
    name: string;
@@ -44,10 +45,19 @@ export const Newsletter = () => {
       reset();
       setErrorMessage('');
       setIsClicked(false);
+      subscribeUserEvent(email);
       setOkMessage('Ahora eres parte de la comunidad ViandLover. ¡Bienvenido!');
       setTimeout(() => {
          setOkMessage('');
       }, 3000);
+   };
+
+   const subscribeUserEvent = (email: string) => {
+      ga.event({
+         action: 'new_subscriber',
+         category: 'Subscriber',
+         label: email,
+      });
    };
 
    return (

@@ -22,6 +22,7 @@
 .types > .container > .type {
    max-width: 100px;
    margin-right: 22px;
+   height: fit-content;
    border-radius: 8px;
    text-align: center;
    font-size: 12px;
@@ -56,20 +57,20 @@
 
 .types > .container > .type > span {
    display: block;
-   margin-top: 10px;
+   margin: 10px 2px;
 }
 
 @media (min-width: 720px) {
    .types > .container {
       align-items: flex-start;
-      max-width: 850px;
+      max-width: 1050px;
       padding: 0;
    }
 
    .types > .container > .type {
       width: 120px;
       font-size: 14px;
-      margin: auto;
+      margin: 0;
    }
 
    .types > .container > .type > .borderImage {
