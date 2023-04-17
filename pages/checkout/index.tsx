@@ -32,7 +32,7 @@ interface Props {
 const CheckoutPage: NextPage<Props> = ({ user }) => {
    const { shippingAddress } = useContext(OrdersContext);
    const { isLoggedIn } = useContext(AuthContext);
-   const { total, cart } = useContext(CartContext);
+   const { total } = useContext(CartContext);
 
    const shipping = isLoggedIn ? user?.shipping : shippingAddress;
 
@@ -42,11 +42,8 @@ const CheckoutPage: NextPage<Props> = ({ user }) => {
          category: 'Checkout',
          label: user ? user.email : shippingAddress?.email,
          value: total,
-         params: {
-            items: cart,
-         },
       });
-   }, [user, shippingAddress, total, cart]);
+   }, [user, shippingAddress, total]);
 
    return (
       <ShopLayout title={'Viandas Cook - Finalizar Compra'} pageDescription={''}>

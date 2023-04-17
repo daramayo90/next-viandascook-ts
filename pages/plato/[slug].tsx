@@ -28,11 +28,6 @@ const ProductPage: NextPage<Props> = ({ product }) => {
          category: 'Product',
          label: product.name,
          value: product.price,
-         params: {
-            id: product._id,
-            name: product.name,
-            type: product.type,
-         },
       });
    }, [product]);
 

@@ -32,7 +32,7 @@ export const SideMenu = () => {
       <section className={isMenuOpen ? `${styles.sidemenu} ${styles.open}` : `${styles.sidemenu}`}>
          <div className={isMenuOpen ? `${styles.options} ${styles.open}` : `${styles.options}`}>
             <ul className={styles.list}>
-               {isLoggedIn && user!.role === 'admin' && (
+               {isLoggedIn && user?.role === 'admin' && (
                   <li onClick={() => navigateTo('/admin')}>
                      <MdOutlineAdminPanelSettings className={styles.icon} />
                      <span>Admin</span>

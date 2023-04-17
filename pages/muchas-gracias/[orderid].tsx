@@ -32,13 +32,8 @@ const ThankYouPage: NextPage<Props> = ({ order }) => {
          category: 'Purchase',
          label: _id!.toString(),
          value: total,
-         params: {
-            user: order.user,
-            items: order.orderItems,
-            numberOfItems: order.numberOfItems,
-            coupons: order.coupons,
-            method: paymentMethod,
-         },
+         number_of_items: order.numberOfItems,
+         payment_method: paymentMethod,
       });
    };
 

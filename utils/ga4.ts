@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
+import { IPaymentMethods } from '../interfaces';
 
 export const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_TRACKING_ID!;
 
@@ -8,7 +9,8 @@ interface EventData {
    category?: string;
    label?: string;
    value?: number;
-   params?: object;
+   number_of_items?: number;
+   payment_method?: IPaymentMethods;
 }
 
 export const pageview = (url: string): void => {
@@ -37,13 +39,21 @@ export const useGoogleAnalytics = (): void => {
    }, [router.events]);
 };
 
-export const event = ({ action, category, label, value, params }: EventData): void => {
+export const event = ({
+   action,
+   category,
+   label,
+   value,
+   number_of_items,
+   payment_method,
+}: EventData): void => {
    if (window.gtag) {
       window.gtag('event', action, {
          event_category: category,
          event_label: label,
          event_value: value,
-         event_items: params,
+         number_of_items,
+         payment_method,
       });
    }
 };
