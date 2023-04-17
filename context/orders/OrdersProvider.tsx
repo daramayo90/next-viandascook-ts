@@ -90,6 +90,13 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
 
       const shippingAddress: ShippingAddress = user ? user.shipping : state.shippingAddress;
 
+      if (!shippingAddress) {
+         return {
+            hasError: true,
+            message: 'Indicanos una dirección de entrega antes de continuar',
+         };
+      }
+
       if (shippingAddress.address.length < 4) {
          return {
             hasError: true,

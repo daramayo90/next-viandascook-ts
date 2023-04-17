@@ -3,7 +3,7 @@ import { useContext, useEffect } from 'react';
 import { GetServerSideProps, NextPage } from 'next';
 
 import { dbOrders } from '../../database';
-import { IOrder } from '../../interfaces';
+import { IOrder, IUser } from '../../interfaces';
 
 import { CartContext, OrdersContext, EmailsContext } from '../../context';
 import { ga, removeCookies } from '../../utils';
@@ -24,13 +24,14 @@ const ThankYouPage: NextPage<Props> = ({ order }) => {
    const { addReferralPoints, orderToSpreadsheet } = useContext(OrdersContext);
    const { sendOrderConfirmationEmail, sendWireTransferInfo } = useContext(EmailsContext);
 
-   const { _id, paymentMethod, total } = order;
+   const { _id, paymentMethod, total, user } = order;
+   const { email } = user as IUser;
 
    const onPurchaseEvent = () => {
       ga.event({
          action: 'purchase_2',
          category: 'Purchase',
-         label: _id!.toString(),
+         label: `${_id!.toString()} | ${email}`,
          value: total,
          number_of_items: order.numberOfItems,
          payment_method: paymentMethod,
