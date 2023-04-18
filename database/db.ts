@@ -14,13 +14,6 @@ const mongoConnection = {
    isConnected: CONNECTION_STATES.DISCONNECTED,
 };
 
-const options = {
-   poolSize: 10, // Set the maximum number of connections in the connection pool to 10
-   connectTimeoutMS: 5000, // Set the connection timeout to 5 seconds
-   useNewUrlParser: true,
-   useUnifiedTopology: true,
-};
-
 export const connect = async () => {
    if (mongoConnection.isConnected === CONNECTION_STATES.CONNECTED) {
       console.log('We are already connected');
@@ -39,7 +32,7 @@ export const connect = async () => {
    }
 
    try {
-      await mongoose.connect(process.env.MONGO_URL || '', options);
+      await mongoose.connect(process.env.MONGO_URL || '');
       mongoConnection.isConnected = CONNECTION_STATES.CONNECTED;
       console.log('Connected to MongoDB:', process.env.MONGO_URL);
    } catch (error) {

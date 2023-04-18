@@ -16,6 +16,7 @@ import { AdminLayout } from '../../components/layouts';
 import { IOrder, IUser } from '../../interfaces';
 
 import { format } from '../../utils/currency';
+import Link from 'next/link';
 
 const OrdersPage = () => {
    const { data, error } = useSWR<IOrder[]>('/api/admin/orders');
@@ -92,11 +93,7 @@ const columns: GridColDef[] = [
       headerName: 'Ver pedido',
       width: 180,
       renderCell: ({ row }: GridRenderCellParams) => {
-         return (
-            <a href={`/admin/pedido/${row.id}`} target='_blank' rel='noreferrer'>
-               Ver pedido
-            </a>
-         );
+         return <Link href={`/admin/pedido/${row.id}`}>Ver pedido</Link>;
       },
    },
    {
