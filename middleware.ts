@@ -15,7 +15,7 @@ export async function middleware(req: NextRequest) {
    url.search = '';
 
    const adminRole = ['admin'];
-   const kitchenRole = ['admin', 'kitchen'];
+   const viandasRole = ['admin', 'viandas'];
 
    if (pathname.includes('login-checkout') && session) {
       url.pathname = '/checkout';
@@ -47,7 +47,12 @@ export async function middleware(req: NextRequest) {
       return NextResponse.redirect(url);
    }
 
-   if (pathname.includes('cocina') && (!session || !kitchenRole.includes(session.user.role))) {
+   if (pathname.includes('cocina') && (!session || !viandasRole.includes(session.user.role))) {
+      url.pathname = '/auth/login-viandascook';
+      return NextResponse.redirect(url);
+   }
+
+   if (pathname.includes('onlera') && (!session || !viandasRole.includes(session.user.role))) {
       url.pathname = '/auth/login-viandascook';
       return NextResponse.redirect(url);
    }
@@ -62,6 +67,7 @@ export const config = {
       '/auth/login-checkout/:path*',
       '/checkout/:path*',
       '/cocina/:path*',
+      '/onlera/:path*',
       '/mi-cuenta/:path*',
       '/pedidos/:path*',
    ],

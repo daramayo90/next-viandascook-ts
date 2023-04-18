@@ -5,14 +5,14 @@ interface ContextProps {
    isCartSummaryOpen: boolean;
    isProductsMenuOpen: boolean;
    isAdminMenuOpen: boolean;
-   isKitchenMenuOpen: boolean;
+   isViandasMenuOpen: boolean;
    deliveryDateSelected: Date;
 
    toggleSideMenu: () => void;
    toggleCartSummary: () => void;
    toggleProductsMenu: () => void;
    toggleAdminMenu: () => void;
-   toggleKitchenMenu: () => void;
+   toggleViandasMenu: () => void;
    selectDeliveryDate: (date: Date) => void;
 }
 

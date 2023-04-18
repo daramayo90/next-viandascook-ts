@@ -5,7 +5,7 @@ type UIActionType =
    | { type: '[UI] - Toggle Cart Summary' }
    | { type: '[UI] - Toggle Products Menu' }
    | { type: '[UI] - Toggle Admin Menu' }
-   | { type: '[UI] - Toggle Kitchen Menu' }
+   | { type: '[UI] - Toggle Viandas Menu' }
    | { type: '[UI] - Select Delivery Date'; payload: Date }
    | { type: '[UI] - Load Delivery Date from Cookies'; payload: Date };
 
@@ -35,10 +35,10 @@ export const uiReducer = (state: UIState, action: UIActionType): UIState => {
             isAdminMenuOpen: !state.isAdminMenuOpen,
          };
 
-      case '[UI] - Toggle Kitchen Menu':
+      case '[UI] - Toggle Viandas Menu':
          return {
             ...state,
-            isKitchenMenuOpen: !state.isKitchenMenuOpen,
+            isViandasMenuOpen: !state.isViandasMenuOpen,
          };
 
       case '[UI] - Select Delivery Date':

@@ -1,7 +1,7 @@
 import { FC, ReactNode } from 'react';
 
-import { SideKitchenMenu } from '../ui';
-import { KitchenNavbar } from '../navbar';
+import { SideViandasMenu } from '../ui';
+import { ViandasNavbar } from '../navbar';
 
 import styles from '../../styles/AdminLayout.module.css';
 
@@ -11,11 +11,11 @@ interface Props {
    icon?: ReactNode;
 }
 
-export const KitchenLayout: FC<Props> = ({ children, title, icon }) => {
+export const ViandasLayout: FC<Props> = ({ children, title, icon }) => {
    return (
       <>
          <nav>
-            <KitchenNavbar />
+            <ViandasNavbar />
          </nav>
 
          <main>
@@ -29,7 +29,7 @@ export const KitchenLayout: FC<Props> = ({ children, title, icon }) => {
             <div className='fadeIn'>{children}</div>
          </main>
 
-         <SideKitchenMenu />
+         <SideViandasMenu />
       </>
    );
 };

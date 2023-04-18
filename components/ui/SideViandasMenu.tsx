@@ -12,24 +12,24 @@ import styles from '../../styles/SideMenu.module.css';
 import { AiOutlineUser } from 'react-icons/ai';
 import { TfiDropbox } from 'react-icons/tfi';
 
-export const SideKitchenMenu = () => {
+export const SideViandasMenu = () => {
    const router = useRouter();
 
    const { logout, user } = useContext(AuthContext);
 
-   const { isKitchenMenuOpen, toggleKitchenMenu } = useContext(UIContext);
+   const { isViandasMenuOpen, toggleViandasMenu } = useContext(UIContext);
 
    const navigateTo = (url: string) => {
-      toggleKitchenMenu();
+      toggleViandasMenu();
       router.push(url);
    };
 
    return (
       <section
-         className={isKitchenMenuOpen ? `${styles.sidemenu} ${styles.open}` : `${styles.sidemenu}`}>
+         className={isViandasMenuOpen ? `${styles.sidemenu} ${styles.open}` : `${styles.sidemenu}`}>
          <div
             className={
-               isKitchenMenuOpen ? `${styles.options} ${styles.open}` : `${styles.options}`
+               isViandasMenuOpen ? `${styles.options} ${styles.open}` : `${styles.options}`
             }>
             <ul className={styles.list}>
                {user?.role === 'admin' && (
@@ -69,6 +69,12 @@ export const SideKitchenMenu = () => {
                <li onClick={() => navigateTo('/cocina/preparar-pedidos')}>
                   <BsBagCheck className={styles.icon} />
                   <span>Preparar pedidos</span>
+                  <MdOutlineKeyboardArrowRight className={styles.iconRight} />
+               </li>
+
+               <li onClick={() => navigateTo('/onlera/orders')}>
+                  <HiOutlineClipboardList className={styles.icon} />
+                  <span>Ver Pedidos</span>
                   <MdOutlineKeyboardArrowRight className={styles.iconRight} />
                </li>
 

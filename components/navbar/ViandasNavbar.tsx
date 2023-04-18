@@ -6,8 +6,8 @@ import { UIContext } from '../../context';
 
 import styles from '../../styles/AdminNavbar.module.css';
 
-export const KitchenNavbar = () => {
-   const { isKitchenMenuOpen, toggleKitchenMenu } = useContext(UIContext);
+export const ViandasNavbar = () => {
+   const { isViandasMenuOpen, toggleViandasMenu } = useContext(UIContext);
 
    return (
       <section className={styles.navbar}>
@@ -26,9 +26,9 @@ export const KitchenNavbar = () => {
             </Link>
          </div>
 
-         <div className={styles.hamburgerMenu} onClick={toggleKitchenMenu}>
+         <div className={styles.hamburgerMenu} onClick={toggleViandasMenu}>
             <button
-               className={isKitchenMenuOpen ? `${styles.btn} ${styles.open}` : `${styles.btn}`}>
+               className={isViandasMenuOpen ? `${styles.btn} ${styles.open}` : `${styles.btn}`}>
                <span></span>
                <span></span>
                <span></span>

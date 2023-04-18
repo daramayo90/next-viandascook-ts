@@ -16,7 +16,7 @@ export * from './Rewards';
 export * from './SectionsUs';
 export * from './SectionUs';
 export * from './SideAdminMenu';
-export * from './SideKitchenMenu';
+export * from './SideViandasMenu';
 export * from './SideMenu';
 export * from './SideProductsMenu';
 export * from './Step';
