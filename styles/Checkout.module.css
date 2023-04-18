@@ -104,6 +104,14 @@
    font-weight: 500;
 }
 
+.checkout > .container > .selection > .card > .info > .date > .time {
+   margin-left: 2px;
+}
+
+.checkout > .container > .selection > .card > .info > .date > .time > span {
+   font-size: 0.9rem;
+}
+
 .checkout > .container > .summary > .submit {
    position: relative;
    width: 99%;

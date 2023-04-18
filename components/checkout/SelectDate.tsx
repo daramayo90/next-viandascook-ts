@@ -75,6 +75,12 @@ export const SelectDate = () => {
                Horario de entrega: <u>20-23hs</u>
             </span>
          </DatePicker>
+
+         <div className={styles.time}>
+            <span>
+               Horario de entrega: <strong>20 a 23hs</strong>
+            </span>
+         </div>
       </div>
    );
 };
