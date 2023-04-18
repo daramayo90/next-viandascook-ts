@@ -51,11 +51,11 @@ function MyApp({ Component, pageProps }: AppProps) {
                                     {!isHideFloatingWhatsApp && (
                                        <FloatingWhatsApp
                                           phoneNumber='+5491171080193'
-                                          accountName='Mari'
+                                          accountName='Pame'
                                           allowEsc
                                           allowClickAway
                                           avatar='/logo/wp-logo.jpg'
-                                          chatMessage='Hola 👋, te saluda Mari de Viandas Cook.. ¿cómo puedo ayudarte?'
+                                          chatMessage='Hola 👋, te saluda Pame de Viandas Cook.. ¿cómo puedo ayudarte?'
                                           statusMessage='Atención de 09 a 19hs'
                                           placeholder='Escribe tu mensaje..'
                                           darkMode

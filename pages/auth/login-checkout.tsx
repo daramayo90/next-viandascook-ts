@@ -26,7 +26,7 @@ const LoginCheckoutPage: NextPage = () => {
 
                <LoginForm />
 
-               <span className={styles.textProviders}>Continuar con..</span>
+               <span className={styles.textProviders}>Loguearse con:</span>
 
                <Providers />
 

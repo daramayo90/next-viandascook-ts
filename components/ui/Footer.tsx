@@ -72,7 +72,9 @@ export const Footer = () => {
          </div>
 
          <div className={styles.legal}>
-            <span>Términos y Condiciones</span>
+            <Link href='/terminos-y-condiciones'>
+               <span>Términos y Condiciones</span>
+            </Link>
             <span>© Copyright {year} Viandas Cook</span>
          </div>
       </section>

@@ -13,7 +13,7 @@ const RegisterPage: NextPage = () => {
             <div className={styles.container}>
                <RegisterForm />
 
-               <span className={styles.textProviders}>Continuar con..</span>
+               <span className={styles.textProviders}>Registrarse con:</span>
 
                <Providers />
             </div>
