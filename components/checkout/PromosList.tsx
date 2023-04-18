@@ -19,24 +19,24 @@ const promosList = [
       text: 'Válido para la primera compra',
       coupon: 'bienvenido10',
    },
-   {
-      icon: <TbDiscount2 className={styles.iconPromo} />,
-      title: 'Cyber Monday',
-      text: '20% de descuento en todo el menú',
-      coupon: 'cyber-viandas',
-   },
-   {
-      icon: <MdLocalOffer className={styles.iconPromo} />,
-      title: 'Especial Fin de Semana',
-      text: 'Válido para Sábados y Domingos',
-      coupon: 'weekend-viandas',
-   },
-   {
-      icon: <TbDiscount2 className={styles.iconPromo} />,
-      title: 'Promo Fin de Año',
-      text: 'Válido para Navidad y Año nuevo',
-      coupon: 'newyear-viandas',
-   },
+   // {
+   //    icon: <TbDiscount2 className={styles.iconPromo} />,
+   //    title: 'Cyber Monday',
+   //    text: '20% de descuento en todo el menú',
+   //    coupon: 'cyber-viandas',
+   // },
+   // {
+   //    icon: <MdLocalOffer className={styles.iconPromo} />,
+   //    title: 'Especial Fin de Semana',
+   //    text: 'Válido para Sábados y Domingos',
+   //    coupon: 'weekend-viandas',
+   // },
+   // {
+   //    icon: <TbDiscount2 className={styles.iconPromo} />,
+   //    title: 'Promo Fin de Año',
+   //    text: 'Válido para Navidad y Año nuevo',
+   //    coupon: 'newyear-viandas',
+   // },
 ];
 
 export const PromosList = () => {
