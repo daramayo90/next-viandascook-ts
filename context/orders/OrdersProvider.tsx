@@ -226,6 +226,8 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
       const { name, lastName, email, phone, dni } = order.user as IUser;
       const { address, address2, city } = order.shippingAddress as ShippingAddress;
 
+      const deliveryDateObj = new Date(deliveryDate);
+
       const body = {
          _id,
          today: new Date().toLocaleDateString('es-AR', {
@@ -241,7 +243,7 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
          city,
          paymentMethod: paymentMethod.charAt(0).toUpperCase() + paymentMethod.slice(1),
          total,
-         deliveryDate: deliveryDate.toLocaleDateString('es-AR', {
+         deliveryDate: deliveryDateObj.toLocaleDateString('es-AR', {
             timeZone: 'America/Argentina/Buenos_Aires',
          }),
       };
