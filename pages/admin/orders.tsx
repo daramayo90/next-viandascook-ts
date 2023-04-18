@@ -27,6 +27,7 @@ const OrdersPage = () => {
       id: order._id,
       email: (order.user as IUser).email,
       name: `${(order.user as IUser).name} ${(order.user as IUser).lastName}`,
+      paymentMethod: order.paymentMethod,
       total: format(order.total),
       isPaid: order.isPaid,
       noProducts: order.numberOfItems,
@@ -75,7 +76,6 @@ const columns: GridColDef[] = [
       },
    },
    { field: 'name', headerName: 'Nombre Completo', width: 320 },
-   { field: 'total', headerName: 'Total', width: 180 },
    {
       field: 'isPaid',
       headerName: 'Estado',
@@ -88,6 +88,8 @@ const columns: GridColDef[] = [
          );
       },
    },
+   { field: 'paymentMethod', headerName: 'Método de Pago', width: 180 },
+   { field: 'total', headerName: 'Total', width: 180 },
    {
       field: 'check',
       headerName: 'Ver pedido',

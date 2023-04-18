@@ -239,7 +239,9 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
          city,
          paymentMethod: paymentMethod.charAt(0).toUpperCase() + paymentMethod.slice(1),
          total,
-         deliveryDate,
+         deliveryDate: deliveryDate.toLocaleDateString('es-AR', {
+            timeZone: 'America/Argentina/Buenos_Aires',
+         }),
       };
 
       try {
