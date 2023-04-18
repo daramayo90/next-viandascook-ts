@@ -8,7 +8,7 @@ import styles from '../../styles/AdminLayout.module.css';
 const OnleraPage: NextPage = () => {
    return (
       <ViandasLayout title={'Onlera Viandas Cook'}>
-         <section className={styles.kitchen}>
+         <section className={styles.viandas}>
             <Link href='/onlera/orders'>
                <button className={styles.linkToBtn}>Pedidos Recibidos</button>
             </Link>

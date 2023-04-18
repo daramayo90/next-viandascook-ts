@@ -8,7 +8,7 @@ import { IOrder } from '../../interfaces';
 
 import { viandasApi } from '../../axiosApi';
 
-import { KitchenLayout } from '../../components/layouts';
+import { ViandasLayout } from '../../components/layouts';
 import { OrderCard, OrderDialog } from '../../components/admin';
 
 import 'react-datepicker/dist/react-datepicker.css';
@@ -33,7 +33,7 @@ const PrepararPedidosPage: NextPage = () => {
 
    return (
       <>
-         <KitchenLayout title={'Preparar pedidos'}>
+         <ViandasLayout title={'Preparar pedidos'}>
             <section className={styles.cooking}>
                <p className={styles.title}>Elegir la fecha de entrega del pedido</p>
                <div className={styles.container}>
@@ -69,7 +69,7 @@ const PrepararPedidosPage: NextPage = () => {
                   </div>
                )}
             </section>
-         </KitchenLayout>
+         </ViandasLayout>
 
          {showOrder && <OrderDialog order={order} setShowOrder={setShowOrder} />}
       </>

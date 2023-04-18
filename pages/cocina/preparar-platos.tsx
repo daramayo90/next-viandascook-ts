@@ -7,7 +7,7 @@ import es from 'date-fns/locale/es';
 
 import { viandasApi } from '../../axiosApi';
 
-import { KitchenLayout } from '../../components/layouts';
+import { ViandasLayout } from '../../components/layouts';
 
 import 'react-datepicker/dist/react-datepicker.css';
 import styles from '../../styles/AdminLayout.module.css';
@@ -34,7 +34,7 @@ const PrepararPlatosPage: NextPage = () => {
    };
 
    return (
-      <KitchenLayout title={'Preparar platos'}>
+      <ViandasLayout title={'Preparar platos'}>
          <section className={styles.cooking}>
             <p className={styles.title}>Elegir la fecha de entrega del pedido</p>
             <div className={styles.container}>
@@ -85,7 +85,7 @@ const PrepararPlatosPage: NextPage = () => {
                </div>
             )}
          </section>
-      </KitchenLayout>
+      </ViandasLayout>
    );
 };
 
