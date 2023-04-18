@@ -27,7 +27,7 @@ const OrdersPage = () => {
       id: order._id,
       email: (order.user as IUser).email,
       name: `${(order.user as IUser).name} ${(order.user as IUser).lastName}`,
-      paymentMethod: order.paymentMethod,
+      paymentMethod: order.paymentMethod.charAt(0).toUpperCase() + order.paymentMethod.slice(1),
       total: format(order.total),
       isPaid: order.isPaid,
       noProducts: order.numberOfItems,
@@ -91,14 +91,6 @@ const columns: GridColDef[] = [
    { field: 'paymentMethod', headerName: 'Método de Pago', width: 180 },
    { field: 'total', headerName: 'Total', width: 180 },
    {
-      field: 'check',
-      headerName: 'Ver pedido',
-      width: 180,
-      renderCell: ({ row }: GridRenderCellParams) => {
-         return <Link href={`/admin/pedido/${row.id}`}>Ver pedido</Link>;
-      },
-   },
-   {
       field: 'deliveryDate',
       headerName: 'Fecha de entrega',
       type: 'date',
@@ -112,6 +104,18 @@ const columns: GridColDef[] = [
          return new Date(value).toLocaleDateString('es-AR', {
             timeZone: 'America/Argentina/Buenos_Aires',
          });
+      },
+   },
+   {
+      field: 'check',
+      headerName: 'Ver pedido',
+      width: 180,
+      renderCell: ({ row }: GridRenderCellParams) => {
+         return (
+            <Link href={`/admin/pedido/${row.id}`}>
+               <span style={{ textDecoration: 'underline' }}>Ver pedido</span>
+            </Link>
+         );
       },
    },
 ];

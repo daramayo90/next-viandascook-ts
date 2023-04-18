@@ -3,18 +3,13 @@ import { Order } from '../models';
 import { db } from './';
 
 export const getOrderById = async (id: string): Promise<IOrder | null> => {
-   console.log('3');
    await db.connect();
-   console.log('4');
 
    const order = await Order.findById(Number(id)).lean();
-   console.log('5');
 
    await db.disconnect();
-   console.log('6');
 
    if (!order) return null;
-   console.log('7');
 
    return JSON.parse(JSON.stringify(order));
 };

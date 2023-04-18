@@ -38,12 +38,9 @@ const AdminOrderPage: NextPage<Props> = ({ order }) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res, query }) => {
-   console.log('1');
    const { id = '' } = query;
-   console.log('2');
 
    const order = await dbOrders.getOrderById(id.toString());
-   console.log('8');
 
    if (!order) {
       return {
@@ -53,7 +50,6 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res, query }
          },
       };
    }
-   console.log('9');
 
    return {
       props: {

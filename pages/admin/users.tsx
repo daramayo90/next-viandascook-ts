@@ -2,7 +2,12 @@ import { useState, useEffect } from 'react';
 import { AddOutlined, PeopleOutline } from '@mui/icons-material';
 import useSWR from 'swr';
 
-import { DataGrid, GridColDef, GridRenderCellParams } from '@mui/x-data-grid';
+import {
+   DataGrid,
+   GridColDef,
+   GridRenderCellParams,
+   GridValueFormatterParams,
+} from '@mui/x-data-grid';
 import { Grid, Select, MenuItem, Box, Button } from '@mui/material';
 
 import { AdminLayout } from '../../components/layouts';
@@ -40,6 +45,38 @@ const UsersPage = () => {
    };
 
    const columns: GridColDef[] = [
+      {
+         field: 'createdAt',
+         headerName: 'Creado el',
+         type: 'date',
+         editable: true,
+         width: 180,
+         valueFormatter: ({ value }: GridValueFormatterParams<Date>) => {
+            if (value == null) {
+               return '';
+            }
+
+            return new Date(value).toLocaleDateString('es-AR', {
+               timeZone: 'America/Argentina/Buenos_Aires',
+            });
+         },
+      },
+      {
+         field: 'updatedAt',
+         headerName: 'Actualiado el',
+         type: 'date',
+         editable: true,
+         width: 180,
+         valueFormatter: ({ value }: GridValueFormatterParams<Date>) => {
+            if (value == null) {
+               return '';
+            }
+
+            return new Date(value).toLocaleDateString('es-AR', {
+               timeZone: 'America/Argentina/Buenos_Aires',
+            });
+         },
+      },
       { field: 'name', headerName: 'Nombre Completo', width: 300 },
       { field: 'email', headerName: 'Correo', width: 300 },
       {
@@ -68,6 +105,8 @@ const UsersPage = () => {
       email: user.email,
       name: `${user.name} ${user.lastName}`,
       role: user.role,
+      createdAt: user.createdAt,
+      updatedAt: user.updatedAt,
    }));
 
    return (

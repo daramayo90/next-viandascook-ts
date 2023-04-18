@@ -50,8 +50,10 @@ const ThankYouPage: NextPage<Props> = ({ order }) => {
       };
 
       if (!alreadyExecuted) {
-         onOrderComplete();
-         sessionStorage.setItem(`effectExecuted ${_id}`, true.toString());
+         (async () => {
+            await onOrderComplete();
+            sessionStorage.setItem(`effectExecuted ${_id}`, true.toString());
+         })();
       }
 
       orderComplete();
