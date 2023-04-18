@@ -46,7 +46,7 @@ const ThankYouPage: NextPage<Props> = ({ order }) => {
          if (paymentMethod === 'transferencia') await sendWireTransferInfo(order);
          onPurchaseEvent();
          await sendOrderConfirmationEmail(order);
-         await orderToSpreadsheet();
+         await orderToSpreadsheet(order);
       };
 
       if (!alreadyExecuted) {

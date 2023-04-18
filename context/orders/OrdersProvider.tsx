@@ -5,7 +5,7 @@ import Cookies from 'js-cookie';
 import crypto from 'crypto';
 
 import { viandasApi } from '../../axiosApi';
-import { ShippingAddress, ICity, IOrder } from '../../interfaces';
+import { ShippingAddress, ICity, IOrder, IUser } from '../../interfaces';
 import { IPaymentMethods } from '../../interfaces/order';
 
 import { CartContext, UIContext } from '../';
@@ -219,27 +219,27 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
       } catch (error) {}
    };
 
-   const orderToSpreadsheet = async (): Promise<void> => {
-      const { user } = ((await getSession()) as any) || '';
-
-      const shippingAddress: ShippingAddress = user ? user.shipping : state.shippingAddress;
-
-      const { address, address2, city } = shippingAddress;
+   const orderToSpreadsheet = async (order: IOrder): Promise<void> => {
+      const { _id, paymentMethod, total, deliveryDate } = order;
+      const { name, lastName, email, phone, dni } = order.user as IUser;
+      const { address, address2, city } = order.shippingAddress as ShippingAddress;
 
       const body = {
-         user,
-         orderId: state.orderId,
+         _id,
          today: new Date().toLocaleDateString('es-AR', {
             timeZone: 'America/Argentina/Buenos_Aires',
          }),
+         name,
+         lastName,
+         email,
+         phone,
+         dni,
          address,
          address2,
          city,
-         paymentMethod: state.paymentMethod.charAt(0).toUpperCase() + state.paymentMethod.slice(1),
+         paymentMethod: paymentMethod.charAt(0).toUpperCase() + paymentMethod.slice(1),
          total,
-         deliveryDate: deliveryDateSelected.toLocaleDateString('es-AR', {
-            timeZone: 'America/Argentina/Buenos_Aires',
-         }),
+         deliveryDate,
       };
 
       try {

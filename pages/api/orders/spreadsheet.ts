@@ -9,9 +9,13 @@ import { currency } from '../../../utils';
 // };
 
 type SheetForm = {
-   user: any;
-   orderId: string;
+   _id: number;
    today: string;
+   name: string;
+   lastName: string;
+   email: string;
+   phone: string;
+   dni: string;
    address: string;
    address2: string;
    city: string;
@@ -25,26 +29,21 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       return res.status(405).send({ message: 'Only POST is allowed' });
    }
 
-   const { user, orderId, today, address, address2, city, paymentMethod, total, deliveryDate } =
-      req.body as SheetForm;
-
-   const id = user ? user._id : null;
-
-   await db.connect();
-
-   const dbUser = await User.findById(id);
-
-   await db.disconnect();
-
-   const orderUser = {
-      name: dbUser?.name || req.cookies.firstName,
-      lastName: dbUser?.lastName || req.cookies.lastName,
-      email: dbUser?.email || req.cookies.email,
-      phone: dbUser?.phone || req.cookies.phone,
-      dni: dbUser?.dni || req.cookies.dni,
-   };
-
-   const { name, lastName, email, phone, dni } = orderUser;
+   const {
+      _id,
+      today,
+      name,
+      lastName,
+      email,
+      phone,
+      dni,
+      address,
+      address2,
+      city,
+      paymentMethod,
+      total,
+      deliveryDate,
+   } = req.body as SheetForm;
 
    try {
       const auth = new google.auth.GoogleAuth({
@@ -71,7 +70,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
          requestBody: {
             values: [
                [
-                  orderId,
+                  _id,
                   today,
                   name,
                   lastName,

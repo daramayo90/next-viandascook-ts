@@ -18,7 +18,6 @@ export const EmailsProvider: FC<Props> = ({ children }) => {
    const [state, dispatch] = useReducer(emailsReducer, EMAILS_INITIAL_STATE);
 
    const sendOrderConfirmationEmail = async (order: IOrder) => {
-      // const ship: ShippingAddress = user ? user.shipping : shippingAddress;
       const { name, email } = order.user as IUser;
 
       const { address, address2 } = order.shippingAddress as ShippingAddress;

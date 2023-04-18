@@ -1,6 +1,6 @@
 import { createContext } from 'react';
 import { ShippingAddress } from '../../interfaces';
-import { IPaymentMethods } from '../../interfaces/order';
+import { IOrder, IPaymentMethods } from '../../interfaces/order';
 
 interface ContextProps {
    shippingAddress?: ShippingAddress;
@@ -20,7 +20,7 @@ interface ContextProps {
 
    addMailchimpClient: (orderId: string) => Promise<void>;
    addReferralPoints: (referralCoupon: string) => Promise<void>;
-   orderToSpreadsheet: () => Promise<void>;
+   orderToSpreadsheet: (order: IOrder) => Promise<void>;
 }
 
 export const OrdersContext = createContext({} as ContextProps);
