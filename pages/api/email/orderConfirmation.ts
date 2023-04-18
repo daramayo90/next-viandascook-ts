@@ -69,8 +69,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
       },
    };
 
-   console.log(msg);
-
    sgMail.send(msg);
 
    res.status(200).json({ message: 'Ok' });

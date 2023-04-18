@@ -3,16 +3,16 @@ import { IUser } from '../interfaces';
 
 const userSchema = new Schema(
    {
-      name: { type: String, required: true },
-      lastName: { type: String, required: true },
-      email: { type: String, required: true, unique: true },
-      phone: { type: String, required: true },
-      dni: { type: String, required: true },
-      password: { type: String, required: true },
-      avatar: { type: String, required: true },
+      name: { type: String },
+      lastName: { type: String },
+      email: { type: String, unique: true },
+      phone: { type: String },
+      dni: { type: String },
+      password: { type: String },
+      avatar: { type: String },
 
-      points: { type: Number, required: true },
-      redeemPoints: { type: Number, required: true },
+      points: { type: Number },
+      redeemPoints: { type: Number },
 
       referralCode: { type: String, unique: true },
 
@@ -22,17 +22,16 @@ const userSchema = new Schema(
             values: ['admin', 'client', 'kitchen', 'seo'],
             message: '{VALUE} is not a valid role',
             default: 'client',
-            required: true,
          },
       },
 
       shipping: {
-         address: { type: String, required: true },
+         address: { type: String },
          address2: { type: String },
-         zipcode: { type: String, required: true },
+         zipcode: { type: String },
          city: {
             type: String,
-            required: true,
+
             enum: {
                values: ['CABA', 'Buenos Aires'],
             },

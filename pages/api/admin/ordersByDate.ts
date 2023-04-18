@@ -20,14 +20,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 
 const getOrdersByDate = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
    const { date } = req.body;
-   console.log(date);
 
    try {
       await db.connect();
 
       const orders: IOrder[] = await Order.find({ deliveryDate: date, isPaid: true });
-
-      console.log(orders);
 
       await db.disconnect();
 

@@ -13,16 +13,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 
    await db.connect();
 
-   await Coupon.deleteMany();
-   await Coupon.insertMany(seedDatabase.initialData.coupons);
+   // await Coupon.deleteMany();
+   // await Coupon.insertMany(seedDatabase.initialData.coupons);
 
    await User.deleteMany();
-   await User.insertMany(seedDatabase.initialData.users);
+   // await User.insertMany(seedDatabase.initialData.users);
 
-   await Product.deleteMany();
-   await Product.insertMany(seedDatabase.initialData.products);
+   // await Product.deleteMany();
+   // await Product.insertMany(seedDatabase.initialData.products);
 
-   await Order.deleteMany();
+   // await Order.deleteMany();
 
    await db.disconnect();
 

@@ -29,8 +29,6 @@ const uploadFromExcel = async (req: NextApiRequest, res: NextApiResponse<Data>) 
       const filePath = Array.isArray(file) ? file[0].filepath : file.filepath;
       const usersData = await readExcelFile(filePath);
 
-      const refCode = await dbUsers.generateUniqueReferralCode();
-
       const users = usersData.map((u: any) => {
          return {
             name: u.name.charAt(0).toUpperCase() + u.name.slice(1).toLocaleLowerCase(),
@@ -38,10 +36,11 @@ const uploadFromExcel = async (req: NextApiRequest, res: NextApiResponse<Data>) 
             email: u.email.toLocaleLowerCase(),
             phone: u.phone,
             dni: u.dni,
-            password: bcrypt.hashSync(u.password, 10),
-            avatar: '/avatars/VC-Avatars-00.png',
+            password: u.password,
+            avatar: u.avatar,
             points: u.points,
             redeemPoints: u.redeemPoints,
+            referralCode: u.referralCode,
             role: u.role,
             shipping: {
                address: u.address,
@@ -49,8 +48,18 @@ const uploadFromExcel = async (req: NextApiRequest, res: NextApiResponse<Data>) 
                zipcode: u.zipcode,
                city: u.city,
             },
-            referralCode: refCode,
-            coupons: [],
+            coupons: [
+               {
+                  _id: '63fbc962834cfafbd6ea3236',
+                  code: 'bienvenido10',
+                  ussage: 1,
+               },
+            ],
+            resetPasswordExpires: u.resetPasswordExpires,
+            resetPasswordToken: u.resetPasswordToken,
+            createdAt: u.createdAt,
+            updatedAt: u.updatedAt,
+            __v: u.__v,
          };
       });
 
