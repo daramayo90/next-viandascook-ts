@@ -18,7 +18,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
    const user = await User.findOne({ email });
    console.log('3');
 
-   db.disconnect();
    console.log('4');
 
    if (!user) {
@@ -31,7 +30,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
    const resetPasswordExpires = new Date(Date.now() + 3600000);
    console.log('6');
 
-   db.connect();
    console.log('7');
 
    await User.updateOne(
