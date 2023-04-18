@@ -216,7 +216,9 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
    const addReferralPoints = async (referralCoupon: string) => {
       try {
          await viandasApi.patch('/orders/addReferralPoints', { referralCoupon });
-      } catch (error) {}
+      } catch (error) {
+         console.log(error);
+      }
    };
 
    const orderToSpreadsheet = async (order: IOrder): Promise<void> => {

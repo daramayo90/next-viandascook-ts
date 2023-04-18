@@ -55,14 +55,22 @@ export const EmailsProvider: FC<Props> = ({ children }) => {
          total,
       };
 
-      await viandasApi.post('/email/orderConfirmation', body);
+      try {
+         await viandasApi.post('/email/orderConfirmation', body);
+      } catch (error) {
+         console.log(error);
+      }
    };
 
    const sendWireTransferInfo = async (order: IOrder) => {
       const { name, email } = order.user as IUser;
       const { _id, total } = order;
 
-      await viandasApi.post('/email/wireTransferInfo', { name, email, _id, total });
+      try {
+         await viandasApi.post('/email/wireTransferInfo', { name, email, _id, total });
+      } catch (error) {
+         console.log(error);
+      }
    };
 
    return (

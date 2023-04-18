@@ -42,9 +42,9 @@ const ThankYouPage: NextPage<Props> = ({ order }) => {
       const alreadyExecuted = sessionStorage.getItem(`effectExecuted ${_id}`);
 
       const onOrderComplete = async () => {
+         onPurchaseEvent();
          if (referralCoupon) await addReferralPoints(referralCoupon);
          if (paymentMethod === 'transferencia') await sendWireTransferInfo(order);
-         onPurchaseEvent();
          await sendOrderConfirmationEmail(order);
          await orderToSpreadsheet(order);
       };
