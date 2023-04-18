@@ -52,6 +52,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
       html: `
       <p>Solicitaste restablecer tu contraseña en Viandas Cook. Hacé click en el siguiente enlace para restablecer tu contraseña:</p>
       <p><a href="${resetLink}">${resetLink}</a></p>
+      <p>Si el enlace no te funciona, copiá y pegá la URL en el navegador.</p>
+      
       <p>Si no solicitaste un restablecimiento de contraseña, podes ignorar este correo electrónico.</p>
       `,
    };
