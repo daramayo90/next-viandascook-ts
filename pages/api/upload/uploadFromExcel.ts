@@ -64,12 +64,12 @@ const uploadFromExcel = async (req: NextApiRequest, res: NextApiResponse<Data>) 
       });
 
       try {
-         db.connect();
+         await db.connect();
          await User.insertMany(users);
-         db.disconnect();
+         await db.disconnect();
          res.status(201).json({ message: 'Usuarios importados correctamente' });
       } catch (error) {
-         db.disconnect();
+         await db.disconnect();
          console.log(error);
          res.status(400).json({ message: 'Error importando usuarios' });
       }

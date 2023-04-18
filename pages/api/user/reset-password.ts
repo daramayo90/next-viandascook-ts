@@ -24,14 +24,14 @@ const resetPassword = async (req: NextApiRequest, res: NextApiResponse<Data>) =>
       return res.status(400).json({ message: 'No se recibió token o nueva contraseña' });
    }
 
-   db.connect();
+   await db.connect();
    const user = await User.findOne({
       resetPasswordToken: token,
       resetPasswordExpires: { $gt: Date.now() },
    });
 
    if (!user) {
-      db.disconnect();
+      await db.disconnect();
       return res.status(400).json({ message: 'Token inválido o expirado' });
    }
 
@@ -46,7 +46,7 @@ const resetPassword = async (req: NextApiRequest, res: NextApiResponse<Data>) =>
          },
       },
    );
-   db.disconnect();
+   await db.disconnect();
 
    return res.status(200).json({
       message: 'Contraseña reseteada éxitosamente. Podes volver a loguearte a continuación',

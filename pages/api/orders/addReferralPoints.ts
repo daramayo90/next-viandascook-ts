@@ -20,15 +20,15 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Data>)
 const addReferralPoints = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
    const { referralCoupon } = req.body;
 
-   db.connect();
+   await db.connect();
 
    const user: IUser = await User.findOne({ referralCode: referralCoupon }).lean();
 
-   db.disconnect();
+   await db.disconnect();
 
    if (!user) return res.status(400).json({ message: 'Usuario no existe' });
 
-   db.connect();
+   await db.connect();
 
    await User.updateOne(
       { email: user.email },
@@ -40,7 +40,7 @@ const addReferralPoints = async (req: NextApiRequest, res: NextApiResponse<Data>
       },
    );
 
-   db.disconnect();
+   await db.disconnect();
 
    return res.status(200).json({ message: 'Se aplicaron los puntos correctamente' });
 };

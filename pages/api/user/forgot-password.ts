@@ -10,28 +10,20 @@ type Data = {
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
    const { email } = req.body;
-   console.log('1');
 
-   db.connect();
-   console.log('2');
-
+   await db.connect();
    const user = await User.findOne({ email });
-   console.log('3');
-
-   console.log('4');
+   await db.disconnect();
 
    if (!user) {
       return res.status(404).json({ message: 'No existe un usuario con este mail' });
    }
-   console.log('5');
 
    // Generate the token and set its expiration date (1 hour from now)
    const resetPasswordToken = generateToken();
    const resetPasswordExpires = new Date(Date.now() + 3600000);
-   console.log('6');
 
-   console.log('7');
-
+   await db.connect();
    await User.updateOne(
       { email: user.email },
       {
@@ -41,16 +33,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
          },
       },
    );
-   console.log('8');
-
-   db.disconnect();
-   console.log('9');
+   await db.disconnect();
 
    sgMail.setApiKey(process.env.SENDGRID_API_KEY!);
-   console.log('10');
 
    const resetLink = `${req.headers.origin}/auth/resetear-clave?token=${resetPasswordToken}`;
-   console.log('11');
 
    const msg = {
       to: {
@@ -68,10 +55,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
       <p>Si no solicitaste un restablecimiento de contraseña, podes ignorar este correo electrónico.</p>
       `,
    };
-   console.log('12');
 
    await sgMail.send(msg);
-   console.log('13');
 
    return res.status(200).json({
       message: 'Se ha enviado un email a tu casilla de correo para restablecer la contraseña',
