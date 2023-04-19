@@ -15,7 +15,7 @@ import useSWR from 'swr';
 
 import { viandasApi } from '../../axiosApi';
 
-import { AdminLayout } from '../../components/layouts';
+import { ViandasLayout } from '../../components/layouts';
 import { IOrder, IUser, ShippingAddress } from '../../interfaces';
 
 import { format } from '../../utils/currency';
@@ -48,7 +48,7 @@ const OnleraOrdersPage: NextPage = () => {
    };
 
    return (
-      <AdminLayout title={'Ver Pedidos'} subTitle={''} icon={<ConfirmationNumberOutlined />}>
+      <ViandasLayout title={'Ver Pedidos'} icon={<ConfirmationNumberOutlined />}>
          <Grid container className='fadeIn' sx={{ width: '90%', margin: 'auto', mt: 5 }}>
             <Grid item xs={12} sx={{ height: 790, width: '100%' }}>
                <DataGrid
@@ -59,7 +59,7 @@ const OnleraOrdersPage: NextPage = () => {
                />
             </Grid>
          </Grid>
-      </AdminLayout>
+      </ViandasLayout>
    );
 };
 
