@@ -113,7 +113,7 @@ const columns: GridColDef[] = [
       renderCell: ({ row }: GridRenderCellParams) => {
          return (
             <Link href={`/admin/pedido/${row.id}`}>
-               <span style={{ textDecoration: 'underline' }}>Ver pedido</span>
+               <span style={{ textDecoration: 'underline', cursor: 'pointer' }}>Ver pedido</span>
             </Link>
          );
       },
