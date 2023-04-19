@@ -42,6 +42,11 @@
    font-size: 0.9rem;
 }
 
+.orderDialog > .container > .products {
+   height: calc(98vh - 250px);
+   overflow-y: auto;
+}
+
 .orderDialog > .container > .details > h3,
 .orderDialog > .container > .products > h3 {
    margin: 0.5rem 0;

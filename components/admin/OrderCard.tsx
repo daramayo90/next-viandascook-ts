@@ -11,7 +11,7 @@ interface Props {
 }
 
 export const OrderCard: FC<Props> = ({ order, setOrder, setShowOrder }) => {
-   const { name, lastName, email, phone, dni } = order.user as IUser;
+   const { name, lastName } = order.user as IUser;
 
    const openOrder = async (orderId: number) => {
       const { data } = await viandasApi.get('/admin/ordersByDate', { params: { orderId } });
