@@ -40,6 +40,14 @@ export const SideMenu = () => {
                   </li>
                )}
 
+               {isLoggedIn && user?.role === 'viandas' && (
+                  <li onClick={() => navigateTo('/cocina')}>
+                     <MdOutlineAdminPanelSettings className={styles.icon} />
+                     <span>Cocina</span>
+                     <MdOutlineKeyboardArrowRight className={styles.iconRight} />
+                  </li>
+               )}
+
                <li onClick={() => navigateTo('/')}>
                   <AiOutlineHome className={styles.icon} />
                   <span>Inicio</span>

@@ -24,7 +24,7 @@ interface Props {
 const ProductPage: NextPage<Props> = ({ product }) => {
    useEffect(() => {
       ga.event({
-         action: 'view_item_2',
+         action: 'view_item',
          category: 'Product',
          label: product.name,
          value: product.price,

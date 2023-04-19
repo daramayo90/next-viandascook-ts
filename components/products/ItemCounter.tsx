@@ -26,7 +26,7 @@ export const ItemCounter: FC<Props> = ({ color, currentValue, updatedQuantity, p
          if (currentValue === 0) return;
 
          ga.event({
-            action: 'add_to_cart_2',
+            action: 'add_to_cart',
             category: 'Cart',
             label: product.name,
             value: product.price,
@@ -36,7 +36,7 @@ export const ItemCounter: FC<Props> = ({ color, currentValue, updatedQuantity, p
       }
 
       ga.event({
-         action: 'remove_from_cart_2',
+         action: 'remove_from_cart',
          category: 'Cart',
          label: product.name,
          value: product.price,

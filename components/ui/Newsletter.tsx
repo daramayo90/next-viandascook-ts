@@ -54,7 +54,7 @@ export const Newsletter = () => {
 
    const subscribeUserEvent = (email: string) => {
       ga.event({
-         action: 'new_subscriber_2',
+         action: 'new_subscriber',
          category: 'Subscriber',
          label: email,
       });

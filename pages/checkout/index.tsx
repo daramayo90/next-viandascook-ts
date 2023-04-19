@@ -38,7 +38,7 @@ const CheckoutPage: NextPage<Props> = ({ user }) => {
 
    useEffect(() => {
       ga.event({
-         action: 'begin_checkout_2',
+         action: 'begin_checkout',
          category: 'Checkout',
          label: user ? user.email : shippingAddress?.email,
          value: total,

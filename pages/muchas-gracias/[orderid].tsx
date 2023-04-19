@@ -29,7 +29,7 @@ const ThankYouPage: NextPage<Props> = ({ order }) => {
 
    const onPurchaseEvent = () => {
       ga.event({
-         action: 'purchase_2',
+         action: 'purchase',
          category: 'Purchase',
          label: `${_id!.toString()} | ${email}`,
          value: total,
