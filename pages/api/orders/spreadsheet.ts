@@ -1,7 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { google } from 'googleapis';
-import { db } from '../../../database';
-import { User } from '../../../models';
 import { currency } from '../../../utils';
 
 // type Data = {

@@ -21,6 +21,7 @@ interface ContextProps {
    addMailchimpClient: (orderId: string) => Promise<void>;
    addReferralPoints: (referralCoupon: string) => Promise<void>;
    orderToSpreadsheet: (order: IOrder) => Promise<void>;
+   orderToOptimoRoute: (order: IOrder) => Promise<void>;
 }
 
 export const OrdersContext = createContext({} as ContextProps);

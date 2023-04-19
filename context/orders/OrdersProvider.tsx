@@ -255,6 +255,35 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
       }
    };
 
+   const orderToOptimoRoute = async (order: IOrder): Promise<void> => {
+      const { _id, paymentMethod, total, deliveryDate } = order;
+      const { name, email, phone } = order.user as IUser;
+      const { address, address2, city } = order.shippingAddress as ShippingAddress;
+
+      const deliveryDateObj = new Date(deliveryDate);
+
+      const body = {
+         _id,
+         name,
+         email,
+         phone,
+         address,
+         address2,
+         city,
+         paymentMethod,
+         total,
+         deliveryDate: deliveryDateObj.toLocaleDateString('es-AR', {
+            timeZone: 'America/Argentina/Buenos_Aires',
+         }),
+      };
+
+      try {
+         await viandasApi.post('/optimoroute', body);
+      } catch (error) {
+         console.log(error);
+      }
+   };
+
    return (
       <OrdersContext.Provider
          value={{
@@ -265,6 +294,7 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
             addMailchimpClient,
             addReferralPoints,
             orderToSpreadsheet,
+            orderToOptimoRoute,
          }}>
          {children}
       </OrdersContext.Provider>

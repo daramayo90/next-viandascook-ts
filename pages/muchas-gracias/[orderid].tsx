@@ -21,7 +21,7 @@ interface Props {
 
 const ThankYouPage: NextPage<Props> = ({ order }) => {
    const { referralCoupon, orderComplete } = useContext(CartContext);
-   const { addReferralPoints, orderToSpreadsheet } = useContext(OrdersContext);
+   const { addReferralPoints, orderToSpreadsheet, orderToOptimoRoute } = useContext(OrdersContext);
    const { sendOrderConfirmationEmail, sendWireTransferInfo } = useContext(EmailsContext);
 
    const { _id, paymentMethod, total, user } = order;
@@ -47,6 +47,7 @@ const ThankYouPage: NextPage<Props> = ({ order }) => {
          if (paymentMethod === 'transferencia') await sendWireTransferInfo(order);
          await sendOrderConfirmationEmail(order);
          await orderToSpreadsheet(order);
+         await orderToOptimoRoute(order);
       };
 
       if (!alreadyExecuted) {
