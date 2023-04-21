@@ -13,6 +13,9 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Data>)
       case 'PUT':
          return updateOrder(req, res);
 
+      case 'DELETE':
+         return deleteOrder(req, res);
+
       default:
          return res.status(400).json({ message: 'Bad request' });
    }
@@ -50,4 +53,16 @@ const updateOrder = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
    await db.disconnect();
 
    return res.status(200).json({ message: 'todo ok' });
+};
+
+const deleteOrder = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
+   const id: number = req.body;
+
+   await db.connect();
+
+   await Order.deleteOne({ _id: id });
+
+   await db.disconnect();
+
+   return res.status(200).json({ message: 'Pedido eliminado' });
 };

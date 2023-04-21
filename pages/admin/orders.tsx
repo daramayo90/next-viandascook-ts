@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import { ConfirmationNumberOutlined } from '@mui/icons-material';
 import { Button, Chip, Grid } from '@mui/material';
 import {
@@ -8,7 +10,7 @@ import {
    GridRowModel,
 } from '@mui/x-data-grid';
 
-import useSWR from 'swr';
+import useSWR, { mutate } from 'swr';
 
 import { viandasApi } from '../../axiosApi';
 
@@ -16,7 +18,6 @@ import { AdminLayout } from '../../components/layouts';
 import { IOrder, IUser } from '../../interfaces';
 
 import { format } from '../../utils/currency';
-import Link from 'next/link';
 
 const OrdersPage = () => {
    const { data, error } = useSWR<IOrder[]>('/api/admin/orders');
@@ -35,10 +36,86 @@ const OrdersPage = () => {
       createdAt: order.createdAt,
    }));
 
-   // Make the HTTP request to save in the backend
+   const columns: GridColDef[] = [
+      { field: 'id', headerName: 'Pedido', width: 100 },
+      {
+         field: 'createdAt',
+         headerName: 'Fecha de creación',
+         type: 'dateTime',
+         width: 180,
+         valueFormatter: ({ value }: GridValueFormatterParams<Date>) => {
+            if (value == null) {
+               return '';
+            }
+
+            return new Date(value).toLocaleString('es-AR');
+         },
+      },
+      { field: 'name', headerName: 'Nombre Completo', width: 320 },
+      {
+         field: 'isPaid',
+         headerName: 'Estado',
+         width: 180,
+         renderCell: ({ row }: GridRenderCellParams) => {
+            return row.isPaid ? (
+               <Chip variant='outlined' label='Completado' color='success' />
+            ) : (
+               <Chip variant='outlined' label='Pendiente' color='error' />
+            );
+         },
+      },
+      { field: 'paymentMethod', headerName: 'Método de Pago', width: 180 },
+      { field: 'total', headerName: 'Total', width: 180 },
+      {
+         field: 'deliveryDate',
+         headerName: 'Fecha de entrega',
+         type: 'date',
+         editable: true,
+         width: 180,
+         valueFormatter: ({ value }: GridValueFormatterParams<Date>) => {
+            if (value == null) {
+               return '';
+            }
+
+            return new Date(value).toLocaleDateString('es-AR', {
+               timeZone: 'America/Argentina/Buenos_Aires',
+            });
+         },
+      },
+      {
+         field: 'check',
+         headerName: 'Ver pedido',
+         width: 180,
+         renderCell: ({ row }: GridRenderCellParams) => {
+            return (
+               <Link href={`/admin/pedido/${row.id}`}>
+                  <span style={{ textDecoration: 'underline', cursor: 'pointer' }}>Ver pedido</span>
+               </Link>
+            );
+         },
+      },
+      {
+         field: 'delete',
+         headerName: 'Eliminar',
+         width: 160,
+         renderCell: ({ row }: GridRenderCellParams) => {
+            return (
+               <Button variant='contained' color='primary' onClick={() => handleDelete(row)}>
+                  Eliminar Pedido
+               </Button>
+            );
+         },
+      },
+   ];
+
    const processRowUpdate = async (newRow: GridRowModel) => {
-      const response = await viandasApi.put('/admin/orders', newRow);
+      await viandasApi.put('/admin/orders', newRow);
       return newRow;
+   };
+
+   const handleDelete = async (row: GridRenderCellParams) => {
+      await viandasApi.delete('/admin/orders', { data: row.id });
+      mutate('/api/admin/orders');
    };
 
    return (
@@ -59,82 +136,5 @@ const OrdersPage = () => {
       </AdminLayout>
    );
 };
-
-const columns: GridColDef[] = [
-   { field: 'id', headerName: 'Pedido', width: 100 },
-   {
-      field: 'createdAt',
-      headerName: 'Fecha de creación',
-      type: 'dateTime',
-      width: 180,
-      valueFormatter: ({ value }: GridValueFormatterParams<Date>) => {
-         if (value == null) {
-            return '';
-         }
-
-         return new Date(value).toLocaleString('es-AR');
-      },
-   },
-   { field: 'name', headerName: 'Nombre Completo', width: 320 },
-   {
-      field: 'isPaid',
-      headerName: 'Estado',
-      width: 180,
-      renderCell: ({ row }: GridRenderCellParams) => {
-         return row.isPaid ? (
-            <Chip variant='outlined' label='Completado' color='success' />
-         ) : (
-            <Chip variant='outlined' label='Pendiente' color='error' />
-         );
-      },
-   },
-   { field: 'paymentMethod', headerName: 'Método de Pago', width: 180 },
-   { field: 'total', headerName: 'Total', width: 180 },
-   {
-      field: 'deliveryDate',
-      headerName: 'Fecha de entrega',
-      type: 'date',
-      editable: true,
-      width: 180,
-      valueFormatter: ({ value }: GridValueFormatterParams<Date>) => {
-         if (value == null) {
-            return '';
-         }
-
-         return new Date(value).toLocaleDateString('es-AR', {
-            timeZone: 'America/Argentina/Buenos_Aires',
-         });
-      },
-   },
-   {
-      field: 'check',
-      headerName: 'Ver pedido',
-      width: 180,
-      renderCell: ({ row }: GridRenderCellParams) => {
-         return (
-            <Link href={`/admin/pedido/${row.id}`}>
-               <span style={{ textDecoration: 'underline', cursor: 'pointer' }}>Ver pedido</span>
-            </Link>
-         );
-      },
-   },
-   {
-      field: 'delete',
-      headerName: 'Eliminar',
-      width: 160,
-      renderCell: ({ row }: GridRenderCellParams) => {
-         const handleDelete = () => {
-            // delete logic here, e.g. call an API endpoint
-            console.log(`Deleting row with ID ${row.id}`);
-         };
-
-         return (
-            <Button variant='contained' color='primary' onClick={handleDelete}>
-               Eliminar Pedido
-            </Button>
-         );
-      },
-   },
-];
 
 export default OrdersPage;
