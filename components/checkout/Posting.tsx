@@ -94,31 +94,24 @@ export const Posting: FC = () => {
       createCheckoutButton(id, init_point);
    };
 
-   const isMobile = () => {
-      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-         navigator.userAgent,
-      );
-   };
+   // const isMobile = () => {
+   //    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+   //       navigator.userAgent,
+   //    );
+   // };
 
    // Create preference when click on checkout button
    const createCheckoutButton = (id: string, init_point: string) => {
-      if (isMobile()) {
-         // Create a URL to open the MercadoPago app with the preference ID
-         const mercadoPagoAppUrl = `http://mpago.la/${init_point}`;
-         window.location.href = mercadoPagoAppUrl;
-      } else {
-         // Initialize the checkout for non-mobile devices
-         mpRef.current?.checkout({
-            preference: {
-               id: id,
-            },
-            render: {
-               container: '.cho-container', // Class name where the payment button will be displayed
-               label: 'Pagar', // Change the payment button text (optional)
-            },
-            autoOpen: true,
-         });
-      }
+      mpRef.current?.checkout({
+         preference: {
+            id,
+         },
+         render: {
+            container: '.cho-container', // Class name where the payment button will be displayed
+            label: 'Pagar', // Change the payment button text (optional)
+         },
+         autoOpen: true,
+      });
 
       setIsPosting(false);
       setErrorMsg('');

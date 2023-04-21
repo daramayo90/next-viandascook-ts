@@ -1,5 +1,5 @@
 import { ConfirmationNumberOutlined } from '@mui/icons-material';
-import { Chip, Grid } from '@mui/material';
+import { Button, Chip, Grid } from '@mui/material';
 import {
    DataGrid,
    GridColDef,
@@ -115,6 +115,23 @@ const columns: GridColDef[] = [
             <Link href={`/admin/pedido/${row.id}`}>
                <span style={{ textDecoration: 'underline', cursor: 'pointer' }}>Ver pedido</span>
             </Link>
+         );
+      },
+   },
+   {
+      field: 'delete',
+      headerName: 'Eliminar',
+      width: 160,
+      renderCell: ({ row }: GridRenderCellParams) => {
+         const handleDelete = () => {
+            // delete logic here, e.g. call an API endpoint
+            console.log(`Deleting row with ID ${row.id}`);
+         };
+
+         return (
+            <Button variant='contained' color='primary' onClick={handleDelete}>
+               Eliminar Pedido
+            </Button>
          );
       },
    },
