@@ -5,7 +5,7 @@ import Cookies from 'js-cookie';
 import { useForm } from 'react-hook-form';
 
 import { IUser } from '../interfaces';
-import { AuthContext, OrdersContext } from '../context';
+import { AuthContext, CartContext, OrdersContext } from '../context';
 
 type FormData = {
    firstName: string;
@@ -22,6 +22,7 @@ type FormData = {
 export const useAddress = (userdb?: IUser) => {
    const { addGuestAddress } = useContext(OrdersContext);
    const { updateAddress } = useContext(AuthContext);
+   const { removeCoupon } = useContext(CartContext);
 
    const [showError, setShowError] = useState(false);
    const [isClicked, setIsClicked] = useState(false);
@@ -67,6 +68,8 @@ export const useAddress = (userdb?: IUser) => {
    });
 
    const onSubmitAddress = async (data: FormData) => {
+      removeCoupon();
+
       if (!userdb) {
          addGuestAddress(data);
       }
@@ -85,9 +88,9 @@ export const useAddress = (userdb?: IUser) => {
          }
       }
 
-      if (router.asPath.includes('/checkout')) router.push('/checkout');
+      if (router.asPath.includes('/checkout')) router.replace('/checkout');
 
-      if (router.asPath.includes('/mi-cuenta')) router.push('/mi-cuenta');
+      if (router.asPath.includes('/mi-cuenta')) router.replace('/mi-cuenta');
    };
 
    return {

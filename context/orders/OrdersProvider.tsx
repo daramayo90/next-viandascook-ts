@@ -63,7 +63,7 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
    }, []);
 
    // Guest user - Add address to cookies
-   const addGuestAddress = (address: ShippingAddress) => {
+   const addGuestAddress = async (address: ShippingAddress) => {
       Cookies.set(
          'firstName',
          address.firstName.charAt(0).toUpperCase() + address.firstName.slice(1).toLocaleLowerCase(),
@@ -79,6 +79,8 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
       Cookies.set('phone', address.phone);
       Cookies.set('email', address.email.toLocaleLowerCase());
       Cookies.set('dni', address.dni);
+
+      await viandasApi.post('/user/createUserGuest');
 
       dispatch({ type: '[Orders] - Add Shipping Address', payload: address });
    };
@@ -144,6 +146,7 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
          const orderData = {
             orderId: data._id!,
             paymentMethod: data.paymentMethod,
+            shippingAddress: undefined,
          };
 
          dispatch({ type: '[Orders] - Order Complete', payload: orderData });

@@ -48,7 +48,8 @@ const getCoupon = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
 
    const userLimit = validateCouponUssage(userCoupon!, coupon);
 
-   if (userLimit) return res.status(404).json({ message: 'Ya alcanzaste el límite permitido' });
+   if (userLimit)
+      return res.status(404).json({ message: 'Tu email ya alcanzó el límite permitido' });
 
    res.status(200).json(coupon);
 };

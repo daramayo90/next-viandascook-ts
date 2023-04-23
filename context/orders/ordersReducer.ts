@@ -6,7 +6,11 @@ type OrdersActionType =
    | { type: '[Orders] - Add Shipping Address'; payload: ShippingAddress }
    | {
         type: '[Orders] - Order Complete';
-        payload: { orderId: number; paymentMethod: IPaymentMethods };
+        payload: {
+           orderId: number;
+           paymentMethod: IPaymentMethods;
+           shippingAddress: ShippingAddress | undefined;
+        };
      };
 
 export const ordersReducer = (state: OrdersState, action: OrdersActionType): OrdersState => {
