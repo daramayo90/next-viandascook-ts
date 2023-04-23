@@ -19,6 +19,18 @@ export type Form = {
    password: string;
 };
 
+type FormData = {
+   firstName: string;
+   lastName: string;
+   address: string;
+   address2?: string;
+   zipcode: string;
+   city: 'CABA' | 'Buenos Aires';
+   phone: string;
+   email: string;
+   dni: string;
+};
+
 export interface AuthState {
    isLoggedIn: boolean;
    user?: IUser;
@@ -99,11 +111,23 @@ export const AuthProvider: FC<Props> = ({ children }) => {
    };
 
    // Update address of userdb
-   const updateAddress = async (info: ShippingAddress): Promise<{ err: boolean; msg?: string }> => {
+   const updateAddress = async (info: FormData): Promise<{ err: boolean; msg?: string }> => {
       try {
-         const { email, address, address2 = '', city, zipcode, phone, dni } = info;
+         const {
+            firstName,
+            lastName,
+            email,
+            address,
+            address2 = '',
+            city,
+            zipcode,
+            phone,
+            dni,
+         } = info;
 
          const { data } = await viandasApi.put('/user/newAddress', {
+            firstName,
+            lastName,
             email,
             address,
             address2,
