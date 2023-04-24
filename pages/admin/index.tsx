@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { NextPage } from 'next';
 
+import { Grid, Typography } from '@mui/material';
 import {
    AttachMoneyOutlined,
    CreditCardOffOutlined,
@@ -13,7 +14,6 @@ import {
 } from '@mui/icons-material';
 
 import { AdminLayout } from '../../components/layouts';
-import { Grid, Typography } from '@mui/material';
 import { SummaryTile } from '../../components/admin';
 import { DashboardSummaryResponse } from '../../interfaces';
 import viandasApi from '../../axiosApi/viandasApi';

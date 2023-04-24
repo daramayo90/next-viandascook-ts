@@ -84,6 +84,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       props: {
          product,
       },
-      revalidate: 86400, // Incremental Static Regeneration (ISR) - 24hs
+      revalidate: 10800, // Incremental Static Regeneration (ISR) - 3hs
    };
 };

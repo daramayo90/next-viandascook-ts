@@ -15,7 +15,7 @@ import useSWR, { mutate } from 'swr';
 import { viandasApi } from '../../axiosApi';
 
 import { AdminLayout } from '../../components/layouts';
-import { IOrder, IUser } from '../../interfaces';
+import { IOrder, IUser, ShippingAddress } from '../../interfaces';
 
 import { format } from '../../utils/currency';
 
@@ -28,6 +28,7 @@ const OrdersPage = () => {
       id: order._id,
       email: (order.user as IUser).email,
       name: `${(order.user as IUser).name} ${(order.user as IUser).lastName}`,
+      address: `${(order.shippingAddress as ShippingAddress).city}`,
       paymentMethod: order.paymentMethod.charAt(0).toUpperCase() + order.paymentMethod.slice(1),
       total: format(order.total),
       isPaid: order.isPaid,
@@ -51,7 +52,8 @@ const OrdersPage = () => {
             return new Date(value).toLocaleString('es-AR');
          },
       },
-      { field: 'name', headerName: 'Nombre Completo', width: 320 },
+      { field: 'name', headerName: 'Nombre Completo', width: 280 },
+      { field: 'address', headerName: 'Ciudad', width: 200 },
       {
          field: 'isPaid',
          headerName: 'Estado',
