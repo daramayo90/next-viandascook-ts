@@ -32,6 +32,7 @@ const OrdersPage = () => {
       paymentMethod: order.paymentMethod.charAt(0).toUpperCase() + order.paymentMethod.slice(1),
       total: format(order.total),
       isPaid: order.isPaid,
+      isCancel: order.isCancel,
       noProducts: order.numberOfItems,
       deliveryDate: order.deliveryDate,
       createdAt: order.createdAt,
@@ -52,28 +53,65 @@ const OrdersPage = () => {
             return new Date(value).toLocaleString('es-AR');
          },
       },
-      { field: 'name', headerName: 'Nombre Completo', width: 280 },
-      { field: 'address', headerName: 'Ciudad', width: 200 },
+      { field: 'name', headerName: 'Nombre Completo', width: 200 },
+      { field: 'address', headerName: 'Ciudad', width: 150 },
       {
          field: 'isPaid',
          headerName: 'Estado',
-         width: 180,
+         width: 160,
          renderCell: ({ row }: GridRenderCellParams) => {
-            return row.isPaid ? (
-               <Chip variant='outlined' label='Completado' color='success' />
-            ) : (
-               <Chip variant='outlined' label='Pendiente' color='error' />
+            if (row.isCancel && !row.isPaid) {
+               return (
+                  <Chip
+                     variant='filled'
+                     label='Cancelado'
+                     color='error'
+                     sx={{
+                        minWidth: 120,
+                        pt: 0.3,
+                        '& .MuiChip-label': {
+                           color: 'white',
+                        },
+                     }}
+                  />
+               );
+            }
+
+            if (!row.isCancel && !row.isPaid) {
+               return (
+                  <Chip
+                     variant='outlined'
+                     label='Pendiente'
+                     color='error'
+                     sx={{
+                        minWidth: 120,
+                        pt: 0.3,
+                     }}
+                  />
+               );
+            }
+
+            return (
+               <Chip
+                  variant='outlined'
+                  label='Completado'
+                  color='success'
+                  sx={{
+                     minWidth: 120,
+                     pt: 0.3,
+                  }}
+               />
             );
          },
       },
-      { field: 'paymentMethod', headerName: 'Método de Pago', width: 180 },
-      { field: 'total', headerName: 'Total', width: 180 },
+      { field: 'paymentMethod', headerName: 'Método de Pago', width: 160 },
+      { field: 'total', headerName: 'Total', width: 160 },
       {
          field: 'deliveryDate',
          headerName: 'Fecha de entrega',
          type: 'date',
          editable: true,
-         width: 180,
+         width: 160,
          valueFormatter: ({ value }: GridValueFormatterParams<Date>) => {
             if (value == null) {
                return '';
@@ -87,7 +125,7 @@ const OrdersPage = () => {
       {
          field: 'check',
          headerName: 'Ver pedido',
-         width: 180,
+         width: 160,
          renderCell: ({ row }: GridRenderCellParams) => {
             return (
                <Link href={`/admin/pedido/${row.id}`}>
@@ -97,9 +135,28 @@ const OrdersPage = () => {
          },
       },
       {
+         field: 'cancel',
+         headerName: 'Cancelar',
+         width: 180,
+         renderCell: ({ row }: GridRenderCellParams) => {
+            return !row.isCancel ? (
+               <Button variant='contained' color='warning' onClick={() => handleCancel(row, true)}>
+                  Cancelar Pedido
+               </Button>
+            ) : (
+               <Button
+                  variant='contained'
+                  color='secondary'
+                  onClick={() => handleCancel(row, false)}>
+                  Completar Pedido
+               </Button>
+            );
+         },
+      },
+      {
          field: 'delete',
          headerName: 'Eliminar',
-         width: 160,
+         width: 180,
          renderCell: ({ row }: GridRenderCellParams) => {
             return (
                <Button variant='contained' color='primary' onClick={() => handleDelete(row)}>
@@ -117,6 +174,11 @@ const OrdersPage = () => {
 
    const handleDelete = async (row: GridRenderCellParams) => {
       await viandasApi.delete('/admin/orders', { data: row.id });
+      mutate('/api/admin/orders');
+   };
+
+   const handleCancel = async (row: GridRenderCellParams, isCancel: boolean) => {
+      await viandasApi.patch('/admin/orders', { id: row.id, isCancel });
       mutate('/api/admin/orders');
    };
 

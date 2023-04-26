@@ -23,6 +23,8 @@ export interface IOrder {
    isPaid: boolean;
    paidAt?: string;
 
+   isCancel?: boolean;
+
    transactionId?: string;
 
    createdAt?: Date;

@@ -16,6 +16,9 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Data>)
       case 'DELETE':
          return deleteOrder(req, res);
 
+      case 'PATCH':
+         return cancelOrder(req, res);
+
       default:
          return res.status(400).json({ message: 'Bad request' });
    }
@@ -53,6 +56,38 @@ const updateOrder = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
    await db.disconnect();
 
    return res.status(200).json({ message: 'todo ok' });
+};
+
+const cancelOrder = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
+   const { id, isCancel } = req.body;
+
+   await db.connect();
+
+   if (isCancel) {
+      await Order.updateOne(
+         { _id: Number(id) },
+         {
+            $set: {
+               isPaid: false,
+               isCancel: true,
+            },
+         },
+      );
+   } else {
+      await Order.updateOne(
+         { _id: Number(id) },
+         {
+            $set: {
+               isPaid: true,
+               isCancel: false,
+            },
+         },
+      );
+   }
+
+   await db.disconnect();
+
+   return res.status(200).json({ message: 'Pedido cancelado' });
 };
 
 const deleteOrder = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
