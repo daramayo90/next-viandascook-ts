@@ -27,8 +27,17 @@ export const ItemCounter: FC<Props> = ({ color, currentValue, updatedQuantity, p
 
          ga.event({
             action: 'remove_from_cart',
-            category: 'Cart',
-            label: product.name,
+            currency: 'ARS',
+            items: [
+               {
+                  item_id: product._id,
+                  item_name: product.name,
+                  affiliation: 'Viandas Cook Store',
+                  currency: 'ARS',
+                  price: product.price,
+                  quantity: 1,
+               },
+            ],
             value: product.price,
          });
 
@@ -37,8 +46,17 @@ export const ItemCounter: FC<Props> = ({ color, currentValue, updatedQuantity, p
 
       ga.event({
          action: 'add_to_cart',
-         category: 'Cart',
-         label: product.name,
+         currency: 'ARS',
+         items: [
+            {
+               item_id: product._id,
+               item_name: product.name,
+               affiliation: 'Viandas Cook Store',
+               currency: 'ARS',
+               price: product.price,
+               quantity: 1,
+            },
+         ],
          value: product.price,
       });
 

@@ -25,8 +25,17 @@ const ProductPage: NextPage<Props> = ({ product }) => {
    useEffect(() => {
       ga.event({
          action: 'view_item',
-         category: 'Product',
-         label: product.name,
+         currency: 'ARS',
+         items: [
+            {
+               item_id: product._id,
+               item_name: product.name,
+               affiliation: 'Viandas Cook Store',
+               currency: 'ARS',
+               price: product.price,
+               quantity: 1,
+            },
+         ],
          value: product.price,
       });
    }, [product]);

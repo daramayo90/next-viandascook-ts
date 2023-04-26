@@ -24,17 +24,25 @@ const ThankYouPage: NextPage<Props> = ({ order }) => {
    const { addReferralPoints, orderToSpreadsheet, orderToOptimoRoute } = useContext(OrdersContext);
    const { sendOrderConfirmationEmail, sendWireTransferInfo } = useContext(EmailsContext);
 
-   const { _id, paymentMethod, total, user } = order;
-   const { email } = user as IUser;
+   const { _id, paymentMethod, total, orderItems, shipping } = order;
+
+   const items = orderItems.map(({ _id, name, price, quantity }) => ({
+      item_id: _id,
+      item_name: name,
+      affiliation: 'Viandas Cook Store',
+      currency: 'ARS',
+      price,
+      quantity,
+   }));
 
    const onPurchaseEvent = () => {
       ga.event({
          action: 'purchase',
-         category: 'Purchase',
-         label: `${_id!.toString()} | ${email}`,
+         currency: 'ARS',
+         items,
+         shipping,
+         transaction_id: _id!.toString(),
          value: total,
-         number_of_items: order.numberOfItems,
-         payment_method: paymentMethod,
       });
    };
 

@@ -32,18 +32,27 @@ interface Props {
 const CheckoutPage: NextPage<Props> = ({ user }) => {
    const { shippingAddress } = useContext(OrdersContext);
    const { isLoggedIn } = useContext(AuthContext);
-   const { total } = useContext(CartContext);
+   const { total, cart } = useContext(CartContext);
 
    const shipping = isLoggedIn ? user?.shipping : shippingAddress;
+
+   const items = cart.map(({ _id, name, price, quantity }) => ({
+      item_id: _id,
+      item_name: name,
+      affiliation: 'Viandas Cook Store',
+      currency: 'ARS',
+      price,
+      quantity,
+   }));
 
    useEffect(() => {
       ga.event({
          action: 'begin_checkout',
-         category: 'Checkout',
-         label: user ? user.email : shippingAddress?.email,
+         currency: 'ARS',
+         items,
          value: total,
       });
-   }, [user, shippingAddress, total]);
+   }, [items, total]);
 
    return (
       <ShopLayout title={'Viandas Cook - Finalizar Compra'} pageDescription={''}>

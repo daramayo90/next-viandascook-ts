@@ -45,20 +45,20 @@ export const Newsletter = () => {
       reset();
       setErrorMessage('');
       setIsClicked(false);
-      subscribeUserEvent(email);
+      // subscribeUserEvent(email);
       setOkMessage('Ahora eres parte de la comunidad ViandLover. ¡Bienvenido!');
       setTimeout(() => {
          setOkMessage('');
       }, 3000);
    };
 
-   const subscribeUserEvent = (email: string) => {
-      ga.event({
-         action: 'new_subscriber',
-         category: 'Subscriber',
-         label: email,
-      });
-   };
+   // const subscribeUserEvent = (email: string) => {
+   //    ga.event({
+   //       action: 'new_subscriber',
+   //       category: 'Subscriber',
+   //       label: email,
+   //    });
+   // };
 
    return (
       <section className={styles.newsletter}>
