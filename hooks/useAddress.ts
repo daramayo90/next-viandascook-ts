@@ -62,6 +62,7 @@ export const useAddress = (userdb?: IUser) => {
    const {
       register,
       handleSubmit,
+      getValues,
       formState: { errors },
    } = useForm<FormData>({
       defaultValues: getAddress(),
@@ -99,6 +100,7 @@ export const useAddress = (userdb?: IUser) => {
       errorMessage,
       isClicked,
       register,
+      getValues,
       handleSubmit,
       onSubmitAddress,
    };

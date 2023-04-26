@@ -1,9 +1,9 @@
-import { FC } from 'react';
+import { ChangeEvent, FC, useState } from 'react';
 
 import { IUser } from '../../interfaces';
 
 import { useAddress } from '../../hooks';
-import { validations } from '../../utils';
+import { validations, zipcodesBA } from '../../utils';
 import { SubmitButton } from '../ui';
 
 import styles from '../../styles/Address.module.css';
@@ -13,7 +13,15 @@ interface Props {
 }
 
 export const AddressForm: FC<Props> = ({ userdb }) => {
-   const { register, handleSubmit, onSubmitAddress, errors, isClicked } = useAddress(userdb);
+   const { register, getValues, handleSubmit, onSubmitAddress, errors, isClicked } =
+      useAddress(userdb);
+
+   const [cityValue, setCityValue] = useState<string>(getValues('city'));
+
+   const onCitySelect = (e: ChangeEvent<HTMLSelectElement>) => {
+      e.preventDefault();
+      setCityValue(e.target.value);
+   };
 
    return (
       <form onSubmit={handleSubmit(onSubmitAddress)} noValidate>
@@ -76,23 +84,41 @@ export const AddressForm: FC<Props> = ({ userdb }) => {
             <select
                {...register('city', {
                   required: 'La ciudad es un campo requerido',
-               })}>
+               })}
+               onChange={onCitySelect}>
                <option value='CABA'>CABA</option>
                <option value='Buenos Aires'>Buenos Aires</option>
             </select>
             {errors.city && <span className={styles.error}>{errors.city?.message}</span>}
          </label>
 
-         <label className={styles.inputText}>
-            <span>Código Postal</span>
-            <input
-               {...register('zipcode', {
-                  required: 'El código postal es un campo requerido',
-               })}
-               type='number'
-            />
-            {errors.zipcode && <span className={styles.error}>{errors.zipcode?.message}</span>}
-         </label>
+         {cityValue === 'CABA' ? (
+            <label className={styles.inputText}>
+               <span>Código Postal</span>
+               <input
+                  {...register('zipcode', {
+                     required: 'El código postal es un campo requerido',
+                  })}
+                  type='number'
+               />
+               {errors.zipcode && <span className={styles.error}>{errors.zipcode?.message}</span>}
+            </label>
+         ) : (
+            <label className={styles.inputText}>
+               <span>Código Postal</span>
+               <select
+                  {...register('zipcode', {
+                     required: 'El código postal es un campo requerido',
+                  })}>
+                  {zipcodesBA.map((zipcode, index) => (
+                     <option key={index} value={zipcode}>
+                        {zipcode}
+                     </option>
+                  ))}
+               </select>
+               {errors.zipcode && <span className={styles.error}>{errors.zipcode?.message}</span>}
+            </label>
+         )}
 
          <label className={styles.inputText}>
             <span>Celular</span>
