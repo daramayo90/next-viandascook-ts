@@ -25,6 +25,14 @@ export const AddressForm: FC<Props> = ({ userdb }) => {
 
    return (
       <form onSubmit={handleSubmit(onSubmitAddress)} noValidate>
+         <div style={{ position: 'absolute', top: '5rem' }}>
+            <p>
+               Si sos de <strong>Buenos Aires</strong> y tu código postal <strong>no</strong>{' '}
+               aparece en la lista, es porque aún no llegamos con nuestro delivery hasta tu
+               dirección.
+            </p>
+            <p>Esperamos sepas disculpar las molestias.</p>
+         </div>
          <label className={styles.inputText}>
             <span>Nombre</span>
             <input
