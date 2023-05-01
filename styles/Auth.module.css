@@ -96,7 +96,7 @@
    display: flex;
    align-items: center;
    justify-content: space-between;
-   width: 90%;
+   width: 100%;
    margin: 1rem 0;
    padding: 0 0.7rem;
 }
@@ -212,6 +212,10 @@
       width: 90%;
       max-width: 480px;
       margin: 0.9rem 0;
+   }
+
+   .auth > .container > form > .linksTo {
+      width: 90%;
    }
 
    .auth > .container > .guestButton {

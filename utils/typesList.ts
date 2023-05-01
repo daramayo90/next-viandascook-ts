@@ -20,12 +20,12 @@ export const typesList = [
       model: 'Pescado',
    },
    {
-      icon: '/type/all.svg',
+      icon: '/type/tarta.jpg',
       name: 'Tarta',
       model: 'Tarta',
    },
    {
-      icon: '/type/all.svg',
+      icon: '/type/empanada.jpg',
       name: 'Empanada',
       model: 'Empanada',
    },

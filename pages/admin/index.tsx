@@ -14,7 +14,7 @@ import {
 } from '@mui/icons-material';
 
 import { AdminLayout } from '../../components/layouts';
-import { SummaryTile } from '../../components/admin';
+import { DateRangePicker, SummaryTile } from '../../components/admin';
 import { DashboardSummaryResponse } from '../../interfaces';
 import viandasApi from '../../axiosApi/viandasApi';
 
@@ -72,6 +72,8 @@ const DashboardPage: NextPage = () => {
    return (
       <AdminLayout title='Dashboard' subTitle='Estadisticas generales' icon={<DashboardOutlined />}>
          <Grid container spacing={2} sx={{ width: '90%', margin: 'auto', marginTop: 5 }}>
+            <DateRangePicker />
+
             <SummaryTile
                total={numberOfOrders}
                description='Ordenes totales'

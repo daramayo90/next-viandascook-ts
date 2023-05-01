@@ -7,7 +7,7 @@ import { IProduct } from '../../interfaces';
 import { CartContext } from '../../context';
 
 import { ShopLayout } from '../../components/layouts';
-import { Button, DiscountSlides } from '../../components/ui';
+import { Button, DiscountSlides, News } from '../../components/ui';
 import { ProductCard, SearchNotFound, SearchProducts, TypesList } from '../../components/products';
 
 import styles from '../../styles/Products.module.css';
@@ -58,6 +58,8 @@ const ProductsPage: NextPage<Props> = ({ products }) => {
    return (
       <ShopLayout title={'Viandas Cook - Menú'} pageDescription={''}>
          <section className={styles.products}>
+            <News />
+
             <SearchProducts searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
 
             {!searchTerm && (

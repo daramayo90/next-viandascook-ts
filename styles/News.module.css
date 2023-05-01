@@ -1,0 +1,51 @@
+.news {
+   width: 100%;
+}
+
+.news > .container {
+   position: relative;
+   /* display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   margin: 0 auto;
+   width: 100%; */
+   height: 190px;
+   cursor: pointer;
+}
+
+@media (min-width: 420px) {
+   .news > .container {
+      height: 220px;
+   }
+}
+
+@media (min-width: 520px) {
+   .news > .container {
+      height: 260px;
+   }
+}
+
+@media (min-width: 620px) {
+   .news > .container {
+      height: 310px;
+   }
+}
+
+@media (min-width: 720px) {
+   .news > .container {
+      height: 380px;
+   }
+}
+
+@media (min-width: 820px) {
+   .news > .container {
+      height: 720px;
+   }
+}
+
+@media (min-width: 1200px) {
+   .news > .container {
+      height: 920px;
+   }
+}
