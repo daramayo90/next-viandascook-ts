@@ -7,6 +7,7 @@ const productSchema = new Schema(
       name: { type: String, required: true, unique: true, default: '' },
       slug: { type: String, required: true, unique: true },
       price: { type: Number, required: true, default: 0 },
+      discountPrice: { type: Number, default: 0 },
       inStock: { type: Boolean, required: true, default: true },
       ingredients: [{ type: String }],
       nutritionalInfo: {

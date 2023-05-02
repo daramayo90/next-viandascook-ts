@@ -23,6 +23,7 @@ export const Providers = () => {
                         className={`${styles.providerButton} ${styles.google}`}
                         onClick={() => signIn(provider.id)}>
                         <FcGoogle className={styles.icon} />
+                        <span>Loguearse con Google</span>
                      </button>
                   );
 
@@ -32,6 +33,7 @@ export const Providers = () => {
                      className={`${styles.providerButton} ${styles.facebook}`}
                      onClick={() => signIn(provider.id)}>
                      <FaFacebookF className={styles.icon} />
+                     <span className={styles.fbText}>Loguearse con Facebook</span>
                   </button>
                );
             })}

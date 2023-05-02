@@ -4,6 +4,7 @@ export interface IProduct {
    name: string;
    slug: string;
    price: number;
+   discountPrice?: number;
    inStock: boolean;
    type: IType[];
    ingredients: string[];

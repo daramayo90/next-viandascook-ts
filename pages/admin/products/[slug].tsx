@@ -49,6 +49,7 @@ interface FormData {
    name: string;
    slug: string;
    price: number;
+   discountPrice?: number;
    inStock: boolean;
    type: IType[];
    ingredients: string[];
@@ -245,6 +246,21 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
                         fullWidth
                         sx={{ mb: 1 }}
                         {...register('price', {
+                           required: 'Este campo es requerido',
+                           min: { value: 0, message: 'Mínimo de valor cero' },
+                        })}
+                        error={!!errors.price}
+                        helperText={errors.price?.message}
+                     />
+
+                     {/* Discount Price */}
+                     <TextField
+                        label='Precio Descuento'
+                        type='number'
+                        variant='filled'
+                        fullWidth
+                        sx={{ mb: 1 }}
+                        {...register('discountPrice', {
                            required: 'Este campo es requerido',
                            min: { value: 0, message: 'Mínimo de valor cero' },
                         })}
