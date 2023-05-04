@@ -1,5 +1,6 @@
 import { useState, useContext, useEffect } from 'react';
 import { GetStaticProps, NextPage } from 'next';
+import { useRouter } from 'next/router';
 
 import { dbProducts } from '../../database';
 import { IProduct } from '../../interfaces';
@@ -17,13 +18,25 @@ interface Props {
 }
 
 const ProductsPage: NextPage<Props> = ({ products }) => {
+   const router = useRouter();
+
    const [searchTerm, setSearchTerm] = useState<string>('');
    const [searchProducts, setSearchProducts] = useState<IProduct[]>([]);
 
    const [type, setType] = useState<string>('');
    const [typeProducts, setTypeProducts] = useState<IProduct[]>([]);
 
+   const [queryType, setQueryType] = useState<string>('');
+
    const { numberOfItems } = useContext(CartContext);
+
+   useEffect(() => {
+      if (router.query.type) {
+         setQueryType(router.query.type as string);
+      } else {
+         setQueryType('');
+      }
+   }, [router.query]);
 
    useEffect(() => {
       const searchProducts: IProduct[] = products.filter((p) => {
@@ -39,17 +52,25 @@ const ProductsPage: NextPage<Props> = ({ products }) => {
       });
       setSearchProducts(searchProducts);
       setType('');
+
+      if (searchTerm) {
+         setQueryType('');
+      }
    }, [products, searchTerm]);
 
    useEffect(() => {
       const typeProducts: IProduct[] = products.filter((p) => {
-         return p.type.some((t) => type.includes(t));
+         return p.type.some((t) => type.includes(t) || queryType.includes(t));
       });
       setTypeProducts(typeProducts);
-   }, [products, type]);
+
+      if (type) {
+         setQueryType('');
+      }
+   }, [products, type, queryType]);
 
    const productsToShow =
-      typeProducts.length > 0
+      typeProducts.length > 0 || queryType !== ''
          ? typeProducts
          : searchProducts.length > 0
          ? searchProducts
