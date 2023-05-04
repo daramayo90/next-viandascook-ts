@@ -16,7 +16,7 @@ interface Props {
 
 export const ShopLayout: FC<Props> = ({ children, title, pageDescription, imageFullUrl }) => {
    const router = useRouter();
-   const path = router.asPath;
+   const path = router.pathname;
 
    let navTitle = '';
    let menuPage = false;
