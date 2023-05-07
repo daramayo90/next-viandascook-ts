@@ -8,7 +8,6 @@ import { ICartProduct } from '../../../interfaces/cart';
 import { IProduct } from '../../../interfaces/products';
 import { db } from '../../../database';
 import mercadopago from 'mercadopago';
-import crypto from 'crypto';
 
 type Data = { message: string } | { id: string; init_point: string };
 
