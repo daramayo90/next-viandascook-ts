@@ -81,6 +81,7 @@
 }
 
 .product > .topSection > .image > .nextImage {
+   position: relative;
    width: 90%;
    margin: 2rem auto;
 }
@@ -88,6 +89,12 @@
 .product > .topSection > .image > .nextImage img {
    object-fit: cover;
    border-radius: 40px;
+}
+
+.product > .topSection > .image > .nextImage > .tagImageWrapper {
+   position: absolute;
+   top: 0;
+   left: 0;
 }
 
 /* Aditional Information */

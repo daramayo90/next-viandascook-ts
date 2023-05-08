@@ -42,6 +42,16 @@ export const ProductCard: FC<Props> = ({ product }) => {
                      height={900}
                      priority={true}
                   />
+
+                  <div className={styles.tagImageWrapper}>
+                     <Image
+                        src='/img/viandashot-tag.png'
+                        alt='Hot Sale - Viandas Hot Tag'
+                        width={750}
+                        height={900}
+                        priority={true}
+                     />
+                  </div>
                </div>
             </Link>
 

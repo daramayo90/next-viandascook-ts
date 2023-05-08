@@ -7,10 +7,10 @@ import 'react-slideshow-image/dist/styles.css';
 import styles from '../../styles/DiscountSlides.module.css';
 
 const discounts = [
-   // {
-   //    name: 'Viandas Hot - Hot Sale 20%',
-   //    img: '/img/banner-news-mobile.jpg',
-   // },
+   {
+      name: 'Viandas Hot - Hot Sale 20%',
+      img: '/discounts/offer-hot-sale.png',
+   },
    {
       name: 'Descuento llevando 14 viandas o más',
       img: '/discounts/offer-14-viandas.png',
