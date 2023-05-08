@@ -8,6 +8,10 @@ import styles from '../../styles/DiscountSlides.module.css';
 
 const discounts = [
    {
+      name: 'Viandas Hot - Hot Sale 20%',
+      img: '/img/banner-news-mobile.jpg',
+   },
+   {
       name: 'Descuento llevando 14 viandas o más',
       img: '/discounts/offer-14-viandas.png',
    },
