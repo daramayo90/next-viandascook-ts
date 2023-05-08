@@ -19,6 +19,12 @@ const promosList = [
       text: 'Válido para la primera compra',
       coupon: 'bienvenido10',
    },
+   {
+      icon: <TbDiscount2 className={styles.iconPromo} />,
+      title: 'Hot Sale',
+      text: '20% de descuento en todo el menú',
+      coupon: 'hotviandas',
+   },
    // {
    //    icon: <TbDiscount2 className={styles.iconPromo} />,
    //    title: 'Cyber Monday',

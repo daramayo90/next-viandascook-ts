@@ -9,6 +9,7 @@ export * from './Intro';
 export * from './Loading';
 export * from './LoadingBars';
 export * from './News';
+export * from './NewsDialog';
 export * from './Newsletter';
 export * from './Questions';
 export * from './QuestionsLoyalty';

@@ -1,18 +1,22 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 
-import styles from '../../styles/News.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
+import { NewsDialog } from './';
+
+import styles from '../../styles/News.module.css';
 
 export const News: FC = () => {
+   // const [isDialogOpen, setIsDialogOpen] = useState(false);
+
    return (
-      <section className={styles.news}>
-         <Link href='/plato/tarta-integral-de-calabaza-y-queso'>
+      <>
+         <section className={styles.news}>
             <div className={styles.container}>
                <div className={styles.mobileBanner}>
                   <Image
-                     src='/img/banner-lanzamiento-tarta-calabaza-queso-mobile.jpg'
-                     alt='Tarta de calabaza y queso'
+                     src='/img/banner-news-mobile.jpg'
+                     alt='Hot Sale - Viandas Hot'
                      layout='fill'
                      objectFit='cover'
                      priority={true}
@@ -20,15 +24,17 @@ export const News: FC = () => {
                </div>
                <div className={styles.desktopBanner}>
                   <Image
-                     src='/img/banner-lanzamiento-tarta-calabaza-queso.jpg'
-                     alt='Tarta de calabaza y queso'
+                     src='/img/banner-news.jpg'
+                     alt='Hot Sale - Viandas Hot'
                      layout='fill'
                      objectFit='cover'
                      priority={true}
                   />
                </div>
             </div>
-         </Link>
-      </section>
+         </section>
+
+         {/* {isDialogOpen && <NewsDialog setIsDialogOpen={setIsDialogOpen} />} */}
+      </>
    );
 };

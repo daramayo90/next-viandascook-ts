@@ -55,3 +55,38 @@
       height: 920px;
    }
 }
+
+/* News Dialog */
+
+.newsDialog {
+   position: fixed;
+   top: 10%;
+   left: 50%;
+   transform: translateX(-50%);
+   max-width: 550px;
+   width: 95vw;
+   height: 150px;
+   background-color: rgba(255, 255, 255);
+   border-radius: 25px;
+   border: 1px solid var(--textColor);
+   z-index: 100;
+}
+
+.newsDialog > .container {
+   position: relative;
+   width: 90%;
+   margin: 1rem auto;
+}
+
+.newsDialog > .container > .text {
+   margin-top: 3rem;
+}
+
+.newsDialog > .container > .closeDialog {
+   position: absolute;
+   top: 3px;
+   right: 3px;
+   color: var(--primary);
+   font-size: 1.2rem;
+   /* cursor: pointer; */
+}
