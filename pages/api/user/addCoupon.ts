@@ -53,6 +53,7 @@ const addCoupon = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
                address2: dbUser?.shipping.address2 || req.cookies.address2,
                zipcode: dbUser?.shipping.zipcode || req.cookies.zipcode,
                city: dbUser?.shipping.city || req.cookies.city,
+               city2: dbUser?.shipping.city2 || req.cookies.city2,
             },
             coupons: {
                _id: _id,

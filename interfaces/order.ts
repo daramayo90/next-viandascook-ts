@@ -49,6 +49,7 @@ export interface ShippingAddress {
    address2?: string;
    zipcode: string;
    city: ICity;
+   city2?: string;
    phone: string;
    email: string;
    dni: string;

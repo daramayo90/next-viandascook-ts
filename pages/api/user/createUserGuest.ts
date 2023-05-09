@@ -41,6 +41,7 @@ const createGuest = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
          address2: req.cookies.address2,
          zipcode: req.cookies.zipcode,
          city: req.cookies.city,
+         city2: req.cookies.city2,
       },
       referralCode: refCode,
       coupons: [],

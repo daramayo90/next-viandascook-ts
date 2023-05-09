@@ -15,7 +15,7 @@ interface Props {
 export const OrderAddress: FC<Props> = ({ order }) => {
    const { name, lastName, email, phone, dni } = order.user as IUser;
 
-   const { address, address2, city } = order.shippingAddress as ShippingAddress;
+   const { address, address2, city2 } = order.shippingAddress as ShippingAddress;
 
    const { deliveryDate } = order;
 
@@ -64,7 +64,7 @@ export const OrderAddress: FC<Props> = ({ order }) => {
             <GoLocation className={styles.icon} />
 
             <p className={styles.text}>
-               {address}, Depto: {address2}, {city}
+               {address}, Depto: {address2}, {city2}
             </p>
          </div>
       </section>

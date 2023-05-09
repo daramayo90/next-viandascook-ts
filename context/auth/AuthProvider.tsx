@@ -101,13 +101,14 @@ export const AuthProvider: FC<Props> = ({ children }) => {
    // Update address of userdb
    const updateAddress = async (info: ShippingAddress): Promise<{ err: boolean; msg?: string }> => {
       try {
-         const { email, address, address2 = '', city, zipcode, phone, dni } = info;
+         const { email, address, address2 = '', city, city2 = '', zipcode, phone, dni } = info;
 
          const { data } = await viandasApi.put('/user/newAddress', {
             email,
             address,
             address2,
             city,
+            city2,
             zipcode,
             phone,
             dni,

@@ -53,6 +53,7 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
             address2: Cookies.get('address2') || '',
             zipcode: Cookies.get('zipcode') || '',
             city: Cookies.get('city') === 'CABA' ? ('CABA' as ICity) : ('Buenos Aires' as ICity),
+            city2: Cookies.get('city2') || '',
             phone: Cookies.get('phone') || '',
             email: Cookies.get('email') || '',
             dni: Cookies.get('dni') || '',
@@ -76,6 +77,7 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
       Cookies.set('address2', address.address2 || '');
       Cookies.set('zipcode', address.zipcode);
       Cookies.set('city', address.city);
+      Cookies.set('city2', address.city2 || '');
       Cookies.set('phone', address.phone);
       Cookies.set('email', address.email.toLocaleLowerCase());
       Cookies.set('dni', address.dni);
@@ -227,7 +229,7 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
    const orderToSpreadsheet = async (order: IOrder): Promise<void> => {
       const { _id, paymentMethod, total, deliveryDate } = order;
       const { name, lastName, email, phone, dni } = order.user as IUser;
-      const { address, address2, city } = order.shippingAddress as ShippingAddress;
+      const { address, address2, city2 } = order.shippingAddress as ShippingAddress;
 
       const deliveryDateObj = new Date(deliveryDate);
 
@@ -243,7 +245,7 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
          dni,
          address,
          address2,
-         city,
+         city2,
          paymentMethod: paymentMethod.charAt(0).toUpperCase() + paymentMethod.slice(1),
          total,
          deliveryDate: deliveryDateObj.toLocaleDateString('es-AR', {
@@ -261,7 +263,7 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
    const orderToOptimoRoute = async (order: IOrder): Promise<void> => {
       const { _id, paymentMethod, total, deliveryDate } = order;
       const { name, email, phone } = order.user as IUser;
-      const { address, address2, city } = order.shippingAddress as ShippingAddress;
+      const { address, address2, city2 } = order.shippingAddress as ShippingAddress;
 
       const deliveryDateObj = new Date(deliveryDate);
 
@@ -272,7 +274,7 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
          phone,
          address,
          address2,
-         city,
+         city2,
          paymentMethod,
          total,
          deliveryDate: deliveryDateObj.toLocaleDateString('es-AR', {

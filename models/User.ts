@@ -38,6 +38,7 @@ const userSchema = new Schema(
             },
             message: '{VALUE} is not a valid city',
          },
+         city2: { type: String },
       },
 
       coupons: [

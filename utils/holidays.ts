@@ -12,4 +12,4 @@
  * November: 10
  * December: 11
  */
-export const holidays = [new Date(2023, 4, 1)];
+export const holidays = [new Date(2023, 4, 1), new Date(2023, 4, 11)];

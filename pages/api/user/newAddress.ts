@@ -17,7 +17,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Data>)
 }
 
 const updateAddress = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
-   const { email, address, address2, city, zipcode, phone, dni } = req.body;
+   const { email, address, address2, city, city2, zipcode, phone, dni } = req.body;
 
    await db.connect();
 
@@ -36,6 +36,7 @@ const updateAddress = async (req: NextApiRequest, res: NextApiResponse<Data>) =>
             'shipping.address': address,
             'shipping.address2': address2,
             'shipping.city': city,
+            'shipping.city2': city2,
             'shipping.zipcode': zipcode,
             phone: phone,
             dni: dni,

@@ -88,7 +88,7 @@ export const AddressForm: FC<Props> = ({ userdb }) => {
          </label>
 
          <label className={styles.inputText}>
-            <span>Localidad / Ciudad</span>
+            <span>Ciudad</span>
             <select
                {...register('city', {
                   required: 'La ciudad es un campo requerido',
@@ -98,6 +98,21 @@ export const AddressForm: FC<Props> = ({ userdb }) => {
                <option value='Buenos Aires'>Buenos Aires</option>
             </select>
             {errors.city && <span className={styles.error}>{errors.city?.message}</span>}
+         </label>
+
+         <label className={styles.inputText}>
+            <span>Barrio / Localidad</span>
+            <input
+               {...register('city2', {
+                  required: 'El barrio / localidad es un campo requerido',
+                  minLength: {
+                     value: 6,
+                     message: 'Debe tener al menos 6 caracteres',
+                  },
+               })}
+               type='text'
+            />
+            {errors.city2 && <span className={styles.error}>{errors.city2?.message}</span>}
          </label>
 
          {cityValue === 'CABA' ? (

@@ -11,7 +11,7 @@ type IOptimoRoute = {
    phone: string;
    address: string;
    address2: string;
-   city: string;
+   city2: string;
    paymentMethod: string;
    total: number;
    deliveryDate: string;
@@ -28,7 +28,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Data>)
 }
 
 const createOptimoRouteOrder = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
-   const { _id, name, email, phone, address, address2, city, paymentMethod, total, deliveryDate } =
+   const { _id, name, email, phone, address, address2, city2, paymentMethod, total, deliveryDate } =
       req.body as IOptimoRoute;
 
    const [day, month, year] = deliveryDate.split('/');
@@ -41,7 +41,7 @@ const createOptimoRouteOrder = async (req: NextApiRequest, res: NextApiResponse<
       date: `${year}-${month}-${day}`,
       duration: 10,
       location: {
-         address: `${address}, ${city}`,
+         address: `${address}, ${city2}`,
          locationName: `${address}, Piso/Depto: ${address2}`,
          acceptPartialMatch: true,
       },

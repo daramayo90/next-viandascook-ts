@@ -26,6 +26,7 @@ export interface IAddress {
    address2?: string;
    zipcode: string;
    city: 'CABA' | 'Buenos Aires';
+   city2?: string;
 }
 
 export interface IUserCoupon {

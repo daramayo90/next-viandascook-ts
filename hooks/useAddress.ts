@@ -14,6 +14,7 @@ type FormData = {
    address2?: string;
    zipcode: string;
    city: 'CABA' | 'Buenos Aires';
+   city2: string;
    phone: string;
    email: string;
    dni: string;
@@ -40,6 +41,7 @@ export const useAddress = (userdb?: IUser) => {
             address2: userdb.shipping?.address2 || '',
             zipcode: userdb.shipping?.zipcode || '',
             city: userdb.shipping?.city || 'CABA',
+            city2: userdb.shipping?.city2 || '',
             phone: userdb.phone || '',
             email: userdb.email,
             dni: userdb.dni || '',
@@ -52,6 +54,7 @@ export const useAddress = (userdb?: IUser) => {
             address2: Cookies.get('address2') || '',
             zipcode: Cookies.get('zipcode') || '',
             city: Cookies.get('city') === 'CABA' ? 'CABA' : 'Buenos Aires',
+            city2: Cookies.get('city2') || '',
             phone: Cookies.get('phone') || '',
             email: Cookies.get('email') || '',
             dni: Cookies.get('dni') || '',

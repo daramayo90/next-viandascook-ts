@@ -75,6 +75,7 @@ const registerUser = async (req: NextApiRequest, res: NextApiResponse<Data>) => 
          address2: '-',
          zipcode: '-',
          city: 'CABA',
+         city2: '-',
       },
       referralCode: refCode,
       coupons: [],

@@ -16,7 +16,7 @@ type SheetForm = {
    dni: string;
    address: string;
    address2: string;
-   city: string;
+   city2: string;
    paymentMethod: string;
    total: number;
    deliveryDate: string;
@@ -37,7 +37,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       dni,
       address,
       address2,
-      city,
+      city2,
       paymentMethod,
       total,
       deliveryDate,
@@ -75,7 +75,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                   email,
                   phone,
                   dni,
-                  `${address}, ${city}`,
+                  `${address}, ${city2}`,
                   `${address}, Depto/Casa: ${address2}`,
                   `${paymentMethod}: ${currency.format(total)}`,
                   '',

@@ -7,6 +7,7 @@ export const removeCookies = () => {
    Cookies.remove('address2');
    Cookies.remove('zipcode');
    Cookies.remove('city');
+   Cookies.remove('city2');
    Cookies.remove('phone');
    Cookies.remove('email');
    Cookies.remove('dni');
