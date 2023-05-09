@@ -25,11 +25,10 @@ export const AddressForm: FC<Props> = ({ userdb }) => {
 
    return (
       <form onSubmit={handleSubmit(onSubmitAddress)} noValidate>
-         <div style={{ position: 'absolute', top: '5rem' }}>
+         <div style={{ position: 'absolute', top: '5rem', width: '90%', margin: 'auto' }}>
             <p>
-               Si sos de <strong>Buenos Aires</strong> y tu código postal <strong>no</strong>{' '}
-               aparece en la lista, es porque aún no llegamos con nuestro delivery hasta tu
-               dirección.
+               Si sos de <strong>GBA</strong> y tu código postal <strong>no</strong> aparece en la
+               lista, es porque aún no llegamos con nuestro delivery hasta tu dirección.
             </p>
             <p>Esperamos sepas disculpar las molestias.</p>
          </div>

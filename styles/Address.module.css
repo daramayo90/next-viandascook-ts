@@ -17,7 +17,7 @@
    flex-direction: column;
    align-items: center;
    width: 100%;
-   padding-top: 4.5rem;
+   padding-top: 7.5rem;
 }
 
 .address > .container > form > .inputText {
@@ -100,6 +100,7 @@
       justify-content: space-between;
       width: 94%;
       margin: 0 auto;
+      padding-top: 6rem;
    }
 
    .address > .container > form > .inputText {
@@ -107,7 +108,8 @@
    }
 
    .address > .container > form > .applyButton {
+      max-width: 450px;
       width: 47%;
-      margin: 2rem 0 0;
+      margin: 2rem auto;
    }
 }
