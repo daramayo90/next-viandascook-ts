@@ -8,7 +8,7 @@ import { AuthContext, CartContext, OrdersContext } from '../../context';
 
 import { IUser } from '../../interfaces';
 
-import { ga } from '../../utils';
+import { ga, meta } from '../../utils';
 
 import { ShopLayout } from '../../components/layouts';
 import { SideProductsMenu } from '../../components/ui';
@@ -53,6 +53,10 @@ const CheckoutPage: NextPage<Props> = ({ user }) => {
          value: total,
       });
    }, [items, total]);
+
+   useEffect(() => {
+      meta.beginCheckout(cart);
+   }, [cart]);
 
    return (
       <ShopLayout title={'Viandas Cook - Finalizar Compra'} pageDescription={''}>

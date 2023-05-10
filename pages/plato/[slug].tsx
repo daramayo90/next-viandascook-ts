@@ -4,7 +4,7 @@ import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import { dbProducts } from '../../database';
 import { IProduct } from '../../interfaces';
 
-import { ga, currency } from '../../utils';
+import { ga, currency, meta } from '../../utils';
 
 import { ProductLayout } from '../../components/layouts';
 import {
@@ -38,6 +38,8 @@ const ProductPage: NextPage<Props> = ({ product }) => {
          ],
          value: product.price,
       });
+
+      meta.viewItem(product);
    }, [product]);
 
    return (

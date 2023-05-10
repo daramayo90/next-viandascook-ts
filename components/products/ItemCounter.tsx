@@ -5,7 +5,7 @@ import { HiOutlineTrash } from 'react-icons/hi';
 
 import { IOrderItem, IProduct } from '../../interfaces';
 
-import { ga } from '../../utils';
+import { ga, meta } from '../../utils';
 
 import styles from '../../styles/ItemCounter.module.css';
 
@@ -41,6 +41,8 @@ export const ItemCounter: FC<Props> = ({ color, currentValue, updatedQuantity, p
             value: product.price,
          });
 
+         meta.removeFromCart(product);
+
          return updatedQuantity(currentValue - 1);
       }
 
@@ -59,6 +61,8 @@ export const ItemCounter: FC<Props> = ({ color, currentValue, updatedQuantity, p
          ],
          value: product.price,
       });
+
+      meta.addToCart(product);
 
       return updatedQuantity(currentValue + 1);
    };

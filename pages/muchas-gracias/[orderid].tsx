@@ -6,7 +6,7 @@ import { dbOrders } from '../../database';
 import { IOrder, IUser } from '../../interfaces';
 
 import { CartContext, OrdersContext, EmailsContext } from '../../context';
-import { ga, removeCookies } from '../../utils';
+import { ga, meta, removeCookies } from '../../utils';
 
 import { OrderLayout } from '../../components/layouts';
 import { OrderProducts, OrderCheckout, OrderAddress } from '../../components/orders';
@@ -44,6 +44,8 @@ const ThankYouPage: NextPage<Props> = ({ order }) => {
          transaction_id: _id!.toString(),
          value: total,
       });
+
+      meta.purchase(orderItems, total);
    };
 
    useEffect(() => {
