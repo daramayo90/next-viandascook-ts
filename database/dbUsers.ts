@@ -62,7 +62,7 @@ export const oAuthToDbUser = async (authEmail: string, authName: string, authLas
          address2: '-',
          zipcode: '-',
          city: 'CABA',
-         city2: '',
+         city2: '-',
       },
       referralCode: refCode,
       coupons: [],
