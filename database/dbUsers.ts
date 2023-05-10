@@ -38,13 +38,16 @@ export const oAuthToDbUser = async (authEmail: string, authName: string, authLas
 
    const user = await User.findOne({ email: authEmail });
 
+   await db.disconnect();
+
    if (user) {
-      await db.disconnect();
       const { _id, name, lastName, email, phone = '', dni = '', shipping, role } = user;
       return { _id, name, lastName, email, phone, dni, shipping, role };
    }
 
    const refCode = await generateUniqueReferralCode();
+
+   await db.connect();
 
    const newUser = new User({
       name: authName,
