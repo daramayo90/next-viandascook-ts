@@ -6,10 +6,10 @@ import { ShopLayout } from '../../components/layouts';
 import styles from '../../styles/Discounts.module.css';
 
 const discounts = [
-   {
-      name: 'Viandas Hot - Hot Sale 20%',
-      img: '/discounts/offer-hot-sale.png',
-   },
+   // {
+   //    name: 'Viandas Hot - Hot Sale 20%',
+   //    img: '/discounts/offer-hot-sale.png',
+   // },
    {
       name: 'Descuento llevando 14 viandas o más',
       img: '/discounts/offer-14-viandas.png',
