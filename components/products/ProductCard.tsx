@@ -43,7 +43,7 @@ export const ProductCard: FC<Props> = ({ product }) => {
                      priority={true}
                   />
 
-                  <div className={styles.tagImageWrapper}>
+                  {/* <div className={styles.tagImageWrapper}>
                      <Image
                         src='/img/viandashot-tag.png'
                         alt='Hot Sale - Viandas Hot Tag'
@@ -51,7 +51,7 @@ export const ProductCard: FC<Props> = ({ product }) => {
                         height={900}
                         priority={true}
                      />
-                  </div>
+                  </div> */}
                </div>
             </Link>
 
