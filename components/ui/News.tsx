@@ -11,28 +11,30 @@ export const News: FC = () => {
 
    return (
       <>
-         <section className={styles.news}>
-            <div className={styles.container}>
-               <div className={styles.mobileBanner}>
-                  <Image
-                     src='/img/banner-news-mobile.jpg'
-                     alt='Hot Sale - Viandas Hot'
-                     layout='fill'
-                     objectFit='cover'
-                     priority={true}
-                  />
+         <Link href='/plato/wrap-de-vegetales-con-arroz-primavera'>
+            <section className={styles.news}>
+               <div className={styles.container}>
+                  <div className={styles.mobileBanner}>
+                     <Image
+                        src='/img/banner-news-mobile.jpg'
+                        alt='Wrap de vegetales con arroz primavera - Promo lanzamiento'
+                        layout='fill'
+                        objectFit='cover'
+                        priority={true}
+                     />
+                  </div>
+                  <div className={styles.desktopBanner}>
+                     <Image
+                        src='/img/banner-news.jpg'
+                        alt='Wrap de vegetales con arroz primavera - Promo lanzamiento'
+                        layout='fill'
+                        objectFit='cover'
+                        priority={true}
+                     />
+                  </div>
                </div>
-               <div className={styles.desktopBanner}>
-                  <Image
-                     src='/img/banner-news.jpg'
-                     alt='Hot Sale - Viandas Hot'
-                     layout='fill'
-                     objectFit='cover'
-                     priority={true}
-                  />
-               </div>
-            </div>
-         </section>
+            </section>
+         </Link>
 
          {/* {isDialogOpen && <NewsDialog setIsDialogOpen={setIsDialogOpen} />} */}
       </>
