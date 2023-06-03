@@ -2,12 +2,13 @@ import NextLink from 'next/link';
 
 import { AddOutlined, CategoryOutlined } from '@mui/icons-material';
 import { Box, Button, CardMedia, Grid, Link } from '@mui/material';
-import { DataGrid, GridColDef, GridRenderCellParams } from '@mui/x-data-grid';
+import { DataGrid, GridColDef, GridRenderCellParams, GridSortModel } from '@mui/x-data-grid';
 
 import useSWR from 'swr';
 
 import { IProduct } from '../../interfaces';
 import { AdminLayout } from '../../components/layouts';
+import { useState } from 'react';
 
 const columns: GridColDef[] = [
    {
@@ -32,6 +33,7 @@ const columns: GridColDef[] = [
       field: 'name',
       headerName: 'Nombre',
       width: 450,
+      sortable: true,
       renderCell: ({ row }: GridRenderCellParams) => {
          return (
             <NextLink href={`/admin/products/${row.slug}`} passHref>
@@ -42,12 +44,13 @@ const columns: GridColDef[] = [
    },
    { field: 'inStock', width: 180, headerName: 'Inventario' },
    { field: 'bestSeller', width: 180, headerName: 'Más vendido' },
-   { field: 'price', width: 180, headerName: 'Precio' },
+   { field: 'price', width: 180, headerName: 'Precio', sortable: true },
    { field: 'type', width: 840, headerName: 'Tipo' },
 ];
 
 const ProductsPage = () => {
    const { data, error } = useSWR<IProduct[]>('/api/admin/products');
+   const [sortModel, setSortModel] = useState<GridSortModel>([{ field: 'name', sort: 'asc' }]);
 
    if (!data && !error) return <></>;
 
@@ -61,6 +64,10 @@ const ProductsPage = () => {
       slug: product.slug,
       bestSeller: product.bestSeller,
    }));
+
+   const handleSortModelChange = (newSortModel: GridSortModel) => {
+      setSortModel(newSortModel);
+   };
 
    return (
       <AdminLayout title={`Productos (${data?.length})`} subTitle={''} icon={<CategoryOutlined />}>
@@ -80,12 +87,8 @@ const ProductsPage = () => {
                   rows={rows}
                   columns={columns}
                   pageSizeOptions={[25, 50, 100]}
-                  sortModel={[
-                     {
-                        field: 'name',
-                        sort: 'asc',
-                     },
-                  ]}
+                  onSortModelChange={handleSortModelChange}
+                  sortModel={sortModel}
                />
             </Grid>
          </Grid>
