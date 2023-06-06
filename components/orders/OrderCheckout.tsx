@@ -6,6 +6,7 @@ import { currency } from '../../utils';
 import { Discounts } from '../cart';
 
 import styles from '../../styles/Order.module.css';
+import { RedeemPoints, ReferralCoupon } from '../checkout';
 
 interface Props {
    order: IOrder;
@@ -17,6 +18,8 @@ export const OrderCheckout: FC<Props> = ({ order }) => {
       subTotal,
       discount = 0,
       couponDiscount,
+      pointsDiscount = 0,
+      referralDiscount = 0,
       coupons = [],
       shipping,
       total,
@@ -51,6 +54,10 @@ export const OrderCheckout: FC<Props> = ({ order }) => {
                <span className={styles.discount}>-{currency.format(couponDiscount!)}</span>
             </div>
          )}
+
+         <RedeemPoints orderPointsDiscount={pointsDiscount} />
+
+         <ReferralCoupon orderReferralDiscount={referralDiscount} />
 
          <div className={styles.summary}>
             <span>Envío:</span>

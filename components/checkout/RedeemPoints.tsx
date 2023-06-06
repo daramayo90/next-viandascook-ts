@@ -6,22 +6,27 @@ import { currency } from '../../utils';
 import styles from '../../styles/OrderSummary.module.css';
 
 interface Props {
-   orderItems?: number;
-   orderPromo?: number;
+   orderPointsDiscount?: number;
 }
 
-export const RedeemPoints: FC<Props> = ({ orderItems, orderPromo }) => {
+export const RedeemPoints: FC<Props> = ({ orderPointsDiscount }) => {
    const { points, pointsDiscount } = useContext(CartContext);
+
+   const discountPoints = orderPointsDiscount ? orderPointsDiscount : pointsDiscount;
 
    return (
       <>
-         {points !== 0 && (
+         {discountPoints !== 0 && (
             <div className={styles.summary}>
-               <span>
-                  Puntos usados: <u className={styles.discount}>{points}</u>
-               </span>
+               {orderPointsDiscount ? (
+                  <span>Descuento por puntos:</span>
+               ) : (
+                  <span>
+                     Puntos usados: <u className={styles.discount}>{points}</u>
+                  </span>
+               )}
 
-               <span className={styles.discount}>-{currency.format(pointsDiscount!)}</span>
+               <span className={styles.discount}>-{currency.format(discountPoints!)}</span>
             </div>
          )}
       </>

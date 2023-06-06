@@ -54,7 +54,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
          subject: `¡Tu pedido #${orderId} ya está completo!`,
          name,
          orderId,
-         points: Math.round(total - shipping),
+         points: pointsDiscount === 0 ? Math.round(total - shipping) : 0,
          address,
          deliveryDate: `${day}/${month}/${year}`,
          products,
