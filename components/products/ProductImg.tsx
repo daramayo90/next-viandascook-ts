@@ -22,15 +22,15 @@ export const ProductImg: FC<Props> = ({ product }) => {
                priority
             />
 
-            {/* <div className={styles.tagImageWrapper}>
+            <div className={styles.tagImageWrapper}>
                <Image
-                  src='/img/viandashot-tag.png'
+                  src='/img/dad-day-tag.png'
                   alt='Hot Sale - Viandas Hot Tag'
                   width={750}
                   height={900}
                   priority={true}
                />
-            </div> */}
+            </div>
          </div>
       </div>
    );

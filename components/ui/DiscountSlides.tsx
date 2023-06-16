@@ -12,6 +12,10 @@ const discounts = [
    //    img: '/discounts/offer-hot-sale.png',
    // },
    {
+      name: 'Día del padre - 10%',
+      img: '/discounts/offer-dad-day.png',
+   },
+   {
       name: 'Descuento llevando 14 viandas o más',
       img: '/discounts/offer-14-viandas.png',
    },
