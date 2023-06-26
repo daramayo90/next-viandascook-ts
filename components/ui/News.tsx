@@ -11,13 +11,13 @@ export const News: FC = () => {
 
    return (
       <>
-         <Link href='/plato/wrap-de-vegetales-con-arroz-primavera'>
+         <Link href='/menu?type=Empanada'>
             <section className={styles.news}>
                <div className={styles.container}>
                   <div className={styles.mobileBanner}>
                      <Image
                         src='/img/banner-news-mobile.jpg'
-                        alt='Wrap de vegetales con arroz primavera - Promo lanzamiento'
+                        alt='Nuevas empanadas - Promo lanzamiento'
                         layout='fill'
                         objectFit='cover'
                         priority={true}
@@ -26,7 +26,7 @@ export const News: FC = () => {
                   <div className={styles.desktopBanner}>
                      <Image
                         src='/img/banner-news.jpg'
-                        alt='Wrap de vegetales con arroz primavera - Promo lanzamiento'
+                        alt='Nuevas empanadas - Promo lanzamiento'
                         layout='fill'
                         objectFit='cover'
                         priority={true}
