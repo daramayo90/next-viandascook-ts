@@ -53,11 +53,13 @@ const ThankYouPage: NextPage<Props> = ({ order }) => {
 
       const onOrderComplete = async () => {
          onPurchaseEvent();
-         if (referralCoupon) await addReferralPoints(referralCoupon);
-         if (paymentMethod === 'transferencia') await sendWireTransferInfo(order);
-         await sendOrderConfirmationEmail(order);
-         await orderToSpreadsheet(order);
-         await orderToOptimoRoute(order);
+         if (paymentMethod !== 'mercadopago') {
+            if (referralCoupon) await addReferralPoints(referralCoupon);
+            if (paymentMethod === 'transferencia') await sendWireTransferInfo(order);
+            await sendOrderConfirmationEmail(order);
+            await orderToSpreadsheet(order);
+            await orderToOptimoRoute(order);
+         }
       };
 
       if (!alreadyExecuted) {
