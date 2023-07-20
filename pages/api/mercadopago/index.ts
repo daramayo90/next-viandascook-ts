@@ -86,7 +86,7 @@ const checkoutPro = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
          failure: `${req.headers.origin}/checkout`,
          pending: `${req.headers.origin}/checkout`,
       },
-      notification_url: `https://560b-2800-810-44b-9cb-2108-3f92-affd-ba41.ngrok.io/api/mercadopago/webhooks`,
+      notification_url: `${req.headers.origin}/api/mercadopago/webhooks`,
       auto_return: 'all',
       statement_descriptor: 'VIANDAS COOK S.R.L',
    };
