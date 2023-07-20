@@ -52,6 +52,8 @@ export const verifyToken = async (orderId: string, token: string): Promise<boole
 
    const order = await Order.findById(Number(orderId)).lean();
 
+   await db.disconnect();
+
    if (!order) return false;
 
    if (token === order.token) return true;
@@ -88,7 +90,11 @@ export const addReferralPoints = async (referralCoupon: string) => {
 };
 
 export const sendOrderConfirmationEmail = async (id: number, url: string) => {
+   await db.connect();
+
    const order = await Order.findById(Number(id)).lean();
+
+   await db.disconnect();
 
    if (!order) return null;
 
@@ -163,11 +169,15 @@ export const sendOrderConfirmationEmail = async (id: number, url: string) => {
 };
 
 export const orderToSpreadsheet = async (id: number) => {
+   await db.connect();
+
    const order = await Order.findById(Number(id)).lean();
+
+   await db.disconnect();
 
    if (!order) return null;
 
-   const { _id, deliveryDate, paymentMethod, total } = order;
+   const { _id, deliveryDate, total } = order;
 
    const { name, lastName, email, phone, dni } = order.user as IUser;
    const { address, address2, city2 } = order.shippingAddress as ShippingAddress;
@@ -231,7 +241,11 @@ export const orderToSpreadsheet = async (id: number) => {
 };
 
 export const createOptimoRouteOrder = async (id: number) => {
+   await db.connect();
+
    const order = await Order.findById(Number(id)).lean();
+
+   await db.disconnect();
 
    if (!order) return null;
 
