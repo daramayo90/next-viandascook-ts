@@ -21,8 +21,6 @@ export const ReferralCoupon: FC<Props> = ({ orderReferralDiscount }) => {
       removeReferralCoupon();
    };
 
-   console.log(referralDiscount);
-
    return (
       <>
          {referralPoints !== 0 && (

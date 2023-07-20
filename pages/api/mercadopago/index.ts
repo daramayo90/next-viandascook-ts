@@ -86,7 +86,8 @@ const checkoutPro = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
          failure: `${req.headers.origin}/checkout`,
          pending: `${req.headers.origin}/checkout`,
       },
-      auto_return: 'approved',
+      notification_url: `https://560b-2800-810-44b-9cb-2108-3f92-affd-ba41.ngrok.io/api/mercadopago/webhooks`,
+      auto_return: 'all',
       statement_descriptor: 'VIANDAS COOK S.R.L',
    };
 
@@ -98,7 +99,7 @@ const checkoutPro = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
       return res.status(200).json({ id: response.body.id, init_point: response.body.init_point });
    } catch (error) {
       return res.status(501).json({
-         message: 'Estamos teniendo un error en la creación de la preferencia del backend',
+         message: 'Error en el servidor al crear la preferencia',
       });
    }
 };

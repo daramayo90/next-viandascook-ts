@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import mercadopago from 'mercadopago';
+import { PaymentGetResponse } from 'mercadopago/resources/payment';
 import { dbOrders } from '../../../database';
+import mercadopago from 'mercadopago';
 
 type Data = {
    message: string;
@@ -21,16 +22,22 @@ const mpWebhooks = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
       access_token: process.env.MP_ACCESS_TOKEN!,
    });
 
+   const url = req.headers.origin ?? '';
    const data = req.body;
+   const referralCoupon = req.cookies.referralCoupon ?? '';
 
-   // if (data.type === 'payment') {
-   //    const payment = await mercadopago.payment.get(data.data.id);
-   //    const orderId = payment.body.order.external_reference;
+   if (data.type === 'payment') {
+      const payment: PaymentGetResponse = await mercadopago.payment.get(data.data.id);
+      const orderId: number = payment.body.external_reference;
 
-   //    if (payment.body.status === 'approved') {
-   //       await dbOrders.payOrder(orderId);
-   //    }
-   // }
+      if (payment.body.status === 'approved') {
+         await dbOrders.payOrder(orderId);
+         await dbOrders.sendOrderConfirmationEmail(orderId, url);
+         await dbOrders.createOptimoRouteOrder(orderId);
+         await dbOrders.addReferralPoints(referralCoupon);
+         await dbOrders.orderToSpreadsheet(orderId);
+      }
+   }
 
    return res.status(200).json({ message: 'Todo ok' });
 };

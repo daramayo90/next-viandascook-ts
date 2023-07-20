@@ -3,7 +3,7 @@ import { useContext, useEffect } from 'react';
 import { GetServerSideProps, NextPage } from 'next';
 
 import { dbOrders } from '../../database';
-import { IOrder, IUser } from '../../interfaces';
+import { IOrder } from '../../interfaces';
 
 import { CartContext, OrdersContext, EmailsContext } from '../../context';
 import { ga, meta, removeCookies } from '../../utils';
@@ -154,7 +154,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params, query }) 
    }
 
    // status === 'approved' means the payment method is Mercado Pago
-   if (order.paymentMethod !== 'mercadopago' || status === 'approved') {
+   if (order.paymentMethod !== 'mercadopago') {
       await dbOrders.payOrder(order._id!);
    }
 
