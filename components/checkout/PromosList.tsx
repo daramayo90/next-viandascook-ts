@@ -19,6 +19,12 @@ const promosList = [
       text: 'Válido para la primera compra',
       coupon: 'bienvenido10',
    },
+   {
+      icon: <TbDiscount2 className={styles.iconPromo} />,
+      title: 'Promo día del amigo',
+      text: '10% de descuento en todo el menú',
+      coupon: 'diadelamigo',
+   },
    // {
    //    icon: <TbDiscount2 className={styles.iconPromo} />,
    //    title: 'Día del padre',

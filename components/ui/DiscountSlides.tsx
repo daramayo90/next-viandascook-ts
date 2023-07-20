@@ -16,6 +16,10 @@ const discounts = [
    //    img: '/discounts/offer-dad-day.png',
    // },
    {
+      name: 'Promo día del amigo',
+      img: '/discounts/promo-dia-del-amigo.png',
+   },
+   {
       name: 'Descuento llevando 14 viandas o más',
       img: '/discounts/offer-14-viandas.png',
    },
