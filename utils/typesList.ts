@@ -30,6 +30,11 @@ export const typesList = [
       model: 'Empanada',
    },
    {
+      icon: '/type/wrap.jpg',
+      name: 'Wrap',
+      model: 'Wrap',
+   },
+   {
       icon: '/type/vegetarian.svg',
       name: 'Vegetariano',
       model: 'Vegetariano',
@@ -54,9 +59,9 @@ export const typesList = [
       name: 'Bajo en sodio',
       model: 'Bajo en sodio',
    },
-   {
-      icon: '/type/dairyfree.svg',
-      name: 'Libre de lácteos',
-      model: 'Libre de lácteos',
-   },
+   // {
+   //    icon: '/type/dairyfree.svg',
+   //    name: 'Libre de lácteos',
+   //    model: 'Libre de lácteos',
+   // },
 ];

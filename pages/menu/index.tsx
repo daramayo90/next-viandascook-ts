@@ -31,6 +31,7 @@ const ProductsPage: NextPage<Props> = ({ products }) => {
    const { numberOfItems } = useContext(CartContext);
 
    useEffect(() => {
+      console.log(router.query.type);
       if (router.query.type) {
          setQueryType(router.query.type as string);
       } else {
@@ -79,7 +80,7 @@ const ProductsPage: NextPage<Props> = ({ products }) => {
    return (
       <ShopLayout title={'Viandas Cook - Menú'} pageDescription={''}>
          <section className={styles.products}>
-            {/* <News /> */}
+            <News />
 
             <SearchProducts searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
 

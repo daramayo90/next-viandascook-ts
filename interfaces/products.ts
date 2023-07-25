@@ -21,6 +21,7 @@ export type IType =
    | 'Bajo en sodio'
    | 'Carne'
    | 'Empanada'
+   | 'Wrap'
    | 'Keto'
    | 'Libre de glúten'
    | 'Libre de lácteos'

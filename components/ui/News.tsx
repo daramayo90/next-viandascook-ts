@@ -11,13 +11,13 @@ export const News: FC = () => {
 
    return (
       <>
-         <Link href='/menu?type=Empanada'>
+         <Link href='/menu?type=Wrap'>
             <section className={styles.news}>
                <div className={styles.container}>
                   <div className={styles.mobileBanner}>
                      <Image
                         src='/img/banner-news-mobile.jpg'
-                        alt='Nuevas empanadas - Promo lanzamiento'
+                        alt='Nuevos wraps - Promo lanzamiento'
                         layout='fill'
                         objectFit='cover'
                         priority={true}
@@ -26,7 +26,7 @@ export const News: FC = () => {
                   <div className={styles.desktopBanner}>
                      <Image
                         src='/img/banner-news.jpg'
-                        alt='Nuevas empanadas - Promo lanzamiento'
+                        alt='Nuevos wraps - Promo lanzamiento'
                         layout='fill'
                         objectFit='cover'
                         priority={true}
