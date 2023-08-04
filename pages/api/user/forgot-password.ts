@@ -12,7 +12,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
    const { email } = req.body;
 
    await db.connect();
-   const user = await User.findOne({ email });
+   const user = await User.findOne({ email: email.toLowerCase() });
    await db.disconnect();
 
    if (!user) {
