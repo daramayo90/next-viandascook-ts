@@ -22,7 +22,7 @@ export const holidays = [
    new Date(2023, 4, 26),
    new Date(2023, 5, 19),
    new Date(2023, 5, 20),
-   new Date(2023, 7, 8),
+   new Date(2023, 7, 7),
    new Date(2023, 7, 21),
    new Date(2023, 9, 13),
    new Date(2023, 9, 16),
