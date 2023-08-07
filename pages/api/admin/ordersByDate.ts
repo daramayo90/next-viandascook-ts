@@ -21,10 +21,18 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 const getOrdersByDate = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
    const { date } = req.body;
 
+   const datePart = date.split('T')[0];
+
+   const startOfDay = `${datePart}T00:00:00.000Z`;
+   const endOfDay = `${datePart}T23:59:59.999Z`;
+
    try {
       await db.connect();
 
-      const orders: IOrder[] = await Order.find({ deliveryDate: date, isPaid: true });
+      const orders: IOrder[] = await Order.find({
+         deliveryDate: { $gte: startOfDay, $lte: endOfDay },
+         isPaid: true,
+      });
 
       await db.disconnect();
 
