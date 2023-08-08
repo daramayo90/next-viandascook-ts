@@ -1,30 +1,46 @@
-import { GetServerSideProps } from 'next';
-import { ISitemapField, getServerSideSitemapLegacy } from 'next-sitemap';
+import { GetServerSideProps, NextApiRequest, NextApiResponse } from 'next';
 import { dbProducts } from '../database';
 import { IProduct } from '../interfaces';
 
-const SiteMap = () => {
-   return null;
-};
+const SiteMap = () => null;
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
+export const getServerSideProps: GetServerSideProps = async ({ res }) => {
    const products = await dbProducts.getAllProducts();
 
-   const fields: ISitemapField[] = products.map((product: IProduct) => ({
-      id: product._id,
-      title: product.name,
-      description: product.name,
-      availability: product.inStock ? 'in stock' : 'out of stock',
-      condition: 'new',
-      price: `${product.price} ARS`,
-      link: `https://www.viandascook.com/plato/${product.slug}`,
-      image_link: product.image,
-      brand: 'Viandas Cook',
-      loc: `https://www.viandascook.com/plato/${product.slug}`,
-      lastmod: new Date(product.updatedAt!).toISOString(),
-   }));
+   const xml = generateRssXml(products);
 
-   return getServerSideSitemapLegacy(ctx, fields);
+   res.setHeader('Content-Type', 'text/xml');
+   res.write(xml);
+   res.end();
+
+   return {
+      props: {},
+   };
 };
+
+function generateRssXml(products: IProduct[]) {
+   let rssItemsXml = '';
+   products.forEach((product) => {
+      rssItemsXml += `
+      <item>
+        <id>${product._id}</id>
+        <title>${product.name}</title>
+        <description>${product.name}</description>
+        <availability>${product.inStock ? 'in stock' : 'out of stock'}</availability>
+        <condition>new</condition>
+        <price>${product.price} ARS</price>
+        <link>https://www.viandascook.com/plato/${product.slug}</link>
+        <image_link>${product.image}</image_link>
+        <brand>Viandas Cook</brand>
+      </item>`;
+   });
+
+   return `<?xml version="1.0" encoding="UTF-8" ?>
+    <rss version="2.0">
+      <channel>
+        ${rssItemsXml}
+      </channel>
+    </rss>`;
+}
 
 export default SiteMap;
