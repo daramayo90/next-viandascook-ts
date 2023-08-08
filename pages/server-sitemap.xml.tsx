@@ -16,7 +16,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       description: product.name,
       availability: product.inStock ? 'in stock' : 'out of stock',
       condition: 'new',
-      price: product.price,
+      price: `${product.price} ARS`,
       link: `https://www.viandascook.com/plato/${product.slug}`,
       image_link: product.image,
       brand: 'Viandas Cook',
