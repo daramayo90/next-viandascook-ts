@@ -31,6 +31,7 @@ function generateRssXml(products: IProduct[]) {
         <price>${product.price} ARS</price>
         <link>https://www.viandascook.com/plato/${product.slug}</link>
         <image_link>${product.image}</image_link>
+        <google_product_category>499988</google_product_category>
         <brand>Viandas Cook</brand>
       </item>`;
    });
