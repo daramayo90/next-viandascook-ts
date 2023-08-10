@@ -9,17 +9,10 @@ import { currency } from '../../../utils';
 type SheetForm = {
    _id: number;
    today: string;
-   name: string;
-   lastName: string;
    email: string;
-   phone: string;
    dni: string;
-   address: string;
-   address2: string;
-   city2: string;
    paymentMethod: string;
    total: number;
-   deliveryDate: string;
 };
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -27,23 +20,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       return res.status(405).send({ message: 'Only POST is allowed' });
    }
 
-   const {
-      _id,
-      today,
-      name,
-      lastName,
-      email,
-      phone,
-      dni,
-      address,
-      address2,
-      city2,
-      paymentMethod,
-      total,
-      deliveryDate,
-   } = req.body as SheetForm;
+   const { _id, today, email, dni, paymentMethod, total } = req.body as SheetForm;
 
    try {
+      console.log('1');
       const auth = new google.auth.GoogleAuth({
          credentials: {
             client_email: process.env.GOOGLE_CLIENT_EMAIL!,
@@ -63,25 +43,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
       const response = await sheets.spreadsheets.values.append({
          spreadsheetId: process.env.GOOGLE_SPREADSHEET_ID,
-         range: 'A1:O1',
+         range: 'A1:F1',
          valueInputOption: 'USER_ENTERED',
          requestBody: {
-            values: [
-               [
-                  _id,
-                  today,
-                  name,
-                  lastName,
-                  email,
-                  phone,
-                  dni,
-                  `${address}, ${city2}`,
-                  `${address}, Depto/Casa: ${address2}`,
-                  `${paymentMethod}: ${currency.format(total)}`,
-                  '',
-                  deliveryDate,
-               ],
-            ],
+            values: [[_id, today, email, dni, paymentMethod, total]],
          },
       });
 

@@ -177,17 +177,10 @@ export const orderToSpreadsheet = async (id: number) => {
 
    if (!order) return null;
 
-   const { _id, deliveryDate, total } = order;
-
-   const { name, lastName, email, phone, dni } = order.user as IUser;
-   const { address, address2, city2 } = order.shippingAddress as ShippingAddress;
+   const { _id, total } = order;
+   const { email, dni } = order.user as IUser;
 
    const today = new Date().toLocaleDateString('es-AR', {
-      timeZone: 'America/Argentina/Buenos_Aires',
-   });
-
-   const deliveryDateObj = new Date(deliveryDate);
-   const delivery = deliveryDateObj.toLocaleDateString('es-AR', {
       timeZone: 'America/Argentina/Buenos_Aires',
    });
 
@@ -214,22 +207,7 @@ export const orderToSpreadsheet = async (id: number) => {
          range: 'A1:O1',
          valueInputOption: 'USER_ENTERED',
          requestBody: {
-            values: [
-               [
-                  _id,
-                  today,
-                  name,
-                  lastName,
-                  email,
-                  phone,
-                  dni,
-                  `${address}, ${city2}`,
-                  `${address}, Depto/Casa: ${address2}`,
-                  `Mercadopago: ${currency.format(total)}`,
-                  '',
-                  delivery,
-               ],
-            ],
+            values: [[_id, today, email, dni, 'Mercadopago', total]],
          },
       });
 
