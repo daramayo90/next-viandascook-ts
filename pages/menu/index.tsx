@@ -80,7 +80,7 @@ const ProductsPage: NextPage<Props> = ({ products }) => {
    return (
       <ShopLayout title={'Viandas Cook - Menú'} pageDescription={''}>
          <section className={styles.products}>
-            {/* <News /> */}
+            <News />
 
             <SearchProducts searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
 
