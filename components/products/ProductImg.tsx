@@ -22,15 +22,15 @@ export const ProductImg: FC<Props> = ({ product }) => {
                priority
             />
 
-            {/* <div className={styles.tagImageWrapper}>
+            <div className={styles.tagImageWrapper}>
                <Image
                   src='/img/10off-tag.png'
-                  alt='Finde XL - Promo'
+                  alt='Tarta de atún - Promo Lanzamiento'
                   width={750}
                   height={900}
                   priority={true}
                />
-            </div> */}
+            </div>
          </div>
       </div>
    );
