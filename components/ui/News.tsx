@@ -2,7 +2,7 @@ import { FC, useState } from 'react';
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { NewsDialog } from './';
+import { NewsDialog } from '.';
 
 import styles from '../../styles/News.module.css';
 

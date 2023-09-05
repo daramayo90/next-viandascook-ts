@@ -1,5 +1,5 @@
 import { rewards } from '../../utils';
-import { Reward } from './';
+import { Reward } from '.';
 
 import styles from '../../styles/Loyalty.module.css';
 

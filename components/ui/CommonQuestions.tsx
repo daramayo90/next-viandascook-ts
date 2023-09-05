@@ -1,4 +1,4 @@
-import { Accordion, Button } from './';
+import { Accordion, Button } from '.';
 import { commonQuestions } from '../../utils';
 
 import styles from '../../styles/CommonQuestions.module.css';
