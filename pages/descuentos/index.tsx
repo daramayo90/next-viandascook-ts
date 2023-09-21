@@ -23,6 +23,10 @@ const discounts = [
    //    img: '/discounts/promo-findexl.png',
    // },
    {
+      name: 'Promo primavera',
+      img: '/discounts/promo-primavera.png',
+   },
+   {
       name: 'Descuento llevando 14 viandas o más',
       img: '/discounts/offer-14-viandas.png',
    },
