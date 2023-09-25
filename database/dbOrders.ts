@@ -66,7 +66,7 @@ export const addReferralPoints = async (referralCoupon: string) => {
 
    await db.connect();
 
-   const user: IUser = await User.findOne({ referralCode: referralCoupon }).lean();
+   const user: IUser | null = await User.findOne({ referralCode: referralCoupon }).lean();
 
    await db.disconnect();
 
