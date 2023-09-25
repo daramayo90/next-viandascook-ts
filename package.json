@@ -28,7 +28,7 @@
     "jsonwebtoken": "^9.0.0",
     "mercadopago": "^1.5.15",
     "moment": "^2.29.4",
-    "mongoose": "^6.6.1",
+    "mongoose": "^7.5.2",
     "next": "12.3.1",
     "next-auth": "^4.20.1",
     "next-connect": "^0.13.0",
