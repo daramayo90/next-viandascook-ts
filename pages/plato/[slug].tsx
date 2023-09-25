@@ -79,11 +79,7 @@ export const getStaticPaths: GetStaticPaths = async (ctx) => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
    const { slug = '' } = params as { slug: string };
 
-   console.log('SLUG', slug);
-
    const product = await dbProducts.getProductBySlug(slug);
-
-   console.log('PRODUCT', product ? product.name : 'Producto no encontrado');
 
    // Incremental Static Generation (ISG)
    if (!product) {
