@@ -68,8 +68,6 @@ export default ProductPage;
 export const getStaticPaths: GetStaticPaths = async (ctx) => {
    const slugs = await dbProducts.getAllProductSlug();
 
-   console.log('SLUGS', slugs);
-
    return {
       paths: slugs.map(({ slug }) => ({
          params: { slug },
@@ -81,9 +79,11 @@ export const getStaticPaths: GetStaticPaths = async (ctx) => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
    const { slug = '' } = params as { slug: string };
 
+   console.log('SLUG', slug);
+
    const product = await dbProducts.getProductBySlug(slug);
 
-   console.log('PRODUCT', product);
+   console.log('PRODUCT', product ? product.name : 'Producto no encontrado');
 
    // Incremental Static Generation (ISG)
    if (!product) {
