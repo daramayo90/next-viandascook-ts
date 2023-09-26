@@ -32,7 +32,12 @@ export const connect = async () => {
    }
 
    try {
-      await mongoose.connect(process.env.MONGO_URL || '', { connectTimeoutMS: 10000 });
+      await mongoose.connect(process.env.MONGO_URL || '', {
+         connectTimeoutMS: 20000,
+         socketTimeoutMS: 45000,
+         minPoolSize: 1,
+         maxPoolSize: 15,
+      });
       mongoConnection.isConnected = CONNECTION_STATES.CONNECTED;
       console.log('Connected to MongoDB:', process.env.MONGO_URL);
    } catch (error) {
