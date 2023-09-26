@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 
-import { dbProducts } from '../../database';
+import { db, dbProducts } from '../../database';
 import { IProduct } from '../../interfaces';
 
 import { ga, currency, meta } from '../../utils';
@@ -68,6 +68,8 @@ export default ProductPage;
 export const getStaticPaths: GetStaticPaths = async (ctx) => {
    const slugs = await dbProducts.getAllProductSlug();
 
+   await db.connect();
+
    return {
       paths: slugs.map(({ slug }) => ({
          params: { slug },
@@ -83,6 +85,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
    // Incremental Static Generation (ISG)
    if (!product) {
+      await db.disconnect();
       return {
          redirect: {
             destination: '/',
@@ -90,6 +93,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
          },
       };
    }
+
+   await db.disconnect();
 
    return {
       props: {

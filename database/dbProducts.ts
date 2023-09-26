@@ -27,20 +27,11 @@ export const getAllProductSlug = async (): Promise<ProductSlug[]> => {
 };
 
 export const getProductBySlug = async (slug: string): Promise<IProduct | null> => {
-   try {
-      await db.connect();
+   const product: IProduct | null = await Product.findOne({ slug }).lean();
 
-      const product: IProduct | null = await Product.findOne({ slug }).lean();
+   if (!product) return null;
 
-      if (!product) return null;
-
-      return JSON.parse(JSON.stringify(product));
-   } catch (error) {
-      console.log(error);
-      return null;
-   } finally {
-      await db.disconnect();
-   }
+   return JSON.parse(JSON.stringify(product));
 };
 
 export const getAllBestSellersProducts = async (): Promise<IProduct[] | null> => {
