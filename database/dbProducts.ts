@@ -27,29 +27,15 @@ export const getAllProductSlug = async (): Promise<ProductSlug[]> => {
 };
 
 export const getProductBySlug = async (slug: string): Promise<IProduct | null> => {
-   try {
-      console.log('1');
-      await db.connect();
-      console.log('2');
+   await db.connect();
 
-      const product: IProduct | null = await Product.findOne({ slug }).lean();
-      console.log('3');
+   const product: IProduct | null = await Product.findOne({ slug }).lean();
 
-      await db.disconnect();
-      console.log('4');
+   await db.disconnect();
 
-      if (!product) {
-         console.log('Este es el error?');
-         return null;
-      }
-      console.log('5');
+   if (!product) return null;
 
-      return JSON.parse(JSON.stringify(product));
-   } catch (error) {
-      console.log('7');
-      console.log('A ver el error', error);
-      return null;
-   }
+   return JSON.parse(JSON.stringify(product));
 };
 
 export const getAllBestSellersProducts = async (): Promise<IProduct[] | null> => {
