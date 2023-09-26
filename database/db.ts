@@ -36,7 +36,8 @@ export const connect = async () => {
          connectTimeoutMS: 20000,
          socketTimeoutMS: 45000,
          minPoolSize: 1,
-         maxPoolSize: 15,
+         maxPoolSize: 5,
+         maxIdleTimeMS: 120000,
       });
       mongoConnection.isConnected = CONNECTION_STATES.CONNECTED;
       console.log('Connected to MongoDB:', process.env.MONGO_URL);
