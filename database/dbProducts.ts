@@ -27,7 +27,14 @@ export const getAllProductSlug = async (): Promise<ProductSlug[]> => {
 };
 
 export const getProductBySlug = async (slug: string): Promise<IProduct | null> => {
+   console.log('slug received', slug);
+   await db.connect();
+
    const product: IProduct | null = await Product.findOne({ slug }).lean();
+
+   await db.disconnect();
+
+   console.log('product slug', product?.slug);
 
    if (!product) return null;
 
