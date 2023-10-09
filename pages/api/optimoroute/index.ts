@@ -45,7 +45,7 @@ const createOptimoRouteOrder = async (req: NextApiRequest, res: NextApiResponse<
          locationName: `${address}, Piso/Depto: ${address2}`,
          acceptPartialMatch: true,
       },
-      notes: paymentMethod !== 'mercadopago' && `${paymentMethod}: ${currency.format(total)}`,
+      notes: paymentMethod !== 'mercadopago' ? `${paymentMethod}: ${currency.format(total)}` : '-',
       allowedWeekdays: ['mon', 'tue', 'wed', 'thu', 'fri'],
       email,
       phone,
