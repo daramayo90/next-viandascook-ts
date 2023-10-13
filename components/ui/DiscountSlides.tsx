@@ -28,6 +28,10 @@ const discounts = [
    //    img: '/discounts/promo-primavera.png',
    // },
    {
+      name: 'Promo día de la madre',
+      img: '/discounts/promo-dia-de-la-madre.png',
+   },
+   {
       name: 'Descuento llevando 14 viandas o más',
       img: '/discounts/offer-14-viandas.png',
    },

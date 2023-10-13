@@ -43,15 +43,15 @@ export const ProductCard: FC<Props> = ({ product }) => {
                      priority={true}
                   />
 
-                  {/* <div className={styles.tagImageWrapper}>
+                  <div className={styles.tagImageWrapper}>
                      <Image
                         src='/img/10off-tag.png'
-                        alt='10% off - Promo primavera'
+                        alt='10% off - Promo día de la madre'
                         width={750}
                         height={900}
                         priority={true}
                      />
-                  </div> */}
+                  </div>
                </div>
             </Link>
 
