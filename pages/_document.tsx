@@ -14,7 +14,7 @@ class MyDocument extends Document {
       return (
          <Html>
             <Head>
-               {/* Start Google Tag Manager */}
+               {/* Google Tag Manager */}
                <Script id='google-tag-manager' strategy='afterInteractive'>
                   {`
                      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -24,9 +24,8 @@ class MyDocument extends Document {
                      })(window,document,'script','dataLayer','${ga.GTM_ID}');
                   `}
                </Script>
-               {/* End Google Tag Manager */}
 
-               {/* Start Google Analytics 4 */}
+               {/* Google Analytics 4 */}
                <Script
                   async={true}
                   src={`https://www.googletagmanager.com/gtag/js?id=${ga.GA_TRACKING_ID}`}
@@ -41,9 +40,8 @@ class MyDocument extends Document {
                      gtag('config', '${ga.GA_TRACKING_ID}');
                   `}
                </Script>
-               {/* End Google Analytics 4 */}
 
-               {/* Start Meta Pixel */}
+               {/* Meta Pixel */}
                <Script id='meta-pixel' strategy='afterInteractive'>
                   {`
                     !function(f,b,e,v,n,t,s)
@@ -65,9 +63,14 @@ class MyDocument extends Document {
                      width='0'
                      style={{ display: 'none', visibility: 'hidden' }}></iframe>
                </noscript>
-               {/* End Meta Pixel */}
-               <link rel='icon' href='/logo/viandas-icon.png' />
 
+               {/* Google Merchant */}
+               <meta
+                  name='google-site-verification'
+                  content='8GvsTH5TNbCcrIXVrO1ye4X1hwwxz47NCH5Rvtr7zLg'
+               />
+
+               <link rel='icon' href='/logo/viandas-icon.png' />
                <link href='https://fonts.googleapis.com' />
                <link href='https://fonts.cdnfonts.com' />
                <link href='https://fonts.cdnfonts.com/css/gilroy-bold' rel='stylesheet' />
