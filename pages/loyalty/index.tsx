@@ -1,11 +1,15 @@
+import { NextPage } from 'next';
 import { HomeLayout } from '../../components/layouts';
 import { Button, Newsletter, Rewards } from '../../components/ui';
 
 import styles from '../../styles/Loyalty.module.css';
+import { seo } from '../../utils';
 
-const LoyaltyPage = () => {
+const LoyaltyPage: NextPage = () => {
+   const { title, description, keywords } = seo['LoyaltyPage'];
+
    return (
-      <HomeLayout title={'Viandas Cook - Loyalty'} pageDescription={''}>
+      <HomeLayout title={title} pageDescription={description} keywords={keywords}>
          <section className={styles.loyalty}>
             <div className={styles.intro}>
                <div className={styles.container}>
@@ -19,13 +23,11 @@ const LoyaltyPage = () => {
                   </div>
 
                   <div className={styles.textIntro}>
-                     <h1>
-                        VC Loyalty<br></br> El programa de puntos que te ayuda a comer rico,
-                        práctico y saludable
-                     </h1>
-                     <p>
-                        Unite hoy y obtené un 10% de descuento en tu primera compra. ¡Y mucho más!
-                     </p>
+                     <h2>
+                        VC Loyalty<br></br> El programa de puntos que te ayuda a comer rico, práctico y
+                        saludable
+                     </h2>
+                     <p>Unite hoy y obtené un 10% de descuento en tu primera compra. ¡Y mucho más!</p>
                      <div className={styles.btn}>
                         <Button
                            href={'/mi-cuenta/puntos'}
@@ -40,12 +42,12 @@ const LoyaltyPage = () => {
 
             <div className={styles.presentation}>
                <p>
-                  En <strong>Viandas Cook</strong> sabemos lo importante que es recompensar a
-                  nuestros clientes fieles. Por eso, creamos <strong>VC Loyalty</strong>, nuestro
-                  programa de fidelización gratuito que te permite acumular puntos por cada compra
-                  que realices. Y no solo eso, también te ofrece beneficios exclusivos, como
-                  descuentos, cupones y puntos extra. ¡Sé un <strong>Viandlover</strong> y comenzá a
-                  disfrutar de comidas saludables y convenientes con más recompensas!
+                  En <strong>Viandas Cook</strong> sabemos lo importante que es recompensar a nuestros
+                  clientes fieles. Por eso, creamos <strong>VC Loyalty</strong>, nuestro programa de
+                  fidelización gratuito que te permite acumular puntos por cada compra que realices. Y
+                  no solo eso, también te ofrece beneficios exclusivos, como descuentos, cupones y
+                  puntos extra. ¡Sé un <strong>Viandlover</strong> y comenzá a disfrutar de comidas
+                  saludables y convenientes con más recompensas!
                </p>
             </div>
 

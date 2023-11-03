@@ -11,6 +11,8 @@ import { ShopLayout } from '../../components/layouts';
 import { Button, DiscountSlides, News } from '../../components/ui';
 import { ProductCard, SearchNotFound, SearchProducts, TypesList } from '../../components/products';
 
+import { seo } from '../../utils';
+
 import styles from '../../styles/Products.module.css';
 
 interface Props {
@@ -18,6 +20,8 @@ interface Props {
 }
 
 const ProductsPage: NextPage<Props> = ({ products }) => {
+   const { title, description, keywords } = seo['ProductsPage'];
+
    const router = useRouter();
 
    const [searchTerm, setSearchTerm] = useState<string>('');
@@ -78,7 +82,7 @@ const ProductsPage: NextPage<Props> = ({ products }) => {
          : products;
 
    return (
-      <ShopLayout title={'Viandas Cook - Menú'} pageDescription={''}>
+      <ShopLayout title={title} pageDescription={description} keywords={keywords}>
          <section className={styles.products}>
             {/* <News /> */}
 
@@ -94,9 +98,7 @@ const ProductsPage: NextPage<Props> = ({ products }) => {
 
             <article className={styles.container}>
                {!searchTerm || (searchTerm && searchProducts!.length > 0) ? (
-                  productsToShow!.map((product) => (
-                     <ProductCard key={product._id} product={product} />
-                  ))
+                  productsToShow!.map((product) => <ProductCard key={product._id} product={product} />)
                ) : (
                   <SearchNotFound />
                )}

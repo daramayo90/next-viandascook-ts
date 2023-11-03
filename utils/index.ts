@@ -1,9 +1,9 @@
 export * as coupon from './couponCalculation';
 export * as currency from './currency';
+export * as FB from './metaEvents';
 export * as ga from './ga4';
 export * as jwt from './jwt';
 export * as meta from './meta';
-export * as FB from './metaEvents';
 export * as promo from './discountCalculation';
 export * as validations from './validations';
 export * from './commonQuestions';
@@ -14,6 +14,7 @@ export * from './questionsLoyalty';
 export * from './removeCookies';
 export * from './rewards';
 export * from './sectionsUs';
+export * from './seo';
 export * from './steps';
 export * from './typesList';
 export * from './zipcodesBA';

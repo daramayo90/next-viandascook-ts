@@ -43,7 +43,7 @@ const FriendsPage: NextPage<Props> = ({ userRefCode }) => {
       <ShopLayout title={'Viandas Cook - Referidos'} pageDescription={''}>
          <section className={styles.referrals}>
             <div className={styles.container}>
-               <h1 className={styles.title}>Invitá a un amigo a ser un ViandLover</h1>
+               <h2 className={styles.title}>Invitá a un amigo a ser un ViandLover</h2>
                <p className={styles.text}>
                   Por cada amigo que haga su primer pedido con tu código, recibís{' '}
                   <strong>10.000 puntos</strong> de regalo y tu amigo recibe un{' '}

@@ -11,10 +11,17 @@ interface Props {
    children: ReactNode;
    title: string;
    pageDescription: string;
+   keywords?: string;
    imageFullUrl?: string;
 }
 
-export const ShopLayout: FC<Props> = ({ children, title, pageDescription, imageFullUrl }) => {
+export const ShopLayout: FC<Props> = ({
+   children,
+   title,
+   pageDescription,
+   keywords,
+   imageFullUrl,
+}) => {
    const router = useRouter();
    const path = router.pathname;
 
@@ -37,6 +44,7 @@ export const ShopLayout: FC<Props> = ({ children, title, pageDescription, imageF
          <Head>
             <title>{title}</title>
             <meta name='description' content={pageDescription} />
+            <meta name='keywords' content={keywords} />
 
             <meta name='og:title' content={title} />
             <meta name='og:description' content={pageDescription} />

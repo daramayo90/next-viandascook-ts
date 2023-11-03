@@ -107,7 +107,7 @@ export const PromosList = () => {
 
    return (
       <div className={styles.container}>
-         <h1 className={styles.title}>Solo es posible utilizar un cupón a la vez</h1>
+         <h2 className={styles.title}>Solo es posible utilizar un cupón a la vez</h2>
 
          {promosList.map(({ icon, title, text, coupon }) => (
             <PromoCard

@@ -1,12 +1,17 @@
-import { HomeLayout } from '../../components/layouts';
+import { NextPage } from 'next';
 
+import { HomeLayout } from '../../components/layouts';
 import { Button, Newsletter, Steps } from '../../components/ui';
+
+import { seo } from '../../utils';
 
 import styles from '../../styles/HowItWorks.module.css';
 
-const ComoFuncionaPage = () => {
+const HowItWorksPage: NextPage = () => {
+   const { title, description, keywords } = seo['HowItWorksPage'];
+
    return (
-      <HomeLayout title={'Viandas Cook - ¿Cómo Funciona?'} pageDescription={''}>
+      <HomeLayout title={title} pageDescription={description} keywords={keywords}>
          <section className={styles.howItWorks}>
             <div className={styles.intro}>
                <div className={styles.container}>
@@ -20,7 +25,7 @@ const ComoFuncionaPage = () => {
                   </div>
 
                   <div className={styles.textIntro}>
-                     <h1>Platos saludables listos para comer elaborados por expertos.</h1>
+                     <h2>Platos saludables listos para comer elaborados por expertos.</h2>
                      <p>
                         Nuestros cocineros te llevan a tu mesa una variedad de comidas frescas y
                         saludables todos los días
@@ -39,7 +44,7 @@ const ComoFuncionaPage = () => {
             </div>
 
             <div className={styles.presentation}>
-               <h2 className={styles.subTitle}>¿Cómo Funciona?</h2>
+               <h3 className={styles.subTitle}>¿Cómo Funciona?</h3>
                <p>
                   En <strong>Viandas Cook</strong> te ofrecemos comidas prácticas, caseras, ricas y
                   saludables para hacer tu vida más fácil.
@@ -63,4 +68,4 @@ const ComoFuncionaPage = () => {
    );
 };
 
-export default ComoFuncionaPage;
+export default HowItWorksPage;

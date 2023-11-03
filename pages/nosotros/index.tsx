@@ -1,12 +1,17 @@
-import { HomeLayout } from '../../components/layouts';
+import { NextPage } from 'next';
 
-import { Button, Newsletter, SectionsUs, Steps } from '../../components/ui';
+import { HomeLayout } from '../../components/layouts';
+import { Button, Newsletter, SectionsUs } from '../../components/ui';
+
+import { seo } from '../../utils';
 
 import styles from '../../styles/Nosotros.module.css';
 
-const NosotrosPage = () => {
+const NosotrosPage: NextPage = () => {
+   const { title, description, keywords } = seo['NosotrosPage'];
+
    return (
-      <HomeLayout title={'Viandas Cook - Nosotros'} pageDescription={''}>
+      <HomeLayout title={title} pageDescription={description} keywords={keywords}>
          <section className={styles.us}>
             <div className={styles.intro}>
                <div className={styles.container}>
@@ -20,10 +25,10 @@ const NosotrosPage = () => {
                   </div>
 
                   <div className={styles.textIntro}>
-                     <h1>
-                        Viandas Cook<br></br> Tu opción <strong>saludable y deliciosa</strong>, en
-                        sólo 15 minutos en tu mesa.
-                     </h1>
+                     <h2>
+                        Viandas Cook<br></br> Tu opción <strong>saludable y deliciosa</strong>, en sólo
+                        15 minutos en tu mesa.
+                     </h2>
                      <p>
                         Ofrecemos una <strong>variedad</strong> de menús que se adaptan a tus
                         necesidades y gustos, para que puedas disfrutar de comidas sabrosas sin
@@ -46,8 +51,8 @@ const NosotrosPage = () => {
                <h2>Nosotros</h2>
                <p>
                   Viandas Cook nació de la pasión por la comida <strong>saludable</strong> y la
-                  necesidad de <strong>simplificar</strong> la vida de las personas. Creamos platos
-                  que te ayudarán a organizarte en medio de tu rutina acelerada, y a llevar una
+                  necesidad de <strong>simplificar</strong> la vida de las personas. Creamos platos que
+                  te ayudarán a organizarte en medio de tu rutina acelerada, y a llevar una
                   alimentación sabrosa y balanceada. <strong>¡En sólo 15 minutos!</strong> Para
                   nosotros, la comida es más que solo combustible: es una forma de vida saludable y
                   feliz.

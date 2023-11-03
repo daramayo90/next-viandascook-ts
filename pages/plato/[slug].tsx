@@ -4,7 +4,7 @@ import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import { dbProducts } from '../../database';
 import { IProduct } from '../../interfaces';
 
-import { ga, currency, meta } from '../../utils';
+import { ga, meta } from '../../utils';
 
 import { ProductLayout } from '../../components/layouts';
 import {
@@ -22,6 +22,9 @@ interface Props {
 }
 
 const ProductPage: NextPage<Props> = ({ product }) => {
+   const title = '';
+   const description = `Disfrutá de nuestro delicioso ${product.name} por solo $${product.price}.`;
+
    useEffect(() => {
       ga.event({
          action: 'view_item',
@@ -43,7 +46,7 @@ const ProductPage: NextPage<Props> = ({ product }) => {
    }, [product]);
 
    return (
-      <ProductLayout title={'Viandas Cook - ' + product.name} pageDescription={''}>
+      <ProductLayout product={product}>
          <article className={styles.product}>
             <div className={styles.topSection}>
                <ProductImg product={product} />

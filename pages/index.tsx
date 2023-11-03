@@ -15,19 +15,19 @@ import {
 import { dbProducts } from '../database';
 import { IProduct } from '../interfaces';
 
-import styles from '../styles/Landing.module.css';
+import { seo } from '../utils';
 
-const title = 'Viandas Saludables, Prácticas y Caseras';
-const description =
-   'Ofrecemos Viandas Saludables y Caseras, ¡del freezer a tu mesa en 15 minutos! Hacé tu vida más fácil y resolvé sin vueltas tus comidas.';
+import styles from '../styles/Landing.module.css';
 
 interface Props {
    products: IProduct[];
 }
 
 const LandingPage: NextPage<Props> = ({ products }) => {
+   const { title, description, keywords } = seo['LandingPage'];
+
    return (
-      <MainLayout title={title} pageDescription={description}>
+      <MainLayout title={title} pageDescription={description} keywords={keywords}>
          <section className={styles.landing}>
             <Banner />
 

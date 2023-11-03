@@ -27,12 +27,12 @@ export const Button: FC<Props> = ({ href, content, color, border, background, di
 
    return (
       <Link href={href} passHref legacyBehavior>
-         <div className={styles.linkTo}>
+         <a className={styles.linkTo}>
             <button className={styles.linkButton} style={styleButton} disabled={disabled}>
                {content}
                <BiChevronRight className={styles.icon} style={styleIcon} />
             </button>
-         </div>
+         </a>
       </Link>
    );
 };

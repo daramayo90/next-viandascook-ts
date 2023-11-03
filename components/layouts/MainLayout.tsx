@@ -9,10 +9,17 @@ interface Props {
    children: ReactNode;
    title: string;
    pageDescription: string;
+   keywords?: string;
    imageFullUrl?: string;
 }
 
-export const MainLayout: FC<Props> = ({ children, title, pageDescription, imageFullUrl }) => {
+export const MainLayout: FC<Props> = ({
+   children,
+   title,
+   pageDescription,
+   keywords,
+   imageFullUrl,
+}) => {
    const router = useRouter();
 
    return (
@@ -20,6 +27,7 @@ export const MainLayout: FC<Props> = ({ children, title, pageDescription, imageF
          <Head>
             <title>{title}</title>
             <meta name='description' content={pageDescription} />
+            <meta name='keywords' content={keywords} />
 
             <meta name='og:title' content={title} />
             <meta name='og:description' content={pageDescription} />
