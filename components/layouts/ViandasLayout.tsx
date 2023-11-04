@@ -1,4 +1,5 @@
 import { FC, ReactNode } from 'react';
+import Head from 'next/head';
 
 import { SideViandasMenu } from '../ui';
 import { ViandasNavbar } from '../navbar';
@@ -14,6 +15,12 @@ interface Props {
 export const ViandasLayout: FC<Props> = ({ children, title, icon }) => {
    return (
       <>
+         <Head>
+            <title>{title}</title>
+            <meta name='og:title' content={title} />
+            <meta name='robots' content='noindex, nofollow' />
+         </Head>
+
          <nav>
             <ViandasNavbar />
          </nav>

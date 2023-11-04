@@ -73,19 +73,13 @@ const AvatarsPage: NextPage = () => {
    };
 
    return (
-      <ShopLayout title={'Viandas Cook - Avatars'} pageDescription={''}>
+      <ShopLayout title={'Avatars | Viandas Cook'} pageDescription={''} noIndex>
          <section className={styles.avatars}>
             <p className={styles.title}>Seleccioná el Avatar para tu cuenta que más te guste</p>
 
             <div className={styles.container}>
                {avatars.map(({ name, img }) => (
-                  <Avatar
-                     key={name}
-                     name={name}
-                     img={img}
-                     avatar={avatar}
-                     select={onSelectAvatar}
-                  />
+                  <Avatar key={name} name={name} img={img} avatar={avatar} select={onSelectAvatar} />
                ))}
             </div>
 

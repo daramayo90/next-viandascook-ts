@@ -20,7 +20,7 @@ interface Props {
 }
 
 const ProductsPage: NextPage<Props> = ({ products }) => {
-   const { title, description, keywords } = seo['ProductsPage'];
+   const { title, description, keywords, canonical } = seo['ProductsPage'];
 
    const router = useRouter();
 
@@ -82,7 +82,7 @@ const ProductsPage: NextPage<Props> = ({ products }) => {
          : products;
 
    return (
-      <ShopLayout title={title} pageDescription={description} keywords={keywords}>
+      <ShopLayout title={title} pageDescription={description} keywords={keywords} can={canonical}>
          <section className={styles.products}>
             {/* <News /> */}
 

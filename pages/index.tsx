@@ -24,10 +24,10 @@ interface Props {
 }
 
 const LandingPage: NextPage<Props> = ({ products }) => {
-   const { title, description, keywords } = seo['LandingPage'];
+   const { title, description, keywords, canonical } = seo['LandingPage'];
 
    return (
-      <MainLayout title={title} pageDescription={description} keywords={keywords}>
+      <MainLayout title={title} pageDescription={description} keywords={keywords} can={canonical}>
          <section className={styles.landing}>
             <Banner />
 

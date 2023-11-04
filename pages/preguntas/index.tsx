@@ -7,10 +7,10 @@ import { seo } from '../../utils';
 import styles from '../../styles/Questions.module.css';
 
 const QuestionsPage: NextPage = () => {
-   const { title, description, keywords } = seo['QuestionsPage'];
+   const { title, description, keywords, canonical } = seo['QuestionsPage'];
 
    return (
-      <HomeLayout title={title} pageDescription={description} keywords={keywords}>
+      <HomeLayout title={title} pageDescription={description} keywords={keywords} can={canonical}>
          <section className={styles.questions}>
             <div className={styles.container}>
                <Questions />

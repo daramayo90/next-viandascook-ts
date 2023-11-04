@@ -25,7 +25,7 @@
    justify-content: center;
    align-items: center;
    position: absolute;
-   top: 0;
+   top: 12px;
    left: 50%;
    width: 80%;
    max-width: 360px;
@@ -35,10 +35,18 @@
    transform: translate(-50%, 0);
 }
 
+.product > .topSection > .container > .description {
+   position: absolute;
+   bottom: 95px;
+   font-size: 1.1rem;
+   width: 80%;
+   text-align: center;
+}
+
 .product > .topSection > .container > .price {
    width: 100%;
-   margin: 10px 0;
-   font-size: 1rem;
+   margin-top: 100px;
+   font-size: 1.2rem;
    font-weight: 600;
    color: var(--black);
 }
@@ -50,6 +58,7 @@
    align-items: center;
    width: 45px;
    height: 40px;
+   margin-top: 90px;
    border-radius: 50%;
    background: var(--primaryHover);
 }
@@ -228,6 +237,12 @@
       align-items: flex-start;
       margin: 3.5rem 0;
       font-size: 2rem;
+      text-align: left;
+   }
+
+   .product > .topSection > .container > .description {
+      bottom: 160px;
+      width: 50%;
       text-align: left;
    }
 

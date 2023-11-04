@@ -63,7 +63,7 @@ const ReferralPage: NextPage<Props> = ({ message }) => {
 
    if (message) {
       return (
-         <ShopLayout title={'Viandas Cook - Cupón Referido'} pageDescription={''}>
+         <ShopLayout title={'Cupón Referido | Viandas Cook'} pageDescription={''} noIndex>
             <section className={styles.applyReferral}>
                <div className={styles.container}>
                   <h2 className={styles.title}>{message}</h2>
@@ -80,8 +80,8 @@ const ReferralPage: NextPage<Props> = ({ message }) => {
                <h2 className={styles.title}>Cupón de Referido</h2>
 
                <p className={styles.text}>
-                  A continuación, podrás usar el <strong>cupón</strong> que te compartió tu amigo.
-                  Este cupón se puede utilizar en combinación con otros cupones
+                  A continuación, podrás usar el <strong>cupón</strong> que te compartió tu amigo. Este
+                  cupón se puede utilizar en combinación con otros cupones
                </p>
 
                <form className={styles.applyCoupon} onSubmit={onApplyReferralCoupon}>

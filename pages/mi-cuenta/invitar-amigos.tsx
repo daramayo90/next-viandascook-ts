@@ -40,7 +40,7 @@ const FriendsPage: NextPage<Props> = ({ userRefCode }) => {
    };
 
    return (
-      <ShopLayout title={'Viandas Cook - Referidos'} pageDescription={''}>
+      <ShopLayout title={'Referidos | Viandas Cook'} pageDescription={''} noIndex>
          <section className={styles.referrals}>
             <div className={styles.container}>
                <h2 className={styles.title}>Invitá a un amigo a ser un ViandLover</h2>

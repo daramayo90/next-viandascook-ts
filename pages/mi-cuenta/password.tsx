@@ -65,7 +65,7 @@ const PasswordPage = () => {
    }
 
    return (
-      <ShopLayout title={'Viandas Cook - Cambiar Clave'} pageDescription={''}>
+      <ShopLayout title={'Cambiar Clave | Viandas Cook'} pageDescription={''} noIndex>
          <section className={styles.password}>
             <div className={styles.container}>
                <p className={styles.title}>

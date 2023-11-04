@@ -18,6 +18,8 @@ module.exports = {
                '/checkout/*',
                '/mi-cuenta/*',
                '/pedidos/*',
+               '/terminos-y-condiciones/*',
+               '/meta*',
             ],
          },
          { userAgent: '*', allow: '/' },
@@ -41,5 +43,7 @@ module.exports = {
       '/checkout',
       '/mi-cuenta',
       '/pedidos',
+      '/terminos-y-condiciones',
+      '/meta',
    ],
 };

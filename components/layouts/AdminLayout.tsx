@@ -19,6 +19,7 @@ export const AdminLayout: FC<Props> = ({ children, title, subTitle, icon }) => {
          <Head>
             <title>{title}</title>
             <meta name='og:title' content={title} />
+            <meta name='robots' content='noindex, nofollow' />
          </Head>
 
          <nav>

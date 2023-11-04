@@ -10,6 +10,7 @@ export interface IProduct {
    ingredients: string[];
    nutritionalInfo: object;
    howToHeat: string;
+   description?: string;
    bestSeller?: boolean;
    createdAt?: string;
    updatedAt?: string;

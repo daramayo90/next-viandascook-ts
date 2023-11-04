@@ -8,10 +8,10 @@ import { seo } from '../../utils';
 import styles from '../../styles/Nosotros.module.css';
 
 const NosotrosPage: NextPage = () => {
-   const { title, description, keywords } = seo['NosotrosPage'];
+   const { title, description, keywords, canonical } = seo['NosotrosPage'];
 
    return (
-      <HomeLayout title={title} pageDescription={description} keywords={keywords}>
+      <HomeLayout title={title} pageDescription={description} keywords={keywords} can={canonical}>
          <section className={styles.us}>
             <div className={styles.intro}>
                <div className={styles.container}>

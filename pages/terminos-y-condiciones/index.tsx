@@ -1,6 +1,12 @@
 import { NextPage } from 'next';
+import Head from 'next/head';
 
 const TermsAndConditionsPage: NextPage = () => {
+   <Head>
+      <meta name='viewport' content='width=device-width, user-scalable=no' />
+      <meta name='robots' content='noindex, nofollow' />
+   </Head>;
+
    return (
       <section>
          <h2>Términos y Condiciones</h2>

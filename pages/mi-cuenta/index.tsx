@@ -16,7 +16,7 @@ interface Props {
 
 const ProfilePage: NextPage<Props> = ({ userDb }) => {
    return (
-      <ShopLayout title={'Viandas Cook - Mi Cuenta'} pageDescription={''}>
+      <ShopLayout title={'Mi Cuenta | Viandas Cook'} pageDescription={''} noIndex>
          <section className={styles.account}>
             <div className={styles.container}>
                <Account user={userDb} />

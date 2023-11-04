@@ -16,7 +16,7 @@ interface Props {
 
 const AddressPage: NextPage<Props> = ({ userdb }) => {
    return (
-      <ShopLayout title={'Viandas Cook - Iniciar Sesión'} pageDescription={''}>
+      <ShopLayout title={'Iniciar Sesión | Viandas Cook'} pageDescription={''} noIndex>
          <section className={styles.address}>
             <div className={styles.container}>
                <AddressForm userdb={userdb} />

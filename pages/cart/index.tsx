@@ -24,9 +24,7 @@ const CartPage: NextPage = () => {
    }
 
    return (
-      <ShopLayout
-         title={`Viandas Cook Carrito - ${numberOfItems}`}
-         pageDescription={'Carrito - Viandas Cook'}>
+      <ShopLayout title={`Carrito - ${numberOfItems}`} pageDescription={'Carrito'} noIndex>
          <section className={styles.cart}>
             <div className={styles.container}>
                <CartList editable />

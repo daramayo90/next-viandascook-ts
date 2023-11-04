@@ -13,6 +13,8 @@ export const AuthLayout: FC<Props> = ({ children, title }) => {
       <>
          <Head>
             <title>{title}</title>
+            <meta name='og:title' content={title} />
+            <meta name='robots' content='noindex, nofollow' />
          </Head>
 
          <nav>

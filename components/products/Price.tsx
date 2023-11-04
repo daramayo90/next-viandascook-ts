@@ -17,27 +17,30 @@ export const Price: FC<Props> = ({ product }) => {
       useTempCart(product);
 
    return (
-      <div className={styles.container}>
-         <h2 className={styles.title}>{product.name}</h2>
-         <h4 className={styles.price}>{currency.format(product.price)}</h4>
+      <>
+         <div className={styles.container}>
+            <h2 className={styles.title}>{product.name}</h2>
+            <p className={styles.description}>{product.description}</p>
+            <h4 className={styles.price}>{currency.format(product.price)}</h4>
 
-         {/* TODO: Out of Stock */}
-         {!isSelecting && !cartProduct ? (
-            <div
-               className={styles.selectedQuantity}
-               onClick={() => startSelecting(cartProduct! as ICartProduct)}>
-               <span className={styles.addToCartMobile}>+</span>
-               <span className={styles.addToCartDesktop}>Agregar al carrito</span>
-            </div>
-         ) : (
-            <ItemCounter
-               currentValue={cartProduct ? cartProduct.quantity : tempCartProduct.quantity}
-               updatedQuantity={(quantity) =>
-                  onNewCartQuantityValue(cartProduct as ICartProduct, quantity)
-               }
-               product={product}
-            />
-         )}
-      </div>
+            {/* TODO: Out of Stock */}
+            {!isSelecting && !cartProduct ? (
+               <div
+                  className={styles.selectedQuantity}
+                  onClick={() => startSelecting(cartProduct! as ICartProduct)}>
+                  <span className={styles.addToCartMobile}>+</span>
+                  <span className={styles.addToCartDesktop}>Agregar al carrito</span>
+               </div>
+            ) : (
+               <ItemCounter
+                  currentValue={cartProduct ? cartProduct.quantity : tempCartProduct.quantity}
+                  updatedQuantity={(quantity) =>
+                     onNewCartQuantityValue(cartProduct as ICartProduct, quantity)
+                  }
+                  product={product}
+               />
+            )}
+         </div>
+      </>
    );
 };

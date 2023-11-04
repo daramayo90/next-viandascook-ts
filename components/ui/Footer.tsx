@@ -53,17 +53,17 @@ export const Footer = () => {
 
                <div className={styles.socialMedia}>
                   <Link href={'https://instagram.com/viandascook'} passHref>
-                     <a target='_blank'>
+                     <a target='_blank' rel='nofollow'>
                         <AiOutlineInstagram className={styles.icon} />
                      </a>
                   </Link>
                   <Link href={'https://facebook.com/viandas.cook'} passHref>
-                     <a target='_blank'>
+                     <a target='_blank' rel='nofollow'>
                         <FiFacebook className={styles.icon} />
                      </a>
                   </Link>
                   <Link href={'https://wa.link/3dkum4'} passHref>
-                     <a target='_blank'>
+                     <a target='_blank' rel='nofollow'>
                         <AiOutlineWhatsApp className={styles.icon} />
                      </a>
                   </Link>

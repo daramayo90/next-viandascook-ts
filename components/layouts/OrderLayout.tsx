@@ -11,9 +11,10 @@ interface Props {
    children: ReactNode;
    title: string;
    order?: IOrder;
+   noIndex?: boolean;
 }
 
-export const OrderLayout: FC<Props> = ({ children, title, order }) => {
+export const OrderLayout: FC<Props> = ({ children, title, order, noIndex }) => {
    const router = useRouter();
    const path = router.asPath;
    let pageTitle = `Pedido #${order?._id}`;
@@ -33,6 +34,7 @@ export const OrderLayout: FC<Props> = ({ children, title, order }) => {
 
             <meta name='og:title' content={title} />
             <meta name='viewport' content='width=device-width, user-scalable=no' />
+            {noIndex && <meta name='robots' content='noindex, nofollow' />}
          </Head>
 
          <nav>

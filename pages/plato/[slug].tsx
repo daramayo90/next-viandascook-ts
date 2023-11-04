@@ -22,9 +22,6 @@ interface Props {
 }
 
 const ProductPage: NextPage<Props> = ({ product }) => {
-   const title = '';
-   const description = `Disfrutá de nuestro delicioso ${product.name} por solo $${product.price}.`;
-
    useEffect(() => {
       ga.event({
          action: 'view_item',

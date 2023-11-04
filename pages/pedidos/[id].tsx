@@ -17,7 +17,7 @@ interface Props {
 
 const OrderPage: NextPage<Props> = ({ order }) => {
    return (
-      <OrderLayout title={'Viandas Cook - Pedido'} order={order}>
+      <OrderLayout title={'Pedido | Viandas Cook'} order={order} noIndex>
          <section className={styles.order}>
             <TransferTable order={order} />
 

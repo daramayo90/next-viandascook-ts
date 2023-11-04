@@ -6,10 +6,10 @@ import styles from '../../styles/Loyalty.module.css';
 import { seo } from '../../utils';
 
 const LoyaltyPage: NextPage = () => {
-   const { title, description, keywords } = seo['LoyaltyPage'];
+   const { title, description, keywords, canonical } = seo['LoyaltyPage'];
 
    return (
-      <HomeLayout title={title} pageDescription={description} keywords={keywords}>
+      <HomeLayout title={title} pageDescription={description} keywords={keywords} can={canonical}>
          <section className={styles.loyalty}>
             <div className={styles.intro}>
                <div className={styles.container}>

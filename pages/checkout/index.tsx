@@ -59,7 +59,7 @@ const CheckoutPage: NextPage<Props> = ({ user }) => {
    }, [cart]);
 
    return (
-      <ShopLayout title={'Viandas Cook - Finalizar Compra'} pageDescription={''}>
+      <ShopLayout title={'Finalizar Compra | Viandas Cook'} pageDescription={''} noIndex>
          <section className={styles.checkout}>
             <div className={styles.container}>
                <div className={styles.selection}>

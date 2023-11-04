@@ -22,6 +22,7 @@ const productSchema = new Schema(
          },
       },
       howToHeat: { type: String, default: '' },
+      description: { type: String, default: '' },
       bestSeller: { type: Boolean, default: false },
       type: [
          {

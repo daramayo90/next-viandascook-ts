@@ -11,16 +11,20 @@ interface Props {
    children: ReactNode;
    title: string;
    pageDescription: string;
+   can?: string;
    keywords?: string;
    imageFullUrl?: string;
+   noIndex?: boolean;
 }
 
 export const ShopLayout: FC<Props> = ({
    children,
    title,
    pageDescription,
+   can,
    keywords,
    imageFullUrl,
+   noIndex,
 }) => {
    const router = useRouter();
    const path = router.pathname;
@@ -49,7 +53,11 @@ export const ShopLayout: FC<Props> = ({
             <meta name='og:title' content={title} />
             <meta name='og:description' content={pageDescription} />
             <meta name='viewport' content='width=device-width, user-scalable=no' />
+
             {imageFullUrl && <meta name='og:image' content={imageFullUrl} />}
+            {noIndex && <meta name='robots' content='noindex, nofollow' />}
+
+            <link rel='canonical' href={can} />
          </Head>
 
          {path.includes('checkout') ? <CartSummary /> : <TabMenu />}

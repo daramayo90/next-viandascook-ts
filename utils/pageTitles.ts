@@ -20,4 +20,5 @@ export const pageTitles = {
    '/nosotros': 'Nosotros',
    '/preguntas': '¿Preguntas?',
    '/loyalty': '¡Sumá puntos!',
+   '/sitemap': 'Mapa del Sitio',
 };

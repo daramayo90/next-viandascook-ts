@@ -26,7 +26,7 @@ const MyPointsPage: NextPage = () => {
    if (!user) return <></>;
 
    return (
-      <ShopLayout title={'Viandas Cook - Mis Puntos'} pageDescription={''}>
+      <ShopLayout title={'Mis Puntos | Viandas Cook'} pageDescription={''} noIndex>
          <section className={styles.points}>
             <div className={styles.container}>
                <div className={styles.balance}>

@@ -18,8 +18,6 @@ interface Props {
 export const ShopNavbar: FC<Props> = ({ pageTitle, menuPage, backCart }) => {
    const router = useRouter();
 
-   console.log(pageTitle);
-
    const { isCartSummaryOpen, isMenuOpen, toggleSideMenu } = useContext(UIContext);
    const { numberOfItems } = useContext(CartContext);
 

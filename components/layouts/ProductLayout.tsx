@@ -16,17 +16,17 @@ export const ProductLayout: FC<Props> = ({ children, product }) => {
             <title>{product.name} | Viandas Cook</title>
             <meta name='og:title' content={product.name} />
 
-            <meta
-               name='description'
-               content={`Disfruta de nuestro delicioso ${product.name} por solo $${product.price}.`}
-            />
-            <meta
-               name='og:description'
-               content={`Disfruta de nuestro delicioso ${product.name} por solo $${product.price}.`}
-            />
+            <meta name='description' content={product.description} />
+            <meta name='og:description' content={product.description} />
 
             <meta name='viewport' content='width=device-width, user-scalable=no' />
             <meta name='og:image' content={product.image} />
+
+            <script
+               type='application/ld+json'
+               dangerouslySetInnerHTML={addProductJsonLd(product)}
+               key='product-jsonld'
+            />
 
             <script
                type='application/ld+json'
@@ -46,8 +46,35 @@ export const ProductLayout: FC<Props> = ({ children, product }) => {
    );
 };
 
+const addProductJsonLd = (product: IProduct) => {
+   const { name, image, slug, description, price, updatedAt } = product;
+
+   return {
+      __html: `{
+         "@context": "https://schema.org/",
+         "@type": "Product",
+         "name": "${name}",
+         "image": "${image}",
+         "description": "${description}",
+         "brand": {
+            "@type": "Brand",
+            "name": "Viandas Cook"
+         },
+         "offers": {
+            "@type": "Offer",
+            "url": "https://www.viandascook.com/plato/${slug}",
+            "priceCurrency": "ARS",
+            "price": "${price}",
+            "priceValidUntil": "${updatedAt}",
+            "availability": "https://schema.org/OnlineOnly",
+            "itemCondition": "https://schema.org/NewCondition"
+         }
+      }`,
+   };
+};
+
 const addRecipeJsonLd = (product: IProduct) => {
-   const { name, image, ingredients, howToHeat, createdAt } = product;
+   const { name, image, ingredients, howToHeat, description, createdAt } = product;
    const nutritionalInfo: any = product.nutritionalInfo;
 
    return {
@@ -56,9 +83,9 @@ const addRecipeJsonLd = (product: IProduct) => {
         "@type": "Recipe",
         "name": "${name}",
         "image": "${image}",
-        "description": "",
+        "description": "${description}",
         "datePublished": ${createdAt},
-        "keywords": "vianda, viandas, comida saludable, vianda saludable, vianda congelada, ${name}",
+        "keywords": "vianda, viandas, comida saludable, vianda saludable, vianda congelada, ${name}, ${description}",
         "author": {
           "@type": "Organization",
           "name": "Viandas Cook SRL"
