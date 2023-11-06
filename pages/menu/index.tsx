@@ -84,7 +84,7 @@ const ProductsPage: NextPage<Props> = ({ products }) => {
    return (
       <ShopLayout title={title} pageDescription={description} keywords={keywords} can={canonical}>
          <section className={styles.products}>
-            {/* <News /> */}
+            <News />
 
             <SearchProducts searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
 

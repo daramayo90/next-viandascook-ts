@@ -31,6 +31,10 @@ const discounts = [
    //    img: '/discounts/promo-dia-de-la-madre.png',
    // },
    {
+      name: 'Descuento Cyber Monday',
+      img: '/discounts/offer-cyber-monday.png',
+   },
+   {
       name: 'Descuento llevando 14 viandas o más',
       img: '/discounts/offer-14-viandas.png',
    },
@@ -42,10 +46,6 @@ const discounts = [
       name: 'Descuento llevando 56 viandas o más',
       img: '/discounts/offer-56-viandas.png',
    },
-   // {
-   //    name: 'Descuento Cyber Monday',
-   //    img: '/discounts/offer-cyber-monday.png',
-   // },
    // {
    //    name: 'Descuento Black Friday',
    //    img: '/discounts/offer-black-friday.png',

@@ -45,8 +45,8 @@ export const ProductCard: FC<Props> = ({ product }) => {
 
                   {/* <div className={styles.tagImageWrapper}>
                      <Image
-                        src='/img/10off-tag.png'
-                        alt='10% off - Promo día de la madre'
+                        src='/img/20off-tag.png'
+                        alt='20% off - Cyber Monday'
                         width={750}
                         height={900}
                         priority={true}
@@ -58,9 +58,7 @@ export const ProductCard: FC<Props> = ({ product }) => {
             <div className={styles.info}>
                <div className={styles.name}>
                   <h4>
-                     {product.name.length > 50
-                        ? product.name.substring(0, 45) + '...'
-                        : product.name}
+                     {product.name.length > 50 ? product.name.substring(0, 45) + '...' : product.name}
                   </h4>
                </div>
 
