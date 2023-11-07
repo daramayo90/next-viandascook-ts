@@ -41,7 +41,8 @@
    margin: 0;
 }
 
-.howItWorks > .intro > .container > .textIntro > h1 {
+.howItWorks > .intro > .container > .textIntro > h2 {
+   margin: 1rem 0;
    color: var(--white);
    text-align: center;
    font-size: 1.8rem;

@@ -22,11 +22,11 @@ export const ProductLayout: FC<Props> = ({ children, product }) => {
             <meta name='viewport' content='width=device-width, user-scalable=no' />
             <meta name='og:image' content={product.image} />
 
-            <script
+            {/* <script
                type='application/ld+json'
                dangerouslySetInnerHTML={addProductJsonLd(product)}
                key='product-jsonld'
-            />
+            /> */}
 
             <script
                type='application/ld+json'

@@ -46,12 +46,14 @@
 }
 
 .footer > .info > .columnList > .list {
+   display: flex;
+   flex-direction: column;
    margin: 0;
    text-align: center;
    list-style: none;
 }
 
-.footer > .info > .columnList > .list > li {
+.footer > .info > .columnList > .list > .linkItem {
    margin: 35px 0;
    font-size: 18px;
    font-weight: 500;
@@ -147,7 +149,7 @@
       gap: 87px;
    }
 
-   .footer > .info > .columnList > .list > li {
+   .footer > .info > .columnList > .list > .linkItem {
       margin: 20px 0;
       cursor: pointer;
    }

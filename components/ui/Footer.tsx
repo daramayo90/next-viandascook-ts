@@ -21,18 +21,19 @@ export const Footer = () => {
             <div className={styles.columnList}>
                <ul className={styles.list}>
                   <Link href={'/como-funciona'}>
-                     <li>¿Cómo funciona?</li>
+                     <a className={styles.linkItem}>¿Cómo funciona?</a>
                   </Link>
                   <Link href={'/nosotros'}>
-                     <li>Nosotros</li>
+                     <a className={styles.linkItem}>Nosotros</a>
                   </Link>
                </ul>
+
                <ul className={styles.list}>
                   <Link href={'/preguntas'}>
-                     <li>¿Dudas?</li>
+                     <a className={styles.linkItem}>¿Dudas?</a>
                   </Link>
                   <Link href={'/loyalty'}>
-                     <li>Sumá puntos</li>
+                     <a className={styles.linkItem}>Sumá puntos</a>
                   </Link>
                </ul>
             </div>

@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 import { AuthContext, UIContext } from '../../context';
 
@@ -23,85 +24,107 @@ export const SideMenu = () => {
 
    const { isMenuOpen, toggleSideMenu } = useContext(UIContext);
 
-   const navigateTo = (url: string) => {
-      toggleSideMenu();
-      router.push(url);
-   };
-
    return (
       <section className={isMenuOpen ? `${styles.sidemenu} ${styles.open}` : `${styles.sidemenu}`}>
          <div className={isMenuOpen ? `${styles.options} ${styles.open}` : `${styles.options}`}>
             <ul className={styles.list}>
                {isLoggedIn && user?.role === 'admin' && (
-                  <li onClick={() => navigateTo('/admin')}>
-                     <MdOutlineAdminPanelSettings className={styles.icon} />
-                     <span>Admin</span>
-                     <MdOutlineKeyboardArrowRight className={styles.iconRight} />
-                  </li>
+                  <Link href='/admin'>
+                     <a className={styles.linkItem} onClick={toggleSideMenu}>
+                        <MdOutlineAdminPanelSettings className={styles.icon} />
+                        <span>Admin</span>
+                        <MdOutlineKeyboardArrowRight className={styles.iconRight} />
+                     </a>
+                  </Link>
                )}
 
                {isLoggedIn && user?.role === 'viandas' && (
-                  <li onClick={() => navigateTo('/cocina')}>
-                     <MdOutlineAdminPanelSettings className={styles.icon} />
-                     <span>Cocina</span>
-                     <MdOutlineKeyboardArrowRight className={styles.iconRight} />
-                  </li>
+                  <Link href='/cocina'>
+                     <a className={styles.linkItem} onClick={toggleSideMenu}>
+                        <MdOutlineAdminPanelSettings className={styles.icon} />
+                        <span>Cocina</span>
+                        <MdOutlineKeyboardArrowRight className={styles.iconRight} />
+                     </a>
+                  </Link>
                )}
 
-               <li onClick={() => navigateTo('/')}>
-                  <AiOutlineHome className={styles.icon} />
-                  <span>Inicio</span>
-                  <MdOutlineKeyboardArrowRight className={styles.iconRight} />
-               </li>
+               <Link href='/'>
+                  <a className={styles.linkItem} onClick={toggleSideMenu}>
+                     <AiOutlineHome className={styles.icon} />
+                     <span>Inicio</span>
+                     <MdOutlineKeyboardArrowRight className={styles.iconRight} />
+                  </a>
+               </Link>
 
-               <li onClick={() => navigateTo('/menu')}>
-                  <MdOutlineFoodBank className={styles.icon} />
-                  <span>Elegí tus Viandas</span>
-                  <MdOutlineKeyboardArrowRight className={styles.iconRight} />
-               </li>
+               <Link href='/menu'>
+                  <a className={styles.linkItem} onClick={toggleSideMenu}>
+                     <MdOutlineFoodBank className={styles.icon} />
+                     <span>Elegí tus Viandas</span>
+                     <MdOutlineKeyboardArrowRight className={styles.iconRight} />
+                  </a>
+               </Link>
+
                {isLoggedIn && (
                   <>
-                     <li onClick={() => navigateTo('/pedidos/historial')}>
-                        <HiOutlineClipboardList className={styles.icon} />
-                        <span>Mis Pedidos</span>
-                        <MdOutlineKeyboardArrowRight className={styles.iconRight} />
-                     </li>
-                     <li onClick={() => navigateTo('/mi-cuenta')}>
-                        <AiOutlineUser className={styles.icon} />
-                        <span>Mi Cuenta</span>
-                        <MdOutlineKeyboardArrowRight className={styles.iconRight} />
-                     </li>
+                     <Link href='/pedidos/historial'>
+                        <a className={styles.linkItem} onClick={toggleSideMenu}>
+                           <HiOutlineClipboardList className={styles.icon} />
+                           <span>Mis Pedidos</span>
+                           <MdOutlineKeyboardArrowRight className={styles.iconRight} />
+                        </a>
+                     </Link>
+
+                     <Link href='/mi-cuenta'>
+                        <a className={styles.linkItem} onClick={toggleSideMenu}>
+                           <AiOutlineUser className={styles.icon} />
+                           <span>Mi Cuenta</span>
+                           <MdOutlineKeyboardArrowRight className={styles.iconRight} />
+                        </a>
+                     </Link>
                   </>
                )}
-               <li onClick={() => navigateTo('/loyalty')}>
-                  <TbDiscount2 className={styles.icon} />
-                  <span>Sumá Puntos</span>
-                  <MdOutlineKeyboardArrowRight className={styles.iconRight} />
-               </li>
-               <li onClick={() => navigateTo('/nosotros')}>
-                  <BsInfoCircle className={styles.icon} />
-                  <span>Nosotros</span>
-                  <MdOutlineKeyboardArrowRight className={styles.iconRight} />
-               </li>
-               <li onClick={() => navigateTo('/como-funciona')}>
-                  <AiOutlineQuestionCircle className={styles.icon} />
-                  <span>¿Cómo Funciona?</span>
-                  <MdOutlineKeyboardArrowRight className={styles.iconRight} />
-               </li>
-               <li onClick={() => navigateTo('/preguntas')}>
-                  <AiOutlineQuestionCircle className={styles.icon} />
-                  <span>¿Dudas?</span>
-                  <MdOutlineKeyboardArrowRight className={styles.iconRight} />
-               </li>
+               <Link href='/loyalty'>
+                  <a className={styles.linkItem} onClick={toggleSideMenu}>
+                     <TbDiscount2 className={styles.icon} />
+                     <span>Sumá Puntos</span>
+                     <MdOutlineKeyboardArrowRight className={styles.iconRight} />
+                  </a>
+               </Link>
+
+               <Link href='/nosotros'>
+                  <a className={styles.linkItem} onClick={toggleSideMenu}>
+                     <BsInfoCircle className={styles.icon} />
+                     <span>Nosotros</span>
+                     <MdOutlineKeyboardArrowRight className={styles.iconRight} />
+                  </a>
+               </Link>
+
+               <Link href='/como-funciona'>
+                  <a className={styles.linkItem} onClick={toggleSideMenu}>
+                     <AiOutlineQuestionCircle className={styles.icon} />
+                     <span>¿Cómo Funciona?</span>
+                     <MdOutlineKeyboardArrowRight className={styles.iconRight} />
+                  </a>
+               </Link>
+
+               <Link href='/preguntas'>
+                  <a className={styles.linkItem} onClick={toggleSideMenu}>
+                     <AiOutlineQuestionCircle className={styles.icon} />
+                     <span>¿Dudas?</span>
+                     <MdOutlineKeyboardArrowRight className={styles.iconRight} />
+                  </a>
+               </Link>
 
                {!isLoggedIn ? (
-                  <li onClick={() => navigateTo(`/auth/login?page=${router.asPath}`)}>
-                     <FiLogIn className={styles.icon} />
-                     <span>Iniciá Sesión</span>
-                     <MdOutlineKeyboardArrowRight className={styles.iconRight} />
-                  </li>
+                  <Link href={`/auth/login?page=${router.asPath}`}>
+                     <a className={styles.linkItem} onClick={toggleSideMenu}>
+                        <FiLogIn className={styles.icon} />
+                        <span>Iniciá Sesión</span>
+                        <MdOutlineKeyboardArrowRight className={styles.iconRight} />
+                     </a>
+                  </Link>
                ) : (
-                  <li onClick={logout}>
+                  <li onClick={logout} className={styles.linkItem}>
                      <HiOutlineLogout className={styles.icon} />
                      <span>Cerrar Sesión</span>
                      <MdOutlineKeyboardArrowRight className={styles.iconRight} />

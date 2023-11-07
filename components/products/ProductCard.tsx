@@ -33,8 +33,8 @@ export const ProductCard: FC<Props> = ({ product }) => {
             {/* TODO: Out of Stock */}
             {product.inStock === false && <div className={styles.stock}>Sin stock</div>}
 
-            <Link href={`/plato/${product.slug}`} prefetch={false}>
-               <div className={styles.nextImage}>
+            <Link href={`/plato/${product.slug}`}>
+               <a className={styles.nextImage}>
                   <Image
                      src={product.image}
                      alt={product.name}
@@ -52,7 +52,7 @@ export const ProductCard: FC<Props> = ({ product }) => {
                         priority={true}
                      />
                   </div>
-               </div>
+               </a>
             </Link>
 
             <div className={styles.info}>

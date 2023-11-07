@@ -41,13 +41,14 @@
    margin: 0;
 }
 
-.us > .intro > .container > .textIntro > h1 {
+.us > .intro > .container > .textIntro > h2 {
+   margin: 1rem 0;
    color: var(--white);
    text-align: center;
    font-size: 1.8rem;
 }
 
-.us > .intro > .container > .textIntro > h1 > strong {
+.us > .intro > .container > .textIntro > h2 > strong {
    color: var(--white);
 }
 

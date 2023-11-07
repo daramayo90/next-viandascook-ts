@@ -181,7 +181,7 @@ const addQuestionsJsonLd = () => {
             }
          },{
             "@type": "Question",
-            "name": "¿Cuál es el horario de envío? Las entregas se realizan de lunes a viernes de 20 a 23hs. Sin embargo, podés dejarnos una nota al momento de finalizar la compra si hay un horario en el que no vas a encontrarte en tu domicilio y nosotros lo tenemos en cuenta. Además, contamos con un servicio de seguimiento en tiempo real del delivery. Recibirás el link por mail y por mensaje de texto.",
+            "name": "¿Cuál es el horario de envío?",
             "acceptedAnswer": {
                "@type": "Answer",
                "text": "Las entregas se realizan de lunes a viernes de 20 a 23hs. Sin embargo, podés dejarnos una nota al momento de finalizar la compra si hay un horario en el que no vas a encontrarte en tu domicilio y nosotros lo tenemos en cuenta. Además, contamos con un servicio de seguimiento en tiempo real del delivery. Recibirás el link por mail y por mensaje de texto."
@@ -198,7 +198,7 @@ const addQuestionsJsonLd = () => {
             "name": "¿Cómo debo aplicar el cupón BIENVENIDO10?",
             "acceptedAnswer": {
                "@type": "Answer",
-               "text": "Para aplicar el cupón de descuento BIENVENIDO10 deberás ingresar en nuestra web www.viandascook.com y seleccionar los platos que quieras. Luego, haz click en \"finalizar\" y registrate para completar tu pedido. En la sección \"ver descuentos disponibles\" podrás aplicar este cupón. Solo es válido para la primera compra"
+               "text": "Para aplicar el cupón de descuento BIENVENIDO10 deberás ingresar en nuestra web www.viandascook.com y seleccionar los platos que quieras. Luego, haz click en finalizar y registrate para completar tu pedido. En la sección ver descuentos disponibles podrás aplicar este cupón. Solo es válido para la primera compra."
             }
          },{
             "@type": "Question",
