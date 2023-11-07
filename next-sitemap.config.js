@@ -20,6 +20,7 @@ module.exports = {
                '/pedidos/*',
                '/terminos-y-condiciones/*',
                '/meta*',
+               '/merchant*',
             ],
          },
          { userAgent: '*', allow: '/' },
@@ -44,6 +45,7 @@ module.exports = {
       '/mi-cuenta',
       '/pedidos',
       '/terminos-y-condiciones',
-      '/meta',
+      '/meta.xml',
+      '/merchant.xml',
    ],
 };
