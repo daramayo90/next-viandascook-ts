@@ -1,4 +1,4 @@
-import { GetServerSideProps, NextApiRequest, NextApiResponse } from 'next';
+import { GetServerSideProps } from 'next';
 import { dbProducts } from '../database';
 import { IProduct } from '../interfaces';
 
