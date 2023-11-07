@@ -23,23 +23,26 @@ function generateRssXml(products: IProduct[]) {
    products.forEach((product) => {
       rssItemsXml += `
       <item>
-        <id>${product._id}</id>
-        <title>${product.name}</title>
-        <description>${product.description}</description>
-        <availability>${product.inStock ? 'in stock' : 'out of stock'}</availability>
-        <condition>new</condition>
-        <price>${product.price} ARS</price>
+        <g:id>${product._id}</g:id>
+        <g:title>${product.name}</g:title>
+        <g:description>${product.description}</g:description>
         <link>https://www.viandascook.com/plato/${product.slug}</link>
-        <image_link>${product.image}</image_link>
-        <google_product_category>499988</google_product_category>
-        <brand>Viandas Cook</brand>
+        <g:image_link>${product.image}</g:image_link>
+        <g:availability>${product.inStock ? 'in stock' : 'out of stock'}</g:availability>
+        <g:price>${product.price} ARS</g:price>
+        <g:condition>new</g:condition>
+        <g:google_product_category>499988</g:google_product_category>
+        <g:brand>Viandas Cook</g:brand>
       </item>`;
    });
 
    return `<?xml version="1.0" encoding="UTF-8" ?>
     <rss version="2.0">
       <channel>
-        ${rssItemsXml}
+         <title>Viandas Cook</title>
+         <description>Viandas congeladas listas para consumir, con ingredientes saludables.</description>
+         <link rel="self" href="https://www.viandascook.com" />
+         ${rssItemsXml}
       </channel>
     </rss>`;
 }
