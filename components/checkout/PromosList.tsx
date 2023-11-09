@@ -55,12 +55,12 @@ const promosList = [
    //    text: '20% de descuento en todo el menú',
    //    coupon: 'hotviandas',
    // },
-   {
-      icon: <TbDiscount2 className={styles.iconPromo} />,
-      title: 'Cyber Monday',
-      text: '20% de descuento en todo el menú',
-      coupon: 'cyber-viandas',
-   },
+   // {
+   //    icon: <TbDiscount2 className={styles.iconPromo} />,
+   //    title: 'Cyber Monday',
+   //    text: '20% de descuento en todo el menú',
+   //    coupon: 'cyber-viandas',
+   // },
    // {
    //    icon: <MdLocalOffer className={styles.iconPromo} />,
    //    title: 'Especial Fin de Semana',

@@ -84,7 +84,7 @@ const addRecipeJsonLd = (product: IProduct) => {
         "name": "${name}",
         "image": "${image}",
         "description": "${description}",
-        "datePublished": ${createdAt},
+        "datePublished": "${createdAt}",
         "keywords": "vianda, viandas, comida saludable, vianda saludable, vianda congelada, ${name}, ${description}",
         "author": {
           "@type": "Organization",
