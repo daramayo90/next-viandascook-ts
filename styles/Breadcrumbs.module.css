@@ -1,0 +1,53 @@
+.breadcrumbs {
+   position: relative;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   width: 88vw;
+   height: 100%;
+   margin: 1rem auto;
+}
+
+.breadcrumbs > .list {
+   list-style: none;
+   padding: 0;
+   margin: 0;
+   display: flex;
+   align-items: center;
+}
+
+.breadcrumbs > .list > .item a {
+   text-decoration: none;
+   font-weight: 500;
+   font-size: 1.1rem;
+}
+
+.breadcrumbs > .list > .item a:hover {
+   text-decoration: underline;
+}
+
+.breadcrumbs > .list > .item::after {
+   content: '>';
+   margin: 0 0.5rem;
+}
+
+.breadcrumbs > .list > .item:last-child a,
+.breadcrumbs > .list > .item:last-child span {
+   color: var(--primary);
+   cursor: default;
+   text-decoration: none;
+   pointer-events: none;
+   font-size: 1.1rem;
+}
+
+.breadcrumbs > .list > .item:last-child::after {
+   content: '';
+   margin: 0;
+}
+
+@media (min-width: 720px) {
+   .breadcrumbs {
+      justify-content: space-between;
+      max-width: 1000px;
+   }
+}

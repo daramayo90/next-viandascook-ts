@@ -47,4 +47,9 @@ export const seo = {
          'preguntas frecuentes Viandas Cook, dudas sobre viandas saludables, entrega de viandas a domicilio, proceso de pedido de viandas, cómo funciona la entrega, opciones de menú, viandas para niños, viandas para el trabajo, viandas congeladas, calentamiento de viandas',
       canonical: 'https://www.viandascook.com/preguntas',
    },
+   SitemapPage: {
+      title: 'Mapa del Sitio | Viandas Cook',
+      description: 'Acá encontrarás las principales URLs del sitio',
+      canonical: 'https://www.viandascook.com/sitemap',
+   },
 };

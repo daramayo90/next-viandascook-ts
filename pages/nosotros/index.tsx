@@ -1,7 +1,7 @@
 import { NextPage } from 'next';
 
 import { HomeLayout } from '../../components/layouts';
-import { Button, Newsletter, SectionsUs } from '../../components/ui';
+import { Breadcrumbs, Button, Newsletter, SectionsUs } from '../../components/ui';
 
 import { seo } from '../../utils';
 
@@ -13,6 +13,8 @@ const NosotrosPage: NextPage = () => {
    return (
       <HomeLayout title={title} pageDescription={description} keywords={keywords} can={canonical}>
          <section className={styles.us}>
+            <Breadcrumbs />
+
             <div className={styles.intro}>
                <div className={styles.container}>
                   <div className={styles.videoIntro}>

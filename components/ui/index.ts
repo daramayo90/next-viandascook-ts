@@ -1,5 +1,6 @@
 export * from './Accordion';
 export * from './Banner';
+export * from './Breadcrumbs';
 export * from './Button';
 export * from './CommonQuestions';
 export * from './DiscountSlides';

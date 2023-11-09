@@ -15,7 +15,6 @@
 .column {
    flex: 1;
    padding: 20px;
-   box-sizing: border-box;
 }
 
 .column > .title {
@@ -24,17 +23,25 @@
 }
 
 .column > .list {
+   display: flex;
+   flex-direction: column;
    list-style-type: none;
    padding: 0;
 }
 
-.column > .list li {
+.column > .list .linkList {
    text-align: center;
    margin: 15px 0;
+   cursor: pointer;
 }
 
-.column > .list li span {
+.column > .list .linkList span {
    font-size: 1.1rem;
+   color: var(--primary);
+}
+
+.column > .list .linkList span:hover {
+   text-decoration: underline;
 }
 
 @media (min-width: 720px) {

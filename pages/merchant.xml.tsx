@@ -37,7 +37,7 @@ function generateRssXml(products: IProduct[]) {
    });
 
    return `<?xml version="1.0" encoding="UTF-8" ?>
-    <rss version="2.0" xmlns:g="http://base.google.com/ns/1.0">
+    <rss version="2.0" xmlns:g="http://base.google.com/ns/1.0" xmlns="http://www.w3.org/2005/Atom">
       <channel>
          <title>Viandas Cook</title>
          <description>Viandas congeladas listas para consumir, con ingredientes saludables.</description>

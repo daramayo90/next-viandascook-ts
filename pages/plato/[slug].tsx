@@ -16,6 +16,7 @@ import {
 } from '../../components/products';
 
 import styles from '../../styles/Product.module.css';
+import { Breadcrumbs } from '../../components/ui';
 
 interface Props {
    product: IProduct;
@@ -45,6 +46,7 @@ const ProductPage: NextPage<Props> = ({ product }) => {
    return (
       <ProductLayout product={product}>
          <article className={styles.product}>
+            <Breadcrumbs />
             <div className={styles.topSection}>
                <ProductImg product={product} />
 

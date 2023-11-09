@@ -78,7 +78,7 @@
 @media (min-width: 720px) {
    .products {
       margin: 0 auto;
-      padding: 5rem 0;
+      padding-top: 4rem;
    }
 
    .products > .container {

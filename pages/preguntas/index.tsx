@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
 import { HomeLayout } from '../../components/layouts';
-import { Newsletter, Questions } from '../../components/ui';
+import { Breadcrumbs, Newsletter, Questions } from '../../components/ui';
 
 import { seo } from '../../utils';
 
@@ -13,6 +13,7 @@ const QuestionsPage: NextPage = () => {
       <HomeLayout title={title} pageDescription={description} keywords={keywords} can={canonical}>
          <section className={styles.questions}>
             <div className={styles.container}>
+               <Breadcrumbs />
                <Questions />
                <Newsletter />
             </div>

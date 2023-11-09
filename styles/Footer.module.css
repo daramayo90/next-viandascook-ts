@@ -38,26 +38,36 @@
    transform: rotate(-3.43deg);
 }
 
-.footer > .info > .columnList {
+.footer > .info > .columns > .columnList {
    display: flex;
+   position: relative;
    margin-top: 0;
    text-align: center;
    gap: 38px;
 }
 
-.footer > .info > .columnList > .list {
+.footer > .info > .columns > .columnList > .list {
    display: flex;
    flex-direction: column;
-   margin: 0;
+   margin: 35px 0;
    text-align: center;
    list-style: none;
 }
 
-.footer > .info > .columnList > .list > .linkItem {
-   margin: 35px 0;
+.footer > .info > .columns > .columnList > .list > .linkItem {
+   margin: 15px 0;
    font-size: 18px;
    font-weight: 500;
    color: var(--white);
+}
+
+.footer > .info > .columns > .columnList > .subTitle {
+   position: absolute;
+   top: 0;
+   width: 100%;
+   font-size: 1.5rem;
+   font-style: 500;
+   text-align: center;
 }
 
 .footer > .info > .contact {
@@ -144,13 +154,25 @@
       transform: none;
    }
 
-   .footer > .info > .columnList {
-      margin-top: 36px;
+   .footer > .info > .columns {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+   }
+
+   .footer > .info > .columns > .columnList {
+      width: 70%;
+      justify-content: center;
       gap: 87px;
    }
 
-   .footer > .info > .columnList > .list > .linkItem {
+   .footer > .info > .columns > .columnList > .list > .linkItem {
       margin: 20px 0;
+   }
+
+   .footer > .info > .columns > .columnList > .list > .linkItem:hover {
+      text-decoration: underline;
       cursor: pointer;
    }
 

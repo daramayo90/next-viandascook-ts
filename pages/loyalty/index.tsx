@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
 import { HomeLayout } from '../../components/layouts';
-import { Button, Newsletter, Rewards } from '../../components/ui';
+import { Breadcrumbs, Button, Newsletter, Rewards } from '../../components/ui';
 
 import styles from '../../styles/Loyalty.module.css';
 import { seo } from '../../utils';
@@ -11,6 +11,8 @@ const LoyaltyPage: NextPage = () => {
    return (
       <HomeLayout title={title} pageDescription={description} keywords={keywords} can={canonical}>
          <section className={styles.loyalty}>
+            <Breadcrumbs />
+
             <div className={styles.intro}>
                <div className={styles.container}>
                   <div className={styles.videoIntro}>

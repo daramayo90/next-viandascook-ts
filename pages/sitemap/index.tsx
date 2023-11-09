@@ -7,107 +7,120 @@ import Link from 'next/link';
 
 const SiteMapPage: NextPage = () => {
    return (
-      <ShopLayout title={''} pageDescription={''}>
+      <ShopLayout
+         title={'Mapa del Sitio | Viandas Cook'}
+         pageDescription={'Acá encontrarás las principales URLs del sitio'}>
          <div className={styles.sitemap}>
             <div className={styles.container}>
                <div className={styles.column}>
                   <h2 className={styles.title}>Viandas Cook</h2>
                   <ul className={styles.list}>
-                     <li>
-                        <Link href='/'>
+                     <Link href='/'>
+                        <a className={styles.linkList}>
                            <span>Inicio</span>
-                        </Link>
-                     </li>
-                     <li>
-                        <Link href='/menu'>
+                        </a>
+                     </Link>
+                     <Link href='/menu'>
+                        <a className={styles.linkList}>
                            <span>Menú</span>
-                        </Link>
-                     </li>
-                     <li>
-                        <Link href='/nosotros'>
+                        </a>
+                     </Link>
+                     <Link href='/nosotros'>
+                        <a className={styles.linkList}>
                            <span>Sobre nosotros</span>
-                        </Link>
-                     </li>
-                     <li>
-                        <Link href='/loyalty'>
+                        </a>
+                     </Link>
+                     <Link href='/loyalty'>
+                        <a className={styles.linkList}>
                            <span>Programa de puntos</span>
-                        </Link>
-                     </li>
-                     <li>
-                        <Link href='/como-funciona'>
+                        </a>
+                     </Link>
+                     <Link href='/como-funciona'>
+                        <a className={styles.linkList}>
                            <span>¿Cómo funciona?</span>
-                        </Link>
-                     </li>
-                     <li>
-                        <Link href='/preguntas'>
+                        </a>
+                     </Link>
+                     <Link href='/preguntas'>
+                        <a className={styles.linkList}>
                            <span>Preguntas frecuentes</span>
-                        </Link>
-                     </li>
+                        </a>
+                     </Link>
                   </ul>
                </div>
                <div className={styles.column}>
                   <h2 className={styles.title}>Nuestras Viandas</h2>
                   <ul className={styles.list}>
-                     <li>
-                        <Link href='/menu'>
+                     <Link href='/menu'>
+                        <a className={styles.linkList}>
                            <span>Todas</span>
-                        </Link>
-                     </li>
-                     <li>
-                        <Link href='/menu?type="Pollo"'>
+                        </a>
+                     </Link>
+
+                     <Link href='/menu?type="Pollo"'>
+                        <a className={styles.linkList}>
                            <span>Viandas con Pollo</span>
-                        </Link>
-                     </li>
-                     <li>
-                        <Link href='/menu?type="Carne"'>
+                        </a>
+                     </Link>
+
+                     <Link href='/menu?type="Carne"'>
+                        <a className={styles.linkList}>
                            <span>Viandas con Carne</span>
-                        </Link>
-                     </li>
-                     <li>
-                        <Link href='/menu?type="Pescado"'>
+                        </a>
+                     </Link>
+
+                     <Link href='/menu?type="Pescado"'>
+                        <a className={styles.linkList}>
                            <span>Viandas con Pescado</span>
-                        </Link>
-                     </li>
-                     <li>
-                        <Link href='/menu?type="Tarta"'>
+                        </a>
+                     </Link>
+
+                     <Link href='/menu?type="Tarta"'>
+                        <a className={styles.linkList}>
                            <span>Tartas</span>
-                        </Link>
-                     </li>
-                     <li>
-                        <Link href='/menu?type="Empanada"'>
+                        </a>
+                     </Link>
+
+                     <Link href='/menu?type="Empanada"'>
+                        <a className={styles.linkList}>
                            <span>Empanadas</span>
-                        </Link>
-                     </li>
-                     <li>
-                        <Link href='/menu?type="Wrap"'>
+                        </a>
+                     </Link>
+
+                     <Link href='/menu?type="Wrap"'>
+                        <a className={styles.linkList}>
                            <span>Wraps</span>
-                        </Link>
-                     </li>
-                     <li>
-                        <Link href='/menu?type="Vegetariano"'>
+                        </a>
+                     </Link>
+
+                     <Link href='/menu?type="Vegetariano"'>
+                        <a className={styles.linkList}>
                            <span>Viandas Vegetarianas</span>
-                        </Link>
-                     </li>
-                     <li>
-                        <Link href='/menu?type="Vegano"'>
+                        </a>
+                     </Link>
+
+                     <Link href='/menu?type="Vegano"'>
+                        <a className={styles.linkList}>
                            <span>Viandas Veganas</span>
-                        </Link>
-                     </li>
-                     <li>
-                        <Link href='/menu?type="Bajo+en+calorías"'>
+                        </a>
+                     </Link>
+
+                     <Link href='/menu?type="Bajo+en+calorías"'>
+                        <a className={styles.linkList}>
                            <span>Viandas Bajas en calorías</span>
-                        </Link>
-                     </li>
-                     <li>
-                        <Link href='/menu?type="Bajo+en+carbo"'>
+                        </a>
+                     </Link>
+
+                     <Link href='/menu?type="Bajo+en+carbo"'>
+                        <a className={styles.linkList}>
                            <span>Viandas Bajas en carbo</span>
-                        </Link>
-                     </li>
-                     <li>
-                        <Link href='/menu?type="Bajo+en+sodio"'>
+                        </a>
+                     </Link>
+
+                     <Link href='/menu?type="Bajo+en+sodio"'>
+                        <a className={styles.linkList}>
                            <span>Viandas Bajas en sodio</span>
-                        </Link>
-                     </li>
+                        </a>
+                     </Link>
                   </ul>
                </div>
             </div>

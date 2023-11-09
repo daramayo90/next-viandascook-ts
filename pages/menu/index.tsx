@@ -8,7 +8,7 @@ import { IProduct } from '../../interfaces';
 import { CartContext } from '../../context';
 
 import { ShopLayout } from '../../components/layouts';
-import { Button, DiscountSlides, News } from '../../components/ui';
+import { Breadcrumbs, Button, DiscountSlides, News } from '../../components/ui';
 import { ProductCard, SearchNotFound, SearchProducts, TypesList } from '../../components/products';
 
 import { seo } from '../../utils';
@@ -84,6 +84,8 @@ const ProductsPage: NextPage<Props> = ({ products }) => {
    return (
       <ShopLayout title={title} pageDescription={description} keywords={keywords} can={canonical}>
          <section className={styles.products}>
+            <Breadcrumbs />
+
             <News />
 
             <SearchProducts searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
