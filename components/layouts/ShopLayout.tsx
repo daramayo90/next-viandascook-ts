@@ -33,6 +33,8 @@ export const ShopLayout: FC<Props> = ({
    let menuPage = false;
    let backCart = false;
 
+   const hasFooter = path.includes('checkout') || path.includes('mi-cuenta');
+
    const setPath = (routerPath: string) => {
       Object.entries(pageTitles).forEach(([path, title]): void => {
          if (routerPath === path) navTitle = title;
@@ -59,20 +61,18 @@ export const ShopLayout: FC<Props> = ({
 
             <link rel='canonical' href={can} />
          </Head>
-
          {path.includes('checkout') ? <CartSummary /> : <TabMenu />}
-
          <nav>
             <ShopNavbar pageTitle={navTitle} menuPage={menuPage} backCart={backCart} />
          </nav>
-
          <main>{children}</main>
-
          <SideMenu />
-
-         <footer>
-            <Footer />
-         </footer>
+         {!hasFooter && (
+            <footer>
+               <Footer />
+            </footer>
+         )}
+         ,
       </>
    );
 };
