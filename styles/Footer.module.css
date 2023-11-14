@@ -115,7 +115,7 @@
    display: flex;
    flex-direction: column;
    align-items: center;
-   margin-top: 0;
+   margin-top: 5rem;
    margin-bottom: 5px;
    gap: 12px;
 }
@@ -198,7 +198,13 @@
       gap: 26px;
    }
 
-   .footer > .legal > .terms {
+   .footer > .legal > .terms,
+   .footer > .legal > .refund {
       cursor: pointer;
+   }
+
+   .footer > .legal > .terms:hover,
+   .footer > .legal > .refund:hover {
+      text-decoration: underline;
    }
 }

@@ -1,22 +1,23 @@
 import { NextPage } from 'next';
 import Head from 'next/head';
+import styles from '../../styles/Legal.module.css';
 
 const TermsAndConditionsPage: NextPage = () => {
    <Head>
       <meta name='viewport' content='width=device-width, user-scalable=no' />
-      <meta name='robots' content='noindex, nofollow' />
+      {/* <meta name='robots' content='noindex, nofollow' /> */}
    </Head>;
 
    return (
-      <section>
-         <h2>Términos y Condiciones</h2>
+      <section className={styles.refundSection}>
+         <h2 className={styles.header}>Términos y Condiciones</h2>
 
-         <div>
+         <div className={styles.section}>
             <h3>Quiénes somos</h3>
             <p>La dirección de nuestra web es: https://viandascook.com.</p>
          </div>
 
-         <div>
+         <div className={styles.section}>
             <h3>Comentarios</h3>
             <p>
                Cuando los visitantes dejan comentarios en la web, recopilamos los datos que se muestran
@@ -30,7 +31,7 @@ const TermsAndConditionsPage: NextPage = () => {
             </p>
          </div>
 
-         <div>
+         <div className={styles.section}>
             <h3>Medios</h3>
             <p>
                Si subes imágenes a la web, deberías evitar subir imágenes con datos de ubicación (GPS
@@ -39,7 +40,7 @@ const TermsAndConditionsPage: NextPage = () => {
             </p>
          </div>
 
-         <div>
+         <div className={styles.section}>
             <h3>Cookies</h3>
             <p>
                Si dejas un comentario en nuestro sitio puedes elegir guardar tu nombre, dirección de
@@ -58,7 +59,7 @@ const TermsAndConditionsPage: NextPage = () => {
             </p>
          </div>
 
-         <div>
+         <div className={styles.section}>
             <h3>Contenido incrustado de otros sitios web</h3>
             <p>
                Los artículos de este sitio pueden incluir contenido incrustado (por ejemplo, vídeos,
@@ -71,7 +72,7 @@ const TermsAndConditionsPage: NextPage = () => {
             </p>
          </div>
 
-         <div>
+         <div className={styles.section}>
             <h3>Con quién compartimos tus datos</h3>
             <p>
                Si solicitas un restablecimiento de contraseña, tu dirección IP será incluida en el
@@ -79,7 +80,7 @@ const TermsAndConditionsPage: NextPage = () => {
             </p>
          </div>
 
-         <div>
+         <div className={styles.section}>
             <h3>Cuánto tiempo conservamos tus datos</h3>
             <p>
                Si dejas un comentario, el comentario y sus metadatos se conservan indefinidamente. Esto
@@ -92,7 +93,7 @@ const TermsAndConditionsPage: NextPage = () => {
             </p>
          </div>
 
-         <div>
+         <div className={styles.section}>
             <h3>Qué derechos tienes sobre tus datos</h3>
             <p>
                Si tienes una cuenta o has dejado comentarios en esta web, puedes solicitar recibir un
@@ -103,7 +104,7 @@ const TermsAndConditionsPage: NextPage = () => {
             </p>
          </div>
 
-         <div>
+         <div className={styles.section}>
             <h3>Dónde enviamos tus datos</h3>
             <p>
                Los comentarios de los visitantes puede que los revise un servicio de detección

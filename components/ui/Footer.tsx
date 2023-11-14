@@ -96,9 +96,13 @@ export const Footer = () => {
          </div>
 
          <div className={styles.legal}>
+            <Link href='/devoluciones-y-reembolsos'>
+               <span className={styles.refund}>Política de Devoluciones y Reembolsos</span>
+            </Link>
             <Link href='/terminos-y-condiciones'>
                <span className={styles.terms}>Términos y Condiciones</span>
             </Link>
+
             <span>© Copyright {year} Viandas Cook</span>
          </div>
       </section>
