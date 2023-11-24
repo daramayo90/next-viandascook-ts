@@ -86,7 +86,7 @@ const ProductsPage: NextPage<Props> = ({ products }) => {
          <section className={styles.products}>
             <Breadcrumbs />
 
-            {/* <News /> */}
+            <News />
 
             <SearchProducts searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
 

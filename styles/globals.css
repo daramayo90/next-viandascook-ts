@@ -23,8 +23,8 @@ html {
 }
 
 body {
-   font-family: -apple-system, Oswald, Roboto, Segoe UI, Ubuntu, Fira Sans, Droid Sans,
-      Helvetica Neue, sans-serif;
+   font-family: -apple-system, Oswald, Roboto, Segoe UI, Ubuntu, Fira Sans, Droid Sans, Helvetica Neue,
+      sans-serif;
 }
 
 body::-webkit-scrollbar {
@@ -292,13 +292,13 @@ button.nav.default-nav,
    z-index: 1;
 }
 
-/* .react-slideshow-container .default-nav:first-of-type {
-   left: -15px;
+.react-slideshow-container .default-nav:first-of-type {
+   z-index: 10;
 }
 
 .react-slideshow-container .default-nav:last-of-type {
-   right: -15px;
-} */
+   z-index: 10;
+}
 
 @media (min-width: 720px) {
    .react-slideshow-container .default-nav:first-of-type {
