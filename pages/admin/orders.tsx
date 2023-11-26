@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 
 import { ConfirmationNumberOutlined } from '@mui/icons-material';
@@ -19,24 +20,41 @@ import { IOrder, IUser, ShippingAddress } from '../../interfaces';
 
 import { format } from '../../utils/currency';
 
+interface OrderData {
+   total: number;
+   orders: IOrder[];
+}
+
 const OrdersPage = () => {
-   const { data, error } = useSWR<IOrder[]>('/api/admin/orders');
+   const [paginationModel, setPaginationModel] = useState({ page: 0, pageSize: 100 });
+   const [rowCountState, setRowCountState] = useState(100);
 
-   if (!data && !error) return <></>;
+   const { page } = paginationModel;
+   const { data, error } = useSWR<OrderData>(`/api/admin/orders?page=${page}`);
 
-   const rows = data!.map((order) => ({
-      id: order._id,
-      email: (order.user as IUser).email,
-      name: `${(order.user as IUser).name} ${(order.user as IUser).lastName}`,
-      address: `${(order.shippingAddress as ShippingAddress).city}`,
-      paymentMethod: order.paymentMethod.charAt(0).toUpperCase() + order.paymentMethod.slice(1),
-      total: format(order.total),
-      isPaid: order.isPaid,
-      isCancel: order.isCancel,
-      noProducts: order.numberOfItems,
-      deliveryDate: order.deliveryDate,
-      createdAt: order.createdAt,
-   }));
+   useEffect(() => {
+      if (data) {
+         setRowCountState(data.total);
+      }
+   }, [data]);
+
+   if (error) return <div>Error loading orders.</div>;
+
+   const rows =
+      data &&
+      data.orders.map((order) => ({
+         id: order._id,
+         email: (order.user as IUser).email,
+         name: `${(order.user as IUser).name} ${(order.user as IUser).lastName}`,
+         address: `${(order.shippingAddress as ShippingAddress).city}`,
+         paymentMethod: order.paymentMethod.charAt(0).toUpperCase() + order.paymentMethod.slice(1),
+         total: format(order.total),
+         isPaid: order.isPaid,
+         isCancel: order.isCancel,
+         noProducts: order.numberOfItems,
+         deliveryDate: order.deliveryDate,
+         createdAt: order.createdAt,
+      }));
 
    const columns: GridColDef[] = [
       { field: 'id', headerName: 'Pedido', width: 100 },
@@ -144,10 +162,7 @@ const OrdersPage = () => {
                   Cancelar Pedido
                </Button>
             ) : (
-               <Button
-                  variant='contained'
-                  color='secondary'
-                  onClick={() => handleCancel(row, false)}>
+               <Button variant='contained' color='secondary' onClick={() => handleCancel(row, false)}>
                   Completar Pedido
                </Button>
             );
@@ -190,10 +205,15 @@ const OrdersPage = () => {
          <Grid container className='fadeIn' sx={{ width: '90%', margin: 'auto', mt: 5 }}>
             <Grid item xs={12} sx={{ height: 790, width: '100%' }}>
                <DataGrid
-                  rows={rows}
+                  rows={rows || []}
                   columns={columns}
                   pageSizeOptions={[25, 50, 100]}
                   processRowUpdate={processRowUpdate}
+                  paginationMode='server'
+                  rowCount={rowCountState}
+                  paginationModel={paginationModel}
+                  onPaginationModelChange={setPaginationModel}
+                  loading={!data}
                />
             </Grid>
          </Grid>

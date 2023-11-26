@@ -24,17 +24,25 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Data>)
    }
 }
 
-const getOrders = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
+const getOrders = async (req: NextApiRequest, res: NextApiResponse) => {
+   const { limit = 100, page = 0 } = req.query;
+
    await db.connect();
 
-   const orders = await Order.find()
-      .sort({ createdAt: 'desc' })
-      .populate('user', 'name email')
-      .lean();
+   const [total, orders] = await Promise.all([
+      await Order.countDocuments(),
+
+      await Order.find()
+         .skip(Number((page as number) * 100))
+         .limit(Number(limit))
+         .sort({ createdAt: 'desc' })
+         .populate('user', 'name email')
+         .lean(),
+   ]);
 
    await db.disconnect();
 
-   return res.status(200).json(orders);
+   return res.status(200).json({ total, orders });
 };
 
 const updateOrder = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
