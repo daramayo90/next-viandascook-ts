@@ -45,7 +45,7 @@
    border-radius: 20px;
 }
 
-.box > .nextImage > .btn {
+.box > .nextImage .btn {
    position: absolute;
    bottom: 20px;
    left: 50%;
@@ -80,7 +80,7 @@
       max-width: 450px;
    }
 
-   .box > .nextImage > .btn {
+   .box > .nextImage .btn {
       position: absolute;
       bottom: 10px;
       left: 50%;

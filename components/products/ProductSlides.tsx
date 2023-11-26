@@ -42,13 +42,14 @@ export const ProductSlides: FC<Props> = ({ products }) => {
                   <Link key={product._id} href={`/plato/${product.slug}`}>
                      <div className={styles.box}>
                         <div className={styles.nextImage}>
-                           <>
+                           <div>
                               <Image
                                  src={product.image}
                                  alt={product.name}
                                  width={480}
                                  height={720}
-                                 priority={true}
+                                 sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+                                 onError={(e) => console.log('Error loading image:', e)}
                               />
                               <div className={styles.btn}>
                                  <Button
@@ -58,7 +59,7 @@ export const ProductSlides: FC<Props> = ({ products }) => {
                                     border='none'
                                  />
                               </div>
-                           </>
+                           </div>
                         </div>
                         <h5 className={styles.title}>{product.name}</h5>
                      </div>

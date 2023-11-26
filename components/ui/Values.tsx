@@ -35,13 +35,7 @@ export const Values = () => {
                {valueList.map((value) => (
                   <div key={value.title} className={styles.listContainer}>
                      <div className={styles.nextImage}>
-                        <Image
-                           src={value.src}
-                           alt={value.alt}
-                           width={100}
-                           height={100}
-                           priority={true}
-                        />
+                        <Image src={value.src} alt={value.alt} width={70} height={70} />
                      </div>
                      <div className={styles.description}>
                         <h3 className={styles.title}>{value.title}</h3>
