@@ -15,7 +15,7 @@ class MyDocument extends Document {
          <Html lang='es'>
             <Head>
                {/* Google Tag Manager */}
-               <Script id='google-tag-manager' strategy='afterInteractive'>
+               <Script id='google-tag-manager' strategy='lazyOnload'>
                   {`
                      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
                      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -26,34 +26,12 @@ class MyDocument extends Document {
                </Script>
 
                {/* Google Analytics 4 */}
-               <script
-                  dangerouslySetInnerHTML={{
-                     __html: `
-                     function loadScript(src) {
-                        const script = document.createElement('script');
-                        script.src = src;
-                        script.async = true;
-                        document.head.appendChild(script);
-                     }
-
-                     setTimeout(() => {
-                        loadScript('https://www.googletagmanager.com/gtag/js?id=${ga.GA_TRACKING_ID}');
-
-                        window.dataLayer = window.dataLayer || [];
-                        function gtag(){window.dataLayer.push(arguments);}
-                        gtag('js', new Date());
-
-                        gtag('config', '${ga.GA_TRACKING_ID}');
-                     }, 8000); // 8 seconds delay
-                     `,
-                  }}
-               />
-               {/* <Script
+               <Script
                   async={true}
                   src={`https://www.googletagmanager.com/gtag/js?id=${ga.GA_TRACKING_ID}`}
                   strategy='afterInteractive'
                />
-               <Script id='google-analytics' strategy='afterInteractive'>
+               <Script id='google-analytics' strategy='lazyOnload'>
                   {`
                      window.dataLayer = window.dataLayer || [];
                      function gtag(){window.dataLayer.push(arguments);}
@@ -61,10 +39,10 @@ class MyDocument extends Document {
 
                      gtag('config', '${ga.GA_TRACKING_ID}');
                   `}
-               </Script> */}
+               </Script>
 
                {/* Meta Pixel */}
-               <Script id='meta-pixel' strategy='afterInteractive'>
+               <Script id='meta-pixel' strategy='lazyOnload'>
                   {`
                     !function(f,b,e,v,n,t,s)
                     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -93,12 +71,12 @@ class MyDocument extends Document {
                />
 
                <link rel='icon' href='/logo/viandas-icon.png' />
-               {/* <link href='https://fonts.googleapis.com' />
-               <link href='https://fonts.cdnfonts.com' />
-               <link href='https://fonts.cdnfonts.com/css/gilroy-bold' rel='stylesheet' />
-               <link href='https://fonts.cdnfonts.com/css/reinata' rel='stylesheet' /> */}
-               <link href='https://fonts.cdnfonts.com/css/pretty-queen' rel='stylesheet' />
-               <link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons' />
+               <link href='https://fonts.cdnfonts.com/css/pretty-queen' rel='preload' as='style' />
+               <link
+                  href='https://fonts.googleapis.com/icon?family=Material+Icons'
+                  rel='preload'
+                  as='style'
+               />
                <link
                   rel='stylesheet'
                   href='https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap'
