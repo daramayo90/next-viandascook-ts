@@ -15,7 +15,7 @@ class MyDocument extends Document {
          <Html lang='es'>
             <Head>
                {/* Google Tag Manager */}
-               <Script async={true} defer={true} id='google-tag-manager' strategy='worker'>
+               <Script async={true} defer={true} id='google-tag-manager' strategy='afterInteractive'>
                   {`
                      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
                      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -30,9 +30,9 @@ class MyDocument extends Document {
                   async={true}
                   defer={true}
                   src={`https://www.googletagmanager.com/gtag/js?id=${ga.GA_TRACKING_ID}`}
-                  strategy='worker'
+                  strategy='afterInteractive'
                />
-               <Script async={true} defer={true} id='google-analytics' strategy='worker'>
+               <Script async={true} defer={true} id='google-analytics' strategy='afterInteractive'>
                   {`
                      window.dataLayer = window.dataLayer || [];
                      function gtag(){window.dataLayer.push(arguments);}
@@ -43,7 +43,7 @@ class MyDocument extends Document {
                </Script>
 
                {/* Meta Pixel */}
-               <Script async={true} defer={true} id='meta-pixel' strategy='worker'>
+               <Script async={true} defer={true} id='meta-pixel' strategy='afterInteractive'>
                   {`
                     !function(f,b,e,v,n,t,s)
                     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
