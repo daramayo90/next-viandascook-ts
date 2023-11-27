@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
+import dynamic from 'next/dynamic';
 import Link from 'next/link';
 
 import { ConfirmationNumberOutlined } from '@mui/icons-material';
 import { Button, Chip, Grid } from '@mui/material';
 import {
-   DataGrid,
    GridColDef,
    GridRenderCellParams,
    GridValueFormatterParams,
@@ -19,6 +19,10 @@ import { AdminLayout } from '../../components/layouts';
 import { IOrder, IUser, ShippingAddress } from '../../interfaces';
 
 import { format } from '../../utils/currency';
+
+const DataGrid = dynamic(() => import('@mui/x-data-grid').then((module) => module.DataGrid), {
+   ssr: false,
+});
 
 interface OrderData {
    total: number;

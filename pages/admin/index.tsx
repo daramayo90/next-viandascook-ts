@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { NextPage } from 'next';
 
-import { Grid, Typography } from '@mui/material';
+import dynamic from 'next/dynamic';
+
 import {
    ShoppingCartOutlined,
    CheckCircleOutlined,
@@ -10,8 +11,6 @@ import {
    PaymentsOutlined,
    AccountBalanceOutlined,
    AttachMoneyOutlined,
-   CreditCardOffOutlined,
-   CreditCardOutlined,
    DashboardOutlined,
    GroupOutlined,
    CategoryOutlined,
@@ -24,8 +23,12 @@ import {
 import { AdminLayout } from '../../components/layouts';
 import { DateRangePicker, SummaryTile } from '../../components/admin';
 import { DashboardSummaryResponse } from '../../interfaces';
-import viandasApi from '../../axiosApi/viandasApi';
 import { currency } from '../../utils';
+import viandasApi from '../../axiosApi/viandasApi';
+
+const Grid = dynamic(() => import('@mui/material').then((module) => module.Grid), {
+   ssr: false,
+});
 
 const DashboardPage: NextPage = () => {
    // const { data, error } = useSWR<DashboardSummaryResponse>('/api/admin/dashboard', {

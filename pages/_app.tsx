@@ -5,8 +5,6 @@ import { useRouter } from 'next/router';
 import { SessionProvider } from 'next-auth/react';
 import { ThemeProvider } from '@mui/material';
 
-import { FloatingWhatsApp } from 'react-floating-whatsapp';
-
 import { SWRConfig } from 'swr';
 import { useLoader } from '../hooks';
 import { ga, meta } from '../utils';
@@ -18,6 +16,7 @@ import {
    UIProvider,
    AuthProvider,
 } from '../context/dynamic';
+import WhatsApp from '../context/dynamic/FloatingWhatsApp';
 
 import { lightTheme } from '../themes';
 
@@ -86,7 +85,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                <LoadingPage />
             ) : (
                <>
-                  <FloatingWhatsApp
+                  <WhatsApp
                      phoneNumber='+5491171080193'
                      accountName='Pame'
                      allowEsc

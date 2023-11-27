@@ -83,8 +83,7 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
       const subscription = watch((value, { name, type }) => {
          if (name === 'name') {
             const newSlug =
-               value.name?.trim().replaceAll(' ', '-').replaceAll("'", '').toLocaleLowerCase() ||
-               '';
+               value.name?.trim().replaceAll(' ', '-').replaceAll("'", '').toLocaleLowerCase() || '';
 
             setValue('slug', newSlug);
          }
@@ -295,9 +294,7 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
                                  variant='filled'
                                  label={option[0]}
                                  value={option[1]}
-                                 onChange={(e) =>
-                                    onChangeNutritionalInfo(option[0], e.target.value)
-                                 }
+                                 onChange={(e) => onChangeNutritionalInfo(option[0], e.target.value)}
                                  sx={{ mx: 0.5, mt: 1 }}
                                  fullWidth
                                  //  {...register('nutritionalInfo', {

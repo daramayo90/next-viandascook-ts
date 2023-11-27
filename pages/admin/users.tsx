@@ -1,18 +1,19 @@
 import { useState, useEffect } from 'react';
+import dynamic from 'next/dynamic';
+
 import { AddOutlined, PeopleOutline } from '@mui/icons-material';
 import useSWR from 'swr';
 
-import {
-   DataGrid,
-   GridColDef,
-   GridRenderCellParams,
-   GridValueFormatterParams,
-} from '@mui/x-data-grid';
+import { GridColDef, GridRenderCellParams, GridValueFormatterParams } from '@mui/x-data-grid';
 import { Grid, Select, MenuItem, Box, Button } from '@mui/material';
 
 import { AdminLayout } from '../../components/layouts';
 import { IUser } from '../../interfaces';
 import { viandasApi } from '../../axiosApi';
+
+const DataGrid = dynamic(() => import('@mui/x-data-grid').then((module) => module.DataGrid), {
+   ssr: false,
+});
 
 const UsersPage = () => {
    const { data, error } = useSWR<IUser[]>('/api/admin/users');

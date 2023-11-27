@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 
 import { AuthContext, UIContext } from '../../context';
 
@@ -17,6 +18,11 @@ import {
 
 import styles from '../../styles/SideMenu.module.css';
 
+const AdminPage = dynamic(() => import('../../pages/admin'), {
+   // loading: () => <p>Loading...</p>,
+   ssr: false,
+});
+
 export const SideMenu = () => {
    const router = useRouter();
 
@@ -29,13 +35,16 @@ export const SideMenu = () => {
          <div className={isMenuOpen ? `${styles.options} ${styles.open}` : `${styles.options}`}>
             <div className={styles.list}>
                {isLoggedIn && user?.role === 'admin' && (
-                  <Link href='/admin'>
-                     <a className={styles.linkItem} onClick={toggleSideMenu}>
-                        <MdOutlineAdminPanelSettings className={styles.icon} />
-                        <span>Admin</span>
-                        <MdOutlineKeyboardArrowRight className={styles.iconRight} />
-                     </a>
-                  </Link>
+                  <>
+                     <Link href='/admin'>
+                        <a className={styles.linkItem} onClick={toggleSideMenu}>
+                           <MdOutlineAdminPanelSettings className={styles.icon} />
+                           <span>Admin</span>
+                           <MdOutlineKeyboardArrowRight className={styles.iconRight} />
+                        </a>
+                     </Link>
+                     <AdminPage />
+                  </>
                )}
 
                {isLoggedIn && user?.role === 'viandas' && (

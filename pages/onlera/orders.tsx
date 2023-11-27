@@ -1,10 +1,9 @@
 import { NextPage } from 'next';
-import Link from 'next/link';
+import dynamic from 'next/dynamic';
 
 import { ConfirmationNumberOutlined } from '@mui/icons-material';
 import { Chip, Grid } from '@mui/material';
 import {
-   DataGrid,
    GridColDef,
    GridRenderCellParams,
    GridValueFormatterParams,
@@ -18,7 +17,9 @@ import { viandasApi } from '../../axiosApi';
 import { ViandasLayout } from '../../components/layouts';
 import { IOrder, IUser, ShippingAddress } from '../../interfaces';
 
-import { format } from '../../utils/currency';
+const DataGrid = dynamic(() => import('@mui/x-data-grid').then((module) => module.DataGrid), {
+   ssr: false,
+});
 
 const OnleraOrdersPage: NextPage = () => {
    const { data, error } = useSWR<IOrder[]>('/api/admin/onleraOrders');

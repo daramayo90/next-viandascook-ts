@@ -1,14 +1,19 @@
+import dynamic from 'next/dynamic';
 import NextLink from 'next/link';
 
 import { AddOutlined, CategoryOutlined } from '@mui/icons-material';
 import { Box, Button, CardMedia, Grid, Link } from '@mui/material';
-import { DataGrid, GridColDef, GridRenderCellParams, GridSortModel } from '@mui/x-data-grid';
+import { GridColDef, GridRenderCellParams, GridSortModel } from '@mui/x-data-grid';
 
 import useSWR from 'swr';
 
 import { IProduct } from '../../interfaces';
 import { AdminLayout } from '../../components/layouts';
 import { useState } from 'react';
+
+const DataGrid = dynamic(() => import('@mui/x-data-grid').then((module) => module.DataGrid), {
+   ssr: false,
+});
 
 const columns: GridColDef[] = [
    {
