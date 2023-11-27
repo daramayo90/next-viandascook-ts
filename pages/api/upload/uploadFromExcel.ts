@@ -1,9 +1,8 @@
 import nextConnect from 'next-connect';
-import bcrypt from 'bcryptjs';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { IncomingForm, Fields, Files } from 'formidable';
 import { readExcelFile } from '../../../utils/readExcel';
-import { db, dbUsers } from '../../../database';
+import { db } from '../../../database';
 import { User } from '../../../models';
 
 type Data = { message: string };

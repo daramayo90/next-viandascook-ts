@@ -1,6 +1,6 @@
 import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
-import Script from 'next/script';
+// import Script from 'next/script';
 
 import { SessionProvider } from 'next-auth/react';
 import { ThemeProvider } from '@mui/material';
@@ -29,6 +29,8 @@ function MyApp({ Component, pageProps }: AppProps) {
 
    const router = useRouter();
 
+   const isAdminRoute = router.pathname.startsWith('/admin');
+
    const isHideFloatingWhatsApp =
       router.pathname.startsWith('/admin') ||
       router.pathname.startsWith('/cocina') ||
@@ -36,47 +38,58 @@ function MyApp({ Component, pageProps }: AppProps) {
 
    return (
       <SessionProvider>
-         <SWRConfig
-            value={{
-               fetcher: (resource, init) => fetch(resource, init).then((res) => res.json()),
-            }}>
+         {isAdminRoute ? (
+            <SWRConfig
+               value={{
+                  fetcher: (resource, init) => fetch(resource, init).then((res) => res.json()),
+               }}>
+               <ThemeProvider theme={lightTheme}>
+                  <AppContent />
+               </ThemeProvider>
+            </SWRConfig>
+         ) : (
+            <AppContent />
+         )}
+      </SessionProvider>
+   );
+
+   function AppContent() {
+      return (
+         <>
             <AuthProvider>
                <UIProvider>
                   <CartProvider>
                      <OrdersProvider>
                         <EmailsProvider>
-                           <ThemeProvider theme={lightTheme}>
-                              {loading ? (
-                                 <LoadingPage />
-                              ) : (
-                                 <>
-                                    {!isHideFloatingWhatsApp && (
-                                       <FloatingWhatsApp
-                                          phoneNumber='+5491171080193'
-                                          accountName='Pame'
-                                          allowEsc
-                                          allowClickAway
-                                          avatar='/logo/wp-logo.jpg'
-                                          chatMessage='Hola 👋, te saluda Pame de Viandas Cook.. ¿cómo puedo ayudarte?'
-                                          statusMessage='Atención de 09 a 19hs'
-                                          placeholder='Escribe tu mensaje..'
-                                          darkMode
-                                          chatboxStyle={{ bottom: '9rem' }}
-                                       />
-                                    )}
-                                    <Script src='https://sdk.mercadopago.com/js/v2' />
-                                    <Component {...pageProps} />
-                                 </>
-                              )}
-                           </ThemeProvider>
+                           {loading ? (
+                              <LoadingPage />
+                           ) : (
+                              <>
+                                 {!isHideFloatingWhatsApp && (
+                                    <FloatingWhatsApp
+                                       phoneNumber='+5491171080193'
+                                       accountName='Pame'
+                                       allowEsc
+                                       allowClickAway
+                                       avatar='/logo/wp-logo.jpg'
+                                       chatMessage='Hola 👋, te saluda Pame de Viandas Cook.. ¿cómo puedo ayudarte?'
+                                       statusMessage='Atención de 09 a 19hs'
+                                       placeholder='Escribe tu mensaje..'
+                                       darkMode
+                                       chatboxStyle={{ bottom: '9rem' }}
+                                    />
+                                 )}
+                                 <Component {...pageProps} />
+                              </>
+                           )}
                         </EmailsProvider>
                      </OrdersProvider>
                   </CartProvider>
                </UIProvider>
             </AuthProvider>
-         </SWRConfig>
-      </SessionProvider>
-   );
+         </>
+      );
+   }
 }
 
 export default MyApp;

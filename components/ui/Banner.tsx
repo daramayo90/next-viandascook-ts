@@ -26,10 +26,9 @@ export const Banner = () => {
                   <Image
                      src='/img/banner-platos.png'
                      alt='viandascook-banner-back'
-                     width={800}
-                     height={800}
-                     layout='intrinsic'
                      priority={true}
+                     quality={75}
+                     layout='fill'
                   />
                </div>
             </div>

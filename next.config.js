@@ -1,10 +1,26 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-  swcMinify: true,
-  images: {
-    domains: ['res.cloudinary.com'],
-  }
-}
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
-module.exports = nextConfig
+const nextConfig = {
+   reactStrictMode: true,
+   swcMinify: true,
+   images: {
+      domains: ['res.cloudinary.com'],
+   },
+
+   webpack(config, { isServer }) {
+      if (process.env.ANALYZE) {
+         config.plugins.push(
+            new BundleAnalyzerPlugin({
+               analyzerMode: 'server',
+               analyzerPort: isServer ? 8888 : 8889,
+               openAnalyzer: true,
+            }),
+         );
+      }
+
+      return config;
+   },
+};
+
+module.exports = nextConfig;

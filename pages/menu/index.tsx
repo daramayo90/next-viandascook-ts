@@ -35,7 +35,6 @@ const ProductsPage: NextPage<Props> = ({ products }) => {
    const { numberOfItems } = useContext(CartContext);
 
    useEffect(() => {
-      console.log(router.query.type);
       if (router.query.type) {
          setQueryType(router.query.type as string);
       } else {
