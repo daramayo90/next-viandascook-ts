@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { NextPage } from 'next';
 import Image from 'next/image';
+import dynamic from 'next/dynamic';
 
-import DatePicker, { registerLocale } from 'react-datepicker';
+import { registerLocale } from 'react-datepicker';
 import es from 'date-fns/locale/es';
 
 import { viandasApi } from '../../axiosApi';
@@ -11,6 +12,10 @@ import { ViandasLayout } from '../../components/layouts';
 
 import 'react-datepicker/dist/react-datepicker.css';
 import styles from '../../styles/AdminLayout.module.css';
+
+const DatePicker = dynamic(() => import('react-datepicker'), {
+   ssr: false,
+});
 
 type IProduct = {
    name: string;

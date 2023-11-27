@@ -1,6 +1,7 @@
 import { useState, useContext } from 'react';
+import dynamic from 'next/dynamic';
 
-import DatePicker, { registerLocale } from 'react-datepicker';
+import { registerLocale } from 'react-datepicker';
 
 import es from 'date-fns/locale/es';
 import subDays from 'date-fns/subDays';
@@ -11,6 +12,10 @@ import { holidays } from '../../utils';
 
 import 'react-datepicker/dist/react-datepicker.css';
 import styles from '../../styles/Checkout.module.css';
+
+const DatePicker = dynamic(() => import('react-datepicker'), {
+   ssr: false,
+});
 
 export const SelectDate = () => {
    const { selectDeliveryDate } = useContext(UIContext);

@@ -21,7 +21,7 @@ import {
 } from '@mui/icons-material';
 
 import { AdminLayout } from '../../components/layouts';
-import { DateRangePicker, SummaryTile } from '../../components/admin';
+import { SummaryTile } from '../../components/admin';
 import { DashboardSummaryResponse } from '../../interfaces';
 import { currency } from '../../utils';
 import viandasApi from '../../axiosApi/viandasApi';
@@ -29,6 +29,13 @@ import viandasApi from '../../axiosApi/viandasApi';
 const Grid = dynamic(() => import('@mui/material').then((module) => module.Grid), {
    ssr: false,
 });
+
+const DateRangePicker = dynamic(
+   () => import('../../components/admin').then((module) => module.DateRangePicker),
+   {
+      ssr: false,
+   },
+);
 
 const DashboardPage: NextPage = () => {
    // const { data, error } = useSWR<DashboardSummaryResponse>('/api/admin/dashboard', {

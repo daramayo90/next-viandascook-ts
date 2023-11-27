@@ -1,9 +1,14 @@
+import dynamic from 'next/dynamic';
 import { FC } from 'react';
 
-import DatePicker, { registerLocale } from 'react-datepicker';
+import { registerLocale } from 'react-datepicker';
 import es from 'date-fns/locale/es';
 
 import styles from '../../styles/AdminDatePicker.module.css';
+
+const DatePicker = dynamic(() => import('react-datepicker'), {
+   ssr: false,
+});
 
 interface Props {
    start?: Date;

@@ -2,7 +2,6 @@ import { FC, ReactNode, useEffect, useReducer, useContext } from 'react';
 import { getSession } from 'next-auth/react';
 
 import Cookies from 'js-cookie';
-import crypto from 'crypto';
 
 import { viandasApi } from '../../axiosApi';
 import { ShippingAddress, ICity, IOrder, IUser } from '../../interfaces';
@@ -10,6 +9,7 @@ import { IPaymentMethods } from '../../interfaces/order';
 
 import { CartContext, UIContext } from '../';
 import { OrdersContext, ordersReducer } from './';
+import { generateOrderToken } from '../../utils';
 
 interface Props {
    children: ReactNode;
@@ -118,7 +118,8 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
          };
       }
 
-      const token = crypto.randomBytes(32).toString('hex');
+      // const token = crypto.randomBytes(32).toString('hex');
+      const token = generateOrderToken();
 
       const body: IOrder = {
          token,

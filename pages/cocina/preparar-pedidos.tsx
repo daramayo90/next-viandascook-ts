@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { NextPage } from 'next';
+import dynamic from 'next/dynamic';
 
-import DatePicker, { registerLocale } from 'react-datepicker';
+import { registerLocale } from 'react-datepicker';
 import es from 'date-fns/locale/es';
 
 import { IOrder } from '../../interfaces';
@@ -13,6 +14,10 @@ import { OrderCard, OrderDialog } from '../../components/admin';
 
 import 'react-datepicker/dist/react-datepicker.css';
 import styles from '../../styles/AdminLayout.module.css';
+
+const DatePicker = dynamic(() => import('react-datepicker'), {
+   ssr: false,
+});
 
 const PrepararPedidosPage: NextPage = () => {
    const [deliveryDate, setDeliveryDate] = useState<Date>();
