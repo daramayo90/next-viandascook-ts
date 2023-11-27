@@ -15,7 +15,7 @@ class MyDocument extends Document {
          <Html lang='es'>
             <Head>
                {/* Google Tag Manager */}
-               <Script id='google-tag-manager' strategy='lazyOnload'>
+               <Script async={true} defer={true} id='google-tag-manager' strategy='worker'>
                   {`
                      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
                      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -28,10 +28,11 @@ class MyDocument extends Document {
                {/* Google Analytics 4 */}
                <Script
                   async={true}
+                  defer={true}
                   src={`https://www.googletagmanager.com/gtag/js?id=${ga.GA_TRACKING_ID}`}
-                  strategy='afterInteractive'
+                  strategy='worker'
                />
-               <Script id='google-analytics' strategy='lazyOnload'>
+               <Script async={true} defer={true} id='google-analytics' strategy='worker'>
                   {`
                      window.dataLayer = window.dataLayer || [];
                      function gtag(){window.dataLayer.push(arguments);}
@@ -42,7 +43,7 @@ class MyDocument extends Document {
                </Script>
 
                {/* Meta Pixel */}
-               <Script id='meta-pixel' strategy='lazyOnload'>
+               <Script async={true} defer={true} id='meta-pixel' strategy='worker'>
                   {`
                     !function(f,b,e,v,n,t,s)
                     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -71,12 +72,8 @@ class MyDocument extends Document {
                />
 
                <link rel='icon' href='/logo/viandas-icon.png' />
-               <link href='https://fonts.cdnfonts.com/css/pretty-queen' rel='preload' as='style' />
-               <link
-                  href='https://fonts.googleapis.com/icon?family=Material+Icons'
-                  rel='preload'
-                  as='style'
-               />
+               <link href='https://fonts.cdnfonts.com/css/pretty-queen' rel='stylesheet' />
+               <link href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet' />
                <link
                   rel='stylesheet'
                   href='https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap'

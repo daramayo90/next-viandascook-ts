@@ -71,12 +71,14 @@ export const Newsletter = () => {
             <input
                {...register('name', { required: 'El nombre es un campo requerido' })}
                placeholder='Nombre'
+               autoComplete='on'
             />
             {errors.name && <span className={styles.error}>{errors.name?.message}</span>}
 
             <input
                {...register('lastName', { required: 'El apellido es un campo requerido' })}
                placeholder='Apellido'
+               autoComplete='on'
             />
             {errors.lastName && <span className={styles.error}>{errors.lastName?.message}</span>}
 
@@ -86,6 +88,7 @@ export const Newsletter = () => {
                   validate: validations.isEmail,
                })}
                placeholder='Correo electrónico'
+               autoComplete='on'
             />
             {errors.email && <span className={styles.error}>{errors.email?.message}</span>}
 
