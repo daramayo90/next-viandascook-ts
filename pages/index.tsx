@@ -1,6 +1,5 @@
 import React, { Suspense, lazy } from 'react';
 import { GetStaticProps, NextPage } from 'next';
-import dynamic from 'next/dynamic';
 
 import { MainLayout } from '../components/layouts';
 import { ProductSlides } from '../components/products';
