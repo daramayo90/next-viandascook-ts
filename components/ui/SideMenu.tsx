@@ -27,7 +27,7 @@ export const SideMenu = () => {
    return (
       <section className={isMenuOpen ? `${styles.sidemenu} ${styles.open}` : `${styles.sidemenu}`}>
          <div className={isMenuOpen ? `${styles.options} ${styles.open}` : `${styles.options}`}>
-            <ul className={styles.list}>
+            <div className={styles.list}>
                {isLoggedIn && user?.role === 'admin' && (
                   <Link href='/admin'>
                      <a className={styles.linkItem} onClick={toggleSideMenu}>
@@ -130,7 +130,7 @@ export const SideMenu = () => {
                      <MdOutlineKeyboardArrowRight className={styles.iconRight} />
                   </li>
                )}
-            </ul>
+            </div>
          </div>
       </section>
    );

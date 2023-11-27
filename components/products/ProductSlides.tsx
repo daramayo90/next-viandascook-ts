@@ -61,7 +61,7 @@ export const ProductSlides: FC<Props> = ({ products }) => {
                               </div>
                            </div>
                         </div>
-                        <h5 className={styles.title}>{product.name}</h5>
+                        <h3 className={styles.title}>{product.name}</h3>
                      </div>
                   </Link>
                ))}

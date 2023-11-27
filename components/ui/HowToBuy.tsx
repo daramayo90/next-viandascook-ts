@@ -48,7 +48,7 @@ export const HowToBuy = () => {
                               priority={true}
                            />
                         </div>
-                        <h5 className={styles.title}>{slide.title}</h5>
+                        <h3 className={styles.title}>{slide.title}</h3>
                         <p className={styles.lead}>{slide.lead}</p>
                         <p className={styles.text}>{slide.text}</p>
                      </div>
@@ -68,7 +68,7 @@ export const HowToBuy = () => {
                            priority={true}
                         />
                      </div>
-                     <h5 className={styles.title}>{slide.title}</h5>
+                     <h3 className={styles.title}>{slide.title}</h3>
                      <p className={styles.lead}>{slide.lead}</p>
                      <p className={styles.text}>{slide.text}</p>
                   </div>

@@ -12,7 +12,7 @@ class MyDocument extends Document {
 
    render() {
       return (
-         <Html>
+         <Html lang='es'>
             <Head>
                {/* Google Tag Manager */}
                <Script id='google-tag-manager' strategy='afterInteractive'>
