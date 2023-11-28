@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { ICartProduct, IOrderItem, IProduct } from '../interfaces';
-import { FB } from '.';
+import { FB } from './';
 
 export const PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID!;
 

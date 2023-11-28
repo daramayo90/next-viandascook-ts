@@ -5,7 +5,7 @@ import { HiOutlineTrash } from 'react-icons/hi';
 
 import { IOrderItem, IProduct } from '../../interfaces';
 
-import { ga, meta } from '../../utils';
+import { ga, meta } from '../../analytics';
 
 import styles from '../../styles/ItemCounter.module.css';
 

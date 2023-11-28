@@ -4,7 +4,7 @@ import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import { dbProducts } from '../../database';
 import { IProduct } from '../../interfaces';
 
-import { ga, meta } from '../../utils';
+import { ga, meta } from '../../analytics';
 
 import { ProductLayout } from '../../components/layouts';
 import {

@@ -1,9 +1,9 @@
 import { NextPage } from 'next';
 import { HomeLayout } from '../../components/layouts';
 import { Breadcrumbs, Button, Newsletter, Rewards } from '../../components/ui';
+import { seo } from '../../utils';
 
 import styles from '../../styles/Loyalty.module.css';
-import { seo } from '../../utils';
 
 const LoyaltyPage: NextPage = () => {
    const { title, description, keywords, canonical } = seo['LoyaltyPage'];

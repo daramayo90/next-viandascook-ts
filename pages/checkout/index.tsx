@@ -8,7 +8,7 @@ import { AuthContext, CartContext, OrdersContext } from '../../context';
 
 import { IUser } from '../../interfaces';
 
-import { ga, meta } from '../../utils';
+import { ga, meta } from '../../analytics';
 
 import { ShopLayout } from '../../components/layouts';
 import { SideProductsMenu } from '../../components/ui';

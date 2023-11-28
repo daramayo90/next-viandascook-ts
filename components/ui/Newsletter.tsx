@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { viandasApi } from '../../axiosApi';
 
-import { ga, meta, validations } from '../../utils';
+import { validations } from '../../utils';
+import { meta } from '../../analytics';
 import { SubmitButton } from './SubmitButton';
 
 import styles from '../../styles/Newsletter.module.css';

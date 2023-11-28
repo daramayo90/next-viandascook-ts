@@ -6,7 +6,8 @@ import { dbOrders } from '../../database';
 import { IOrder } from '../../interfaces';
 
 import { CartContext, OrdersContext, EmailsContext } from '../../context';
-import { ga, meta, removeCookies } from '../../utils';
+import { removeCookies } from '../../utils';
+import { ga, meta } from '../../analytics';
 
 import { OrderLayout } from '../../components/layouts';
 import { OrderProducts, OrderCheckout, OrderAddress } from '../../components/orders';
@@ -115,11 +116,7 @@ const ThankYouPage: NextPage<Props> = ({ order }) => {
 
                   <OrderAddress order={order} />
 
-                  <Button
-                     href='/pedidos/historial'
-                     content='Historial'
-                     background='var(--primary)'
-                  />
+                  <Button href='/pedidos/historial' content='Historial' background='var(--primary)' />
                </div>
             </div>
          </section>
