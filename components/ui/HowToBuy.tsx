@@ -29,8 +29,6 @@ const slides = [
    },
 ];
 
-const indicators = (index: number | undefined) => <li className={styles.indicators}></li>;
-
 export const HowToBuy = () => {
    return (
       <section className={styles.howToBuy}>
@@ -38,7 +36,7 @@ export const HowToBuy = () => {
             <h2 className={styles.title}>¿Cómo Comprar?</h2>
 
             <div className={styles.mobile}>
-               <Slide easing='ease' duration={7000} indicators={indicators}>
+               <Slide easing='ease' duration={7000} indicators={false}>
                   {slides.map((slide) => (
                      <div key={slide.alt} className={styles.box}>
                         <div className={styles.icon}>

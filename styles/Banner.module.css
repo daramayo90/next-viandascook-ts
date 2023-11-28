@@ -1,5 +1,7 @@
+@import url('https://fonts.cdnfonts.com/css/pretty-queen');
+
 .banner {
-   background-image: url(/img/banner-back-mobile.jpg);
+   background-image: url('https://res.cloudinary.com/viandascook/image/upload/v1701180029/imgs/l7pxb4l3eftmhwrgqq4l.jpg');
    background-position: top;
    background-repeat: no-repeat;
    background-size: cover;
@@ -84,7 +86,7 @@
 
 @media (min-width: 720px) {
    .banner {
-      background-image: url(/img/banner-back-desktop.jpg);
+      background-image: url('https://res.cloudinary.com/viandascook/image/upload/v1701180029/imgs/otxqrkrkdyzzu8lcrjoc.jpg');
       position: relative;
       height: 690px;
       padding: 180px 0 174px;

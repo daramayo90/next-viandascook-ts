@@ -24,11 +24,12 @@ export const Banner = () => {
             <div className={styles.bannerDishes}>
                <div className={styles.nextImage}>
                   <Image
-                     src='/img/banner-platos.png'
+                     src='https://res.cloudinary.com/viandascook/image/upload/v1701180029/imgs/l4oxi04a73ols8locaxw.png'
                      alt='viandascook-banner-back'
                      priority={true}
-                     quality={75}
+                     quality={80}
                      layout='fill'
+                     sizes='(max-width: 768px) 80vw, (max-width: 1200px) 50vw, 33vw'
                   />
                </div>
             </div>

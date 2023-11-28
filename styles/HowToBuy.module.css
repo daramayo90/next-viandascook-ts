@@ -26,27 +26,6 @@
 }
 
 /* React Slideshow library */
-.indicators {
-   display: flex;
-   flex-wrap: wrap;
-   justify-content: center;
-   margin-top: 20px;
-}
-
-.indicators li {
-   display: inline-block;
-   position: relative;
-   width: 7px;
-   height: 7px;
-   padding: 5px;
-   margin: 0;
-}
-
-/* .indicators.active {
-   color: #fff;
-   background: #666;
-} */
-
 .box {
    text-align: center;
    max-width: 320px;
