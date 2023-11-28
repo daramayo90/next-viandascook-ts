@@ -22,8 +22,6 @@ import { lightTheme } from '../themes';
 
 import LoadingPage from '../components/ui/Loading';
 
-import '../styles/globals.css';
-
 function MyApp({ Component, pageProps }: AppProps) {
    ga.useGoogleAnalytics();
    meta.useMetaPixel();
