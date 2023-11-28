@@ -27,7 +27,6 @@ html {
 body {
    font-family: -apple-system, Oswald, Roboto, Segoe UI, Ubuntu, Fira Sans, Droid Sans, Helvetica Neue,
       sans-serif;
-   font-display: swap;
 }
 
 body::-webkit-scrollbar {
