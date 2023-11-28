@@ -13,19 +13,7 @@ export const useMetaPixel = (): void => {
    const router = useRouter();
 
    useEffect(() => {
-      if (!window.fbq) {
-         return;
-      }
-
-      const handleRouteChange = () => {
-         pageview();
-      };
-
-      router.events.on('routeChangeComplete', handleRouteChange);
-
-      return () => {
-         router.events.off('routeChangeComplete', handleRouteChange);
-      };
+      console.log('123');
    }, [router.events]);
 };
 

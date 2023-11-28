@@ -20,6 +20,7 @@ import { lightTheme } from '../themes';
 import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
+   ga.useGoogleAnalytics();
    meta.useMetaPixel();
 
    const router = useRouter();

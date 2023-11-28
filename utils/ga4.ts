@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
-// import { IPaymentMethods } from '../interfaces';
 
 export const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_TRACKING_ID!;
 export const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID!;
@@ -33,19 +32,7 @@ export const useGoogleAnalytics = (): void => {
    const router = useRouter();
 
    useEffect(() => {
-      if (!window.gtag) {
-         return;
-      }
-
-      const handleRouteChange = (url: string) => {
-         pageview(url);
-      };
-
-      router.events.on('routeChangeComplete', handleRouteChange);
-
-      return () => {
-         router.events.off('routeChangeComplete', handleRouteChange);
-      };
+      console.log('123');
    }, [router.events]);
 };
 
