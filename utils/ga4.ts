@@ -28,9 +28,7 @@ export const pageview = (url: string): void => {
    });
 };
 
-export const useGoogleAnalytics = (): void => {
-   const router = useRouter();
-};
+export const useGoogleAnalytics = (): void => {};
 
 export const event = ({ action, currency, items, transaction_id, shipping, value }: EventData) => {
    if (window.gtag) {

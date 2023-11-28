@@ -9,9 +9,7 @@ export const pageview = (): void => {
    window.fbq('track', FB.EVENTS.PAGE_VIEW);
 };
 
-export const useMetaPixel = (): void => {
-   const router = useRouter();
-};
+export const useMetaPixel = (): void => {};
 
 export const addToCart = (product: IProduct | IOrderItem): void => {
    window.fbq('track', FB.EVENTS.ADD_TO_CART, {
