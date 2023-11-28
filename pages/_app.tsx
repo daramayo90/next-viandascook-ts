@@ -5,6 +5,7 @@ import { SessionProvider } from 'next-auth/react';
 import { ThemeProvider } from '@mui/material';
 
 import { SWRConfig } from 'swr';
+import { ga, meta } from '../utils';
 
 import {
    CartProvider,
@@ -19,6 +20,8 @@ import { lightTheme } from '../themes';
 import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
+   ga.useGoogleAnalytics();
+
    const router = useRouter();
 
    const isMainPage = router.pathname === '/';
