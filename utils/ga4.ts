@@ -32,7 +32,7 @@ export const useGoogleAnalytics = (): void => {
    const router = useRouter();
 
    useEffect(() => {
-      console.log('123');
+      console.log('1235');
    }, [router.events]);
 };
 
