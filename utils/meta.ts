@@ -11,10 +11,6 @@ export const pageview = (): void => {
 
 export const useMetaPixel = (): void => {
    const router = useRouter();
-
-   useEffect(() => {
-      console.log('123');
-   }, [router.events]);
 };
 
 export const addToCart = (product: IProduct | IOrderItem): void => {

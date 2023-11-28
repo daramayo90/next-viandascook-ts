@@ -30,10 +30,6 @@ export const pageview = (url: string): void => {
 
 export const useGoogleAnalytics = (): void => {
    const router = useRouter();
-
-   useEffect(() => {
-      console.log('1235');
-   }, [router.events]);
 };
 
 export const event = ({ action, currency, items, transaction_id, shipping, value }: EventData) => {
