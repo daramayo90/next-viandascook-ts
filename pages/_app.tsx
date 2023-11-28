@@ -24,6 +24,7 @@ function MyApp({ Component, pageProps }: AppProps) {
    useGoogleAnalytics();
    useMetaPixel();
    console.log('first');
+   console.log('second');
 
    const router = useRouter();
 
