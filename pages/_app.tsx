@@ -26,7 +26,7 @@ import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
    const router = useRouter();
-   const loading = useLoader();
+   const { loading } = useLoader();
 
    useGoogleAnalytics();
    useMetaPixel();
