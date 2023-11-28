@@ -23,6 +23,7 @@ import '../styles/globals.css';
 function MyApp({ Component, pageProps }: AppProps) {
    useGoogleAnalytics();
    useMetaPixel();
+   console.log('first');
 
    const router = useRouter();
 
