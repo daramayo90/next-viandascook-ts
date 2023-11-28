@@ -5,6 +5,8 @@ import { SessionProvider } from 'next-auth/react';
 import { ThemeProvider } from '@mui/material';
 
 import { SWRConfig } from 'swr';
+import { useGoogleAnalytics } from '../utils/ga4';
+import { useMetaPixel } from '../utils/meta';
 
 import {
    CartProvider,
@@ -19,6 +21,9 @@ import { lightTheme } from '../themes';
 import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
+   useGoogleAnalytics();
+   useMetaPixel();
+
    const router = useRouter();
 
    const isMainPage = router.pathname === '/';

@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 import { ICartProduct, IOrderItem, IProduct } from '../interfaces';
 import { FB } from '.';
 
@@ -7,7 +9,25 @@ export const pageview = (): void => {
    window.fbq('track', FB.EVENTS.PAGE_VIEW);
 };
 
-export const useMetaPixel = (): void => {};
+export const useMetaPixel = (): void => {
+   const router = useRouter();
+
+   useEffect(() => {
+      if (!window.fbq) {
+         return;
+      }
+
+      const handleRouteChange = () => {
+         pageview();
+      };
+
+      router.events.on('routeChangeComplete', handleRouteChange);
+
+      return () => {
+         router.events.off('routeChangeComplete', handleRouteChange);
+      };
+   }, [router.events]);
+};
 
 export const addToCart = (product: IProduct | IOrderItem): void => {
    window.fbq('track', FB.EVENTS.ADD_TO_CART, {
