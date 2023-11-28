@@ -1,6 +1,9 @@
 @font-face {
    font-family: 'Pretty Queen';
+   font-style: normal;
+   font-weight: 400;
    src: url('/fonts/pretty-queen.woff2') format('woff2');
+   font-display: swap;
 }
 
 .footer {
@@ -35,8 +38,6 @@
    justify-content: center;
    margin: -10px 0 30px;
    font-family: 'Pretty Queen';
-   font-style: normal;
-   font-weight: 400;
    font-size: 3.5rem;
    line-height: 170px;
    color: var(--white);

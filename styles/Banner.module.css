@@ -1,6 +1,8 @@
 @font-face {
    font-family: 'Pretty Queen';
+   font-style: normal;
    src: url('/fonts/pretty-queen.woff2') format('woff2');
+   font-display: swap;
 }
 
 .banner {
@@ -53,7 +55,6 @@
 
 .banner > .container > .brand > .slogan > span {
    font-family: 'Pretty Queen';
-   font-style: normal;
    font-size: 2.5rem;
    line-height: 150%;
    color: white;
