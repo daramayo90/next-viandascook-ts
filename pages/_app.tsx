@@ -1,6 +1,5 @@
 import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
-// import Script from 'next/script';
 
 import { SessionProvider } from 'next-auth/react';
 import { ThemeProvider } from '@mui/material';
@@ -28,53 +27,15 @@ function MyApp({ Component, pageProps }: AppProps) {
 
    const { loading } = useLoader();
 
-   const router = useRouter();
-
-   const isMainPage = router.pathname === '/';
-
-   const isAdminRoute =
-      router.pathname.startsWith('/admin') ||
-      router.pathname.startsWith('/cocina') ||
-      router.pathname.startsWith('/onlera');
-
    return (
       <SessionProvider>
          <AuthProvider>
             <UIProvider>
-               {isAdminRoute ? (
-                  <SWRConfig
-                     value={{
-                        fetcher: (resource, init) => fetch(resource, init).then((res) => res.json()),
-                     }}>
-                     <ThemeProvider theme={lightTheme}>
-                        <AppContent />
-                     </ThemeProvider>
-                  </SWRConfig>
-               ) : (
-                  <AppContent />
-               )}
+               <PageContent />
             </UIProvider>
          </AuthProvider>
       </SessionProvider>
    );
-
-   function AppContent() {
-      return (
-         <>
-            {isMainPage ? (
-               <PageContent />
-            ) : (
-               <CartProvider>
-                  <OrdersProvider>
-                     <EmailsProvider>
-                        <PageContent />
-                     </EmailsProvider>
-                  </OrdersProvider>
-               </CartProvider>
-            )}
-         </>
-      );
-   }
 
    function PageContent() {
       return (
