@@ -1,4 +1,7 @@
-@import url('https://fonts.cdnfonts.com/css/pretty-queen');
+@font-face {
+   font-family: 'Pretty Queen';
+   src: url('/fonts/pretty-queen.woff2') format('woff2');
+}
 
 .footer {
    background-image: url('https://res.cloudinary.com/viandascook/image/upload/v1701180028/imgs/rq0dklpi9mvhis0nueik.jpg');

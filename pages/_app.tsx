@@ -4,9 +4,13 @@ import { useRouter } from 'next/router';
 import { SessionProvider } from 'next-auth/react';
 import { ThemeProvider } from '@mui/material';
 
+import { useLoader } from '../hooks';
 import { SWRConfig } from 'swr';
 import { useGoogleAnalytics } from '../analytics/ga4';
 import { useMetaPixel } from '../analytics/meta';
+
+import WhatsApp from '../context/dynamic/FloatingWhatsApp';
+import LoadingPage from '../components/ui/Loading';
 
 import {
    CartProvider,
@@ -22,6 +26,8 @@ import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
    const router = useRouter();
+   const loading = useLoader();
+
    useGoogleAnalytics();
    useMetaPixel();
 
@@ -72,7 +78,29 @@ function MyApp({ Component, pageProps }: AppProps) {
    }
 
    function PageContent() {
-      return <Component {...pageProps} />;
+      return (
+         <>
+            {loading ? (
+               <LoadingPage />
+            ) : (
+               <>
+                  <WhatsApp
+                     phoneNumber='+5491171080193'
+                     accountName='Pame'
+                     allowEsc
+                     allowClickAway
+                     avatar='/logo/wp-logo.jpg'
+                     chatMessage='Hola 👋, te saluda Pame de Viandas Cook.. ¿cómo puedo ayudarte?'
+                     statusMessage='Atención de 09 a 19hs'
+                     placeholder='Escribe tu mensaje..'
+                     darkMode
+                     chatboxStyle={{ bottom: '9rem' }}
+                  />
+                  <Component {...pageProps} />
+               </>
+            )}
+         </>
+      );
    }
 }
 
