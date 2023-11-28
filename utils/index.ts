@@ -1,6 +1,5 @@
 export * as coupon from './couponCalculation';
 export * as currency from './currency';
-export * from './generateOrderToken';
 export * as jwt from './jwt';
 export * as promo from './discountCalculation';
 export * as validations from './validations';
