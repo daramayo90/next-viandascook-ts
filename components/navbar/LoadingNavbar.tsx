@@ -1,7 +1,5 @@
-import { FC, useContext } from 'react';
+import { FC } from 'react';
 import Link from 'next/link';
-
-import { CartContext, UIContext } from '../../context';
 
 import { HiOutlineShoppingBag } from 'react-icons/hi';
 
@@ -12,9 +10,6 @@ interface Props {
 }
 
 export const LoadingNavbar: FC<Props> = ({ pageTitle }) => {
-   const { isMenuOpen, toggleSideMenu } = useContext(UIContext);
-   const { numberOfItems } = useContext(CartContext);
-
    return (
       <section className={styles.shopNavbar}>
          <div className={styles.container}>
@@ -26,17 +21,13 @@ export const LoadingNavbar: FC<Props> = ({ pageTitle }) => {
                <Link href='/cart'>
                   <div className={styles.cart}>
                      <HiOutlineShoppingBag />
-                     <span className={numberOfItems !== 0 ? `${styles.quantity}` : 'noDisplay'}>
-                        {numberOfItems}
-                     </span>
+                     <span className={'noDisplay'}></span>
                   </div>
                </Link>
 
                {/* <HiOutlineMenu onClick={toggleSideMenu} /> */}
-               <div className={styles.hamburgerMenu} onClick={toggleSideMenu}>
-                  <button
-                     aria-label='Menu'
-                     className={isMenuOpen ? `${styles.btn} ${styles.open}` : `${styles.btn}`}>
+               <div className={styles.hamburgerMenu}>
+                  <button aria-label='Menu' className={styles.btn}>
                      <span></span>
                      <span></span>
                      <span></span>
