@@ -77,7 +77,7 @@ const PointsPage: NextPage<Props> = ({ user }) => {
 
                <div className={styles.minimun}>
                   <span>
-                     Para canjear puntos es necesario un mínimo de <strong>$6.000</strong> en el
+                     Para canjear puntos es necesario un mínimo de <strong>$12.000</strong> en el
                      carrito
                   </span>
                </div>

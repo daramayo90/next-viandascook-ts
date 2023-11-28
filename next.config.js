@@ -7,9 +7,6 @@ const nextConfig = {
    images: {
       domains: ['res.cloudinary.com'],
    },
-   experimental: {
-      nextScriptWorkers: true,
-   },
 
    webpack(config, { isServer }) {
       if (process.env.ANALYZE) {

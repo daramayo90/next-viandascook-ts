@@ -21,7 +21,7 @@ const promosList = [
    },
    {
       icon: <TbDiscount2 className={styles.iconPromo} />,
-      title: 'Cyber Monday',
+      title: 'Black Friday',
       text: '20% de descuento en todo el menú',
       coupon: 'black-viandas',
    },
@@ -107,8 +107,10 @@ export const PromosList = () => {
          return;
       }
 
-      setErrorMsg('');
-      router.push('/checkout');
+      setTimeout(() => {
+         setErrorMsg('');
+         router.push('/checkout');
+      }, 1000);
    };
 
    return (

@@ -1,5 +1,6 @@
 interface Window {
-   gtag: (type: 'config' | 'event', googleAnalyticsId: string, options: any) => void;
+   dataLayer: any[];
+   gtag: (type: 'config' | 'event' | 'js', googleAnalyticsId: string | Date, options?: any) => void;
    fbq: (
       type: 'init' | 'track' | 'trackCustom',
       eventName: string,

@@ -15,7 +15,7 @@ class MyDocument extends Document {
          <Html lang='es'>
             <Head>
                {/* Google Tag Manager */}
-               <Script async={true} defer={true} id='google-tag-manager' strategy='afterInteractive'>
+               <Script id='google-tag-manager' strategy='afterInteractive' async={true}>
                   {`
                      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
                      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -27,23 +27,22 @@ class MyDocument extends Document {
 
                {/* Google Analytics 4 */}
                <Script
-                  async={true}
-                  defer={true}
+                  id='google-analytics'
                   src={`https://www.googletagmanager.com/gtag/js?id=${ga.GA_TRACKING_ID}`}
                   strategy='afterInteractive'
-               />
-               <Script async={true} defer={true} id='google-analytics' strategy='afterInteractive'>
-                  {`
+                  async={true}
+                  onLoad={() => {
                      window.dataLayer = window.dataLayer || [];
-                     function gtag(){window.dataLayer.push(arguments);}
-                     gtag('js', new Date());
-
-                     gtag('config', '${ga.GA_TRACKING_ID}');
-                  `}
-               </Script>
+                     window.gtag = (...args) => {
+                        window.dataLayer.push([...args]);
+                     };
+                     window.gtag('js', new Date());
+                     window.gtag('config', ga.GA_TRACKING_ID);
+                  }}
+               />
 
                {/* Meta Pixel */}
-               <Script async={true} defer={true} id='meta-pixel' strategy='afterInteractive'>
+               <Script id='meta-pixel' strategy='afterInteractive' async={true}>
                   {`
                     !function(f,b,e,v,n,t,s)
                     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -57,13 +56,6 @@ class MyDocument extends Document {
                     fbq('track', 'PageView');
                   `}
                </Script>
-               <noscript>
-                  <iframe
-                     src={`https://www.facebook.com/tr?id=${meta.PIXEL_ID}&ev=PageView&noscript=1`}
-                     height='0'
-                     width='0'
-                     style={{ display: 'none', visibility: 'hidden' }}></iframe>
-               </noscript>
 
                {/* Google Merchant */}
                <meta
@@ -83,6 +75,14 @@ class MyDocument extends Document {
                <noscript>
                   <iframe
                      src={`https://www.googletagmanager.com/ns.html?id=${ga.GTM_ID}`}
+                     height='0'
+                     width='0'
+                     style={{ display: 'none', visibility: 'hidden' }}></iframe>
+               </noscript>
+
+               <noscript>
+                  <iframe
+                     src={`https://www.facebook.com/tr?id=${meta.PIXEL_ID}&ev=PageView&noscript=1`}
                      height='0'
                      width='0'
                      style={{ display: 'none', visibility: 'hidden' }}></iframe>

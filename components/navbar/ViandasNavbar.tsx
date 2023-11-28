@@ -28,6 +28,7 @@ export const ViandasNavbar = () => {
 
          <div className={styles.hamburgerMenu} onClick={toggleViandasMenu}>
             <button
+               aria-label='Menu'
                className={isViandasMenuOpen ? `${styles.btn} ${styles.open}` : `${styles.btn}`}>
                <span></span>
                <span></span>

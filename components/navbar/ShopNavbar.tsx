@@ -58,7 +58,9 @@ export const ShopNavbar: FC<Props> = ({ pageTitle, menuPage, backCart }) => {
 
                {/* <HiOutlineMenu onClick={toggleSideMenu} /> */}
                <div className={styles.hamburgerMenu} onClick={toggleSideMenu}>
-                  <button className={isMenuOpen ? `${styles.btn} ${styles.open}` : `${styles.btn}`}>
+                  <button
+                     aria-label='Menu'
+                     className={isMenuOpen ? `${styles.btn} ${styles.open}` : `${styles.btn}`}>
                      <span></span>
                      <span></span>
                      <span></span>

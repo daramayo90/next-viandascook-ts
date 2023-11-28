@@ -4,7 +4,7 @@ import styles from '../../styles/Legal.module.css';
 
 const RefundsAndReturnsPage: NextPage = () => {
    <Head>
-      <meta name='viewport' content='width=device-width, user-scalable=no' />
+      <meta name='viewport' content='width=device-width' />
       {/* <meta name='robots' content='noindex, nofollow' /> */}
    </Head>;
 

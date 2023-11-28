@@ -313,10 +313,10 @@ export const CartProvider: FC<Props> = ({ children }) => {
          };
       }
 
-      if (state.subTotal < 6000) {
+      if (state.subTotal < 12000) {
          return {
             error: true,
-            msg: 'Debes tener un mínimo de $6.000 gastados',
+            msg: 'Debes tener un mínimo de $12.000 gastados',
          };
       }
 

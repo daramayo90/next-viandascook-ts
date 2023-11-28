@@ -34,7 +34,9 @@ export const LoadingNavbar: FC<Props> = ({ pageTitle }) => {
 
                {/* <HiOutlineMenu onClick={toggleSideMenu} /> */}
                <div className={styles.hamburgerMenu} onClick={toggleSideMenu}>
-                  <button className={isMenuOpen ? `${styles.btn} ${styles.open}` : `${styles.btn}`}>
+                  <button
+                     aria-label='Menu'
+                     className={isMenuOpen ? `${styles.btn} ${styles.open}` : `${styles.btn}`}>
                      <span></span>
                      <span></span>
                      <span></span>

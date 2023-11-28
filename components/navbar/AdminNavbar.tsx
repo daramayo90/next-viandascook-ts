@@ -27,7 +27,9 @@ export const AdminNavbar = () => {
          </div>
 
          <div className={styles.hamburgerMenu} onClick={toggleAdminMenu}>
-            <button className={isAdminMenuOpen ? `${styles.btn} ${styles.open}` : `${styles.btn}`}>
+            <button
+               aria-label='Menu'
+               className={isAdminMenuOpen ? `${styles.btn} ${styles.open}` : `${styles.btn}`}>
                <span></span>
                <span></span>
                <span></span>
