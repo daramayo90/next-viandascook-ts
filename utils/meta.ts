@@ -1,5 +1,3 @@
-import { useEffect } from 'react';
-import { useRouter } from 'next/router';
 import { ICartProduct, IOrderItem, IProduct } from '../interfaces';
 import { FB } from '.';
 
