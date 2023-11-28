@@ -30,7 +30,6 @@ export const pageview = (url: string): void => {
 
 export const useGoogleAnalytics = (): void => {
    const router = useRouter();
-   console.log('nada');
 
    useEffect(() => {
       if (!window.gtag) {
