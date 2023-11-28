@@ -6,8 +6,6 @@ import { ThemeProvider } from '@mui/material';
 
 import { useLoader } from '../hooks';
 import { SWRConfig } from 'swr';
-import { useGoogleAnalytics } from '../analytics/ga4';
-import { useMetaPixel } from '../analytics/meta';
 
 import WhatsApp from '../context/dynamic/FloatingWhatsApp';
 import LoadingPage from '../components/ui/Loading';
@@ -27,9 +25,6 @@ import '../styles/globals.css';
 function MyApp({ Component, pageProps }: AppProps) {
    const router = useRouter();
    const { loading } = useLoader();
-
-   useGoogleAnalytics();
-   useMetaPixel();
 
    const isMainPage = router.pathname === '/';
 
