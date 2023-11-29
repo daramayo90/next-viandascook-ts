@@ -1,9 +1,14 @@
-import { FC, ReactNode } from 'react';
-import Head from 'next/head';
+import { FC, ReactNode, Suspense } from 'react';
 import { useRouter } from 'next/router';
+import dynamic from 'next/dynamic';
+import Head from 'next/head';
 
-import { Footer, SideMenu } from '../ui';
+import { Footer } from '../ui';
 import { MainNavbar, Navbar } from '../navbar';
+
+const SideMenu = dynamic(() => import('../ui').then((module) => module.SideMenu), {
+   ssr: false,
+});
 
 interface Props {
    children: ReactNode;
@@ -56,7 +61,9 @@ export const MainLayout: FC<Props> = ({
             {router.asPath === '/' || router.asPath === '/sitemap' ? <MainNavbar /> : <Navbar />}
          </nav>
 
-         <SideMenu />
+         <Suspense>
+            <SideMenu />
+         </Suspense>
 
          <main id='main'>{children}</main>
 

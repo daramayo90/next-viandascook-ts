@@ -1,7 +1,6 @@
 import { useContext } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import dynamic from 'next/dynamic';
 
 import { AuthContext, UIContext } from '../../context';
 
@@ -30,7 +29,7 @@ export const SideMenu = () => {
          <div className={isMenuOpen ? `${styles.options} ${styles.open}` : `${styles.options}`}>
             <div className={styles.list}>
                {isLoggedIn && user?.role === 'admin' && (
-                  <Link href='/admin'>
+                  <Link href='/admin' prefetch={false}>
                      <a className={styles.linkItem} onClick={toggleSideMenu}>
                         <MdOutlineAdminPanelSettings className={styles.icon} />
                         <span>Admin</span>
@@ -40,7 +39,7 @@ export const SideMenu = () => {
                )}
 
                {isLoggedIn && user?.role === 'viandas' && (
-                  <Link href='/cocina'>
+                  <Link href='/cocina' prefetch={false}>
                      <a className={styles.linkItem} onClick={toggleSideMenu}>
                         <MdOutlineAdminPanelSettings className={styles.icon} />
                         <span>Cocina</span>
@@ -49,7 +48,7 @@ export const SideMenu = () => {
                   </Link>
                )}
 
-               <Link href='/'>
+               <Link href='/' prefetch={false}>
                   <a className={styles.linkItem} onClick={toggleSideMenu}>
                      <AiOutlineHome className={styles.icon} />
                      <span>Inicio</span>
@@ -57,7 +56,7 @@ export const SideMenu = () => {
                   </a>
                </Link>
 
-               <Link href='/menu'>
+               <Link href='/menu' prefetch={false}>
                   <a className={styles.linkItem} onClick={toggleSideMenu}>
                      <MdOutlineFoodBank className={styles.icon} />
                      <span>Elegí tus Viandas</span>
@@ -67,7 +66,7 @@ export const SideMenu = () => {
 
                {isLoggedIn && (
                   <>
-                     <Link href='/pedidos/historial'>
+                     <Link href='/pedidos/historial' prefetch={false}>
                         <a className={styles.linkItem} onClick={toggleSideMenu}>
                            <HiOutlineClipboardList className={styles.icon} />
                            <span>Mis Pedidos</span>
@@ -75,7 +74,7 @@ export const SideMenu = () => {
                         </a>
                      </Link>
 
-                     <Link href='/mi-cuenta'>
+                     <Link href='/mi-cuenta' prefetch={false}>
                         <a className={styles.linkItem} onClick={toggleSideMenu}>
                            <AiOutlineUser className={styles.icon} />
                            <span>Mi Cuenta</span>
@@ -84,7 +83,7 @@ export const SideMenu = () => {
                      </Link>
                   </>
                )}
-               <Link href='/loyalty'>
+               <Link href='/loyalty' prefetch={false}>
                   <a className={styles.linkItem} onClick={toggleSideMenu}>
                      <TbDiscount2 className={styles.icon} />
                      <span>Sumá Puntos</span>
@@ -92,7 +91,7 @@ export const SideMenu = () => {
                   </a>
                </Link>
 
-               <Link href='/nosotros'>
+               <Link href='/nosotros' prefetch={false}>
                   <a className={styles.linkItem} onClick={toggleSideMenu}>
                      <BsInfoCircle className={styles.icon} />
                      <span>Nosotros</span>
@@ -100,7 +99,7 @@ export const SideMenu = () => {
                   </a>
                </Link>
 
-               <Link href='/como-funciona'>
+               <Link href='/como-funciona' prefetch={false}>
                   <a className={styles.linkItem} onClick={toggleSideMenu}>
                      <AiOutlineQuestionCircle className={styles.icon} />
                      <span>¿Cómo Funciona?</span>
@@ -108,7 +107,7 @@ export const SideMenu = () => {
                   </a>
                </Link>
 
-               <Link href='/preguntas'>
+               <Link href='/preguntas' prefetch={false}>
                   <a className={styles.linkItem} onClick={toggleSideMenu}>
                      <AiOutlineQuestionCircle className={styles.icon} />
                      <span>¿Dudas?</span>
@@ -117,7 +116,7 @@ export const SideMenu = () => {
                </Link>
 
                {!isLoggedIn ? (
-                  <Link href={`/auth/login?page=${router.asPath}`}>
+                  <Link href={`/auth/login?page=${router.asPath}`} prefetch={false}>
                      <a className={styles.linkItem} onClick={toggleSideMenu}>
                         <FiLogIn className={styles.icon} />
                         <span>Iniciá Sesión</span>

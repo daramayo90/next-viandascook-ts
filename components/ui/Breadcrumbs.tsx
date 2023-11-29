@@ -47,7 +47,7 @@ export const Breadcrumbs = () => {
          <nav aria-label='breadcrumbs' className={styles.breadcrumbs}>
             <ol className={styles.list}>
                <li className={styles.item}>
-                  <Link href='/'>
+                  <Link href='/' prefetch={false}>
                      <a>Inicio</a>
                   </Link>
                </li>

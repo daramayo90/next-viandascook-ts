@@ -21,19 +21,19 @@ export const Footer = () => {
             <div className={styles.columns}>
                <div className={styles.columnList}>
                   <div className={styles.list}>
-                     <Link href={'/como-funciona'}>
+                     <Link href={'/como-funciona'} prefetch={false}>
                         <a className={styles.linkItem}>¿Cómo funciona?</a>
                      </Link>
-                     <Link href={'/nosotros'}>
+                     <Link href={'/nosotros'} prefetch={false}>
                         <a className={styles.linkItem}>Nosotros</a>
                      </Link>
                   </div>
 
                   <div className={styles.list}>
-                     <Link href={'/preguntas'}>
+                     <Link href={'/preguntas'} prefetch={false}>
                         <a className={styles.linkItem}>¿Dudas?</a>
                      </Link>
-                     <Link href={'/loyalty'}>
+                     <Link href={'/loyalty'} prefetch={false}>
                         <a className={styles.linkItem}>Sumá puntos</a>
                      </Link>
                   </div>
@@ -42,19 +42,19 @@ export const Footer = () => {
                <div className={styles.columnList}>
                   <h3 className={styles.subTitle}>Platos más vendidos</h3>
                   <div className={styles.list}>
-                     <Link href={'/plato/colita-de-cuadril-con-papas-al-horno'}>
+                     <Link href={'/plato/colita-de-cuadril-con-papas-al-horno'} prefetch={false}>
                         <a className={styles.linkItem}>Colita de cuadril con papas</a>
                      </Link>
-                     <Link href={'/plato/hamburguesas-con-papas-bravas-al-horno'}>
+                     <Link href={'/plato/hamburguesas-con-papas-bravas-al-horno'} prefetch={false}>
                         <a className={styles.linkItem}>Hamburguesas con papas bravas al horno</a>
                      </Link>
                   </div>
 
                   <div className={styles.list}>
-                     <Link href={'/plato/bife-a-la-criolla-con-verduras'}>
+                     <Link href={'/plato/bife-a-la-criolla-con-verduras'} prefetch={false}>
                         <a className={styles.linkItem}>Bife a la criolla con verduras</a>
                      </Link>
-                     <Link href={'/plato/lomo-al-champinion-con-papas-noisette'}>
+                     <Link href={'/plato/lomo-al-champinion-con-papas-noisette'} prefetch={false}>
                         <a className={styles.linkItem}>Lomo al champiñón con papas noisette</a>
                      </Link>
                   </div>
@@ -70,17 +70,17 @@ export const Footer = () => {
                </div>
 
                <div className={styles.socialMedia}>
-                  <Link href={'https://instagram.com/viandascook'} passHref>
+                  <Link href={'https://instagram.com/viandascook'} passHref prefetch={false}>
                      <a target='_blank' rel='nofollow' aria-label='Instagram link'>
                         <AiOutlineInstagram className={styles.icon} />
                      </a>
                   </Link>
-                  <Link href={'https://facebook.com/viandas.cook'} passHref>
+                  <Link href={'https://facebook.com/viandas.cook'} passHref prefetch={false}>
                      <a target='_blank' rel='nofollow' aria-label='Facebook link'>
                         <FiFacebook className={styles.icon} />
                      </a>
                   </Link>
-                  <Link href={'https://wa.link/3dkum4'} passHref>
+                  <Link href={'https://wa.link/3dkum4'} passHref prefetch={false}>
                      <a target='_blank' rel='nofollow' aria-label='Whatsapp link'>
                         <AiOutlineWhatsApp className={styles.icon} />
                      </a>
@@ -90,10 +90,10 @@ export const Footer = () => {
          </div>
 
          <div className={styles.legal}>
-            <Link href='/devoluciones-y-reembolsos'>
+            <Link href='/devoluciones-y-reembolsos' prefetch={false}>
                <span className={styles.refund}>Política de Devoluciones y Reembolsos</span>
             </Link>
-            <Link href='/terminos-y-condiciones'>
+            <Link href='/terminos-y-condiciones' prefetch={false}>
                <span className={styles.terms}>Términos y Condiciones</span>
             </Link>
 

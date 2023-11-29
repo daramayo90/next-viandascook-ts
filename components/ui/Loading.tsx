@@ -1,13 +1,8 @@
-import { LoadingLayout } from '../layouts';
-import { ClipLoader } from 'react-spinners';
-
 const LoadingPage = () => {
    return (
-      <LoadingLayout>
-         <section className='loading'>
-            <ClipLoader color={'var(--primaryHover)'} size={55} speedMultiplier={1} />
-         </section>
-      </LoadingLayout>
+      <section className='loading'>
+         {/* <ClipLoader color={'var(--primaryHover)'} size={55} speedMultiplier={1} /> */}
+      </section>
    );
 };
 

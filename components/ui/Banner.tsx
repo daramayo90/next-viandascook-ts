@@ -7,15 +7,13 @@ import styles from '../../styles/Banner.module.css';
 export const Banner = () => {
    return (
       <section className={styles.banner}>
-         <div>
-            <Image
-               src='https://res.cloudinary.com/viandascook/image/upload/v1701180029/imgs/l7pxb4l3eftmhwrgqq4l.jpg'
-               alt='Viandas Cook - Banner'
-               layout='fill'
-               objectFit='cover'
-               priority
-            />
-         </div>
+         <Image
+            src='https://res.cloudinary.com/viandascook/image/upload/v1701180029/imgs/l7pxb4l3eftmhwrgqq4l.jpg'
+            alt='Viandas Cook - Banner'
+            layout='fill'
+            objectFit='cover'
+            priority
+         />
          <div className={styles.overlay}></div>
          <div className={styles.container}>
             <div className={styles.brand}>
