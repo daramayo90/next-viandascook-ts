@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { NextPage } from 'next';
 import dynamic from 'next/dynamic';
 
@@ -21,30 +22,93 @@ const DataGrid = dynamic(() => import('@mui/x-data-grid').then((module) => modul
    ssr: false,
 });
 
+interface OrderData {
+   total: number;
+   orders: IOrder[];
+}
+
 const OnleraOrdersPage: NextPage = () => {
-   const { data, error } = useSWR<IOrder[]>('/api/admin/onleraOrders');
+   const [paginationModel, setPaginationModel] = useState({ page: 0, pageSize: 100 });
+   const [rowCountState, setRowCountState] = useState(100);
 
-   if (!data && !error) return <></>;
+   const { page } = paginationModel;
+   const { data, error } = useSWR<OrderData>(`/api/admin/onleraOrders?page=${page}`);
 
-   const rows = data!.map((order) => ({
-      id: order._id,
-      email: (order.user as IUser).email,
-      name: `${(order.user as IUser).name} ${(order.user as IUser).lastName}`,
-      phone: (order.user as IUser).phone,
-      shipping: `
+   if (error) return <div>Error loading orders.</div>;
+
+   const rows =
+      data &&
+      data.orders.map((order) => ({
+         id: order._id,
+         email: (order.user as IUser).email,
+         name: `${(order.user as IUser).name} ${(order.user as IUser).lastName}`,
+         phone: (order.user as IUser).phone,
+         shipping: `
       ${(order.shippingAddress as ShippingAddress).address}, 
       Piso/Depto: ${(order.shippingAddress as ShippingAddress).address2},
       ${(order.shippingAddress as ShippingAddress).city}`,
-      paymentMethod: order.paymentMethod,
-      isPaid: order.isPaid,
-      noProducts: order.numberOfItems,
-      deliveryDate: order.deliveryDate,
-      createdAt: order.createdAt,
-   }));
+         paymentMethod: order.paymentMethod,
+         isPaid: order.isPaid,
+         noProducts: order.numberOfItems,
+         deliveryDate: order.deliveryDate,
+         createdAt: order.createdAt,
+      }));
+
+   const columns: GridColDef[] = [
+      { field: 'id', headerName: 'Pedido', width: 70 },
+      {
+         field: 'createdAt',
+         headerName: 'Creado el',
+         type: 'dateTime',
+         width: 100,
+         valueFormatter: ({ value }: GridValueFormatterParams<Date>) => {
+            if (value == null) {
+               return '';
+            }
+
+            return new Date(value).toLocaleDateString('es-AR', {
+               timeZone: 'America/Argentina/Buenos_Aires',
+            });
+         },
+      },
+      { field: 'email', headerName: 'Email', width: 220 },
+      { field: 'name', headerName: 'Nombre Completo', width: 220 },
+      { field: 'phone', headerName: 'Celular', width: 120 },
+      { field: 'shipping', headerName: 'Dirección', width: 380 },
+      {
+         field: 'isPaid',
+         headerName: 'Estado',
+         width: 120,
+         renderCell: ({ row }: GridRenderCellParams) => {
+            return row.isPaid ? (
+               <Chip variant='outlined' label='Completado' color='success' />
+            ) : (
+               <Chip variant='outlined' label='Pendiente' color='error' />
+            );
+         },
+      },
+      { field: 'noProducts', headerName: 'N° Viandas', width: 100 },
+      {
+         field: 'deliveryDate',
+         headerName: 'Fecha de entrega',
+         type: 'date',
+         editable: true,
+         width: 150,
+         valueFormatter: ({ value }: GridValueFormatterParams<Date>) => {
+            if (value == null) {
+               return '';
+            }
+
+            return new Date(value).toLocaleDateString('es-AR', {
+               timeZone: 'America/Argentina/Buenos_Aires',
+            });
+         },
+      },
+   ];
 
    // Make the HTTP request to save in the backend
    const processRowUpdate = async (newRow: GridRowModel) => {
-      const response = await viandasApi.put('/admin/onleraOrders', newRow);
+      await viandasApi.put('/admin/onleraOrders', newRow);
       return newRow;
    };
 
@@ -53,67 +117,20 @@ const OnleraOrdersPage: NextPage = () => {
          <Grid container className='fadeIn' sx={{ width: '90%', margin: 'auto', mt: 5 }}>
             <Grid item xs={12} sx={{ height: 790, width: '100%' }}>
                <DataGrid
-                  rows={rows}
+                  rows={rows || []}
                   columns={columns}
                   pageSizeOptions={[25, 50, 100]}
                   processRowUpdate={processRowUpdate}
+                  paginationMode='server'
+                  rowCount={rowCountState}
+                  paginationModel={paginationModel}
+                  onPaginationModelChange={setPaginationModel}
+                  loading={!data}
                />
             </Grid>
          </Grid>
       </ViandasLayout>
    );
 };
-
-const columns: GridColDef[] = [
-   { field: 'id', headerName: 'Pedido', width: 70 },
-   {
-      field: 'createdAt',
-      headerName: 'Creado el',
-      type: 'dateTime',
-      width: 100,
-      valueFormatter: ({ value }: GridValueFormatterParams<Date>) => {
-         if (value == null) {
-            return '';
-         }
-
-         return new Date(value).toLocaleDateString('es-AR', {
-            timeZone: 'America/Argentina/Buenos_Aires',
-         });
-      },
-   },
-   { field: 'email', headerName: 'Email', width: 220 },
-   { field: 'name', headerName: 'Nombre Completo', width: 220 },
-   { field: 'phone', headerName: 'Celular', width: 120 },
-   { field: 'shipping', headerName: 'Dirección', width: 380 },
-   {
-      field: 'isPaid',
-      headerName: 'Estado',
-      width: 120,
-      renderCell: ({ row }: GridRenderCellParams) => {
-         return row.isPaid ? (
-            <Chip variant='outlined' label='Completado' color='success' />
-         ) : (
-            <Chip variant='outlined' label='Pendiente' color='error' />
-         );
-      },
-   },
-   { field: 'noProducts', headerName: 'N° Viandas', width: 100 },
-   {
-      field: 'deliveryDate',
-      headerName: 'Fecha de entrega',
-      type: 'date',
-      editable: true,
-      width: 150,
-      valueFormatter: ({ value }: GridValueFormatterParams<Date>) => {
-         if (value == null) {
-            return '';
-         }
-
-         return new Date(value).toLocaleDateString('es-AR', {
-            timeZone: 'America/Argentina/Buenos_Aires',
-         });
-      },
-   },
-];
 
 export default OnleraOrdersPage;
