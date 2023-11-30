@@ -52,7 +52,10 @@ export const CartProvider: FC<Props> = ({ children }) => {
 
    // Add Cart products to cookies
    useEffect(() => {
-      if (state.cart.length > 0) Cookies.set('cart', JSON.stringify(state.cart));
+      if (state.cart.length > 0) {
+         Cookies.set('cart-middleware', 'true');
+         localStorage.setItem('cart', JSON.stringify(state.cart));
+      }
    }, [state.cart]);
 
    // Add Shipping cost to cookies
@@ -130,7 +133,8 @@ export const CartProvider: FC<Props> = ({ children }) => {
    // Load Cart from Cookies
    useEffect(() => {
       try {
-         const cookieProducts: ICartProduct[] = JSON.parse(Cookies.get('cart')!) || [];
+         // const cookieProducts: ICartProduct[] = JSON.parse(Cookies.get(-midd)!) || [];
+         const cookieProducts: ICartProduct[] = JSON.parse(localStorage.getItem('cart')!) || [];
          dispatch({ type: '[Cart] - Load Cart from Cookies', payload: cookieProducts });
       } catch (error) {
          dispatch({ type: '[Cart] - Load Cart from Cookies', payload: [] });
@@ -232,7 +236,10 @@ export const CartProvider: FC<Props> = ({ children }) => {
 
       dispatch({ type: '[Cart] - Remove Product', payload: products });
 
-      if (state.cart.length === 1) Cookies.remove('cart');
+      if (state.cart.length === 1) {
+         Cookies.remove('cart-middleware');
+         localStorage.removeItem('cart');
+      }
    };
 
    // Calculate shipping value in cart page

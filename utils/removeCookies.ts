@@ -12,7 +12,9 @@ export const removeCookies = () => {
    Cookies.remove('email');
    Cookies.remove('dni');
 
-   Cookies.remove('cart');
+   localStorage.removeItem('cart');
+
+   Cookies.remove('cart-middleware');
    Cookies.remove('shipping');
    Cookies.remove('coupons');
    Cookies.remove('referralCoupon');

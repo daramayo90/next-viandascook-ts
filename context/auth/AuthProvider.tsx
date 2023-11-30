@@ -91,9 +91,10 @@ export const AuthProvider: FC<Props> = ({ children }) => {
    // Logout
    const logout = () => {
       Cookies.remove('token');
-      Cookies.remove('cart');
+      Cookies.remove('cart-middleware');
       Cookies.remove('shipping');
       Cookies.remove('coupons');
+      localStorage.removeItem('cart');
 
       signOut();
    };
