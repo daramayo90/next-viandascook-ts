@@ -6,7 +6,6 @@ import { getToken } from 'next-auth/jwt';
 
 export async function middleware(req: NextRequest) {
    const cart = req.cookies.get('cart-middleware');
-   console.log(cart);
    const session: any = await getToken({ req });
    const query = req.nextUrl.searchParams.get('page');
 

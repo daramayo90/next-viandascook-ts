@@ -92,7 +92,10 @@ export const CartProvider: FC<Props> = ({ children }) => {
    // Calculation of: quantity / subTotal / discount / shipping fee / total
    useEffect(() => {
       const numberOfItems = state.cart.reduce((prev, curr) => curr.quantity + prev, 0);
-      const subTotal = state.cart.reduce((prev, curr) => curr.quantity * curr.price + prev, 0);
+      const subTotal = state.cart.reduce(
+         (prev, curr) => curr.quantity * (curr.discountPrice ? curr.discountPrice : curr.price) + prev,
+         0,
+      );
       const discount = promo.calculation(numberOfItems, subTotal);
 
       if (numberOfItems >= 14) {

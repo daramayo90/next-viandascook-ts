@@ -43,7 +43,9 @@ const createOrder = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
          if (!currentPrice) {
             throw new Error('Verificá el carrito nuevamente, hay un producto que no existe');
          }
-         return current.quantity * current.price + prev;
+         return (
+            current.quantity * (current.discountPrice ? current.discountPrice : current.price) + prev
+         );
       }, 0);
 
       const backendTotal =

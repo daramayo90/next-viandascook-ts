@@ -3,8 +3,7 @@ import { CartContext } from '../context';
 import { ICartProduct, IProduct } from '../interfaces';
 
 export const useTempCart = (product: IProduct) => {
-   const { cart, addProductToCart, updateCartQuantity, removeCartProduct } =
-      useContext(CartContext);
+   const { cart, addProductToCart, updateCartQuantity, removeCartProduct } = useContext(CartContext);
 
    const [isSelecting, setIsSelecting] = useState(false);
 
@@ -15,6 +14,7 @@ export const useTempCart = (product: IProduct) => {
       name: product.name,
       // slug: product.slug,
       price: product.price,
+      discountPrice: product.discountPrice,
       type: product.type,
       quantity: 0,
    });

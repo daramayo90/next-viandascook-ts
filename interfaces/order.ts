@@ -39,6 +39,7 @@ export interface IOrderItem {
    name: string;
    // slug: string;
    price: number;
+   discountPrice?: number;
    quantity: number;
 }
 

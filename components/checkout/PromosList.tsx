@@ -19,12 +19,12 @@ const promosList = [
       text: 'Válido para la primera compra',
       coupon: 'bienvenido10',
    },
-   {
-      icon: <TbDiscount2 className={styles.iconPromo} />,
-      title: 'Black Friday',
-      text: '20% de descuento en todo el menú',
-      coupon: 'black-viandas',
-   },
+   // {
+   //    icon: <TbDiscount2 className={styles.iconPromo} />,
+   //    title: 'Black Friday',
+   //    text: '20% de descuento en todo el menú',
+   //    coupon: 'black-viandas',
+   // },
    // {
    //    icon: <RiUserFill className={styles.iconPromo} />,
    //    title: 'Promo día de la madre',
