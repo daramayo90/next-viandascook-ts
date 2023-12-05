@@ -43,15 +43,15 @@ export const ProductCard: FC<Props> = ({ product }) => {
                      priority={true}
                   />
 
-                  {/* <div className={styles.tagImageWrapper}>
+                  <div className={styles.tagImageWrapper}>
                      <Image
-                        src='/img/20off-tag.png'
-                        alt='20% off - Black Friday'
+                        src='/img/10off-tag.png'
+                        alt='10% off - Diciembre de locos'
                         width={750}
                         height={900}
                         priority={true}
                      />
-                  </div> */}
+                  </div>
                </a>
             </Link>
 
@@ -69,9 +69,15 @@ export const ProductCard: FC<Props> = ({ product }) => {
                </div>
 
                <div className={styles.price}>
-                  <span>{currency.format(product.price)}</span>
-                  {product.discountPrice && (
-                     <span className={styles.discount}>{currency.format(product.discountPrice)}</span>
+                  {product.discountPrice ? (
+                     <>
+                        <span className={styles.noPrice}>{currency.format(product.price)}</span>
+                        <span className={styles.discount}>
+                           {currency.format(product.discountPrice)}
+                        </span>
+                     </>
+                  ) : (
+                     <span>{currency.format(product.price)}</span>
                   )}
                </div>
             </div>

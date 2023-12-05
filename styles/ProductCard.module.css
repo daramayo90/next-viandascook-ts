@@ -47,12 +47,12 @@
 .product > .card > .info {
    display: flex;
    flex-direction: column;
-   justify-content: space-evenly;
+   justify-content: space-between;
    align-items: flex-start;
    width: 60%;
    height: 100%;
    margin-left: 0.5rem;
-   padding: 1rem 0;
+   padding: 0.5rem 0;
 }
 
 .product > .card > .info > .name {
@@ -69,6 +69,18 @@
    font-size: 0.9rem;
    font-weight: 500;
    color: var(--textColor);
+   display: flex;
+   justify-content: space-between;
+   width: 70%;
+}
+
+.product > .card > .info > .price > .noPrice {
+   text-decoration-line: line-through;
+}
+
+.product > .card > .info > .price > .discount {
+   color: var(--primary);
+   font-weight: 600;
 }
 
 .product > .addToCart {
@@ -159,9 +171,9 @@
 
    .product > .card > .info > .price {
       position: absolute;
-      right: 1.5rem;
+      left: 1.7rem;
       bottom: 1.18rem;
-      width: 85%;
+      width: 58%;
       font-size: 1.1rem;
    }
 

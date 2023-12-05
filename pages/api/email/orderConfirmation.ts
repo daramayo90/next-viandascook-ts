@@ -29,11 +29,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
    const [year, month, dayToSplit] = deliveryDate.toString().split('-');
    const [day] = dayToSplit.split('T');
 
-   const products = cart.map(({ image, name, quantity, price }: ICartProduct) => ({
+   const products = cart.map(({ image, name, quantity, price, discountPrice }: ICartProduct) => ({
       image,
       name,
       quantity,
-      price: currency.format(price * quantity),
+      price: currency.format(discountPrice ? discountPrice * quantity : price * quantity),
    }));
 
    const discounts = discount + couponDiscount + referralDiscount + pointsDiscount;

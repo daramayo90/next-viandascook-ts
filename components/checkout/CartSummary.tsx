@@ -17,7 +17,7 @@ export const CartSummary = () => {
    const { isCartSummaryOpen, toggleCartSummary } = useContext(UIContext);
 
    return (
-      <>
+      <div className={styles.mobile}>
          <div
             className={isCartSummaryOpen ? `${styles.cartSummary}` : `${styles.cartSummary} hide`}
             onClick={toggleCartSummary}>
@@ -60,6 +60,6 @@ export const CartSummary = () => {
                <CartList />
             </div>
          )}
-      </>
+      </div>
    );
 };

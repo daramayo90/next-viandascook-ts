@@ -30,12 +30,21 @@
    display: flex;
    flex-direction: column;
    justify-content: center;
+   position: relative;
    width: 30%;
 }
 
 .cartList > .product > .details > .nextImage img {
    border-radius: 20px;
    object-fit: cover;
+   width: 100%;
+   height: 100%;
+}
+
+.cartList > .product > .details > .nextImage > .tagImageWrapper {
+   position: absolute;
+   top: 0;
+   left: 0;
 }
 
 .cartList > .product > .details > .info {
@@ -56,11 +65,24 @@
 }
 
 .cartList > .product > .details > .info > .price {
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start;
    position: relative;
    width: 100%;
    font-size: 0.9rem;
    color: var(--textColor);
    font-weight: 500;
+}
+
+.cartList > .product > .details > .info > .price > .noPrice {
+   text-decoration-line: line-through;
+}
+
+.cartList > .product > .details > .info > .price > .discount {
+   color: var(--primary);
+   font-weight: 600;
+   font-size: 1rem;
 }
 
 .cartList > .product > .details > .info > .price > .cartQuantity {

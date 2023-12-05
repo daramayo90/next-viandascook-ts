@@ -29,6 +29,8 @@ export const CartList: FC<Props> = ({ items, editable = false }) => {
 
    const products = items ? items : cart;
 
+   console.log(items);
+
    // TODO: Ordenar los productos por id
    return (
       <section className={styles.cartList}>
@@ -43,6 +45,16 @@ export const CartList: FC<Props> = ({ items, editable = false }) => {
                         height={250}
                         priority={true}
                      />
+
+                     <div className={styles.tagImageWrapper}>
+                        <Image
+                           src='/img/10off-tag.png'
+                           alt='10% off - Diciembre de locos'
+                           width={750}
+                           height={900}
+                           priority={true}
+                        />
+                     </div>
                   </div>
 
                   <div className={styles.info}>
@@ -55,11 +67,17 @@ export const CartList: FC<Props> = ({ items, editable = false }) => {
                      </div>
 
                      <div className={styles.price}>
-                        <span>{currency.format(product.price * product.quantity)}</span>
-                        {product.discountPrice && (
-                           <span className={styles.discount}>
-                              {currency.format(product.discountPrice)}
-                           </span>
+                        {product.discountPrice ? (
+                           <>
+                              <span className={styles.noPrice}>
+                                 {currency.format(product.price * product.quantity)}
+                              </span>
+                              <span className={styles.discount}>
+                                 {currency.format(product.discountPrice)}
+                              </span>
+                           </>
+                        ) : (
+                           <span>{currency.format(product.price * product.quantity)}</span>
                         )}
 
                         {editable ? (
