@@ -53,7 +53,9 @@ const checkoutPro = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
    };
 
    const adjustedOrderItems = orderItems.map((product: IProduct) => {
-      const price = product.price - (discount + pointsDiscount + couponDiscount) / numberOfItems;
+      const basePrice = product.discountPrice ?? product.price;
+      const price = basePrice - (discount + pointsDiscount + couponDiscount) / numberOfItems;
+
       return { ...product, price };
    });
 
