@@ -5,7 +5,7 @@
 .news > .container {
    position: relative;
    height: 380px;
-   cursor: pointer;
+   /* cursor: pointer; */
 }
 
 .news > .container > .desktopBanner {
