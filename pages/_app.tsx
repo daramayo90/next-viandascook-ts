@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 
@@ -7,6 +8,9 @@ import { ThemeProvider } from '@mui/material';
 import { SWRConfig } from 'swr';
 import { useGoogleAnalytics } from '../analytics/ga4';
 import { useMetaPixel } from '../analytics/meta';
+import { Scripts } from '../analytics/scripts';
+
+import { useLoader } from '../hooks';
 
 import WhatsApp from '../context/dynamic/FloatingWhatsApp';
 import LoadingPage from '../components/ui/Loading';
@@ -22,8 +26,6 @@ import {
 import { lightTheme } from '../themes';
 
 import '../styles/globals.css';
-import { Suspense } from 'react';
-import { useLoader } from '../hooks';
 
 function MyApp({ Component, pageProps }: AppProps) {
    const router = useRouter();
@@ -93,6 +95,8 @@ function MyApp({ Component, pageProps }: AppProps) {
                darkMode
                chatboxStyle={{ bottom: '9rem' }}
             />
+
+            <Scripts />
 
             <Component {...pageProps} />
          </Suspense>
