@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useEffect } from 'react';
 import { GA_TRACKING_ID, GTM_ID } from './ga4';
 import { PIXEL_ID } from './meta';
 import Script from 'next/script';

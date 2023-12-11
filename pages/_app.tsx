@@ -8,7 +8,7 @@ import { ThemeProvider } from '@mui/material';
 import { SWRConfig } from 'swr';
 import { useGoogleAnalytics } from '../analytics/ga4';
 import { useMetaPixel } from '../analytics/meta';
-import { Scripts } from '../analytics/scripts';
+import { Scripts } from '../analytics/Scripts';
 
 import { useLoader } from '../hooks';
 
