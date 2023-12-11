@@ -19,7 +19,7 @@ export const ProductLayout: FC<Props> = ({ children, product }) => {
             <meta name='description' content={product.description} />
             <meta name='og:description' content={product.description} />
 
-            <meta name='viewport' content='width=device-width, user-scalable=no' />
+            <meta name='viewport' content='width=device-width' />
             <meta name='og:image' content={product.image} />
 
             {/* <script

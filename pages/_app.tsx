@@ -12,7 +12,7 @@ import { Scripts } from '../analytics/Scripts';
 
 import { useLoader } from '../hooks';
 
-import WhatsApp from '../context/dynamic/FloatingWhatsApp';
+import CustomWhatsApp from '../context/dynamic/CustomWhatsApp';
 import LoadingPage from '../components/ui/Loading';
 
 import {
@@ -83,18 +83,7 @@ function MyApp({ Component, pageProps }: AppProps) {
    function PageContent() {
       return (
          <Suspense fallback={loading && <LoadingPage />}>
-            <WhatsApp
-               phoneNumber='+5491171080193'
-               accountName='Pame'
-               allowEsc
-               allowClickAway
-               avatar='/logo/wp-logo.jpg'
-               chatMessage='Hola 👋, te saluda Pame de Viandas Cook.. ¿cómo puedo ayudarte?'
-               statusMessage='Atención de 09 a 19hs'
-               placeholder='Escribe tu mensaje..'
-               darkMode
-               chatboxStyle={{ bottom: '9rem' }}
-            />
+            <CustomWhatsApp />
 
             <Scripts />
 

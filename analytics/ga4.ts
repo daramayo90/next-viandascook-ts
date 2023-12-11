@@ -49,7 +49,7 @@ export const useGoogleAnalytics = (): void => {
 };
 
 export const event = ({ action, currency, items, transaction_id, shipping, value }: EventData) => {
-   if (window.gtag) {
+   if (window.gtag !== undefined) {
       window.gtag('event', action, {
          currency,
          items,

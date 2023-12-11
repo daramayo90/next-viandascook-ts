@@ -300,13 +300,3 @@ button.nav.default-nav,
    font-size: 1rem;
    font-weight: 600;
 }
-
-/* Whatsapp floating */
-
-.styles-module_statusTitle__NgfPQ {
-   color: var(--white);
-}
-
-.styles-module_floatingWhatsapp__yWF5K > .styles-module_whatsappButton__tVits {
-   bottom: 5rem;
-}

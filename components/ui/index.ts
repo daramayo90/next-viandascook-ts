@@ -3,6 +3,7 @@ export * from './Banner';
 export * from './Breadcrumbs';
 export * from './Button';
 export * from './CommonQuestions';
+export * from './CustomWhatsApp';
 export * from './DiscountSlides';
 export * from './Footer';
 export * from './HowToBuy';
