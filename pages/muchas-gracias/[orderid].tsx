@@ -76,21 +76,20 @@ const ThankYouPage: NextPage<Props> = ({ order }) => {
       console.log('11');
 
       if (!alreadyExecuted) {
+         sessionStorage.setItem(`effectExecuted ${_id}`, 'true');
          console.log('12');
          (async () => {
-            console.log('13');
+            console.log('Start of onOrderComplete');
             await onOrderComplete();
-            console.log('14');
-            sessionStorage.setItem(`effectExecuted ${_id}`, true.toString());
-            console.log('15');
+            console.log('End of onOrderComplete');
          })();
       }
 
-      console.log('16');
+      console.log('13');
       orderComplete();
-      console.log('17');
+      console.log('14');
       removeCookies();
-      console.log('18');
+      console.log('15');
    }, []);
 
    return (
