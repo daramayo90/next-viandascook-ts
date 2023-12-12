@@ -50,28 +50,47 @@ const ThankYouPage: NextPage<Props> = ({ order }) => {
    };
 
    useEffect(() => {
+      console.log('1');
       const alreadyExecuted = sessionStorage.getItem(`effectExecuted ${_id}`);
+      console.log('2');
 
       const onOrderComplete = async () => {
+         console.log('3');
          onPurchaseEvent();
+         console.log('4');
          if (paymentMethod !== 'mercadopago') {
+            console.log('5');
             if (referralCoupon) await addReferralPoints(referralCoupon);
+            console.log('6');
             if (paymentMethod === 'transferencia') await sendWireTransferInfo(order);
+            console.log('7');
             await sendOrderConfirmationEmail(order);
+            console.log('8');
             await orderToSpreadsheet(order);
+            console.log('9');
             await orderToOptimoRoute(order);
+            console.log('10');
          }
       };
 
+      console.log('11');
+
       if (!alreadyExecuted) {
+         console.log('12');
          (async () => {
+            console.log('13');
             await onOrderComplete();
+            console.log('14');
             sessionStorage.setItem(`effectExecuted ${_id}`, true.toString());
+            console.log('15');
          })();
       }
 
+      console.log('16');
       orderComplete();
+      console.log('17');
       removeCookies();
+      console.log('18');
    }, []);
 
    return (

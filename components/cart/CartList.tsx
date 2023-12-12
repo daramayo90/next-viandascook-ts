@@ -29,8 +29,6 @@ export const CartList: FC<Props> = ({ items, editable = false }) => {
 
    const products = items ? items : cart;
 
-   console.log(items);
-
    // TODO: Ordenar los productos por id
    return (
       <section className={styles.cartList}>
