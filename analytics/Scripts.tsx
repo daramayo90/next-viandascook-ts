@@ -25,19 +25,18 @@ export const Scripts: FC = () => {
 
          {/* Google Analytics 4 */}
          <Script
-            id='google-analytics'
+            async={true}
             src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
             strategy='afterInteractive'
-            async={true}
-            onLoad={() => {
-               window.dataLayer = window.dataLayer || [];
-               window.gtag = (...args) => {
-                  window.dataLayer.push([...args]);
-               };
-               window.gtag('js', new Date());
-               window.gtag('config', GA_TRACKING_ID);
-            }}
          />
+         <Script id='google-analytics' strategy='afterInteractive' async={true}>
+            {`
+               window.dataLayer = window.dataLayer || [];
+               function gtag(){window.dataLayer.push(arguments);}
+               gtag('js', new Date());
+               gtag('config', '${GA_TRACKING_ID}');
+            `}
+         </Script>
 
          {/* Meta Pixel */}
          <Script id='meta-pixel' strategy='afterInteractive' async={true}>
