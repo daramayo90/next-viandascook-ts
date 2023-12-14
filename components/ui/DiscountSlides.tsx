@@ -57,17 +57,17 @@ export const DiscountSlides = () => {
    return (
       <div className={styles.offers}>
          <div className={styles.container}>
-            <h3 className={styles.title}>Descuentos especiales</h3>
+            <p className={styles.title}>Descuentos especiales</p>
 
             <Link href='/descuentos'>
                <span>Ver todos</span>
             </Link>
          </div>
 
-         <Fade easing='ease' duration={3000} indicators>
+         <Fade easing='ease' duration={300000000} indicators>
             {discounts.map(({ name, img }) => (
                <div key={name} className={styles.nextImage}>
-                  <Image src={img} alt={name} width={600} height={300} />
+                  <Image src={img} alt={name} layout='fill' objectFit='cover' />
                </div>
             ))}
          </Fade>

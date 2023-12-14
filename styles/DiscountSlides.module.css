@@ -13,6 +13,7 @@
 
 .offers > .container > .title {
    font-size: 1.1rem;
+   font-weight: bold;
 }
 
 .offers > .container > span {
@@ -29,6 +30,17 @@
    width: 75%;
    height: 100%;
    margin: 0 auto;
+}
+
+.nextImage > span {
+   position: unset !important;
+}
+
+.nextImage img {
+   object-fit: contain;
+   width: 100% !important;
+   position: relative !important;
+   height: unset !important;
 }
 
 @media (min-width: 720px) {

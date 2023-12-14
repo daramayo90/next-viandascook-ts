@@ -35,13 +35,9 @@ const ProductCardComponent: FC<Props> = ({ product }) => {
 
             <Link href={`/plato/${product.slug}`}>
                <a className={styles.nextImage}>
-                  <Image
-                     src={product.image}
-                     alt={product.name}
-                     width={750}
-                     height={900}
-                     // priority={true}
-                  />
+                  {/* <Image src={product.image} alt={product.name} width={750} height={900} /> */}
+
+                  <Image src={product.image} alt={product.name} layout='fill' />
 
                   <div className={styles.tagImageWrapper}>
                      <Image
