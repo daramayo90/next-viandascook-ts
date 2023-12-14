@@ -64,10 +64,16 @@ export const DiscountSlides = () => {
             </Link>
          </div>
 
-         <Fade easing='ease' duration={300000000} indicators>
+         <Fade easing='ease' duration={4000} indicators>
             {discounts.map(({ name, img }) => (
                <div key={name} className={styles.nextImage}>
-                  <Image src={img} alt={name} layout='fill' objectFit='cover' />
+                  <Image
+                     src={img}
+                     alt={name}
+                     layout='fill'
+                     objectFit='cover'
+                     sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+                  />
                </div>
             ))}
          </Fade>
