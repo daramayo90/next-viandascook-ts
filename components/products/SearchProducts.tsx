@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, FC } from 'react';
+import { ChangeEvent, FormEvent, FC, useCallback } from 'react';
 
 import { BiSearchAlt } from 'react-icons/bi';
 
@@ -14,9 +14,12 @@ export const SearchProducts: FC<Props> = ({ searchTerm, setSearchTerm }) => {
       e.preventDefault();
    };
 
-   const onSearchTerm = (e: ChangeEvent<HTMLInputElement>) => {
-      setSearchTerm(e.target.value);
-   };
+   const onSearchTerm = useCallback(
+      (e: ChangeEvent<HTMLInputElement>) => {
+         setSearchTerm(e.target.value);
+      },
+      [setSearchTerm],
+   );
 
    return (
       <form className={styles.searchContainer} onSubmit={handleSubmit}>

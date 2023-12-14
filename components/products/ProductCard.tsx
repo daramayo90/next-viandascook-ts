@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -14,7 +14,7 @@ interface Props {
    product: IProduct;
 }
 
-export const ProductCard: FC<Props> = ({ product }) => {
+const ProductCardComponent: FC<Props> = ({ product }) => {
    // TODO: Ver el tema any
    const info: any = product.nutritionalInfo;
 
@@ -40,7 +40,7 @@ export const ProductCard: FC<Props> = ({ product }) => {
                      alt={product.name}
                      width={750}
                      height={900}
-                     priority={true}
+                     // priority={true}
                   />
 
                   <div className={styles.tagImageWrapper}>
@@ -49,7 +49,7 @@ export const ProductCard: FC<Props> = ({ product }) => {
                         alt='10% off - Diciembre de locos'
                         width={750}
                         height={900}
-                        priority={true}
+                        // priority={true}
                      />
                   </div>
                </a>
@@ -107,3 +107,7 @@ export const ProductCard: FC<Props> = ({ product }) => {
       </article>
    );
 };
+
+export const ProductCard = memo(ProductCardComponent);
+
+ProductCard.displayName = 'ProductCard';

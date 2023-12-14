@@ -1,6 +1,10 @@
-import { useState, useContext, useEffect } from 'react';
+import { useState, useContext, useEffect, useMemo } from 'react';
 import { GetStaticProps, NextPage } from 'next';
 import { useRouter } from 'next/router';
+import dynamic from 'next/dynamic';
+
+import axios from 'axios';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 import { dbProducts } from '../../database';
 import { IProduct } from '../../interfaces';
@@ -9,11 +13,21 @@ import { CartContext } from '../../context';
 
 import { ShopLayout } from '../../components/layouts';
 import { Breadcrumbs, Button, DiscountSlides, News } from '../../components/ui';
-import { ProductCard, SearchNotFound, SearchProducts, TypesList } from '../../components/products';
+import { SearchProducts, TypesList } from '../../components/products';
 
 import { seo } from '../../utils';
 
 import styles from '../../styles/Products.module.css';
+
+const ProductCard = dynamic(
+   () => import('../../components/products').then((module) => module.ProductCard),
+   { ssr: false },
+);
+
+const SearchNotFound = dynamic(
+   () => import('../../components/products').then((module) => module.SearchNotFound),
+   { ssr: false },
+);
 
 interface Props {
    products: IProduct[];
@@ -23,6 +37,10 @@ const ProductsPage: NextPage<Props> = ({ products }) => {
    const { title, description, keywords, canonical } = seo['ProductsPage'];
 
    const router = useRouter();
+
+   const [page, setPage] = useState(2);
+   const [hasMore, setHasMore] = useState(true);
+   const [displayedProducts, setDisplayedProducts] = useState<IProduct[]>([]);
 
    const [searchTerm, setSearchTerm] = useState<string>('');
    const [searchProducts, setSearchProducts] = useState<IProduct[]>([]);
@@ -41,6 +59,10 @@ const ProductsPage: NextPage<Props> = ({ products }) => {
          setQueryType('');
       }
    }, [router.query]);
+
+   useEffect(() => {
+      setDisplayedProducts(products.slice(0, 6));
+   }, [products]);
 
    useEffect(() => {
       const searchProducts: IProduct[] = products.filter((p) => {
@@ -73,12 +95,28 @@ const ProductsPage: NextPage<Props> = ({ products }) => {
       }
    }, [products, type, queryType]);
 
-   const productsToShow =
-      typeProducts.length > 0 || queryType !== ''
-         ? typeProducts
-         : searchProducts.length > 0
-         ? searchProducts
-         : products;
+   const isFilterActive = searchTerm || type || queryType;
+
+   const productsToShow = useMemo(() => {
+      if (typeProducts.length > 0 || queryType !== '') {
+         return typeProducts;
+      } else if (searchProducts.length > 0) {
+         return searchProducts;
+      } else {
+         return [];
+      }
+   }, [typeProducts, queryType, searchProducts]);
+
+   const loadMoreProducts = async () => {
+      if (isFilterActive) return;
+
+      const { data } = await axios.get<IProduct[]>(`/api/products?page=${page}&limit=6`);
+
+      if (data.length === 0) return setHasMore(false);
+
+      setDisplayedProducts((prevProducts) => [...prevProducts, ...data]);
+      setPage(page + 1);
+   };
 
    return (
       <ShopLayout title={title} pageDescription={description} keywords={keywords} can={canonical}>
@@ -97,13 +135,27 @@ const ProductsPage: NextPage<Props> = ({ products }) => {
                </>
             )}
 
-            <article className={styles.container}>
-               {!searchTerm || (searchTerm && searchProducts!.length > 0) ? (
-                  productsToShow!.map((product) => <ProductCard key={product._id} product={product} />)
-               ) : (
-                  <SearchNotFound />
-               )}
-            </article>
+            <InfiniteScroll
+               dataLength={displayedProducts.length}
+               next={loadMoreProducts}
+               hasMore={hasMore}
+               loader={<div style={{ display: 'none' }}></div>}>
+               <article className={styles.container}>
+                  {isFilterActive ? (
+                     productsToShow.length > 0 ? (
+                        productsToShow.map((product) => (
+                           <ProductCard key={product._id} product={product} />
+                        ))
+                     ) : (
+                        <SearchNotFound />
+                     )
+                  ) : (
+                     displayedProducts.map((product) => (
+                        <ProductCard key={product._id} product={product} />
+                     ))
+                  )}
+               </article>
+            </InfiniteScroll>
 
             {numberOfItems > 0 && (
                <div className={styles.goToCartBtn}>

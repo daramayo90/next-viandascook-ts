@@ -20,7 +20,7 @@ export const News: FC = () => {
                      alt='Black Friday'
                      layout='fill'
                      objectFit='cover'
-                     priority={true}
+                     // priority={true}
                   />
                </div>
                <div className={styles.desktopBanner}>
@@ -29,7 +29,7 @@ export const News: FC = () => {
                      alt='Black Friday'
                      layout='fill'
                      objectFit='cover'
-                     priority={true}
+                     // priority={true}
                   />
                </div>
             </div>

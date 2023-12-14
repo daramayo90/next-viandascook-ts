@@ -11,7 +11,7 @@ export const SearchNotFound = () => {
                alt='No encontrado'
                width={250}
                height={250}
-               priority={true}
+               // priority={true}
             />
          </div>
 
