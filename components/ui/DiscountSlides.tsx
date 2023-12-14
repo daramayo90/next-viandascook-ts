@@ -72,7 +72,7 @@ export const DiscountSlides = () => {
                      alt={name}
                      layout='fill'
                      objectFit='cover'
-                     sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+                     sizes='(max-width: 768px) 60vw, (min-width: 720px) 40vw'
                   />
                </div>
             ))}
