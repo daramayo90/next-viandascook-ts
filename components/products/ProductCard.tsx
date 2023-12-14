@@ -38,17 +38,18 @@ const ProductCardComponent: FC<Props> = ({ product }) => {
                   <Image
                      src={product.image}
                      alt={product.name}
-                     priority={true}
                      layout='fill'
-                     sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+                     objectFit='cover'
+                     sizes='(max-width: 768px) 35vw, (min-width: 769px) 23vw'
                   />
 
                   <div className={styles.tagImageWrapper}>
                      <Image
                         src='/img/10off-tag.png'
                         alt='10% off - Diciembre de locos'
-                        width={750}
-                        height={900}
+                        layout='fill'
+                        objectFit='fill'
+                        sizes='(max-width: 768px) 35vw, (min-width: 769px) 23vw'
                      />
                   </div>
                </a>
