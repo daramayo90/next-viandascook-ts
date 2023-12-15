@@ -17,6 +17,7 @@ import { viandasApi } from '../../axiosApi';
 
 import { ViandasLayout } from '../../components/layouts';
 import { IOrder, IUser, ShippingAddress } from '../../interfaces';
+import { format } from '../../utils/currency';
 
 const DataGrid = dynamic(() => import('@mui/x-data-grid').then((module) => module.DataGrid), {
    ssr: false,
@@ -48,6 +49,7 @@ const OnleraOrdersPage: NextPage = () => {
       Piso/Depto: ${(order.shippingAddress as ShippingAddress).address2},
       ${(order.shippingAddress as ShippingAddress).city}`,
          paymentMethod: order.paymentMethod,
+         total: format(order.total),
          isPaid: order.isPaid,
          noProducts: order.numberOfItems,
          deliveryDate: order.deliveryDate,
@@ -88,6 +90,8 @@ const OnleraOrdersPage: NextPage = () => {
          },
       },
       { field: 'noProducts', headerName: 'N° Viandas', width: 100 },
+      { field: 'paymentMethod', headerName: 'Método de Pago', width: 160 },
+      { field: 'total', headerName: 'Total', width: 160 },
       {
          field: 'deliveryDate',
          headerName: 'Fecha de entrega',
