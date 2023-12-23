@@ -8,7 +8,8 @@ export const Banner = () => {
    return (
       <section className={styles.banner}>
          <Image
-            src='https://res.cloudinary.com/viandascook/image/upload/v1701180029/imgs/l7pxb4l3eftmhwrgqq4l.jpg'
+            // src='https://res.cloudinary.com/viandascook/image/upload/v1701180029/imgs/l7pxb4l3eftmhwrgqq4l.jpg'
+            src='/img/navidad-banner-viandascook.jpg'
             alt='Viandas Cook - Banner'
             layout='fill'
             objectFit='cover'

@@ -7,7 +7,8 @@
 }
 
 .footer {
-   background-image: url('https://res.cloudinary.com/viandascook/image/upload/v1701180028/imgs/rq0dklpi9mvhis0nueik.jpg');
+   /* background-image: url('https://res.cloudinary.com/viandascook/image/upload/v1701180028/imgs/rq0dklpi9mvhis0nueik.jpg'); */
+   background-image: url('/img/navidad-footer-viandascook.jpg');
    background-size: cover;
    max-height: 100%;
    padding: 70px 45px 18px;
@@ -132,7 +133,7 @@
 
 @media (min-width: 720px) {
    .footer {
-      background-image: url('https://res.cloudinary.com/viandascook/image/upload/v1701180029/imgs/uszl7pmrqgy2evts6zgl.jpg');
+      /* background-image: url('https://res.cloudinary.com/viandascook/image/upload/v1701180029/imgs/uszl7pmrqgy2evts6zgl.jpg'); */
       padding: 75px 50px 28px;
    }
 
