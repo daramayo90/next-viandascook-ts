@@ -43,7 +43,7 @@ const ProductCardComponent: FC<Props> = ({ product }) => {
                      sizes='(max-width: 768px) 35vw, (min-width: 769px) 23vw'
                   />
 
-                  <div className={styles.tagImageWrapper}>
+                  {/* <div className={styles.tagImageWrapper}>
                      <Image
                         src='/img/10off-tag.png'
                         alt='10% off - Diciembre de locos'
@@ -51,7 +51,7 @@ const ProductCardComponent: FC<Props> = ({ product }) => {
                         objectFit='fill'
                         sizes='(max-width: 768px) 35vw, (min-width: 769px) 23vw'
                      />
-                  </div>
+                  </div> */}
                </a>
             </Link>
 

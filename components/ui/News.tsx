@@ -17,7 +17,7 @@ export const News: FC = () => {
                <div className={styles.mobileBanner}>
                   <Image
                      src='/img/banner-news-mobile.jpg'
-                     alt='Black Friday'
+                     alt='Vacaciones - Viandas Cook'
                      layout='fill'
                      objectFit='cover'
                      // priority={true}
@@ -26,7 +26,7 @@ export const News: FC = () => {
                <div className={styles.desktopBanner}>
                   <Image
                      src='/img/banner-news.jpg'
-                     alt='Black Friday'
+                     alt='Vacaciones - Viandas Cook'
                      layout='fill'
                      objectFit='cover'
                      // priority={true}
