@@ -11,6 +11,7 @@ import { AiOutlineHome, AiOutlineQuestionCircle, AiOutlineUser } from 'react-ico
 import { HiOutlineClipboardList, HiOutlineLogout } from 'react-icons/hi';
 import {
    MdOutlineAdminPanelSettings,
+   MdOutlineDiscount,
    MdOutlineFoodBank,
    MdOutlineKeyboardArrowRight,
 } from 'react-icons/md';
@@ -60,6 +61,14 @@ export const SideMenu = () => {
                   <a className={styles.linkItem} onClick={toggleSideMenu}>
                      <MdOutlineFoodBank className={styles.icon} />
                      <span>Elegí tus Viandas</span>
+                     <MdOutlineKeyboardArrowRight className={styles.iconRight} />
+                  </a>
+               </Link>
+
+               <Link href='/descuentos' prefetch={false}>
+                  <a className={styles.linkItem} onClick={toggleSideMenu}>
+                     <MdOutlineDiscount className={styles.icon} />
+                     <span>Descuentos</span>
                      <MdOutlineKeyboardArrowRight className={styles.iconRight} />
                   </a>
                </Link>

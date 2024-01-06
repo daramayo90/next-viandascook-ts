@@ -60,6 +60,14 @@ export const ShopLayout: FC<Props> = ({
             {noIndex && <meta name='robots' content='noindex, nofollow' />}
 
             <link rel='canonical' href={can} />
+
+            {path === '/descuentos' && (
+               <script
+                  type='application/ld+json'
+                  dangerouslySetInnerHTML={addOfferJsonLd()}
+                  key='offer-jsonld'
+               />
+            )}
          </Head>
          {path.includes('checkout') ? <CartSummary /> : <TabMenu />}
          <nav>
@@ -75,4 +83,48 @@ export const ShopLayout: FC<Props> = ({
          ,
       </>
    );
+};
+
+const addOfferJsonLd = () => {
+   return {
+      __html: `{
+         "@context": "https://schema.org",
+         "url": "https://www.viandascook.com/descuentos",
+         "priceCurrency": "ARS",
+         "offers": [
+            {
+               "@type": "Offer",
+               "description": "Envío gratis llevando 14 viandas o más",
+               "availability": "http://schema.org/InStock",
+               "priceCurrency": "ARS",
+               "url": "https://www.viandascook.com/_next/image?url=%2Fdiscounts%2Foffer-14-viandas.png&w=640&q=75"
+            },
+            {
+               "@type": "Offer",
+               "description": "10% de descuento llevando 28 viandas o más",
+               "availability": "http://schema.org/InStock",
+               "priceCurrency": "ARS",
+               "url": "https://www.viandascook.com/_next/image?url=%2Fdiscounts%2Foffer-28-viandas.png&w=640&q=75",
+            },
+            {
+               "@type": "Offer",
+               "description": "15% de descuento llevando 56 viandas o más",
+               "availability": "http://schema.org/InStock",
+               "priceCurrency": "ARS",
+               "url": "https://www.viandascook.com/_next/image?url=%2Fdiscounts%2Foffer-56-viandas.png&w=640&q=75",
+            },
+            {
+               "@type": "Offer",
+               "description": "10% de descuento primera compra (cupón: bienvenido10)",
+               "availability": "http://schema.org/InStock",
+               "priceCurrency": "ARS"
+            }
+         ],
+         "itemOffered": {
+            "@type": "Product",
+            "name": "Viandas",
+            "url": "https://www.viandascook.com/menu"
+         }
+      }`,
+   };
 };
