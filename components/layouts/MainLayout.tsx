@@ -58,7 +58,7 @@ export const MainLayout: FC<Props> = ({
          </Head>
 
          <nav>
-            {router.asPath === '/' || router.asPath === '/sitemap' ? <MainNavbar /> : <Navbar />}
+            <MainNavbar />
          </nav>
 
          <Suspense>

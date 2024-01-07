@@ -13,7 +13,7 @@ export const Navbar = () => {
 
    return (
       <section className={`${styles.navbar} ${styles.navbarWeb}`}>
-         <div className={styles.logo}>
+         {/* <div className={styles.logo}>
             <Link href='/'>
                <div className={styles.nextImage}>
                   {isMenuOpen ? (
@@ -41,7 +41,7 @@ export const Navbar = () => {
 
          <div className={styles.menu} onClick={toggleSideMenu}>
             <HiOutlineMenu className={styles.menuIcon} />
-         </div>
+         </div> */}
       </section>
    );
 };
