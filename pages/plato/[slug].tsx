@@ -13,6 +13,7 @@ import {
    Ingredients,
    NutritionInfo,
    Price,
+   ProductSlides,
 } from '../../components/products';
 
 import styles from '../../styles/Product.module.css';
@@ -20,9 +21,12 @@ import { Breadcrumbs } from '../../components/ui';
 
 interface Props {
    product: IProduct;
+   relatedProducts: IProduct[];
 }
 
-const ProductPage: NextPage<Props> = ({ product }) => {
+const title = 'Descubrí más: Viandas perfectas según tus gustos';
+
+const ProductPage: NextPage<Props> = ({ product, relatedProducts }) => {
    useEffect(() => {
       ga.event({
          action: 'view_item',
@@ -61,6 +65,8 @@ const ProductPage: NextPage<Props> = ({ product }) => {
 
             <AditionalInfo />
          </article>
+
+         <ProductSlides products={relatedProducts} title={title} />
       </ProductLayout>
    );
 };
@@ -93,9 +99,12 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       };
    }
 
+   const relatedProducts = await dbProducts.getRelatedProducts(product);
+
    return {
       props: {
          product,
+         relatedProducts,
       },
       revalidate: 10800, // Incremental Static Regeneration (ISR) - 3hs
    };

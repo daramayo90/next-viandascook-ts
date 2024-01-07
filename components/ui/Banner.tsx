@@ -8,14 +8,16 @@ export const Banner = () => {
    return (
       <section className={styles.banner}>
          <Image
-            // src='https://res.cloudinary.com/viandascook/image/upload/v1701180029/imgs/l7pxb4l3eftmhwrgqq4l.jpg'
-            src='/img/navidad-banner-viandascook.jpg'
+            src='https://res.cloudinary.com/viandascook/image/upload/v1701180029/imgs/l7pxb4l3eftmhwrgqq4l.jpg'
+            // src='/img/navidad-banner-viandascook.jpg'
             alt='Viandas Cook - Banner'
             layout='fill'
             objectFit='cover'
             priority
          />
+
          <div className={styles.overlay}></div>
+
          <div className={styles.container}>
             <div className={styles.brand}>
                <h1 className={styles.title}>Viandas Saludables</h1>

@@ -63,7 +63,7 @@
 @media (min-width: 720px) {
    .types > .container {
       align-items: flex-start;
-      max-width: 1050px;
+      max-width: 1100px;
       padding: 0;
    }
 

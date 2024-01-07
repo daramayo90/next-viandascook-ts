@@ -12,9 +12,10 @@ import { Button } from '../ui';
 
 interface Props {
    products: IProduct[];
+   title?: string;
 }
 
-export const ProductSlides: FC<Props> = ({ products }) => {
+export const ProductSlides: FC<Props> = ({ products, title }) => {
    const responsiveSettings = [
       {
          breakpoint: 1100,
@@ -26,15 +27,19 @@ export const ProductSlides: FC<Props> = ({ products }) => {
       {
          breakpoint: 720,
          settings: {
-            slidesToShow: 3,
-            slidesToScroll: 3,
+            slidesToShow: 5,
+            slidesToScroll: 2,
          },
       },
    ];
 
    return (
       <section className={styles.ourMenu}>
-         <h2 className={styles.title}>Conocé nuestros platos saludables más vendidos</h2>
+         {title ? (
+            <h2 className={styles.title}>{title}</h2>
+         ) : (
+            <h2 className={styles.title}>Conocé nuestros platos saludables más vendidos</h2>
+         )}
 
          <div className={styles.container}>
             <Slide easing='ease' duration={3000} indicators={true} responsive={responsiveSettings}>
@@ -51,14 +56,14 @@ export const ProductSlides: FC<Props> = ({ products }) => {
                                  sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
                                  onError={(e) => console.log('Error loading image:', e)}
                               />
-                              <div className={styles.btn}>
+                              {/* <div className={styles.btn}>
                                  <Button
                                     href={`/plato/${product.slug}`}
                                     content='Ver Plato'
                                     background='var(--primary)'
                                     border='none'
                                  />
-                              </div>
+                              </div> */}
                            </div>
                         </div>
                         <h3 className={styles.title}>{product.name}</h3>

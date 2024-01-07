@@ -49,3 +49,22 @@ export const getAllBestSellersProducts = async (): Promise<IProduct[] | null> =>
 
    return JSON.parse(JSON.stringify(products));
 };
+
+export const getRelatedProducts = async (product: IProduct): Promise<IProduct[] | null> => {
+   await db.connect();
+
+   const { _id, type } = product;
+
+   const query = {
+      _id: { $ne: _id }, // $ne: not equal
+      type: { $in: type }, // $in: in
+   };
+
+   const products = await Product.find(query).limit(10).lean();
+
+   await db.disconnect();
+
+   if (!products) return null;
+
+   return JSON.parse(JSON.stringify(products));
+};
