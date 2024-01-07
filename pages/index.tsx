@@ -48,7 +48,7 @@ const LandingPage: NextPage<Props> = ({ products }) => {
             <HowToBuy />
 
             <div className={styles.btn}>
-               <Button href={'/menu'} content={'¡Comprar!'} background='var(--secondary)' />
+               <Button href={'/como-funciona'} content={'Comenzá Ya'} background='var(--secondary)' />
             </div>
 
             <CommonQuestions />
