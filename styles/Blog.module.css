@@ -1,0 +1,22 @@
+.container {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   min-height: 100vh;
+   background: linear-gradient(to right, var(--primary), var(--primaryHover));
+   text-align: center;
+   padding: 20px;
+}
+
+.container > .title {
+   font-size: 2.5rem;
+   color: #fff;
+   margin: 20px 0;
+}
+
+.container > .text {
+   font-size: 1.2rem;
+   color: #d1e8e2;
+   max-width: 500px;
+}
