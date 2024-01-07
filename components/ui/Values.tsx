@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 import styles from '../../styles/Values.module.css';
 
@@ -7,12 +8,22 @@ const valueList = [
       src: '/icon/home-comida-deliciosa.png',
       alt: 'Comida Deliciosa',
       title: 'Comida Deliciosa',
-      text: 'Nuestros platos son elaborados en casa, con ingredientes de la mejor calidad. Tan ricos como la comida de tu abuela. ¡Probá nuestros platos y sentí el amor que ponemos en cada bocado!',
+      text: (
+         <>
+            Nuestros platos son elaborados en casa, con ingredientes de la mejor calidad. Tan ricos
+            como la comida de tu abuela.
+            <Link href='/menu'>
+               <a>
+                  <strong> ¡Probá nuestros platos y sentí el amor que ponemos en cada bocado!</strong>
+               </a>
+            </Link>
+         </>
+      ),
    },
    {
       src: '/icon/home-variedad.png',
       alt: 'Variedad de Comidas',
-      title: 'Variedad al mejor precio',
+      title: 'No Necesitas Suscribirte',
       text: 'Organizá tu menú semanal con nuestras viandas, tenemos opciones para todos los paladares desde carne hasta menúes veganos y vegetarianos.',
    },
    {
