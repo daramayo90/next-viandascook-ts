@@ -2,6 +2,7 @@ import { FC, useEffect } from 'react';
 import { GA_TRACKING_ID, GTM_ID } from './ga4';
 import { PIXEL_ID } from './meta';
 import Script from 'next/script';
+import { HOTJAR_ID, HOTJAR_SV } from './hotjar';
 
 export const Scripts: FC = () => {
    useEffect(() => {
@@ -51,6 +52,20 @@ export const Scripts: FC = () => {
               'https://connect.facebook.net/en_US/fbevents.js');
               fbq('init', '${PIXEL_ID}');
               fbq('track', 'PageView');
+            `}
+         </Script>
+
+         {/* Hotjar */}
+         <Script id='hotjar-analytics' strategy='afterInteractive' async={true}>
+            {`
+               (function(h,o,t,j,a,r){
+                  h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+                  h._hjSettings={hjid:${HOTJAR_ID},hjsv:${HOTJAR_SV}};
+                  a=o.getElementsByTagName('head')[0];
+                  r=o.createElement('script');r.async=1;
+                  r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+                  a.appendChild(r);
+               })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
             `}
          </Script>
       </>
