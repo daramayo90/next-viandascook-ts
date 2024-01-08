@@ -3,6 +3,8 @@ import Image from 'next/image';
 
 import { ShopLayout } from '../../components/layouts';
 
+import { seo } from '../../utils';
+
 import styles from '../../styles/Discounts.module.css';
 
 const discounts = [
@@ -53,8 +55,10 @@ const discounts = [
 ];
 
 const DiscountsPage: NextPage = () => {
+   const { title, description, keywords, canonical } = seo['DiscountsPage'];
+
    return (
-      <ShopLayout title={'Viandas Cook - Descuentos'} pageDescription={''}>
+      <ShopLayout title={title} pageDescription={description} keywords={keywords} can={canonical}>
          <section className={styles.discounts}>
             {discounts.map(({ name, img }) => (
                <div key={name} className={styles.nextImage}>

@@ -47,6 +47,14 @@ export const seo = {
          'preguntas frecuentes Viandas Cook, dudas sobre viandas saludables, entrega de viandas a domicilio, proceso de pedido de viandas, cómo funciona la entrega, opciones de menú, viandas para niños, viandas para el trabajo, viandas congeladas, calentamiento de viandas',
       canonical: 'https://www.viandascook.com/preguntas',
    },
+   DiscountsPage: {
+      title: 'Descuentos en Viandas Saludables | Viandas Cook',
+      description:
+         '🍽️ Aprovechá nuestros descuentos especiales en viandas. ¡Disfrutá de comida saludable y deliciosa a precios increíbles! Envío gratis y más beneficios.',
+      keywords:
+         'descuentos en viandas, comida saludable económica, ofertas en viandas, envío gratis viandas, viandas Cook descuentos, promociones en comida saludable, descuento primera compra, ahorra en viandas, ofertas especiales en viandas, viandas con descuento',
+      canonical: 'https://www.viandascook.com/descuentos',
+   },
    SitemapPage: {
       title: 'Mapa del Sitio | Viandas Cook',
       description: 'Acá encontrarás las principales URLs del sitio',
