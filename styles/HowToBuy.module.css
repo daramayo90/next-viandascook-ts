@@ -1,6 +1,6 @@
 .howToBuy {
    height: 500px;
-   margin-bottom: 60px;
+   margin-bottom: 20px;
    padding: 38px 0;
    border-bottom: none;
 }
@@ -75,8 +75,8 @@
    .howToBuy {
       background-color: var(--primaryHover);
       height: 264px;
-      padding: 38px 0;
-      margin: 5rem 0 13rem 0;
+      /* padding: 38px 0; */
+      margin-bottom: 15rem;
       border-bottom: 10px solid var(--secondary);
    }
 

@@ -33,6 +33,12 @@ const LandingPage: NextPage<Props> = ({ products }) => {
 
             <Intro />
 
+            <HowToBuy />
+
+            <div className={styles.btn}>
+               <Button href={'/como-funciona'} content={'Comenzá Ya'} background='var(--secondary)' />
+            </div>
+
             <ProductSlides products={products} />
 
             <div className={styles.btn}>
@@ -43,12 +49,6 @@ const LandingPage: NextPage<Props> = ({ products }) => {
 
             <div className={styles.btn}>
                <Button href={'/menu'} content={'¡Comprar!'} background='var(--secondary)' />
-            </div>
-
-            <HowToBuy />
-
-            <div className={styles.btn}>
-               <Button href={'/como-funciona'} content={'Comenzá Ya'} background='var(--secondary)' />
             </div>
 
             <CommonQuestions />
