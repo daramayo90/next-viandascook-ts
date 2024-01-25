@@ -17,6 +17,8 @@ import { SearchProducts, TypesList } from '../../components/products';
 
 import { seo } from '../../utils';
 
+import LoadingPage from '../../components/ui/Loading';
+
 import styles from '../../styles/Products.module.css';
 
 const ProductCard = dynamic(
@@ -123,6 +125,8 @@ const ProductsPage: NextPage<Props> = ({ products }) => {
          <section className={styles.products}>
             <Breadcrumbs />
 
+            <News />
+
             <SearchProducts searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
 
             {!searchTerm && (
@@ -137,7 +141,7 @@ const ProductsPage: NextPage<Props> = ({ products }) => {
                dataLength={displayedProducts.length}
                next={loadMoreProducts}
                hasMore={hasMore}
-               loader={<div style={{ display: 'none' }}></div>}>
+               loader={<LoadingPage />}>
                <article className={styles.container}>
                   {isFilterActive ? (
                      productsToShow.length > 0 ? (
