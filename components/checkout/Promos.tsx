@@ -22,7 +22,10 @@ export const Promos = () => {
                      Cupón usado: <u>{coupons[0].code}</u>
                   </p>
                ) : (
-                  <p className={styles.text}>Ver descuentos disponibles</p>
+                  <div className={styles.text}>
+                     <p>Ver descuentos disponibles</p>
+                     <p className={styles.example}>Aquí podrás aplicar tu descuento</p>
+                  </div>
                )}
                <AiOutlineRight className={styles.iconRight} />
             </div>

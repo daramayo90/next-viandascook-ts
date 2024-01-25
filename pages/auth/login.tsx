@@ -13,7 +13,7 @@ const LoginPage: NextPage = () => {
             <div className={styles.container}>
                <LoginForm />
 
-               <span className={styles.textProviders}>Loguearse con:</span>
+               {/* <span className={styles.textProviders}>Loguearse o Crear Cuenta con:</span> */}
 
                <Providers />
             </div>

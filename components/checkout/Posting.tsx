@@ -141,7 +141,7 @@ export const Posting: FC = () => {
             ))}
          </form>
 
-         <SubmitButton content='Finalizar' isClicked={isPosting} onClick={onCreateOrder} />
+         <SubmitButton content='Finalizar Compra' isClicked={isPosting} onClick={onCreateOrder} />
 
          <div className='cho-container'></div>
       </div>

@@ -62,13 +62,18 @@ export const OrderSummary = () => {
             </span>
          </div>
 
-         <div className={styles.checkoutButton} onClick={handleSubmit}>
-            <SubmitButton content='Finalizar' />
+         <div className={styles.summaryDiscount}>
+            <span>
+               Si es tu primera compra, en el próximo paso podrás aplicar tu descuento desde{' '}
+               <strong>Ver descuentos disponibles</strong>
+            </span>
          </div>
 
-         {submitErrors && (
-            <span className={styles.error}>Calcular el envío antes de continuar</span>
-         )}
+         <div className={styles.checkoutButton} onClick={handleSubmit}>
+            <SubmitButton content='Continuar' />
+         </div>
+
+         {submitErrors && <span className={styles.error}>Calcular el envío antes de continuar</span>}
       </section>
    );
 };

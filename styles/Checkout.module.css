@@ -73,6 +73,10 @@
    font-weight: 500;
 }
 
+.checkout > .container > .selection > .card > .info > .text > .example {
+   font-size: 0.8rem;
+}
+
 .checkout > .container > .selection > .deliveryAddress > .info > .address > .iconRight,
 .checkout > .container > .selection > .card > .info > .iconRight {
    font-size: 1.2rem;

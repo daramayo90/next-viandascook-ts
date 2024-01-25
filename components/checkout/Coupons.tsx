@@ -46,7 +46,7 @@ export const Coupons = () => {
 
    return (
       <div className={styles.summary}>
-         {couponDiscount === 0 ? (
+         {/* {couponDiscount === 0 ? (
             <>
                <span>¿Tenés un cupón?</span>
 
@@ -69,6 +69,18 @@ export const Coupons = () => {
                </div>
             </>
          ) : (
+            <>
+               <span>
+                  Cupón: <u>{coupons[0].code}</u>
+                  <TiDelete className={styles.delete} onClick={onRemoveCoupon} />
+               </span>
+
+               <div className={styles.coupons}>
+                  <span className={styles.discount}>-{currency.format(couponDiscount)}</span>
+               </div>
+            </>
+         )} */}
+         {couponDiscount !== 0 && (
             <>
                <span>
                   Cupón: <u>{coupons[0].code}</u>

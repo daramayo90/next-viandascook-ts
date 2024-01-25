@@ -19,19 +19,19 @@ const LoginCheckoutPage: NextPage = () => {
          <section className={styles.auth}>
             <div className={styles.container}>
                <p className={styles.text}>
-                  Si ya tenés cuenta, ingresá tu mail y contraseña.<br></br>También podes hacer
-                  click en
+                  Si ya tenés cuenta, ingresá tu mail y contraseña.<br></br>También podes hacer click
+                  en
                   <strong> quiero comprar sin cuenta</strong> para avanzar.
                </p>
 
                <LoginForm />
 
-               <span className={styles.textProviders}>Loguearse con:</span>
+               {/* <span className={styles.textProviders}>Loguearse con:</span> */}
 
                <Providers />
 
                <div className={styles.guestButton} onClick={() => navigateTo('/checkout')}>
-                  <button>Quiero comprar sin cuenta</button>
+                  <button>Continuar compra como invitado</button>
                </div>
             </div>
             <CommonQuestions />

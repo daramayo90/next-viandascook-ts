@@ -69,6 +69,14 @@
    font-size: 0.8rem;
 }
 
+.promos > .container > .promo > .card > .tick {
+   display: none;
+}
+
+.promos > .container > .promo > .card > .tick > .icon {
+   display: none;
+}
+
 .promos > .container > .applyButton {
    margin: 3.5rem 0 4rem 0;
 }
@@ -100,7 +108,30 @@
       width: 45%;
    }
 
+   .promos > .container > .promo > .card > .tick {
+      display: block;
+      position: absolute;
+      right: 0;
+      width: 50px;
+      height: 50px;
+      font-size: 2.5rem;
+      color: var(--primary);
+      border: 2px var(--primary) solid;
+      border-radius: 12px;
+   }
+
+   .promos > .container > .promo > .card > .tick > .icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      padding: 0.3rem;
+   }
+
    .promos > .container > .applyButton {
+      position: absolute;
+      bottom: 0;
       width: 30%;
       height: 45px;
       margin: 2rem auto;
@@ -108,7 +139,7 @@
    }
 
    .promos > .container > .error {
-      bottom: 10.5rem;
+      bottom: 0;
       font-size: 1.1rem;
    }
 }

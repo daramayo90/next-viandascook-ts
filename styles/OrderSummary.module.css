@@ -32,6 +32,12 @@
    text-align: right;
 }
 
+.summaryDiscount {
+   margin: 0.5rem 0;
+   font-size: 0.9rem;
+   text-align: center;
+}
+
 .discount {
    color: var(--primary);
 }
@@ -128,5 +134,9 @@
       max-width: none;
       max-height: 450px;
       margin-left: 5rem;
+   }
+
+   .summaryDiscount {
+      font-size: 1rem;
    }
 }

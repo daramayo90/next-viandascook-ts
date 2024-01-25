@@ -1,5 +1,7 @@
 import { FC } from 'react';
 
+import { IoCheckmarkOutline } from 'react-icons/io5';
+
 import styles from '../../styles/Promos.module.css';
 
 interface Props {
@@ -26,6 +28,10 @@ export const PromoCard: FC<Props> = ({ icon, title, text, coupon, promo, select 
             <div className={styles.info}>
                <p className={styles.title}>{title}</p>
                <p className={styles.text}>{text}</p>
+            </div>
+
+            <div className={styles.tick}>
+               {promo === coupon && <IoCheckmarkOutline className={styles.icon} />}
             </div>
          </div>
       </div>
