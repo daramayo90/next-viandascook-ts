@@ -15,8 +15,8 @@ import styles from '../../styles/Promos.module.css';
 const promosList = [
    {
       icon: <RiUserFill className={styles.iconPromo} />,
-      title: 'Nuevo Usuario - 10% off',
-      text: 'Válido para la primera compra',
+      title: '10% off en tu primera compra',
+      text: 'Válido sólo para la primera compra',
       coupon: 'bienvenido10',
    },
    // {
