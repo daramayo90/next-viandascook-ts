@@ -1,8 +1,6 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
 
 import Image from 'next/image';
-import Link from 'next/link';
-import { NewsDialog } from '.';
 
 import styles from '../../styles/News.module.css';
 
@@ -17,7 +15,7 @@ export const News: FC = () => {
                <div className={styles.mobileBanner}>
                   <Image
                      src='/img/banner-news-mobile.jpg'
-                     alt='Vacaciones - Viandas Cook'
+                     alt='Promo 10% off - Viandas Cook'
                      layout='fill'
                      objectFit='cover'
                      // priority={true}
@@ -26,7 +24,7 @@ export const News: FC = () => {
                <div className={styles.desktopBanner}>
                   <Image
                      src='/img/banner-news.jpg'
-                     alt='Vacaciones - Viandas Cook'
+                     alt='Promo 10% off - Viandas Cook'
                      layout='fill'
                      objectFit='cover'
                      // priority={true}
