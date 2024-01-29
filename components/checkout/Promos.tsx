@@ -25,6 +25,7 @@ export const Promos = () => {
                   <div className={styles.text}>
                      <p>Ver descuentos disponibles</p>
                      <p className={styles.example}>Aquí podrás aplicar tu descuento</p>
+                     <p className={styles.example}>Ejemplo: <strong>10% off en primera compra</strong></p>
                   </div>
                )}
                <AiOutlineRight className={styles.iconRight} />
