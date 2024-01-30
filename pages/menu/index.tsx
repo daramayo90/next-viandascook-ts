@@ -114,7 +114,7 @@ const ProductsPage: NextPage<Props> = ({ products }) => {
 
       let limit = 6;
 
-      // if (searchProducts.length > 0) limit = searchProducts.length
+      // if (searchProducts.length > 0) limit = searchProducts.length.
 
       const { data } = await axios.get<IProduct[]>(`/api/products?page=${page}&limit=${limit}`);
 
@@ -145,7 +145,8 @@ const ProductsPage: NextPage<Props> = ({ products }) => {
                dataLength={displayedProducts.length}
                next={loadMoreProducts}
                hasMore={hasMore}
-               loader={<LoadingPage />}>
+               loader={<LoadingPage />}
+               scrollThreshold={0.6}>
                <article className={styles.container}>
                   {isFilterActive ? (
                      productsToShow.length > 0 ? (
