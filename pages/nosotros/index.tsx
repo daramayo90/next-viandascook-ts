@@ -27,10 +27,7 @@ const NosotrosPage: NextPage = () => {
                   </div>
 
                   <div className={styles.textIntro}>
-                     <h2>
-                        Viandas Cook<br></br> Tu opción <strong>saludable y deliciosa</strong>, en sólo
-                        15 minutos en tu mesa.
-                     </h2>
+                     <h2>Nuestra clave es ser flexibles y adaptarnos a tus necesidades</h2>
                      <p>
                         Ofrecemos una <strong>variedad</strong> de menús que se adaptan a tus
                         necesidades y gustos, para que puedas disfrutar de comidas sabrosas sin

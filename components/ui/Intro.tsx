@@ -5,10 +5,12 @@ export const Intro = () => {
       <section className={styles.intro}>
          <div className={styles.text}>
             <p>
-               En <strong>Viandas Cook</strong> te ofrecemos comidas prácticas, rápidas, caseras, y
-               saludables para hacer tu vida más fácil y rica. Elaboramos nuestras viandas
-               congeladas con ingredientes de la mejor calidad. ¡De freezer a tu mesa en 15 minutos
+               ¡Bienvenido a <strong>Viandas Cook</strong>, donde la comida fácil y sabrosa es nuestra
+               especialidad! Con nuestras viandas caseras a domicilio, hace que tu vida se vuelva más
+               sencilla. Elaboradas con ingredientes top, nuestras viandas congeladas van directo del
+               freezer a tu mesa en solo 15 minutos.
             </p>
+            <p> ¡Consultanos y hacé tu pedido ahora!</p>
          </div>
       </section>
    );

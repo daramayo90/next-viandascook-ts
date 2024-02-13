@@ -29,7 +29,12 @@ const LoyaltyPage: NextPage = () => {
                         VC Loyalty<br></br> El programa de puntos que te ayuda a comer rico, práctico y
                         saludable
                      </h2>
-                     <p>Unite hoy y obtené un 10% de descuento en tu primera compra. ¡Y mucho más!</p>
+                     <p>
+                        Sumate hoy y llevate un 10% de descuento en tu primera compra. ¡Y eso no es
+                        todo! Descubrí más beneficios al unirte a nuestra comunidad. ¡No te pierdas las
+                        ofertas exclusivas de Viandas Cook y empezá a disfrutar de ahorros desde el
+                        primer momento!
+                     </p>
                      <div className={styles.btn}>
                         <Button
                            href={'/mi-cuenta/puntos'}

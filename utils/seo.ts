@@ -18,15 +18,14 @@ export const seo = {
    LoyaltyPage: {
       title: 'Ganá Puntos con Cada Compra | Viandas Cook',
       description:
-         '🏅 Unite al VC Loyalty de Viandas Cook. Acumulá puntos con cada compra y canjéalos por deliciosas viandas saludables. ¡Sé un Viandlover hoy!',
+         '🏅 Sumate hoy y llevate un 10% de descuento en tu primera compra. ¡Y eso no es todo! Descubrí más beneficios al unirte a nuestra comunidad. ¡No te lo pierdas!',
       keywords:
          'programa de lealtad Viandas Cook, puntos de recompensa, acumulación de puntos, canje de puntos, programa de fidelidad, descuentos en viandas, Viandlover, programa de puntos de comida, fidelización de clientes en restaurantes, beneficios de programa de lealtad',
       canonical: 'https://www.viandascook.com/loyalty',
    },
    NosotrosPage: {
       title: 'Nosotros | Viandas Cook',
-      description:
-         '🥦 Descubrí Viandas Cook. Comidas saludables y deliciosas en solo 15 minutos. Menús variados y pedidos flexibles para adaptarse a tu rutina.',
+      description: '🥦 Nuestra clave es ser flexibles y adaptarnos a tus necesidades',
       keywords:
          'sobre Viandas Cook, nuestra historia, compromiso con la salud, comida saludable y deliciosa, menús variados y nutritivos, opciones vegetarianas y veganas, entrega de viandas a domicilio, envasado al vacío, pedidos flexibles, viandas económicas',
       canonical: 'https://www.viandascook.com/nosotros',
@@ -50,7 +49,7 @@ export const seo = {
    DiscountsPage: {
       title: 'Descuentos en Viandas Saludables | Viandas Cook',
       description:
-         '🍽️ Aprovechá nuestros descuentos especiales en viandas. ¡Disfrutá de comida saludable y deliciosa a precios increíbles! Envío gratis y más beneficios.',
+         '🍽️ Aprovechá nuestros descuentos especiales en viandas de 10%, 15% y más. ¡Sabor y beneficios que sólo Viandas Cook puede brindarte!',
       keywords:
          'descuentos en viandas, comida saludable económica, ofertas en viandas, envío gratis viandas, viandas Cook descuentos, promociones en comida saludable, descuento primera compra, ahorra en viandas, ofertas especiales en viandas, viandas con descuento',
       canonical: 'https://www.viandascook.com/descuentos',
