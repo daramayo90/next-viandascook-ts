@@ -65,7 +65,7 @@ function MyApp({ Component, pageProps }: AppProps) {
    function AppContent() {
       return (
          <>
-            {isMainPage ? (
+            {isMainPage || isAdminRoute ? (
                <PageContent />
             ) : (
                <CartProvider>
@@ -83,9 +83,12 @@ function MyApp({ Component, pageProps }: AppProps) {
    function PageContent() {
       return (
          <Suspense fallback={loading && <LoadingPage />}>
-            <CustomWhatsApp />
-
-            <Scripts />
+            {!isAdminRoute && (
+               <>
+                  <CustomWhatsApp />
+                  <Scripts />
+               </>
+            )}
 
             <Component {...pageProps} />
          </Suspense>
