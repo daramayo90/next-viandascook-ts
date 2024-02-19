@@ -24,7 +24,9 @@ export const Coupons = () => {
 
       const couponCode = e.target.coupon.value;
 
-      const { error, msg } = await addCoupon(couponCode);
+      console.log(couponCode.toLowerCase());
+
+      const { error, msg } = await addCoupon(couponCode.toLowerCase());
 
       if (error) {
          setIsClicked(false);
@@ -32,6 +34,7 @@ export const Coupons = () => {
       }
 
       setHasCoupon(false);
+      setIsClicked(false);
       setErrorMsg('');
    };
 
@@ -46,7 +49,7 @@ export const Coupons = () => {
 
    return (
       <div className={styles.summary}>
-         {/* {couponDiscount === 0 ? (
+         {couponDiscount === 0 ? (
             <>
                <span>¿Tenés un cupón?</span>
 
@@ -79,8 +82,8 @@ export const Coupons = () => {
                   <span className={styles.discount}>-{currency.format(couponDiscount)}</span>
                </div>
             </>
-         )} */}
-         {couponDiscount !== 0 && (
+         )}
+         {/* {couponDiscount !== 0 && (
             <>
                <span>
                   Cupón: <u>{coupons[0].code}</u>
@@ -91,7 +94,7 @@ export const Coupons = () => {
                   <span className={styles.discount}>-{currency.format(couponDiscount)}</span>
                </div>
             </>
-         )}
+         )} */}
       </div>
    );
 };
