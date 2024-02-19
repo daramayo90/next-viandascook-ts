@@ -24,8 +24,6 @@ export const Coupons = () => {
 
       const couponCode = e.target.coupon.value;
 
-      console.log(couponCode.toLowerCase());
-
       const { error, msg } = await addCoupon(couponCode.toLowerCase());
 
       if (error) {
