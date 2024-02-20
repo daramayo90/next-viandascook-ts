@@ -21,11 +21,19 @@ const getProducts = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
    const page = parseInt(req.query.page as string) || 1;
    const limit = parseInt(req.query.limit as string) || 10; // Default to 10 items per page
 
-   const products = await Product.find()
-      .skip((page - 1) * limit)
-      .limit(limit)
-      .sort({ name: 1 })
-      .lean();
+   const productIds = req.query['ids[]'] || [];
+
+   let products;
+
+   if (productIds.length > 0) {
+      products = await Product.find({ _id: { $in: productIds } }).lean();
+   } else {
+      products = await Product.find()
+         .skip((page - 1) * limit)
+         .limit(limit)
+         .sort({ name: 1 })
+         .lean();
+   }
 
    await db.disconnect();
 
