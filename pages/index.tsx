@@ -35,6 +35,11 @@ const LandingPage: NextPage<Props> = ({ products }) => {
 
             <HowToBuy />
 
+            <p className={styles.noSubscriptionInfo}>
+               Elegí tus comidas sin la necesidad de suscribirte. Tenemos de todo, carne, veggie, ¡lo
+               que quieras! Pedí ahora comida rica y saludable.
+            </p>
+
             <div className={styles.btn}>
                <Button href={'/como-funciona'} content={'Comenzá Ya'} background='var(--secondary)' />
             </div>
