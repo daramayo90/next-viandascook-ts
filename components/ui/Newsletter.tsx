@@ -7,6 +7,7 @@ import { meta } from '../../analytics';
 import { SubmitButton } from './SubmitButton';
 
 import styles from '../../styles/Newsletter.module.css';
+import Image from 'next/image';
 
 type FormData = {
    name: string;
@@ -64,47 +65,61 @@ export const Newsletter = () => {
 
    return (
       <section className={styles.newsletter}>
-         <h2 className={styles.title}>Newsletter</h2>
-         <p className={styles.text}>
-            <strong>Suscribite</strong> y entrá a la comunidad Viandlover
-         </p>
-         <form onSubmit={handleSubmit(subscribeUser)}>
-            <input
-               {...register('name', { required: 'El nombre es un campo requerido' })}
-               placeholder='Nombre'
-               autoComplete='on'
-            />
-            {errors.name && <span className={styles.error}>{errors.name?.message}</span>}
-
-            <input
-               {...register('lastName', { required: 'El apellido es un campo requerido' })}
-               placeholder='Apellido'
-               autoComplete='on'
-            />
-            {errors.lastName && <span className={styles.error}>{errors.lastName?.message}</span>}
-
-            <input
-               {...register('email', {
-                  required: 'El email es un campo requerido',
-                  validate: validations.isEmail,
-               })}
-               placeholder='Correo electrónico'
-               autoComplete='on'
-            />
-            {errors.email && <span className={styles.error}>{errors.email?.message}</span>}
-
-            <div className={errorMessage ? `${styles.errorMessage} fadeIn` : 'noDisplay'}>
-               <span>{errorMessage}</span>
+         <div className={styles.mobileImage}>
+            <div className={styles.nextImage}>
+               <Image src={'/img/newsletter-mobile.png'} alt='newsletter' width={220} height={320} />
             </div>
+         </div>
 
-            <div className={okMessage ? `${styles.okMessage} fadeIn` : 'noDisplay'}>
-               <span>{okMessage}</span>
+         <div className={styles.desktopImage}>
+            <div className={styles.nextImage}>
+               <Image src={'/img/newsletter-desktop.png'} alt='newsletter' width={220} height={220} />
             </div>
+         </div>
 
-            <div className={styles.btn}>
-               <SubmitButton content='Suscribirse' isClicked={isClicked} />
-            </div>
-         </form>
+         <div className={styles.container}>
+            <h2 className={styles.title}>Newsletter</h2>
+            <p className={styles.text}>
+               <strong>Suscribite</strong> y entrá a la comunidad Viandlover
+            </p>
+            <form onSubmit={handleSubmit(subscribeUser)}>
+               <input
+                  {...register('name', { required: 'El nombre es un campo requerido' })}
+                  placeholder='Nombre'
+                  autoComplete='on'
+               />
+               {errors.name && <span className={styles.error}>{errors.name?.message}</span>}
+
+               <input
+                  {...register('lastName', { required: 'El apellido es un campo requerido' })}
+                  placeholder='Apellido'
+                  autoComplete='on'
+               />
+               {errors.lastName && <span className={styles.error}>{errors.lastName?.message}</span>}
+
+               <input
+                  {...register('email', {
+                     required: 'El email es un campo requerido',
+                     validate: validations.isEmail,
+                  })}
+                  placeholder='Correo electrónico'
+                  autoComplete='on'
+               />
+               {errors.email && <span className={styles.error}>{errors.email?.message}</span>}
+
+               <div className={errorMessage ? `${styles.errorMessage} fadeIn` : 'noDisplay'}>
+                  <span>{errorMessage}</span>
+               </div>
+
+               <div className={okMessage ? `${styles.okMessage} fadeIn` : 'noDisplay'}>
+                  <span>{okMessage}</span>
+               </div>
+
+               <div className={styles.btn}>
+                  <SubmitButton content='Suscribirse' isClicked={isClicked} />
+               </div>
+            </form>
+         </div>
       </section>
    );
 };
