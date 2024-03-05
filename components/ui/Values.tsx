@@ -5,7 +5,7 @@ import styles from '../../styles/Values.module.css';
 
 const valueList = [
    {
-      src: '/icon/home-comida-deliciosa.png',
+      src: '/icon/home-comida-deliciosa.jpg',
       alt: 'Comida Deliciosa',
       title: 'Comida Deliciosa',
       text: (
@@ -21,13 +21,13 @@ const valueList = [
       ),
    },
    {
-      src: '/icon/home-variedad.png',
+      src: '/icon/home-variedad.jpg',
       alt: 'Variedad de Comidas',
       title: 'No Necesitas Suscribirte',
       text: 'Organizá tu menú semanal con nuestras viandas, tenemos opciones para todos los paladares desde carne hasta menúes veganos y vegetarianos.',
    },
    {
-      src: '/icon/home-facil-y-rapido.png',
+      src: '/icon/home-facil-y-rapido.jpg',
       alt: 'Fácil y Rápido',
       title: 'Fácil y Rápido',
       text: 'Disfrutá de más tiempo para vos mientras nosotros nos encargamos de la comida. Recibimos pedidos con 48hs de anticipación. ¡Seguí tu entrega en tiempo real con nuestro exclusivo sistema de alertas!',
@@ -45,9 +45,11 @@ export const Values = () => {
             <div className={styles.list}>
                {valueList.map((value) => (
                   <div key={value.title} className={styles.listContainer}>
-                     <div className={styles.nextImage}>
-                        <Image src={value.src} alt={value.alt} width={70} height={70} />
-                     </div>
+                     <Link href='/menu'>
+                        <div className={styles.nextImage}>
+                           <Image src={value.src} alt={value.alt} width={280} height={340} />
+                        </div>
+                     </Link>
                      <div className={styles.description}>
                         <h3 className={styles.title}>{value.title}</h3>
                         <p className={styles.text}>{value.text}</p>
