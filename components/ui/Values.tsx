@@ -24,7 +24,7 @@ const valueList = [
       src: '/icon/home-variedad.jpg',
       alt: 'Variedad de Comidas',
       title: 'No Necesitas Suscribirte',
-      text: 'Organizá tu menú semanal con nuestras viandas, tenemos opciones para todos los paladares desde carne hasta menúes veganos y vegetarianos.',
+      text: 'Queremos que disfrutes de una comida rica y saludable sin esfuerzo. Por eso, no te pedimos suscripción previa. Pedí tu vianda de forma sencilla y disfrutá de una experiencia de compra sin complicaciones.',
    },
    {
       src: '/icon/home-facil-y-rapido.jpg',
