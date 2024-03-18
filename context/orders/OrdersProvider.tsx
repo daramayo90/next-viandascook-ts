@@ -109,6 +109,16 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
       }
 
       if (
+         shippingAddress.address.toLocaleLowerCase().includes('bermudez 1044') ||
+         shippingAddress.address.toLocaleLowerCase().includes('bermúdez 1044')
+      ) {
+         return {
+            hasError: true,
+            message: 'Esta dirección de entrega no está permitida',
+         };
+      }
+
+      if (
          new Date().getDate() === deliveryDateSelected.getDate() &&
          new Date().getMonth() === deliveryDateSelected.getMonth()
       ) {
