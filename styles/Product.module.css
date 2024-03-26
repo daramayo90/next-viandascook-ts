@@ -15,8 +15,9 @@
 
 .product > .topSection > .container {
    display: flex;
+   flex-direction: column;
    width: 85%;
-   margin: 1rem auto;
+   margin: 2rem 0;
 }
 
 .product > .topSection > .container > .title {
@@ -36,57 +37,61 @@
 }
 
 .product > .topSection > .container > .description {
-   position: absolute;
-   bottom: 95px;
    font-size: 1.1rem;
-   width: 80%;
-   text-align: center;
+   width: 100%;
+   text-align: left;
 }
 
-.product > .topSection > .container > .priceContainer {
+.product > .topSection > .container > .priceAndQuantity {
    display: flex;
+   justify-content: space-between;
    align-items: center;
    width: 100%;
-   margin-top: 100px;
+   margin: 2rem auto 1rem auto;
+   height: 50px;
 }
 
-.product > .topSection > .container > .priceContainer > .price {
+.product > .topSection > .container > .priceAndQuantity > .priceContainer {
+   display: flex;
+   align-items: center;
+}
+
+.product > .topSection > .container > .priceAndQuantity > .priceContainer > .price {
    font-size: 1.2rem;
    font-weight: 600;
    color: var(--black);
 }
 
-.product > .topSection > .container > .priceContainer > .noPrice {
+.product > .topSection > .container > .priceAndQuantity > .priceContainer > .noPrice {
    font-size: 1.2rem;
    font-weight: 600;
    color: var(--black);
    text-decoration-line: line-through;
 }
 
-.product > .topSection > .container > .priceContainer > .discount {
+.product > .topSection > .container > .priceAndQuantity > .priceContainer > .discount {
    margin-left: 0.5rem;
    color: var(--primary);
    font-weight: 600;
    font-size: 1.3rem;
 }
 
-.product > .topSection > .container > .selectedQuantity {
+.product > .topSection > .container > .priceAndQuantity > .selectedQuantity {
    display: flex;
    flex-direction: column;
    justify-content: center;
    align-items: center;
    width: 50px;
    padding: 10px 0;
-   margin-top: 90px;
    border-radius: 50%;
    background: var(--primaryHover);
 }
 
-.product > .topSection > .container > .selectedQuantity > span {
+.product > .topSection > .container > .priceAndQuantity > .selectedQuantity > span {
    color: var(--white);
 }
 
-.product > .topSection > .container > .selectedQuantity > .addToCartDesktop {
+.product > .topSection > .container > .priceAndQuantity > .selectedQuantity > .addToCartDesktop {
    display: none;
 }
 
@@ -131,12 +136,10 @@
    display: flex;
    flex-direction: column;
    max-width: 440px;
-   margin: 0.5rem auto;
 }
 
 .ingredients,
 .nutrition {
-   margin: 2rem 0;
    padding: 24px 20px 14px;
    border-radius: 15px;
    background-color: #fff;
@@ -246,12 +249,12 @@
       flex-direction: column;
       justify-content: space-between;
       align-items: flex-start;
-      width: 50%;
-      height: 300px;
+      width: 48%;
       margin: 0;
    }
 
-   .product > .topSection > .container .title {
+   .product > .topSection > .container > .title {
+      order: -1;
       position: relative;
       width: 100%;
       max-width: none;
@@ -268,35 +271,35 @@
       text-align: left;
    }
 
-   .product > .topSection > .container > .priceContainer {
+   .product > .topSection > .container > .priceAndQuantity > .priceContainer {
       margin: 0;
    }
 
-   .product > .topSection > .container > .price {
+   .product > .topSection > .container > .priceAndQuantity > .priceContainer > .price {
       font-size: 1.4rem;
    }
 
-   .product > .topSection > .container > .priceContainer > .noPrice {
+   .product > .topSection > .container > .priceAndQuantity > .priceContainer > .noPrice {
       font-size: 1.4rem;
       margin: 0;
    }
 
-   .product > .topSection > .container > .priceContainer > .discount {
+   .product > .topSection > .container > .priceAndQuantity > .priceContainer > .discount {
       font-size: 1.5rem;
    }
 
-   .product > .topSection > .container > .selectedQuantity {
+   .product > .topSection > .container > .priceAndQuantity > .selectedQuantity {
       width: 280px;
       margin-top: 0;
       border-radius: 20px;
       cursor: pointer;
    }
 
-   .product > .topSection > .container > .selectedQuantity > .addToCartMobile {
+   .product > .topSection > .container > .priceAndQuantity > .selectedQuantity > .addToCartMobile {
       display: none;
    }
 
-   .product > .topSection > .container > .selectedQuantity > .addToCartDesktop {
+   .product > .topSection > .container > .priceAndQuantity > .selectedQuantity > .addToCartDesktop {
       display: block;
    }
 

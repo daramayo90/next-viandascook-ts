@@ -14,6 +14,7 @@ import {
    NutritionInfo,
    Price,
    ProductSlides,
+   Description,
 } from '../../components/products';
 
 import styles from '../../styles/Product.module.css';
@@ -54,7 +55,10 @@ const ProductPage: NextPage<Props> = ({ product, relatedProducts }) => {
             <div className={styles.topSection}>
                <ProductImg product={product} />
 
-               <Price product={product} />
+               <div className={styles.container}>
+                  <Description product={product} />
+                  <Price product={product} />
+               </div>
             </div>
 
             <div className={styles.bottomSection}>

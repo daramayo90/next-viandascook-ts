@@ -18,8 +18,9 @@ export const Price: FC<Props> = ({ product }) => {
 
    return (
       <>
-         <div className={styles.container}>
-            <h2 className={styles.title}>{product.name}</h2>
+         <h1 className={styles.title}>{product.name}</h1>
+
+         <div className={styles.priceAndQuantity}>
             <div className={styles.priceContainer}>
                {product.discountPrice ? (
                   <>
@@ -30,8 +31,6 @@ export const Price: FC<Props> = ({ product }) => {
                   <h3 className={styles.price}>{currency.format(product.price)}</h3>
                )}
             </div>
-
-            <p className={styles.description}>{product.description}</p>
 
             {/* TODO: Out of Stock */}
             {!isSelecting && !cartProduct ? (

@@ -1,4 +1,5 @@
 export * from './AditionalInfo';
+export * from './Description';
 export * from './Ingredients';
 export * from './ItemCounter';
 export * from './NutritionInfo';
