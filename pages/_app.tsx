@@ -31,8 +31,8 @@ function MyApp({ Component, pageProps }: AppProps) {
    const router = useRouter();
    const { loading } = useLoader();
 
-   useGoogleAnalytics();
-   useMetaPixel();
+   // useGoogleAnalytics();
+   // useMetaPixel();
 
    const isMainPage = router.pathname === '/';
 
@@ -86,7 +86,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             {!isAdminRoute && (
                <>
                   <CustomWhatsApp />
-                  <Scripts />
+                  {/* <Scripts /> */}
                </>
             )}
 
