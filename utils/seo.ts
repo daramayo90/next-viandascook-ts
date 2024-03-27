@@ -1,6 +1,6 @@
 export const seo = {
    LandingPage: {
-      title: 'Viandas Saludables a Domicilio | Viandas Cook',
+      title: 'Viandas Saludables a Domicilio | ViandasCook ©',
       description:
          '🍲 Descubrí nuestras viandas saludables a domicilio. Comida casera directo a tu mesa, con opciones veganas y vegetarianas. ¡Consultanos variedad y precios!',
       keywords:
