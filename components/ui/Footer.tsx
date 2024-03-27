@@ -43,19 +43,37 @@ export const Footer = () => {
                   <h3 className={styles.subTitle}>Platos más vendidos</h3>
                   <div className={styles.list}>
                      <Link href={'/plato/colita-de-cuadril-con-papas-al-horno'} prefetch={false}>
-                        <a className={styles.linkItem}>Colita de cuadril con papas</a>
+                        <a className={`${styles.linkItem} ${styles.productItem}`}>
+                           Colita de cuadril con papas
+                        </a>
                      </Link>
                      <Link href={'/plato/hamburguesas-con-papas-bravas-al-horno'} prefetch={false}>
-                        <a className={styles.linkItem}>Hamburguesas con papas bravas al horno</a>
+                        <a className={`${styles.linkItem} ${styles.productItem}`}>
+                           Hamburguesas con papas bravas al horno
+                        </a>
+                     </Link>
+                     <Link href={'/plato/medallones-de-merluza-con-arroz-primavera'} prefetch={false}>
+                        <a className={`${styles.linkItem} ${styles.productItem}`}>
+                           Medallones de merluza con arroz primavera
+                        </a>
                      </Link>
                   </div>
 
                   <div className={styles.list}>
                      <Link href={'/plato/bife-a-la-criolla-con-verduras'} prefetch={false}>
-                        <a className={styles.linkItem}>Bife a la criolla con verduras</a>
+                        <a className={`${styles.linkItem} ${styles.productItem}`}>
+                           Bife a la criolla con verduras
+                        </a>
                      </Link>
                      <Link href={'/plato/lomo-al-champinion-con-papas-noisette'} prefetch={false}>
-                        <a className={styles.linkItem}>Lomo al champiñón con papas noisette</a>
+                        <a className={`${styles.linkItem} ${styles.productItem}`}>
+                           Lomo al champiñón con papas noisette
+                        </a>
+                     </Link>
+                     <Link href={'/plato/pollo-agridulce-con-vegetales'} prefetch={false}>
+                        <a className={`${styles.linkItem} ${styles.productItem}`}>
+                           Pollo agridulce con vegetales
+                        </a>
                      </Link>
                   </div>
                </div>

@@ -7,7 +7,7 @@ interface Props {
    id: number;
    poster: string;
    title: string;
-   text: string;
+   text: string | JSX.Element;
 }
 
 export const SectionUs: FC<Props> = ({ id, poster, title, text }) => {

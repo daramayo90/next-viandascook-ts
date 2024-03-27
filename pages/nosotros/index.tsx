@@ -1,4 +1,5 @@
 import { NextPage } from 'next';
+import Link from 'next/link';
 
 import { HomeLayout } from '../../components/layouts';
 import { Breadcrumbs, Button, Newsletter, SectionsUs } from '../../components/ui';
@@ -55,6 +56,14 @@ const NosotrosPage: NextPage = () => {
                   alimentación sabrosa y balanceada. <strong>¡En sólo 15 minutos!</strong> Para
                   nosotros, la comida es más que solo combustible: es una forma de vida saludable y
                   feliz.
+               </p>
+               <p style={{ margin: '1rem 0' }}>
+                  En Viandas Cook ofrecemos mucho más que
+                  <Link href='/'>
+                     <a>
+                        <strong> Viandas Saludables.</strong>
+                     </a>
+                  </Link>
                </p>
             </div>
 

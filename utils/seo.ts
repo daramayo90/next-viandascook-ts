@@ -31,9 +31,9 @@ export const seo = {
       canonical: 'https://www.viandascook.com/nosotros',
    },
    HowItWorksPage: {
-      title: 'Deliciosas Viandas a Domicilio | Viandas Cook',
+      title: 'Conocé cómo funciona Viandas Cook',
       description:
-         '🍴 Elegí tus platos saludables favoritos en Viandas Cook, hacé tu pedido online y recibí tus viandas a tu puerta. ¡Comida fresca en 15 minutos!',
+         '🍴 Conocé cómo funciona Viandas Cook y elegí tu plato favorito. Te lo llevamos a domicilio ¡Ingresá ahora!',
       keywords:
          'cómo funciona Viandas Cook, pedido online de viandas, entrega de comida a domicilio, viandas congeladas, preparación y entrega de viandas, comida fresca y saludable a tu puerta, proceso de pedido y entrega, viandas envasadas al vacío, calentar y disfrutar, comida lista en 15 minutos',
       canonical: 'https://www.viandascook.com/como-funciona',

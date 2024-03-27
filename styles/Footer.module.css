@@ -67,6 +67,10 @@
    color: var(--white);
 }
 
+.footer > .info > .columns > .columnList > .list > .productItem {
+   font-size: 14px;
+}
+
 .footer > .info > .columns > .columnList > .subTitle {
    position: absolute;
    top: 0;
