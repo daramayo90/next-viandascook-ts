@@ -1,6 +1,8 @@
 import { FC, useContext, useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 
+import { viandasApi } from '../../axiosApi';
+
 import { IPaymentMethods } from '../../interfaces/order';
 
 import { OrdersContext } from '../../context';
@@ -41,6 +43,14 @@ const addCheckout = (publicKey: string) => {
    return mp;
 };
 
+const addMailchimpOrder = async (orderId: string) => {
+   try {
+      await viandasApi.post('/mailchimp/addOrder', { orderId });
+   } catch (error) {
+      console.log(error);
+   }
+};
+
 export const Posting: FC = () => {
    const router = useRouter();
 
@@ -79,6 +89,7 @@ export const Posting: FC = () => {
       await addMailchimpClient(message);
 
       if (paymentMethod !== 'mercadopago') {
+         await addMailchimpOrder(message);
          router.replace(`/muchas-gracias/${message}/?viandasToken=${token}`);
          return;
       }

@@ -12,13 +12,13 @@ type Data = {
 export default async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
    switch (req.method) {
       case 'POST':
-         return addProducts(req, res);
+         return updateProducts(req, res);
       default:
          return res.status(400).json({ message: 'Bad request' });
    }
 }
 
-const addProducts = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
+const updateProducts = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
    const API_KEY = process.env.MAILCHIMP_API_KEY;
    const DATACENTER = process.env.MAILCHIMP_API_SERVER;
    const ENDPOINT = `https://${DATACENTER}.api.mailchimp.com/3.0/ecommerce/stores/viandascook/products`;
@@ -44,8 +44,9 @@ const addProducts = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
 
          // Assuming response contains product details including variants and their prices
          const mailchimpProductPrice = data.variants[0].price;
+
+         // If price is different, update the product in Mailchimp
          if (mailchimpProductPrice !== product.price) {
-            // If price is different, update the product in Mailchimp
             await axios.patch(
                productEndpoint,
                {
@@ -67,6 +68,7 @@ const addProducts = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
             skippedProducts.push(product.name);
          }
       } catch (error: any) {
+         // Create the product in Mailchimp if it doesn't exist
          if (error.response && error.response.status === 404) {
             const productData = {
                id: product._id.toString(),

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { User } from '../../../models';
+import { isEmail } from '../../../utils/validations';
 
 type Data = {
    message: string;
@@ -12,18 +13,18 @@ type Data = {
 export default async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
    switch (req.method) {
       case 'POST':
-         return addCustomers(req, res);
+         return updateCustomers(req, res);
       default:
          return res.status(400).json({ message: 'Bad request' });
    }
 }
 
-const addCustomers = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
+const updateCustomers = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
    const API_KEY = process.env.MAILCHIMP_API_KEY!;
    const DATACENTER = process.env.MAILCHIMP_API_SERVER!;
    const ENDPOINT = `https://${DATACENTER}.api.mailchimp.com/3.0/ecommerce/stores/viandascook/customers`;
 
-   const users = await User.find().sort({ name: 1 }).lean();
+   const users = await User.find().sort({ email: 1 }).lean();
 
    const failedCustomers: string[] = [];
    const skippedCustomers: string[] = [];
@@ -31,6 +32,16 @@ const addCustomers = async (req: NextApiRequest, res: NextApiResponse<Data>) => 
    const delay = (ms: any) => new Promise((resolve) => setTimeout(resolve, ms));
 
    for (const user of users) {
+      const checkEmail = isEmail(user.email);
+
+      if (checkEmail !== undefined) {
+         console.log(`EMAIL NO VÁLIDO ${user.email}`, checkEmail);
+         failedCustomers.push(user.email);
+         continue;
+      }
+
+      console.log('todo ok');
+
       const customerEndpoint = `${ENDPOINT}/${user._id}`;
 
       try {
@@ -72,11 +83,11 @@ const addCustomers = async (req: NextApiRequest, res: NextApiResponse<Data>) => 
 
                   createNewCustomer(customerData, API_KEY, ENDPOINT);
                } else {
-                  failedCustomers.push(user.name);
+                  failedCustomers.push(user.email);
                }
             }
          } else {
-            failedCustomers.push(user.name);
+            failedCustomers.push(user.email);
          }
       }
 
