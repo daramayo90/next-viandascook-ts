@@ -36,6 +36,7 @@ const mpWebhooks = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
          await dbOrders.createOptimoRouteOrder(orderId);
          await dbOrders.addReferralPoints(referralCoupon);
          await dbOrders.orderToSpreadsheet(orderId);
+         await dbOrders.AddNewMailchimpOrder(orderId);
       }
    }
 

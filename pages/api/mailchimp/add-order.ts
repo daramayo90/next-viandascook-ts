@@ -10,13 +10,13 @@ type Data = {
 export default async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
    switch (req.method) {
       case 'POST':
-         return AddOrders(req, res);
+         return AddNewMailchimpOrder(req, res);
       default:
          return res.status(400).json({ message: 'Bad request' });
    }
 }
 
-const AddOrders = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
+const AddNewMailchimpOrder = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
    const { orderId } = req.body;
 
    const API_KEY = process.env.MAILCHIMP_API_KEY!;

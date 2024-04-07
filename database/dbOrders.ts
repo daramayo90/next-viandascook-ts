@@ -264,3 +264,59 @@ export const createOptimoRouteOrder = async (id: number) => {
 
    return data;
 };
+
+export const AddNewMailchimpOrder = async (orderId: number) => {
+   const API_KEY = process.env.MAILCHIMP_API_KEY!;
+   const DATACENTER = process.env.MAILCHIMP_API_SERVER!;
+   const ENDPOINT = `https://${DATACENTER}.api.mailchimp.com/3.0/ecommerce/stores/viandascook/orders`;
+
+   const order = await Order.findById(Number(orderId)).lean();
+
+   if (!order) return null;
+
+   const { _id, name, lastName, email, dni } = order.user as IUser;
+   const { address, city, city2, zipcode } = order.shippingAddress as ShippingAddress;
+
+   const orderEndpoint = `${ENDPOINT}/${order._id!}`;
+
+   try {
+      // Attempt to fetch the order from Mailchimp to see if it exists
+      await axios.get(orderEndpoint, {
+         headers: {
+            Authorization: `Bearer ${API_KEY}`,
+         },
+      });
+   } catch (error: any) {
+      // Order does not exist, so we create it
+      if (error.response && error.response.status === 404) {
+         const orderData = {
+            id: order._id!.toString(),
+            customer: {
+               id: _id ? _id.toString() : dni,
+               email_address: email,
+               opt_in_status: true,
+               first_name: name,
+               last_name: lastName,
+               address: {
+                  address1: address,
+                  city: city2,
+                  province: city,
+                  postal_code: zipcode,
+                  country: 'Argentina',
+                  country_code: 'AR',
+               },
+            },
+            currency_code: 'ARS',
+            order_total: order.total,
+         };
+
+         await axios.post(ENDPOINT, orderData, {
+            headers: {
+               Authorization: `Bearer ${API_KEY}`,
+            },
+         });
+      }
+   }
+
+   return;
+};

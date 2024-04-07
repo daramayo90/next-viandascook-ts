@@ -13,13 +13,13 @@ type Data = {
 export default async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
    switch (req.method) {
       case 'POST':
-         return AddOrders(req, res);
+         return AddMassiveMailchimpOrders(req, res);
       default:
          return res.status(400).json({ message: 'Bad request' });
    }
 }
 
-const AddOrders = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
+const AddMassiveMailchimpOrders = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
    const API_KEY = process.env.MAILCHIMP_API_KEY!;
    const DATACENTER = process.env.MAILCHIMP_API_SERVER!;
    const ENDPOINT = `https://${DATACENTER}.api.mailchimp.com/3.0/ecommerce/stores/viandascook/orders`;
