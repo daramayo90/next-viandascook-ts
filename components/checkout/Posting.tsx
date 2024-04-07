@@ -43,9 +43,17 @@ const addCheckout = (publicKey: string) => {
    return mp;
 };
 
+const addMailchmpCustomer = async (orderId: string) => {
+   try {
+      await viandasApi.post('/mailchimp/add-customer', { orderId });
+   } catch (error) {
+      console.log(error);
+   }
+};
+
 const addMailchimpOrder = async (orderId: string) => {
    try {
-      await viandasApi.post('/mailchimp/addOrder', { orderId });
+      await viandasApi.post('/mailchimp/add-order', { orderId });
    } catch (error) {
       console.log(error);
    }
@@ -87,6 +95,7 @@ export const Posting: FC = () => {
       }
 
       await addMailchimpClient(message);
+      await addMailchmpCustomer(message);
 
       if (paymentMethod !== 'mercadopago') {
          await addMailchimpOrder(message);

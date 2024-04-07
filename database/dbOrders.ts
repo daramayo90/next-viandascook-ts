@@ -308,6 +308,25 @@ export const AddNewMailchimpOrder = async (orderId: number) => {
             },
             currency_code: 'ARS',
             order_total: order.total,
+            lines: order.orderItems.map((item, index) => ({
+               id: item._id.toString(),
+               product_id: item._id.toString(),
+               product_variant_id: item._id.toString(),
+               quantity: item.quantity,
+               price: item.price,
+            })),
+            shipping_address: {
+               name: `${name} ${lastName}`,
+               address1: address,
+               city: city2,
+               province: city,
+               postal_code: zipcode,
+               country: 'Argentina',
+               country_code: 'AR',
+            },
+            processed_at_foreign: order.createdAt,
+            financial_status: 'paid',
+            fulfillment_status: 'paid',
          };
 
          await axios.post(ENDPOINT, orderData, {

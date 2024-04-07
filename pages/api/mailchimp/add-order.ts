@@ -80,8 +80,8 @@ const AddNewMailchimpOrder = async (req: NextApiRequest, res: NextApiResponse<Da
                country_code: 'AR',
             },
             processed_at_foreign: order.createdAt,
-            financial_status: order.isPaid ? 'paid' : 'cancelled',
-            fulfillment_status: order.isPaid ? 'paid' : 'cancelled',
+            financial_status: 'paid',
+            fulfillment_status: 'paid',
          };
 
          try {

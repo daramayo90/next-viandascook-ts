@@ -40,8 +40,6 @@ const updateCustomers = async (req: NextApiRequest, res: NextApiResponse<Data>) 
          continue;
       }
 
-      console.log('todo ok');
-
       const customerEndpoint = `${ENDPOINT}/${user._id}`;
 
       try {
