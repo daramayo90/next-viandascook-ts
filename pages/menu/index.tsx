@@ -147,7 +147,7 @@ const ProductsPage: NextPage<Props> = ({ products }) => {
                hasMore={hasMore}
                loader={<LoadingPage />}
                scrollThreshold={0.6}>
-               <article className={styles.container}>
+               <article id='menu-products' className={styles.container}>
                   {isFilterActive ? (
                      productsToShow.length > 0 ? (
                         productsToShow.map((product) => (

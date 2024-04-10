@@ -104,6 +104,12 @@ const SiteMapPage: NextPage = () => {
                         </a>
                      </Link>
 
+                     <Link href='/menu?type="Waffles"'>
+                        <a className={styles.linkList}>
+                           <span>Viandas Veganas</span>
+                        </a>
+                     </Link>
+
                      <Link href='/menu?type="Bajo+en+calorías"'>
                         <a className={styles.linkList}>
                            <span>Viandas Bajas en calorías</span>

@@ -40,6 +40,10 @@ const discounts = [
    //    img: '/discounts/offer-black-friday.png',
    // },
    {
+      name: 'Promo 20% - Lanzamiento waffles',
+      img: '/discounts/promo-waffles.png',
+   },
+   {
       name: 'Descuento llevando 14 viandas o más',
       img: '/discounts/offer-14-viandas.png',
    },

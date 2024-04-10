@@ -45,6 +45,11 @@ export const typesList = [
       model: 'Vegano',
    },
    {
+      icon: '/type/waffles.jpg',
+      name: 'Waffles',
+      model: 'Waffles',
+   },
+   {
       icon: '/type/lowcalories.svg',
       name: 'Bajo en calorías',
       model: 'Bajo en calorías',
@@ -58,10 +63,5 @@ export const typesList = [
       icon: '/type/lowsodium.svg',
       name: 'Bajo en sodio',
       model: 'Bajo en sodio',
-   },
-   {
-      icon: '/type/lowsodium.svg',
-      name: 'Waffles',
-      model: 'Waffles',
    },
 ];
