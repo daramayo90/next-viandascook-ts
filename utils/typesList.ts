@@ -59,9 +59,9 @@ export const typesList = [
       name: 'Bajo en sodio',
       model: 'Bajo en sodio',
    },
-   // {
-   //    icon: '/type/dairyfree.svg',
-   //    name: 'Libre de lácteos',
-   //    model: 'Libre de lácteos',
-   // },
+   {
+      icon: '/type/lowsodium.svg',
+      name: 'Waffles',
+      model: 'Waffles',
+   },
 ];

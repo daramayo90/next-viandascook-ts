@@ -44,6 +44,7 @@ const productSchema = new Schema(
                   'Tarta',
                   'Vegano',
                   'Vegetariano',
+                  'Waffles',
                ],
             },
             message: '{VALUE} is not a valid type',

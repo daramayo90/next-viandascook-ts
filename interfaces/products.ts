@@ -31,4 +31,5 @@ export type IType =
    | 'Pollo'
    | 'Tarta'
    | 'Vegano'
-   | 'Vegetariano';
+   | 'Vegetariano'
+   | 'Waffles';
