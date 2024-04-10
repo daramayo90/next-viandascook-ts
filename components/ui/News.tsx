@@ -33,7 +33,7 @@ export const News: FC = () => {
                   <div className={styles.desktopBanner}>
                      <Image
                         src='/img/banner-news-waffles.jpg'
-                        alt='Promo 10% off - Lanzamiento Waffles'
+                        alt='Promo 20% off - Lanzamiento Waffles'
                         layout='fill'
                         objectFit='cover'
                         // priority={true}

@@ -289,7 +289,7 @@
    }
 
    .product > .topSection > .container > .priceAndQuantity > .selectedQuantity {
-      width: 280px;
+      width: 220px;
       margin-top: 0;
       border-radius: 20px;
       cursor: pointer;

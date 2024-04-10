@@ -43,15 +43,17 @@ const ProductCardComponent: FC<Props> = ({ product }) => {
                      sizes='(max-width: 768px) 35vw, (min-width: 769px) 23vw'
                   />
 
-                  {/* <div className={styles.tagImageWrapper}>
-                     <Image
-                        src='/img/10off-tag.png'
-                        alt='10% off - Diciembre de locos'
-                        layout='fill'
-                        objectFit='fill'
-                        sizes='(max-width: 768px) 35vw, (min-width: 769px) 23vw'
-                     />
-                  </div> */}
+                  {product.discountPrice && (
+                     <div className={styles.tagImageWrapper}>
+                        <Image
+                           src='/img/20off-tag.png'
+                           alt='20% off - Promo Waffles'
+                           layout='fill'
+                           objectFit='fill'
+                           sizes='(max-width: 768px) 35vw, (min-width: 769px) 23vw'
+                        />
+                     </div>
+                  )}
                </a>
             </Link>
 

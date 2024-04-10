@@ -1,0 +1,17 @@
+.popup {
+   position: fixed;
+   bottom: 0;
+   left: 0;
+   right: 0;
+   background: white;
+   transition: transform 10s ease-in-out;
+   transform: translateY(100%);
+   width: 100%;
+   height: 500px;
+   background-color: red;
+   z-index: 10;
+}
+
+.popup.show {
+   transform: translateY(0);
+}

@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 
 import { ShopLayout } from '../../components/layouts';
 import { CartContext } from '../../context';
-import { CartList, OrderSummary } from '../../components/cart';
+import { CartList, CrossSelling, OrderSummary } from '../../components/cart';
 
 import styles from '../../styles/Cart.module.css';
 
@@ -31,6 +31,7 @@ const CartPage: NextPage = () => {
 
                <OrderSummary />
             </div>
+            <CrossSelling />
          </section>
       </ShopLayout>
    );
