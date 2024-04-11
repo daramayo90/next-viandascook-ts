@@ -7,7 +7,7 @@ import { CartContext } from '../../context';
 import { CartList, CrossSelling, OrderSummary } from '../../components/cart';
 
 import { dbProducts } from '../../database';
-import { ICartProduct, IProduct } from '../../interfaces';
+import { IProduct } from '../../interfaces';
 
 import styles from '../../styles/Cart.module.css';
 

@@ -35,7 +35,7 @@ export const CrossSelling: FC<Props> = ({ products }) => {
    if (!isVisible) return null;
 
    return (
-      <div className={`${styles.crossSelling} ${isVisible ? styles.show : ''}`}>
+      <div className={`${styles.crossSelling}`}>
          <div className={styles.container}>
             <h3 className={styles.title}>
                Sumá <strong>Waffles</strong>

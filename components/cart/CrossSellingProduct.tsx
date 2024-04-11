@@ -31,7 +31,9 @@ export const CrossSellingProduct: FC<Props> = ({ product }) => {
       <div className={styles.product}>
          <Link href={`/plato/${product.slug}`} passHref>
             <a className={styles.info} target='_blank'>
-               <Image src={product.image} alt={product.name} width={200} height={200} />
+               <div className={styles.nextImage}>
+                  <Image src={product.image} alt={product.name} width={200} height={200} />
+               </div>
                <p className={styles.name}>{transformName(product)}</p>
                <p className={styles.price}>{currency.format(product.price)}</p>
             </a>
