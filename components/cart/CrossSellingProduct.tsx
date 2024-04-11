@@ -33,9 +33,29 @@ export const CrossSellingProduct: FC<Props> = ({ product }) => {
             <a className={styles.info} target='_blank'>
                <div className={styles.nextImage}>
                   <Image src={product.image} alt={product.name} width={200} height={200} />
+                  {product.discountPrice && (
+                     <div className={styles.tagImageWrapper}>
+                        <Image
+                           src='/img/20off-tag.png'
+                           alt='20% off - Promo Waffles'
+                           width={200}
+                           height={200}
+                           priority={true}
+                        />
+                     </div>
+                  )}
                </div>
                <p className={styles.name}>{transformName(product)}</p>
-               <p className={styles.price}>{currency.format(product.price)}</p>
+               <div className={styles.priceContainer}>
+                  {product.discountPrice ? (
+                     <>
+                        <p className={styles.noPrice}>{currency.format(product.price)}</p>
+                        <p className={styles.discount}>{currency.format(product.discountPrice)}</p>
+                     </>
+                  ) : (
+                     <p className={styles.price}>{currency.format(product.price)}</p>
+                  )}
+               </div>
             </a>
          </Link>
 

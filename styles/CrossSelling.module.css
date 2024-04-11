@@ -73,14 +73,21 @@
 }
 
 .product > .info > .nextImage {
+   position: relative;
    width: 70%;
    margin: auto;
 }
 
-.product > .info img {
+.product > .info > .nextImage img {
    width: 100%;
    object-fit: cover;
    border-radius: 10px;
+}
+
+.product > .info > .nextImage > .tagImageWrapper {
+   position: absolute;
+   top: 0;
+   left: 0;
 }
 
 .product > .info > .name {
@@ -93,14 +100,33 @@
    margin: 0.4rem 0 0.5rem 0;
 }
 
-.product > .info > .price {
+.product > .info > .priceContainer {
+   display: flex;
+   align-items: center;
+   justify-content: center;
    width: 100%;
-   text-align: center;
-   font-size: 0.9rem;
-   font-weight: 600;
-   color: var(--primary);
    line-height: 1;
    margin: 0.2rem 0 0.5rem 0;
+}
+
+.product > .info > .priceContainer > .price {
+   font-size: 0.8rem;
+   font-weight: 600;
+   color: var(--primary);
+}
+
+.product > .info > .priceContainer > .noPrice {
+   font-size: 0.8rem;
+   font-weight: 600;
+   color: var(--primary);
+   text-decoration-line: line-through;
+}
+
+.product > .info > .priceContainer > .discount {
+   font-size: 0.9em;
+   font-weight: 600;
+   color: var(--primaryHover);
+   margin-left: 0.5rem;
 }
 
 .product > .addToCart {
