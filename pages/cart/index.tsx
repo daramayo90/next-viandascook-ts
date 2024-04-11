@@ -18,26 +18,18 @@ interface Props {
 const CartPage: NextPage<Props> = ({ products }) => {
    const { isLoaded, cart, numberOfItems } = useContext(CartContext);
    const [showCrossSelling, setShowCrossSelling] = useState(false);
-   const [hasAddedToCart, setHasAddedToCart] = useState(false);
    const router = useRouter();
-
-   const isCrossSelling = (cart: ICartProduct[]) => {
-      return cart.some((cartProduct) => cartProduct.type?.includes('Waffles'));
-   };
 
    useEffect(() => {
       if (isLoaded && cart.length === 0) {
          router.replace('/cart/empty');
       }
-
-      const hasAddedToCart = isCrossSelling(cart);
-      setHasAddedToCart(hasAddedToCart);
    }, [isLoaded, cart, router]);
 
    useEffect(() => {
-      const hasAddedToCart = isCrossSelling(cart);
+      const hasAddedToCart = cart.some((cartProduct) => cartProduct.type?.includes('Waffles'));
       setShowCrossSelling(!hasAddedToCart);
-   }, []);
+   }, [isLoaded]);
 
    // Avoid render anything in client-side
    if (!isLoaded || cart.length === 0) {
@@ -52,9 +44,7 @@ const CartPage: NextPage<Props> = ({ products }) => {
 
                <OrderSummary />
 
-               {showCrossSelling && (
-                  <CrossSelling products={products} hasAddedToCart={hasAddedToCart} />
-               )}
+               {showCrossSelling && <CrossSelling products={products} />}
             </div>
          </section>
       </ShopLayout>

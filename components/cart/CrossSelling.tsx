@@ -1,16 +1,19 @@
-import { FC, useEffect, useState } from 'react';
-import { IProduct } from '../../interfaces';
+import { FC, useContext, useEffect, useState } from 'react';
 import { CrossSellingProduct } from './CrossSellingProduct';
+import { CartContext } from '../../context';
+
+import { IProduct } from '../../interfaces';
 
 import styles from '../../styles/CrossSelling.module.css';
 
 interface Props {
    products: IProduct[];
-   hasAddedToCart: boolean;
 }
 
-export const CrossSelling: FC<Props> = ({ products, hasAddedToCart }) => {
+export const CrossSelling: FC<Props> = ({ products }) => {
    const [isVisible, setIsVisible] = useState(false);
+   const [hasCrossSellingAdded, setHasCrossSellingAdded] = useState(false);
+   const { cart } = useContext(CartContext);
 
    useEffect(() => {
       const isCrossSellingShown = localStorage.getItem('isCrossSellingShown');
@@ -18,6 +21,11 @@ export const CrossSelling: FC<Props> = ({ products, hasAddedToCart }) => {
          setIsVisible(true);
       }
    }, []);
+
+   useEffect(() => {
+      const hasAddedToCart = cart.some((cartProduct) => cartProduct.type?.includes('Waffles'));
+      setHasCrossSellingAdded(hasAddedToCart);
+   }, [cart]);
 
    const handleClose = () => {
       localStorage.setItem('isCrossSellingShown', 'true');
@@ -41,7 +49,7 @@ export const CrossSelling: FC<Props> = ({ products, hasAddedToCart }) => {
             </div>
 
             <p className={styles.close} onClick={handleClose}>
-               {!hasAddedToCart ? 'No, gracias' : 'Ver Carrito'}
+               {!hasCrossSellingAdded ? 'No, gracias' : 'Ver Carrito'}
             </p>
          </div>
       </div>
