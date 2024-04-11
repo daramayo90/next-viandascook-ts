@@ -68,3 +68,15 @@ export const getRelatedProducts = async (product: IProduct): Promise<IProduct[] 
 
    return JSON.parse(JSON.stringify(products));
 };
+
+export const getCrossSellingProducts = async (type: string): Promise<IProduct[] | null> => {
+   await db.connect();
+
+   const products = await Product.find({ type: { $in: [type] } }).lean();
+
+   await db.disconnect();
+
+   if (!products) return null;
+
+   return JSON.parse(JSON.stringify(products));
+};
