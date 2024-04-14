@@ -42,6 +42,10 @@
    text-align: left;
 }
 
+.product > .topSection > .container > .description > .waffles {
+   margin-top: 0.5rem;
+}
+
 .product > .topSection > .container > .priceAndQuantity {
    display: flex;
    justify-content: space-between;
