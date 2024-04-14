@@ -57,15 +57,18 @@ export const MainLayout: FC<Props> = ({
             />
          </Head>
 
-         <nav>
-            <MainNavbar />
-         </nav>
+         <header>
+            <nav>
+               <MainNavbar />
+            </nav>
+         </header>
 
-         <Suspense>
-            <SideMenu />
-         </Suspense>
-
-         <main id='main'>{children}</main>
+         <main id='main'>
+            {children}{' '}
+            <Suspense>
+               <SideMenu />
+            </Suspense>
+         </main>
 
          <footer>
             <Footer />

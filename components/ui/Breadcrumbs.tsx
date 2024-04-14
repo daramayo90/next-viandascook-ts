@@ -44,7 +44,7 @@ export const Breadcrumbs = () => {
 
    return (
       <>
-         <nav aria-label='breadcrumbs' className={styles.breadcrumbs}>
+         <div aria-label='breadcrumbs' className={styles.breadcrumbs}>
             <ol className={styles.list}>
                <li className={styles.item}>
                   <Link href='/' prefetch={false}>
@@ -66,7 +66,7 @@ export const Breadcrumbs = () => {
                   );
                })}
             </ol>
-         </nav>
+         </div>
       </>
    );
 };

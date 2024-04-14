@@ -1,4 +1,4 @@
-import { FC, useContext } from 'react';
+import { FC, useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 
@@ -21,6 +21,8 @@ export const ShopNavbar: FC<Props> = ({ pageTitle, menuPage, backCart }) => {
    const { isCartSummaryOpen, isMenuOpen, toggleSideMenu } = useContext(UIContext);
    const { numberOfItems } = useContext(CartContext);
 
+   const [showPromo, setShowPromo] = useState(false);
+
    const navigation = () => {
       if (backCart) return router.push('/menu');
       if (router.asPath === '/checkout') return router.push('/cart');
@@ -29,12 +31,26 @@ export const ShopNavbar: FC<Props> = ({ pageTitle, menuPage, backCart }) => {
       router.back();
    };
 
+   useEffect(() => {
+      const promoPaths = ['/menu', '/cart', '/plato'];
+      const isShown = promoPaths.some((path) => router.asPath.includes(path));
+      setShowPromo(isShown);
+   }, [router.asPath]);
+
    if (isCartSummaryOpen) {
       return <></>;
    }
 
    return (
       <section className={styles.shopNavbar}>
+         {showPromo && (
+            <div className={styles.promo}>
+               <p className={styles.text}>
+                  Aprovechá un <strong>10% off en tu primera compra</strong> con el cupón de descuento
+                  <strong> bienvenido10</strong>
+               </p>
+            </div>
+         )}
          <div className={styles.container}>
             <div className={styles.navigation}>
                {!menuPage && (

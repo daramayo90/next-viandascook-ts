@@ -69,12 +69,16 @@ export const ShopLayout: FC<Props> = ({
                />
             )}
          </Head>
-         {path.includes('checkout') ? <CartSummary /> : <TabMenu />}
-         <nav>
-            <ShopNavbar pageTitle={navTitle} menuPage={menuPage} backCart={backCart} />
-         </nav>
-         <main>{children}</main>
-         <SideMenu />
+         <header>
+            <nav>
+               <ShopNavbar pageTitle={navTitle} menuPage={menuPage} backCart={backCart} />
+            </nav>
+         </header>
+         <main>
+            {children}
+            {path.includes('checkout') ? <CartSummary /> : <TabMenu />}
+            <SideMenu />
+         </main>
          {!hasFooter && (
             <footer>
                <Footer />

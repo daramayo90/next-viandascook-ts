@@ -1,66 +1,53 @@
-/* .navbarWeb {
-   position: relative;
-   background-color: rgb(10, 10, 10);
-} */
-
-/* .navbarAuth {
-   background-color: transparent;
-} */
-
 .navbar {
-   position: relative;
+   position: fixed;
+   top: 0;
    display: flex;
    flex-direction: row;
    justify-content: flex-end;
    align-items: center;
    width: 100%;
-   height: 100%;
    z-index: 30;
 }
 
-.navbar > .menu {
+.scroll {
+   background-color: rgb(100, 146, 14);
+}
+
+.navbar > .container {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   width: 100%;
+   height: 5rem;
+   padding: 1rem 0.5rem;
+}
+
+.navbar > .container > .menu {
    display: none;
 }
 
-.navbar > .logo {
-   position: absolute;
-   margin-left: auto;
-   margin-right: auto;
-   top: 0;
-   left: 0;
-   right: 0;
-   width: 50%;
-   min-width: 170px;
-   max-width: 220px;
+.navbar > .container > .logo {
+   width: 35%;
    cursor: pointer;
 }
 
-/* .navbarAuth > .logo {
-   min-width: 260px;
-   max-width: 420px;
-   z-index: 200;
-} */
-
-.navbar > .logo > .nextImage {
+.navbar > .container > .logo > .nextImage {
    width: 100%;
-   z-index: 200;
 }
 
-.navbar > .logo > .nextImage > .openInMobile {
+.navbar > .container > .logo > .nextImage > .openInMobile {
    display: block;
 }
 
-.navbar > .logo > .nextImage > .openInDesktop {
+.navbar > .container > .logo > .nextImage > .openInDesktop {
    display: none;
 }
 
-.navbar > .hamburgerMenu {
-   margin-top: 20px;
-   margin-right: 15px;
+.navbar > .container > .hamburgerMenu {
    cursor: pointer;
 }
 
-.navbar > .hamburgerMenu > .btn {
+.navbar > .container > .hamburgerMenu > .btn {
    position: relative;
    width: 30px;
    height: 14px;
@@ -69,7 +56,7 @@
    padding: 0;
 }
 
-.navbar > .hamburgerMenu > .btn > span {
+.navbar > .container > .hamburgerMenu > .btn > span {
    position: absolute;
    left: 0px;
    top: 0px;
@@ -79,29 +66,29 @@
    transition: 0.1s ease-in;
 }
 
-.navbar > .hamburgerMenu > .open > span {
+.navbar > .container > .hamburgerMenu > .open > span {
    background: var(--black);
 }
 
-.navbar > .hamburgerMenu > .btn > span:nth-child(2) {
+.navbar > .container > .hamburgerMenu > .btn > span:nth-child(2) {
    top: 7px;
 }
 
-.navbar > .hamburgerMenu > .btn > span:nth-child(3) {
+.navbar > .container > .hamburgerMenu > .btn > span:nth-child(3) {
    top: 13.5px;
 }
 
-.navbar > .hamburgerMenu > .open > span:first-child {
+.navbar > .container > .hamburgerMenu > .open > span:first-child {
    transform: rotate(45deg);
    top: 10px;
 }
 
-.navbar > .hamburgerMenu > .open > span:nth-child(2) {
+.navbar > .container > .hamburgerMenu > .open > span:nth-child(2) {
    width: 0%;
    opacity: 0;
 }
 
-.navbar > .hamburgerMenu > .open > span:nth-child(3) {
+.navbar > .container > .hamburgerMenu > .open > span:nth-child(3) {
    transform: rotate(-45deg);
    top: 10px;
 }
@@ -117,7 +104,11 @@
       background-color: transparent;
    } */
 
-   .navbar > .logo {
+   .navbar > .container {
+      height: 7rem;
+   }
+
+   .navbar > .container > .logo {
       margin-left: 0;
       top: 0;
       width: 100%;
@@ -125,32 +116,31 @@
       max-width: 380px;
    }
 
-   .navbar > .logo > .nextImage > .openInMobile {
+   .navbar > .container > .logo > .nextImage > .openInMobile {
       display: none;
    }
 
-   .navbar > .logo > .nextImage > .openInDesktop {
+   .navbar > .container > .logo > .nextImage > .openInDesktop {
       display: block;
    }
 
-   .navbar > .menu {
+   .navbar > .container > .menu {
       display: flex;
       align-items: center;
       justify-content: space-between;
       width: 100%;
       height: 97px;
-      padding-left: 380px;
       padding-right: 50px;
    }
 
-   .navbar > .menu > .container {
+   .navbar > .container > .menu > .container {
       display: flex;
       align-items: center;
       justify-content: flex-start;
       width: 60%;
    }
 
-   .navbar > .menu .linkItem {
+   .navbar > .container > .menu .linkItem {
       position: relative;
       margin: 0 1rem;
       text-decoration: none;
@@ -158,14 +148,14 @@
       cursor: pointer;
    }
 
-   .navbar > .menu .linkItem > span {
+   .navbar > .container > .menu .linkItem > span {
       display: inline-block;
       position: relative;
       color: var(--white);
       font-size: 1.4rem;
    }
 
-   .navbar > .menu .linkItem > span::after {
+   .navbar > .container > .menu .linkItem > span::after {
       content: '';
       position: absolute;
       bottom: 0;
@@ -179,29 +169,29 @@
       transform-origin: bottom left;
    }
 
-   .navbar > .menu .linkItem:hover > span::after {
+   .navbar > .container > .menu .linkItem:hover > span::after {
       transform: scaleX(1);
    }
 
-   .navbar > .menu .linkItem > .auth {
+   .navbar > .container > .menu .linkItem > .auth {
       padding: 7px 15px;
       font-size: 1.3rem;
       letter-spacing: unset;
       transition: all 0.2s ease-in-out;
    }
 
-   .navbar > .menu .linkItem > .auth:hover {
+   .navbar > .container > .menu .linkItem > .auth:hover {
       background-color: hsla(0, 0%, 100%, 0.2);
    }
 
-   .navbar > .menu > .account {
+   .navbar > .container > .menu > .account {
       display: flex;
       align-items: center;
       justify-content: flex-end;
       width: 40%;
    }
 
-   .navbar > .menu > .dropdown {
+   .navbar > .container > .menu > .dropdown {
       position: relative;
       display: inline-block;
    }
@@ -223,7 +213,7 @@
       display: block;
    }
 
-   .navbar > .hamburgerMenu {
+   .navbar > .container > .hamburgerMenu {
       display: none;
    }
 }

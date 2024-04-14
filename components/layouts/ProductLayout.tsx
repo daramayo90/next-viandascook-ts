@@ -1,6 +1,6 @@
 import { FC, ReactNode } from 'react';
 import Head from 'next/head';
-import { SideMenu } from '../ui';
+import { Footer, SideMenu } from '../ui';
 import { ShopNavbar } from '../navbar';
 import { IProduct } from '../../interfaces';
 
@@ -34,14 +34,20 @@ export const ProductLayout: FC<Props> = ({ children, product }) => {
                key='recipe-jsonld'
             />
          </Head>
+         <header>
+            <nav>
+               <ShopNavbar pageTitle={''} menuPage={false} backCart={false} />
+            </nav>
+         </header>
 
-         <nav>
-            <ShopNavbar pageTitle={''} menuPage={false} backCart={false} />
-         </nav>
+         <main>
+            {children}
+            <SideMenu />
+         </main>
 
-         <SideMenu />
-
-         <main>{children}</main>
+         <footer>
+            <Footer />
+         </footer>
       </>
    );
 };

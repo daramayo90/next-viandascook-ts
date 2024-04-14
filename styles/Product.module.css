@@ -1,6 +1,6 @@
 .product {
    width: 90vw;
-   margin: 5rem auto;
+   margin: 8rem auto;
 }
 
 .product > .topSection {
@@ -233,7 +233,6 @@
       align-items: center;
       position: relative;
       max-width: 1050px;
-      margin: 5rem auto;
    }
 
    .product > .topSection > .image {

@@ -43,14 +43,12 @@ export const TabMenu = () => {
    };
 
    return (
-      <footer className={styles.tabMenu}>
+      <section className={styles.tabMenu}>
          <div className={styles.container}>
             {menuItems.map(({ nav, icon, name }) => (
                <div key={name} className={styles.option} onClick={() => navigateTo(nav)}>
                   <div
-                     className={
-                        path.includes(nav) ? `${styles.icon} tabSelected` : `${styles.icon}`
-                     }>
+                     className={path.includes(nav) ? `${styles.icon} tabSelected` : `${styles.icon}`}>
                      {icon}
                      {name === 'Carrito' && (
                         <span className={numberOfItems !== 0 ? `${styles.quantity}` : 'noDisplay'}>
@@ -60,14 +58,12 @@ export const TabMenu = () => {
                   </div>
 
                   <div
-                     className={
-                        path.includes(nav) ? `${styles.name} tabSelected` : `${styles.name}`
-                     }>
+                     className={path.includes(nav) ? `${styles.name} tabSelected` : `${styles.name}`}>
                      {name}
                   </div>
                </div>
             ))}
          </div>
-      </footer>
+      </section>
    );
 };

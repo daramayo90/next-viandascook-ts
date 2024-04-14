@@ -1,10 +1,27 @@
 .shopNavbar {
    position: fixed;
    top: 0;
-   width: 100vw;
-   height: 4rem;
+   width: 100%;
    background-color: #fff;
    z-index: 30;
+}
+
+.promo {
+   width: 100%;
+   background-color: var(--primaryHover);
+   text-align: center;
+}
+
+.promo > .text {
+   padding: 5px 10px;
+   font-size: 0.9rem;
+   font-weight: 400;
+   color: var(--white);
+}
+
+.promo > .text > strong {
+   font-weight: 500;
+   color: rgb(177, 216, 68);
 }
 
 .container {
@@ -15,7 +32,7 @@
    position: relative;
    max-width: 480px;
    width: 90vw;
-   height: 100%;
+   height: 3rem;
    margin: 0 auto;
    font-size: 1.5rem;
    font-weight: 500;
@@ -118,6 +135,19 @@
 
 @media (min-width: 720px) {
    .container {
+      height: 4rem;
       max-width: 1050px;
+   }
+
+   .promo > .text {
+      padding: 15px 10px;
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--white);
+   }
+
+   .promo > .text > strong {
+      font-weight: 500;
+      color: #ffa245;
    }
 }
