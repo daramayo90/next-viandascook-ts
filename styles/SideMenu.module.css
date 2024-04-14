@@ -33,7 +33,7 @@
 }
 
 .sidemenu > .options > .list {
-   margin-top: 4rem;
+   margin-top: 7rem;
    text-align: center;
    list-style: none;
    width: 65%;
@@ -192,7 +192,6 @@
 
    .sidemenu > .options > .list {
       width: 55%;
-      margin-top: 4rem;
       text-align: left;
    }
 

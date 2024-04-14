@@ -13,6 +13,7 @@ export const removeCookies = () => {
    Cookies.remove('dni');
 
    localStorage.removeItem('cart');
+   localStorage.removeItem('isCrossSellingShown');
 
    Cookies.remove('cart-middleware');
    Cookies.remove('shipping');
