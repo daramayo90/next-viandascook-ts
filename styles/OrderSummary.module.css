@@ -70,17 +70,16 @@
    color: #596068;
    background-color: #fff;
    background-clip: padding-box;
-   border: 1px solid #ced4da;
+   border: 1px solid var(--primary);
    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-.orderSummary > .summary > .shipping > .formCalculation > select:focus,
 .orderSummary > .summary > .shipping > .formCalculation > input:focus {
    color: #495057;
    background-color: #fff;
-   border-color: #80bdff;
+   border-color: var(--primary);
    outline: 0;
-   box-shadow: 0 0 0 0.2rem rgb(0 123 255 / 25%);
+   box-shadow: 0 0 0 0.2rem rgb(118 144 46 / 25%);
 }
 
 .orderSummary > .summary > .shipping > .formCalculation > input::placeholder {
@@ -113,6 +112,56 @@
    color: var(--error);
 }
 
+.orderSummary > .cartForm {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   margin-top: 1rem;
+}
+
+.orderSummary > .cartForm > .inputText {
+   width: 90%;
+   margin: 0.5rem 0;
+}
+
+.orderSummary > .cartForm > .inputText > span {
+   display: block;
+   width: 100%;
+   margin-bottom: 0.3rem;
+}
+
+.orderSummary > .cartForm > .inputText > input,
+.orderSummary > .cartForm > .inputText > select {
+   display: block;
+   width: 100%;
+   padding: 15px;
+   height: 20px;
+   border-radius: 4px;
+   font-size: 0.95rem;
+   font-weight: 400;
+   line-height: 1.5;
+   color: #596068;
+   background-color: #fff;
+   background-clip: padding-box;
+   border: 1px solid var(--primary);
+   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.orderSummary > .cartForm > .inputText > input::placeholder,
+.orderSummary > .cartForm > .inputText > select::placeholder {
+   color: rgba(170, 170, 170, 0.9);
+   font-size: 0.95rem;
+}
+
+.orderSummary > .cartForm .inputText > input:focus {
+   color: #495057;
+   background-color: #fff;
+   border-color: var(--primary);
+   outline: 0;
+   box-shadow: 0 0 0 0.2rem rgb(118 144 46 / 25%);
+}
+
 .orderSummary > .checkoutButton {
    width: 60%;
    max-width: 200px;
@@ -129,14 +178,14 @@
 
 @media (min-width: 1000px) {
    .orderSummary {
-      width: 100%;
-      margin: 1rem;
-      max-width: none;
-      max-height: 450px;
-      margin-left: 5rem;
+      margin: 1rem 0;
    }
 
    .summaryDiscount {
       font-size: 1rem;
+   }
+
+   .orderSummary > .checkoutButton {
+      margin: 0.5rem auto;
    }
 }

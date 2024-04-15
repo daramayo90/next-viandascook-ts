@@ -94,6 +94,8 @@ const updateProducts = async (req: NextApiRequest, res: NextApiResponse<Data>) =
                      Authorization: `Bearer ${API_KEY}`,
                   },
                });
+
+               updatedProducts.push(product.name);
             } catch (postError: any) {
                if (postError.response && postError.response.status === 429) {
                   // Hit the rate limit, wait for 1 minute and try again

@@ -1,26 +1,61 @@
-import { useContext } from 'react';
+import { ChangeEvent, FC, useContext, useEffect, useState } from 'react';
 
 import { useOrderSummaryts } from '../../hooks';
-import { CartContext } from '../../context';
+import { AuthContext, CartContext } from '../../context';
 
 import { SubmitButton } from '../ui';
-import { currency } from '../../utils';
+import { validations, currency } from '../../utils';
 
 import { Shipping, Discounts } from './';
 
+import Cookies from 'js-cookie';
+
 import styles from '../../styles/OrderSummary.module.css';
+import { viandasApi } from '../../axiosApi';
 
-// interface Props {
-//    orderValues?: {
-//       numberOfItems: number;
-//       subTotal: number;
-//       total: number;
-//    };
-// }
-
-export const OrderSummary = () => {
+export const OrderSummary: FC = () => {
    const { submitErrors, summaryValues, handleSubmit } = useOrderSummaryts();
-   const { numberOfItems } = useContext(CartContext);
+   const { numberOfItems, cart, total } = useContext(CartContext);
+   const { user } = useContext(AuthContext);
+
+   const customerEmail = user ? user.email : Cookies.get('email') || '';
+
+   const [email, setEmail] = useState(customerEmail);
+   const [isValidEmail, setIsValidEmail] = useState(false);
+
+   const handleEmailChange = (event: ChangeEvent<HTMLInputElement>) => {
+      const input = event.target.value;
+
+      setIsValidEmail(false);
+      setEmail(input);
+
+      if (validations.isEmail(event.target.value) === undefined) {
+         setIsValidEmail(true);
+      }
+   };
+
+   const addCartToMailchimp = async () => {
+      try {
+         await viandasApi.post('/mailchimp/abandoned-cart', { cart, total, email });
+      } catch (error) {
+         console.log('Abandoned Cart Error', error);
+      }
+   };
+
+   useEffect(() => {
+      if (isValidEmail) {
+         Cookies.set('email', email);
+
+         addCartToMailchimp();
+      }
+   }, [cart, email]);
+
+   useEffect(() => {
+      if (email) {
+         setIsValidEmail(true);
+         addCartToMailchimp();
+      }
+   }, []);
 
    return (
       <section className={styles.orderSummary}>
@@ -69,9 +104,18 @@ export const OrderSummary = () => {
             </span>
          </div>
 
-         <div className={styles.checkoutButton} onClick={handleSubmit}>
-            <SubmitButton content='Continuar' />
-         </div>
+         <form className={styles.cartForm}>
+            <label className={styles.inputText}>
+               <span>Email:</span>
+               <input type='email' value={email} onChange={handleEmailChange} />
+            </label>
+         </form>
+
+         {isValidEmail && (
+            <div className={styles.checkoutButton} onClick={handleSubmit}>
+               <SubmitButton content='Continuar' />
+            </div>
+         )}
 
          {submitErrors && <span className={styles.error}>Calcular el envío antes de continuar</span>}
       </section>

@@ -1,11 +1,13 @@
 import { FC, useContext, useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 
+import Cookies from 'js-cookie';
+
 import { viandasApi } from '../../axiosApi';
 
 import { IPaymentMethods } from '../../interfaces/order';
 
-import { OrdersContext } from '../../context';
+import { AuthContext, OrdersContext } from '../../context';
 import { SubmitButton } from '../ui';
 
 import styles from '../../styles/Checkout.module.css';
@@ -59,10 +61,21 @@ const addMailchimpOrder = async (orderId: string) => {
    }
 };
 
+const removeAbandonedCart = async (email: string) => {
+   try {
+      await viandasApi.delete('/mailchimp/abandoned-cart', { data: { email } });
+   } catch (error) {
+      console.log(error);
+   }
+};
+
 export const Posting: FC = () => {
    const router = useRouter();
 
    const { createOrder, createMPOrder, addMailchimpClient } = useContext(OrdersContext);
+   const { user } = useContext(AuthContext);
+
+   const email = user ? user.email : Cookies.get('email') || '';
 
    const [isPosting, setIsPosting] = useState(false);
    const [errorMsg, setErrorMsg] = useState('');
@@ -96,6 +109,7 @@ export const Posting: FC = () => {
 
       await addMailchimpClient(message);
       await addMailchmpCustomer(message);
+      await removeAbandonedCart(email);
 
       if (paymentMethod !== 'mercadopago') {
          await addMailchimpOrder(message);
