@@ -78,6 +78,7 @@
 
 .product > .card > .info > .name {
    width: 90%;
+   cursor: pointer;
 }
 
 .product > .card > .info > .tags {
