@@ -1,80 +1,87 @@
 .types {
-   display: flex;
-   flex-direction: row;
-   flex-wrap: wrap;
-   align-items: flex-start;
-   justify-content: flex-start;
-   position: -webkit-sticky;
    width: 90%;
    margin: 0 auto;
+   position: -webkit-sticky;
 }
 
 .types > .container {
    display: flex;
    justify-content: flex-start;
    width: 100%;
-   max-width: 440px;
-   margin: 0 auto;
    padding: 24px 0 20px;
    overflow: auto;
 }
 
 .types > .container > .type {
-   max-width: 100px;
-   margin-right: 22px;
-   height: fit-content;
+   height: 98px;
+   flex: 0 0 120px;
+   margin-right: 25px;
+   overflow: hidden;
    border-radius: 8px;
-   text-align: center;
-   font-size: 12px;
-   font-weight: 600;
-   cursor: pointer;
+   border: 1px solid var(--borderGrey);
 }
 
-.types > .container > .type > .borderImage {
-   display: inline-flex;
+.types > .container > .type.selected {
+   border: 1px solid var(--textColor);
+}
+
+.types > .container > .type > .b {
+   display: flex;
    flex-direction: column;
-   align-items: center;
-   justify-content: center;
-   width: 48px;
-   height: 48px;
-   background: #fff;
-   border: 1px solid #ddd;
-   border-radius: 200px;
+   justify-content: space-between;
+   width: 100%;
+   height: 100%;
 }
 
-.types > .container > .type > .borderSelected {
-   border: 2px solid #231f20;
-   font-weight: 800;
-}
-
-.types > .container > .type > .borderImage > .nextImage {
+.types > .container > .type > .b > .nextImage {
    display: flex;
    align-items: center;
    justify-content: center;
-   width: 50%;
+   position: relative;
+   width: 100%;
+   height: 70px;
    margin: 0 auto;
 }
 
-.types > .container > .type > span {
-   display: block;
-   margin: 10px 2px;
+.types > .container > .type > .b > .nextImage img {
+   width: 100%;
+   height: 100%;
+   border-radius: 8px;
+}
+
+.types > .container > .type > .b > span {
+   text-align: center;
+   font-size: 12px;
+   font-weight: 600;
 }
 
 @media (min-width: 720px) {
+   .types > .title {
+      max-width: 1100px;
+      margin: 1rem auto;
+      font-size: 1.3rem;
+   }
+
    .types > .container {
-      align-items: flex-start;
       max-width: 1100px;
       padding: 0;
+      margin: 0 auto;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
    }
 
    .types > .container > .type {
-      width: 120px;
-      font-size: 14px;
-      margin: 0;
+      margin-bottom: 25px;
+      height: 110px;
+      flex: 0 0 130px;
+      cursor: pointer;
    }
 
-   .types > .container > .type > .borderImage {
-      width: 56px;
-      height: 56px;
+   .types > .container > .type > .b > .nextImage {
+      height: 80px;
+   }
+
+   .types > .container > .type > .b > span {
+      font-size: 0.95rem;
    }
 }

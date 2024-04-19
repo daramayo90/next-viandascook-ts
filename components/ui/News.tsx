@@ -30,15 +30,6 @@ export const News: FC = () => {
                         // priority={true}
                      />
                   </div>
-                  <div className={styles.laptopBanner}>
-                     <Image
-                        src='/img/banner-news-waffles-laptop.jpg'
-                        alt='Promo 20% off - Lanzamiento Waffles'
-                        layout='fill'
-                        objectFit='cover'
-                        // priority={true}
-                     />
-                  </div>
                   <div className={styles.desktopBanner}>
                      <Image
                         src='/img/banner-news-waffles-desktop.jpg'

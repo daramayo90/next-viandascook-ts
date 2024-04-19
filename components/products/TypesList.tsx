@@ -17,20 +17,20 @@ export const TypesList: FC<Props> = ({ type, setType }) => {
 
    return (
       <div className={styles.types}>
+         <h3 className={styles.title}>Filtrar por categorías:</h3>
+
          <div className={styles.container}>
             {typesList.map(({ icon, name, model }) => (
-               <div key={name} className={styles.type} onClick={() => typeFilter(model)}>
-                  <div
-                     className={
-                        type === model
-                           ? `${styles.borderImage} ${styles.borderSelected}`
-                           : `${styles.borderImage}`
-                     }>
+               <div
+                  key={name}
+                  className={type === model ? `${styles.type} ${styles.selected}` : `${styles.type}`}
+                  onClick={() => typeFilter(model)}>
+                  <div className={styles.b}>
                      <div className={styles.nextImage}>
-                        <Image src={icon} alt={name} width={100} height={100} priority={true} />
+                        <Image src={icon} alt={name} layout='fill' objectFit='cover' />
                      </div>
+                     <span>{name}</span>
                   </div>
-                  <span>{name}</span>
                </div>
             ))}
          </div>
