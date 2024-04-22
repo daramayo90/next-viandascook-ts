@@ -17,33 +17,29 @@ export const News: FC = () => {
    };
 
    return (
-      <>
-         <a href='#menu-products' onClick={handleClick}>
-            <section className={styles.news}>
-               <div className={styles.container}>
-                  <div className={styles.mobileBanner}>
-                     <Image
-                        src='/img/banner-news-waffles-mobile.jpg'
-                        alt='Promo 20% off - Lanzamiento Waffles'
-                        layout='fill'
-                        objectFit='cover'
-                        // priority={true}
-                     />
-                  </div>
-                  <div className={styles.desktopBanner}>
-                     <Image
-                        src='/img/banner-news-waffles-desktop.jpg'
-                        alt='Promo 20% off - Lanzamiento Waffles'
-                        layout='fill'
-                        objectFit='cover'
-                        // priority={true}
-                     />
-                  </div>
+      <a href='#menu-products'>
+         <section className={styles.news}>
+            <div className={styles.container}>
+               <div className={styles.mobileBanner}>
+                  <Image
+                     src='/img/banner-news-mobile.jpg'
+                     alt='Promo 20% off - Lanzamiento Waffles'
+                     layout='fill'
+                     objectFit='cover'
+                     // priority={true}
+                  />
                </div>
-            </section>
-         </a>
-
-         {/* {isDialogOpen && <NewsDialog setIsDialogOpen={setIsDialogOpen} />} */}
-      </>
+               <div className={styles.desktopBanner}>
+                  <Image
+                     src='/img/banner-news.jpg'
+                     alt='Promo 20% off - Lanzamiento Waffles'
+                     layout='fill'
+                     objectFit='cover'
+                     // priority={true}
+                  />
+               </div>
+            </div>
+         </section>
+      </a>
    );
 };
