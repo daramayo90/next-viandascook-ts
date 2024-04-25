@@ -1,10 +1,38 @@
 import { FC, MouseEvent } from 'react';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
-
+import Link from 'next/link';
 import Image from 'next/image';
 
+import { Slide } from 'react-slideshow-image';
+
 import styles from '../../styles/News.module.css';
+
+const banners = [
+   {
+      name: 'Promo 10% off - Descuento Primera Compra',
+      img: '/img/banner-news-mobile.jpg',
+      bannerStyle: 'mobileBanner',
+      isMobile: true,
+   },
+   {
+      name: 'Promo 20% off - Lanzamiento Waffles',
+      img: '/img/banner-news-waffles-mobile.jpg',
+      bannerStyle: 'mobileBanner',
+      isMobile: true,
+   },
+   {
+      name: 'Promo 10% off - Descuento Primera Compra',
+      img: '/img/banner-news-desktop.jpg',
+      bannerStyle: 'desktopBanner',
+      isMobile: false,
+   },
+   {
+      name: 'Promo 20% off - Lanzamiento Waffles',
+      img: '/img/banner-news-waffles-desktop.jpg',
+      bannerStyle: 'desktopBanner',
+      isMobile: false,
+   },
+];
 
 export const News: FC = () => {
    // const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -16,30 +44,34 @@ export const News: FC = () => {
       window.location.hash = 'menu-products';
    };
 
+   const properties = {
+      prevArrow: <button style={{ display: 'none' }}></button>,
+      nextArrow: <button style={{ display: 'none' }}></button>,
+   };
+
+   const mobileBanners = banners.filter((banner) => banner.isMobile === true);
+   const desktopBanners = banners.filter((banner) => banner.isMobile === false);
+
    return (
-      <a href='#menu-products'>
-         <section className={styles.news}>
-            <div className={styles.container}>
-               <div className={styles.mobileBanner}>
-                  <Image
-                     src='/img/banner-news-mobile.jpg'
-                     alt='Promo 20% off - Lanzamiento Waffles'
-                     layout='fill'
-                     objectFit='cover'
-                     // priority={true}
-                  />
-               </div>
-               <div className={styles.desktopBanner}>
-                  <Image
-                     src='/img/banner-news.jpg'
-                     alt='Promo 20% off - Lanzamiento Waffles'
-                     layout='fill'
-                     objectFit='cover'
-                     // priority={true}
-                  />
-               </div>
-            </div>
-         </section>
-      </a>
+      // <a href='#menu-products'>
+      <section className={styles.news}>
+         <div className={styles.container}>
+            <Slide easing='ease' duration={3500} {...properties}>
+               {mobileBanners.map(({ name, img, bannerStyle }) => (
+                  <div key={name} className={styles[bannerStyle]}>
+                     <Image src={img} alt={name} layout='fill' objectFit='cover' />
+                  </div>
+               ))}
+            </Slide>
+            <Slide easing='ease' duration={3500} {...properties}>
+               {desktopBanners.map(({ name, img, bannerStyle }) => (
+                  <div key={name} className={styles[bannerStyle]}>
+                     <Image src={img} alt={name} layout='fill' objectFit='cover' />
+                  </div>
+               ))}
+            </Slide>
+         </div>
+      </section>
+      // </a>
    );
 };

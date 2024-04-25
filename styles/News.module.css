@@ -4,29 +4,49 @@
 
 .news > .container {
    position: relative;
-   height: 100vw;
-   cursor: pointer;
+   /* cursor: pointer; */
+   margin-bottom: 1rem;
 }
 
-.news > .container > .laptopBanner {
+.news > .container .desktopBanner {
    display: none;
 }
 
-.news > .container > .desktopBanner {
-   display: none;
+.news > .container .mobileBanner {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   margin: 0 auto;
+}
+
+.news > .container span {
+   position: unset !important;
+   width: 100% !important;
+   border: 10px red solid;
+}
+
+.news > .container img {
+   height: unset !important;
+   width: 100% !important;
+   position: relative !important;
+   border: 10px red solid;
 }
 
 @media (min-width: 620px) {
    .news > .container {
       height: 41vw;
+      margin-bottom: 2rem;
    }
 
-   .news > .container > .mobileBanner {
+   .news > .container .mobileBanner {
       display: none;
    }
 
-   .news > .container > .desktopBanner {
-      display: block;
+   .news > .container .desktopBanner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0 auto;
    }
 }
 
