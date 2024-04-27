@@ -11,10 +11,8 @@
    align-items: center;
    position: relative;
    width: 100%;
-   padding: 10px 55px 10px 40px;
+   border: none;
    letter-spacing: 1.5px;
-   border-color: var(--white);
-   color: var(--white);
    transition: all 0.2s ease-in-out;
 }
 
@@ -24,28 +22,24 @@
    padding-right: 55px;
 }
 
+.linkTo > .linkButton > .text {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   position: relative;
+   height: 20px;
+}
+
 .linkTo > .linkButton > .icon {
-   position: absolute;
-   margin-left: 7rem;
-   font-size: 1.4rem;
-   color: var(--white);
+   position: relative;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 20px;
 }
 
 @media (min-width: 720px) {
    .linkTo > .linkButton {
-      padding: 10px 40px;
       font-size: 1.1rem;
-   }
-
-   .linkTo > .linkButton > .icon {
-      opacity: 0;
-      margin-left: 6rem;
-      transition: all 0.2s ease-in-out;
-   }
-
-   .linkTo > .linkButton:hover > .icon {
-      opacity: 1;
-      margin-left: 8rem;
-      z-index: 10;
    }
 }

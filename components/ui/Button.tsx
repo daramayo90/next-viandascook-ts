@@ -21,6 +21,10 @@ export const Button: FC<Props> = ({ href, content, color, border, background, di
       background,
    };
 
+   const styleText = {
+      color,
+   };
+
    const styleIcon = {
       color,
    };
@@ -29,7 +33,9 @@ export const Button: FC<Props> = ({ href, content, color, border, background, di
       <Link href={href} passHref legacyBehavior prefetch={false}>
          <a className={styles.linkTo}>
             <button className={styles.linkButton} style={styleButton} disabled={disabled}>
-               {content}
+               <span className={styles.text} style={styleText}>
+                  {content}
+               </span>
                <BiChevronRight className={styles.icon} style={styleIcon} />
             </button>
          </a>

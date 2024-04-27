@@ -3,6 +3,7 @@ import { GetStaticProps, NextPage } from 'next';
 import { MainLayout } from '../components/layouts';
 import { ProductSlides } from '../components/products';
 import {
+   AditionalInfo,
    Banner,
    Button,
    CommonQuestions,
@@ -41,20 +42,37 @@ const LandingPage: NextPage<Props> = ({ products }) => {
             </p>
 
             <div className={styles.btn}>
-               <Button href={'/como-funciona'} content={'Comenzá Ya'} background='var(--secondary)' />
+               <Button
+                  href={'/como-funciona'}
+                  content={'Comenzá Ya'}
+                  background='var(--secondary)'
+                  color='white'
+               />
             </div>
 
             <ProductSlides products={products} />
 
             <div className={styles.btn}>
-               <Button href={'/menu'} content={'Más platos'} background='var(--secondary)' />
+               <Button
+                  href={'/menu'}
+                  content={'Más platos'}
+                  background='var(--secondary)'
+                  color='white'
+               />
             </div>
 
             <Values />
 
             <div className={styles.btn}>
-               <Button href={'/menu'} content={'¡Comprar!'} background='var(--secondary)' />
+               <Button
+                  href={'/menu'}
+                  content={'¡Comprar!'}
+                  background='var(--secondary)'
+                  color='white'
+               />
             </div>
+
+            <AditionalInfo />
 
             <CommonQuestions />
 

@@ -1,8 +1,8 @@
 export const commonQuestions = [
-   {
-      title: '¿Cómo hago mi pedido?',
-      content: `Ingresá en nuestra web y creá tu usuario en la sección “Registrarse”. (También podes hacer pedido sin registro) Luego, elegís los platos que quieras y se van a ir sumando a tu carrito. Por último seleccioná qué día lo querés recibir y realizá tu pago con el medio que prefieras.`,
-   },
+   // {
+   //    title: '¿Cómo hago mi pedido?',
+   //    content: `Ingresá en nuestra web y creá tu usuario en la sección “Registrarse”. (También podes hacer pedido sin registro) Luego, elegís los platos que quieras y se van a ir sumando a tu carrito. Por último seleccioná qué día lo querés recibir y realizá tu pago con el medio que prefieras.`,
+   // },
    {
       title: '¿Venden packs o combos armados de viandas?',
       content: `Las viandas se comercializan de forma individual y podes armar tu pedido o pack como desees. En caso que quieras comprar en cantidad, podrás aplicar los descuentos vigentes actuales dependiendo del número de viandas que compraste.`,

@@ -1,4 +1,5 @@
 export * from './Accordion';
+export * from './AditionalInfo';
 export * from './Banner';
 export * from './Breadcrumbs';
 export * from './Button';
