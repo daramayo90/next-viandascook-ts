@@ -9,8 +9,8 @@ export const AditionalInfo = () => {
                <h3 className={styles.title}>¿Cómo hago mi pedido en Viandas Cook?</h3>
                <ul className={styles.list}>
                   <li>
-                     Ingresá a nuestra web y creá tu usuario en la sección 'Registrarse' (o hacé tu
-                     pedido sin registrarte).
+                     Ingresá a nuestra web y creá tu usuario en la sección <strong>Registrarse</strong>{' '}
+                     (o hacé tu pedido sin registrarte).
                   </li>
                   <li>Elegí los platos que quieras y sumalos a tu carrito.</li>
                   <li>Seleccioná el día que lo querés recibir.</li>
