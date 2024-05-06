@@ -55,25 +55,6 @@ export const CartProvider: FC<Props> = ({ children }) => {
       if (state.cart.length > 0) {
          Cookies.set('cart-middleware', 'true');
          localStorage.setItem('cart', JSON.stringify(state.cart));
-
-         const syncCartToMailchimp = async () => {
-            try {
-               const products = state.cart.map((product: ICartProduct) => ({
-                  id: product._id,
-                  name: product.name,
-                  price: product.price,
-                  quantity: product.quantity,
-               }));
-
-               const total = state.total;
-
-               await viandasApi.post('/mailchimp/update-cart', { products, total });
-            } catch (error) {
-               console.error('Mailchimp cart error', error);
-            }
-         };
-
-         syncCartToMailchimp();
       }
    }, [state.cart]);
 
