@@ -16,12 +16,6 @@
    transition: all 0.2s ease-in-out;
 }
 
-.linkTo > .linkButton:focus,
-.linkTo > .linkButton:hover {
-   background-color: hsla(0, 0%, 100%, 0.2);
-   padding-right: 55px;
-}
-
 .linkTo > .linkButton > .text {
    display: flex;
    justify-content: center;

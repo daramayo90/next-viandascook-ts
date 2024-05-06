@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 import { Slide } from 'react-slideshow-image';
+import { FaChevronCircleLeft, FaChevronCircleRight } from 'react-icons/fa';
 
 import styles from '../../styles/News.module.css';
 
@@ -44,9 +45,14 @@ export const News: FC = () => {
       window.location.hash = 'menu-products';
    };
 
-   const properties = {
-      prevArrow: <button style={{ display: 'none' }}></button>,
-      nextArrow: <button style={{ display: 'none' }}></button>,
+   const propertiesMobile = {
+      prevArrow: <FaChevronCircleLeft className={styles.sliderBtnMobile} />,
+      nextArrow: <FaChevronCircleRight className={styles.sliderBtnMobile} />,
+   };
+
+   const propertiesDesktop = {
+      prevArrow: <FaChevronCircleLeft className={styles.sliderBtnDesktop} />,
+      nextArrow: <FaChevronCircleRight className={styles.sliderBtnDesktop} />,
    };
 
    const mobileBanners = banners.filter((banner) => banner.isMobile === true);
@@ -56,14 +62,14 @@ export const News: FC = () => {
       // <a href='#menu-products'>
       <section className={styles.news}>
          <div className={styles.container}>
-            <Slide easing='ease' duration={3500} {...properties}>
+            <Slide easing='ease' duration={3500} {...propertiesMobile}>
                {mobileBanners.map(({ name, img, bannerStyle }) => (
                   <div key={name} className={styles[bannerStyle]}>
                      <Image src={img} alt={name} layout='fill' objectFit='cover' />
                   </div>
                ))}
             </Slide>
-            <Slide easing='ease' duration={3500} {...properties}>
+            <Slide easing='ease' duration={3500} {...propertiesDesktop}>
                {desktopBanners.map(({ name, img, bannerStyle }) => (
                   <div key={name} className={styles[bannerStyle]}>
                      <Image src={img} alt={name} layout='fill' objectFit='cover' />

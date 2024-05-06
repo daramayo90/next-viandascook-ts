@@ -170,6 +170,7 @@ const ProductsPage: NextPage<Props> = ({ products }) => {
                      href={'/cart'}
                      content={'Ver Carrito'}
                      background='var(--primary)'
+                     color='var(--white)'
                      border='none'
                   />
                </div>
