@@ -62,15 +62,15 @@
       position: relative;
       background-color: var(--primaryStrong);
       overflow: hidden;
-      height: 620px;
+      height: 540px;
 
       .cellphoneImg {
          position: absolute;
-         top: 75%;
-         left: 55%;
+         bottom: -10%;
+         left: 10%;
          width: 100%;
-         max-width: 600px;
-         transform: translate(-50%, -50%);
+         max-width: 400px;
+         // transform: translate(-50%, -50%);
          z-index: 1;
       }
 
@@ -78,13 +78,14 @@
          position: relative;
          width: 95%;
          margin: 0 auto;
+         padding: 2rem 0;
          text-align: center;
          z-index: 2;
 
          .text,
          .text > strong {
             color: var(--white);
-            line-height: 1.5;
+            line-height: 1.6;
          }
       }
    }
@@ -259,7 +260,6 @@
          font-size: 1.7rem;
          color: var(--white);
          font-weight: 400;
-         text-transform: lowercase;
       }
 
       .container {
@@ -413,7 +413,6 @@
 
       .container {
          max-width: 1000px;
-         padding: 2rem 0;
 
          .text {
             font-size: 1.1rem;

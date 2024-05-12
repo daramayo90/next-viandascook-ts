@@ -22,6 +22,12 @@
    width: 100%;
 }
 
+.ourMenu > .container .sliderBtn {
+   font-size: 2rem;
+   color: var(--black);
+   top: 33%;
+}
+
 /* Slider */
 
 .box {

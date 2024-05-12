@@ -236,6 +236,11 @@ button.nav.default-nav,
    z-index: 1;
 }
 
+.react-slideshow-container .default-nav:hover,
+.react-slideshow-container .default-nav:focus {
+   background: transparent;
+}
+
 .react-slideshow-container .default-nav:first-of-type {
    z-index: 2;
 }

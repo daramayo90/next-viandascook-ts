@@ -44,7 +44,7 @@ export const AdditionalInfo = () => {
                      <Link href='/mi-cuenta/puntos'>Mi Cuenta</Link>
                   </strong>{' '}
                   podrás encontrar todos tus puntos acumulados y los desafíos para obtener{' '}
-                  <strong>más puntos</strong>
+                  <strong>más puntos</strong>.
                </p>
             </div>
 

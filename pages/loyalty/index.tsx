@@ -1,9 +1,8 @@
 import { NextPage } from 'next';
-import Image from 'next/image';
-import Link from 'next/link';
 
 import { HomeLayout } from '../../components/layouts';
-import { Breadcrumbs, Button } from '../../components/ui';
+import { Breadcrumbs } from '../../components/ui';
+
 import {
    AdditionalInfo,
    Benefits,
@@ -13,7 +12,8 @@ import {
    Presentation,
    ViandLovers,
 } from '../../components/ui/loyalty';
-import { cloudDiscountsPath, cloudImagesPath, howItWorks, seo } from '../../utils';
+
+import { seo } from '../../utils';
 
 import styles from '../../styles/loyalty/Loyalty.module.scss';
 

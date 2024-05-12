@@ -9,6 +9,7 @@ import { IProduct } from '../../interfaces';
 import 'react-slideshow-image/dist/styles.css';
 import styles from '../../styles/ProductSlides.module.css';
 import { Button } from '../ui';
+import { FaChevronCircleLeft, FaChevronCircleRight } from 'react-icons/fa';
 
 interface Props {
    products: IProduct[];
@@ -33,6 +34,11 @@ export const ProductSlides: FC<Props> = ({ products, title }) => {
       },
    ];
 
+   const properties = {
+      prevArrow: <FaChevronCircleLeft className={styles.sliderBtn} />,
+      nextArrow: <FaChevronCircleRight className={styles.sliderBtn} />,
+   };
+
    return (
       <section className={styles.ourMenu}>
          {title ? (
@@ -42,7 +48,12 @@ export const ProductSlides: FC<Props> = ({ products, title }) => {
          )}
 
          <div className={styles.container}>
-            <Slide easing='ease' duration={3000} indicators={true} responsive={responsiveSettings}>
+            <Slide
+               easing='ease'
+               duration={3000}
+               indicators={true}
+               responsive={responsiveSettings}
+               {...properties}>
                {products.map((product) => (
                   <Link key={product._id} href={`/plato/${product.slug}`}>
                      <div className={styles.box}>
