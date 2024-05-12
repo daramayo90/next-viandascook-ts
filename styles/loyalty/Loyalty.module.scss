@@ -92,7 +92,7 @@
 
    .howItWorks {
       padding: 2rem 0;
-      background-color: var(--primary);
+      background-color: var(--primaryStrong);
 
       .title {
          text-align: center;
@@ -251,7 +251,7 @@
 
    .benefits {
       padding: 1rem 0;
-      background-color: var(--primaryStrong);
+      background-color: var(--primary);
 
       .title {
          margin: 1.5rem 0;
@@ -587,5 +587,11 @@
 
    .loyalty > .intro > .container > .cellphoneImg {
       width: 820px;
+   }
+
+   .loyalty > .viandlovers > .container > .personsImg {
+      top: 15%;
+      left: 60%;
+      max-width: 450px;
    }
 }
