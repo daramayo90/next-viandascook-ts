@@ -1,6 +1,7 @@
 import Image from 'next/image';
 
 import { Button } from './Button';
+import { cloudImagesPath } from '../../utils';
 
 import styles from '../../styles/Banner.module.css';
 
@@ -8,7 +9,7 @@ export const Banner = () => {
    return (
       <section className={styles.banner}>
          <Image
-            src='https://res.cloudinary.com/viandascook/image/upload/v1701180029/imgs/l7pxb4l3eftmhwrgqq4l.jpg'
+            src={`${cloudImagesPath}/l7pxb4l3eftmhwrgqq4l.jpg`}
             // src='/img/navidad-banner-viandascook.jpg'
             alt='Viandas Cook - Banner'
             layout='fill'
@@ -34,7 +35,7 @@ export const Banner = () => {
             <div className={styles.bannerDishes}>
                <div className={styles.nextImage}>
                   <Image
-                     src='https://res.cloudinary.com/viandascook/image/upload/v1701180029/imgs/l4oxi04a73ols8locaxw.png'
+                     src={`${cloudImagesPath}/l4oxi04a73ols8locaxw.png`}
                      alt='viandascook-banner-back'
                      priority={true}
                      quality={80}

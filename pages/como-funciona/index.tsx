@@ -3,7 +3,7 @@ import { NextPage } from 'next';
 import { HomeLayout } from '../../components/layouts';
 import { Breadcrumbs, Button, Newsletter, Steps } from '../../components/ui';
 
-import { seo } from '../../utils';
+import { cloudVideosPath, seo } from '../../utils';
 
 import styles from '../../styles/HowItWorks.module.css';
 
@@ -19,10 +19,7 @@ const HowItWorksPage: NextPage = () => {
                <div className={styles.container}>
                   <div className={styles.videoIntro}>
                      <video autoPlay muted loop playsInline poster='/img/como-funciona-intro.jpg'>
-                        <source
-                           src='https://res.cloudinary.com/viandascook/video/upload/v1680120195/videos/in1klme0ztwkkmu60ijp.mp4'
-                           type='video/mp4'
-                        />
+                        <source src={`${cloudVideosPath}/in1klme0ztwkkmu60ijp`} type='video/mp4' />
                      </video>
                   </div>
 

@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { HomeLayout } from '../../components/layouts';
 import { Breadcrumbs, Button, Newsletter, SectionsUs } from '../../components/ui';
 
-import { seo } from '../../utils';
+import { cloudVideosPath, seo } from '../../utils';
 
 import styles from '../../styles/Nosotros.module.css';
 
@@ -20,10 +20,7 @@ const NosotrosPage: NextPage = () => {
                <div className={styles.container}>
                   <div className={styles.videoIntro}>
                      <video autoPlay muted loop playsInline poster='/img/nosotros-envasado.jpg'>
-                        <source
-                           src='https://res.cloudinary.com/viandascook/video/upload/v1680120193/videos/zgx6uoz6jwvhrcanfyzz.mp4'
-                           type='video/mp4'
-                        />
+                        <source src={`${cloudVideosPath}/zgx6uoz6jwvhrcanfyzz.mp4`} type='video/mp4' />
                      </video>
                   </div>
 

@@ -19,7 +19,7 @@
 .linkTo > .linkButton:focus,
 .linkTo > .linkButton:hover {
    background-color: hsla(0, 0%, 100%, 0.2);
-   padding-right: 55px;
+   /* padding-right: 55px; */
 }
 
 .linkTo > .linkButton > .text {

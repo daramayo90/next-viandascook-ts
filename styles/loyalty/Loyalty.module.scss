@@ -1,0 +1,592 @@
+@font-face {
+   font-family: 'Pretty Queen';
+   font-style: normal;
+   src: url('/fonts/Pretty_Queen.ttf') format('truetype');
+   font-display: swap;
+}
+
+.loyalty {
+   width: 100vw;
+   height: 100%;
+   margin-top: 4.5rem;
+
+   .intro {
+      background-image: url('https://res.cloudinary.com/viandascook/image/upload/f_auto,q_auto/v1/imgs/pnntcveydgknrl1dyon7');
+      background-size: cover;
+      max-height: 100%;
+      height: 800px;
+
+      .cellphoneImg {
+         display: none;
+      }
+
+      .info {
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         max-width: 450px;
+         width: 80%;
+         margin: 0 auto;
+         padding-top: 40vh;
+
+         .title {
+            text-align: left;
+            font-family: 'Pretty Queen';
+            font-size: 3.5rem;
+            color: var(--white);
+            font-weight: 400;
+         }
+
+         .subtitle {
+            margin: 2rem 0 1rem 0;
+            font-size: 2.5rem;
+            text-align: left;
+            color: var(--white);
+         }
+
+         .text,
+         .text > strong {
+            margin: 2rem 0 1rem 0;
+            text-align: center;
+            color: var(--white);
+         }
+
+         .btn {
+            width: 90%;
+            margin: 2rem auto;
+         }
+      }
+   }
+
+   .presentation {
+      position: relative;
+      background-color: var(--primaryStrong);
+      overflow: hidden;
+      height: 620px;
+
+      .cellphoneImg {
+         position: absolute;
+         top: 75%;
+         left: 55%;
+         width: 100%;
+         max-width: 600px;
+         transform: translate(-50%, -50%);
+         z-index: 1;
+      }
+
+      .container {
+         position: relative;
+         width: 95%;
+         margin: 0 auto;
+         text-align: center;
+         z-index: 2;
+
+         .text,
+         .text > strong {
+            color: var(--white);
+            line-height: 1.5;
+         }
+      }
+   }
+
+   .howItWorks {
+      padding: 2rem 0;
+      background-color: var(--primary);
+
+      .title {
+         text-align: center;
+         font-size: 2rem;
+         font-weight: 600;
+         color: var(--white);
+         text-transform: uppercase;
+      }
+
+      .container {
+         .box {
+            text-align: center;
+            max-width: 240px;
+            height: 310px;
+            margin: 40px auto;
+            padding: 5px 20px;
+            background: var(--secondaryLight);
+            box-shadow: 0px 4px 46px rgb(22 91 80 / 10%);
+            border-radius: 12px;
+
+            .icon {
+               width: 20%;
+               margin: 1rem auto;
+            }
+
+            .lead {
+               text-align: center;
+               font-style: normal;
+               font-weight: 600;
+               font-size: 20px;
+               text-transform: uppercase;
+               line-height: 30px;
+               color: var(--white);
+            }
+
+            .text {
+               display: inline-block;
+               margin-top: 15px;
+               font-style: normal;
+               font-weight: 400;
+               font-size: 17px;
+               line-height: 170%;
+               letter-spacing: -0.03em;
+               color: var(--white);
+            }
+         }
+      }
+   }
+
+   .additionalInfo {
+      width: 80%;
+      margin: 2rem auto;
+
+      .info {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         justify-content: center;
+         max-width: 420px;
+         margin: 0 auto;
+
+         .box {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin: 2rem 0;
+
+            .icon {
+               width: 20%;
+            }
+
+            .title {
+               margin: 0.7rem 0;
+               font-style: normal;
+               font-weight: 600;
+               font-size: 2rem;
+               color: var(--secondaryLight);
+            }
+
+            .text {
+               color: var(--textColor);
+               font-size: 1.2rem;
+            }
+         }
+
+         .btn {
+            width: 100%;
+            margin: 3rem auto;
+         }
+      }
+
+      .productsDesktop {
+         display: none;
+      }
+
+      .productsMobile {
+         position: relative;
+         left: 50%;
+         right: 50%;
+         width: 100vw;
+         height: 20vh;
+         margin-left: -50vw;
+         margin-right: -50vw;
+
+         span {
+            position: unset !important;
+         }
+      }
+   }
+
+   .discount {
+      .container {
+         background-image: url('https://res.cloudinary.com/viandascook/image/upload/f_auto,q_auto/v1/imgs/r4zqjoepla3rfm5xezc1');
+         background-size: cover;
+         max-height: 100%;
+         height: 50vh;
+
+         .info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin: 0 auto;
+            height: 100%;
+
+            .text {
+               margin: 1.3rem 0;
+               text-align: center;
+               font-size: 1.4rem;
+               font-weight: 500;
+               text-transform: uppercase;
+               color: var(--white);
+            }
+
+            .text:nth-child(2) {
+               display: flex;
+               align-items: center;
+               justify-content: center;
+               font-size: 4.5rem;
+               font-weight: 700;
+
+               span {
+                  color: rgb(143, 214, 14);
+               }
+
+               span:nth-child(2) {
+                  font-size: 4rem;
+               }
+            }
+
+            .text:nth-child(3) {
+               color: rgb(143, 214, 14);
+            }
+         }
+      }
+   }
+
+   .benefits {
+      padding: 1rem 0;
+      background-color: var(--primaryStrong);
+
+      .title {
+         margin: 1.5rem 0;
+         text-align: center;
+         font-family: 'Pretty Queen';
+         font-size: 1.7rem;
+         color: var(--white);
+         font-weight: 400;
+         text-transform: lowercase;
+      }
+
+      .container {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         justify-content: center;
+
+         .discount {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 60%;
+            height: 100%;
+            margin: 0.3rem 0;
+         }
+      }
+   }
+
+   .viandlovers {
+      background-image: url('https://res.cloudinary.com/viandascook/image/upload/f_auto,q_auto/v1/imgs/j2xwriayzawb6mtkiiei');
+      background-size: cover;
+      overflow: hidden;
+      max-height: 100%;
+      height: 820px;
+
+      .container {
+         position: relative;
+         max-width: 1100px;
+         height: 100%;
+         margin: 0 auto;
+         padding: 430px 45px 18px;
+
+         .info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            max-width: 450px;
+            width: 90%;
+            margin: 0 auto;
+         }
+
+         .clubImg {
+            position: absolute;
+            top: 15%;
+            left: 50%;
+            width: 90%;
+            max-width: 400px;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+         }
+
+         .personsImg {
+            position: absolute;
+            top: 35%;
+            left: 50%;
+            width: 50%;
+            max-width: 250px;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+         }
+
+         .rocketImg {
+            display: none;
+         }
+
+         .info {
+            .title {
+               text-align: left;
+               font-size: 2rem;
+               color: var(--white);
+               font-weight: 500;
+            }
+
+            .text {
+               margin: 2rem 0 1rem 0;
+               font-size: 1.1rem;
+               text-align: left;
+               color: var(--white);
+            }
+
+            .btn {
+               width: 90%;
+               margin: 2rem auto;
+            }
+         }
+      }
+   }
+}
+
+@media (min-width: 720px) {
+   .loyalty > .intro {
+      background-image: url('https://res.cloudinary.com/viandascook/image/upload/f_auto,q_auto/v1/imgs/asbtgmaupba1pmtnzh5c');
+      height: 70vh;
+      max-height: 550px;
+      overflow: hidden;
+
+      .container {
+         position: relative;
+         max-width: 1100px;
+         height: 100%;
+         margin: 0 auto;
+
+         .cellphoneImg {
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 100%;
+            width: 650px;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+         }
+
+         .info {
+            position: absolute;
+            top: 50%;
+            left: 30%;
+            margin: 0;
+            padding-top: 0;
+            transform: translate(-50%, -50%);
+
+            .title {
+               font-size: 3.5rem;
+            }
+
+            .subtitle {
+               margin: 4rem 0 0 0;
+               font-size: 2.5rem;
+            }
+
+            .text {
+               text-align: left;
+               font-size: 1.2rem;
+               line-height: 1.4;
+            }
+
+            .btn {
+               width: 50%;
+               margin: 1rem 0;
+            }
+         }
+      }
+   }
+
+   .loyalty > .presentation {
+      height: 100%;
+
+      .cellphoneImg {
+         display: none;
+      }
+
+      .container {
+         max-width: 1000px;
+         padding: 2rem 0;
+
+         .text {
+            font-size: 1.1rem;
+         }
+      }
+   }
+
+   .loyalty > .howItWorks > .container {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1100px;
+      margin: 0 auto;
+   }
+
+   .loyalty > .additionalInfo {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      margin: 5rem auto;
+
+      .info {
+         width: 40%;
+         order: 2;
+         height: 650px;
+
+         .box {
+            max-width: 500px;
+         }
+      }
+
+      .productsMobile {
+         display: none;
+      }
+
+      .productsDesktop {
+         display: block;
+         position: relative;
+         left: 0;
+         right: 0;
+         margin-left: 0;
+         margin-right: 0;
+         width: 55%;
+         height: 700px;
+
+         img {
+            border-radius: 25px;
+            height: unset !important;
+         }
+      }
+   }
+
+   .loyalty > .discount > .container {
+      background-image: url('https://res.cloudinary.com/viandascook/image/upload/f_auto,q_auto/v1/imgs/q3etgwhfnryckdah5mou');
+      height: 60vh;
+
+      .info {
+         .text {
+            margin: 3rem 0;
+            font-size: 2.3rem;
+         }
+
+         .text:nth-child(2) {
+            font-size: 9rem;
+         }
+
+         .text:nth-child(2) span:nth-child(2) {
+            font-size: 7.5rem;
+         }
+      }
+   }
+
+   .loyalty > .benefits {
+      padding: 2rem 0;
+
+      .title {
+         font-size: 2.5rem;
+      }
+
+      .container {
+         flex-direction: row;
+         max-width: 1100px;
+         margin: 0 auto;
+
+         .discount {
+            cursor: pointer;
+         }
+      }
+   }
+
+   .loyalty > .viandlovers {
+      background-image: url('https://res.cloudinary.com/viandascook/image/upload/f_auto,q_auto/v1/imgs/pruhkscmjnpng1o2vpgk');
+      height: 620px;
+
+      .container {
+         .clubImg {
+            top: 10%;
+            left: 5%;
+            max-width: 400px;
+            transform: none;
+         }
+
+         .personsImg {
+            top: 10%;
+            left: 60%;
+            max-width: 250px;
+            transform: none;
+         }
+
+         .rocketImg {
+            display: block;
+            position: absolute;
+            top: 35%;
+            left: -10%;
+            max-width: 200px;
+            width: 50%;
+            z-index: 1;
+         }
+
+         .info {
+            position: absolute;
+            left: 10%;
+            top: 30%;
+            max-width: 350px;
+
+            .title {
+               font-size: 2rem;
+            }
+
+            .text {
+               font-size: 1.2rem;
+               font-weight: 300;
+            }
+
+            .btn {
+               max-width: 300px;
+            }
+         }
+      }
+   }
+}
+
+@media (min-width: 920px) {
+   .loyalty > .viandlovers > .container {
+      .clubImg {
+         top: 10%;
+         left: 5%;
+         max-width: 450px;
+      }
+
+      .personsImg {
+         top: 15%;
+         left: 60%;
+         max-width: 350px;
+      }
+
+      .info {
+         position: absolute;
+         left: 10%;
+         top: 40%;
+         max-width: 400px;
+      }
+   }
+}
+
+@media (min-width: 1500px) {
+   .loyalty > .additionalInfo > .info {
+      width: 45%;
+   }
+
+   .loyalty > .intro > .container > .cellphoneImg {
+      width: 820px;
+   }
+}

@@ -2,7 +2,7 @@
    font-family: 'Pretty Queen';
    font-style: normal;
    font-weight: 400;
-   src: url('/fonts/pretty-queen.woff2') format('woff2');
+   src: url('/fonts/Pretty_Queen.ttf') format('truetype');
    font-display: swap;
 }
 
@@ -46,6 +46,7 @@
 
 .footer > .info > .columns > .columnList {
    display: flex;
+   justify-content: center;
    position: relative;
    margin-top: 0;
    text-align: center;
@@ -164,25 +165,7 @@
    }
 
    .footer > .info > .columns {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-   }
-
-   .footer > .info > .columns > .columnList {
-      width: 70%;
-      justify-content: center;
-      gap: 87px;
-   }
-
-   .footer > .info > .columns > .columnList > .list > .linkItem {
-      margin: 20px 0;
-   }
-
-   .footer > .info > .columns > .columnList > .list > .linkItem:hover {
-      text-decoration: underline;
-      cursor: pointer;
+      display: none;
    }
 
    .footer > .info > .contact > .support {
@@ -215,5 +198,28 @@
    .footer > .legal > .terms:hover,
    .footer > .legal > .refund:hover {
       text-decoration: underline;
+   }
+}
+
+@media (min-width: 825px) {
+   .footer > .info > .columns {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+   }
+
+   .footer > .info > .columns > .columnList {
+      width: 70%;
+      gap: 87px;
+   }
+
+   .footer > .info > .columns > .columnList > .list > .linkItem {
+      margin: 20px 0;
+   }
+
+   .footer > .info > .columns > .columnList > .list > .linkItem:hover {
+      text-decoration: underline;
+      cursor: pointer;
    }
 }

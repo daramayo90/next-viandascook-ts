@@ -16,8 +16,6 @@ export * from './NewsDialog';
 export * from './Newsletter';
 export * from './Questions';
 export * from './QuestionsLoyalty';
-export * from './Reward';
-export * from './Rewards';
 export * from './SectionsUs';
 export * from './SectionUs';
 export * from './SideAdminMenu';
