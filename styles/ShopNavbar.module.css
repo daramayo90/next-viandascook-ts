@@ -8,8 +8,10 @@
 
 .promo {
    width: 100%;
-   background-color: var(--primaryHover);
+   /* padding: 0.5rem 0; */
    text-align: center;
+   /* background-color: var(--primaryHover); */
+   background-color: rgb(254, 92, 69);
 }
 
 .promo > .text {
@@ -21,7 +23,8 @@
 
 .promo > .text > strong {
    font-weight: 500;
-   color: rgb(177, 216, 68);
+   /* color: rgb(177, 216, 68); */
+   color: var(--white);
 }
 
 .container {
@@ -148,6 +151,6 @@
 
    .promo > .text > strong {
       font-weight: 500;
-      color: #ffa245;
+      /* color: #ffa245; */
    }
 }

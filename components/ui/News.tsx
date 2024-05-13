@@ -10,26 +10,27 @@ import styles from '../../styles/News.module.css';
 
 const banners = [
    {
+      name: 'Promo 15% off - Hot Sale',
+      img: '/img/banner-news-hotsale-mobile.jpg',
+      bannerStyle: 'mobileBanner',
+      isMobile: true,
+   },
+   {
       name: 'Promo 10% off - Descuento Primera Compra',
       img: '/img/banner-news-mobile.jpg',
       bannerStyle: 'mobileBanner',
       isMobile: true,
    },
+
    {
-      name: 'Promo 20% off - Lanzamiento Waffles',
-      img: '/img/banner-news-waffles-mobile.jpg',
-      bannerStyle: 'mobileBanner',
-      isMobile: true,
-   },
-   {
-      name: 'Promo 10% off - Descuento Primera Compra',
-      img: '/img/banner-news-desktop.jpg',
+      name: 'Promo 15% off - Hot Sale',
+      img: '/img/banner-news-hotsale-desktop.jpg',
       bannerStyle: 'desktopBanner',
       isMobile: false,
    },
    {
-      name: 'Promo 20% off - Lanzamiento Waffles',
-      img: '/img/banner-news-waffles-desktop.jpg',
+      name: 'Promo 10% off - Descuento Primera Compra',
+      img: '/img/banner-news-desktop.jpg',
       bannerStyle: 'desktopBanner',
       isMobile: false,
    },

@@ -15,6 +15,12 @@ interface Props {
    backCart: boolean;
 }
 
+interface TimeLeft {
+   hours: number;
+   minutes: number;
+   seconds: number;
+}
+
 export const ShopNavbar: FC<Props> = ({ pageTitle, menuPage, backCart }) => {
    const router = useRouter();
 
@@ -31,6 +37,38 @@ export const ShopNavbar: FC<Props> = ({ pageTitle, menuPage, backCart }) => {
       router.back();
    };
 
+   const calculateTimeLeft = (): TimeLeft => {
+      const now = new Date();
+      const endTime = new Date('2024-05-15T23:59:59');
+      const difference = endTime.getTime() - now.getTime();
+
+      let timeLeft: TimeLeft = { hours: 0, minutes: 0, seconds: 0 };
+
+      if (difference > 0) {
+         timeLeft = {
+            hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+            minutes: Math.floor((difference / 1000 / 60) % 60),
+            seconds: Math.floor((difference / 1000) % 60),
+         };
+      }
+
+      return timeLeft;
+   };
+
+   const [timeLeft, setTimeLeft] = useState<TimeLeft>(calculateTimeLeft());
+
+   useEffect(() => {
+      const timer = setInterval(() => {
+         setTimeLeft(calculateTimeLeft());
+      }, 1000);
+
+      return () => clearInterval(timer);
+   }, []);
+
+   const formatTimeLeft = (time: number): string => {
+      return String(time).padStart(2, '0');
+   };
+
    useEffect(() => {
       const promoPaths = ['/menu', '/cart', '/plato'];
       const isShown = promoPaths.some((path) => router.asPath.includes(path));
@@ -45,9 +83,18 @@ export const ShopNavbar: FC<Props> = ({ pageTitle, menuPage, backCart }) => {
       <section className={styles.shopNavbar}>
          {showPromo && (
             <div className={styles.promo}>
-               <p className={styles.text}>
+               {/* <p className={styles.text}>
                   Aprovechá un <strong>10% off en tu primera compra</strong> con el cupón de descuento
                   <strong> bienvenido10</strong>
+               </p> */}
+               <p className={styles.text}>
+                  <strong>🔥VIANDAS HOT🔥</strong> ¡Quedan{' '}
+                  <strong>
+                     {`${formatTimeLeft(timeLeft.hours)}:${formatTimeLeft(
+                        timeLeft.minutes,
+                     )}:${formatTimeLeft(timeLeft.seconds)}`}
+                  </strong>{' '}
+                  para <strong>APROVECHAR!</strong>
                </p>
             </div>
          )}

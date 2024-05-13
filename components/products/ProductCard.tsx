@@ -46,8 +46,8 @@ const ProductCardComponent: FC<Props> = ({ product }) => {
                   {product.discountPrice && (
                      <div className={styles.tagImageWrapper}>
                         <Image
-                           src='/img/20off-tag.png'
-                           alt='20% off - Promo Waffles'
+                           src='/img/viandashot-tag.png'
+                           alt='10% off - Hot Sale'
                            layout='fill'
                            objectFit='fill'
                            sizes='(max-width: 768px) 35vw, (min-width: 769px) 23vw'
