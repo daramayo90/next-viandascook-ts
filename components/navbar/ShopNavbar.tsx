@@ -6,6 +6,7 @@ import { CartContext, UIContext } from '../../context';
 
 import { IoIosArrowRoundBack } from 'react-icons/io';
 import { HiOutlineShoppingBag } from 'react-icons/hi';
+import { ImFire } from 'react-icons/im';
 
 import styles from '../../styles/ShopNavbar.module.css';
 
@@ -27,6 +28,7 @@ export const ShopNavbar: FC<Props> = ({ pageTitle, menuPage, backCart }) => {
    const { isCartSummaryOpen, isMenuOpen, toggleSideMenu } = useContext(UIContext);
    const { numberOfItems } = useContext(CartContext);
 
+   const [timeLeft, setTimeLeft] = useState<TimeLeft>(calculateTimeLeft());
    const [showPromo, setShowPromo] = useState(false);
 
    const navigation = () => {
@@ -36,26 +38,6 @@ export const ShopNavbar: FC<Props> = ({ pageTitle, menuPage, backCart }) => {
 
       router.back();
    };
-
-   const calculateTimeLeft = (): TimeLeft => {
-      const now = new Date();
-      const endTime = new Date('2024-05-15T23:59:59');
-      const difference = endTime.getTime() - now.getTime();
-
-      let timeLeft: TimeLeft = { hours: 0, minutes: 0, seconds: 0 };
-
-      if (difference > 0) {
-         timeLeft = {
-            hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-            minutes: Math.floor((difference / 1000 / 60) % 60),
-            seconds: Math.floor((difference / 1000) % 60),
-         };
-      }
-
-      return timeLeft;
-   };
-
-   const [timeLeft, setTimeLeft] = useState<TimeLeft>(calculateTimeLeft());
 
    useEffect(() => {
       const timer = setInterval(() => {
@@ -79,6 +61,12 @@ export const ShopNavbar: FC<Props> = ({ pageTitle, menuPage, backCart }) => {
       return <></>;
    }
 
+   const showHours = formatTimeLeft(timeLeft.hours);
+   const showMinutes = formatTimeLeft(timeLeft.minutes);
+   const showSeconds = formatTimeLeft(timeLeft.seconds);
+
+   const showTime = `${showHours}:${showMinutes}:${showSeconds}`;
+
    return (
       <section className={styles.shopNavbar}>
          {showPromo && (
@@ -87,15 +75,44 @@ export const ShopNavbar: FC<Props> = ({ pageTitle, menuPage, backCart }) => {
                   Aprovechá un <strong>10% off en tu primera compra</strong> con el cupón de descuento
                   <strong> bienvenido10</strong>
                </p> */}
-               <p className={styles.text}>
-                  <strong>🔥VIANDAS HOT🔥</strong> ¡Quedan{' '}
-                  <strong>
-                     {`${formatTimeLeft(timeLeft.hours)}:${formatTimeLeft(
-                        timeLeft.minutes,
-                     )}:${formatTimeLeft(timeLeft.seconds)}`}
-                  </strong>{' '}
-                  para <strong>APROVECHAR!</strong>
-               </p>
+               {/* <p className={styles.text}>
+                  <strong className={styles.viandashot}>
+                     <img
+                        src='/icon/hot-sale-fuego.png'
+                        alt='Hot Sale Fuego'
+                        className={styles.hotSaleFire}
+                     />
+                     VIANDAS HOT
+                     <img
+                        src='/icon/hot-sale-fuego.png'
+                        alt='Hot Sale Fuego'
+                        className={styles.hotSaleFire}
+                     />
+                  </strong>
+                  ¡Quedan <strong>{showTime}</strong> para <strong>APROVECHAR!</strong>
+               </p> */}
+               <div className={styles.promoContainer}>
+                  <div className={styles.top}>
+                     <img
+                        src='/icon/hot-sale-fuego.png'
+                        alt='Hot Sale Fuego'
+                        className={styles.iconFire}
+                     />
+                     <span className={styles.text}>
+                        <strong>VIANDAS HOT</strong>
+                     </span>
+                     <img
+                        src='/icon/hot-sale-fuego.png'
+                        alt='Hot Sale Fuego'
+                        className={styles.iconFire}
+                     />
+                  </div>
+                  <div className={styles.bottom}>
+                     <span className={styles.text}>
+                        ¡Quedan {showTime} para <strong>APROVECHAR!</strong>
+                     </span>
+                  </div>
+               </div>
             </div>
          )}
          <div className={styles.container}>
@@ -133,4 +150,22 @@ export const ShopNavbar: FC<Props> = ({ pageTitle, menuPage, backCart }) => {
          </div>
       </section>
    );
+};
+
+const calculateTimeLeft = (): TimeLeft => {
+   const now = new Date();
+   const endTime = new Date('2024-05-15T23:59:59');
+   const difference = endTime.getTime() - now.getTime();
+
+   let timeLeft: TimeLeft = { hours: 0, minutes: 0, seconds: 0 };
+
+   if (difference > 0) {
+      timeLeft = {
+         hours: Math.floor(difference / (1000 * 60 * 60)),
+         minutes: Math.floor((difference / 1000 / 60) % 60),
+         seconds: Math.floor((difference / 1000) % 60),
+      };
+   }
+
+   return timeLeft;
 };
