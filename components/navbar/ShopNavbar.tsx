@@ -6,7 +6,6 @@ import { CartContext, UIContext } from '../../context';
 
 import { IoIosArrowRoundBack } from 'react-icons/io';
 import { HiOutlineShoppingBag } from 'react-icons/hi';
-import { ImFire } from 'react-icons/im';
 
 import styles from '../../styles/ShopNavbar.module.css';
 
@@ -75,22 +74,6 @@ export const ShopNavbar: FC<Props> = ({ pageTitle, menuPage, backCart }) => {
                   Aprovechá un <strong>10% off en tu primera compra</strong> con el cupón de descuento
                   <strong> bienvenido10</strong>
                </p> */}
-               {/* <p className={styles.text}>
-                  <strong className={styles.viandashot}>
-                     <img
-                        src='/icon/hot-sale-fuego.png'
-                        alt='Hot Sale Fuego'
-                        className={styles.hotSaleFire}
-                     />
-                     VIANDAS HOT
-                     <img
-                        src='/icon/hot-sale-fuego.png'
-                        alt='Hot Sale Fuego'
-                        className={styles.hotSaleFire}
-                     />
-                  </strong>
-                  ¡Quedan <strong>{showTime}</strong> para <strong>APROVECHAR!</strong>
-               </p> */}
                <div className={styles.promoContainer}>
                   <div className={styles.top}>
                      <img
@@ -154,7 +137,7 @@ export const ShopNavbar: FC<Props> = ({ pageTitle, menuPage, backCart }) => {
 
 const calculateTimeLeft = (): TimeLeft => {
    const now = new Date();
-   const endTime = new Date('2024-05-15T23:59:59');
+   const endTime = new Date('2024-05-17T23:59:59');
    const difference = endTime.getTime() - now.getTime();
 
    let timeLeft: TimeLeft = { hours: 0, minutes: 0, seconds: 0 };

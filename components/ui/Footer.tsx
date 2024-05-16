@@ -40,7 +40,7 @@ export const Footer = () => {
                </div>
 
                <div className={styles.columnList}>
-                  <h3 className={styles.subTitle}>Platos más vendidos</h3>
+                  <h3 className={styles.subTitle}>Platos más elegidos</h3>
                   <div className={styles.list}>
                      <Link href={'/plato/colita-de-cuadril-con-papas-al-horno'} prefetch={false}>
                         <a className={`${styles.linkItem} ${styles.productItem}`}>
