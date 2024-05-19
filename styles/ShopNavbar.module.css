@@ -8,10 +8,10 @@
 
 .promo {
    width: 100%;
-   /* padding: 0.5rem 0; */
+   padding: 0.5rem 0;
    text-align: center;
-   /* background-color: var(--primaryHover); */
-   background-color: rgb(254, 92, 69);
+   background-color: var(--primaryHover);
+   /* background-color: rgb(254, 92, 69); */
 }
 
 .promo > .promoContainer {
@@ -35,10 +35,14 @@
    font-weight: 500;
 }
 
-/* .promo > .text > strong {
+.promo > .text {
+   color: var(--white);
+}
+
+.promo > .text > strong {
    font-weight: 500;
    color: rgb(177, 216, 68);
-} */
+}
 
 .promo > .promoContainer > .top > .iconFire {
    width: 1.5rem;

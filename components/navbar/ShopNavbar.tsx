@@ -70,11 +70,11 @@ export const ShopNavbar: FC<Props> = ({ pageTitle, menuPage, backCart }) => {
       <section className={styles.shopNavbar}>
          {showPromo && (
             <div className={styles.promo}>
-               {/* <p className={styles.text}>
+               <p className={styles.text}>
                   Aprovechá un <strong>10% off en tu primera compra</strong> con el cupón de descuento
                   <strong> bienvenido10</strong>
-               </p> */}
-               <div className={styles.promoContainer}>
+               </p>
+               {/* <div className={styles.promoContainer}>
                   <div className={styles.top}>
                      <img
                         src='/icon/hot-sale-fuego.png'
@@ -95,7 +95,7 @@ export const ShopNavbar: FC<Props> = ({ pageTitle, menuPage, backCart }) => {
                         ¡Quedan {showTime} para <strong>APROVECHAR!</strong>
                      </span>
                   </div>
-               </div>
+               </div> */}
             </div>
          )}
          <div className={styles.container}>

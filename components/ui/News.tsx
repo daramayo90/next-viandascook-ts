@@ -9,12 +9,12 @@ import { FaChevronCircleLeft, FaChevronCircleRight } from 'react-icons/fa';
 import styles from '../../styles/News.module.css';
 
 const banners = [
-   {
-      name: 'Promo 15% off - Hot Sale',
-      img: '/img/banner-news-hotsale-mobile.jpg',
-      bannerStyle: 'mobileBanner',
-      isMobile: true,
-   },
+   // {
+   //    name: 'Promo 15% off - Hot Sale',
+   //    img: '/img/banner-news-hotsale-mobile.jpg',
+   //    bannerStyle: 'mobileBanner',
+   //    isMobile: true,
+   // },
    {
       name: 'Promo 10% off - Descuento Primera Compra',
       img: '/img/banner-news-mobile.jpg',
@@ -22,12 +22,12 @@ const banners = [
       isMobile: true,
    },
 
-   {
-      name: 'Promo 15% off - Hot Sale',
-      img: '/img/banner-news-hotsale-desktop.jpg',
-      bannerStyle: 'desktopBanner',
-      isMobile: false,
-   },
+   // {
+   //    name: 'Promo 15% off - Hot Sale',
+   //    img: '/img/banner-news-hotsale-desktop.jpg',
+   //    bannerStyle: 'desktopBanner',
+   //    isMobile: false,
+   // },
    {
       name: 'Promo 10% off - Descuento Primera Compra',
       img: '/img/banner-news-desktop.jpg',
