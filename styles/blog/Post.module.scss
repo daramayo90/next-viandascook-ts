@@ -1,0 +1,130 @@
+.post {
+   width: 100%;
+   background-color: var(--white);
+
+   .container {
+      width: 87%;
+      margin: 0 auto;
+      padding: 4rem 0;
+
+      .title {
+         font-size: 2rem;
+         text-align: left;
+         color: var(--black);
+         text-transform: inherit;
+      }
+
+      .date {
+         width: 120px;
+         margin: 0.5rem 0;
+         font-size: 0.85rem;
+         font-weight: 500;
+         color: rgb(140, 140, 140);
+      }
+
+      .content {
+         h2 {
+            margin: 1rem 0;
+            font-size: 1.6rem;
+            text-transform: inherit;
+            color: var(--black);
+         }
+
+         h3 {
+            margin: 1rem 0;
+            font-size: 1.4rem;
+            text-transform: inherit;
+            color: var(--black);
+         }
+
+         p {
+            margin: 0.5rem 0;
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--black);
+         }
+
+         p:nth-last-child(2) {
+            margin-top: 2rem;
+         }
+
+         div {
+            margin: 1rem 0;
+
+            img {
+               width: 100%;
+               height: auto;
+               border-radius: 20px;
+            }
+
+            em {
+               font-size: 0.9rem;
+               color: rgb(140, 140, 140);
+            }
+         }
+
+         ul {
+            padding-left: 2rem;
+
+            li {
+               margin: 0.5rem 0;
+               font-size: 1rem;
+               line-height: 1.6;
+               color: var(--black);
+            }
+         }
+
+         a {
+            color: var(--primary);
+            text-decoration: underline;
+         }
+      }
+   }
+}
+
+@media (min-width: 720px) {
+   .post {
+      .container {
+         max-width: 1000px;
+         margin: 0 auto;
+
+         .title {
+            font-size: 2.5rem;
+         }
+
+         .date {
+            margin: 1rem 0;
+            font-size: 0.9rem;
+         }
+
+         .content {
+            h2 {
+               margin: 1.5rem 0;
+               font-size: 1.7rem;
+            }
+
+            h3 {
+               margin: 1.2rem 0;
+               font-size: 1.5rem;
+            }
+
+            p {
+               font-size: 1.1rem;
+            }
+
+            div {
+               margin: 2rem 0;
+
+               img {
+                  width: 40%;
+                  height: auto;
+               }
+
+               em {
+                  font-size: 1rem;
+               }
+            }
+         }
+      }
+   }
+}
