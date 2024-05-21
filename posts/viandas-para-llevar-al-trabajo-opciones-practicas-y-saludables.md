@@ -6,8 +6,7 @@ description: 'Ideas de viandas para llevar al trabajo. Comidas livianas, veganas
 
 <p>Almuerzos saludables y organizados: la clave para unas viandas para el trabajo que te brinden energía y bienestar.</p>
 
-<p>Llevarte viandas saludables al trabajo aumenta tu 
-productividad, energía y bienestar</p>
+<p>Llevarte viandas saludables al trabajo aumenta tu productividad, energía y bienestar</p>
 
 <p>Si comés saludable podés ser un 20% más productivo que los trabajadores que tienen una alimentación deficiente. Comer de forma variada y con ingredientes de calidad te ayuda a rendir, pensar y sentirte mucho mejor.</p>
 

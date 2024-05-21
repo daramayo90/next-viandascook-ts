@@ -9,7 +9,6 @@ export * from './discounts';
 export * from './holidays';
 export * from './loyalty';
 export * from './pageTitles';
-export * from './posts';
 export * from './questions';
 export * from './questionsLoyalty';
 export * from './removeCookies';
