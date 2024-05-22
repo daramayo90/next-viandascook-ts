@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 import { AuthContext, UIContext } from '../../context';
 
-import { FiLogIn } from 'react-icons/fi';
+import { FiLogIn, FiMessageCircle } from 'react-icons/fi';
 import { TbDiscount2 } from 'react-icons/tb';
 import { BsInfoCircle } from 'react-icons/bs';
 import { AiOutlineHome, AiOutlineQuestionCircle, AiOutlineUser } from 'react-icons/ai';
@@ -14,6 +14,7 @@ import {
    MdOutlineDiscount,
    MdOutlineFoodBank,
    MdOutlineKeyboardArrowRight,
+   MdOutlineQuestionAnswer,
 } from 'react-icons/md';
 
 import styles from '../../styles/SideMenu.module.css';
@@ -100,6 +101,14 @@ export const SideMenu = () => {
                   </a>
                </Link>
 
+               <Link href='/blog' prefetch={false}>
+                  <a className={styles.linkItem} onClick={toggleSideMenu}>
+                     <FiMessageCircle className={styles.icon} />
+                     <span>Blog</span>
+                     <MdOutlineKeyboardArrowRight className={styles.iconRight} />
+                  </a>
+               </Link>
+
                <Link href='/nosotros' prefetch={false}>
                   <a className={styles.linkItem} onClick={toggleSideMenu}>
                      <BsInfoCircle className={styles.icon} />
@@ -110,7 +119,7 @@ export const SideMenu = () => {
 
                <Link href='/como-funciona' prefetch={false}>
                   <a className={styles.linkItem} onClick={toggleSideMenu}>
-                     <AiOutlineQuestionCircle className={styles.icon} />
+                     <MdOutlineQuestionAnswer className={styles.icon} />
                      <span>¿Cómo Funciona?</span>
                      <MdOutlineKeyboardArrowRight className={styles.iconRight} />
                   </a>
