@@ -3,5 +3,6 @@ export interface IPost {
    date: string;
    title: string;
    description?: string;
+   cover?: string;
    content?: string;
 }

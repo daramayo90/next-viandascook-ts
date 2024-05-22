@@ -1,13 +1,28 @@
 .post {
-   width: 100%;
+   width: 100vw;
    background-color: var(--white);
+   padding: 4.5rem 0;
+
+   .image {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 100%;
+      height: 180px;
+      margin: 0 auto;
+
+      img {
+         object-fit: cover;
+      }
+   }
 
    .container {
       width: 87%;
-      margin: 0 auto;
-      padding: 4rem 0;
+      margin: 1rem auto;
 
       .title {
+         margin: 1rem 0;
          font-size: 2rem;
          text-align: left;
          color: var(--black);
@@ -16,7 +31,7 @@
 
       .date {
          width: 120px;
-         margin: 0.5rem 0;
+         margin: -10px 0;
          font-size: 0.85rem;
          font-weight: 500;
          color: rgb(140, 140, 140);
@@ -84,6 +99,22 @@
 
 @media (min-width: 720px) {
    .post {
+      .image {
+         position: relative;
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         max-width: 1030px;
+         width: 100%;
+         height: 470px;
+         margin: 0 auto;
+
+         img {
+            border-radius: 20px;
+            object-fit: cover;
+         }
+      }
+
       .container {
          max-width: 1000px;
          margin: 0 auto;

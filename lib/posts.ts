@@ -11,9 +11,9 @@ export const getSortedPosts = (): IPost[] => {
       const id = removeMdExtension(fileName);
 
       const { data } = getMatterResult(fileName);
-      const { date, title, description } = data;
+      const { date, cover, title, description } = data;
 
-      return { id, date, title, description };
+      return { id, date, cover, title, description };
    });
 
    return posts.sort((a, b) => (a.date < b.date ? 1 : -1));

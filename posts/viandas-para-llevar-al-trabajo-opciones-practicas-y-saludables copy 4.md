@@ -1,7 +1,7 @@
 ---
 date: '22/05/2024'
 title: 'Viandas para llevar al trabajo: Opciones prácticas y saludables'
-description: 'Ideas de viandas para llevar al trabajo. Comidas livianas, veganas, proteicas y más opciones para comer saludable en la oficina.'
+description: 'Ideas de viandas para llevar al trabajo. Comidas livianas, veganas, proteicas y más opciones para comer saludable en la oficina. Ideas de viandas para llevar al trabajo. Comidas livianas, veganas, proteicas y más opciones para comer saludable en la oficina.'
 cover: 'https://res.cloudinary.com/viandascook/image/upload/f_auto,q_auto/v1/blog/qjanzxsxavhyiphxmyys'
 ---
 

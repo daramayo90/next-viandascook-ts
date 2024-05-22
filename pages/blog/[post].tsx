@@ -7,6 +7,7 @@ import { IPost } from '../../interfaces';
 
 import styles from '../../styles/blog/Post.module.scss';
 import { HomeLayout } from '../../components/layouts';
+import Image from 'next/image';
 
 interface Props {
    post: IPost;
@@ -16,6 +17,9 @@ const Post: NextPage<Props> = ({ post }) => {
    return (
       <HomeLayout title={'Blog | Viandas Cook'} pageDescription={''} can={''}>
          <section className={styles.post}>
+            <div className={styles.image}>
+               <Image src={post.cover!} alt={post.title} layout='fill' />
+            </div>
             <div className={styles.container}>
                <p className={styles.date}>{post.date}</p>
                <h1 className={styles.title}>{post.title}</h1>
