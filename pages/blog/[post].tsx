@@ -18,10 +18,10 @@ const Post: NextPage<Props> = ({ post }) => {
       <HomeLayout title={'Blog | Viandas Cook'} pageDescription={''} can={''}>
          <section className={styles.post}>
             <div className={styles.banner}>
-               <h1 className={styles.mobileTitle}>
+               <h2 className={styles.mobileTitle}>
                   El Blog de <br></br>Viandas Cook
-               </h1>
-               <h1 className={styles.title}>El Blog de Viandas Cook</h1>
+               </h2>
+               <h2 className={styles.title}>El Blog de Viandas Cook</h2>
             </div>
             <div className={styles.image}>
                <Image src={post.cover!} alt={post.title} layout='fill' />
