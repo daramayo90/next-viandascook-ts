@@ -29,9 +29,10 @@ const BlogPage: NextPage<Props> = ({ posts }) => {
          <section className={styles.blog}>
             <div className={styles.intro}>
                <div className={styles.banner}>
-                  <h1 className={styles.title}>
+                  <h1 className={styles.mobileTitle}>
                      El Blog de <br></br>Viandas Cook
                   </h1>
+                  <h1 className={styles.title}>El Blog de Viandas Cook</h1>
                </div>
                <div className={styles.epigraph}>
                   <p className={styles.text}>¡Sumate al blog de Viandas Cook!</p>

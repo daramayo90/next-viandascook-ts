@@ -10,10 +10,14 @@
          background-color: var(--primaryStrong);
          padding: 0.5rem 0;
 
-         .title {
+         .mobileTitle {
             font-size: 1.8rem;
             text-align: center;
             color: var(--white);
+         }
+
+         .title {
+            display: none;
          }
       }
 
@@ -126,8 +130,15 @@
          .banner {
             padding: 1rem 0;
 
+            .mobileTitle {
+               display: none;
+            }
+
             .title {
+               display: block;
                font-size: 2.5rem;
+               text-align: center;
+               color: var(--white);
             }
          }
 
