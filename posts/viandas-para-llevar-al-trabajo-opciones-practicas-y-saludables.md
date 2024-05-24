@@ -104,7 +104,7 @@ cover: 'https://res.cloudinary.com/viandascook/image/upload/f_auto,q_auto/v1/blo
 <p>Y si sos de desayunar o merendar en el trabajo, te damos estas ideas para salir de las galletitas: <a href="/plato/waffles-de-avena-y-banana" title="Waffles de avena y banana">waffles de avena y banana para los amantes de lo dulce</a> o <a href="/plato/waffles-clasicos" title="Waffles clásicos">esta opción clásica</a> y versátil para hacer combinaciones saladas.</p>
 
 <div>
-<a href="/plato/waffles-de-avena-y-banana" title="Waffles de avena y banana">
+<a href="/plato/waffles-clasicos" title="Waffles clásicos">
   <img src="https://res.cloudinary.com/viandascook/image/upload/f_auto,q_auto/b7ycdte9p1im1txazv5a">
 </a>
 

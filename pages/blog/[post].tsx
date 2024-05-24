@@ -1,21 +1,28 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
+import Image from 'next/image';
+
 import { getMatterResult } from '../../plugins';
 import { markdownToHtml } from '../../lib/markdownToHtml';
 import { fileNames, removeMdExtension } from '../../lib/posts';
 
 import { IPost } from '../../interfaces';
 
-import styles from '../../styles/blog/Post.module.scss';
 import { HomeLayout } from '../../components/layouts';
-import Image from 'next/image';
+import { ElementsPng } from '../../components/ui/blog';
+
+import styles from '../../styles/blog/Post.module.scss';
 
 interface Props {
    post: IPost;
 }
 
 const Post: NextPage<Props> = ({ post }) => {
+   const title = `El Blog de Viandas Cook | ${post.title}`;
+   const description = post.description!;
+   const canonical = `https://www.viandascook.com/blog/${post.id}`;
+
    return (
-      <HomeLayout title={'Blog | Viandas Cook'} pageDescription={''} can={''}>
+      <HomeLayout title={title} pageDescription={description} can={canonical}>
          <section className={styles.post}>
             <div className={styles.banner}>
                <h2 className={styles.mobileTitle}>
@@ -23,14 +30,18 @@ const Post: NextPage<Props> = ({ post }) => {
                </h2>
                <h2 className={styles.title}>El Blog de Viandas Cook</h2>
             </div>
+
             <div className={styles.image}>
                <Image src={post.cover!} alt={post.title} layout='fill' />
             </div>
+
             <div className={styles.container}>
                <p className={styles.date}>{post.date}</p>
                <h1 className={styles.title}>{post.title}</h1>
                <div className={styles.content} dangerouslySetInnerHTML={{ __html: post.content! }} />
             </div>
+
+            <ElementsPng />
          </section>
       </HomeLayout>
    );
