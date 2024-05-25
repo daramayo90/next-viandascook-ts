@@ -1,0 +1,184 @@
+.referrals {
+   width: 100%;
+
+   .bannerDesktop {
+      display: none;
+   }
+
+   .bannerMobile {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 100%;
+      height: 75vh;
+      margin: 3rem auto 2rem auto;
+
+      img {
+         width: 100%;
+         height: 100%;
+         object-fit: cover;
+      }
+   }
+
+   .container {
+      width: 90%;
+      margin: 0 auto 9rem auto;
+
+      .titleMobile {
+         font-size: 1.5rem;
+         text-align: center;
+      }
+
+      .titleDesktop {
+         display: none;
+      }
+
+      .friendsImg {
+         position: relative;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         width: 100%;
+         height: 40vh;
+
+         img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+         }
+      }
+
+      .text {
+         margin: 1rem 0;
+         line-height: 27px;
+         text-align: center;
+
+         strong {
+            color: var(--primary);
+         }
+      }
+
+      .referralContainer {
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+         width: 100%;
+         height: 50px;
+         margin: 2rem 0;
+         padding: 0.3rem 1rem;
+         border-radius: 4px;
+         font-size: 1rem;
+         font-weight: 400;
+         line-height: 1.5;
+         background-color: #fff;
+         background-clip: padding-box;
+         border: 1px solid var(--textColor);
+         border-radius: 10px;
+         transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+         .coupon {
+            color: var(--primary);
+         }
+
+         .copy {
+            color: var(--textColr);
+            background-color: transparent;
+            border: none;
+            padding: 0.5rem 1.6rem;
+            letter-spacing: 0.8px;
+            font-size: 0.92rem;
+         }
+      }
+
+      .btn {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         width: 100%;
+
+         button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            width: 100%;
+            height: 100%;
+            padding: 10px 55px 10px 40px;
+            letter-spacing: 1.5px;
+            border-color: var(--primary);
+            color: var(--white);
+            background-color: var(--primary);
+            transition: all 0.2s ease-in-out;
+         }
+      }
+   }
+
+   @media (min-width: 720px) {
+      .bannerMobile {
+         display: none;
+      }
+
+      .bannerDesktop {
+         position: relative;
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         width: 100%;
+         height: 45vh;
+         margin: 3rem auto 2rem auto;
+
+         img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+         }
+      }
+      .container {
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+         max-width: 1200px;
+         margin: 0 auto;
+
+         .titleMobile {
+            display: none;
+         }
+
+         .titleDesktop {
+            display: block;
+            font-size: 1.5rem;
+            text-align: center;
+         }
+
+         .friendsImg {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40%;
+            height: 400px;
+
+            img {
+               width: 100%;
+               height: 100%;
+               object-fit: cover;
+            }
+         }
+
+         .info {
+            width: 55%;
+            height: 350px;
+
+            .referralContainer {
+               max-width: 420px;
+               margin: 2rem auto;
+            }
+
+            .btn button {
+               max-width: 420px;
+            }
+         }
+      }
+   }
+}

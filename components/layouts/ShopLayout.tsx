@@ -33,7 +33,7 @@ export const ShopLayout: FC<Props> = ({
    let menuPage = false;
    let backCart = false;
 
-   const hasFooter = path.includes('checkout') || path.includes('mi-cuenta');
+   const hasFooter = path.includes('checkout');
 
    const setPath = (routerPath: string) => {
       Object.entries(pageTitles).forEach(([path, title]): void => {
@@ -84,7 +84,6 @@ export const ShopLayout: FC<Props> = ({
                <Footer />
             </footer>
          )}
-         ,
       </>
    );
 };

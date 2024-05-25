@@ -8,7 +8,9 @@ import { dbUsers } from '../../database';
 
 import { ShopLayout } from '../../components/layouts';
 
-import styles from '../../styles/Referrals.module.css';
+import styles from '../../styles/referrals/Referrals.module.scss';
+import Image from 'next/image';
+import { cloudImagesPath } from '../../utils';
 
 interface Props {
    userRefCode: string;
@@ -42,28 +44,58 @@ const FriendsPage: NextPage<Props> = ({ userRefCode }) => {
    return (
       <ShopLayout title={'Referidos | Viandas Cook'} pageDescription={''} noIndex>
          <section className={styles.referrals}>
-            <div className={styles.container}>
-               <h2 className={styles.title}>Invitá a un amigo a ser un ViandLover</h2>
-               <p className={styles.text}>
-                  Por cada amigo que haga su primer pedido con tu código, recibís{' '}
-                  <strong>10.000 puntos</strong> de regalo y tu amigo recibe un{' '}
-                  <strong>5% de descuento</strong> en su primera compra.
-               </p>
-               <p className={styles.text}>
-                  ¡Con Viandas Cook, hacé que tus días y los de tus amigos tengan sabor!
-               </p>
+            <div className={styles.bannerMobile}>
+               <Image
+                  src={`${cloudImagesPath}/Referidos/qmeskorwpu3hbfiwcfp4`}
+                  alt='Referidos - Banner'
+                  layout='fill'
+               />
+            </div>
 
-               <div className={styles.referralContainer}>
-                  <span className={styles.coupon} ref={couponRef}>
-                     {userRefCode}
-                  </span>
-                  <button className={styles.copy} onClick={handleCopyClick}>
-                     <span className='fadeIn'>{couponToCopy ? 'Copiado' : 'Copiar'}</span>
-                  </button>
+            <div className={styles.bannerDesktop}>
+               <Image
+                  src={`${cloudImagesPath}/Referidos/lw59xwwhfgsnnbjnray2`}
+                  alt='Referidos - Banner'
+                  layout='fill'
+               />
+            </div>
+
+            <div className={styles.container}>
+               <h2 className={styles.titleMobile}>Invitá a un amigo a ser un ViandLover</h2>
+
+               <div className={styles.friendsImg}>
+                  <Image
+                     src={`${cloudImagesPath}/Referidos/l891q2z7c5srkjfqtkrr`}
+                     alt='Referidos - Amigos'
+                     layout='fill'
+                  />
                </div>
 
-               <div className={styles.btn} onClick={handleClick}>
-                  <button>Compartir</button>
+               <div className={styles.info}>
+                  <h2 className={styles.titleDesktop}>Invitá a un amigo a ser un ViandLover</h2>
+
+                  <p className={styles.text}>
+                     Por cada amigo que haga su primer pedido con tu código, recibís{' '}
+                     <strong>10.000 puntos</strong> de regalo y tu amigo recibe un{' '}
+                     <strong>5% de descuento</strong> en su primera compra.
+                  </p>
+
+                  <p className={styles.text}>
+                     ¡Con Viandas Cook, hacé que tus días y los de tus amigos tengan sabor!
+                  </p>
+
+                  <div className={styles.referralContainer}>
+                     <span className={styles.coupon} ref={couponRef}>
+                        {userRefCode}
+                     </span>
+                     <button className={styles.copy} onClick={handleCopyClick}>
+                        <span className='fadeIn'>{couponToCopy ? 'Copiado' : 'Copiar'}</span>
+                     </button>
+                  </div>
+
+                  <div className={styles.btn} onClick={handleClick}>
+                     <button>Compartir</button>
+                  </div>
                </div>
             </div>
          </section>
