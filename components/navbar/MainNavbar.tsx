@@ -81,25 +81,25 @@ export const MainNavbar = () => {
                      <div className={styles.dropdownContent}>
                         <Link href='/descuentos' prefetch={false}>
                            <a className={styles.linkItem}>
-                              <span>Descuentos</span>
+                              <span className={styles.desktopItem}>Descuentos</span>
                            </a>
                         </Link>
 
                         <Link href='/loyalty' prefetch={false}>
                            <a className={styles.linkItem}>
-                              <span>Sumá Puntos</span>
+                              <span className={styles.desktopItem}>Sumá Puntos</span>
                            </a>
                         </Link>
 
                         <Link href='/como-funciona' prefetch={false}>
                            <a className={styles.linkItem}>
-                              <span>¿Cómo Funciona?</span>
+                              <span className={styles.desktopItem}>¿Cómo Funciona?</span>
                            </a>
                         </Link>
 
                         <Link href='/preguntas' prefetch={false}>
                            <a className={styles.linkItem}>
-                              <span>¿Dudas?</span>
+                              <span className={styles.desktopItem}>¿Dudas?</span>
                            </a>
                         </Link>
                      </div>
