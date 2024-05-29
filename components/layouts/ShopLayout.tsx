@@ -52,11 +52,19 @@ export const ShopLayout: FC<Props> = ({
             <meta name='description' content={pageDescription} />
             <meta name='keywords' content={keywords} />
 
-            <meta name='og:title' content={title} />
-            <meta name='og:description' content={pageDescription} />
+            <meta property='og:title' content={title} />
+            <meta property='og:description' content={pageDescription} />
+            <meta property='og:image' content='/logo/viandas-icon.png' />
+            <meta property='og:url' content={can} />
+            <meta property='og:type' content='website' />
+
+            <meta name='twitter:card' content='summary_large_image' />
+            <meta name='twitter:title' content={title} />
+            <meta name='twitter:description' content={pageDescription} />
+            <meta name='twitter:image' content='/logo/viandas-icon.png' />
+
             <meta name='viewport' content='width=device-width, user-scalable=no, maximum-scale=5' />
 
-            {imageFullUrl && <meta name='og:image' content={imageFullUrl} />}
             {noIndex && <meta name='robots' content='noindex, nofollow' />}
 
             <link rel='canonical' href={can} />
