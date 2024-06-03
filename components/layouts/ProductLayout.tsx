@@ -14,7 +14,14 @@ export const ProductLayout: FC<Props> = ({ children, product }) => {
       <>
          <Head>
             <title>{product.name} | Viandas Cook</title>
+            <meta name='viewport' content='width=device-width' />
+            <meta name='robots' content='index, follow' />
+
             <meta name='description' content={product.description} />
+
+            <meta name='og:title' content={product.name} />
+            <meta name='og:description' content={product.description} />
+            <meta name='og:image' content={product.image} />
 
             <meta property='og:title' content={`Viandas Cook | ${product.name}`} />
             <meta property='og:description' content={product.description} />
@@ -26,8 +33,6 @@ export const ProductLayout: FC<Props> = ({ children, product }) => {
             <meta name='twitter:title' content={`Viandas Cook | ${product.name}`} />
             <meta name='twitter:description' content={product.description} />
             <meta name='twitter:image' content={product.image} />
-
-            <meta name='viewport' content='width=device-width' />
 
             {/* <script
                type='application/ld+json'

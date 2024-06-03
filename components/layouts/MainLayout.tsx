@@ -33,8 +33,16 @@ export const MainLayout: FC<Props> = ({
       <>
          <Head>
             <title>{title}</title>
+
+            <meta name='viewport' content='width=device-width' />
+            <meta name='robots' content='index, follow' />
+
             <meta name='description' content={pageDescription} />
             <meta name='keywords' content={keywords} />
+
+            <meta name='og:title' content={title} />
+            <meta name='og:description' content={pageDescription} />
+            <meta name='og:image' content='/logo/viandas-icon.png' />
 
             <meta property='og:title' content={title} />
             <meta property='og:description' content={pageDescription} />
@@ -46,8 +54,6 @@ export const MainLayout: FC<Props> = ({
             <meta name='twitter:title' content={title} />
             <meta name='twitter:description' content={pageDescription} />
             <meta name='twitter:image' content='/logo/viandas-icon.png' />
-
-            <meta name='viewport' content='width=device-width' />
 
             <link rel='canonical' href={can} />
 
