@@ -8,6 +8,7 @@ export * from './commonQuestions';
 export * from './discounts';
 export * from './holidays';
 export * from './loyalty';
+export * from './neighborhoods';
 export * from './pageTitles';
 export * from './questions';
 export * from './questionsLoyalty';

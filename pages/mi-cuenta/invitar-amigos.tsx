@@ -54,7 +54,7 @@ const FriendsPage: NextPage<Props> = ({ userRefCode }) => {
 
             <div className={styles.bannerDesktop}>
                <Image
-                  src={`${cloudImagesPath}/Referidos/nwfaeklznke0vhsaqw4w`}
+                  src={`${cloudImagesPath}/Referidos/zupcwauyughi7ar2zymn`}
                   alt='Referidos - Banner'
                   layout='fill'
                />
