@@ -16,7 +16,15 @@ export const getSortedPosts = (): IPost[] => {
       return { id, date, cover, title, description };
    });
 
-   return posts.sort((a, b) => (a.date < b.date ? 1 : -1));
+   return posts.sort((a, b) => {
+      const [dayA, monthA, yearA] = a.date.split('/').map(Number);
+      const [dayB, monthB, yearB] = b.date.split('/').map(Number);
+
+      const dateA = new Date(yearA, monthA - 1, dayA).getTime();
+      const dateB = new Date(yearB, monthB - 1, dayB).getTime();
+
+      return dateB - dateA; // Sort descending
+   });
 };
 
 export const removeMdExtension = (fileName: string) => fileName.replace(/\.md$/, '');
