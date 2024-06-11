@@ -73,6 +73,13 @@
             color: var(--black);
          }
 
+         h4 {
+            margin: 1rem 0;
+            font-size: 1.2rem;
+            text-transform: inherit;
+            color: var(--black);
+         }
+
          p {
             margin: 0.5rem 0;
             font-size: 1rem;
@@ -172,6 +179,11 @@
                font-size: 1.5rem;
             }
 
+            h4 {
+               margin: 1.2rem 0;
+               font-size: 1.3rem;
+            }
+
             p {
                font-size: 1.1rem;
             }
@@ -185,7 +197,9 @@
                }
 
                em {
+                  display: block;
                   font-size: 1rem;
+                  width: 310px;
                }
             }
 
