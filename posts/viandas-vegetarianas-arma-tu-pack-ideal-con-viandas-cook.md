@@ -1,7 +1,7 @@
 ---
 date: '11/06/2024'
 title: 'Viandas vegetarianas: Armá tu pack ideal con Viandas Cook'
-description: '5 ideas de viandas para el colegio para resolver la semana. Propuestas prácticas, saludables y del gusto de los más chicos.'
+description: 'Viandas vegetarianas prácticas y saludables para tener lista tu comida en minutos. Encontrá tu nuevo plato favorito en Viandas Cook'
 cover: 'https://res.cloudinary.com/viandascook/image/upload/f_auto,q_auto/v1/blog/pi7bfr3c7dzlxqcdbsjt'
 ---
 
