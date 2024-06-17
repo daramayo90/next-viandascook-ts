@@ -54,6 +54,12 @@ export const seo = {
          'descuentos en viandas, comida saludable económica, ofertas en viandas, envío gratis viandas, viandas Cook descuentos, promociones en comida saludable, descuento primera compra, ahorra en viandas, ofertas especiales en viandas, viandas con descuento',
       canonical: 'https://www.viandascook.com/descuentos',
    },
+   BlogPage: {
+      title: 'Blog de Viandas Cook | Consejos Saludables para tu día a día',
+      description:
+         'Descubrí en el blog de Viandas Cook recetas saludables, tips de nutrición y consejos para una alimentación balanceada. ¡Mejorá tu estilo de vida hoy!',
+      canonical: 'https://www.viandascook.com/blog',
+   },
    SitemapPage: {
       title: 'Mapa del Sitio | Viandas Cook',
       description: 'Acá encontrarás las principales URLs del sitio',

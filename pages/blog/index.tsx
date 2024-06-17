@@ -7,6 +7,8 @@ import { AllPosts, ElementsPng, FeaturedPosts } from '../../components/ui/blog';
 
 import { IPost } from '../../interfaces';
 
+import { seo } from '../../utils/seo';
+
 import styles from '../../styles/blog/Blog.module.scss';
 
 interface Props {
@@ -14,8 +16,10 @@ interface Props {
 }
 
 const BlogPage: NextPage<Props> = ({ posts }) => {
+   const { title, description, canonical } = seo['BlogPage'];
+
    return (
-      <HomeLayout title={'El Blog de Viandas Cook'} pageDescription={''} can={''}>
+      <HomeLayout title={title} pageDescription={description} can={canonical}>
          <section className={styles.blog}>
             <div className={styles.intro}>
                <div className={styles.banner}>

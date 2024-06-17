@@ -13,17 +13,9 @@ interface Props {
    pageDescription: string;
    keywords?: string;
    can?: string;
-   imageFullUrl?: string;
 }
 
-export const HomeLayout: FC<Props> = ({
-   children,
-   title,
-   pageDescription,
-   keywords,
-   can,
-   imageFullUrl,
-}) => {
+export const HomeLayout: FC<Props> = ({ children, title, pageDescription, keywords, can }) => {
    const router = useRouter();
    const path = router.asPath;
 
