@@ -95,18 +95,21 @@
             margin: 1rem 0;
 
             img {
-               width: 100%;
+               width: 85%;
                height: auto;
                border-radius: 20px;
             }
 
             em {
+               display: block;
+               width: 85%;
                font-size: 0.9rem;
                color: rgb(140, 140, 140);
             }
          }
 
-         ul {
+         ul,
+         ol {
             padding-left: 2rem;
 
             li {
@@ -203,7 +206,8 @@
                }
             }
 
-            ul li {
+            ul li,
+            ol li {
                font-size: 1.1rem;
             }
          }
