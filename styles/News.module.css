@@ -39,19 +39,17 @@
 .news > .container span {
    position: unset !important;
    width: 100% !important;
-   border: 10px red solid;
 }
 
 .news > .container img {
    height: unset !important;
    width: 100% !important;
    position: relative !important;
-   border: 10px red solid;
 }
 
 @media (min-width: 620px) {
    .news > .container {
-      height: 41vw;
+      height: 24vw;
       margin-bottom: 2rem;
    }
 
