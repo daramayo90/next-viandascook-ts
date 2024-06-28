@@ -11,6 +11,7 @@ import { HomeLayout } from '../../components/layouts';
 import { ElementsPng } from '../../components/ui/blog';
 
 import styles from '../../styles/blog/Post.module.scss';
+import { Newsletter } from '../../components/ui/Newsletter';
 
 interface Props {
    post: IPost;
@@ -42,6 +43,8 @@ const Post: NextPage<Props> = ({ post }) => {
             </div>
 
             <ElementsPng />
+
+            <Newsletter />
          </section>
       </HomeLayout>
    );

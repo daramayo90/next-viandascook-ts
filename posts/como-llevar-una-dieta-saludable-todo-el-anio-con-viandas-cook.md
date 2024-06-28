@@ -1,7 +1,7 @@
 ---
 date: '17/06/2024'
 title: 'Cómo llevar una dieta saludable todo el año con Viandas Cook'
-description: 'Descubre cómo Viandas Cook puede ayudarte a mantener una dieta saludable todo el año con comidas equilibradas y deliciosas.'
+description: 'Descubrí cómo Viandas Cook te puede ayudar a mantener una dieta saludable todo el año con comidas equilibradas y deliciosas.'
 cover: 'https://res.cloudinary.com/viandascook/image/upload/f_auto,q_auto/v1/blog/z2jnlwk5mynzlcar6njg'
 ---
 

@@ -108,6 +108,16 @@
             }
          }
 
+         section {
+            margin: 2rem 0;
+
+            img {
+               width: 100%;
+               height: auto;
+               border-radius: 20px;
+            }
+         }
+
          ul,
          ol {
             padding-left: 2rem;
@@ -203,6 +213,16 @@
                   display: block;
                   font-size: 1rem;
                   width: 310px;
+               }
+            }
+
+            section {
+               margin: 2rem 0;
+
+               img {
+                  width: 100%;
+                  height: auto;
+                  border-radius: 20px;
                }
             }
 
