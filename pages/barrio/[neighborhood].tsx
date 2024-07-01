@@ -33,8 +33,15 @@ interface Props {
 const NeighborhoodPage: NextPage<Props> = ({ theNeighborhood, products, seo }) => {
    const { title, description, keywords, canonical } = seo;
 
+   const index = theNeighborhood === 'Belgrano' || theNeighborhood === 'Palermo' ? true : false;
+
    return (
-      <MainLayout title={title} pageDescription={description} keywords={keywords} can={canonical}>
+      <MainLayout
+         title={title}
+         pageDescription={description}
+         keywords={keywords}
+         can={canonical}
+         index={index}>
          <section className={styles.landing}>
             <BannerNeighborhood neighborhood={theNeighborhood} />
 

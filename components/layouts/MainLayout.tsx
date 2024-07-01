@@ -1,10 +1,9 @@
 import { FC, ReactNode, Suspense } from 'react';
-import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
 
 import { Footer } from '../ui';
-import { MainNavbar, Navbar } from '../navbar';
+import { MainNavbar } from '../navbar';
 
 const SideMenu = dynamic(() => import('../ui').then((module) => module.SideMenu), {
    ssr: false,
@@ -16,26 +15,21 @@ interface Props {
    pageDescription: string;
    can: string;
    keywords?: string;
-   imageFullUrl?: string;
+   index: boolean;
 }
 
-export const MainLayout: FC<Props> = ({
-   children,
-   title,
-   pageDescription,
-   keywords,
-   can,
-   imageFullUrl,
-}) => {
-   const router = useRouter();
-
+export const MainLayout: FC<Props> = ({ children, title, pageDescription, keywords, can, index }) => {
    return (
       <>
          <Head>
             <title>{title}</title>
 
             <meta name='viewport' content='width=device-width' />
-            <meta name='robots' content='index, follow' />
+            {index ? (
+               <meta name='robots' content='index, follow' />
+            ) : (
+               <meta name='robots' content='noindex, nofollow' />
+            )}
 
             <meta name='description' content={pageDescription} />
             <meta name='keywords' content={keywords} />

@@ -28,7 +28,12 @@ const LandingPage: NextPage<Props> = ({ products }) => {
    const { title, description, keywords, canonical } = seo['LandingPage'];
 
    return (
-      <MainLayout title={title} pageDescription={description} keywords={keywords} can={canonical}>
+      <MainLayout
+         title={title}
+         pageDescription={description}
+         keywords={keywords}
+         can={canonical}
+         index>
          <section className={styles.landing}>
             <Banner />
 
