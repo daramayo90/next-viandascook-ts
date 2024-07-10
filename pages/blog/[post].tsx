@@ -18,7 +18,7 @@ interface Props {
 }
 
 const Post: NextPage<Props> = ({ post }) => {
-   const title = `Blog de Viandas Cook | ${post.title}`;
+   const title = `${post.title} | Viandas Cook`;
    const description = post.description!;
    const canonical = `https://www.viandascook.com/blog/${post.id}`;
 

@@ -25,8 +25,15 @@ const banners: Banner[] = [
       isMobile: true,
    },
    {
+      name: 'Viandas Club',
+      img: `${cloudImagesPath}/Banners/bp5rlp3djrjjjfj8o3ex`,
+      bannerStyle: 'mobileBanner',
+      link: '/loyalty',
+      isMobile: true,
+   },
+   {
       name: 'Referidos',
-      img: `${cloudImagesPath}/Referidos/qmeskorwpu3hbfiwcfp4`,
+      img: `${cloudImagesPath}/Banners/lyqumeybf8fiumdikfqb`,
       bannerStyle: 'mobileBanner',
       link: '/mi-cuenta/invitar-amigos',
       isMobile: true,
@@ -39,8 +46,15 @@ const banners: Banner[] = [
       isMobile: false,
    },
    {
+      name: 'Viandas Club',
+      img: `${cloudImagesPath}/Banners/bwd7fachrjrn1ieytsni`,
+      bannerStyle: 'desktopBanner',
+      link: '/loyalty',
+      isMobile: false,
+   },
+   {
       name: 'Referidos',
-      img: `${cloudImagesPath}/Referidos/wcyo5z3fnij98a5tayei`,
+      img: `${cloudImagesPath}/Banners/egyue6hfdealkwii7x2l`,
       bannerStyle: 'desktopBanner',
       link: '/mi-cuenta/invitar-amigos',
       isMobile: false,

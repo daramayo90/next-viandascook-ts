@@ -2,8 +2,8 @@ import { cloudDiscountsPath } from './cloudinary';
 
 export const discounts = [
    // {
-   //    name: 'Descuento Hot Sale',
-   //    img: `${cloudDiscountsPath}/phkzq43qfu53kywejxwt`,
+   //    name: 'Descuento primera compra',
+   //    img: `${cloudDiscountsPath}/kg03vy8hkzpsej2rqex3`,
    // },
    {
       name: 'Descuento llevando 14 viandas o más',
