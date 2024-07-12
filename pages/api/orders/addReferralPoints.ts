@@ -34,8 +34,8 @@ const addReferralPoints = async (req: NextApiRequest, res: NextApiResponse<Data>
       { email: user.email },
       {
          $set: {
-            points: user.points + 10000,
-            redeemPoints: user.points + 10000,
+            points: user.points + 300000,
+            redeemPoints: user.points + 300000,
          },
       },
    );

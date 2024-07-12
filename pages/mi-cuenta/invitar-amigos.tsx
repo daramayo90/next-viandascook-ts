@@ -76,7 +76,7 @@ const FriendsPage: NextPage<Props> = ({ userRefCode }) => {
 
                   <p className={styles.text}>
                      Por cada amigo que haga su primer pedido con tu código, recibís{' '}
-                     <strong>10.000 puntos</strong> de regalo y tu amigo recibe un{' '}
+                     <strong>300.000 puntos</strong> de regalo y tu amigo recibe un{' '}
                      <strong>5% de descuento</strong> en su primera compra.
                   </p>
 

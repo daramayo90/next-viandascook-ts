@@ -20,6 +20,6 @@ export const questionsLoyalty = [
       content: `Para poder obtener puntos extras refiriendo a un amigo a ser un ViandLover, 
       deberás localizar tu link personal en la sección Mi Cuenta -> ¡Invitar Amigos!. 
       Dentro de dicha sección, vas a ver un link, el cual se lo deberás enviar a cada amigo que quieras invitar a nuestro sitio web. 
-      Una vez que él o ella realicen su primer pedido con nosotros, se te otorgará un total de 10.000 puntos extra en tu cuenta.`,
+      Una vez que él o ella realicen su primer pedido con nosotros, se te otorgará un total de 300.000 puntos extra en tu cuenta.`,
    },
 ];
