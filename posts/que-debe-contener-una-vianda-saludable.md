@@ -81,7 +81,7 @@ cover: 'https://res.cloudinary.com/viandascook/image/upload/f_auto,q_auto/v1/blo
   <img src="https://res.cloudinary.com/viandascook/image/upload/f_auto,q_auto/i8ccyqzhunkcaduvc46x">
 </a>
 
-<em>¡No vives de ensalada! Una tarta, como <a href="/plato/tarta-integral-de-acelga-y-queso" title="Tarta de acelga y queso">este ejemplo de acelga y queso</a> , es una buena opción para incorporar verduras.</em>
+<em>¡No vives de ensalada! Una tarta, como <a href="/plato/tarta-integral-de-acelga-y-queso" title="Tarta de acelga y queso">este ejemplo de acelga y queso</a>, es una buena opción para incorporar verduras.</em>
 
 </div>
 
