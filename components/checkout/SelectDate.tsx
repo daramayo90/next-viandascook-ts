@@ -40,9 +40,9 @@ export const SelectDate = () => {
    };
 
    const setInterval = (date: Date, amount: number): Date => {
-      if (isWeekend(date) === 'friday') amount = -4;
+      if (isWeekend(date) === 'friday') amount = -3;
 
-      if (isWeekend(date) === 'saturday') amount = -3;
+      if (isWeekend(date) === 'saturday') amount = -2;
 
       return subDays(date, amount);
    };
