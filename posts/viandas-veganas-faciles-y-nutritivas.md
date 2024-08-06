@@ -1,7 +1,7 @@
 ---
 date: '22/07/2024'
 title: 'Viandas veganas fáciles y nutritivas'
-description: 'Ideas de viandas veganas fáciles, nutritivas y listas en 15 minutos.'
+description: 'Descubrí ideas de viandas veganas que son fáciles de preparar, nutritivas y listas en solo 15 minutos.'
 cover: 'https://res.cloudinary.com/viandascook/image/upload/f_auto,q_auto/v1/blog/n2varhesdf0pzvnqp25f'
 ---
 

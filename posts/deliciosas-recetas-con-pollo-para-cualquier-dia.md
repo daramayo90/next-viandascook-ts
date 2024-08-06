@@ -1,7 +1,7 @@
 ---
 date: '12/07/2024'
 title: 'Deliciosas recetas con pollo para cualquier día'
-description: '¿Buscas ideas ricas, rápidas y saludables para tus comidas? ¿Querés salirte de los ultraprocesados y las carnes rojas? ¡Las recetas con pollo pueden ser tus aliadas!'
+description: '¿Buscas ideas ricas, rápidas y saludables para tus comidas? ¡Las recetas con pollo pueden ser tus aliadas!'
 cover: 'https://res.cloudinary.com/viandascook/image/upload/f_auto,q_auto/v1/blog/jqvur3xyczwygopdbgj9'
 ---
 
