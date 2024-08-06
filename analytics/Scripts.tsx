@@ -56,7 +56,7 @@ export const Scripts: FC = () => {
          </Script>
 
          {/* Hotjar */}
-         {/* <Script id='hotjar-analytics' strategy='afterInteractive' async={true}>
+         <Script id='hotjar-analytics' strategy='afterInteractive' async={true}>
             {`
                (function(h,o,t,j,a,r){
                   h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
@@ -67,7 +67,7 @@ export const Scripts: FC = () => {
                   a.appendChild(r);
                })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
             `}
-         </Script> */}
+         </Script>
       </>
    );
 };
