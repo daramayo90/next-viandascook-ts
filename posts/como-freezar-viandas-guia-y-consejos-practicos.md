@@ -8,11 +8,10 @@ cover: 'https://res.cloudinary.com/viandascook/image/upload/f_auto,q_auto/v1/blo
 <p><i>¿Querés tener siempre comidas saludables y listas para comer en minutos? Te contamos los secretos para freezar viandas y ahorrar tiempo y dinero.</i></p>
 
 <div>
-
-  <img src="https://res.cloudinary.com/viandascook/image/upload/f_auto,q_auto/v1/blog/xh0uzxdxhrrrvsnchnb1" title="Alimentos envasados">
-
-<em>En Viandas Cook, cocinamos por vos para que puedas tener viandas freezadas y saludables y disfrutar más de tu tiempo libre. Hacé <a href="/menu" title="Más de 70 opciones de platos">clic acá para conocer nuestro menu</a>.</em>
-
+  <div>
+    <img src="https://res.cloudinary.com/viandascook/image/upload/f_auto,q_auto/v1/blog/xh0uzxdxhrrrvsnchnb1" title="Alimentos envasados">
+    <p>En Viandas Cook, cocinamos por vos para que puedas tener viandas freezadas y saludables y disfrutar más de tu tippo libre. Hacé <a href="/menu" title="Más de 70 opciones de platos">clic acá para conocer nuestro menu</a>.</em>
+  </div>
 </div>
 
 <p>Si estás en esta nota es porque sabés que <strong>freezar viandas es una excelente manera de ahorrar tiempo y asegurarse de tener comidas caseras listas para cualquier ocasión</strong>. Esta práctica no solo ayuda a reducir el desperdicio de alimentos, sino que también facilita la planificación de una dieta equilibrada y saludable.</p>

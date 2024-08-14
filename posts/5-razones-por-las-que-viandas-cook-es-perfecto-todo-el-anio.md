@@ -64,11 +64,10 @@ cover: 'https://res.cloudinary.com/viandascook/image/upload/f_auto,q_auto/v1/blo
 </ul>
 
 <div>
-
-  <img src="https://res.cloudinary.com/viandascook/image/upload/f_auto,q_auto/v1/imgs/a7cgdgf1bg2xcoudlvz3" alt="Viandas envasadas al vacio">
-
-<em>Comprás una vez, soluciones todo tu mes y ahorrás hasta un 15%.</em>
-
+  <div>
+    <img src="https://res.cloudinary.com/viandascook/image/upload/f_auto,q_auto/v1/imgs/a7cgdgf1bg2xcoudlvz3" alt="Viandas envasadas al vacio">
+    <p>Comprás una vez, soluciones todo tu mes y ahorrás hasta un 15%.</p>
+  </div>
 </div>
 
 <h2>4. Calidad en cada bocado: Ingredientes frescos y nutritivos</h2>
@@ -76,11 +75,10 @@ cover: 'https://res.cloudinary.com/viandascook/image/upload/f_auto,q_auto/v1/blo
 <p>Nuestros chefs se aseguran de que tu vianda sea deliciosa y nutritiva, <strong>manteniendo los más altos estándares</strong>.</p>
 
 <div>
-
-  <img src="https://res.cloudinary.com/viandascook/image/upload/f_auto,q_auto/v1/blog/jbbvmotgbmsxepe4czrq" alt="Tabla de Ingredientes e Info Nutricional">
-
-<em>Porque nos interesa que tengas la mayor información posible, en nuestra web incluimos los ingredientes y la información nutricional de cada vianda.</em>
-
+  <div>
+    <img src="https://res.cloudinary.com/viandascook/image/upload/f_auto,q_auto/v1/blog/jbbvmotgbmsxepe4czrq" alt="Tabla de Ingredientes e Info Nutricional">
+    <p>Porque nos interesa que tengas la mayor información posible, en nuestra web incluimos los ingredientes y la información nutricional de cada vianda.</p>
+  </div>
 </div>
 
 <h2>5. Viandas envasadas al vacío para una mayor frescura</h2>

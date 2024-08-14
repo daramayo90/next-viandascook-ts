@@ -9,9 +9,9 @@ cover: 'https://res.cloudinary.com/viandascook/image/upload/f_auto,q_auto/v1/blo
 <p>Por eso, en este blog simplificamos tu trabajo: te damos ideas de cinco viandas veggies para satisfacer tu paladar, tus necesidades nutricionales y tu estilo de vida.</p>
 
 <div>
-
-  <img src="https://res.cloudinary.com/viandascook/image/upload/f_auto,q_auto/v1/blog/ou0kifiwbutxgzhv0xfn" title="Vegan love">
-
+  <div>
+    <img src="https://res.cloudinary.com/viandascook/image/upload/f_auto,q_auto/v1/blog/ou0kifiwbutxgzhv0xfn" title="Vegan love">
+  </div>
 </div>
 
 <h2>Ideas de viandas veganas saludables</h2>

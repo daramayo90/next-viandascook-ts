@@ -9,11 +9,10 @@ cover: 'https://res.cloudinary.com/viandascook/image/upload/f_auto,q_auto/v1/blo
 <p>Desde pechugas a la plancha hasta empanadas de pollo, en esta nota te damos 5 ideas de viandas con pollo para el trabajo, la facultad y todos tus días.</p>
 
 <div>
-
-  <img src="https://res.cloudinary.com/viandascook/image/upload/f_auto,q_auto/v1/blog/w2rj1ebjeeq9eixobt9r" title="Verduras cocidas">
-
-<em>¿Sabías que en Viandas Cook contamos con muchísimas opciones de comidas con pollo para todos tus días? <a href="/menu">Ingresá acá y conocelo</a>.</em>
-
+  <div>
+    <img src="https://res.cloudinary.com/viandascook/image/upload/f_auto,q_auto/v1/blog/w2rj1ebjeeq9eixobt9r" title="Verduras cocidas">
+    <p>¿Sabías que en Viandas Cook contamos con muchísimas opciones de comidas con pollo para todos tus días? <a href="/menu">Ingresá acá y conocelo</a>.</p>
+  </div>
 </div>
 
 <h2>3 beneficios del pollo</h2>

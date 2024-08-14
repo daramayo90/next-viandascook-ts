@@ -100,11 +100,19 @@
                border-radius: 20px;
             }
 
+            div img {
+               width: 100%;
+            }
+
             em {
                display: block;
                width: 85%;
                font-size: 0.9rem;
                color: rgb(140, 140, 140);
+            }
+
+            div em {
+               width: 100%;
             }
          }
 

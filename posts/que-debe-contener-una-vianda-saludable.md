@@ -99,11 +99,10 @@ cover: 'https://res.cloudinary.com/viandascook/image/upload/f_auto,q_auto/v1/blo
 <p>No hay que olvidar la importancia de mantenernos bien hidratados a lo largo del día. Asegurate de incluir una botella de agua reutilizable y, si lo preferís, complementá con infusiones sin azúcar, sobre en épocas de frío, que es cuando más cuesta beber líquidos.</p>
 
 <div>
-
-  <img src="https://res.cloudinary.com/viandascook/image/upload/f_auto,q_auto/v1/blog/jqncetlbdu6p2t3qxdaz" title="Vegetables saludables">
-
-<em>Acompañá tus viandas saludables con, al menos, 2 litros de agua por día.</em>
-
+  <div>
+    <img src="https://res.cloudinary.com/viandascook/image/upload/f_auto,q_auto/v1/blog/jqncetlbdu6p2t3qxdaz" title="Vegetables saludables">
+    <p>Acompañá tus viandas saludables con, al menos, 2 litros de agua por día.</p>
+  </div>
 </div>
 
 <h2>Consejos adicionales para tus viandas saludables</h2>

@@ -8,12 +8,10 @@ cover: 'https://res.cloudinary.com/viandascook/image/upload/f_auto,q_auto/v1/blo
 <p><i>¿Te cuesta organizarte para llevar una dieta saludable a diario? Te contamos cómo conseguirlo.</i></p>
 
 <div>
-
-  <img src="https://res.cloudinary.com/viandascook/image/upload/f_auto,q_auto/v1/blog/cpfpsfnffns7iv8jdk2g" title="Vegetales con Carne">
-
-<em>Planificá tus comidas con viandas variadas, saludables y listas en 15 minutos
-</em>
-
+  <div>
+    <img src="https://res.cloudinary.com/viandascook/image/upload/f_auto,q_auto/v1/blog/cpfpsfnffns7iv8jdk2g" title="Vegetales con Carne">
+    <p>Planificá tus comidas con viandas variadas, saludables y listas en 15 minutos</p>
+  </div>
 </div>
 
 <p>Tentaciones constantes, falta de tiempo y las ocupaciones diarias pueden complicar mantener una dieta saludable. ¿Y hacerlo durante todo el año? <strong>Suena más difícil aún</strong>.</p>
