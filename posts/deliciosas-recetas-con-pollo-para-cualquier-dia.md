@@ -35,7 +35,7 @@ cover: 'https://res.cloudinary.com/viandascook/image/upload/f_auto,q_auto/v1/blo
   <img src="https://res.cloudinary.com/viandascook/image/upload/f_auto,q_auto/wvqi8sujjjlxthxgmmqs">
 </a>
 
-<em>Un toque de sal, pimienta, aceite de oliva y cebolla elevan más el sabor de esta <a href="/plato/pechugas-a-la-plancha-con-omellete" title="Pechugas a la plancha con omellete">vianda saludable para todos tus días</a>.</em>
+<em>Un toque de sal, pimienta, aceite de oliva y cebolla elevan más el sabor de estas <a href="/plato/pechugas-a-la-plancha-con-omellete" title="Pechugas a la plancha con omellete">Pechugas a la plancha con omellete</a>.</em>
 
 </div>
 
@@ -48,7 +48,7 @@ cover: 'https://res.cloudinary.com/viandascook/image/upload/f_auto,q_auto/v1/blo
   <img src="https://res.cloudinary.com/viandascook/image/upload/f_auto,q_auto/zxkgdlthnajt6fydohiz">
 </a>
 
-<em>Una salsa de tomate liviana es ideal para acompañar esta <a href="/plato/canelones-de-pollo-y-ricota-magra" title="Canelones de pollo y ricota magra">vianda con pollo</a>.</em>
+<em>Una salsa de tomate liviana es ideal para acompañar estos <a href="/plato/canelones-de-pollo-y-ricota-magra" title="Canelones de pollo y ricota magra">Canelones de pollo y ricota magra</a>.</em>
 
 </div>
 
@@ -61,7 +61,7 @@ cover: 'https://res.cloudinary.com/viandascook/image/upload/f_auto,q_auto/v1/blo
   <img src="https://res.cloudinary.com/viandascook/image/upload/f_auto,q_auto/qbgwyfurtkzhropburxl">
 </a>
 
-<em>Rellena con pollo jugoso, morrón y especias, <a href="/plato/empanada-de-pollo" title="Empanada de pollo">este plato es una bomba de sabor con menos de 300 calorías</a>.</em>
+<em>Rellena con pollo jugoso, morrón y especias, <a href="/plato/empanada-de-pollo" title="Empanada de pollo">esta Empanada de Pollo es una bomba de sabor con menos de 300 calorías</a>.</em>
 
 </div>
 
@@ -74,7 +74,7 @@ cover: 'https://res.cloudinary.com/viandascook/image/upload/f_auto,q_auto/v1/blo
   <img src="https://res.cloudinary.com/viandascook/image/upload/f_auto,q_auto/zxodhjdpsz2vntairwdr">
 </a>
 
-<em>En la vida pueden fallar muchas cosas, pero jamás <a href="/plato/hamburguesas-de-pollo-con-pure-de-calabaza" title="Hamburgesa de pollo con puré de calabaza">una hamburguesa con puré</a>.</em>
+<em>En la vida pueden fallar muchas cosas, pero jamás <a href="/plato/hamburguesas-de-pollo-con-pure-de-calabaza" title="Hamburgesa de pollo con puré de calabaza">una hamburguesa de pollo con puré de calabaza</a>.</em>
 
 </div>
 
@@ -87,7 +87,7 @@ cover: 'https://res.cloudinary.com/viandascook/image/upload/f_auto,q_auto/v1/blo
   <img src="https://res.cloudinary.com/viandascook/image/upload/f_auto,q_auto/uw1nnkmeoigceffkt45g">
 </a>
 
-<em>¿También se te hace agua la boca? <a href="/plato/suprema-napolitana-con-papas-bravas" title="Suprema napolitana con papas bravas">Podés tener esta vianda para cuando quieras en tu freezer</a>.</em>
+<em>¿También se te hace agua la boca? <a href="/plato/suprema-napolitana-con-papas-bravas" title="Suprema napolitana con papas bravas">Podes tener esta Suprema napolitana con papas bravas</a>.</em>
 
 </div>
 
@@ -101,7 +101,7 @@ cover: 'https://res.cloudinary.com/viandascook/image/upload/f_auto,q_auto/v1/blo
   <img src="https://res.cloudinary.com/viandascook/image/upload/f_auto,q_auto/rewgdiu6qdwtx0rfwyej">
 </a>
 
-<em>Tiernas piezas de pollo en salsa agridulce con vegetales coloridos, <a href="/plato/pollo-agridulce-con-vegetales" title="Pollo agridulce con vegetales">una vianda que combina dulzura y frescura</a>.</em>
+<em>Tierno <a href="/plato/pollo-agridulce-con-vegetales" title="Pollo agridulce con vegetales">pollo agridulce con vegetales coloridos</a>, que combina dulzura y frescura.</em>
 
 </div>
 

@@ -276,8 +276,17 @@
                   width: 30%;
                   height: 450px;
                   justify-content: space-between;
+
                   .image {
                      height: 200px;
+                  }
+
+                  .info {
+                     height: 260px;
+                     display: flex;
+                     flex-direction: column;
+                     align-items: flex-start;
+                     justify-content: space-between;
                   }
                }
             }
