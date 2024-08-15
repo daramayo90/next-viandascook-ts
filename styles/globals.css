@@ -249,6 +249,10 @@ button.nav.default-nav,
    z-index: 2;
 }
 
+.react-slideshow-fadezoom-wrapper .react-slideshow-fadezoom-images-wrap > div {
+   padding: 10px 0;
+}
+
 @media (min-width: 720px) {
    .react-slideshow-container .default-nav:first-of-type {
       left: -20px;
