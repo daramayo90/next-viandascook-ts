@@ -61,7 +61,7 @@ export const questions = [
    },
    {
       title: '¿Cuál es el costo de envío?',
-      content: `El costo de envío es de $500 para CABA, $600 para alguas zonas de GBA y Zona Norte.`,
+      content: `El costo de envío es de $1700 para CABA, $2100 para alguas zonas de GBA y Zona Norte.`,
    },
    {
       title: '¿Cómo debo aplicar el cupón BIENVENIDO10?',

@@ -196,7 +196,7 @@ const addQuestionsJsonLd = () => {
             "name": "¿Cuál es el costo de envío?",
             "acceptedAnswer": {
                "@type": "Answer",
-               "text": "El costo de envío es de $500 para CABA, $600 para alguas zonas de GBA y Zona Norte."
+               "text": "El costo de envío es de $1700 para CABA, $2100 para alguas zonas de GBA y Zona Norte."
             }
          },{
             "@type": "Question",

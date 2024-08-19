@@ -15,7 +15,7 @@
    height: 100%;
    padding: 10px 55px 10px 40px;
    letter-spacing: 1.5px;
-   border-color: var(--primary);
+   border: 1px solid var(--primary);
    color: var(--white);
    background-color: var(--primary);
    transition: all 0.2s ease-in-out;
@@ -31,7 +31,6 @@
 .linkTo > .btn:hover {
    background-color: var(--primaryHover);
    border-color: var(--primaryHover);
-   padding-right: 55px;
 }
 
 .linkTo > .btn:focus,

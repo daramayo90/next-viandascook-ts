@@ -25,7 +25,7 @@ export const AddressForm: FC<Props> = ({ userdb }) => {
 
    return (
       <form onSubmit={handleSubmit(onSubmitAddress)} noValidate>
-         <div style={{ position: 'absolute', top: '5rem', width: '90%', margin: 'auto' }}>
+         <div style={{ position: 'absolute', top: '5rem', padding: '0 1rem' }}>
             <p>
                Si sos de <strong>GBA</strong> y tu código postal <strong>no</strong> aparece en la
                lista, es porque aún no llegamos con nuestro delivery hasta tu dirección.
