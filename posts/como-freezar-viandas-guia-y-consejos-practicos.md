@@ -10,7 +10,7 @@ cover: 'https://res.cloudinary.com/viandascook/image/upload/f_auto,q_auto/v1/blo
 <div>
   <div>
     <img src="https://res.cloudinary.com/viandascook/image/upload/f_auto,q_auto/v1/blog/xh0uzxdxhrrrvsnchnb1" title="Alimentos envasados">
-    <p>En Viandas Cook, cocinamos por vos para que puedas tener viandas freezadas y saludables y disfrutar más de tu tippo libre. Hacé <a href="/menu" title="Más de 70 opciones de platos">clic acá para conocer nuestro menu</a>.</em>
+    <p>En Viandas Cook, cocinamos por vos para que puedas tener viandas freezadas y saludables y disfrutar más de tu tippo libre. Hacé <a href="/menu" title="Más de 70 opciones de platos">clic acá para conocer nuestro menu</a>.</p>
   </div>
 </div>
 

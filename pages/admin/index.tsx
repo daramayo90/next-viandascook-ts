@@ -99,7 +99,7 @@ const DashboardPage: NextPage = () => {
    } = info!;
 
    return (
-      <AdminLayout title='Dashboard' subTitle='Estadisticas generales' icon={<DashboardOutlined />}>
+      <AdminLayout title='Dashboard' subTitle='' icon={<DashboardOutlined />}>
          <DateRangePicker
             start={startDate}
             setStart={setStartDate}
@@ -109,31 +109,31 @@ const DashboardPage: NextPage = () => {
 
          <Grid container spacing={3} sx={{ width: '90%', margin: 'auto', marginTop: 5 }}>
             <SummaryTile
-               total={currency.format(totalIncome)}
+               total={currency.formatWithoutDecimals(totalIncome)}
                description='Ingresos totales'
                icon={<LocalAtmOutlined color='secondary' sx={{ fontSize: 40 }} />}
             />
 
             <SummaryTile
                icon={<AttachMoneyOutlined color='success' sx={{ fontSize: 40 }} />}
-               total={currency.format(mpIncome)}
+               total={currency.formatWithoutDecimals(mpIncome)}
                description='Ingresos con Mercado Pago'
             />
 
             <SummaryTile
-               total={currency.format(cashIncome)}
+               total={currency.formatWithoutDecimals(cashIncome)}
                description='Ingresos con Efectivo'
                icon={<AttachMoneyOutlined color='success' sx={{ fontSize: 40 }} />}
             />
 
             <SummaryTile
-               total={currency.format(transferIncome)}
+               total={currency.formatWithoutDecimals(transferIncome)}
                description='Ingresos con Transferencia'
                icon={<AttachMoneyOutlined color='success' sx={{ fontSize: 40 }} />}
             />
 
             <SummaryTile
-               total={currency.format(discounts)}
+               total={currency.formatWithoutDecimals(discounts)}
                description='Descuentos aplicados'
                icon={<DiscountOutlined color='secondary' sx={{ fontSize: 40 }} />}
             />
