@@ -79,6 +79,7 @@ export const holidays = [
    new Date(2024, 7, 26),
    new Date(2024, 7, 28),
    new Date(2024, 7, 29),
+   new Date(2024, 8, 2),
    new Date(2024, 9, 11),
    new Date(2024, 10, 18),
    new Date(2024, 11, 24),
