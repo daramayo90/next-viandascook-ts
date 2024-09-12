@@ -50,6 +50,11 @@ export const typesList = [
       model: 'Waffles',
    },
    {
+      icon: '/type/budines.jpg',
+      name: 'Budines',
+      model: 'Budines',
+   },
+   {
       icon: '/type/bajo-en-calorias.jpg',
       name: 'Bajo en calorías',
       model: 'Bajo en calorías',

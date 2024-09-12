@@ -36,7 +36,7 @@ export const CrossSellingProduct: FC<Props> = ({ product }) => {
                   {product.discountPrice && (
                      <div className={styles.tagImageWrapper}>
                         <Image
-                           src='/img/viandashot-tag.png'
+                           src='/img/10off-tag.png'
                            alt='10% off - Hot Sale'
                            width={200}
                            height={200}

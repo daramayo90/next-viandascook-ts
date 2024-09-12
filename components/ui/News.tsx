@@ -19,6 +19,13 @@ interface Banner {
 
 const banners: Banner[] = [
    {
+      name: 'Nuevo Lanzamiento - Budín Integral de Manzana y Canela',
+      img: `${cloudImagesPath}/Banners/qvvx6tnmo6srd9wyzu7i`,
+      bannerStyle: 'mobileBanner',
+      link: '/plato/budin-integral-de-manzana-y-canela',
+      isMobile: true,
+   },
+   {
       name: 'Promo 10% off - Descuento Primera Compra',
       img: '/img/banner-news-mobile.jpg',
       bannerStyle: 'mobileBanner',
@@ -39,6 +46,13 @@ const banners: Banner[] = [
       isMobile: true,
    },
 
+   {
+      name: 'Nuevo Lanzamiento - Budín Integral de Manzana y Canela',
+      img: `${cloudImagesPath}/Banners/hh6k7qbzwkuirmlhty4c`,
+      bannerStyle: 'desktopBanner',
+      link: '/plato/budin-integral-de-manzana-y-canela',
+      isMobile: false,
+   },
    {
       name: 'Promo 10% off - Descuento Primera Compra',
       img: `${cloudImagesPath}/Banners/njjfj85li2udnbmrxq9s`,
@@ -101,10 +115,10 @@ export const News: FC = () => {
       // <a href='#menu-products'>
       <section className={styles.news}>
          <div className={styles.container}>
-            <Slide easing='ease' duration={3500} {...propertiesMobile}>
+            <Slide easing='ease' duration={5500} {...propertiesMobile}>
                {mobileBanners.map(renderBanner)}
             </Slide>
-            <Slide easing='ease' duration={3500} {...propertiesDesktop}>
+            <Slide easing='ease' duration={5500} {...propertiesDesktop}>
                {desktopBanners.map(renderBanner)}
             </Slide>
          </div>

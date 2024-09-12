@@ -32,4 +32,5 @@ export type IType =
    | 'Tarta'
    | 'Vegano'
    | 'Vegetariano'
-   | 'Waffles';
+   | 'Waffles'
+   | 'Budines';

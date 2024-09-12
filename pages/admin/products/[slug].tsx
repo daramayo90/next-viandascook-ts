@@ -43,6 +43,7 @@ const validTypes: IType[] = [
    'Vegano',
    'Vegetariano',
    'Waffles',
+   'Budines',
 ];
 
 interface FormData {
