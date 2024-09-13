@@ -20,7 +20,7 @@ interface Banner {
 const banners: Banner[] = [
    {
       name: 'Nuevo Lanzamiento - Budín Integral de Manzana y Canela',
-      img: `${cloudImagesPath}/Banners/qvvx6tnmo6srd9wyzu7i`,
+      img: `${cloudImagesPath}/Banners/m8jm1bs3mwcndmyvzhih`,
       bannerStyle: 'mobileBanner',
       link: '/plato/budin-integral-de-manzana-y-canela',
       isMobile: true,
@@ -48,7 +48,7 @@ const banners: Banner[] = [
 
    {
       name: 'Nuevo Lanzamiento - Budín Integral de Manzana y Canela',
-      img: `${cloudImagesPath}/Banners/hh6k7qbzwkuirmlhty4c`,
+      img: `${cloudImagesPath}/Banners/gste7htevwosx2ktja9c`,
       bannerStyle: 'desktopBanner',
       link: '/plato/budin-integral-de-manzana-y-canela',
       isMobile: false,

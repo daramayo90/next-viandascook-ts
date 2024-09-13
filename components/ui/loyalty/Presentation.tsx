@@ -1,10 +1,13 @@
 import { cloudImagesPath } from '../../../utils';
 import styles from '../../../styles/loyalty/Loyalty.module.scss';
+import Image from 'next/image';
 
 export const Presentation = () => {
    return (
       <div className={styles.presentation}>
-         <img className={styles.cellphoneImg} src={`${cloudImagesPath}/grwjsemh9ejzfit3vqt7`} />
+         <div className={styles.cellphoneImg}>
+            <Image src={`${cloudImagesPath}/grwjsemh9ejzfit3vqt7`} width={600} height={600} />
+         </div>
          <div className={styles.container}>
             <p className={styles.text}></p>
             <p className={styles.text}>
