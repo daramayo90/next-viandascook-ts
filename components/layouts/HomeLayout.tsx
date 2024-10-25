@@ -189,7 +189,7 @@ const addQuestionsJsonLd = () => {
             "name": "¿Cuál es el horario de envío?",
             "acceptedAnswer": {
                "@type": "Answer",
-               "text": "Las entregas se realizan de lunes a viernes de 20 a 23hs. Sin embargo, podés dejarnos una nota al momento de finalizar la compra si hay un horario en el que no vas a encontrarte en tu domicilio y nosotros lo tenemos en cuenta. Además, contamos con un servicio de seguimiento en tiempo real del delivery. Recibirás el link por mail y por mensaje de texto."
+               "text": "Las entregas se realizan de lunes a viernes de 20 a 23hs. Además, contamos con un servicio de seguimiento en tiempo real del delivery. Recibirás el link por mail y por mensaje de texto."
             }
          },{
             "@type": "Question",
