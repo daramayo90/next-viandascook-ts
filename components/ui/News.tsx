@@ -18,11 +18,12 @@ interface Banner {
 }
 
 const banners: Banner[] = [
+   /* MOBILE BANNERS */
+
    {
-      name: 'Nuevo Lanzamiento - Budín Integral de Manzana y Canela',
-      img: `${cloudImagesPath}/Banners/m8jm1bs3mwcndmyvzhih`,
+      name: 'Cyber Monday - 15% off',
+      img: `${cloudImagesPath}/Banners/oflps3g2k0k7ko5rfmyh`,
       bannerStyle: 'mobileBanner',
-      link: '/plato/budin-integral-de-manzana-y-canela',
       isMobile: true,
    },
    {
@@ -46,11 +47,12 @@ const banners: Banner[] = [
       isMobile: true,
    },
 
+   /* DEESKTOP BANNERS */
+
    {
-      name: 'Nuevo Lanzamiento - Budín Integral de Manzana y Canela',
-      img: `${cloudImagesPath}/Banners/gste7htevwosx2ktja9c`,
+      name: 'Cyber Monday - 15% off',
+      img: `${cloudImagesPath}/Banners/fzrcd2tikg4zqjzhdr5h`,
       bannerStyle: 'desktopBanner',
-      link: '/plato/budin-integral-de-manzana-y-canela',
       isMobile: false,
    },
    {
