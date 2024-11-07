@@ -22,7 +22,7 @@ const banners: Banner[] = [
 
    {
       name: 'Cyber Monday - 15% off',
-      img: `${cloudImagesPath}/Banners/oflps3g2k0k7ko5rfmyh`,
+      img: `${cloudImagesPath}/Banners/zytxzpytd5jezhepgvcc`,
       bannerStyle: 'mobileBanner',
       isMobile: true,
    },
@@ -51,7 +51,7 @@ const banners: Banner[] = [
 
    {
       name: 'Cyber Monday - 15% off',
-      img: `${cloudImagesPath}/Banners/fzrcd2tikg4zqjzhdr5h`,
+      img: `${cloudImagesPath}/Banners/sa3u8r3shbwv8c4jt104`,
       bannerStyle: 'desktopBanner',
       isMobile: false,
    },
