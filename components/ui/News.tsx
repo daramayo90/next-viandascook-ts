@@ -21,12 +21,6 @@ const banners: Banner[] = [
    /* MOBILE BANNERS */
 
    {
-      name: 'Cyber Monday - 15% off',
-      img: `${cloudImagesPath}/Banners/zytxzpytd5jezhepgvcc`,
-      bannerStyle: 'mobileBanner',
-      isMobile: true,
-   },
-   {
       name: 'Promo 10% off - Descuento Primera Compra',
       img: '/img/banner-news-mobile.jpg',
       bannerStyle: 'mobileBanner',
@@ -49,12 +43,6 @@ const banners: Banner[] = [
 
    /* DEESKTOP BANNERS */
 
-   {
-      name: 'Cyber Monday - 15% off',
-      img: `${cloudImagesPath}/Banners/sa3u8r3shbwv8c4jt104`,
-      bannerStyle: 'desktopBanner',
-      isMobile: false,
-   },
    {
       name: 'Promo 10% off - Descuento Primera Compra',
       img: `${cloudImagesPath}/Banners/njjfj85li2udnbmrxq9s`,
