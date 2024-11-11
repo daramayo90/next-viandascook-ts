@@ -20,6 +20,7 @@ export const OrderCheckout: FC<Props> = ({ order }) => {
       couponDiscount,
       pointsDiscount = 0,
       referralDiscount = 0,
+      cashDiscount = 0,
       coupons = [],
       shipping,
       total,
@@ -43,7 +44,7 @@ export const OrderCheckout: FC<Props> = ({ order }) => {
             <span>{currency.format(subTotal)}</span>
          </div>
 
-         <Discounts orderItems={numberOfItems} orderPromo={discount} />
+         <Discounts orderItems={numberOfItems} orderPromo={discount} cashPayment={cashDiscount} />
 
          {coupons.length !== 0 && (
             <div className={styles.summary}>

@@ -119,7 +119,12 @@ const ThankYouPage: NextPage<Props> = ({ order }) => {
 
                   <OrderAddress order={order} />
 
-                  <Button href='/pedidos/historial' content='Historial' background='var(--primary)' />
+                  <Button
+                     href='/pedidos/historial'
+                     content='Historial'
+                     background='var(--primary)'
+                     color='white'
+                  />
                </div>
             </div>
          </section>

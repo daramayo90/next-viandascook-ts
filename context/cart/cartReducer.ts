@@ -1,4 +1,4 @@
-import { ICartProduct, ICoupon } from '../../interfaces';
+import { ICartProduct, ICoupon, IPaymentMethods } from '../../interfaces';
 
 import { CartState } from './';
 
@@ -29,12 +29,14 @@ type CartActionType =
            couponDiscount: number;
            referralDiscount: number;
            pointsDiscount: number;
+           cashDiscount: number;
            total: number;
         };
      }
    | { type: '[Cart] - Repeat Order'; payload: ICartProduct[] }
    | { type: '[Cart] - Redeem Points'; payload: number }
-   | { type: '[Cart] - Add Referral Coupon'; payload: string };
+   | { type: '[Cart] - Add Referral Coupon'; payload: string }
+   | { type: '[Cart] - Update Payment Method'; payload: IPaymentMethods };
 
 export const cartReducer = (state: CartState, action: CartActionType): CartState => {
    switch (action.type) {
@@ -171,6 +173,12 @@ export const cartReducer = (state: CartState, action: CartActionType): CartState
          return {
             ...state,
             referralCoupon: action.payload,
+         };
+
+      case '[Cart] - Update Payment Method':
+         return {
+            ...state,
+            paymentMethod: action.payload,
          };
 
       default:

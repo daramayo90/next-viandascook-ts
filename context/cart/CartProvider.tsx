@@ -8,7 +8,7 @@ import { viandasApi } from '../../axiosApi';
 import { coupon, currency, promo } from '../../utils';
 
 import { CartContext, cartReducer } from './';
-import { ICartProduct, ICoupon, IUser } from '../../interfaces';
+import { ICartProduct, ICoupon, IPaymentMethods, IUser } from '../../interfaces';
 
 interface Props {
    children: ReactNode;
@@ -27,7 +27,9 @@ export interface CartState {
    referralDiscount: number;
    points?: number;
    pointsDiscount?: number;
+   cashDiscount?: number;
    total: number;
+   paymentMethod: IPaymentMethods;
 }
 
 const CART_INITIAL_STATE: CartState = {
@@ -43,7 +45,9 @@ const CART_INITIAL_STATE: CartState = {
    referralDiscount: 0,
    points: 0,
    pointsDiscount: 0,
+   cashDiscount: 0,
    total: 0,
+   paymentMethod: 'efectivo',
 };
 
 export const CartProvider: FC<Props> = ({ children }) => {
@@ -108,9 +112,11 @@ export const CartProvider: FC<Props> = ({ children }) => {
 
       const couponDiscount = state.coupons?.reduce((p, c) => coupon.calc(c, subTotal) + p, 0) || 0;
       const referralDiscount = state.referralCoupon ? state.subTotal * 0.05 : 0;
+      const cashDiscount = state.paymentMethod === 'efectivo' ? subTotal * 0.1 : 0;
 
-      const total =
-         subTotal - discount - pointsDiscount - couponDiscount - referralDiscount + shipping;
+      const totalDisc = discount + pointsDiscount + couponDiscount + referralDiscount + cashDiscount;
+
+      const total = subTotal - totalDisc + shipping;
 
       const orderSummary = {
          numberOfItems,
@@ -119,6 +125,7 @@ export const CartProvider: FC<Props> = ({ children }) => {
          shipping,
          couponDiscount,
          pointsDiscount,
+         cashDiscount,
          referralDiscount,
          total,
       };
@@ -131,6 +138,7 @@ export const CartProvider: FC<Props> = ({ children }) => {
       state.points,
       state.referralCoupon,
       state.referralDiscount,
+      state.paymentMethod,
    ]);
 
    // Load Cart from Cookies
@@ -367,6 +375,10 @@ export const CartProvider: FC<Props> = ({ children }) => {
       }
    };
 
+   const updatePaymentMethod = (paymentMethod: IPaymentMethods) => {
+      dispatch({ type: '[Cart] - Update Payment Method', payload: paymentMethod });
+   };
+
    return (
       <CartContext.Provider
          value={{
@@ -382,6 +394,7 @@ export const CartProvider: FC<Props> = ({ children }) => {
             repeatOrder,
             onUsePoints,
             onUseRefCoupon,
+            updatePaymentMethod,
          }}>
          {children}
       </CartContext.Provider>

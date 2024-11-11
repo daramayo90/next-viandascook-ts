@@ -75,7 +75,7 @@ export const OrderSummary: FC = () => {
             <span>{currency.format(summaryValues.subTotal)}</span>
          </div>
 
-         <Discounts />
+         <Discounts showNoCash />
 
          <div className={styles.summary}>
             {numberOfItems >= 14 ? (

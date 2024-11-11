@@ -17,6 +17,7 @@ export interface IOrder {
    couponDiscount?: number;
    referralDiscount?: number;
    pointsDiscount?: number;
+   cashDiscount?: number;
    total: number;
 
    paymentMethod: IPaymentMethods;

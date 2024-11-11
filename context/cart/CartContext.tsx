@@ -1,5 +1,5 @@
 import { createContext } from 'react';
-import { ICartProduct, ICoupon, ShippingAddress } from '../../interfaces';
+import { ICartProduct, ICoupon, IPaymentMethods, ShippingAddress } from '../../interfaces';
 
 interface ContextProps {
    isLoaded: boolean;
@@ -14,7 +14,9 @@ interface ContextProps {
    referralDiscount: number;
    points?: number;
    pointsDiscount?: number;
+   cashDiscount?: number;
    total: number;
+   paymentMethod: IPaymentMethods;
    // shippingAddress?: ShippingAddress;
 
    addProductToCart: (product: ICartProduct) => void;
@@ -30,6 +32,7 @@ interface ContextProps {
 
    onUsePoints: (points: number) => Promise<{ error: boolean; msg?: string }>;
    onUseRefCoupon: (couponCode: string) => Promise<{ error: boolean; msg?: string }>;
+   updatePaymentMethod: (paymentMethod: IPaymentMethods) => void;
 }
 
 export const CartContext = createContext({} as ContextProps);

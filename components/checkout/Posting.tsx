@@ -7,7 +7,7 @@ import { viandasApi } from '../../axiosApi';
 
 import { IPaymentMethods } from '../../interfaces/order';
 
-import { AuthContext, OrdersContext } from '../../context';
+import { AuthContext, CartContext, OrdersContext } from '../../context';
 import { SubmitButton } from '../ui';
 
 import styles from '../../styles/Checkout.module.css';
@@ -73,6 +73,7 @@ export const Posting: FC = () => {
    const router = useRouter();
 
    const { createOrder, createMPOrder, addMailchimpClient } = useContext(OrdersContext);
+   const { updatePaymentMethod } = useContext(CartContext);
    const { user } = useContext(AuthContext);
 
    const email = user ? user.email : Cookies.get('email') || '';
@@ -94,6 +95,8 @@ export const Posting: FC = () => {
          mpRef.current = addCheckout(publicKey);
       });
       document.body.appendChild(script);
+
+      updatePaymentMethod(paymentMethod);
    }, []);
 
    const onCreateOrder = async () => {
@@ -153,6 +156,7 @@ export const Posting: FC = () => {
 
    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       setPaymentMethod(event.target.value as IPaymentMethods);
+      updatePaymentMethod(event.target.value as IPaymentMethods);
    };
 
    return (

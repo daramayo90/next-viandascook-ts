@@ -5,7 +5,7 @@ import { IOrder, IPaymentMethods } from '../../interfaces/order';
 interface ContextProps {
    shippingAddress?: ShippingAddress;
    orderId: number;
-   paymentMethod: IPaymentMethods;
+   // paymentMethod: IPaymentMethods;
 
    addGuestAddress: (address: ShippingAddress) => void;
 

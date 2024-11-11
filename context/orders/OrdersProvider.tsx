@@ -17,13 +17,13 @@ interface Props {
 export interface OrdersState {
    shippingAddress?: ShippingAddress;
    orderId: number;
-   paymentMethod: IPaymentMethods;
+   // paymentMethod: IPaymentMethods;
 }
 
 const ORDERS_INITIAL_STATE: OrdersState = {
    shippingAddress: undefined,
    orderId: 0,
-   paymentMethod: 'efectivo',
+   // paymentMethod: 'efectivo',
 };
 
 export const OrdersProvider: FC<Props> = ({ children }) => {
@@ -38,7 +38,9 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
       couponDiscount,
       referralDiscount,
       pointsDiscount,
+      cashDiscount,
       total,
+      paymentMethod,
    } = useContext(CartContext);
 
    const [state, dispatch] = useReducer(ordersReducer, ORDERS_INITIAL_STATE);
@@ -87,9 +89,7 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
       dispatch({ type: '[Orders] - Add Shipping Address', payload: address });
    };
 
-   const createOrder = async (
-      paymentMethod: IPaymentMethods,
-   ): Promise<{ hasError: boolean; message: string; token?: string }> => {
+   const createOrder = async (): Promise<{ hasError: boolean; message: string; token?: string }> => {
       const { user } = ((await getSession()) as any) || '';
 
       const shippingAddress: ShippingAddress = user ? user.shipping : state.shippingAddress;
@@ -143,6 +143,7 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
          couponDiscount,
          referralDiscount,
          pointsDiscount,
+         cashDiscount,
          total,
          paymentMethod,
          isPaid: false,

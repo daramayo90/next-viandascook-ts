@@ -24,6 +24,7 @@ const createOrder = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
       pointsDiscount = 0,
       couponDiscount = 0,
       referralDiscount = 0,
+      cashDiscount = 0,
       shipping,
       total,
    } = req.body as IOrder;
@@ -48,8 +49,8 @@ const createOrder = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
          );
       }, 0);
 
-      const backendTotal =
-         subTotal - discount - pointsDiscount - couponDiscount - referralDiscount + shipping;
+      const totalDisc = discount + pointsDiscount + couponDiscount + referralDiscount + cashDiscount;
+      const backendTotal = subTotal - totalDisc + shipping;
 
       if (total !== backendTotal) {
          throw new Error('El total no suma la cantidad comprada');
@@ -69,6 +70,8 @@ const createOrder = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
       };
 
       const orderId = await customIdGenerator();
+
+      console.log('req.body', req.body);
 
       const newOrder = new Order({ ...req.body, _id: orderId, isPaid: false, user: orderUser });
 

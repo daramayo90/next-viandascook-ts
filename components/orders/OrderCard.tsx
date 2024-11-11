@@ -4,7 +4,7 @@ import { FC, useState, useEffect } from 'react';
 import { IOrder } from '../../interfaces';
 import { currency } from '../../utils';
 
-import { AiFillCheckCircle } from 'react-icons/ai';
+import { AiFillCheckCircle, AiFillCloseCircle } from 'react-icons/ai';
 
 import styles from '../../styles/OrdersHistory.module.css';
 
@@ -18,7 +18,8 @@ export const OrderCard: FC<Props> = ({ order }) => {
    const [selected, setSelected] = useState(false);
    const [payment, setPayment] = useState('second');
 
-   const { _id, numberOfItems, total, deliveryDate, paymentMethod, createdAt } = order;
+   const { _id, numberOfItems, total, deliveryDate, paymentMethod, createdAt, isPaid, isCancel } =
+      order;
 
    const [year, month, dayToSplit] = deliveryDate.toString().split('-');
    const [day] = dayToSplit.split('T');
@@ -41,9 +42,7 @@ export const OrderCard: FC<Props> = ({ order }) => {
             <div className={styles.top}>
                <span className={styles.number}># {_id}</span>
 
-               <span className={styles.date}>
-                  {new Date(createdAt!).toLocaleDateString('es-AR')}
-               </span>
+               <span className={styles.date}>{new Date(createdAt!).toLocaleDateString('es-AR')}</span>
             </div>
 
             <div className={styles.bottom}>
@@ -60,7 +59,11 @@ export const OrderCard: FC<Props> = ({ order }) => {
             </div>
 
             <div className={styles.confirm}>
-               <AiFillCheckCircle className={styles.icon} />
+               {isPaid || !isCancel ? (
+                  <AiFillCheckCircle className={styles.paidIcon} />
+               ) : (
+                  <AiFillCloseCircle className={styles.unPaidicon} />
+               )}
             </div>
          </div>
       </div>

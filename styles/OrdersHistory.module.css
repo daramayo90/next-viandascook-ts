@@ -90,9 +90,14 @@
    right: 5px;
 }
 
-.history > .container > .order > .card > .confirm > .icon {
+.history > .container > .order > .card > .confirm > .paidIcon {
    font-size: 1.7rem;
    color: var(--primary);
+}
+
+.history > .container > .order > .card > .confirm > .unPaidicon {
+   font-size: 1.7rem;
+   color: var(--error);
 }
 
 @media (min-width: 720px) {
