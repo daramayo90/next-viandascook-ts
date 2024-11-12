@@ -111,7 +111,13 @@ const OnleraOrdersPage: NextPage = () => {
    ];
 
    // Make the HTTP request to save in the backend
-   const processRowUpdate = async (newRow: GridRowModel) => {
+   const processRowUpdate = async (newRow: GridRowModel, oldRow: GridRowModel) => {
+      if (newRow.deliveryDate !== oldRow.deliveryDate) {
+         await viandasApi.put('/optimoroute', {
+            _id: newRow.id,
+            deliveryDate: newRow.deliveryDate,
+         });
+      }
       await viandasApi.put('/admin/onleraOrders', newRow);
       return newRow;
    };

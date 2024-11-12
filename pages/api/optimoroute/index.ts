@@ -22,6 +22,12 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Data>)
       case 'POST':
          return createOptimoRouteOrder(req, res);
 
+      case 'PUT':
+         return updateOptimoRouteOrder(req, res);
+
+      case 'DELETE':
+         return deleteOptimoRouteOrder(req, res);
+
       default:
          return res.status(400).json({ message: 'Bad request' });
    }
@@ -58,4 +64,59 @@ const createOptimoRouteOrder = async (req: NextApiRequest, res: NextApiResponse<
    );
 
    return res.status(200).json(data);
+};
+
+const updateOptimoRouteOrder = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
+   const { _id, deliveryDate } = req.body as { _id: number; deliveryDate: string };
+
+   if (!_id || !deliveryDate) {
+      return res.status(400).json({ message: 'Order ID and delivery date are required' });
+   }
+
+   const [year, month, day] = deliveryDate.split('T')[0].split('-');
+
+   try {
+      const { data } = await axios.post(
+         `https://api.optimoroute.com/v1/create_or_update_orders?key=${process.env.OPTIMO_ROUTE_API_KEY}`,
+         {
+            operation: 'UPDATE',
+            acceptDuplicateOrderNo: false,
+            orders: [
+               {
+                  orderNo: _id.toString(),
+                  date: `${year}-${month}-${day}`,
+               },
+            ],
+         },
+      );
+
+      return res.status(200).json(data);
+   } catch (error) {
+      console.log(error);
+      return res.status(500).json({ message: 'Failed to update order date' });
+   }
+};
+
+const deleteOptimoRouteOrder = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
+   const _id: number = req.body;
+
+   if (!_id) {
+      return res.status(400).json({ message: 'Order ID is required' });
+   }
+
+   try {
+      const { data } = await axios.post(
+         `https://api.optimoroute.com/v1/delete_order?key=${process.env.OPTIMO_ROUTE_API_KEY}`,
+         {
+            orderNo: _id.toString(),
+         },
+      );
+
+      console.log(data);
+
+      return res.status(200).json(data);
+   } catch (error) {
+      console.log(error);
+      return res.status(500).json({ message: 'Failed to deletee order' });
+   }
 };

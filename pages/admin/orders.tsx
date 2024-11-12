@@ -186,17 +186,25 @@ const OrdersPage = () => {
       },
    ];
 
-   const processRowUpdate = async (newRow: GridRowModel) => {
+   const processRowUpdate = async (newRow: GridRowModel, oldRow: GridRowModel) => {
+      if (newRow.deliveryDate !== oldRow.deliveryDate) {
+         await viandasApi.put('/optimoroute', {
+            _id: newRow.id,
+            deliveryDate: newRow.deliveryDate,
+         });
+      }
       await viandasApi.put('/admin/orders', newRow);
       return newRow;
    };
 
    const handleDelete = async (row: GridRenderCellParams) => {
+      await viandasApi.delete('/optimoroute', { data: row.id });
       await viandasApi.delete('/admin/orders', { data: row.id });
       mutate('/api/admin/orders');
    };
 
    const handleCancel = async (row: GridRenderCellParams, isCancel: boolean) => {
+      await viandasApi.delete('/optimoroute', { data: row.id });
       await viandasApi.patch('/admin/orders', { id: row.id, isCancel });
       mutate('/api/admin/orders');
    };
