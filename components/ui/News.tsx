@@ -22,7 +22,7 @@ const banners: Banner[] = [
 
    {
       name: 'Black Friday',
-      img: `${cloudImagesPath}/Banners/xwdepvmmuwxy9k7qsat8`,
+      img: `${cloudImagesPath}/Banners/cdd6ykmz3ljrwmslhn4p`,
       bannerStyle: 'mobileBanner',
       isMobile: true,
    },
@@ -51,7 +51,7 @@ const banners: Banner[] = [
 
    {
       name: 'Black Friday',
-      img: `${cloudImagesPath}/Banners/dgzl7xm9jtszexpepgpa`,
+      img: `${cloudImagesPath}/Banners/lrxfi57aoj6xvmwrpzm2`,
       bannerStyle: 'desktopBanner',
       isMobile: false,
    },
