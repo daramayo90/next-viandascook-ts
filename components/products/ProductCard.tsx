@@ -15,7 +15,6 @@ interface Props {
 }
 
 const ProductCardComponent: FC<Props> = ({ product }) => {
-   // TODO: Ver el tema any
    const info: any = product.nutritionalInfo;
 
    const {
@@ -27,12 +26,11 @@ const ProductCardComponent: FC<Props> = ({ product }) => {
       cartProduct,
    } = useTempCart(product);
 
+   const isOutOfStock = !product.inStock;
+
    return (
       <article className={cartProduct ? `${styles.product} selected` : `${styles.product}`}>
          <article className={styles.card}>
-            {/* TODO: Out of Stock */}
-            {product.inStock === false && <div className={styles.stock}>Sin stock</div>}
-
             <Link href={`/plato/${product.slug}`}>
                <a className={styles.nextImage}>
                   <Image
@@ -48,6 +46,18 @@ const ProductCardComponent: FC<Props> = ({ product }) => {
                         <Image
                            src='/img/15off-tag-bf.png'
                            alt='15% off - Cyber Monday'
+                           layout='fill'
+                           objectFit='fill'
+                           sizes='(max-width: 768px) 35vw, (min-width: 769px) 23vw'
+                        />
+                     </div>
+                  )}
+
+                  {isOutOfStock && (
+                     <div className={styles.tagImageWrapper}>
+                        <Image
+                           src='/img/sin-stock-tag.png'
+                           alt='Sin Stock'
                            layout='fill'
                            objectFit='fill'
                            sizes='(max-width: 768px) 35vw, (min-width: 769px) 23vw'
@@ -75,7 +85,9 @@ const ProductCardComponent: FC<Props> = ({ product }) => {
                </div>
 
                <div className={styles.price}>
-                  {product.discountPrice ? (
+                  {!product.inStock ? (
+                     <></>
+                  ) : product.discountPrice ? (
                      <>
                         <span className={styles.noPrice}>{currency.format(product.price)}</span>
                         <span className={styles.discount}>
@@ -90,7 +102,9 @@ const ProductCardComponent: FC<Props> = ({ product }) => {
          </article>
 
          <div className={styles.addToCart}>
-            {!isSelecting && !cartProduct ? (
+            {isOutOfStock ? (
+               <></>
+            ) : !isSelecting && !cartProduct ? (
                <div
                   className={styles.selectQuantity}
                   onClick={() => startSelecting(cartProduct! as ICartProduct)}>

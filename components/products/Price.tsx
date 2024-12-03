@@ -22,7 +22,9 @@ export const Price: FC<Props> = ({ product }) => {
 
          <div className={styles.priceAndQuantity}>
             <div className={styles.priceContainer}>
-               {product.discountPrice ? (
+               {!product.inStock ? (
+                  <></>
+               ) : product.discountPrice ? (
                   <>
                      <h3 className={styles.noPrice}>{currency.format(product.price)}</h3>
                      <h3 className={styles.discount}>{currency.format(product.discountPrice)}</h3>
@@ -32,8 +34,11 @@ export const Price: FC<Props> = ({ product }) => {
                )}
             </div>
 
-            {/* TODO: Out of Stock */}
-            {!isSelecting && !cartProduct ? (
+            {!product.inStock ? (
+               <div className={styles.outOfStockMessage}>
+                  <span>Sin Stock</span>
+               </div>
+            ) : !isSelecting && !cartProduct ? (
                <div
                   className={styles.selectedQuantity}
                   onClick={() => startSelecting(cartProduct! as ICartProduct)}>

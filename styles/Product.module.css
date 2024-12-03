@@ -80,6 +80,13 @@
    font-size: 1.3rem;
 }
 
+.product > .topSection > .container > .priceAndQuantity > .outOfStockMessage {
+   width: 100%;
+   font-size: 1.5rem;
+   font-weight: 500;
+   text-align: center;
+}
+
 .product > .topSection > .container > .priceAndQuantity > .selectedQuantity {
    display: flex;
    flex-direction: column;
@@ -289,6 +296,10 @@
 
    .product > .topSection > .container > .priceAndQuantity > .priceContainer > .discount {
       font-size: 1.5rem;
+   }
+
+   .product > .topSection > .container > .priceAndQuantity > .outOfStockMessage {
+      text-align: left;
    }
 
    .product > .topSection > .container > .priceAndQuantity > .selectedQuantity {
