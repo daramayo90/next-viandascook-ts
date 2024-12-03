@@ -21,12 +21,6 @@ const banners: Banner[] = [
    /* MOBILE BANNERS */
 
    {
-      name: 'Black Friday',
-      img: `${cloudImagesPath}/Banners/cdd6ykmz3ljrwmslhn4p`,
-      bannerStyle: 'mobileBanner',
-      isMobile: true,
-   },
-   {
       name: 'Promo 10% off - Descuento Primera Compra',
       img: '/img/banner-news-mobile.jpg',
       bannerStyle: 'mobileBanner',
@@ -49,12 +43,6 @@ const banners: Banner[] = [
 
    /* DEESKTOP BANNERS */
 
-   {
-      name: 'Black Friday',
-      img: `${cloudImagesPath}/Banners/lrxfi57aoj6xvmwrpzm2`,
-      bannerStyle: 'desktopBanner',
-      isMobile: false,
-   },
    {
       name: 'Promo 10% off - Descuento Primera Compra',
       img: `${cloudImagesPath}/Banners/njjfj85li2udnbmrxq9s`,
