@@ -9,12 +9,13 @@ interface Props {
    href: string;
    content: string;
    color?: string;
+   weight?: number;
    border?: string;
    background?: string;
    disabled?: boolean;
 }
 
-export const Button: FC<Props> = ({ href, content, color, border, background, disabled }) => {
+export const Button: FC<Props> = ({ href, content, color, weight, border, background, disabled }) => {
    const styleButton = {
       color,
       border,
@@ -23,6 +24,7 @@ export const Button: FC<Props> = ({ href, content, color, border, background, di
 
    const styleText = {
       color,
+      fontWeight: weight,
    };
 
    const styleIcon = {

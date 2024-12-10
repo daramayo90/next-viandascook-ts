@@ -130,20 +130,6 @@ const addQuestionsJsonLd = () => {
             }
          },{
             "@type": "Question",
-            "name": "¿Puedo pedirlas sin sal o sacar algún ingrediente?",
-            "acceptedAnswer": {
-               "@type": "Answer",
-               "text": "Al momento de finalizar tu compra, completarás tus datos y luego se mostrará una ventana donde podrás colocar si preferís tu vianda con o sin agregado de algún condimento o ingrediente. Lo tendremos en cuenta a la hora de elaborar tus platos elegidos."
-            }
-         },{
-            "@type": "Question",
-            "name": "¿Realizan menúes especiales para personas con patologías de base? Ej, diabetes, hipertensión, celiaquía, etc",
-            "acceptedAnswer": {
-               "@type": "Answer",
-               "text": "Si bien en nuestra web vas a poder elegir si preferís no agregar algún ingrediente que no puedas consumir, nuestras viandas están pre-armadas y listas para consumir. No realizamos menúes personalizados."
-            }
-         },{
-            "@type": "Question",
             "name": "¿Realizan viandas para niños o bebés?",
             "acceptedAnswer": {
                "@type": "Answer",

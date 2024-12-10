@@ -8,10 +8,6 @@ export const commonQuestions = [
       content: `Las viandas se comercializan de forma individual y podes armar tu pedido o pack como desees. En caso que quieras comprar en cantidad, podrás aplicar los descuentos vigentes actuales dependiendo del número de viandas que compraste.`,
    },
    {
-      title: '¿Realizan menúes especiales para personas con patologías de base? Ej, diabetes, hipertensión, celiaquía, etc',
-      content: `Si bien en nuestra web vas a poder elegir si preferís no agregar algún ingrediente que no puedas consumir, nuestras viandas están pre-armadas y listas para consumir. No realizamos menúes personalizados.`,
-   },
-   {
       title: '¿Qué es el envasado al vacío?',
       content: `Las viandas se envían envasadas al vacío, el cual es un proceso en el que se retira el aire que existe en el interior de un envase dejándolo vacío. De esta manera, se garantiza un espacio seguro y libre de microorganismos que necesitan oxígeno para sobrevivir y se retarda la oxidación y descomposición de los alimentos. El envasado al vacío permite mantener las propiedades químicas y las cualidades organolépticas (color, aroma y sabor) de los alimentos.`,
    },

@@ -24,14 +24,6 @@ export const questions = [
       content: `Son porciones individuales que varían según el menú pero van de 350 a 450g.`,
    },
    {
-      title: '¿Puedo pedirlas sin sal o sacar algún ingrediente?',
-      content: `Al momento de finalizar tu compra, completarás tus datos y luego se mostrará una ventana donde podrás colocar si preferís tu vianda con o sin agregado de algún condimento o ingrediente. Lo tendremos en cuenta a la hora de elaborar tus platos elegidos.`,
-   },
-   {
-      title: '¿Realizan menúes especiales para personas con patologías de base? Ej, diabetes, hipertensión, celiaquía, etc',
-      content: `Si bien en nuestra web vas a poder elegir si preferís no agregar algún ingrediente que no puedas consumir, nuestras viandas están pre-armadas y listas para consumir. No realizamos menúes personalizados.`,
-   },
-   {
       title: '¿Realizan viandas para niños o bebés?',
       content: `Por el momento no realizamos menúes pensados especialmente para niños/bebes. En nuestra web www.viandascook.com encontraras cada vianda con sus ingredientes y aporte nutricional.`,
    },

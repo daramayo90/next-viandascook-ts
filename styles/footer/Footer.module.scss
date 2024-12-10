@@ -1,0 +1,194 @@
+@font-face {
+   font-family: 'Pretty Queen';
+   font-style: normal;
+   font-weight: 400;
+   src: url('/fonts/Pretty_Queen.ttf') format('truetype');
+   font-display: swap;
+}
+
+.footer {
+   background-image: url('https://res.cloudinary.com/viandascook/image/upload/f_auto,q_auto/v1/imgs/maob2dc2whp6nav7fmoe');
+   background-size: cover;
+   max-height: 100%;
+   padding: 30px 45px 18px;
+   color: var(--white);
+
+   .info {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+
+      .nextImage {
+         width: 80%;
+         max-width: 230px;
+         margin-left: -2rem;
+      }
+
+      .columns {
+         display: flex;
+         flex-direction: column;
+         gap: 2rem;
+         width: 100%;
+
+         .columnList {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+
+            .footerBrand {
+               .title {
+                  font-size: 1.2rem;
+                  font-weight: 700;
+                  line-height: 1.4;
+                  color: var(--white);
+                  margin: 1rem 0;
+               }
+
+               .button {
+                  max-width: 200px;
+                  margin: 2rem 0;
+                  margin-left: -2px;
+               }
+            }
+
+            .columnTitle {
+               font-size: 1.2rem;
+               font-weight: 700;
+               color: var(--primaryShinny);
+            }
+
+            .mail {
+               font-weight: 600;
+               font-size: 0.9rem;
+               color: var(--white);
+               margin: 0.7rem 0;
+            }
+
+            .socialMedia {
+               display: flex;
+               gap: 1rem;
+
+               .icon {
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  background-color: rgba(123, 255, 0, 0.068);
+                  border: 1px solid var(--white);
+                  border-radius: 50%;
+                  color: var(--white);
+                  width: 25px;
+                  height: 25px;
+                  padding: 0.25rem;
+               }
+            }
+
+            .list {
+               list-style: none;
+               padding: 0;
+               margin: 0;
+
+               .linkItem {
+                  color: var(--white);
+                  font-size: 1rem;
+                  font-weight: 500;
+                  margin: 0.5rem 0;
+               }
+            }
+
+            .favoritesList {
+               list-style: disc;
+               list-style-position: outside;
+
+               .linkItem {
+                  margin-left: 3px;
+               }
+            }
+         }
+      }
+   }
+
+   .legal {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 2rem;
+      gap: 0.5rem;
+
+      span {
+         color: var(--white);
+         font-size: 0.9rem;
+      }
+
+      .terms,
+      .refund {
+         cursor: pointer;
+         &:hover {
+            text-decoration: underline;
+         }
+      }
+   }
+
+   @media (min-width: 910px) {
+      background-image: url('https://res.cloudinary.com/viandascook/image/upload/f_auto,q_auto/v1/imgs/q1vyzzqs4ixkf3l2f0ma');
+      padding: 60px 50px;
+
+      .info {
+         max-width: 1440px;
+         margin: 0 auto;
+
+         .nextImage {
+            max-width: 280px;
+         }
+
+         .columns {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-start;
+
+            .columnList:nth-child(1) {
+               flex: 1.5;
+            }
+
+            .columnList {
+               flex: 1;
+
+               &:not(:last-child) {
+                  margin-right: 1rem;
+               }
+
+               .columnTitle {
+                  font-size: 1.3rem;
+               }
+
+               .footerBrand {
+                  width: 90%;
+
+                  .title {
+                     font-size: 1.6rem;
+                     font-weight: 700;
+                     line-height: 1.4;
+                     color: var(--white);
+                     margin: 0;
+                  }
+
+                  .button {
+                     max-width: 200px;
+                     margin: 2rem 0;
+                     margin-left: -2px;
+                  }
+               }
+
+               li {
+                  cursor: pointer;
+               }
+            }
+         }
+      }
+
+      .legal {
+         flex-direction: column;
+         justify-content: center;
+      }
+   }
+}
