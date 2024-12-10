@@ -2,7 +2,7 @@ export const seo = {
    LandingPage: {
       title: 'Viandas Saludables a Domicilio | ViandasCook ©',
       description:
-         '🍲 Descubrí nuestras viandas saludables a domicilio. Comida casera directo a tu mesa, con opciones veganas y vegetarianas. ¡Consultanos variedad y precios!',
+         '🍲 Viandas saludables en CABA. Opciones veganas y vegetarianas. ¡Comida casera y deliciosa a domicilio! Consultanos por variedad, precios y promociones.',
       keywords:
          'viandas saludables, entrega de viandas a domicilio, comida saludable a domicilio, menús saludables, viandas vegetarianas, viandas veganas, viandas a domicilio caba, viandas Cook, comida casera a domicilio, opciones veganas y vegetarianas',
       canonical: 'https://www.viandascook.com/',

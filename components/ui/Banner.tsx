@@ -27,8 +27,13 @@ export const Banner = () => {
                   <span> tenga sabor!</span>
                </p>
 
+               <p className={styles.epigraph}>
+                  Disfrutá de nuestras <strong>comidas</strong> frescas, caseras y entregadas{' '}
+                  <strong>a domicilio en CABA.</strong>
+               </p>
+
                <div className={styles.button}>
-                  <Button href='/menu' content='¡Quiero!' color='white' border='2px white solid' />
+                  <Button href='/menu' content='Ver el menú' color='white' border='2px white solid' />
                </div>
             </div>
 

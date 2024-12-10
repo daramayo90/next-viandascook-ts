@@ -1,5 +1,4 @@
 import { useContext } from 'react';
-import { useRouter } from 'next/router';
 import Link from 'next/link';
 
 import { AuthContext, UIContext } from '../../context';
@@ -14,8 +13,6 @@ import { BsBagCheck } from 'react-icons/bs';
 import styles from '../../styles/SideMenu.module.css';
 
 export const SideAdminMenu = () => {
-   const router = useRouter();
-
    const { logout } = useContext(AuthContext);
 
    const { isAdminMenuOpen, toggleAdminMenu } = useContext(UIContext);
@@ -29,6 +26,14 @@ export const SideAdminMenu = () => {
                   <a className={styles.linkItem} onClick={toggleAdminMenu}>
                      <MdOutlineSpaceDashboard className={styles.icon} />
                      <span>Admin</span>
+                     <MdOutlineKeyboardArrowRight className={styles.iconRight} />
+                  </a>
+               </Link>
+
+               <Link href='/admin/dashboard/fecha-entrega'>
+                  <a className={styles.linkItem} onClick={toggleAdminMenu}>
+                     <MdOutlineSpaceDashboard className={styles.icon} />
+                     <span>Admin - Entrega</span>
                      <MdOutlineKeyboardArrowRight className={styles.iconRight} />
                   </a>
                </Link>

@@ -60,10 +60,20 @@
    color: white;
 }
 
+.banner > .container > .brand > .epigraph {
+   margin: 1rem auto;
+   width: 80%;
+   max-width: 410px;
+   font-size: 1.1rem;
+   text-align: center;
+   line-height: 150%;
+   color: white;
+}
+
 .banner > .container > .brand > .button {
    width: 60%;
    max-width: 210px;
-   margin: 4.5rem auto 0 auto;
+   margin: 2rem auto 0 auto;
    color: white;
 }
 
@@ -121,6 +131,10 @@
       font-weight: 400;
       font-size: 7rem;
       line-height: 97.5%;
+   }
+
+   .banner > .container > .brand > .epigraph {
+      margin: 3rem auto;
    }
 
    .banner > .container > .bannerDishes {

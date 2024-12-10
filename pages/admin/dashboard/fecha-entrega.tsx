@@ -4,34 +4,26 @@ import { NextPage } from 'next';
 import dynamic from 'next/dynamic';
 
 import {
-   ShoppingCartOutlined,
    CheckCircleOutlined,
-   RemoveShoppingCartOutlined,
-   CreditScoreOutlined,
-   PaymentsOutlined,
-   AccountBalanceOutlined,
    AttachMoneyOutlined,
    DashboardOutlined,
-   GroupOutlined,
-   CategoryOutlined,
-   CancelPresentationOutlined,
    LocalAtmOutlined,
    ShoppingBagOutlined,
    DiscountOutlined,
 } from '@mui/icons-material';
 
-import { AdminLayout } from '../../components/layouts';
-import { SummaryTile } from '../../components/admin';
-import { DashboardSummaryResponse } from '../../interfaces';
-import { currency } from '../../utils';
-import viandasApi from '../../axiosApi/viandasApi';
+import { AdminLayout } from '../../../components/layouts';
+import { SummaryTile } from '../../../components/admin';
+import { DashboardSummaryResponse } from '../../../interfaces';
+import { currency } from '../../../utils';
+import viandasApi from '../../../axiosApi/viandasApi';
 
 const Grid = dynamic(() => import('@mui/material').then((module) => module.Grid), {
    ssr: false,
 });
 
 const DateRangePicker = dynamic(
-   () => import('../../components/admin').then((module) => module.DateRangePicker),
+   () => import('../../../components/admin').then((module) => module.DateRangePicker),
    {
       ssr: false,
    },
@@ -44,9 +36,12 @@ const DashboardPage: NextPage = () => {
 
    useEffect(() => {
       const getData = async () => {
-         const { data } = await viandasApi.get<DashboardSummaryResponse>('/admin/dashboard', {
-            params: { startDate, endDate },
-         });
+         const { data } = await viandasApi.get<DashboardSummaryResponse>(
+            '/admin/dashboard-fecha-entrega',
+            {
+               params: { startDate, endDate },
+            },
+         );
          setInfo(data);
       };
 
@@ -58,25 +53,17 @@ const DashboardPage: NextPage = () => {
    }
 
    const {
-      numberOfOrders,
       paidOrders,
-      cancelOrders,
       totalIncome,
       numberOfSelledProducts,
       discounts,
-      mpOrders,
-      cashOrders,
-      transferOrders,
       mpIncome,
       cashIncome,
       transferIncome,
-      numberOfClients,
-      numberOfProducts,
-      productsWithNoInventory,
    } = info!;
 
    return (
-      <AdminLayout title='Dashboard' subTitle='' icon={<DashboardOutlined />}>
+      <AdminLayout title='Dashboard Por Fecha de Entrega' subTitle='' icon={<DashboardOutlined />}>
          <DateRangePicker
             start={startDate}
             setStart={setStartDate}
@@ -116,63 +103,15 @@ const DashboardPage: NextPage = () => {
             />
 
             <SummaryTile
-               total={numberOfOrders}
-               description='Pedidos totales'
-               icon={<ShoppingCartOutlined color='success' sx={{ fontSize: 40 }} />}
-            />
-
-            <SummaryTile
                total={paidOrders}
                description='Pedidos completados'
                icon={<CheckCircleOutlined color='success' sx={{ fontSize: 40 }} />}
             />
 
             <SummaryTile
-               total={cancelOrders}
-               description='Pedidos cancelados'
-               icon={<RemoveShoppingCartOutlined color='error' sx={{ fontSize: 40 }} />}
-            />
-
-            <SummaryTile
                total={numberOfSelledProducts}
                description='Viandas vendidas'
                icon={<ShoppingBagOutlined color='secondary' sx={{ fontSize: 40 }} />}
-            />
-
-            <SummaryTile
-               icon={<CreditScoreOutlined color='warning' sx={{ fontSize: 40 }} />}
-               total={mpOrders}
-               description='Pedidos con Mercado Pago'
-            />
-
-            <SummaryTile
-               total={cashOrders}
-               description='Pedidos con Efectivo'
-               icon={<PaymentsOutlined color='warning' sx={{ fontSize: 40 }} />}
-            />
-
-            <SummaryTile
-               total={transferOrders}
-               description='Pedidos con Transferencia'
-               icon={<AccountBalanceOutlined color='warning' sx={{ fontSize: 40 }} />}
-            />
-
-            <SummaryTile
-               total={numberOfClients}
-               description='Clientes en la base de datos'
-               icon={<GroupOutlined color='primary' sx={{ fontSize: 40 }} />}
-            />
-
-            <SummaryTile
-               total={numberOfProducts}
-               description='Productos en bd'
-               icon={<CategoryOutlined color='warning' sx={{ fontSize: 40 }} />}
-            />
-
-            <SummaryTile
-               total={productsWithNoInventory}
-               description='Productos sin stock'
-               icon={<CancelPresentationOutlined color='error' sx={{ fontSize: 40 }} />}
             />
          </Grid>
       </AdminLayout>
