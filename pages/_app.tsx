@@ -85,7 +85,7 @@ function MyApp({ Component, pageProps }: AppProps) {
          <Suspense fallback={loading && <LoadingPage />}>
             {!isAdminRoute && (
                <>
-                  <CustomWhatsApp />
+                  {/* <CustomWhatsApp /> */}
                   <Scripts />
                </>
             )}

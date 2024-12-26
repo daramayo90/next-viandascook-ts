@@ -21,6 +21,12 @@ const banners: Banner[] = [
    /* MOBILE BANNERS */
 
    {
+      name: 'Whatpsapp - Problema',
+      img: `${cloudImagesPath}/Banners/lw7tyauokqon69yiqiui`,
+      bannerStyle: 'mobileBanner',
+      isMobile: true,
+   },
+   {
       name: 'Promo 10% off - Descuento Primera Compra',
       img: '/img/banner-news-mobile.jpg',
       bannerStyle: 'mobileBanner',
@@ -43,6 +49,12 @@ const banners: Banner[] = [
 
    /* DEESKTOP BANNERS */
 
+   {
+      name: 'Whatpsapp - Problema',
+      img: `${cloudImagesPath}/Banners/w8yei18w7nstp28y3guo`,
+      bannerStyle: 'desktopBanner',
+      isMobile: false,
+   },
    {
       name: 'Promo 10% off - Descuento Primera Compra',
       img: `${cloudImagesPath}/Banners/njjfj85li2udnbmrxq9s`,
