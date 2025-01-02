@@ -42,8 +42,7 @@ const LandingPage: NextPage<Props> = ({ products }) => {
             <HowToBuy />
 
             <p className={styles.noSubscriptionInfo}>
-               Elegí tus comidas sin la necesidad de suscribirte. Tenemos de todo, carne, veggie, ¡lo
-               que quieras! Pedí ahora comida rica y saludable.
+               ¿Querés pedir tus viandas a domicilio y empezar a ahorrar tiempo a partir de hoy?
             </p>
 
             <div className={styles.btn}>
@@ -60,7 +59,7 @@ const LandingPage: NextPage<Props> = ({ products }) => {
             <div className={styles.btn}>
                <Button
                   href={'/menu'}
-                  content={'Más platos'}
+                  content={'¡Más platos!'}
                   background='var(--secondary)'
                   color='white'
                />

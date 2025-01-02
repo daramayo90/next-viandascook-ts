@@ -10,30 +10,40 @@ const slides = [
    {
       icon: '/icon/home-carrito.png',
       alt: 'Elección de platos',
-      lead: 'Elegí tu menú / comida saludable',
+      lead: 'Elegí tus viandas saludables favoritas',
       text: (
          <>
             <Link href='/menu'>
                <a>
-                  <strong>Seleccioná tu menú y platos </strong>
+                  <strong>Seleccioná tus platos </strong>
                </a>
             </Link>
-            favoritos a un precio imbatible. Llevando más de 14 tenés envío gratis. Adquiriendo 28 un
-            10%off y en 56 un 15%off! ¡Aprovechalos!
+            preferidos a un precio imbatible. Viandas veggies, bajas en carbohidratos, bajas en
+            calorías y mucho más.
          </>
       ),
    },
    {
       icon: '/icon/home-delivery.png',
       alt: 'Fecha de entrega',
-      lead: 'Seleccioná la fecha de entrega que desees',
-      text: 'Recibimos pedidos con 48hs de anticipación para poder prepararlos especialmente para vos. ¡Seguí tu entrega en tiempo real con nuestro exclusivo sistema de alertas!',
+      lead: 'Aprovechá nuestras promociones',
+      text: (
+         <>
+            Con 14 viandas, tenés envío gratis; con 28, un 10% de descuento, y con 56, un 15% de
+            descuento.
+            <Link href='/descuentos'>
+               <a>
+                  <strong> ¡No te lo pierdas!</strong>
+               </a>
+            </Link>
+         </>
+      ),
    },
    {
       icon: '/icon/home-pagos.png',
       alt: 'Disfruta tu pedido',
-      lead: 'Preparado especialmente para vos',
-      text: 'Relajate y saboreá la calidad de nuestros platos. Nosotros nos encargamos de llevar la delicia directamente a tu mesa.',
+      lead: 'Elegí cuándo querés recibir tu pedido',
+      text: 'Realizá tu pedido con 48 horas de anticipación y nosotros nos encargamos de prepararlo especialmente para vos. ¡Podés seguir tu entrega en tiempo real gracias a nuestro sistema de alertas exclusivo!',
    },
 ];
 

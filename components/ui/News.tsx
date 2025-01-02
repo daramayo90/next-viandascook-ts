@@ -21,6 +21,12 @@ const banners: Banner[] = [
    /* MOBILE BANNERS */
 
    {
+      name: 'Vacaciones',
+      img: `${cloudImagesPath}/Banners/r2yt44ouwl0qp9xvbncg`,
+      bannerStyle: 'mobileBanner',
+      isMobile: true,
+   },
+   {
       name: 'Promo 10% off - Descuento Primera Compra',
       img: '/img/banner-news-mobile.jpg',
       bannerStyle: 'mobileBanner',
@@ -43,6 +49,12 @@ const banners: Banner[] = [
 
    /* DEESKTOP BANNERS */
 
+   {
+      name: 'Vacaciones',
+      img: `${cloudImagesPath}/Banners/k4uxtywb1vhmn8j4znoz`,
+      bannerStyle: 'desktopBanner',
+      isMobile: false,
+   },
    {
       name: 'Promo 10% off - Descuento Primera Compra',
       img: `${cloudImagesPath}/Banners/njjfj85li2udnbmrxq9s`,
