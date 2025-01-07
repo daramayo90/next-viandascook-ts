@@ -112,7 +112,7 @@ export const CartProvider: FC<Props> = ({ children }) => {
 
       const couponDiscount = state.coupons?.reduce((p, c) => coupon.calc(c, subTotal) + p, 0) || 0;
       const referralDiscount = state.referralCoupon ? state.subTotal * 0.05 : 0;
-      const cashDiscount = state.paymentMethod === 'efectivo' ? subTotal * 0.1 : 0;
+      const cashDiscount = state.paymentMethod === 'efectivo' ? subTotal * 0.05 : 0;
 
       const totalDisc = discount + pointsDiscount + couponDiscount + referralDiscount + cashDiscount;
 

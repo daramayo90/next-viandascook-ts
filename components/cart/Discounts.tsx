@@ -44,7 +44,7 @@ export const Discounts: FC<Props> = ({ orderItems, orderPromo, cashPayment, show
 
          {!showNoCash && (paymentMethod === 'efectivo' || cashPayment) && (
             <div className={styles.summary}>
-               <span className={styles.discount}>Descuento en efectivo (10%)</span>
+               <span className={styles.discount}>Descuento en efectivo (5%)</span>
 
                <span className={styles.discount}>-{currency.format(cash!)}</span>
             </div>
