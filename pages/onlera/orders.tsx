@@ -49,6 +49,7 @@ const OnleraOrdersPage: NextPage = () => {
       Piso/Depto: ${(order.shippingAddress as ShippingAddress).address2},
       ${(order.shippingAddress as ShippingAddress).city}`,
          paymentMethod: order.paymentMethod,
+         totalCash: format(order.total + order.cashDiscount!),
          total: format(order.total),
          isPaid: order.isPaid,
          noProducts: order.numberOfItems,
@@ -91,6 +92,7 @@ const OnleraOrdersPage: NextPage = () => {
       },
       { field: 'noProducts', headerName: 'N° Viandas', width: 100 },
       { field: 'paymentMethod', headerName: 'Método de Pago', width: 160 },
+      { field: 'totalCash', headerName: 'Sin Desc Efectivo', width: 160 },
       { field: 'total', headerName: 'Total', width: 160 },
       {
          field: 'deliveryDate',

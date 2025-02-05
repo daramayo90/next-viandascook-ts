@@ -52,6 +52,7 @@ const OrdersPage = () => {
          name: `${(order.user as IUser).name} ${(order.user as IUser).lastName}`,
          address: `${(order.shippingAddress as ShippingAddress).city}`,
          paymentMethod: order.paymentMethod.charAt(0).toUpperCase() + order.paymentMethod.slice(1),
+         totalCash: format(order.total + order.cashDiscount!),
          total: format(order.total),
          isPaid: order.isPaid,
          isCancel: order.isCancel,
@@ -127,6 +128,7 @@ const OrdersPage = () => {
          },
       },
       { field: 'paymentMethod', headerName: 'Método de Pago', width: 160 },
+      { field: 'totalCash', headerName: 'Sin Desc Efectivo', width: 160 },
       { field: 'total', headerName: 'Total', width: 160 },
       {
          field: 'deliveryDate',
