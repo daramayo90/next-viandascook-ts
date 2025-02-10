@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 import { GetServerSideProps, NextPage } from 'next';
 import { getServerSession } from 'next-auth/next';
@@ -34,6 +34,7 @@ const CheckoutPage: NextPage<Props> = ({ user }) => {
    const { shippingAddress } = useContext(OrdersContext);
    const { isLoggedIn } = useContext(AuthContext);
    const { total, cart, numberOfItems } = useContext(CartContext);
+   const [hasRedirected, setHasRedirected] = useState(false);
 
    const router = useRouter();
 
@@ -62,10 +63,11 @@ const CheckoutPage: NextPage<Props> = ({ user }) => {
    }, [cart]);
 
    useEffect(() => {
-      if (numberOfItems < 7) {
+      if (!hasRedirected && numberOfItems > 0 && numberOfItems < 7) {
+         setHasRedirected(true);
          router.push('/cart');
       }
-   }, []);
+   }, [numberOfItems]);
 
    return (
       <ShopLayout title={'Finalizar Compra | Viandas Cook'} pageDescription={''} noIndex>
