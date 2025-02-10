@@ -24,6 +24,7 @@ import {
 } from '../../components/checkout';
 
 import styles from '../../styles/Checkout.module.css';
+import { useRouter } from 'next/router';
 
 interface Props {
    user?: IUser;
@@ -32,7 +33,9 @@ interface Props {
 const CheckoutPage: NextPage<Props> = ({ user }) => {
    const { shippingAddress } = useContext(OrdersContext);
    const { isLoggedIn } = useContext(AuthContext);
-   const { total, cart } = useContext(CartContext);
+   const { total, cart, numberOfItems } = useContext(CartContext);
+
+   const router = useRouter();
 
    const shipping = isLoggedIn ? user?.shipping : shippingAddress;
 
@@ -57,6 +60,12 @@ const CheckoutPage: NextPage<Props> = ({ user }) => {
    useEffect(() => {
       meta.beginCheckout(cart);
    }, [cart]);
+
+   useEffect(() => {
+      if (numberOfItems < 7) {
+         router.push('/cart');
+      }
+   }, []);
 
    return (
       <ShopLayout title={'Finalizar Compra | Viandas Cook'} pageDescription={''} noIndex>

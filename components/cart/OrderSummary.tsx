@@ -77,7 +77,7 @@ export const OrderSummary: FC = () => {
 
          <Discounts showNoCash />
 
-         <div className={styles.summary}>
+         {/* <div className={styles.summary}>
             {numberOfItems >= 14 ? (
                <span className={styles.discount}>Envío (14 platos o más)</span>
             ) : (
@@ -85,6 +85,12 @@ export const OrderSummary: FC = () => {
             )}
 
             {numberOfItems >= 14 ? <span className={styles.discount}>Gratis</span> : <Shipping />}
+         </div> */}
+
+         <div className={styles.summary}>
+            <span>Envío</span>
+
+            <Shipping />
          </div>
 
          <div className={styles.summary}>
@@ -111,7 +117,13 @@ export const OrderSummary: FC = () => {
             </label>
          </form>
 
-         {isValidEmail && (
+         {numberOfItems < 7 && (
+            <span className={styles.error}>
+               Para continuar, elige un mínimo de 7 viandas por favor
+            </span>
+         )}
+
+         {isValidEmail && numberOfItems >= 7 && (
             <div className={styles.checkoutButton} onClick={handleSubmit}>
                <SubmitButton content='Continuar' />
             </div>

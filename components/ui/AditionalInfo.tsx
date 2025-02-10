@@ -26,7 +26,8 @@ export const AditionalInfo = () => {
                   <li>Podés hacer tu pedido con un mínimo de 48 horas de anticipación.</li>
                   <li>Seleccioná la fecha de entrega que mejor te convenga.</li>
                   <li>Si surge algún cambio, podés cancelar tu pedido hasta 24 horas antes.</li>
-                  <li>Disfrutá de descuentos especiales al comprar 14, 28 o 56 viandas.</li>
+                  {/* <li>Disfrutá de descuentos especiales al comprar 14, 28 o 56 viandas.</li> */}
+                  <li>Disfrutá de descuentos especiales al comprar 28 o 56 viandas.</li>
                   <li style={{ fontWeight: 500 }}>¡Tu comodidad es nuestra prioridad!</li>
                </ul>
             </div>

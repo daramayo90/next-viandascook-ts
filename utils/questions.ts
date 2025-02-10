@@ -37,7 +37,7 @@ export const questions = [
    },
    {
       title: '¿Existe una compra mínima de viandas?',
-      content: `Podes adquirir la cantidad de viandas que prefieras, ya que no tenemos una compra mínima. Podes elegir los platos que más te gusten y armar tu pedido como quieras. Estos son los descuentos vigentes: 10% ingresando el código BIENVENIDO10 , Envío gratis llevando 14 viandas o más, 10% llevando 28 viandas o más, y 15% llevando 56 viandas o más.`,
+      content: `Podes adquirir la cantidad de viandas que prefieras, ya que no tenemos una compra mínima. Podes elegir los platos que más te gusten y armar tu pedido como quieras. Estos son los descuentos vigentes: 10% ingresando el código BIENVENIDO10, 10% llevando 28 viandas o más, y 15% llevando 56 viandas o más.`,
    },
    {
       title: '¿Con cuánta anticipación tengo que hacer mi pedido?',

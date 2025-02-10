@@ -12,9 +12,12 @@ const DiscountsPage: NextPage = () => {
    return (
       <ShopLayout title={title} pageDescription={description} keywords={keywords} can={canonical}>
          <section className={styles.discounts}>
-            <p className={styles.text}>
+            {/* <p className={styles.text}>
                Descubrí descuentos irresistibles del <strong>10%, 15% y más</strong>. Además, disfruta
                de <strong>envío gratis</strong> al pedir más de 14 viandas.
+            </p> */}
+            <p className={styles.text}>
+               Descubrí descuentos irresistibles del <strong>10%, 15% y más</strong>.
             </p>
             <p className={styles.text}>
                Hacé tu pedido hoy y deleitá tu paladar con nuestras deliciosas propuestas a precios aún

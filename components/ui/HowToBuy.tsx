@@ -29,8 +29,7 @@ const slides = [
       lead: 'Aprovechá nuestras promociones',
       text: (
          <>
-            Con 14 viandas, tenés envío gratis; con 28, un 10% de descuento, y con 56, un 15% de
-            descuento.
+            Con 28, un 10% de descuento, y con 56, un 15% de descuento.
             <Link href='/descuentos'>
                <a>
                   <strong> ¡No te lo pierdas!</strong>

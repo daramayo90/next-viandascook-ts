@@ -20,7 +20,8 @@ export const useOrderSummaryts = () => {
    }, [user]);
 
    useEffect(() => {
-      if (shipping === 0 && numberOfItems < 14) return setCanSubmit(false);
+      // if (shipping === 0 && numberOfItems < 14) return setCanSubmit(false);
+      if (shipping === 0) return setCanSubmit(false);
 
       setCanSubmit(true);
    }, [shipping, numberOfItems]);

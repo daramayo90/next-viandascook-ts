@@ -102,10 +102,10 @@ export const CartProvider: FC<Props> = ({ children }) => {
       );
       const discount = promo.calculation(numberOfItems, subTotal);
 
-      if (numberOfItems >= 14) {
-         state.shipping = 0;
-         Cookies.remove('shipping');
-      }
+      // if (numberOfItems >= 14) {
+      //    state.shipping = 0;
+      //    Cookies.remove('shipping');
+      // }
 
       const pointsDiscount = state.points ? state.points / 30 : 0;
       const shipping = state.shipping;

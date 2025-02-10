@@ -9,7 +9,7 @@ export const sectionsUs = [
       id: 2,
       poster: '/img/nosotros-flexibilidad.jpg',
       title: 'Flexibilidad en tus pedidos:',
-      text: 'Nos adaptamos a tu estilo de vida y necesidades, por lo que podés hacer tu pedido con un mínimo de 48 horas de anticipación y elegir la fecha de entrega que más te convenga. Si necesitas cancelar tu pedido, podés hacerlo hasta 24 horas antes. Además, te ofrecemos descuentos especiales si realizas una compra de 14, 28 o 56 viandas. ¡La flexibilidad es nuestra clave!',
+      text: 'Nos adaptamos a tu estilo de vida y necesidades, por lo que podés hacer tu pedido con un mínimo de 48 horas de anticipación y elegir la fecha de entrega que más te convenga. Si necesitas cancelar tu pedido, podés hacerlo hasta 24 horas antes. Además, te ofrecemos descuentos especiales si realizas una compra de 28 o 56 viandas. ¡La flexibilidad es nuestra clave!',
    },
    {
       id: 3,
