@@ -22,11 +22,13 @@ export type Form = {
 export interface AuthState {
    isLoggedIn: boolean;
    user?: IUser;
+   isAuthLoaded: boolean;
 }
 
 const AUTH_INITIAL_STATE: AuthState = {
    isLoggedIn: false,
    user: undefined,
+   isAuthLoaded: false,
 };
 
 export const AuthProvider: FC<Props> = ({ children }) => {
@@ -35,9 +37,13 @@ export const AuthProvider: FC<Props> = ({ children }) => {
 
    // Persist session in the entire app when refreshing
    useEffect(() => {
+      if (status === 'loading') return;
+
       if (status === 'authenticated') {
          dispatch({ type: '[Auth] - Login', payload: data.user as IUser });
       }
+
+      dispatch({ type: '[Auth] - AuthLoaded' });
    }, [data, status]);
 
    // Register new user

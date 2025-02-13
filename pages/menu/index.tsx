@@ -9,17 +9,19 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import { dbProducts } from '../../database';
 import { IProduct } from '../../interfaces';
 
-import { CartContext } from '../../context';
+import { AuthContext, CartContext } from '../../context';
 
 import { ShopLayout } from '../../components/layouts';
 import { Breadcrumbs, Button, DiscountSlides, News } from '../../components/ui';
 import { SearchProducts, TypesList } from '../../components/products';
+import { AddressModal } from '../../components/modals';
 
 import { seo } from '../../utils';
 
 import LoadingPage from '../../components/ui/Loading';
 
 import styles from '../../styles/Products.module.css';
+import Cookies from 'js-cookie';
 
 const ProductCard = dynamic(
    () => import('../../components/products').then((module) => module.ProductCard),
@@ -40,6 +42,9 @@ const ProductsPage: NextPage<Props> = ({ products }) => {
 
    const router = useRouter();
 
+   const { numberOfItems } = useContext(CartContext);
+   const { isLoggedIn, isAuthLoaded, user } = useContext(AuthContext);
+
    const [page, setPage] = useState(2);
    const [hasMore, setHasMore] = useState(true);
    const [displayedProducts, setDisplayedProducts] = useState<IProduct[]>([]);
@@ -52,7 +57,17 @@ const ProductsPage: NextPage<Props> = ({ products }) => {
 
    const [queryType, setQueryType] = useState<string>('');
 
-   const { numberOfItems } = useContext(CartContext);
+   const [showModal, setShowModal] = useState(false);
+
+   const city = useMemo(() => Cookies.get('city'), []);
+
+   useEffect(() => {
+      if (!isAuthLoaded || city) return;
+
+      if (!isLoggedIn || user?.shipping?.address === '-') {
+         setShowModal(true);
+      }
+   }, [isAuthLoaded, isLoggedIn, user]);
 
    useEffect(() => {
       if (router.query.type) {
@@ -126,6 +141,13 @@ const ProductsPage: NextPage<Props> = ({ products }) => {
 
    return (
       <ShopLayout title={title} pageDescription={description} keywords={keywords} can={canonical}>
+         <AddressModal
+            isOpen={showModal}
+            onClose={() => {
+               setShowModal(false);
+            }}
+         />
+
          <section className={styles.products}>
             <Breadcrumbs />
 

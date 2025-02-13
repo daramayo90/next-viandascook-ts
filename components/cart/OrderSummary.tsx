@@ -1,6 +1,5 @@
 import { ChangeEvent, FC, useContext, useEffect, useState } from 'react';
 
-import { useOrderSummaryts } from '../../hooks';
 import { AuthContext, CartContext } from '../../context';
 
 import { SubmitButton } from '../ui';
@@ -12,16 +11,18 @@ import Cookies from 'js-cookie';
 
 import styles from '../../styles/OrderSummary.module.css';
 import { viandasApi } from '../../axiosApi';
+import { useRouter } from 'next/router';
 
 export const OrderSummary: FC = () => {
-   const { submitErrors, summaryValues, handleSubmit } = useOrderSummaryts();
-   const { numberOfItems, cart, total } = useContext(CartContext);
+   const router = useRouter();
+
+   const { shipping, numberOfItems, cart, subTotal, total } = useContext(CartContext);
    const { user } = useContext(AuthContext);
 
    const customerEmail = user ? user.email : Cookies.get('email') || '';
 
-   const [email, setEmail] = useState(customerEmail);
    const [isValidEmail, setIsValidEmail] = useState(false);
+   const [email, setEmail] = useState(customerEmail);
 
    const handleEmailChange = (event: ChangeEvent<HTMLInputElement>) => {
       const input = event.target.value;
@@ -42,13 +43,9 @@ export const OrderSummary: FC = () => {
       }
    };
 
-   useEffect(() => {
-      if (isValidEmail) {
-         Cookies.set('email', email);
-
-         addCartToMailchimp();
-      }
-   }, [cart, email]);
+   const handleSubmit = () => {
+      router.push('/auth/login-checkout');
+   };
 
    useEffect(() => {
       if (email) {
@@ -56,6 +53,14 @@ export const OrderSummary: FC = () => {
          addCartToMailchimp();
       }
    }, []);
+
+   useEffect(() => {
+      if (isValidEmail) {
+         Cookies.set('email', email);
+
+         addCartToMailchimp();
+      }
+   }, [cart, email]);
 
    return (
       <section className={styles.orderSummary}>
@@ -65,14 +70,14 @@ export const OrderSummary: FC = () => {
             <span>N° de Viandas</span>
 
             <span>
-               {summaryValues.numberOfItems} {summaryValues.numberOfItems > 1 ? 'platos' : 'plato'}
+               {numberOfItems} {numberOfItems > 1 ? 'platos' : 'plato'}
             </span>
          </div>
 
          <div className={styles.summary}>
             <span>Subtotal</span>
 
-            <span>{currency.format(summaryValues.subTotal)}</span>
+            <span>{currency.format(subTotal)}</span>
          </div>
 
          <Discounts showNoCash />
@@ -90,7 +95,9 @@ export const OrderSummary: FC = () => {
          <div className={styles.summary}>
             <span>Envío</span>
 
-            <Shipping />
+            <span>{currency.format(shipping)}</span>
+
+            {/* <Shipping /> */}
          </div>
 
          <div className={styles.summary}>
@@ -99,7 +106,7 @@ export const OrderSummary: FC = () => {
             </span>
 
             <span>
-               <strong>{currency.format(summaryValues.total)}</strong>
+               <strong>{currency.format(total)}</strong>
             </span>
          </div>
 
@@ -129,7 +136,7 @@ export const OrderSummary: FC = () => {
             </div>
          )}
 
-         {submitErrors && <span className={styles.error}>Calcular el envío antes de continuar</span>}
+         {/* {submitErrors && <span className={styles.error}>Calcular el envío antes de continuar</span>} */}
       </section>
    );
 };

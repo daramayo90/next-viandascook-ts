@@ -132,7 +132,7 @@ export const PromosList = () => {
          {errorMsg && <span className={styles.error}>{errorMsg}</span>}
 
          <div className={styles.applyButton}>
-            <SubmitButton content='Aplicar' onClick={onSubmit} isClicked={isClicked} />
+            <SubmitButton content='Aplicar' onAsyncClick={onSubmit} isClicked={isClicked} />
          </div>
       </div>
    );
