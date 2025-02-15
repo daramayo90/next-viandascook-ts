@@ -78,5 +78,5 @@ export const getCrossSellingProducts = async (type: string): Promise<IProduct[] 
 
    if (!products) return null;
 
-   return JSON.parse(JSON.stringify(products));
+   return JSON.parse(JSON.stringify(products.filter((product) => product.inStock === true)));
 };

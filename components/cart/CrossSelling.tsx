@@ -23,7 +23,7 @@ export const CrossSelling: FC<Props> = ({ products }) => {
    }, []);
 
    useEffect(() => {
-      const hasAddedToCart = cart.some((cartProduct) => cartProduct.type?.includes('Budines'));
+      const hasAddedToCart = cart.some((cartProduct) => cartProduct.type?.includes('Waffles'));
       setHasCrossSellingAdded(hasAddedToCart);
    }, [cart]);
 
@@ -38,7 +38,7 @@ export const CrossSelling: FC<Props> = ({ products }) => {
       <div className={`${styles.crossSelling}`}>
          <div className={styles.container}>
             <h3 className={styles.title}>
-               Sumá este exquisito <strong>Budín Integral</strong>
+               Sumá estos exquisitos <strong>Waffles</strong>
             </h3>
             <p className={styles.text}>para tus desayunos y meriendas</p>
 

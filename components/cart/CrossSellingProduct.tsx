@@ -20,13 +20,13 @@ export const CrossSellingProduct: FC<Props> = ({ product }) => {
    const transformName = (product: IProduct) => {
       const productName = product.name.toLowerCase();
 
-      return productName;
+      // return productName;
 
-      // if (productName.includes('integral')) return 'Integral x4';
-      // if (productName.includes('banana')) return 'Banana x4';
-      // if (productName.includes('manzana')) return 'Manzana x4';
-      // if (productName.includes('clásico')) return 'Clásico x4';
-      // if (productName.includes('cacao')) return 'Cacao x4';
+      if (productName.includes('integral')) return 'Integral x4';
+      if (productName.includes('banana')) return 'Banana x4';
+      if (productName.includes('manzana')) return 'Manzana x4';
+      if (productName.includes('clásico')) return 'Clásico x4';
+      if (productName.includes('cacao')) return 'Cacao x4';
    };
 
    return (

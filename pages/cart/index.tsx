@@ -27,7 +27,7 @@ const CartPage: NextPage<Props> = ({ products }) => {
    }, [isLoaded, cart, router]);
 
    useEffect(() => {
-      const hasAddedToCart = cart.some((cartProduct) => cartProduct.type?.includes('Budines'));
+      const hasAddedToCart = cart.some((cartProduct) => cartProduct.type?.includes('Waffles'));
       setShowCrossSelling(!hasAddedToCart);
    }, [isLoaded]);
 
@@ -35,6 +35,8 @@ const CartPage: NextPage<Props> = ({ products }) => {
    if (!isLoaded || cart.length === 0) {
       return <></>;
    }
+
+   console.log(showCrossSelling);
 
    return (
       <ShopLayout title={`Carrito - ${numberOfItems}`} pageDescription={'Carrito'} noIndex>
@@ -52,7 +54,7 @@ const CartPage: NextPage<Props> = ({ products }) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-   const products = await dbProducts.getCrossSellingProducts('Budines');
+   const products = await dbProducts.getCrossSellingProducts('Waffles');
 
    return {
       props: { products },
