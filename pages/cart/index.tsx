@@ -36,8 +36,6 @@ const CartPage: NextPage<Props> = ({ products }) => {
       return <></>;
    }
 
-   console.log(showCrossSelling);
-
    return (
       <ShopLayout title={`Carrito - ${numberOfItems}`} pageDescription={'Carrito'} noIndex>
          <section className={styles.cart}>

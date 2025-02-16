@@ -26,6 +26,7 @@ export const authReducer = (state: AuthState, action: AuthActionType): AuthState
       case '[Auth] - New Address':
          return {
             ...state,
+            isLoggedIn: true,
             user: action.payload,
          };
 

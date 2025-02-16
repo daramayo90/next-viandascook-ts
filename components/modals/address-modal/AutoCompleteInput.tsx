@@ -49,7 +49,6 @@ export const AutoCompleteInput = ({ onPlaceSelect }: Props) => {
          );
 
          if (!streetNumber) {
-            console.log('noves');
             setError('Ingresa una altura de calle válida.');
             onPlaceSelect(null);
             Cookies.remove('address');

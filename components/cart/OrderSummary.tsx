@@ -5,7 +5,7 @@ import { AuthContext, CartContext } from '../../context';
 import { SubmitButton } from '../ui';
 import { validations, currency } from '../../utils';
 
-import { Shipping, Discounts } from './';
+import { Discounts, ShippingCalculation } from './';
 
 import Cookies from 'js-cookie';
 
@@ -95,9 +95,9 @@ export const OrderSummary: FC = () => {
          <div className={styles.summary}>
             <span>Envío</span>
 
-            <span>{currency.format(shipping)}</span>
+            {/* <span>{currency.format(shipping)}</span> */}
 
-            {/* <Shipping /> */}
+            <ShippingCalculation />
          </div>
 
          <div className={styles.summary}>
@@ -130,13 +130,15 @@ export const OrderSummary: FC = () => {
             </span>
          )}
 
-         {isValidEmail && numberOfItems >= 7 && (
+         {shipping === 0 && <span className={styles.error}>Calcular el envío antes de continuar</span>}
+
+         {!isValidEmail && <span className={styles.error}>Ingresa un email</span>}
+
+         {isValidEmail && numberOfItems >= 7 && shipping !== 0 && (
             <div className={styles.checkoutButton} onClick={handleSubmit}>
                <SubmitButton content='Continuar' />
             </div>
          )}
-
-         {/* {submitErrors && <span className={styles.error}>Calcular el envío antes de continuar</span>} */}
       </section>
    );
 };

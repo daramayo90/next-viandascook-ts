@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
 
 import axios from 'axios';
+import Cookies from 'js-cookie';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 import { dbProducts } from '../../database';
@@ -13,7 +14,7 @@ import { AuthContext, CartContext } from '../../context';
 
 import { ShopLayout } from '../../components/layouts';
 import { Breadcrumbs, Button, DiscountSlides, News } from '../../components/ui';
-import { SearchProducts, TypesList } from '../../components/products';
+import { SearchProducts, ShippingAddress, TypesList } from '../../components/products';
 import { AddressModal } from '../../components/modals';
 
 import { seo } from '../../utils';
@@ -21,7 +22,6 @@ import { seo } from '../../utils';
 import LoadingPage from '../../components/ui/Loading';
 
 import styles from '../../styles/Products.module.css';
-import Cookies from 'js-cookie';
 
 const ProductCard = dynamic(
    () => import('../../components/products').then((module) => module.ProductCard),
@@ -42,8 +42,12 @@ const ProductsPage: NextPage<Props> = ({ products }) => {
 
    const router = useRouter();
 
-   const { numberOfItems } = useContext(CartContext);
-   const { isLoggedIn, isAuthLoaded, user } = useContext(AuthContext);
+   const { numberOfItems, calculateShipping } = useContext(CartContext);
+   const { isLoggedIn, isAuthLoaded } = useContext(AuthContext);
+
+   const city = useMemo(() => Cookies.get('city'), [Cookies.get('city')]);
+   const fullAddress = useMemo(() => Cookies.get('fullAddress'), [Cookies.get('fullAddress')]);
+   const shortAddress = useMemo(() => Cookies.get('address') || '-', [Cookies.get('address')]);
 
    const [page, setPage] = useState(2);
    const [hasMore, setHasMore] = useState(true);
@@ -59,15 +63,21 @@ const ProductsPage: NextPage<Props> = ({ products }) => {
 
    const [showModal, setShowModal] = useState(false);
 
-   const city = useMemo(() => Cookies.get('city'), []);
-
    useEffect(() => {
-      if (!isAuthLoaded || city) return;
+      if (shortAddress !== '-') calculateShipping(city || 'CABA');
 
-      if (!isLoggedIn || user?.shipping?.address === '-') {
-         setShowModal(true);
+      if (Cookies.get('isModalShown') === 'true') return;
+
+      if (!isAuthLoaded) return;
+
+      if (!isLoggedIn && !fullAddress) {
+         return setShowModal(true);
       }
-   }, [isAuthLoaded, isLoggedIn, user]);
+
+      if (isLoggedIn && shortAddress === '-') {
+         return setShowModal(true);
+      }
+   }, [isAuthLoaded, isLoggedIn, city]);
 
    useEffect(() => {
       if (router.query.type) {
@@ -139,19 +149,28 @@ const ProductsPage: NextPage<Props> = ({ products }) => {
       setPage(page + 1);
    };
 
+   const closeAddressModal = () => {
+      Cookies.set('isModalShown', 'true');
+      setShowModal(false);
+   };
+
+   const openAddressModal = () => {
+      Cookies.set('isModalShown', 'false');
+      setShowModal(true);
+   };
+
+   const shippingAddress = fullAddress || shortAddress;
+
    return (
       <ShopLayout title={title} pageDescription={description} keywords={keywords} can={canonical}>
-         <AddressModal
-            isOpen={showModal}
-            onClose={() => {
-               setShowModal(false);
-            }}
-         />
+         <AddressModal isOpen={showModal} onClose={closeAddressModal} />
 
          <section className={styles.products}>
             <Breadcrumbs />
 
             <News />
+
+            <ShippingAddress shippingAddress={shippingAddress} openAddressModal={openAddressModal} />
 
             <SearchProducts searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
 

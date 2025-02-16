@@ -11,10 +11,14 @@ interface Props {
    onAsyncClick?: () => Promise<void>;
 }
 
-export const SubmitButton: FC<Props> = ({ content, isClicked, onClick }) => {
+export const SubmitButton: FC<Props> = ({ content, isClicked, onClick, onAsyncClick }) => {
    return (
       <div className={styles.linkTo}>
-         <button className={styles.btn} type='submit' disabled={isClicked} onClick={onClick}>
+         <button
+            className={styles.btn}
+            type='submit'
+            disabled={isClicked}
+            onClick={onClick ? onClick : onAsyncClick}>
             {isClicked && <ClipLoader className={styles.load} color={'var(--white)'} size={20} />}
             {content}
          </button>
