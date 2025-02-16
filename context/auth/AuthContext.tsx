@@ -5,6 +5,7 @@ import { Form } from './';
 interface ContextProps {
    isLoggedIn: boolean;
    user?: IUser;
+   isAuthLoaded: boolean;
 
    registerUser: (newUser: Form) => Promise<{ hasError: boolean; message?: string }>;
    loginUser: (email: string, password: string) => Promise<boolean>;

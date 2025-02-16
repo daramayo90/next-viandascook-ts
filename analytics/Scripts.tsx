@@ -1,8 +1,8 @@
 import { FC, useEffect } from 'react';
 import { GA_TRACKING_ID, GTM_ID } from './ga4';
 import { PIXEL_ID } from './meta';
-import Script from 'next/script';
 import { HOTJAR_ID, HOTJAR_SV } from './hotjar';
+import Script from 'next/script';
 
 export const Scripts: FC = () => {
    useEffect(() => {

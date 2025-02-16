@@ -4,16 +4,18 @@ import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
 
 import axios from 'axios';
+import Cookies from 'js-cookie';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 import { dbProducts } from '../../database';
 import { IProduct } from '../../interfaces';
 
-import { CartContext } from '../../context';
+import { AuthContext, CartContext } from '../../context';
 
 import { ShopLayout } from '../../components/layouts';
 import { Breadcrumbs, Button, DiscountSlides, News } from '../../components/ui';
-import { SearchProducts, TypesList } from '../../components/products';
+import { SearchProducts, ShippingAddress, TypesList } from '../../components/products';
+import { AddressModal } from '../../components/modals';
 
 import { seo } from '../../utils';
 
@@ -40,6 +42,13 @@ const ProductsPage: NextPage<Props> = ({ products }) => {
 
    const router = useRouter();
 
+   const { numberOfItems, calculateShipping } = useContext(CartContext);
+   const { isLoggedIn, isAuthLoaded } = useContext(AuthContext);
+
+   const city = useMemo(() => Cookies.get('city'), [Cookies.get('city')]);
+   const fullAddress = useMemo(() => Cookies.get('fullAddress'), [Cookies.get('fullAddress')]);
+   const shortAddress = useMemo(() => Cookies.get('address') || '-', [Cookies.get('address')]);
+
    const [page, setPage] = useState(2);
    const [hasMore, setHasMore] = useState(true);
    const [displayedProducts, setDisplayedProducts] = useState<IProduct[]>([]);
@@ -52,7 +61,23 @@ const ProductsPage: NextPage<Props> = ({ products }) => {
 
    const [queryType, setQueryType] = useState<string>('');
 
-   const { numberOfItems } = useContext(CartContext);
+   const [showModal, setShowModal] = useState(false);
+
+   useEffect(() => {
+      if (shortAddress !== '-') calculateShipping(city || 'CABA');
+
+      if (Cookies.get('isModalShown') === 'true') return;
+
+      if (!isAuthLoaded) return;
+
+      if (!isLoggedIn && !fullAddress) {
+         return setShowModal(true);
+      }
+
+      if (isLoggedIn && shortAddress === '-') {
+         return setShowModal(true);
+      }
+   }, [isAuthLoaded, isLoggedIn, city]);
 
    useEffect(() => {
       if (router.query.type) {
@@ -124,12 +149,28 @@ const ProductsPage: NextPage<Props> = ({ products }) => {
       setPage(page + 1);
    };
 
+   const closeAddressModal = () => {
+      Cookies.set('isModalShown', 'true');
+      setShowModal(false);
+   };
+
+   const openAddressModal = () => {
+      Cookies.set('isModalShown', 'false');
+      setShowModal(true);
+   };
+
+   const shippingAddress = fullAddress || shortAddress;
+
    return (
       <ShopLayout title={title} pageDescription={description} keywords={keywords} can={canonical}>
+         <AddressModal isOpen={showModal} onClose={closeAddressModal} />
+
          <section className={styles.products}>
             <Breadcrumbs />
 
             <News />
+
+            <ShippingAddress shippingAddress={shippingAddress} openAddressModal={openAddressModal} />
 
             <SearchProducts searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
 

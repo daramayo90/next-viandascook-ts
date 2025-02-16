@@ -29,6 +29,8 @@ export const useAddress = (userdb?: IUser) => {
    const [isClicked, setIsClicked] = useState(false);
    const [errorMessage, setErrorMessage] = useState('');
 
+   const [showModal, setShowModal] = useState(false);
+
    const router = useRouter();
 
    // Get info from database or save in cookies for user guests
@@ -63,6 +65,7 @@ export const useAddress = (userdb?: IUser) => {
    };
 
    const {
+      reset,
       register,
       handleSubmit,
       getValues,
@@ -97,14 +100,28 @@ export const useAddress = (userdb?: IUser) => {
       if (router.asPath.includes('/mi-cuenta')) router.replace('/mi-cuenta');
    };
 
+   const openAddressModal = () => {
+      Cookies.set('isModalShown', 'false');
+      setShowModal(true);
+   };
+
+   const closeAddressModal = () => {
+      Cookies.set('isModalShown', 'true');
+      setShowModal(false);
+   };
+
    return {
       errors,
       showError,
       errorMessage,
       isClicked,
+      showModal,
+      reset,
       register,
       getValues,
       handleSubmit,
       onSubmitAddress,
+      openAddressModal,
+      closeAddressModal,
    };
 };

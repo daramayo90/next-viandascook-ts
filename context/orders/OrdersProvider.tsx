@@ -93,6 +93,7 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
       const { user } = ((await getSession()) as any) || '';
 
       const shippingAddress: ShippingAddress = user ? user.shipping : state.shippingAddress;
+      const address2 = shippingAddress.address2;
 
       if (!shippingAddress) {
          return {
@@ -101,10 +102,10 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
          };
       }
 
-      if (shippingAddress.address.length < 4) {
+      if (!address2 || address2 === '') {
          return {
             hasError: true,
-            message: 'Indicanos una dirección de entrega antes de continuar',
+            message: 'Indicanos el piso, depto o casa antes de continuar',
          };
       }
 

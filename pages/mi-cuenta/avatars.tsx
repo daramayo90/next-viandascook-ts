@@ -84,7 +84,7 @@ const AvatarsPage: NextPage = () => {
             </div>
 
             <div className={styles.applyBtn}>
-               <SubmitButton content='Aplicar' onClick={onSubmit} isClicked={isClicked} />
+               <SubmitButton content='Aplicar' onAsyncClick={onSubmit} isClicked={isClicked} />
             </div>
          </section>
       </ShopLayout>

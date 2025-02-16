@@ -5,6 +5,78 @@
    background-color: var(--white);
 }
 
+.products > .shippingAddress {
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   align-items: center;
+   width: 90%;
+   max-width: 510px;
+   margin: 0 auto;
+   padding: 5px;
+   text-align: center;
+   color: var(--textColor);
+}
+
+.products > .shippingAddress > .address {
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   align-items: center;
+}
+
+.products > .shippingAddress > .address > .icon {
+   margin-right: 5px;
+   color: var(--primaryStrong);
+   font-size: 1.2rem;
+}
+
+.products > .shippingAddress > .address > p {
+   display: -webkit-box;
+   -webkit-line-clamp: 1;
+   -webkit-box-orient: vertical;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   margin-right: 0.5rem;
+   text-align: left;
+}
+
+.products > .shippingAddress > .updateAddress {
+   text-decoration: underline;
+   color: var(--primaryStrong);
+   cursor: pointer;
+}
+
+.products > .shipping {
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   align-items: center;
+   width: 90%;
+   max-width: 460px;
+   margin: 0 auto;
+   padding: 5px;
+   text-align: center;
+   color: var(--white);
+   background-color: var(--primaryShinny);
+   border-radius: 12px;
+}
+
+.products > .shipping .icon {
+   margin-right: 5px;
+   color: var(--primaryStrong);
+}
+
+.products > .shipping > .text {
+   color: var(--primaryStrong);
+}
+
+.products > .shipping > .text > .openModal {
+   text-decoration: underline;
+   font-weight: 500;
+   cursor: pointer;
+}
+
 .products > .searchContainer {
    position: relative;
    display: flex;
@@ -88,6 +160,14 @@
       margin: 2rem auto 0 auto;
    }
 
+   .products > .shippingAddress {
+      max-width: 765px;
+   }
+
+   .products > .shipping {
+      max-width: 765px;
+   }
+
    .products > .searchContainer {
       max-width: 850px;
    }
@@ -105,7 +185,7 @@
       height: 45px;
       transform: translate(-50%, 0);
       animation: animate-div-move 1s ease-in-out forwards;
-      z-index: 1;
+      /* z-index: 1; */
    }
 
    @keyframes animate-div-move {

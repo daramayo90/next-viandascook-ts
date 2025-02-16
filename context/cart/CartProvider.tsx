@@ -64,6 +64,7 @@ export const CartProvider: FC<Props> = ({ children }) => {
 
    // Add Shipping cost to cookies
    useEffect(() => {
+      console.log('state.shipping', state.shipping);
       if (state.shipping !== 0) Cookies.set('shipping', JSON.stringify(state.shipping));
    }, [state.shipping]);
 
@@ -258,7 +259,9 @@ export const CartProvider: FC<Props> = ({ children }) => {
       let shippingCost: number = 0;
 
       if (city === 'CABA') shippingCost = Number(process.env.NEXT_PUBLIC_CABA);
-      if (city === 'Buenos Aires') shippingCost = Number(process.env.NEXT_PUBLIC_BA);
+      if (city !== 'CABA') shippingCost = Number(process.env.NEXT_PUBLIC_BA);
+
+      Cookies.set('shipping', JSON.stringify(shippingCost));
 
       dispatch({ type: '[Cart] - Calculate Shipping', payload: shippingCost });
    };

@@ -9,4 +9,5 @@ export * from './ProductImg';
 export * from './ProductSlides';
 export * from './SearchNotFound';
 export * from './SearchProducts';
+export * from './ShippingAddress';
 export * from './TypesList';

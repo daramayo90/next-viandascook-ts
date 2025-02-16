@@ -22,6 +22,10 @@
    cursor: pointer;
 }
 
+.slide {
+   z-index: 0;
+}
+
 .nextImage {
    display: flex;
    flex-direction: column;
