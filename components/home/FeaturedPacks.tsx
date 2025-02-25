@@ -4,10 +4,11 @@ import Image from 'next/image';
 import { CiCircleChevLeft, CiCircleChevRight } from 'react-icons/ci';
 import { Slide } from 'react-slideshow-image';
 
-import { cloudImagesPath } from '../../utils';
+import { cloudProducts } from '../../utils';
 
 import 'react-slideshow-image/dist/styles.css';
 import styles from './styles/FeaturedPacks.module.scss';
+import Link from 'next/link';
 
 export const FeaturedPacks: FC = () => {
    const responsivness = [
@@ -58,43 +59,51 @@ export const FeaturedPacks: FC = () => {
                   responsive={responsivness}
                   {...props}>
                   <div className={styles.packImg}>
-                     <Image
-                        src={`${cloudImagesPath}/qgfn3wv8fdvhrunqrri3`}
-                        alt={'Pack Light x7'}
-                        layout='fill'
-                        objectFit='cover'
-                        priority={true}
-                     />
+                     <Link href='/packs'>
+                        <Image
+                           src={`${cloudProducts}/dockmmsv1pehmotmrzw3`}
+                           alt={'Pack Light x7'}
+                           layout='fill'
+                           objectFit='cover'
+                           priority={true}
+                        />
+                     </Link>
                   </div>
 
                   <div className={styles.packImg}>
-                     <Image
-                        src={`${cloudImagesPath}/qgfn3wv8fdvhrunqrri3`}
-                        alt={'Pack Light x7'}
-                        layout='fill'
-                        objectFit='cover'
-                        priority={true}
-                     />
+                     <Link href='/packs'>
+                        <Image
+                           src={`${cloudProducts}/xpxo3z0s6uaj9p8pnmlv`}
+                           alt={'Pack Light x14'}
+                           layout='fill'
+                           objectFit='cover'
+                           priority={true}
+                        />
+                     </Link>
                   </div>
 
                   <div className={styles.packImg}>
-                     <Image
-                        src={`${cloudImagesPath}/qgfn3wv8fdvhrunqrri3`}
-                        alt={'Pack Light x7'}
-                        layout='fill'
-                        objectFit='cover'
-                        priority={true}
-                     />
+                     <Link href='/packs'>
+                        <Image
+                           src={`${cloudProducts}/uwfzbp66johxsn60pwhw`}
+                           alt={'Pack Proteíco x14'}
+                           layout='fill'
+                           objectFit='cover'
+                           priority={true}
+                        />
+                     </Link>
                   </div>
 
                   <div className={styles.packImg}>
-                     <Image
-                        src={`${cloudImagesPath}/qgfn3wv8fdvhrunqrri3`}
-                        alt={'Pack Light x7'}
-                        layout='fill'
-                        objectFit='cover'
-                        priority={true}
-                     />
+                     <Link href='/packs'>
+                        <Image
+                           src={`${cloudProducts}/vniswvgezonlvxhiyxwf`}
+                           alt={'Pack Proteíco x21'}
+                           layout='fill'
+                           objectFit='cover'
+                           priority={true}
+                        />
+                     </Link>
                   </div>
                </Slide>
             </div>
