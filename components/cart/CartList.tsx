@@ -35,7 +35,7 @@ export const CartList: FC<Props> = ({ items, editable = false }) => {
    return (
       <section className={styles.cartList}>
          {products.map((product) => (
-            <div className={styles.container}>
+            <div key={product._id} className={styles.container}>
                <article key={product._id} className={styles.product}>
                   <div className={styles.details}>
                      <div className={styles.nextImage}>
