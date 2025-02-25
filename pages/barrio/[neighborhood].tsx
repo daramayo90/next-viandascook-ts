@@ -1,17 +1,19 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
-import { generateNeighborhoodSeo, neighborhoods, slugToTitleCase } from '../../utils';
-import { MainLayout } from '../../components/layouts';
-import { ProductSlides } from '../../components/products';
-
-import { Values, AditionalInfo, CommonQuestions, Newsletter, Button } from '../../components/ui';
 
 import { dbProducts } from '../../database';
 import { IProduct } from '../../interfaces';
 
-import styles from '../../styles/Landing.module.css';
+import { MainLayout } from '../../components/layouts';
+
+import { Categories, FeaturedPacks, HowItWorks, Promos } from '../../components/home';
 import { BannerNeighborhood } from '../../components/home/neighborhood/BannerNeighborhood';
 import { IntroNeighborhood } from '../../components/home/neighborhood/IntroNeighborhood';
-import { HowItWorks } from '../../components/home';
+import { ProductSlides } from '../../components/products';
+import { CommonQuestions, Newsletter } from '../../components/ui';
+
+import { generateNeighborhoodSeo, neighborhoods, slugToTitleCase } from '../../utils';
+
+import styles from '../../styles/home/Home.module.scss';
 
 interface Props {
    theNeighborhood: string;
@@ -36,49 +38,20 @@ const NeighborhoodPage: NextPage<Props> = ({ theNeighborhood, products, seo }) =
          keywords={keywords}
          can={canonical}
          index={index}>
-         <section className={styles.landing}>
+         <section className={styles.home}>
             <BannerNeighborhood neighborhood={theNeighborhood} />
 
             <IntroNeighborhood neighborhood={theNeighborhood} />
 
+            <Categories />
+
             <HowItWorks />
 
-            <p className={styles.noSubscriptionInfo}>
-               ¿Querés pedir tus viandas a domicilio y empezar a ahorrar tiempo a partir de hoy?
-            </p>
+            <Promos />
 
-            <div className={styles.btn}>
-               <Button
-                  href={'/como-funciona'}
-                  content={'Comenzá Ya'}
-                  background='var(--secondary)'
-                  color='white'
-               />
-            </div>
+            <FeaturedPacks />
 
             <ProductSlides products={products} />
-
-            <div className={styles.btn}>
-               <Button
-                  href={'/menu'}
-                  content={'¡Más platos!'}
-                  background='var(--secondary)'
-                  color='white'
-               />
-            </div>
-
-            <Values />
-
-            <div className={styles.btn}>
-               <Button
-                  href={'/menu'}
-                  content={'¡Comprar!'}
-                  background='var(--secondary)'
-                  color='white'
-               />
-            </div>
-
-            <AditionalInfo />
 
             <CommonQuestions />
 

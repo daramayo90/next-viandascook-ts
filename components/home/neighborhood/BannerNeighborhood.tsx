@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import Image from 'next/image';
 
-import { Button } from '../../ui/Button';
 import { cloudImagesPath } from '../../../utils';
+import { useIsMobile } from '../../../hooks';
 
 import styles from '../styles/Banner.module.scss';
 
@@ -11,46 +11,43 @@ interface Props {
 }
 
 export const BannerNeighborhood: FC<Props> = ({ neighborhood }) => {
+   const isMobile = useIsMobile(600);
+
+   const banner1 = isMobile
+      ? `${cloudImagesPath}/Banners/d5p7bomhr22eu8vz0y8f`
+      : `${cloudImagesPath}/Banners/q12ht5mhfnpt7pa9ens4`;
+
+   const banner2 = isMobile
+      ? `${cloudImagesPath}/Banners/xkf0yfoewjkukd9zl5vx`
+      : `${cloudImagesPath}/Banners/tcflysfdphdgstdqwrxl`;
+
    return (
       <section className={styles.banner}>
-         <Image
-            src={`${cloudImagesPath}/l7pxb4l3eftmhwrgqq4l.jpg`}
-            // src='/img/navidad-banner-viandascook.jpg'
-            alt='Viandas Cook - Banner'
-            layout='fill'
-            objectFit='cover'
-            priority
-         />
+         <div className={styles.header}>
+            <h1 className={styles.title}>Viandas Saludables en {neighborhood}</h1>
+            <p className={styles.slogan}>¡Que tus días tengan sabor!</p>
+         </div>
+         <div className={styles.images}>
+            <Image
+               src={banner1}
+               alt='Viandas Cook - Banner'
+               layout='fill'
+               objectFit='cover'
+               priority
+            />
+            <Image
+               src={banner2}
+               alt='Viandas Cook - Banner'
+               layout='fill'
+               objectFit='cover'
+               priority
+            />
+         </div>
 
-         <div className={styles.overlay}></div>
-
-         <div className={styles.container}>
-            <div className={styles.brand}>
-               <h1 className={styles.title} style={{ textTransform: 'initial' }}>
-                  Comida Deliciosa y Saludable en {neighborhood}
-               </h1>
-               <p className={styles.slogan}>
-                  <span>Hace que tu dia</span>
-                  <span> tenga sabor!</span>
-               </p>
-
-               <div className={styles.button}>
-                  <Button href='/menu' content='¡Quiero!' color='white' border='2px white solid' />
-               </div>
-            </div>
-
-            <div className={styles.bannerDishes}>
-               <div className={styles.nextImage}>
-                  <Image
-                     src={`${cloudImagesPath}/l4oxi04a73ols8locaxw.png`}
-                     alt='viandascook-banner-back'
-                     priority={true}
-                     quality={80}
-                     layout='fill'
-                     sizes='(max-width: 768px) 80vw, (max-width: 1200px) 50vw, 33vw'
-                  />
-               </div>
-            </div>
+         <div className={styles.info}>
+            <p className={styles.content}>
+               Disfrutá de nuestras comidas frescas, caseras y entregadas a domicilio en CABA y GBA
+            </p>
          </div>
       </section>
    );

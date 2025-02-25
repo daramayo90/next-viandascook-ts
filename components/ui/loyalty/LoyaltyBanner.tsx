@@ -9,7 +9,12 @@ export const LoyaltyBanner = () => {
       <div className={styles.intro}>
          <div className={styles.container}>
             <div className={styles.cellphoneImg}>
-               <Image src={`${cloudImagesPath}/grwjsemh9ejzfit3vqt7`} width={600} height={600} />
+               <Image
+                  src={`${cloudImagesPath}/grwjsemh9ejzfit3vqt7`}
+                  alt={'Viandas Club Banner'}
+                  width={600}
+                  height={600}
+               />
             </div>
             <div className={styles.info}>
                <p className={styles.title}>Vc Loyalty</p>

@@ -9,13 +9,28 @@ export const ViandLovers = () => {
       <div className={styles.viandlovers}>
          <div className={styles.container}>
             <div className={styles.clubImg}>
-               <Image src={`${cloudImagesPath}/hfrf6xqhfar7rsdv7jri`} width={430} height={200} />
+               <Image
+                  src={`${cloudImagesPath}/hfrf6xqhfar7rsdv7jri`}
+                  alt={''}
+                  width={430}
+                  height={200}
+               />
             </div>
             <div className={styles.personsImg}>
-               <Image src={`${cloudImagesPath}/mgkf48qpx6qz7eabunos`} width={600} height={500} />
+               <Image
+                  src={`${cloudImagesPath}/mgkf48qpx6qz7eabunos`}
+                  alt={''}
+                  width={600}
+                  height={500}
+               />
             </div>
             <div className={styles.rocketImg}>
-               <Image src={`${cloudImagesPath}/cwkrcmakydgb355t9yaf`} width={600} height={600} />
+               <Image
+                  src={`${cloudImagesPath}/cwkrcmakydgb355t9yaf`}
+                  alt={''}
+                  width={600}
+                  height={600}
+               />
             </div>
             <div className={styles.info}>
                <h3 className={styles.title}>Recomendá Viandas Cook a tus amigos</h3>
