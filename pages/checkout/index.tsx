@@ -69,7 +69,7 @@ const CheckoutPage: NextPage<Props> = ({ user }) => {
          setHasRedirected(true);
          router.push('/cart');
       }
-   }, [numberOfItems]);
+   }, [numberOfItems, hasRedirected, numberOfPacks, router]);
 
    return (
       <ShopLayout title={'Finalizar Compra | Viandas Cook'} pageDescription={''} noIndex>

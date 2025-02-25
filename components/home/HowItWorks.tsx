@@ -86,7 +86,7 @@ export const HowItWorks = () => {
          <div className={styles.container}>
             <Slide easing='ease' {...props}>
                {slides.map(({ icon, alt, title, text }) => (
-                  <BoxSlide icon={icon} alt={alt} title={title} text={text} />
+                  <BoxSlide key={icon} icon={icon} alt={alt} title={title} text={text} />
                ))}
             </Slide>
          </div>

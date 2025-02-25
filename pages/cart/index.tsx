@@ -29,7 +29,7 @@ const CartPage: NextPage<Props> = ({ products }) => {
    useEffect(() => {
       const hasAddedToCart = cart.some((cartProduct) => cartProduct.type?.includes('Waffles'));
       setShowCrossSelling(!hasAddedToCart);
-   }, [isLoaded]);
+   }, [isLoaded, cart]);
 
    // Avoid render anything in client-side
    if (!isLoaded || cart.length === 0) {

@@ -50,9 +50,9 @@ const ProductsPage: NextPage<Props> = ({ products }) => {
    const { numberOfItems, calculateShipping } = useContext(CartContext);
    const { isLoggedIn, isAuthLoaded } = useContext(AuthContext);
 
-   const city = useMemo(() => Cookies.get('city'), [Cookies.get('city')]);
-   const fullAddress = useMemo(() => Cookies.get('fullAddress'), [Cookies.get('fullAddress')]);
-   const shortAddress = useMemo(() => Cookies.get('address') || '-', [Cookies.get('address')]);
+   const city = Cookies.get('city');
+   const fullAddress = Cookies.get('fullAddress');
+   const shortAddress = Cookies.get('address') || '-';
 
    const [searchTerm, setSearchTerm] = useState<string>('');
    const [searchProducts, setSearchProducts] = useState<IProduct[]>([]);
