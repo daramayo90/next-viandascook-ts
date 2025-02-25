@@ -69,13 +69,13 @@
                right: 97% !important;
             }
 
-            @include desktop() {
-               left: -22px !important;
+            @include laptop() {
+               left: -16px !important;
             }
          }
 
          .rightArrow {
-            bottom: -12%;
+            bottom: -20%;
             left: 50% !important;
             transform: translateX(calc(-50%));
 
@@ -84,8 +84,8 @@
                left: 97% !important;
             }
 
-            @include desktop() {
-               left: 100% !important;
+            @include laptop() {
+               left: 99.5% !important;
             }
          }
 
@@ -95,7 +95,7 @@
             align-items: center;
             justify-content: center;
 
-            max-width: 280px;
+            max-width: 260px;
             width: 100%;
             margin: 1rem auto;
 

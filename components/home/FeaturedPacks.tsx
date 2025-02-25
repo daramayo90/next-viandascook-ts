@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { CiCircleChevLeft, CiCircleChevRight } from 'react-icons/ci';
 import { Slide } from 'react-slideshow-image';
 
-import { cloudProducts } from '../../utils';
+import { cloudImagesPath } from '../../utils';
 
 import 'react-slideshow-image/dist/styles.css';
 import styles from './styles/FeaturedPacks.module.scss';
@@ -61,7 +61,7 @@ export const FeaturedPacks: FC = () => {
                   <div className={styles.packImg}>
                      <Link href='/packs'>
                         <Image
-                           src={`${cloudProducts}/dockmmsv1pehmotmrzw3`}
+                           src={`${cloudImagesPath}/qsxwv8wjdsoi2i4pvaxs`}
                            alt={'Pack Light x7'}
                            layout='fill'
                            objectFit='cover'
@@ -73,7 +73,7 @@ export const FeaturedPacks: FC = () => {
                   <div className={styles.packImg}>
                      <Link href='/packs'>
                         <Image
-                           src={`${cloudProducts}/xpxo3z0s6uaj9p8pnmlv`}
+                           src={`${cloudImagesPath}/ecvzrp1vpcyow7xb3pzq`}
                            alt={'Pack Light x14'}
                            layout='fill'
                            objectFit='cover'
@@ -85,7 +85,7 @@ export const FeaturedPacks: FC = () => {
                   <div className={styles.packImg}>
                      <Link href='/packs'>
                         <Image
-                           src={`${cloudProducts}/uwfzbp66johxsn60pwhw`}
+                           src={`${cloudImagesPath}/rtn3xctaxp0o2ok80c7b`}
                            alt={'Pack Proteíco x14'}
                            layout='fill'
                            objectFit='cover'
@@ -97,7 +97,7 @@ export const FeaturedPacks: FC = () => {
                   <div className={styles.packImg}>
                      <Link href='/packs'>
                         <Image
-                           src={`${cloudProducts}/vniswvgezonlvxhiyxwf`}
+                           src={`${cloudImagesPath}/udjn8lblvjgz7vg6ulcp`}
                            alt={'Pack Proteíco x21'}
                            layout='fill'
                            objectFit='cover'

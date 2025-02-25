@@ -8,7 +8,7 @@ const commonQuestions = [
    },
    {
       title: '¿Cómo funcionan nuestros packs de viandas?',
-      content: `Las viandas se comercializan de forma individual y podes armar tu pedido o pack como desees. En caso que quieras comprar en cantidad, podrás aplicar los descuentos vigentes actuales dependiendo del número de viandas que compraste.`,
+      content: `Disfrutá de nuestras comidas frescas y caseras con los packs de viandas saludables, disponibles en diferentes cantidades para ajustarse a tus necesidades: 7, 14, 21 y 28. Contamos con opciones proteicas y light, con nuestros platos más vendidos y deliciosos. Elegí el pack que más te convenga y nosotros nos encargamos del resto. ¡Recibí tu pedido directamente en tu hogar con entrega en CABA!`,
    },
    {
       title: '¿Qué es el envasado al vacío y cómo beneficia a tus viandas?',

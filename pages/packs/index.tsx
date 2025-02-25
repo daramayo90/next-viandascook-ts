@@ -50,7 +50,7 @@ const PacksPage: NextPage<Props> = ({ products, packs }) => {
             <PackCategory
                packs={proteicoPacks}
                src={`${cloudImagesPath}/qqat9pwtdfqezw21myhi`}
-               name={'Proteíco'}
+               name={'Proteico'}
                content={'con alto contenido de proteínas.'}
                reverse={true}
             />

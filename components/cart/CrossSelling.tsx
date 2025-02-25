@@ -38,7 +38,7 @@ export const CrossSelling: FC<Props> = ({ products }) => {
       <div className={`${styles.crossSelling}`}>
          <div className={styles.container}>
             <h3 className={styles.title}>
-               Sumá estos exquisitos <strong>Waffles</strong>
+               Sumá estos <strong>Waffles y Budines</strong>
             </h3>
             <p className={styles.text}>para tus desayunos y meriendas</p>
 

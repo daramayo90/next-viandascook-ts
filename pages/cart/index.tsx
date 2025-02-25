@@ -52,7 +52,7 @@ const CartPage: NextPage<Props> = ({ products }) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-   const products = await dbProducts.getCrossSellingProducts('Waffles');
+   const products = await dbProducts.getCrossSellingProducts(['Waffles', 'Budines']);
 
    return {
       props: { products },
