@@ -1,0 +1,41 @@
+@import '../../../styles/mixins';
+
+.intro {
+   width: 100%;
+
+   .container {
+      width: 90%;
+      margin: 0 auto;
+      padding: 2rem 0;
+
+      .logo {
+         width: 70%;
+         max-width: 320px;
+         margin: 1rem auto;
+      }
+
+      .title {
+         text-align: center;
+         font-size: 1.2rem;
+         font-weight: 600;
+         margin: 2rem 0;
+         color: var(--primaryStrong);
+
+         @include tablet() {
+            font-size: 1.4rem;
+         }
+      }
+
+      .content {
+         margin: 0.5rem auto;
+         text-align: center;
+         font-size: 1rem;
+         color: var(--primaryStrong);
+
+         @include tablet() {
+            max-width: 840px;
+            font-size: 1.1rem;
+         }
+      }
+   }
+}

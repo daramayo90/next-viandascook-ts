@@ -1,0 +1,126 @@
+.sidemenu {
+   position: fixed;
+   top: 0;
+
+   width: 100%;
+   height: 100vh;
+
+   z-index: -1;
+
+   .options {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+
+      position: absolute;
+      top: 0;
+      right: 0;
+
+      width: 100vw;
+      height: 100%;
+
+      transform: translateX(100%);
+      transition: 0.36s cubic-bezier(0.52, 0.01, 0.8, 1);
+
+      z-index: 50;
+
+      .list {
+         width: 80%;
+         max-width: 440px;
+         margin-top: 5.5rem;
+
+         .linkItem {
+            opacity: 0;
+
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+
+            margin: 0.5rem 0;
+            text-transform: uppercase;
+            transform: translateX(-5px);
+            transition: 0.16s cubic-bezier(0.44, 0.09, 0.46, 0.84);
+
+            cursor: pointer;
+
+            .icon {
+               max-width: 22px;
+               max-height: 22px;
+               margin-right: 1rem;
+
+               font-style: normal;
+               font-weight: 500;
+               font-size: 1.3rem;
+               color: var(--primaryStrong);
+
+               transition: 0.24s ease-in-out;
+            }
+
+            span {
+               display: block;
+               font-style: normal;
+               font-weight: 400;
+               font-size: 1.2rem;
+               text-align: left;
+               line-height: 36px;
+               color: var(--primaryStrong);
+               transition: 0.24s ease-in-out;
+            }
+
+            .iconRight {
+               margin-top: 1px;
+               margin-left: auto;
+               font-size: 1.3rem;
+               color: var(--primaryStrong);
+            }
+         }
+      }
+   }
+
+   .open {
+      background-color: var(--primaryLight);
+      transform: translateX(0%);
+      z-index: 50;
+
+      .linkItem {
+         @for $i from 1 through 12 {
+            &:nth-child(#{$i}) {
+               // Delay each item by 0.16s * i
+               transition-delay: #{0.16 * $i}s;
+               transform: translateX(0);
+               opacity: 1;
+            }
+         }
+      }
+   }
+}
+
+.sidemenu.open {
+   z-index: 25;
+}
+
+@media (min-width: 720px) {
+   .sidemenu {
+      width: 19%;
+      min-width: 640px;
+      right: 0;
+   }
+
+   .sidemenu > .options {
+      width: 100%;
+   }
+
+   .sidemenu > .options > .list {
+      width: 55%;
+      text-align: left;
+   }
+
+   .sidemenu > .options > .list > .linkItem {
+      margin: 1rem 0;
+   }
+
+   .sidemenu > .options > .login {
+      width: 50%;
+   }
+}

@@ -71,8 +71,6 @@ const createOrder = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
 
       const orderId = await customIdGenerator();
 
-      console.log('req.body', req.body);
-
       const newOrder = new Order({ ...req.body, _id: orderId, isPaid: false, user: orderUser });
 
       newOrder.total = Math.round(newOrder.total * 100) / 100;

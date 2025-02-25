@@ -1,7 +1,7 @@
 import { FC, ReactNode } from 'react';
 import Head from 'next/head';
 import { Footer, SideMenu } from '../ui';
-import { ShopNavbar } from '../navbar';
+import { Navbar, ShopNavbar } from '../navbar';
 import { IProduct } from '../../interfaces';
 
 interface Props {
@@ -48,7 +48,8 @@ export const ProductLayout: FC<Props> = ({ children, product }) => {
          </Head>
          <header>
             <nav>
-               <ShopNavbar pageTitle={''} menuPage={false} backCart={false} />
+               {/* <ShopNavbar pageTitle={''} menuPage={false} backCart={false} /> */}
+               <Navbar />
             </nav>
          </header>
 

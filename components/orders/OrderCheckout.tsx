@@ -31,10 +31,10 @@ export const OrderCheckout: FC<Props> = ({ order }) => {
          <h2 className={styles.title}>Detalles del pago</h2>
 
          <div className={styles.summary}>
-            <span>N° de Viandas:</span>
+            <span>N° de Productos:</span>
 
             <span>
-               {numberOfItems} {numberOfItems > 1 ? 'platos' : 'plato'}
+               {numberOfItems} {numberOfItems > 1 ? 'productos' : 'producto'}
             </span>
          </div>
 

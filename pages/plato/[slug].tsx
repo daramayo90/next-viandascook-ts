@@ -17,7 +17,7 @@ import {
    Description,
 } from '../../components/products';
 
-import styles from '../../styles/Product.module.css';
+import styles from '../../styles/products/Product.module.scss';
 import { Breadcrumbs } from '../../components/ui';
 
 interface Props {

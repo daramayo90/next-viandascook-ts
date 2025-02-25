@@ -3,7 +3,7 @@ import dynamic from 'next/dynamic';
 import Head from 'next/head';
 
 import { Footer } from '../ui';
-import { MainNavbar } from '../navbar';
+import { Navbar } from '../navbar';
 
 const SideMenu = dynamic(() => import('../ui').then((module) => module.SideMenu), {
    ssr: false,
@@ -25,11 +25,7 @@ export const MainLayout: FC<Props> = ({ children, title, pageDescription, keywor
             <title>{title}</title>
 
             <meta name='viewport' content='width=device-width' />
-            {index ? (
-               <meta name='robots' content='index, follow' />
-            ) : (
-               <meta name='robots' content='noindex, nofollow' />
-            )}
+            <meta name='robots' content={index ? 'index, follow' : 'noindex, nofollow'} />
 
             <meta name='description' content={pageDescription} />
             <meta name='keywords' content={keywords} />
@@ -66,12 +62,12 @@ export const MainLayout: FC<Props> = ({ children, title, pageDescription, keywor
 
          <header>
             <nav>
-               <MainNavbar />
+               <Navbar />
             </nav>
          </header>
 
          <main id='main'>
-            {children}{' '}
+            {children}
             <Suspense>
                <SideMenu />
             </Suspense>

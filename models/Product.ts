@@ -46,9 +46,24 @@ const productSchema = new Schema(
                   'Vegetariano',
                   'Waffles',
                   'Budines',
+                  'Packs',
                ],
             },
             message: '{VALUE} is not a valid type',
+         },
+      ],
+      productsInPack: [
+         {
+            product: {
+               type: Schema.Types.ObjectId,
+               ref: 'Product',
+               required: true,
+            },
+            quantity: {
+               type: Number,
+               default: 1,
+               required: true,
+            },
          },
       ],
    },

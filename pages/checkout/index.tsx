@@ -33,7 +33,7 @@ interface Props {
 const CheckoutPage: NextPage<Props> = ({ user }) => {
    const { shippingAddress } = useContext(OrdersContext);
    const { isLoggedIn } = useContext(AuthContext);
-   const { total, cart, numberOfItems } = useContext(CartContext);
+   const { total, cart, numberOfItems, numberOfPacks } = useContext(CartContext);
    const [hasRedirected, setHasRedirected] = useState(false);
 
    const router = useRouter();
@@ -63,6 +63,8 @@ const CheckoutPage: NextPage<Props> = ({ user }) => {
    }, [cart]);
 
    useEffect(() => {
+      if (numberOfPacks > 0) return;
+
       if (!hasRedirected && numberOfItems > 0 && numberOfItems < 7) {
          setHasRedirected(true);
          router.push('/cart');

@@ -7,6 +7,8 @@ interface ContextProps {
    coupons: ICoupon[];
    referralCoupon: string;
    numberOfItems: number;
+   numberOfPacks: number;
+   totalQuantityOfItems: number;
    subTotal: number;
    discount: number;
    shipping: number;

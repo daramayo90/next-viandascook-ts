@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import styles from '../../styles/Intro.module.css';
+import styles from '../styles/Intro.module.scss';
 
 interface Props {
    neighborhood: string;

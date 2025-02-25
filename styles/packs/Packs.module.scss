@@ -1,0 +1,190 @@
+@import '../mixins';
+
+.packs {
+   width: 100%;
+   padding-top: 5rem;
+   background-color: var(--white);
+
+   .packCategory {
+      width: 100%;
+
+      .container {
+         max-width: 400px;
+         width: 90%;
+         margin: 2rem auto;
+
+         @include laptop() {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+
+            max-width: 1000px;
+
+            &.reverse {
+               flex-direction: row-reverse;
+            }
+         }
+
+         .image {
+            margin: 0 auto;
+
+            @include laptop() {
+               width: 40%;
+               margin: 0;
+            }
+
+            span {
+               position: unset !important;
+               width: 100% !important;
+
+               img {
+                  height: unset !important;
+                  width: 100% !important;
+                  position: relative !important;
+               }
+            }
+         }
+
+         .info {
+            @include laptop() {
+               width: 55%;
+               margin: 0;
+            }
+
+            .header {
+               margin: 1rem auto;
+
+               .title {
+                  text-align: left;
+                  font-size: 1.4rem;
+                  font-weight: 600;
+                  color: var(--primaryStrong);
+
+                  @include laptop() {
+                     font-size: 1.8rem;
+                  }
+               }
+
+               .content {
+                  margin: 0.5rem 0;
+                  text-align: left;
+                  font-size: 1rem;
+
+                  @include laptop() {
+                     font-size: 1.1rem;
+                  }
+               }
+            }
+
+            .selection {
+               .title {
+                  text-align: left;
+                  font-size: 1rem;
+                  font-weight: 600;
+               }
+
+               .quantity {
+                  display: flex;
+                  flex-direction: row;
+                  justify-content: space-between;
+                  align-items: center;
+                  flex-wrap: wrap;
+
+                  width: 100%;
+                  margin: 0.5rem 0;
+
+                  button {
+                     width: 145px;
+                     margin: 0.7rem 0;
+                     padding: 0.6rem 0;
+
+                     font-size: 0.9rem;
+                     font-weight: 500;
+                     text-transform: uppercase;
+
+                     border: 1px solid var(--primaryStrong);
+                     border-radius: 3.125rem;
+                     color: var(--primaryStrong);
+                     background: #fff;
+                     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+                     cursor: pointer;
+
+                     @include largeMobile() {
+                        width: 175px;
+                     }
+
+                     @include laptop() {
+                        width: 130px;
+                     }
+                  }
+
+                  button.selected {
+                     background: var(--primaryShinny);
+                     color: var(--primary);
+                     font-weight: 600;
+                  }
+               }
+
+               .price {
+                  margin: 1.5rem 0;
+                  font-size: 2rem;
+                  font-style: normal;
+                  font-weight: 400;
+               }
+            }
+
+            .buttons {
+               display: flex;
+               flex-direction: column;
+               align-items: center;
+               justify-content: space-between;
+               height: 100px;
+
+               @include laptop() {
+                  flex-direction: row;
+                  justify-content: space-between;
+                  height: 50px;
+               }
+
+               a {
+                  @include laptop() {
+                     justify-content: flex-start;
+                  }
+               }
+
+               .btn {
+                  width: 100%;
+
+                  @include laptop() {
+                     width: 48%;
+                  }
+
+                  .addToCartBtn {
+                     width: 100%;
+                     font-size: 1.1rem;
+
+                     color: var(--white);
+                     background-color: var(--primary);
+                     border: 2px solid var(--primary);
+
+                     &:active {
+                        border: 2px solid var(--primaryStrong);
+                        background-color: var(--primaryStrong);
+                     }
+                  }
+
+                  .modalBtn {
+                     width: 100%;
+                     font-size: 1.1rem;
+
+                     color: var(--textColor);
+                     border: 2px solid var(--primaryStrong);
+                  }
+               }
+            }
+         }
+      }
+   }
+}

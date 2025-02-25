@@ -1,0 +1,110 @@
+@import '../../../styles/mixins';
+
+.packs {
+   width: 100%;
+   background-color: var(--primaryStrong);
+
+   .container {
+      width: 100%;
+      padding: 2rem 1rem 3rem 1rem;
+
+      @include tablet() {
+         width: 90%;
+         max-width: 970px;
+         margin: 0 auto;
+      }
+
+      @include desktop() {
+         max-width: 1000px;
+      }
+
+      .header {
+         position: relative;
+         width: 100%;
+
+         .title {
+            font-size: 1.7rem;
+            text-align: center;
+            color: var(--white);
+
+            @include tablet() {
+               margin: 0 auto;
+               text-align: left;
+            }
+         }
+
+         .content {
+            margin: 0.5rem auto;
+
+            font-size: 1rem;
+            font-weight: 400;
+            text-align: center;
+            text-transform: uppercase;
+
+            color: var(--white);
+
+            @include tablet() {
+               text-align: left;
+            }
+         }
+      }
+
+      .sliderContainer {
+         position: relative;
+
+         max-width: 340px;
+         width: 100%;
+         margin: 0 auto;
+
+         @include tablet() {
+            max-width: none;
+         }
+
+         .leftArrow,
+         .rightArrow {
+            position: absolute;
+            bottom: 50%;
+            transform: translateY(50%);
+            font-size: 2.7rem;
+            color: var(--white);
+
+            @include laptop() {
+               display: none;
+            }
+         }
+
+         .leftArrow {
+            @include tablet() {
+               left: -5%;
+            }
+            // @include tablet() {
+            //    display: block;
+            //    bottom: 40%;
+            //    right: 97% !important;
+            // }
+
+            // @include desktop() {
+            //    left: -22px !important;
+            // }
+         }
+
+         .rightArrow {
+            @include tablet() {
+               right: -5%;
+            }
+            // bottom: -12%;
+            // left: 50% !important;
+            // transform: translateX(calc(-50%));
+
+            // @include tablet() {
+            //    bottom: 40%;
+            //    left: 97% !important;
+            // }
+
+            // @include desktop() {
+            //    left: 100% !important;
+            // }
+         }
+      }
+   }
+}

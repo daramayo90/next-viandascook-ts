@@ -32,7 +32,15 @@ const getOrdersByDate = async (req: NextApiRequest, res: NextApiResponse<Data>) 
       const orders: IOrder[] = await Order.find({
          deliveryDate: { $gte: startOfDay, $lte: endOfDay },
          isPaid: true,
-      });
+      })
+         .populate({
+            path: 'orderItems', // populate order items first
+            populate: {
+               path: 'productsInPack.product', // then populate the product field inside productsInPack
+               select: 'name', // select the fields you need
+            },
+         })
+         .lean();
 
       await db.disconnect();
 
@@ -49,7 +57,15 @@ const getOrderById = async (req: NextApiRequest, res: NextApiResponse<Data>) => 
    try {
       await db.connect();
 
-      const order = await Order.findById(Number(orderId)).lean();
+      const order = await Order.findById(Number(orderId))
+         .populate({
+            path: 'orderItems', // populate order items first
+            populate: {
+               path: 'productsInPack.product', // then populate the product field inside productsInPack
+               select: 'name', // select the fields you need
+            },
+         })
+         .lean();
 
       await db.disconnect();
 

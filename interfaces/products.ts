@@ -1,3 +1,8 @@
+export interface IProductInPack {
+   product: IProduct;
+   quantity: number;
+}
+
 export interface IProduct {
    _id: string;
    image: string;
@@ -14,6 +19,7 @@ export interface IProduct {
    bestSeller?: boolean;
    createdAt?: string;
    updatedAt?: string;
+   productsInPack?: IProductInPack[];
 }
 
 export type IType =
@@ -33,4 +39,5 @@ export type IType =
    | 'Vegano'
    | 'Vegetariano'
    | 'Waffles'
-   | 'Budines';
+   | 'Budines'
+   | 'Packs';

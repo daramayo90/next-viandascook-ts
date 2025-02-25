@@ -20,6 +20,8 @@ export interface CartState {
    coupons: ICoupon[];
    referralCoupon: string;
    numberOfItems: number;
+   numberOfPacks: number;
+   totalQuantityOfItems: number;
    subTotal: number;
    discount: number;
    shipping: number;
@@ -38,6 +40,8 @@ const CART_INITIAL_STATE: CartState = {
    coupons: [],
    referralCoupon: '',
    numberOfItems: 0,
+   numberOfPacks: 0,
+   totalQuantityOfItems: 0,
    subTotal: 0,
    discount: 0,
    shipping: 0,
@@ -64,7 +68,6 @@ export const CartProvider: FC<Props> = ({ children }) => {
 
    // Add Shipping cost to cookies
    useEffect(() => {
-      console.log('state.shipping', state.shipping);
       if (state.shipping !== 0) Cookies.set('shipping', JSON.stringify(state.shipping));
    }, [state.shipping]);
 
@@ -96,12 +99,29 @@ export const CartProvider: FC<Props> = ({ children }) => {
 
    // Calculation of: quantity / subTotal / discount / shipping fee / total
    useEffect(() => {
-      const numberOfItems = state.cart.reduce((prev, curr) => curr.quantity + prev, 0);
+      const numberOfItems = state.cart.reduce((prev, curr) => {
+         // If the product has a type array and it includes "Packs", skip adding its quantity.
+         if (curr.type?.includes('Packs')) {
+            return prev;
+         }
+         return prev + curr.quantity;
+      }, 0);
+
+      const numberOfPacks = state.cart.reduce((prev, curr) => {
+         if (curr.type?.includes('Packs')) {
+            return prev + curr.quantity;
+         }
+         return prev;
+      }, 0);
+
       const subTotal = state.cart.reduce(
          (prev, curr) => curr.quantity * (curr.discountPrice ? curr.discountPrice : curr.price) + prev,
          0,
       );
+
       const discount = promo.calculation(numberOfItems, subTotal);
+
+      const totalQuantityOfItems = numberOfItems + numberOfPacks;
 
       // if (numberOfItems >= 14) {
       //    state.shipping = 0;
@@ -121,6 +141,8 @@ export const CartProvider: FC<Props> = ({ children }) => {
 
       const orderSummary = {
          numberOfItems,
+         numberOfPacks,
+         totalQuantityOfItems,
          subTotal,
          discount,
          shipping,

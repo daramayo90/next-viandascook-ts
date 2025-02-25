@@ -3,13 +3,13 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 import { Slide } from 'react-slideshow-image';
+import { CiCircleChevLeft, CiCircleChevRight } from 'react-icons/ci';
 
 import { IProduct } from '../../interfaces';
 
 import 'react-slideshow-image/dist/styles.css';
-import styles from '../../styles/ProductSlides.module.css';
+import styles from './styles/ProductSlides.module.scss';
 import { Button } from '../ui';
-import { FaChevronCircleLeft, FaChevronCircleRight } from 'react-icons/fa';
 
 interface Props {
    products: IProduct[];
@@ -19,24 +19,31 @@ interface Props {
 export const ProductSlides: FC<Props> = ({ products, title }) => {
    const responsiveSettings = [
       {
-         breakpoint: 1100,
+         breakpoint: 999,
          settings: {
-            slidesToShow: 1,
+            slidesToShow: 5,
             slidesToScroll: 1,
          },
       },
       {
          breakpoint: 720,
          settings: {
-            slidesToShow: 5,
-            slidesToScroll: 2,
+            slidesToShow: 3,
+            slidesToScroll: 1,
+         },
+      },
+      {
+         breakpoint: 500,
+         settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
          },
       },
    ];
 
    const properties = {
-      prevArrow: <FaChevronCircleLeft className={styles.sliderBtn} />,
-      nextArrow: <FaChevronCircleRight className={styles.sliderBtn} />,
+      prevArrow: <CiCircleChevLeft className={styles.leftArrow} />,
+      nextArrow: <CiCircleChevRight className={styles.rightArrow} />,
    };
 
    return (
@@ -44,44 +51,41 @@ export const ProductSlides: FC<Props> = ({ products, title }) => {
          {title ? (
             <h2 className={styles.title}>{title}</h2>
          ) : (
-            <h2 className={styles.title}>Conocé nuestros platos saludables más vendidos</h2>
+            <>
+               <h2 className={styles.title}>Viandas Destacadas</h2>
+               <h3 className={styles.subTitle}>Conocé nuestros platos saludables más vendidos</h3>
+            </>
          )}
 
          <div className={styles.container}>
-            <Slide
-               easing='ease'
-               duration={3000}
-               indicators={true}
-               responsive={responsiveSettings}
-               {...properties}>
+            <Slide easing='ease' duration={4000} responsive={responsiveSettings} {...properties}>
                {products.map((product) => (
                   <Link key={product._id} href={`/plato/${product.slug}`}>
-                     <div className={styles.box}>
-                        <div className={styles.nextImage}>
-                           <div>
-                              <Image
-                                 src={product.image}
-                                 alt={product.name}
-                                 width={480}
-                                 height={720}
-                                 sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
-                                 onError={(e) => console.log('Error loading image:', e)}
-                              />
-                              {/* <div className={styles.btn}>
-                                 <Button
-                                    href={`/plato/${product.slug}`}
-                                    content='Ver Plato'
-                                    background='var(--primary)'
-                                    border='none'
-                                 />
-                              </div> */}
-                           </div>
+                     <div className={styles.product}>
+                        <div className={styles.productImg}>
+                           <Image
+                              src={product.image}
+                              alt={product.name}
+                              width={480}
+                              height={720}
+                              sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+                              onError={(e) => console.log('Error loading image:', e)}
+                           />
                         </div>
-                        <h3 className={styles.title}>{product.name}</h3>
+                        <h3 className={styles.productName}>{product.name}</h3>
                      </div>
                   </Link>
                ))}
             </Slide>
+         </div>
+
+         <div className={styles.btn}>
+            <Button
+               href={'/menu'}
+               content={'Descubrí Más Platos'}
+               background='var(--secondaryLight)'
+               color='white'
+            />
          </div>
       </section>
    );

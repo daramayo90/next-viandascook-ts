@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from 'react';
-import { IOrder, IOrderItem, IUser, ShippingAddress } from '../../interfaces';
+import { IOrder, IOrderItem, IProductInPack, IUser, ShippingAddress } from '../../interfaces';
 
 import styles from '../../styles/AdminOrderDialog.module.css';
 
@@ -21,7 +21,7 @@ export const OrderDialog: FC<Props> = ({ order, setShowOrder }) => {
    if (!order) return <></>;
 
    const { name, lastName, email, phone } = order.user as IUser;
-   const { address, address2, city } = order.shippingAddress as ShippingAddress;
+   const { address, address2, city, city2 = '' } = order.shippingAddress as ShippingAddress;
 
    const handleCompletedItem = (itemId: string) => {
       const updatedCompletedItems = { ...completedItems, [itemId]: !completedItems[itemId] };
@@ -55,6 +55,9 @@ export const OrderDialog: FC<Props> = ({ order, setShowOrder }) => {
                   <strong>Dirección: </strong> {address}, {address2}, {city}
                </p>
                <p>
+                  <strong>Localidad: </strong> {city2}
+               </p>
+               <p>
                   <strong>Método de pago: </strong>
                   {order.paymentMethod.charAt(0).toUpperCase() + order.paymentMethod.slice(1)}
                </p>
@@ -62,18 +65,37 @@ export const OrderDialog: FC<Props> = ({ order, setShowOrder }) => {
 
             <div className={styles.products}>
                <h3>Viandas: </h3>
-               {order.orderItems.map((product: IOrderItem) => (
-                  <div className={styles.product} key={product._id}>
-                     <input
-                        type='checkbox'
-                        checked={completedItems[product._id]}
-                        onChange={() => handleCompletedItem(product._id)}
-                     />
-                     <span>
-                        {product.name} x{product.quantity}
-                     </span>
-                  </div>
-               ))}
+               <>
+                  {order.orderItems.map((item: IOrderItem) => {
+                     if (item.productsInPack && item.productsInPack.length > 0) {
+                        // It's a pack: display the products inside the pack.
+                        return item.productsInPack.map((packItem: IProductInPack) => (
+                           <div className={styles.product} key={packItem.product._id}>
+                              <input
+                                 type='checkbox'
+                                 checked={completedItems[packItem.product._id]}
+                                 onChange={() => handleCompletedItem(packItem.product._id)}
+                              />
+                              <span>{packItem.product.name}</span>
+                           </div>
+                        ));
+                     } else {
+                        // Regular order item: display the item normally.
+                        return (
+                           <div className={styles.product} key={item._id}>
+                              <input
+                                 type='checkbox'
+                                 checked={completedItems[item._id]}
+                                 onChange={() => handleCompletedItem(item._id)}
+                              />
+                              <span>
+                                 {item.name} x{item.quantity}
+                              </span>
+                           </div>
+                        );
+                     }
+                  })}
+               </>
             </div>
          </div>
       </section>

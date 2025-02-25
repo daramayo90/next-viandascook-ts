@@ -1,0 +1,25 @@
+.commonFaqs {
+   width: 100%;
+   padding: 0 0 1rem;
+   background: var(--primaryLight);
+
+   .title {
+      padding: 1.5rem 0 0.75rem;
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: bolder;
+      color: var(--primary);
+   }
+
+   .accordion {
+      max-width: 640px;
+      width: 90%;
+      margin: 0 auto;
+   }
+
+   .btn {
+      max-width: 310px;
+      width: 90%;
+      margin: 2rem auto;
+   }
+}

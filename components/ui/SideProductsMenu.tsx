@@ -19,7 +19,7 @@ export const SideProductsMenu = () => {
             <div className={styles.fullMenu}>
                <div className={styles.top}>
                   <div className={styles.title}>
-                     <h4>Platos elegidos</h4>
+                     <h4>Productos elegidos</h4>
                   </div>
 
                   <div className={styles.closeMenu} onClick={toggleProductsMenu}>

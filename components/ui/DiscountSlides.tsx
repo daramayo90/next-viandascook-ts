@@ -18,7 +18,7 @@ export const DiscountSlides = () => {
             </Link>
          </div>
 
-         <Fade easing='ease' duration={400000} indicators cssClass={styles.slide}>
+         <Fade easing='ease' duration={4000} indicators cssClass={styles.slide}>
             {discounts.map(({ name, img }) => (
                <div key={name} className={styles.nextImage}>
                   <Image

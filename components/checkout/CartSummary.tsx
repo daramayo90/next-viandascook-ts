@@ -13,7 +13,7 @@ import { MdModeEdit } from 'react-icons/md';
 import styles from '../../styles/CartSummary.module.css';
 
 export const CartSummary = () => {
-   const { numberOfItems, total } = useContext(CartContext);
+   const { totalQuantityOfItems, total } = useContext(CartContext);
    const { isCartSummaryOpen, toggleCartSummary } = useContext(UIContext);
 
    return (
@@ -23,7 +23,9 @@ export const CartSummary = () => {
             onClick={toggleCartSummary}>
             <div className={styles.container}>
                <span className={styles.quantity}>
-                  {numberOfItems > 1 ? `${numberOfItems} viandas` : `${numberOfItems} vianda`}
+                  {totalQuantityOfItems > 1
+                     ? `${totalQuantityOfItems} productos`
+                     : `${totalQuantityOfItems} producto`}
                </span>
 
                <div className={styles.info}>

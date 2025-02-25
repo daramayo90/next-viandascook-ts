@@ -1,7 +1,6 @@
 .products {
    width: 100%;
-   padding-top: 7rem;
-   padding-bottom: 10rem;
+   padding-top: 5rem;
    background-color: var(--white);
 }
 
@@ -12,7 +11,7 @@
    align-items: center;
    width: 90%;
    max-width: 510px;
-   margin: 0 auto;
+   margin: 1.5rem auto 0;
    padding: 5px;
    text-align: center;
    color: var(--textColor);
@@ -54,11 +53,11 @@
    align-items: center;
    width: 90%;
    max-width: 460px;
-   margin: 0 auto;
+   margin: 1.5rem auto 0;
    padding: 5px;
    text-align: center;
    color: var(--white);
-   background-color: var(--primaryShinny);
+   background-color: var(--primaryLight);
    border-radius: 12px;
 }
 

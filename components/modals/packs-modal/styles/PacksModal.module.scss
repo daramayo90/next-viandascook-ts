@@ -1,0 +1,68 @@
+.packsModal {
+   width: 100%;
+
+   .header {
+      width: 100%;
+      margin: 1rem 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .title {
+         text-align: left;
+         color: var(--primary);
+      }
+
+      .closeIcon {
+         color: var(--primary);
+         font-size: 1.3rem;
+         font-weight: 600;
+
+         cursor: pointer;
+      }
+   }
+
+   .list {
+      margin: 0.5rem 0;
+
+      padding: 0;
+
+      .product {
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+         margin: 0.5rem 0;
+
+         .image {
+            width: 40px;
+            height: 40px;
+            position: relative;
+
+            cursor: pointer;
+
+            span {
+               position: unset !important;
+               width: 100% !important;
+
+               img {
+                  height: 100% !important;
+                  width: 100% !important;
+                  object-fit: cover !important;
+                  border-radius: 8px;
+               }
+            }
+         }
+
+         .name {
+            width: 70%;
+            text-align: left;
+            cursor: pointer;
+         }
+
+         .quantity {
+            color: var(--primary);
+            font-weight: 600;
+         }
+      }
+   }
+}

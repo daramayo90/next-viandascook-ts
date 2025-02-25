@@ -1,11 +1,16 @@
+import { FC } from 'react';
 import Image from 'next/image';
 
-import { Button } from './Button';
-import { cloudImagesPath } from '../../utils';
+import { Button } from '../../ui/Button';
+import { cloudImagesPath } from '../../../utils';
 
-import styles from '../../styles/Banner.module.css';
+import styles from '../styles/Banner.module.scss';
 
-export const Banner = () => {
+interface Props {
+   neighborhood: string;
+}
+
+export const BannerNeighborhood: FC<Props> = ({ neighborhood }) => {
    return (
       <section className={styles.banner}>
          <Image
@@ -21,19 +26,16 @@ export const Banner = () => {
 
          <div className={styles.container}>
             <div className={styles.brand}>
-               <h1 className={styles.title}>Viandas Saludables</h1>
+               <h1 className={styles.title} style={{ textTransform: 'initial' }}>
+                  Comida Deliciosa y Saludable en {neighborhood}
+               </h1>
                <p className={styles.slogan}>
                   <span>Hace que tu dia</span>
                   <span> tenga sabor!</span>
                </p>
 
-               <p className={styles.epigraph}>
-                  Disfrutá de nuestras <strong>comidas</strong> frescas, caseras y entregadas{' '}
-                  <strong>a domicilio en CABA.</strong>
-               </p>
-
                <div className={styles.button}>
-                  <Button href='/menu' content='Ver el menú' color='white' border='2px white solid' />
+                  <Button href='/menu' content='¡Quiero!' color='white' border='2px white solid' />
                </div>
             </div>
 

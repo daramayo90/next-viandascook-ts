@@ -4,7 +4,6 @@ export * as jwt from './jwt';
 export * as promo from './discountCalculation';
 export * as validations from './validations';
 export * from './cloudinary';
-export * from './commonQuestions';
 export * from './discounts';
 export * from './holidays';
 export * from './loyalty';

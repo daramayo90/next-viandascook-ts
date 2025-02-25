@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 
 import { Footer, SideMenu, TabMenu } from '../ui';
-import { ShopNavbar } from '../navbar';
+import { Navbar } from '../navbar';
 import { pageTitles } from '../../utils';
 import { CartSummary } from '../checkout';
 
@@ -83,7 +83,7 @@ export const ShopLayout: FC<Props> = ({
          </Head>
          <header>
             <nav>
-               <ShopNavbar pageTitle={navTitle} menuPage={menuPage} backCart={backCart} />
+               <Navbar />
             </nav>
          </header>
          <main>

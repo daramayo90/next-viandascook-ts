@@ -4,11 +4,11 @@ import Link from 'next/link';
 
 import { AuthContext, UIContext } from '../../context';
 
-import { FiLogIn, FiMessageCircle } from 'react-icons/fi';
+import { FiPackage, FiLogIn, FiMessageCircle } from 'react-icons/fi';
 import { TbDiscount2 } from 'react-icons/tb';
 import { BsInfoCircle } from 'react-icons/bs';
-import { AiOutlineHome, AiOutlineQuestionCircle, AiOutlineUser } from 'react-icons/ai';
-import { HiOutlineClipboardList, HiOutlineLogout } from 'react-icons/hi';
+import { AiOutlineQuestionCircle } from 'react-icons/ai';
+import { HiOutlineLogout } from 'react-icons/hi';
 import {
    MdOutlineAdminPanelSettings,
    MdOutlineDiscount,
@@ -17,7 +17,7 @@ import {
    MdOutlineQuestionAnswer,
 } from 'react-icons/md';
 
-import styles from '../../styles/SideMenu.module.css';
+import styles from './styles/SideMenu.module.scss';
 
 export const SideMenu = () => {
    const router = useRouter();
@@ -30,16 +30,6 @@ export const SideMenu = () => {
       <section className={isMenuOpen ? `${styles.sidemenu} ${styles.open}` : `${styles.sidemenu}`}>
          <div className={isMenuOpen ? `${styles.options} ${styles.open}` : `${styles.options}`}>
             <div className={styles.list}>
-               {/* {isLoggedIn && user?.role === 'admin' && (
-                  <Link href='/admin' prefetch={false}>
-                     <a className={styles.linkItem} onClick={toggleSideMenu}>
-                        <MdOutlineAdminPanelSettings className={styles.icon} />
-                        <span>Admin</span>
-                        <MdOutlineKeyboardArrowRight className={styles.iconRight} />
-                     </a>
-                  </Link>
-               )} */}
-
                {isLoggedIn && user?.role === 'viandas' && (
                   <Link href='/cocina' prefetch={false}>
                      <a className={styles.linkItem} onClick={toggleSideMenu}>
@@ -50,18 +40,18 @@ export const SideMenu = () => {
                   </Link>
                )}
 
-               <Link href='/' prefetch={false}>
+               <Link href='/menu' prefetch={false}>
                   <a className={styles.linkItem} onClick={toggleSideMenu}>
-                     <AiOutlineHome className={styles.icon} />
-                     <span>Inicio</span>
+                     <MdOutlineFoodBank className={styles.icon} />
+                     <span>Menú</span>
                      <MdOutlineKeyboardArrowRight className={styles.iconRight} />
                   </a>
                </Link>
 
-               <Link href='/menu' prefetch={false}>
+               <Link href='/packs' prefetch={false}>
                   <a className={styles.linkItem} onClick={toggleSideMenu}>
-                     <MdOutlineFoodBank className={styles.icon} />
-                     <span>Elegí tus Viandas</span>
+                     <FiPackage className={styles.icon} />
+                     <span>Packs</span>
                      <MdOutlineKeyboardArrowRight className={styles.iconRight} />
                   </a>
                </Link>
@@ -74,37 +64,18 @@ export const SideMenu = () => {
                   </a>
                </Link>
 
-               {isLoggedIn && (
-                  <>
-                     <Link href='/pedidos/historial' prefetch={false}>
-                        <a className={styles.linkItem} onClick={toggleSideMenu}>
-                           <HiOutlineClipboardList className={styles.icon} />
-                           <span>Mis Pedidos</span>
-                           <MdOutlineKeyboardArrowRight className={styles.iconRight} />
-                        </a>
-                     </Link>
-
-                     <Link href='/mi-cuenta' prefetch={false}>
-                        <a className={styles.linkItem} onClick={toggleSideMenu}>
-                           <AiOutlineUser className={styles.icon} />
-                           <span>Mi Cuenta</span>
-                           <MdOutlineKeyboardArrowRight className={styles.iconRight} />
-                        </a>
-                     </Link>
-                  </>
-               )}
                <Link href='/loyalty' prefetch={false}>
                   <a className={styles.linkItem} onClick={toggleSideMenu}>
                      <TbDiscount2 className={styles.icon} />
-                     <span>Sumá Puntos</span>
+                     <span>Club Viandlover</span>
                      <MdOutlineKeyboardArrowRight className={styles.iconRight} />
                   </a>
                </Link>
 
-               <Link href='/blog' prefetch={false}>
+               <Link href='/preguntas' prefetch={false}>
                   <a className={styles.linkItem} onClick={toggleSideMenu}>
-                     <FiMessageCircle className={styles.icon} />
-                     <span>Blog</span>
+                     <AiOutlineQuestionCircle className={styles.icon} />
+                     <span>¿Dudas?</span>
                      <MdOutlineKeyboardArrowRight className={styles.iconRight} />
                   </a>
                </Link>
@@ -112,7 +83,7 @@ export const SideMenu = () => {
                <Link href='/nosotros' prefetch={false}>
                   <a className={styles.linkItem} onClick={toggleSideMenu}>
                      <BsInfoCircle className={styles.icon} />
-                     <span>Nosotros</span>
+                     <span>Sobre Nosotros</span>
                      <MdOutlineKeyboardArrowRight className={styles.iconRight} />
                   </a>
                </Link>
@@ -125,10 +96,10 @@ export const SideMenu = () => {
                   </a>
                </Link>
 
-               <Link href='/preguntas' prefetch={false}>
+               <Link href='/blog' prefetch={false}>
                   <a className={styles.linkItem} onClick={toggleSideMenu}>
-                     <AiOutlineQuestionCircle className={styles.icon} />
-                     <span>¿Dudas?</span>
+                     <FiMessageCircle className={styles.icon} />
+                     <span>Blog</span>
                      <MdOutlineKeyboardArrowRight className={styles.iconRight} />
                   </a>
                </Link>

@@ -3,21 +3,15 @@ import { generateNeighborhoodSeo, neighborhoods, slugToTitleCase } from '../../u
 import { MainLayout } from '../../components/layouts';
 import { ProductSlides } from '../../components/products';
 
-import {
-   BannerNeighborhood,
-   IntroNeighborhood,
-   HowToBuy,
-   Values,
-   AditionalInfo,
-   CommonQuestions,
-   Newsletter,
-   Button,
-} from '../../components/ui';
+import { Values, AditionalInfo, CommonQuestions, Newsletter, Button } from '../../components/ui';
 
 import { dbProducts } from '../../database';
 import { IProduct } from '../../interfaces';
 
 import styles from '../../styles/Landing.module.css';
+import { BannerNeighborhood } from '../../components/home/neighborhood/BannerNeighborhood';
+import { IntroNeighborhood } from '../../components/home/neighborhood/IntroNeighborhood';
+import { HowItWorks } from '../../components/home';
 
 interface Props {
    theNeighborhood: string;
@@ -47,7 +41,7 @@ const NeighborhoodPage: NextPage<Props> = ({ theNeighborhood, products, seo }) =
 
             <IntroNeighborhood neighborhood={theNeighborhood} />
 
-            <HowToBuy />
+            <HowItWorks />
 
             <p className={styles.noSubscriptionInfo}>
                ¿Querés pedir tus viandas a domicilio y empezar a ahorrar tiempo a partir de hoy?

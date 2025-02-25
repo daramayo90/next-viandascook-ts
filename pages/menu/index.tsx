@@ -3,9 +3,7 @@ import { GetStaticProps, NextPage } from 'next';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
 
-import axios from 'axios';
 import Cookies from 'js-cookie';
-import InfiniteScroll from 'react-infinite-scroll-component';
 
 import { dbProducts } from '../../database';
 import { IProduct } from '../../interfaces';
@@ -13,13 +11,17 @@ import { IProduct } from '../../interfaces';
 import { AuthContext, CartContext } from '../../context';
 
 import { ShopLayout } from '../../components/layouts';
-import { Breadcrumbs, Button, DiscountSlides, News } from '../../components/ui';
-import { SearchProducts, ShippingAddress, TypesList } from '../../components/products';
+import { Button, CommonQuestions, DiscountSlides, News } from '../../components/ui';
+import {
+   Packs,
+   Pagination,
+   SearchProducts,
+   ShippingAddress,
+   TypesList,
+} from '../../components/products';
 import { AddressModal } from '../../components/modals';
 
 import { seo } from '../../utils';
-
-import LoadingPage from '../../components/ui/Loading';
 
 import styles from '../../styles/Products.module.css';
 
@@ -33,6 +35,8 @@ const SearchNotFound = dynamic(
    { ssr: false },
 );
 
+const PAGE_SIZE = 9;
+
 interface Props {
    products: IProduct[];
 }
@@ -41,6 +45,7 @@ const ProductsPage: NextPage<Props> = ({ products }) => {
    const { title, description, keywords, canonical } = seo['ProductsPage'];
 
    const router = useRouter();
+   const { query } = router;
 
    const { numberOfItems, calculateShipping } = useContext(CartContext);
    const { isLoggedIn, isAuthLoaded } = useContext(AuthContext);
@@ -48,10 +53,6 @@ const ProductsPage: NextPage<Props> = ({ products }) => {
    const city = useMemo(() => Cookies.get('city'), [Cookies.get('city')]);
    const fullAddress = useMemo(() => Cookies.get('fullAddress'), [Cookies.get('fullAddress')]);
    const shortAddress = useMemo(() => Cookies.get('address') || '-', [Cookies.get('address')]);
-
-   const [page, setPage] = useState(2);
-   const [hasMore, setHasMore] = useState(true);
-   const [displayedProducts, setDisplayedProducts] = useState<IProduct[]>([]);
 
    const [searchTerm, setSearchTerm] = useState<string>('');
    const [searchProducts, setSearchProducts] = useState<IProduct[]>([]);
@@ -62,6 +63,8 @@ const ProductsPage: NextPage<Props> = ({ products }) => {
    const [queryType, setQueryType] = useState<string>('');
 
    const [showModal, setShowModal] = useState(false);
+
+   const [page, setPage] = useState(1);
 
    useEffect(() => {
       if (shortAddress !== '-') calculateShipping(city || 'CABA');
@@ -80,16 +83,12 @@ const ProductsPage: NextPage<Props> = ({ products }) => {
    }, [isAuthLoaded, isLoggedIn, city]);
 
    useEffect(() => {
-      if (router.query.type) {
-         setQueryType(router.query.type as string);
+      if (query.type) {
+         setQueryType(query.type as string);
       } else {
          setQueryType('');
       }
-   }, [router.query]);
-
-   useEffect(() => {
-      setDisplayedProducts(products.slice(0, 6));
-   }, [products]);
+   }, [query]);
 
    useEffect(() => {
       const searchProducts: IProduct[] = products.filter((p) => {
@@ -134,21 +133,6 @@ const ProductsPage: NextPage<Props> = ({ products }) => {
       }
    }, [typeProducts, queryType, searchProducts]);
 
-   const loadMoreProducts = async () => {
-      if (isFilterActive) return;
-
-      let limit = 6;
-
-      // if (searchProducts.length > 0) limit = searchProducts.length.
-
-      const { data } = await axios.get<IProduct[]>(`/api/products?page=${page}&limit=${limit}`);
-
-      if (data.length === 0) return setHasMore(false);
-
-      setDisplayedProducts((prevProducts) => [...prevProducts, ...data]);
-      setPage(page + 1);
-   };
-
    const closeAddressModal = () => {
       Cookies.set('isModalShown', 'true');
       setShowModal(false);
@@ -161,49 +145,50 @@ const ProductsPage: NextPage<Props> = ({ products }) => {
 
    const shippingAddress = fullAddress || shortAddress;
 
+   const totalItems = productsToShow.length;
+   const totalPages = Math.ceil(totalItems / PAGE_SIZE);
+   const startIndex = (page - 1) * PAGE_SIZE;
+   const endIndex = startIndex + PAGE_SIZE;
+   const pageProducts = productsToShow.slice(startIndex, endIndex);
+
    return (
       <ShopLayout title={title} pageDescription={description} keywords={keywords} can={canonical}>
          <AddressModal isOpen={showModal} onClose={closeAddressModal} />
 
          <section className={styles.products}>
-            <Breadcrumbs />
-
             <News />
 
             <ShippingAddress shippingAddress={shippingAddress} openAddressModal={openAddressModal} />
 
-            <SearchProducts searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+            <SearchProducts searchTerm={searchTerm} setSearchTerm={setSearchTerm} setPage={setPage} />
 
             {!searchTerm && (
                <>
                   <DiscountSlides />
 
-                  <TypesList type={type} setType={setType} />
+                  <TypesList type={type} setType={setType} setPage={setPage} />
                </>
             )}
 
-            <InfiniteScroll
-               dataLength={displayedProducts.length}
-               next={loadMoreProducts}
-               hasMore={hasMore}
-               loader={<LoadingPage />}
-               scrollThreshold={0.6}>
-               <article id='menu-products' className={styles.container}>
-                  {isFilterActive ? (
-                     productsToShow.length > 0 ? (
-                        productsToShow.map((product) => (
-                           <ProductCard key={product._id} product={product} />
-                        ))
-                     ) : (
-                        <SearchNotFound />
-                     )
-                  ) : (
-                     displayedProducts.map((product) => (
+            <article id='menu-products' className={styles.container}>
+               {isFilterActive ? (
+                  productsToShow.length > 0 ? (
+                     productsToShow.map((product) => (
                         <ProductCard key={product._id} product={product} />
                      ))
-                  )}
-               </article>
-            </InfiniteScroll>
+                  ) : (
+                     <SearchNotFound />
+                  )
+               ) : (
+                  pageProducts.map((product) => <ProductCard key={product._id} product={product} />)
+               )}
+            </article>
+
+            <Pagination totalPages={totalPages} page={page} setPage={setPage} />
+
+            <Packs />
+
+            <CommonQuestions />
 
             {numberOfItems > 0 && (
                <div className={styles.goToCartBtn}>
@@ -222,7 +207,7 @@ const ProductsPage: NextPage<Props> = ({ products }) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-   const products = await dbProducts.getAllProducts();
+   const products = await dbProducts.getAllProductsExceptPacks();
 
    return {
       props: { products },

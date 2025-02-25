@@ -44,17 +44,20 @@ export const CartList: FC<Props> = ({ items, editable = false }) => {
                         priority={true}
                      />
 
-                     {product.discountPrice && (
-                        <div className={styles.tagImageWrapper}>
-                           <Image
-                              src='/img/15off-tag-bf.png'
-                              alt='15% off - Cyber Monday'
-                              width={750}
-                              height={900}
-                              priority={true}
-                           />
-                        </div>
-                     )}
+                     {product.discountPrice !== undefined &&
+                        product.discountPrice > 0 &&
+                        !product.name.includes('light') &&
+                        !product.name.includes('proteíco') && (
+                           <div className={styles.tagImageWrapper}>
+                              <Image
+                                 src='/img/15off-tag-bf.png'
+                                 alt='15% off - Cyber Monday'
+                                 width={750}
+                                 height={900}
+                                 priority={true}
+                              />
+                           </div>
+                        )}
                   </div>
 
                   <div className={styles.info}>
@@ -92,7 +95,9 @@ export const CartList: FC<Props> = ({ items, editable = false }) => {
                            </div>
                         ) : (
                            <span className={styles.quantity}>
-                              {product.quantity} {product.quantity > 1 ? 'platos' : 'plato'}
+                              {product.type?.includes('Packs')
+                                 ? `${product.quantity} ${product.quantity > 1 ? 'packs' : 'pack'}`
+                                 : `${product.quantity} ${product.quantity > 1 ? 'platos' : 'plato'}`}
                            </span>
                         )}
                      </div>

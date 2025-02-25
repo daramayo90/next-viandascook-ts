@@ -1,0 +1,64 @@
+@import '../../../styles/mixins';
+
+.pagination {
+   position: relative;
+
+   display: flex;
+   align-items: center;
+   justify-content: center;
+
+   max-width: 200px;
+   width: 100%;
+   margin: 1rem auto 2rem auto;
+
+   gap: 0.5rem;
+
+   .next,
+   .back {
+      position: absolute;
+      bottom: 50%;
+      font-size: 2rem;
+      color: var(--primary);
+
+      cursor: pointer;
+
+      @include tablet() {
+         font-size: 2.2rem;
+      }
+   }
+
+   .next {
+      transform: translateY(calc(50%));
+      right: -17%;
+   }
+
+   .back {
+      transform: translateY(calc(50%));
+      left: -17%;
+   }
+
+   .page {
+      padding: 10px 12px;
+
+      font-size: 1rem;
+      font-weight: 600;
+
+      border: none;
+
+      color: var(--primaryStrong);
+
+      cursor: pointer;
+
+      @include tablet() {
+         font-size: 1.3rem;
+      }
+   }
+
+   .activePage {
+      color: var(--primaryStrong);
+      border: 1.4px solid var(--primaryStrong);
+      border-radius: 5px;
+
+      cursor: pointer;
+   }
+}

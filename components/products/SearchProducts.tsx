@@ -7,15 +7,17 @@ import styles from '../../styles/Products.module.css';
 interface Props {
    searchTerm: string;
    setSearchTerm: (value: string) => void;
+   setPage: (value: number) => void;
 }
 
-export const SearchProducts: FC<Props> = ({ searchTerm, setSearchTerm }) => {
+export const SearchProducts: FC<Props> = ({ searchTerm, setSearchTerm, setPage }) => {
    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
    };
 
    const onSearchTerm = useCallback(
       (e: ChangeEvent<HTMLInputElement>) => {
+         setPage(1);
          setSearchTerm(e.target.value);
       },
       [setSearchTerm],

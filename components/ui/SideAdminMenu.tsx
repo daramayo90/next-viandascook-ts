@@ -10,7 +10,7 @@ import { TfiDropbox } from 'react-icons/tfi';
 import { TbChefHat } from 'react-icons/tb';
 import { BsBagCheck } from 'react-icons/bs';
 
-import styles from '../../styles/SideMenu.module.css';
+import styles from './styles/SideMenuAdmin.module.scss';
 
 export const SideAdminMenu = () => {
    const { logout } = useContext(AuthContext);

@@ -8,10 +8,12 @@ import styles from '../../styles/TypesList.module.css';
 interface Props {
    type: string;
    setType: (value: string) => void;
+   setPage: (value: number) => void;
 }
 
-export const TypesList: FC<Props> = ({ type, setType }) => {
+export const TypesList: FC<Props> = ({ type, setType, setPage }) => {
    const typeFilter = (type: string) => {
+      setPage(1);
       setType(type);
    };
 

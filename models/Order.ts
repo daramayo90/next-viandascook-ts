@@ -24,6 +24,13 @@ const orderSchema = new Schema(
             price: { type: Number, required: true },
             discountPrice: { type: Number },
             quantity: { type: Number, required: true },
+            type: { type: [String] },
+            productsInPack: [
+               {
+                  product: { type: Schema.Types.ObjectId, ref: 'Product', required: true },
+                  quantity: { type: Number, default: 1, required: true },
+               },
+            ],
          },
       ],
 

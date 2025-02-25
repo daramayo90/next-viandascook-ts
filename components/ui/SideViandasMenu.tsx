@@ -8,7 +8,7 @@ import { HiOutlineClipboardList, HiOutlineLogout } from 'react-icons/hi';
 import { MdOutlineKeyboardArrowRight, MdOutlineSpaceDashboard } from 'react-icons/md';
 import { TbChefHat } from 'react-icons/tb';
 
-import styles from '../../styles/SideMenu.module.css';
+import styles from './styles/SideMenuAdmin.module.scss';
 import { AiOutlineUser } from 'react-icons/ai';
 import { TfiDropbox } from 'react-icons/tfi';
 

@@ -23,6 +23,8 @@ type CartActionType =
         type: '[Cart] - Update Order Summary';
         payload: {
            numberOfItems: number;
+           numberOfPacks: number;
+           totalQuantityOfItems: number;
            subTotal: number;
            discount: number;
            shipping: number;

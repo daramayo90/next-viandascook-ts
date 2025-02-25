@@ -1,13 +1,14 @@
 :root {
    --white: rgb(250, 250, 250);
    --black: rgb(50, 50, 50);
-   --primary: rgb(118, 144, 46);
+   --primary: rgba(106, 144, 28, 1);
    --primaryHover: rgb(100, 120, 10);
-   --primaryStrong: rgb(71, 97, 20);
+   --primaryStrong: rgba(72, 98, 18, 1);
+   --primaryLight: rgba(233, 247, 204, 1);
    --primaryShinny: rgb(155, 230, 5);
    --secondary: rgb(250, 55, 27);
-   --secondaryLight: rgba(255, 87, 34);
-   --textColor: rgb(77, 77, 79);
+   --secondaryLight: rgba(245, 101, 81, 1);
+   --textColor: rgba(89, 83, 83, 1);
    --greyBack: rgb(245, 245, 245);
    --borderGrey: rgb(230, 230, 230);
    --adminPanel: rgb(20, 20, 25);
@@ -59,16 +60,23 @@ footer {
 }
 
 h1 {
-   font-size: 2em;
+   font-size: 2.3em;
    margin: 0.67em 0;
-   color: var(--black);
+   color: var(--textColor);
    text-transform: uppercase;
+   line-height: 2.6rem;
 }
 
 h2 {
-   font-size: 1.7rem;
-   color: var(--black);
+   font-size: 2rem;
+   color: var(--textColor);
    text-transform: uppercase;
+   line-height: 2.6rem;
+}
+
+h3 {
+   color: var(--textColor);
+   line-height: 1.4rem;
 }
 
 p,
@@ -219,6 +227,10 @@ select {
 
    h3 {
       font-size: 1.5rem;
+   }
+
+   p {
+      font-size: 1.2rem;
    }
 
    .hide {

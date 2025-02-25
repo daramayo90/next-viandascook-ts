@@ -4,3 +4,4 @@ export * from './useLoader';
 export * from './useOrderSummary';
 export * from './useProfile';
 export * from './useTempCart';
+export * from './useIsMobile';

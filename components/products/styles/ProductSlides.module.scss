@@ -1,0 +1,113 @@
+@import '../../../styles/mixins';
+
+.ourMenu {
+   // display: flex;
+   // flex-direction: column;
+   // align-items: center;
+   // position: relative;
+   width: 100%;
+   padding: 1rem;
+
+   .title {
+      font-size: 1.8rem;
+      text-align: center;
+      color: var(--primary);
+   }
+
+   .subTitle {
+      margin: 1rem auto;
+      font-size: 1.1rem;
+      text-align: center;
+      text-transform: uppercase;
+   }
+
+   .container {
+      position: relative;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+
+      max-width: 1050px;
+      width: 100%;
+      margin: 0 auto;
+
+      @include tablet() {
+         padding-bottom: 2rem;
+      }
+
+      .rightArrow,
+      .leftArrow {
+         position: absolute;
+         bottom: 50%;
+         font-size: 2.7rem;
+         color: var(--primary);
+      }
+
+      .rightArrow {
+         transform: translate(calc(-50% + 30px), 0);
+
+         @include tablet() {
+            bottom: -15%;
+            left: 50%;
+
+            transform: translate(calc(-50% + 30px), 0);
+         }
+      }
+
+      .leftArrow {
+         transform: translate(calc(-50% + 10px), 0);
+
+         @include tablet() {
+            bottom: -15%;
+            left: 50%;
+
+            transform: translate(calc(-50% - 30px), 0);
+         }
+      }
+
+      .product {
+         display: flex;
+
+         flex-direction: column;
+         justify-content: center;
+
+         width: 100%;
+
+         .productImg {
+            position: relative;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            width: 75%;
+            margin: 0 auto;
+
+            cursor: pointer;
+
+            img {
+               object-fit: cover;
+               border-radius: 20px;
+            }
+         }
+
+         .productName {
+            width: 70%;
+            margin: 1rem auto 0 auto;
+
+            text-align: center;
+            font-size: 1.15rem;
+            color: var(--textColor);
+
+            cursor: pointer;
+         }
+      }
+   }
+
+   .btn {
+      max-width: 310px;
+      width: 90%;
+      margin: 2rem auto;
+   }
+}

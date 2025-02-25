@@ -1,5 +1,5 @@
 export const seo = {
-   LandingPage: {
+   HomePage: {
       title: 'Viandas Saludables a Domicilio | ViandasCook ©',
       description:
          '🍲 Viandas saludables en CABA. Opciones veganas y vegetarianas. ¡Comida casera y deliciosa a domicilio! Consultanos por variedad, precios y promociones.',
@@ -14,6 +14,14 @@ export const seo = {
       keywords:
          'menú viandas saludables, comida casera, opciones vegetarianas, comida saludable a domicilio, viandas a domicilio, viandas congeladas saludables, viandas Cook menú, menú comida casera, viandas saludables precios, pedidos online de viandas',
       canonical: 'https://www.viandascook.com/menu',
+   },
+   PacksPage: {
+      title: 'Packs de Comida Casera y Saludable | Viandas Cook',
+      description:
+         '🥗 Explorá nuestros packs. Desde opciones vegetarianas hasta comidas caseras. Hacé tu pedido hoy para una comida saludable y deliciosa entregada a tu puerta.',
+      keywords:
+         'menú viandas saludables, comida casera, opciones vegetarianas, comida saludable a domicilio, viandas a domicilio, viandas congeladas saludables, viandas Cook menú, menú comida casera, viandas saludables precios, pedidos online de viandas',
+      canonical: 'https://www.viandascook.com/packs',
    },
    LoyaltyPage: {
       title: 'Ganá Puntos con Cada Compra | Viandas Cook',

@@ -6,7 +6,7 @@ import { useTempCart } from '../../hooks';
 import { ItemCounter } from './ItemCounter';
 import { currency } from '../../utils';
 
-import styles from '../../styles/Product.module.css';
+import styles from '../../styles/products/Product.module.scss';
 
 interface Props {
    product: IProduct;

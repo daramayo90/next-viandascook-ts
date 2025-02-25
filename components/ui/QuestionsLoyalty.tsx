@@ -1,7 +1,7 @@
 import { Accordion, Button } from '.';
 import { questionsLoyalty } from '../../utils';
 
-import styles from '../../styles/CommonQuestions.module.css';
+import styles from './styles/CommonQuestions.module.scss';
 
 export const QuestionsLoyalty = () => {
    return (

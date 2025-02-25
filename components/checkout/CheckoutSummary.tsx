@@ -9,17 +9,29 @@ import { Coupons, RedeemPoints, ReferralCoupon } from './';
 import styles from '../../styles/CheckoutSummary.module.css';
 
 export const CheckoutSummary = () => {
-   const { numberOfItems, subTotal, shipping, total } = useContext(CartContext);
+   const { numberOfItems, numberOfPacks, subTotal, shipping, total } = useContext(CartContext);
 
    return (
       <section className={styles.checkoutSummary}>
-         <div className={styles.summary}>
-            <span>N° de Viandas:</span>
+         {numberOfItems > 0 && (
+            <div className={styles.summary}>
+               <span>N° de Viandas</span>
 
-            <span>
-               {numberOfItems} {numberOfItems > 1 ? 'platos' : 'plato'}
-            </span>
-         </div>
+               <span>
+                  {numberOfItems} {numberOfItems > 1 ? 'viandas' : 'vianda'}
+               </span>
+            </div>
+         )}
+
+         {numberOfPacks > 0 && (
+            <div className={styles.summary}>
+               <span>Cantidad de Packs</span>
+
+               <span>
+                  {numberOfPacks} {numberOfPacks > 1 ? 'packs' : 'pack'}
+               </span>
+            </div>
+         )}
 
          <div className={styles.summary}>
             <span>Subtotal:</span>

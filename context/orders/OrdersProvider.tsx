@@ -31,7 +31,8 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
    const {
       cart,
       coupons,
-      numberOfItems,
+      totalQuantityOfItems,
+      numberOfPacks,
       subTotal,
       discount,
       shipping,
@@ -137,7 +138,8 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
          coupons,
          shippingAddress,
          deliveryDate: deliveryDateSelected,
-         numberOfItems,
+         numberOfItems: totalQuantityOfItems,
+         numberOfPacks,
          subTotal,
          discount,
          shipping,
@@ -184,7 +186,7 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
    ): Promise<{ id: string; init_point: string; error?: string }> => {
       const body = {
          orderItems: cart.map((product) => product),
-         numberOfItems,
+         numberOfItems: totalQuantityOfItems,
          discount,
          shipping,
          couponDiscount,

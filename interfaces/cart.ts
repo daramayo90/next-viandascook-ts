@@ -1,4 +1,4 @@
-import { IType } from '.';
+import { IProductInPack, IType } from '.';
 
 export interface ICartProduct {
    _id: string;
@@ -9,4 +9,5 @@ export interface ICartProduct {
    discountPrice?: number;
    type?: IType[];
    quantity: number;
+   productsInPack?: IProductInPack[];
 }

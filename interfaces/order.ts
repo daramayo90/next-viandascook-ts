@@ -1,4 +1,4 @@
-import { ICoupon, IUser } from './';
+import { ICoupon, IProduct, IProductInPack, IType, IUser } from './';
 
 export interface IOrder {
    _id?: number;
@@ -11,6 +11,7 @@ export interface IOrder {
    deliveryDate: Date;
 
    numberOfItems: number;
+   numberOfPacks?: number;
    subTotal: number;
    discount?: number;
    shipping: number;
@@ -42,6 +43,8 @@ export interface IOrderItem {
    price: number;
    discountPrice?: number;
    quantity: number;
+   type?: IType[];
+   productsInPack?: IProductInPack[];
 }
 
 export interface ShippingAddress {

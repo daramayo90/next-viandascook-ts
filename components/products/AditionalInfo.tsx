@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import styles from '../../styles/Product.module.css';
+import styles from '../../styles/products/Product.module.scss';
 
 export const AditionalInfo = () => {
    return (
@@ -21,8 +21,8 @@ export const AditionalInfo = () => {
             <div className={styles.content}>
                <h4 className={styles.title}>Los platos son enviados congelados</h4>
                <span className={styles.text}>
-                  Se entregan en bolsas envasadas al vacío, que ayudan a preservar los alimentos y
-                  su sabor
+                  Se entregan en bolsas envasadas al vacío, que ayudan a preservar los alimentos y su
+                  sabor
                </span>
             </div>
          </div>
@@ -42,9 +42,7 @@ export const AditionalInfo = () => {
 
             <div className={styles.content}>
                <h4 className={styles.title}>¿Cómo calentar?</h4>
-               <span className={styles.text}>
-                  Preparación y cocción: 10 minutos en agua hirviendo
-               </span>
+               <span className={styles.text}>Preparación y cocción: 10 minutos en agua hirviendo</span>
             </div>
          </div>
       </div>

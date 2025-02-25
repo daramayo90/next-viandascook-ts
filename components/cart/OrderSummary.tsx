@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, useContext, useEffect, useState } from 'react';
+import { ChangeEvent, FC, useContext, useEffect, useMemo, useState } from 'react';
 
 import { AuthContext, CartContext } from '../../context';
 
@@ -16,10 +16,14 @@ import { useRouter } from 'next/router';
 export const OrderSummary: FC = () => {
    const router = useRouter();
 
-   const { shipping, numberOfItems, cart, subTotal, total } = useContext(CartContext);
+   const { shipping, numberOfItems, numberOfPacks, cart, subTotal, total } = useContext(CartContext);
    const { user } = useContext(AuthContext);
 
    const customerEmail = user ? user.email : Cookies.get('email') || '';
+   const hasPacksInCart = useMemo(
+      () => cart.some((product) => product.type?.includes('Packs')),
+      [cart],
+   );
 
    const [isValidEmail, setIsValidEmail] = useState(false);
    const [email, setEmail] = useState(customerEmail);
@@ -66,13 +70,25 @@ export const OrderSummary: FC = () => {
       <section className={styles.orderSummary}>
          <h2 className={styles.title}>Total del Carrito</h2>
 
-         <div className={styles.summary}>
-            <span>N° de Viandas</span>
+         {numberOfItems > 0 && (
+            <div className={styles.summary}>
+               <span>N° de Viandas</span>
 
-            <span>
-               {numberOfItems} {numberOfItems > 1 ? 'platos' : 'plato'}
-            </span>
-         </div>
+               <span>
+                  {numberOfItems} {numberOfItems > 1 ? 'viandas' : 'vianda'}
+               </span>
+            </div>
+         )}
+
+         {numberOfPacks > 0 && (
+            <div className={styles.summary}>
+               <span>Cantidad de Packs</span>
+
+               <span>
+                  {numberOfPacks} {numberOfPacks > 1 ? 'packs' : 'pack'}
+               </span>
+            </div>
+         )}
 
          <div className={styles.summary}>
             <span>Subtotal</span>
@@ -124,7 +140,7 @@ export const OrderSummary: FC = () => {
             </label>
          </form>
 
-         {numberOfItems < 7 && (
+         {!hasPacksInCart && numberOfItems < 7 && (
             <span className={styles.error}>
                Para continuar, elige un mínimo de 7 viandas por favor
             </span>
@@ -134,7 +150,7 @@ export const OrderSummary: FC = () => {
 
          {!isValidEmail && <span className={styles.error}>Ingresa un email</span>}
 
-         {isValidEmail && numberOfItems >= 7 && shipping !== 0 && (
+         {isValidEmail && shipping !== 0 && (hasPacksInCart || numberOfItems >= 7) && (
             <div className={styles.checkoutButton} onClick={handleSubmit}>
                <SubmitButton content='Continuar' />
             </div>

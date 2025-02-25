@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 
 import {
+   Autocomplete,
    Box,
    Button,
    Card,
@@ -17,11 +18,12 @@ import {
    FormLabel,
    Grid,
    TextField,
+   Typography,
 } from '@mui/material';
 import { DriveFileRenameOutline, SaveOutlined, UploadOutlined } from '@mui/icons-material';
 
 import { AdminLayout } from '../../../components/layouts';
-import { IProduct, IType } from '../../../interfaces';
+import { IProduct, IProductInPack, IType } from '../../../interfaces';
 import { dbProducts } from '../../../database';
 import { viandasApi } from '../../../axiosApi';
 import { Product } from '../../../models';
@@ -44,6 +46,7 @@ const validTypes: IType[] = [
    'Vegetariano',
    'Waffles',
    'Budines',
+   'Packs',
 ];
 
 interface FormData {
@@ -56,8 +59,9 @@ interface FormData {
    inStock: boolean;
    type: IType[];
    ingredients: string[];
-   nutritionalInfo: object;
+   nutritionalInfo: { [key: string]: string };
    howToHeat: string;
+   productsInPack?: IProductInPack[];
 }
 
 interface Props {
@@ -69,6 +73,8 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
    const fileInputRef = useRef<HTMLInputElement>(null);
    const [newIngredientValue, setNewIngredientValue] = useState('');
    const [isSaving, setIsSaving] = useState(false);
+   // This state is used by the Autocomplete selector
+   const [selectedProducts, setSelectedProducts] = useState<IProduct[]>([]);
 
    const {
       register,
@@ -78,7 +84,10 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
       setValue,
       watch,
    } = useForm<FormData>({
-      defaultValues: product,
+      defaultValues: {
+         ...product,
+         productsInPack: product.productsInPack || [],
+      },
    });
 
    useEffect(() => {
@@ -164,18 +173,38 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
       setValue('image', '', { shouldValidate: true });
    };
 
+   // Handler to add a product to the pack. If already present, increments the quantity.
+   const handleAddProductToPack = (selectedProduct: IProduct) => {
+      const currentProducts = (getValues('productsInPack') as IProductInPack[]) || [];
+      const existingItem = currentProducts.find((item) => item.product._id === selectedProduct._id);
+      if (existingItem) {
+         const updatedProducts = currentProducts.map((item) =>
+            item.product._id === selectedProduct._id ? { ...item, quantity: item.quantity + 1 } : item,
+         );
+         setValue('productsInPack', updatedProducts, { shouldValidate: true });
+      } else {
+         setValue('productsInPack', [...currentProducts, { product: selectedProduct, quantity: 1 }], {
+            shouldValidate: true,
+         });
+      }
+   };
+
+   // Handler to remove a product from the pack
+   const handleRemoveProduct = (productId: string) => {
+      const currentProducts = (getValues('productsInPack') as IProductInPack[]) || [];
+      const updatedProducts = currentProducts.filter((item) => item.product._id !== productId);
+      setValue('productsInPack', updatedProducts, { shouldValidate: true });
+   };
+
    const onSubmit = async (form: FormData) => {
       if (!form.image) return alert('Mínimo 1 imagen');
-
       setIsSaving(true);
-
       try {
          const { data } = await viandasApi({
             url: '/admin/products',
-            method: form._id ? 'PUT' : 'POST', // si tenemos un _id, entonces actualizar, si no crear
+            method: form._id ? 'PUT' : 'POST',
             data: form,
          });
-
          if (!form._id) {
             router.replace(`/admin/products/${form.slug}`);
          } else {
@@ -211,7 +240,7 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
                </Box>
 
                <Grid container spacing={2}>
-                  {/* Name */}
+                  {/* Left Column */}
                   <Grid item xs={12} sm={6}>
                      <TextField
                         label='Nombre'
@@ -226,21 +255,17 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
                         helperText={errors.name?.message}
                      />
 
-                     {/* How to heat? */}
                      <TextField
                         label='¿Cómo calentar?'
                         variant='filled'
                         fullWidth
                         multiline
                         sx={{ mb: 1 }}
-                        {...register('howToHeat', {
-                           required: 'Este campo es requerido',
-                        })}
+                        {...register('howToHeat', { required: 'Este campo es requerido' })}
                         error={!!errors.howToHeat}
                         helperText={errors.howToHeat?.message}
                      />
 
-                     {/* Price */}
                      <TextField
                         label='Precio'
                         type='number'
@@ -255,7 +280,6 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
                         helperText={errors.price?.message}
                      />
 
-                     {/* Discount Price */}
                      <TextField
                         label='Precio Descuento'
                         type='number'
@@ -265,27 +289,23 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
                         {...register('discountPrice', {
                            min: { value: 0, message: 'Mínimo de valor cero' },
                         })}
-                        error={!!errors.price}
-                        helperText={errors.price?.message}
+                        error={!!errors.discountPrice}
+                        helperText={errors.discountPrice?.message}
                      />
 
-                     {/* Inventary */}
                      <TextField
                         label='Inventario'
                         type='boolean'
                         variant='filled'
                         fullWidth
                         sx={{ mb: 1 }}
-                        {...register('inStock', {
-                           required: 'Este campo es requerido',
-                        })}
+                        {...register('inStock', { required: 'Este campo es requerido' })}
                         error={!!errors.inStock}
                         helperText={errors.inStock?.message}
                      />
 
                      <Divider sx={{ my: 1 }} />
 
-                     {/* Nutritional Info */}
                      <Grid container>
                         <FormLabel>Información nutricional</FormLabel>
                         <Grid item display='flex' justifyContent='center' xs={12} sm={12}>
@@ -299,11 +319,6 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
                                  onChange={(e) => onChangeNutritionalInfo(option[0], e.target.value)}
                                  sx={{ mx: 0.5, mt: 1 }}
                                  fullWidth
-                                 //  {...register('nutritionalInfo', {
-                                 //     required: 'Este campo es requerido',
-                                 //  })}
-                                 //  error={!!errors.nutritionalInfo}
-                                 //  helperText={errors.nutritionalInfo?.message}
                               />
                            ))}
                         </Grid>
@@ -311,7 +326,6 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
 
                      <Divider sx={{ my: 2 }} />
 
-                     {/* Type */}
                      <FormLabel>Tipo de plato</FormLabel>
                      <FormGroup sx={{ mb: 1, flexDirection: 'row' }}>
                         {validTypes.map((type) => (
@@ -326,7 +340,7 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
                      </FormGroup>
                   </Grid>
 
-                  {/* Slug */}
+                  {/* Right Column */}
                   <Grid item xs={12} sm={6}>
                      <TextField
                         label='Slug - URL'
@@ -344,7 +358,6 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
                         helperText={errors.slug?.message}
                      />
 
-                     {/* Ingredients */}
                      <TextField
                         label='Ingredientes'
                         variant='filled'
@@ -356,37 +369,22 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
                         onKeyUp={({ code }) => (code === 'Enter' ? onNewIngredient() : undefined)}
                      />
                      <Box
-                        sx={{
-                           display: 'flex',
-                           flexWrap: 'wrap',
-                           listStyle: 'none',
-                           p: 0,
-                           m: 0,
-                        }}
+                        sx={{ display: 'flex', flexWrap: 'wrap', listStyle: 'none', p: 0, m: 0 }}
                         component='ul'>
-                        {getValues('ingredients').map((tag) => {
-                           return (
-                              <Chip
-                                 key={tag}
-                                 label={tag}
-                                 onDelete={() => onDeleteIngredient(tag)}
-                                 color='primary'
-                                 size='small'
-                                 sx={{
-                                    ml: 1,
-                                    mt: 1,
-                                    '& .MuiChip-label': {
-                                       color: 'white',
-                                    },
-                                 }}
-                              />
-                           );
-                        })}
+                        {getValues('ingredients').map((tag) => (
+                           <Chip
+                              key={tag}
+                              label={tag}
+                              onDelete={() => onDeleteIngredient(tag)}
+                              color='primary'
+                              size='small'
+                              sx={{ ml: 1, mt: 1, '& .MuiChip-label': { color: 'white' } }}
+                           />
+                        ))}
                      </Box>
 
                      <Divider sx={{ my: 2 }} />
 
-                     {/* Image */}
                      <Box display='flex' flexDirection='column'>
                         <FormLabel sx={{ mb: 1 }}>Imágenes</FormLabel>
                         <Button
@@ -430,42 +428,119 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
                               </Card>
                            </Grid>
                         </Grid>
-
-                        {/* <FormControl sx={{ mb: 1 }}>
-                        <FormLabel>Tipo de plato</FormLabel>
-                        <RadioGroup
-                           row
-                           value={getValues('type')}
-                           onChange={({ target }) =>
-                              setValue('type', target.value as IType, { shouldValidate: true })
-                           }>
-                           {validTypes.map((option) => (
-                              <FormControlLabel
-                                 key={option}
-                                 value={option}
-                                 control={<Radio color='secondary' />}
-                                 label={capitalize(option)}
-                                 sx={{ minWidth: 130 }}
-                              />
-                           ))}
-                        </RadioGroup>
-                     </FormControl> */}
                      </Box>
                   </Grid>
                </Grid>
             </Grid>
+
+            {/* Selected Products List */}
+            <Box sx={{ mt: 4 }}>
+               <FormLabel>Productos seleccionados</FormLabel>
+               {((getValues('productsInPack') as IProductInPack[]) || []).length === 0 ? (
+                  <Typography variant='body1'>No hay productos seleccionados.</Typography>
+               ) : (
+                  (getValues('productsInPack') as IProductInPack[]).map((item) => (
+                     <Box
+                        key={item.product._id}
+                        sx={{
+                           display: 'flex',
+                           alignItems: 'center',
+                           justifyContent: 'space-between',
+                           border: '1px solid #ccc',
+                           borderRadius: '4px',
+                           p: 1,
+                           mb: 1,
+                        }}>
+                        <Typography variant='body1'>{item.product.name}</Typography>
+                        <Typography variant='body1'>Cantidad: {item.quantity}</Typography>
+                        <Button
+                           variant='contained'
+                           color='error'
+                           onClick={() => handleRemoveProduct(item.product._id)}>
+                           Eliminar
+                        </Button>
+                     </Box>
+                  ))
+               )}
+            </Box>
+
+            {/* Pack Products Selector */}
+            <Box sx={{ mt: 4 }}>
+               <FormLabel>Agregar productos al pack</FormLabel>
+               <PackProductsSelector
+                  selectedProducts={selectedProducts}
+                  onChange={handleAddProductToPack}
+               />
+            </Box>
          </form>
       </AdminLayout>
    );
 };
 
+interface PackProductsSelectorProps {
+   selectedProducts: IProduct[];
+   onChange: (product: IProduct) => void;
+}
+
+const PackProductsSelector: FC<PackProductsSelectorProps> = ({ selectedProducts, onChange }) => {
+   const [allProducts, setAllProducts] = useState<IProduct[]>([]);
+
+   useEffect(() => {
+      const fetchProducts = async () => {
+         try {
+            // Endpoint returning all products for selection.
+            const { data } = await viandasApi.get<IProduct[]>('/admin/products');
+            setAllProducts(data);
+         } catch (error) {
+            console.error('Error fetching products', error);
+         }
+      };
+      fetchProducts();
+   }, []);
+
+   const handleChange = (event: any, newValue: IProduct[]) => {
+      // Allow duplicates so that each selection triggers adding the product.
+      newValue.forEach((product) => {
+         onChange(product);
+      });
+   };
+
+   const handleDelete = (productId: string) => {
+      // Optionally remove a product from selectedProducts (if needed).
+      const filtered = selectedProducts.filter((p) => p._id !== productId);
+      filtered.forEach((product) => onChange(product));
+   };
+
+   return (
+      <>
+         <Autocomplete
+            multiple
+            options={allProducts}
+            getOptionLabel={(option) => option.name}
+            value={selectedProducts}
+            onChange={handleChange}
+            renderInput={(params) => (
+               <TextField {...params} label='Selecciona productos' placeholder='Productos' />
+            )}
+         />
+         <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, mt: 1 }}>
+            {selectedProducts.map((product) => (
+               <Chip
+                  key={product._id}
+                  label={product.name}
+                  onDelete={() => handleDelete(product._id)}
+               />
+            ))}
+         </Box>
+      </>
+   );
+};
+
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
    const { slug = '' } = query;
-
    let product: IProduct | null;
-
    if (slug === 'new') {
-      // crear un producto
+      // Crear un nuevo producto
       const tempProduct = JSON.parse(JSON.stringify(new Product()));
       delete tempProduct._id;
       tempProduct.image = 'img-temp.jpg';
@@ -473,7 +548,6 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
    } else {
       product = await dbProducts.getProductBySlug(slug.toString());
    }
-
    if (!product) {
       return {
          redirect: {
@@ -482,7 +556,6 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
          },
       };
    }
-
    return {
       props: {
          product,
