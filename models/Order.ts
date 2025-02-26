@@ -59,6 +59,7 @@ const orderSchema = new Schema(
       deliveryDate: { type: Date, required: true },
 
       numberOfItems: { type: Number, required: true },
+      numberOfPacks: { type: Number },
       subTotal: { type: Number, required: true },
       discount: { type: Number },
       shipping: { type: Number, required: true },

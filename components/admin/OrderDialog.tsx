@@ -76,7 +76,9 @@ export const OrderDialog: FC<Props> = ({ order, setShowOrder }) => {
                                  checked={completedItems[packItem.product._id]}
                                  onChange={() => handleCompletedItem(packItem.product._id)}
                               />
-                              <span>{packItem.product.name}</span>
+                              <span>
+                                 {packItem.product.name} x{packItem.quantity}
+                              </span>
                            </div>
                         ));
                      } else {

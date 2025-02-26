@@ -13,6 +13,14 @@ interface Props {
 export const OrderCard: FC<Props> = ({ order, setOrder, setShowOrder }) => {
    const { name, lastName } = order.user as IUser;
 
+   const totalQuantityOfItems = order.orderItems.reduce((acc, item) => {
+      const productsInPackQuantity =
+         item.productsInPack?.reduce((packAcc, packItem) => packAcc + packItem.quantity, 0) || 0;
+      return productsInPackQuantity > 0
+         ? acc + item.quantity + productsInPackQuantity - 1
+         : acc + item.quantity + productsInPackQuantity;
+   }, 0);
+
    const openOrder = async (orderId: number) => {
       const { data } = await viandasApi.get('/admin/ordersByDate', { params: { orderId } });
       setOrder(data);
@@ -29,7 +37,7 @@ export const OrderCard: FC<Props> = ({ order, setOrder, setShowOrder }) => {
             </div>
             <div className={styles.numberOfItems}>
                <span>
-                  Cantidad de viandas: <strong>{order.numberOfItems}</strong>
+                  Cantidad de viandas: <strong>{totalQuantityOfItems}</strong>
                </span>
             </div>
          </article>
