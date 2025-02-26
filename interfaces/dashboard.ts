@@ -4,6 +4,7 @@ export interface DashboardSummaryResponse {
    cancelOrders: number;
    totalIncome: number;
    numberOfSelledProducts: number;
+   totalPacksSold: number;
    discounts: number;
    mpOrders: number;
    cashOrders: number;

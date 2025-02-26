@@ -143,7 +143,18 @@ const PackCategory: FC<PackCategoryProps> = ({ src, name, content, packs, revers
                         28 viandas
                      </button>
                   </div>
-                  <p className={styles.price}>{currency.format(pack.discountPrice || pack.price)}</p>
+                  <div className={styles.priceContainer}>
+                     {pack.discountPrice ? (
+                        <>
+                           <p className={styles.originalPrice}>{currency.format(pack.price)}</p>
+                           <p className={styles.discountPrice}>
+                              {currency.format(pack.discountPrice)}
+                           </p>
+                        </>
+                     ) : (
+                        <p className={styles.price}>{currency.format(pack.price)}</p>
+                     )}
+                  </div>
                </div>
 
                <div className={styles.buttons}>

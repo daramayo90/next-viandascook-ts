@@ -63,6 +63,7 @@ const DashboardPage: NextPage = () => {
       cancelOrders,
       totalIncome,
       numberOfSelledProducts,
+      totalPacksSold,
       discounts,
       mpOrders,
       cashOrders,
@@ -136,6 +137,12 @@ const DashboardPage: NextPage = () => {
             <SummaryTile
                total={numberOfSelledProducts}
                description='Viandas vendidas'
+               icon={<ShoppingBagOutlined color='secondary' sx={{ fontSize: 40 }} />}
+            />
+
+            <SummaryTile
+               total={totalPacksSold}
+               description='Packs vendidos'
                icon={<ShoppingBagOutlined color='secondary' sx={{ fontSize: 40 }} />}
             />
 

@@ -127,11 +127,41 @@
                   }
                }
 
-               .price {
+               .priceContainer {
                   margin: 1.5rem 0;
                   font-size: 2rem;
                   font-style: normal;
                   font-weight: 400;
+
+                  @include largeMobile() {
+                     display: flex;
+                  }
+
+                  .originalPrice {
+                     margin: 1rem 0;
+                     text-decoration: line-through;
+                     color: rgba(89, 83, 83, 0.7);
+
+                     @include largeMobile() {
+                        margin: 0;
+                        margin-right: 1rem;
+                     }
+                  }
+
+                  .discountPrice {
+                     color: var(--primary);
+                     font-weight: 500;
+                  }
+
+                  .price {
+                     margin: 1rem 0;
+                     color: var(--primary);
+                     font-weight: 500;
+
+                     @include largeMobile() {
+                        margin: 0;
+                     }
+                  }
                }
             }
 

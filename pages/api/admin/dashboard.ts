@@ -33,6 +33,7 @@ export default async function handler(
                _id: '$paymentMethod',
                totalIncome: { $sum: '$total' },
                numberOfSelledProducts: { $sum: '$numberOfItems' },
+               packsSold: { $sum: '$numberOfPacks' },
                count: { $sum: 1 },
             },
          },
@@ -53,6 +54,8 @@ export default async function handler(
          acc.totalIncome += item.totalIncome;
          acc.numberOfSelledProducts += item.numberOfSelledProducts;
          acc.numberOfOrders += item.count;
+         acc.totalPacksSold += item.packsSold || 0;
+
          switch (item._id) {
             case 'mercadopago':
                acc.mpIncome = item.totalIncome;
@@ -73,6 +76,7 @@ export default async function handler(
          numberOfOrders: 0,
          totalIncome: 0,
          numberOfSelledProducts: 0,
+         totalPacksSold: 0,
          mpIncome: 0,
          cashIncome: 0,
          transferIncome: 0,
