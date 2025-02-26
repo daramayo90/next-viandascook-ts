@@ -9,7 +9,9 @@ import axios from 'axios';
 export const getOrderById = async (id: string): Promise<IOrder | null> => {
    await db.connect();
 
-   const order = await Order.findById(Number(id)).lean();
+   const order = await Order.findById(Number(id))
+      .populate('orderItems.productsInPack.product', 'name image')
+      .lean();
 
    await db.disconnect();
 

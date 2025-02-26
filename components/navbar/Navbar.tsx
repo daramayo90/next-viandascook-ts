@@ -44,7 +44,7 @@ export const Navbar: FC = () => {
             </div>
 
             <div className={styles.mobile}>
-               {isLoggedIn && <Cart totalQuantityOfItems={totalQuantityOfItems} />}
+               <Cart totalQuantityOfItems={totalQuantityOfItems} />
 
                <UserAvatar
                   onClick={handleOpenUserAccount}
@@ -67,7 +67,7 @@ export const Navbar: FC = () => {
                <DesktopMenu />
 
                <div className={styles.right}>
-                  {isLoggedIn && <Cart totalQuantityOfItems={totalQuantityOfItems} />}
+                  <Cart totalQuantityOfItems={totalQuantityOfItems} />
 
                   <DesktopAccount isLoggedIn={isLoggedIn} currentPath={router.asPath} />
                </div>
