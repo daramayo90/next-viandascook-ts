@@ -4,20 +4,22 @@ import Image from 'next/image';
 
 import Modal from 'react-modal';
 
-import { MainLayout } from '../../components/layouts';
-
 import { dbProducts } from '../../database';
 import { ICartProduct, IProduct } from '../../interfaces';
+import { ga, meta } from '../../analytics';
+
+import { MainLayout } from '../../components/layouts';
 
 import { News } from '../../components/ui';
 import { Packs, ProductSlides } from '../../components/products';
 
 import { cloudImagesPath, currency, seo } from '../../utils';
 
-import styles from '../../styles/packs/Packs.module.scss';
 import { useRouter } from 'next/router';
 import { PacksModal } from '../../components/modals';
 import { CartContext } from '../../context';
+
+import styles from '../../styles/packs/Packs.module.scss';
 
 interface Props {
    products: IProduct[];
@@ -101,6 +103,28 @@ const PackCategory: FC<PackCategoryProps> = ({ src, name, content, packs, revers
       setPack(selectedPack);
    };
 
+   const addPackToCart = () => {
+      ga.event({
+         action: 'add_to_cart',
+         currency: 'ARS',
+         items: [
+            {
+               item_id: pack._id,
+               item_name: pack.name,
+               affiliation: 'Viandas Cook Store',
+               currency: 'ARS',
+               price: pack.price,
+               quantity: 1,
+            },
+         ],
+         value: pack.price,
+      });
+
+      meta.addToCart(pack);
+
+      addProductToCart({ ...pack, quantity: 1 } as ICartProduct);
+   };
+
    const openModal = () => setIsModalOpen(true);
    const closeModal = () => setIsModalOpen(false);
 
@@ -159,9 +183,7 @@ const PackCategory: FC<PackCategoryProps> = ({ src, name, content, packs, revers
 
                <div className={styles.buttons}>
                   <div className={styles.btn}>
-                     <button
-                        className={styles.addToCartBtn}
-                        onClick={() => addProductToCart({ ...pack, quantity: 1 } as ICartProduct)}>
+                     <button className={styles.addToCartBtn} onClick={addPackToCart}>
                         Agregar al carrito
                      </button>
                   </div>
