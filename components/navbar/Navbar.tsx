@@ -12,6 +12,7 @@ import styles from './styles/Navbar.module.scss';
 
 export const Navbar: FC = () => {
    const router = useRouter();
+   const isHomePage = router.pathname === '/';
 
    const { isMenuOpen, toggleSideMenu } = useContext(UIContext);
    const { isLoggedIn } = useContext(AuthContext);
@@ -44,7 +45,7 @@ export const Navbar: FC = () => {
             </div>
 
             <div className={styles.mobile}>
-               <Cart totalQuantityOfItems={totalQuantityOfItems} />
+               {!isHomePage && <Cart totalQuantityOfItems={totalQuantityOfItems} />}
 
                <UserAvatar
                   onClick={handleOpenUserAccount}
@@ -67,7 +68,7 @@ export const Navbar: FC = () => {
                <DesktopMenu />
 
                <div className={styles.right}>
-                  <Cart totalQuantityOfItems={totalQuantityOfItems} />
+                  {!isHomePage && <Cart totalQuantityOfItems={totalQuantityOfItems} />}
 
                   <DesktopAccount isLoggedIn={isLoggedIn} currentPath={router.asPath} />
                </div>
