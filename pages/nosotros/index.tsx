@@ -4,9 +4,10 @@ import Link from 'next/link';
 import { HomeLayout } from '../../components/layouts';
 import { Breadcrumbs, Button, Newsletter, SectionsUs } from '../../components/ui';
 
-import { cloudVideosPath, seo } from '../../utils';
+import { seo } from '../../utils';
 
 import styles from '../../styles/Nosotros.module.css';
+import Image from 'next/image';
 
 const NosotrosPage: NextPage = () => {
    const { title, description, keywords, canonical } = seo['NosotrosPage'];
@@ -19,9 +20,13 @@ const NosotrosPage: NextPage = () => {
             <div className={styles.intro}>
                <div className={styles.container}>
                   <div className={styles.videoIntro}>
-                     <video autoPlay muted loop playsInline poster='/img/nosotros-envasado.jpg'>
-                        <source src={`${cloudVideosPath}/zgx6uoz6jwvhrcanfyzz.mp4`} type='video/mp4' />
-                     </video>
+                     <Image
+                        src={'/img/nosotros-envasado.jpg'}
+                        alt='Nosotros - Envasado al vacío'
+                        layout='fill'
+                        objectFit='cover'
+                        priority={true}
+                     />
                   </div>
 
                   <div className={styles.textIntro}>

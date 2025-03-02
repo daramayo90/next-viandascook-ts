@@ -3,9 +3,10 @@ import { NextPage } from 'next';
 import { HomeLayout } from '../../components/layouts';
 import { Breadcrumbs, Button, Newsletter, Steps } from '../../components/ui';
 
-import { cloudVideosPath, seo } from '../../utils';
+import { seo } from '../../utils';
 
 import styles from '../../styles/HowItWorks.module.css';
+import Image from 'next/image';
 
 const HowItWorksPage: NextPage = () => {
    const { title, description, keywords, canonical } = seo['HowItWorksPage'];
@@ -18,9 +19,13 @@ const HowItWorksPage: NextPage = () => {
             <div className={styles.intro}>
                <div className={styles.container}>
                   <div className={styles.videoIntro}>
-                     <video autoPlay muted loop playsInline poster='/img/como-funciona-intro.jpg'>
-                        <source src={`${cloudVideosPath}/in1klme0ztwkkmu60ijp`} type='video/mp4' />
-                     </video>
+                     <Image
+                        src={'/img/como-funciona-intro.jpg'}
+                        alt='Cómo Funciona - Imagen promocional'
+                        layout='fill'
+                        objectFit='cover'
+                        priority={true}
+                     />
                   </div>
 
                   <div className={styles.textIntro}>

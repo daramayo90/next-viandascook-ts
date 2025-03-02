@@ -10,7 +10,7 @@ export const Banner = () => {
 
    const banner1 = isMobile
       ? `${cloudImagesPath}/Banners/d5p7bomhr22eu8vz0y8f`
-      : `${cloudImagesPath}/Banners/qtclrimiax63wgddojlk`;
+      : `${cloudImagesPath}/Banners/r1g2mpqjr3wdgclkjbdc`;
 
    const banner2 = isMobile
       ? `${cloudImagesPath}/Banners/xkf0yfoewjkukd9zl5vx`
