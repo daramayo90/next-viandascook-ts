@@ -10,11 +10,11 @@ export const Banner = () => {
 
    const banner1 = isMobile
       ? `${cloudImagesPath}/Banners/d5p7bomhr22eu8vz0y8f`
-      : `${cloudImagesPath}/Banners/r1g2mpqjr3wdgclkjbdc`;
+      : `${cloudImagesPath}/Banners/nwvlzwmwke9ehm6xbxks`;
 
    const banner2 = isMobile
       ? `${cloudImagesPath}/Banners/xkf0yfoewjkukd9zl5vx`
-      : `${cloudImagesPath}/Banners/h2fx9ntq4zn5usr6omdp`;
+      : `${cloudImagesPath}/Banners/nwwsncbrbarfibzzvu1p`;
 
    return (
       <section className={styles.banner}>
