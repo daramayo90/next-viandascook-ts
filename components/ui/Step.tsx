@@ -17,7 +17,7 @@ export const Step: FC<Props> = ({ id, poster, title, text1, text2 }) => {
             <Image src={poster} alt={title} layout='fill' objectFit='cover' priority={true} />
          </div>
          <div className={styles.text}>
-            <h3>{title}</h3>
+            <h2>{title}</h2>
             <p>{text1}</p>
             <p>{text2}</p>
          </div>

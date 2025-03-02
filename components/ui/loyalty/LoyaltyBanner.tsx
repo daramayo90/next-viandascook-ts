@@ -1,7 +1,7 @@
 import { Button } from '../Button';
 import { cloudImagesPath } from '../../../utils';
 
-import styles from '../../../styles/loyalty/Loyalty.module.scss';
+import styles from './styles/Loyalty.module.scss';
 import Image from 'next/image';
 
 export const LoyaltyBanner = () => {
@@ -18,7 +18,7 @@ export const LoyaltyBanner = () => {
             </div>
             <div className={styles.info}>
                <p className={styles.title}>Vc Loyalty</p>
-               <h2 className={styles.subtitle}>Programa de puntos</h2>
+               <h1 className={styles.subtitle}>Programa de puntos</h1>
                <p className={styles.text}>
                   Unite a nuestra comunidad de <strong>Viandlovers</strong> y empezá a disfrutar de
                   ahorros desde tu primera compra

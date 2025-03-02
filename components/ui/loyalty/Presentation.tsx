@@ -1,5 +1,5 @@
 import { cloudImagesPath } from '../../../utils';
-import styles from '../../../styles/loyalty/Loyalty.module.scss';
+import styles from './styles/Loyalty.module.scss';
 import Image from 'next/image';
 
 export const Presentation = () => {

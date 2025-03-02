@@ -7,7 +7,7 @@ import { fileNames, removeMdExtension } from '../../lib/posts';
 
 import { IPost } from '../../interfaces';
 
-import { HomeLayout } from '../../components/layouts';
+import { MainLayout } from '../../components/layouts';
 import { ElementsPng } from '../../components/ui/blog';
 
 import styles from '../../styles/blog/Post.module.scss';
@@ -23,14 +23,14 @@ const Post: NextPage<Props> = ({ post }) => {
    const canonical = `https://www.viandascook.com/blog/${post.id}`;
 
    return (
-      <HomeLayout title={title} pageDescription={description} can={canonical}>
+      <MainLayout title={title} pageDescription={description} can={canonical} index>
          <section className={styles.post}>
-            <div className={styles.banner}>
+            {/* <div className={styles.banner}>
                <h2 className={styles.mobileTitle}>
                   El Blog de <br></br>Viandas Cook
                </h2>
                <h2 className={styles.title}>El Blog de Viandas Cook</h2>
-            </div>
+            </div> */}
 
             <div className={styles.image}>
                <Image src={post.cover!} alt={post.title} layout='fill' />
@@ -46,7 +46,7 @@ const Post: NextPage<Props> = ({ post }) => {
 
             <Newsletter />
          </section>
-      </HomeLayout>
+      </MainLayout>
    );
 };
 

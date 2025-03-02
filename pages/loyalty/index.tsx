@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
 
-import { HomeLayout } from '../../components/layouts';
+import { MainLayout } from '../../components/layouts';
 import { Breadcrumbs } from '../../components/ui';
 
 import {
@@ -15,16 +15,17 @@ import {
 
 import { seo } from '../../utils';
 
-import styles from '../../styles/loyalty/Loyalty.module.scss';
-
 const LoyaltyPage: NextPage = () => {
    const { title, description, keywords, canonical } = seo['LoyaltyPage'];
 
    return (
-      <HomeLayout title={title} pageDescription={description} keywords={keywords} can={canonical}>
-         <section className={styles.loyalty}>
-            <Breadcrumbs />
-
+      <MainLayout
+         title={title}
+         pageDescription={description}
+         keywords={keywords}
+         can={canonical}
+         index>
+         <section style={{ width: '100%' }}>
             <LoyaltyBanner />
 
             <Presentation />
@@ -39,7 +40,7 @@ const LoyaltyPage: NextPage = () => {
 
             <ViandLovers />
          </section>
-      </HomeLayout>
+      </MainLayout>
    );
 };
 

@@ -1,11 +1,11 @@
 import Image from 'next/image';
 import { howItWorks } from '../../../utils';
-import styles from '../../../styles/loyalty/Loyalty.module.scss';
+import styles from './styles/Loyalty.module.scss';
 
 export const HowItWorks = () => {
    return (
       <div className={styles.howItWorks}>
-         <h3 className={styles.title}>¿Cómo funciona?</h3>
+         <h2 className={styles.title}>¿Cómo funciona?</h2>
          <div className={styles.container}>
             {howItWorks.map((card) => (
                <div key={card.alt} className={styles.box}>

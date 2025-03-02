@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { Button } from '../Button';
 import { cloudImagesPath } from '../../../utils';
 
-import styles from '../../../styles/loyalty/Loyalty.module.scss';
+import styles from './styles/Loyalty.module.scss';
 
 export const AdditionalInfo = () => {
    return (
@@ -20,7 +20,7 @@ export const AdditionalInfo = () => {
                      priority={true}
                   />
                </div>
-               <h3 className={styles.title}>Puntos Extra</h3>
+               <h2 className={styles.title}>Puntos Extra</h2>
                <p className={styles.text}>
                   <strong>Sumá puntos extra</strong> desde refiriendo a un amigo, completando tu perfil
                   o hasta en el día de tu cumpleaños.
@@ -37,7 +37,7 @@ export const AdditionalInfo = () => {
                      priority={true}
                   />
                </div>
-               <h3 className={styles.title}>Mi Cuenta</h3>
+               <h2 className={styles.title}>Mi Cuenta</h2>
                <p className={styles.text}>
                   Desde{' '}
                   <strong>
@@ -57,7 +57,6 @@ export const AdditionalInfo = () => {
                />
             </div>
          </div>
-
          <div className={styles.productsMobile}>
             <Image
                src={`${cloudImagesPath}/loddgy5gxrldyucpqvp1`}
@@ -66,7 +65,6 @@ export const AdditionalInfo = () => {
                objectFit='cover'
             />
          </div>
-
          <div className={styles.productsDesktop}>
             <Image
                src={`${cloudImagesPath}/laz145l0ywut4orezfn1`}

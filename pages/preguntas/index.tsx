@@ -1,24 +1,29 @@
 import { NextPage } from 'next';
-import { HomeLayout } from '../../components/layouts';
-import { Breadcrumbs, Newsletter, Questions } from '../../components/ui';
+import { MainLayout } from '../../components/layouts';
+import { Newsletter, Questions } from '../../components/ui';
 
 import { seo } from '../../utils';
 
-import styles from '../../styles/Questions.module.css';
+import styles from './Questions.module.scss';
 
 const QuestionsPage: NextPage = () => {
    const { title, description, keywords, canonical } = seo['QuestionsPage'];
 
    return (
-      <HomeLayout title={title} pageDescription={description} keywords={keywords} can={canonical}>
+      <MainLayout
+         title={title}
+         pageDescription={description}
+         keywords={keywords}
+         can={canonical}
+         index>
          <section className={styles.questions}>
             <div className={styles.container}>
-               <Breadcrumbs />
+               <h1 className={styles.title}>Resolvé todas tus dudas</h1>
                <Questions />
                <Newsletter />
             </div>
          </section>
-      </HomeLayout>
+      </MainLayout>
    );
 };
 

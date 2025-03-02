@@ -73,8 +73,9 @@
    text-align: center;
 }
 
-.us > .presentation > h2 {
+.us > .presentation > h1 {
    margin: 2rem 0;
+   font-size: 2rem;
 }
 
 .us > .sections {
@@ -106,8 +107,10 @@
    text-align: left;
 }
 
-.us > .sections > .sect > .text > h3 {
+.us > .sections > .sect > .text > h2 {
    margin: 0.5rem 0;
+   text-transform: none;
+   font-size: 1.5rem;
 }
 
 .us > .btn {
@@ -200,7 +203,7 @@
       padding: 0;
    }
 
-   .us > .sections > .sect > .text > h3 {
+   .us > .sections > .sect > .text > h2 {
       margin: 1rem 0;
    }
 

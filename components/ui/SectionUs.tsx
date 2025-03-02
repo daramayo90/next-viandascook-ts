@@ -17,7 +17,7 @@ export const SectionUs: FC<Props> = ({ id, poster, title, text }) => {
             <Image src={poster} alt='' width={500} height={300} priority={true} />
          </div>
          <div className={styles.text}>
-            <h3>{title}</h3>
+            <h2>{title}</h2>
             <p>{text}</p>
          </div>
       </div>

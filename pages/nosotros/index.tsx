@@ -1,22 +1,25 @@
 import { NextPage } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 
-import { HomeLayout } from '../../components/layouts';
-import { Breadcrumbs, Button, Newsletter, SectionsUs } from '../../components/ui';
+import { MainLayout } from '../../components/layouts';
+import { Button, Newsletter, SectionsUs } from '../../components/ui';
 
 import { seo } from '../../utils';
 
 import styles from '../../styles/Nosotros.module.css';
-import Image from 'next/image';
 
 const NosotrosPage: NextPage = () => {
    const { title, description, keywords, canonical } = seo['NosotrosPage'];
 
    return (
-      <HomeLayout title={title} pageDescription={description} keywords={keywords} can={canonical}>
+      <MainLayout
+         title={title}
+         pageDescription={description}
+         keywords={keywords}
+         can={canonical}
+         index>
          <section className={styles.us}>
-            <Breadcrumbs />
-
             <div className={styles.intro}>
                <div className={styles.container}>
                   <div className={styles.videoIntro}>
@@ -50,7 +53,7 @@ const NosotrosPage: NextPage = () => {
             </div>
 
             <div className={styles.presentation}>
-               <h2>Nosotros</h2>
+               <h1>Nosotros</h1>
                <p>
                   Viandas Cook nació de la pasión por la comida <strong>saludable</strong> y la
                   necesidad de <strong>simplificar</strong> la vida de las personas. Creamos platos que
@@ -83,7 +86,7 @@ const NosotrosPage: NextPage = () => {
 
             <Newsletter />
          </section>
-      </HomeLayout>
+      </MainLayout>
    );
 };
 

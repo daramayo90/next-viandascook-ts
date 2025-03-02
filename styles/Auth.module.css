@@ -11,8 +11,15 @@
    background-repeat: no-repeat;
    width: 100%;
    max-width: 440px;
-   margin: 5rem auto;
+   margin: 6rem auto;
    text-align: left;
+}
+
+.auth > .container > .title {
+   width: 90%;
+   margin: 0 auto;
+   font-size: 1.2rem;
+   max-width: 480px;
 }
 
 .auth > .container > .text {

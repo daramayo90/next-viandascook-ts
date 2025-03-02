@@ -8,7 +8,7 @@ import { dbProducts } from '../../database';
 import { ICartProduct, IProduct } from '../../interfaces';
 import { ga, meta } from '../../analytics';
 
-import { MainLayout } from '../../components/layouts';
+import { ShopLayout } from '../../components/layouts';
 
 import { News } from '../../components/ui';
 import { Packs, ProductSlides } from '../../components/products';
@@ -33,12 +33,7 @@ const PacksPage: NextPage<Props> = ({ products, packs }) => {
    const lightPacks = packs.filter((pack) => pack.name.includes('light'));
 
    return (
-      <MainLayout
-         title={title}
-         pageDescription={description}
-         keywords={keywords}
-         can={canonical}
-         index>
+      <ShopLayout title={title} pageDescription={description} keywords={keywords} can={canonical}>
          <section className={styles.packs}>
             <News />
             <Packs />
@@ -58,7 +53,7 @@ const PacksPage: NextPage<Props> = ({ products, packs }) => {
             />
             <ProductSlides products={products} />
          </section>
-      </MainLayout>
+      </ShopLayout>
    );
 };
 

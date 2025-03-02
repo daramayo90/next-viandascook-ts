@@ -3,12 +3,12 @@ import Link from 'next/link';
 
 import { discounts } from '../../../utils';
 
-import styles from '../../../styles/loyalty/Loyalty.module.scss';
+import styles from './styles/Loyalty.module.scss';
 
 export const Benefits = () => {
    return (
       <div className={styles.benefits}>
-         <h3 className={styles.title}>Descubrí más beneficios</h3>
+         <h2 className={styles.title}>Descubrí más beneficios</h2>
          <div className={styles.container}>
             {discounts.map(({ name, img }) => (
                <div key={name} className={styles.discount}>

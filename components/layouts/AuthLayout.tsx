@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { FC, ReactNode } from 'react';
-import { AuthNavbar } from '../navbar';
+import { AuthNavbar, Navbar } from '../navbar';
 import { SideMenu, TabMenu } from '../ui';
 
 interface Props {
@@ -33,7 +33,8 @@ export const AuthLayout: FC<Props> = ({ children, title }) => {
          </Head>
 
          <nav>
-            <AuthNavbar pageTitle={title} />
+            {/* <AuthNavbar pageTitle={title} /> */}
+            <Navbar />
          </nav>
 
          <SideMenu />

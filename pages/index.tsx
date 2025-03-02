@@ -3,14 +3,12 @@ import { GetStaticProps, NextPage } from 'next';
 import { Banner, Categories, Intro, HowItWorks, Promos, FeaturedPacks } from '../components/home';
 import { MainLayout } from '../components/layouts';
 import { ProductSlides } from '../components/products';
-import { Button, CommonQuestions, Newsletter, Values } from '../components/ui';
+import { CommonQuestions, Newsletter } from '../components/ui';
 
 import { dbProducts } from '../database';
 import { IProduct } from '../interfaces';
 
 import { seo } from '../utils';
-
-import styles from '../styles/home/Home.module.scss';
 
 interface Props {
    products: IProduct[];
@@ -26,7 +24,7 @@ const HomePage: NextPage<Props> = ({ products }) => {
          keywords={keywords}
          can={canonical}
          index>
-         <section className={styles.home}>
+         <section style={{ width: '100%' }}>
             <Banner />
 
             <Intro />

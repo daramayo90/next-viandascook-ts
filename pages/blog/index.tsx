@@ -1,7 +1,7 @@
 import { GetStaticProps, NextPage } from 'next';
 
 import { getSortedPosts } from '../../lib/posts';
-import { HomeLayout } from '../../components/layouts';
+import { MainLayout } from '../../components/layouts';
 import { Newsletter } from '../../components/ui';
 import { AllPosts, ElementsPng, FeaturedPosts } from '../../components/ui/blog';
 
@@ -19,7 +19,7 @@ const BlogPage: NextPage<Props> = ({ posts }) => {
    const { title, description, canonical } = seo['BlogPage'];
 
    return (
-      <HomeLayout title={title} pageDescription={description} can={canonical}>
+      <MainLayout title={title} pageDescription={description} can={canonical} index>
          <section className={styles.blog}>
             <div className={styles.intro}>
                <div className={styles.banner}>
@@ -50,7 +50,7 @@ const BlogPage: NextPage<Props> = ({ posts }) => {
 
             <Newsletter />
          </section>
-      </HomeLayout>
+      </MainLayout>
    );
 };
 

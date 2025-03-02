@@ -68,6 +68,7 @@
 .howItWorks > .presentation > .subTitle {
    margin: 2rem 0;
    color: var(--primary);
+   font-size: 2rem;
 }
 
 .howItWorks > .steps {
@@ -105,9 +106,11 @@
    text-align: left;
 }
 
-.howItWorks > .steps > .step > .text > h3 {
+.howItWorks > .steps > .step > .text > h2 {
    margin: 0.5rem 0;
    color: var(--primary);
+   text-transform: none;
+   font-size: 1.8rem;
 }
 
 .howItWorks > .btn {
@@ -193,7 +196,7 @@
       margin: 0;
    }
 
-   .howItWorks > .steps > .step > .text > h3 {
+   .howItWorks > .steps > .step > .text > h2 {
       margin: 1rem 0;
    }
 

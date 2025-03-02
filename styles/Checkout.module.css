@@ -18,7 +18,7 @@
    margin: 2rem 0;
    border-radius: 15px;
    background-color: #fff;
-   box-shadow: 0 8px 16px rgb(35 31 32 / 6%);
+   box-shadow: 6px 8px 16px rgb(35 31 32 / 6%);
 }
 
 .checkout > .container > .selection > .deliveryAddress {
@@ -71,6 +71,10 @@
    margin-left: 1rem;
    font-size: 0.9rem;
    font-weight: 500;
+}
+
+.text > .seePromos {
+   font-size: 0.9rem;
 }
 
 .checkout > .container > .selection > .card > .info > .text > .example {
@@ -140,7 +144,7 @@
    padding: 15px;
    border-radius: 15px;
    background-color: #fff;
-   box-shadow: 0 8px 16px rgb(35 31 32 / 6%);
+   box-shadow: 6px 8px 16px rgb(35 31 32 / 6%);
 }
 
 .checkout > .container > .summary > .submit > .paymentMethods > .option {

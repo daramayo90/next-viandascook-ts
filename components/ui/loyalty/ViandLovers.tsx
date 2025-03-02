@@ -1,7 +1,7 @@
 import { cloudImagesPath } from '../../../utils';
 import { Button } from '../Button';
 
-import styles from '../../../styles/loyalty/Loyalty.module.scss';
+import styles from './styles/Loyalty.module.scss';
 import Image from 'next/image';
 
 export const ViandLovers = () => {
@@ -33,7 +33,7 @@ export const ViandLovers = () => {
                />
             </div>
             <div className={styles.info}>
-               <h3 className={styles.title}>Recomendá Viandas Cook a tus amigos</h3>
+               <h2 className={styles.title}>Recomendá Viandas Cook a tus amigos</h2>
                <p className={styles.text}>
                   Compartí tu cupón con tus referidos y acumulá puntos extra para canjear en tus
                   compras por cada amigo que compre por primera vez con tu código.

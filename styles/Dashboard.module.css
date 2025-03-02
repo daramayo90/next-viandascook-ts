@@ -28,7 +28,7 @@
    max-width: 440px;
    margin: 1rem auto;
    border-radius: 25px;
-   box-shadow: 0 8px 16px rgb(35 31 32 / 6%);
+   box-shadow: 6px 8px 16px rgb(35 31 32 / 6%);
 }
 
 .box > .details {

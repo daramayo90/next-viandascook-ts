@@ -11,6 +11,8 @@ const LoginPage: NextPage = () => {
       <AuthLayout title={'Iniciar Sesión'}>
          <section className={styles.auth}>
             <div className={styles.container}>
+               <h1 className={styles.title}>Iniciar Sesión</h1>
+
                <LoginForm />
 
                {/* <span className={styles.textProviders}>Loguearse o Crear Cuenta con:</span> */}

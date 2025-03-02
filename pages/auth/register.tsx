@@ -11,6 +11,8 @@ const RegisterPage: NextPage = () => {
       <AuthLayout title={'Registrarse'}>
          <section className={styles.auth}>
             <div className={styles.container}>
+               <h1 className={styles.title}>Registrarse</h1>
+
                <RegisterForm />
 
                <span className={styles.textProviders}>Registrarse con:</span>

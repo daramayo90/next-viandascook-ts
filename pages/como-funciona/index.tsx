@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
 
-import { HomeLayout } from '../../components/layouts';
+import { MainLayout } from '../../components/layouts';
 import { Breadcrumbs, Button, Newsletter, Steps } from '../../components/ui';
 
 import { seo } from '../../utils';
@@ -12,10 +12,13 @@ const HowItWorksPage: NextPage = () => {
    const { title, description, keywords, canonical } = seo['HowItWorksPage'];
 
    return (
-      <HomeLayout title={title} pageDescription={description} keywords={keywords} can={canonical}>
+      <MainLayout
+         title={title}
+         pageDescription={description}
+         keywords={keywords}
+         can={canonical}
+         index>
          <section className={styles.howItWorks}>
-            <Breadcrumbs />
-
             <div className={styles.intro}>
                <div className={styles.container}>
                   <div className={styles.videoIntro}>
@@ -48,7 +51,7 @@ const HowItWorksPage: NextPage = () => {
             </div>
 
             <div className={styles.presentation}>
-               <h3 className={styles.subTitle}>¿Cómo Funciona?</h3>
+               <h1 className={styles.subTitle}>¿Cómo Funciona?</h1>
                <p>
                   En <strong>Viandas Cook</strong> te ofrecemos comidas prácticas, caseras, ricas y
                   saludables para hacer tu vida más fácil.
@@ -68,7 +71,7 @@ const HowItWorksPage: NextPage = () => {
 
             <Newsletter />
          </section>
-      </HomeLayout>
+      </MainLayout>
    );
 };
 
