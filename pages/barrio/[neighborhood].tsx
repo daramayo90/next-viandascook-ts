@@ -13,8 +13,6 @@ import { CommonQuestions, Newsletter } from '../../components/ui';
 
 import { generateNeighborhoodSeo, neighborhoods, slugToTitleCase } from '../../utils';
 
-import styles from '../../styles/home/Home.module.scss';
-
 interface Props {
    theNeighborhood: string;
    products: IProduct[];
@@ -38,7 +36,7 @@ const NeighborhoodPage: NextPage<Props> = ({ theNeighborhood, products, seo }) =
          keywords={keywords}
          can={canonical}
          index={index}>
-         <section className={styles.home}>
+         <section style={{ width: '100%' }}>
             <BannerNeighborhood neighborhood={theNeighborhood} />
 
             <IntroNeighborhood neighborhood={theNeighborhood} />
