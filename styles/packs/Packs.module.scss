@@ -139,6 +139,7 @@
 
                   .originalPrice {
                      margin: 1rem 0;
+                     font-size: 1.2rem;
                      text-decoration: line-through;
                      color: rgba(89, 83, 83, 0.7);
 
@@ -149,14 +150,16 @@
                   }
 
                   .discountPrice {
-                     color: var(--primary);
+                     font-size: 1.2rem;
                      font-weight: 500;
+                     color: var(--primary);
                   }
 
                   .price {
                      margin: 1rem 0;
-                     color: var(--primary);
+                     font-size: 1.2rem;
                      font-weight: 500;
+                     color: var(--primary);
 
                      @include largeMobile() {
                         margin: 0;
