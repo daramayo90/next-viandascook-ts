@@ -94,6 +94,7 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
       const { user } = ((await getSession()) as any) || '';
 
       const shippingAddress: ShippingAddress = user ? user.shipping : state.shippingAddress;
+      const address = shippingAddress.address;
       const address2 = shippingAddress.address2;
 
       if (!shippingAddress) {
@@ -103,7 +104,14 @@ export const OrdersProvider: FC<Props> = ({ children }) => {
          };
       }
 
-      if (!address2 || address2 === '') {
+      if (!address || address === '' || address === '-') {
+         return {
+            hasError: true,
+            message: 'Indicanos una dirección válida antes de continuar',
+         };
+      }
+
+      if (!address2 || address2 === '' || address2 === '-') {
          return {
             hasError: true,
             message: 'Indicanos el piso, depto o casa antes de continuar',
