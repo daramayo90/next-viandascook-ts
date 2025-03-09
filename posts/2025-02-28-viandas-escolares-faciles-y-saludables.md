@@ -5,8 +5,6 @@ description: '5 ideas de viandas saludables y rápidas para el cole. Con Viandas
 cover: 'https://res.cloudinary.com/viandascook/image/upload/f_auto,q_auto/v1/blog/fxyfuch4jx1so7ubjznp'
 ---
 
-<h1><strong>5 Ideas de viandas para el colegio</strong></h1>
-
 <p>Volver de las vacaciones y pensar, de acá a diciembre, qué viandas darles a tus hijos para el colegio no es tarea fácil. ¿Qué hacer cuando no hay tiempo pero igual querés que coman rico y saludable?</p>
 
 <p>Ahí es donde entran en juego las viandas congeladas: rápidas, nutritivas y con sabor casero. Solo 15 minutos de agua caliente y listo.</p>

@@ -1,9 +1,9 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import Image from 'next/image';
 
-import { getMatterResult } from '../../plugins';
+import { getMatterPostResult, getMatterResult } from '../../plugins';
 import { markdownToHtml } from '../../lib/markdownToHtml';
-import { fileNames, removeMdExtension } from '../../lib/posts';
+import { fileNames, removeDateIndex, removeMdExtension } from '../../lib/posts';
 
 import { IPost } from '../../interfaces';
 
@@ -54,20 +54,21 @@ export default Post;
 
 export const getStaticPaths: GetStaticPaths = async () => {
    const paths = fileNames.map((filename) => {
-      const post = removeMdExtension(filename);
+      const post = removeDateIndex(filename);
+
       return { params: { post } };
    });
 
    return {
       paths,
-      fallback: false,
+      fallback: true,
    };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
    const { post = '' } = params as { post: string };
 
-   const { data, content } = getMatterResult(post, true);
+   const { data, content } = getMatterPostResult(post);
 
    const contentHtml = await markdownToHtml(content);
 

@@ -16,7 +16,7 @@ export const getSortedPosts = (): IPost[] => {
       return { id, date, cover, title, description };
    });
 
-   return posts.sort((a, b) => {
+   const sortedPosts = posts.sort((a, b) => {
       const [dayA, monthA, yearA] = a.date.split('/').map(Number);
       const [dayB, monthB, yearB] = b.date.split('/').map(Number);
 
@@ -25,6 +25,15 @@ export const getSortedPosts = (): IPost[] => {
 
       return dateB - dateA; // Sort descending
    });
+
+   const sortedPostsWithoutDate: IPost[] = sortedPosts.map((post) => {
+      post.id = removeDateIndex(post.id);
+      return post;
+   });
+
+   return sortedPostsWithoutDate;
 };
 
 export const removeMdExtension = (fileName: string) => fileName.replace(/\.md$/, '');
+
+export const removeDateIndex = (fileName: string) => fileName.replace(/^\d{4}-\d{2}-\d{2}-/, '');
