@@ -70,11 +70,11 @@ const ProductCardComponent: FC<Props> = ({ product }) => {
             <div className={styles.info}>
                <Link href={`/plato/${product.slug}`}>
                   <div className={styles.name}>
-                     <h4>
+                     <h3>
                         {product.name.length > 50
                            ? product.name.substring(0, 45) + '...'
                            : product.name}
-                     </h4>
+                     </h3>
                   </div>
                </Link>
 

@@ -19,7 +19,7 @@ export const TypesList: FC<Props> = ({ type, setType, setPage }) => {
 
    return (
       <div className={styles.types}>
-         <h3 className={styles.title}>Filtrar por categorías:</h3>
+         <h2 className={styles.title}>Filtrar tus viandas por categorías:</h2>
 
          <div className={styles.container}>
             {typesList.map(({ icon, name, model }) => (

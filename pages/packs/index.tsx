@@ -36,6 +36,9 @@ const PacksPage: NextPage<Props> = ({ products, packs }) => {
       <ShopLayout title={title} pageDescription={description} keywords={keywords} can={canonical}>
          <section className={styles.packs}>
             <News />
+            <div className={styles.titlePage}>
+               <h1 className={styles.text}>Packs de viandas saludables</h1>
+            </div>
             <Packs />
             <PackCategory
                packs={lightPacks}
@@ -132,7 +135,7 @@ const PackCategory: FC<PackCategoryProps> = ({ src, name, content, packs, revers
 
             <div className={styles.info}>
                <div className={styles.header}>
-                  <h2 className={styles.title}>{`Pack de Viandas ${name}`}</h2>
+                  <h3 className={styles.title}>{`Pack de Viandas ${name}`}</h3>
                   <p className={styles.content}>
                      {`Selección variada de nuestras viandas congeladas ${content}`}
                   </p>

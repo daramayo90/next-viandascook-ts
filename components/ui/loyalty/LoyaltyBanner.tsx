@@ -18,7 +18,7 @@ export const LoyaltyBanner = () => {
             </div>
             <div className={styles.info}>
                <p className={styles.title}>Vc Loyalty</p>
-               <h1 className={styles.subtitle}>Programa de puntos</h1>
+               <h1 className={styles.subtitle}>Programa de puntos de Viandas Cook</h1>
                <p className={styles.text}>
                   Unite a nuestra comunidad de <strong>Viandlovers</strong> y empezá a disfrutar de
                   ahorros desde tu primera compra

@@ -18,7 +18,9 @@ const QuestionsPage: NextPage = () => {
          index>
          <section className={styles.questions}>
             <div className={styles.container}>
-               <h1 className={styles.title}>Resolvé todas tus dudas</h1>
+               <h1 className={styles.title}>
+                  Resolvé todas tus dudas sobre nuestras viandas saludables
+               </h1>
                <Questions />
                <Newsletter />
             </div>

@@ -53,7 +53,7 @@ export const ProductSlides: FC<Props> = ({ products, title }) => {
          ) : (
             <>
                <h2 className={styles.title}>Viandas Destacadas</h2>
-               <h3 className={styles.subTitle}>Conocé nuestros platos saludables más vendidos</h3>
+               <p className={styles.subTitle}>Conocé nuestros platos saludables más vendidos</p>
             </>
          )}
 

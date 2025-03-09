@@ -4,6 +4,15 @@
    background-color: var(--white);
 }
 
+.products > .title {
+   max-width: 1000px;
+   width: 90%;
+   margin: 0 auto;
+   padding-top: 15px;
+   text-align: center;
+   font-size: 2rem;
+}
+
 .products > .shippingAddress {
    display: flex;
    flex-direction: row;
@@ -124,13 +133,13 @@
    box-shadow: 0 0 0 0.2rem rgb(0 123 255 / 25%);
 }
 
-.products > .title {
+/* .products > .title {
    width: 90%;
    margin: 0 auto;
    padding-top: 15px;
    text-align: left;
    font-size: 1.5rem;
-}
+} */
 
 .products .container {
    display: flex;
@@ -156,7 +165,7 @@
       flex-wrap: wrap;
       justify-content: space-evenly;
       max-width: 1100px;
-      margin: 2rem auto 0 auto;
+      margin: 1rem auto 0 auto;
    }
 
    .products > .shippingAddress {

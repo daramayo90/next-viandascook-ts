@@ -31,10 +31,10 @@ export const Footer = () => {
             <div className={styles.columns}>
                <div className={styles.columnList}>
                   <div className={styles.footerBrand}>
-                     <h2 className={styles.title}>
+                     <p className={styles.title}>
                         COMIDAS CASERAS, PRÁCTICAS Y SALUDABLES PARA HACER TU VIDA <br></br>¡MÁS FÁCIL
                         Y RICA!
-                     </h2>
+                     </p>
                      <div className={styles.button}>
                         <Button
                            href={isLoggedIn ? '/mi-cuenta' : '/auth/login'}
@@ -48,7 +48,7 @@ export const Footer = () => {
                </div>
 
                <div className={styles.columnList}>
-                  <h3 className={styles.columnTitle}>Elegí tus viandas</h3>
+                  <h4 className={styles.columnTitle}>Elegí tus viandas</h4>
                   <ul className={styles.list}>
                      <Link href='/menu' prefetch={false}>
                         <li className={styles.linkItem}>Menú</li>
@@ -63,7 +63,7 @@ export const Footer = () => {
                </div>
 
                <div className={styles.columnList}>
-                  <h3 className={styles.columnTitle}>Los favoritos de nuestros clientes</h3>
+                  <h4 className={styles.columnTitle}>Los favoritos de nuestros clientes</h4>
                   <ul className={`${styles.list} ${styles.favoritesList}`}>
                      <Link href='/plato/colita-de-cuadril-con-papas-al-horno' prefetch={false}>
                         <li className={styles.linkItem}>Colita de cuadril con papas</li>
@@ -87,7 +87,7 @@ export const Footer = () => {
                </div>
 
                <div className={styles.columnList}>
-                  <h3 className={styles.columnTitle}>Información</h3>
+                  <h4 className={styles.columnTitle}>Información</h4>
                   <ul className={styles.list}>
                      <Link href='/nosotros' prefetch={false}>
                         <li className={styles.linkItem}>Nosotros</li>
@@ -106,8 +106,10 @@ export const Footer = () => {
                </div>
 
                <div className={styles.columnList}>
-                  <h3 className={styles.columnTitle}>¡Contactanos!</h3>
-                  <span className={styles.mail}>info@viandascook.com</span>
+                  <h4 className={styles.columnTitle}>¡Contactanos!</h4>
+                  <a href='mailto:info@viandascook.com' className={styles.mail}>
+                     info@viandascook.com
+                  </a>
 
                   <div className={styles.socialMedia}>
                      <Link href={'https://instagram.com/viandascook'} passHref prefetch={false}>

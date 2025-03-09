@@ -170,6 +170,8 @@ const ProductsPage: NextPage<Props> = ({ products }) => {
                </>
             )}
 
+            <h1 className={styles.title}>Menú de Viandas Cook</h1>
+
             <article id='menu-products' className={styles.container}>
                {isFilterActive ? (
                   productsToShow.length > 0 ? (

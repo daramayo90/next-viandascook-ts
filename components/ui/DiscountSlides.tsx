@@ -11,7 +11,7 @@ export const DiscountSlides = () => {
    return (
       <div className={styles.offers}>
          <div className={styles.container}>
-            <h3 className={styles.title}>Descuentos especiales</h3>
+            <h2 className={styles.title}>Descuentos especiales</h2>
 
             <Link href='/descuentos'>
                <span>Ver todos</span>

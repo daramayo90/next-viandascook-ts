@@ -5,6 +5,20 @@
    padding-top: 5rem;
    background-color: var(--white);
 
+   .titlePage {
+      background-color: var(--primaryStrong);
+      padding: 2rem 0 1rem;
+      margin: -1px;
+
+      .text {
+         width: 90%;
+         margin: auto;
+         text-align: center;
+         font-weight: 600;
+         color: var(--white);
+      }
+   }
+
    .packCategory {
       width: 100%;
 

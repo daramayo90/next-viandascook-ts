@@ -7,15 +7,20 @@ import styles from './styles/Accordion.module.scss';
 interface Props {
    title: string;
    content: string;
+   questionPage?: boolean;
 }
 
-export const Accordion: FC<Props> = ({ title, content }) => {
+export const Accordion: FC<Props> = ({ title, content, questionPage }) => {
    const [isActive, setIsActive] = useState(false);
 
    return (
       <div className={`fadeIn ${styles.box}`}>
          <div className={styles.container} onClick={() => setIsActive(!isActive)}>
-            <h3 className={styles.question}>{title}</h3>
+            {questionPage ? (
+               <h2 className={styles.question}>{title}</h2>
+            ) : (
+               <h3 className={styles.question}>{title}</h3>
+            )}
             {isActive ? (
                <FaChevronUp className={styles.arrow} />
             ) : (
