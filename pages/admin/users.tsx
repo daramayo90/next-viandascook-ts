@@ -45,69 +45,97 @@ const UsersPage = () => {
       }
    };
 
+   const onPhoneUpdated = async (userId: string, newPhone: string) => {
+      const previosUsers = users.map((user) => ({ ...user }));
+      const updatedUsers = users.map((user) => ({
+         ...user,
+         phone: userId === user._id ? newPhone : user.phone,
+      }));
+
+      setUsers(updatedUsers);
+
+      try {
+         await viandasApi.put('/admin/users', { userId, phone: newPhone });
+      } catch (error) {
+         setUsers(previosUsers);
+         console.log(error);
+         alert('No se pudo actualizar el telefono del usuario');
+      }
+   };
+
    const columns: GridColDef[] = [
-      {
-         field: 'createdAt',
-         headerName: 'Creado el',
-         type: 'date',
-         editable: true,
-         width: 180,
-         valueFormatter: ({ value }: GridValueFormatterParams<Date>) => {
-            if (value == null) {
-               return '';
-            }
+      // {
+      //    field: 'createdAt',
+      //    headerName: 'Creado el',
+      //    type: 'date',
+      //    editable: true,
+      //    width: 180,
+      //    valueFormatter: ({ value }: GridValueFormatterParams<Date>) => {
+      //       if (value == null) {
+      //          return '';
+      //       }
 
-            return new Date(value).toLocaleDateString('es-AR', {
-               timeZone: 'America/Argentina/Buenos_Aires',
-            });
-         },
-      },
-      {
-         field: 'updatedAt',
-         headerName: 'Actualiado el',
-         type: 'date',
-         editable: true,
-         width: 180,
-         valueFormatter: ({ value }: GridValueFormatterParams<Date>) => {
-            if (value == null) {
-               return '';
-            }
+      //       return new Date(value).toLocaleDateString('es-AR', {
+      //          timeZone: 'America/Argentina/Buenos_Aires',
+      //       });
+      //    },
+      // },
+      // {
+      //    field: 'updatedAt',
+      //    headerName: 'Actualiado el',
+      //    type: 'date',
+      //    editable: true,
+      //    width: 180,
+      //    valueFormatter: ({ value }: GridValueFormatterParams<Date>) => {
+      //       if (value == null) {
+      //          return '';
+      //       }
 
-            return new Date(value).toLocaleDateString('es-AR', {
-               timeZone: 'America/Argentina/Buenos_Aires',
-            });
-         },
-      },
+      //       return new Date(value).toLocaleDateString('es-AR', {
+      //          timeZone: 'America/Argentina/Buenos_Aires',
+      //       });
+      //    },
+      // },
       { field: 'name', headerName: 'Nombre Completo', width: 300 },
       { field: 'email', headerName: 'Correo', width: 300 },
-      {
-         field: 'role',
-         headerName: 'Rol',
-         width: 300,
-         renderCell: ({ row }: GridRenderCellParams) => {
-            return (
-               <Select
-                  value={row.role}
-                  label='Rol'
-                  onChange={({ target }) => onRoleUpdated(row.id, target.value)}
-                  sx={{ width: '300px' }}>
-                  <MenuItem value='admin'> Admin </MenuItem>
-                  <MenuItem value='client'> Client </MenuItem>
-                  <MenuItem value='super-user'> Super User </MenuItem>
-                  <MenuItem value='SEO'> SEO </MenuItem>
-               </Select>
-            );
-         },
-      },
+      { field: 'phone', headerName: 'Celular', width: 150 },
+      { field: 'street', headerName: 'Calle', width: 300 },
+      { field: 'appartment', headerName: 'Depto', width: 70 },
+      { field: 'city', headerName: 'Ciudad', width: 120 },
+      { field: 'locality', headerName: 'Localidad', width: 100 },
+      // {
+      //    field: 'role',
+      //    headerName: 'Rol',
+      //    width: 300,
+      //    renderCell: ({ row }: GridRenderCellParams) => {
+      //       return (
+      //          <Select
+      //             value={row.role}
+      //             label='Rol'
+      //             onChange={({ target }) => onRoleUpdated(row.id, target.value)}
+      //             sx={{ width: '300px' }}>
+      //             <MenuItem value='admin'> Admin </MenuItem>
+      //             <MenuItem value='client'> Client </MenuItem>
+      //             <MenuItem value='super-user'> Super User </MenuItem>
+      //             <MenuItem value='SEO'> SEO </MenuItem>
+      //          </Select>
+      //       );
+      //    },
+      // },
    ];
 
    const rows = users.map((user) => ({
       id: user._id,
-      email: user.email,
       name: `${user.name} ${user.lastName}`,
-      role: user.role,
-      createdAt: user.createdAt,
-      updatedAt: user.updatedAt,
+      email: user.email,
+      phone: user.phone,
+      street: user.shipping.address,
+      appartment: user.shipping.address2,
+      city: user.shipping.city,
+      locality: user.shipping.city2,
+      // role: user.role,
+      // createdAt: user.createdAt,
+      // updatedAt: user.updatedAt,
    }));
 
    return (

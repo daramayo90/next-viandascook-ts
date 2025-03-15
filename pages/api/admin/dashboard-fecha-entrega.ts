@@ -27,12 +27,54 @@ export default async function handler(
       productsWithNoInventory,
    ] = await Promise.all([
       Order.aggregate([
-         { $match: { isPaid: true, deliveryDate: { $gte: start, $lte: end } } },
          {
+            $match: {
+               isPaid: true,
+               deliveryDate: { $gte: start, $lte: end },
+            },
+         },
+         {
+            // Add a computed field for each order that sums all individual products sold,
+            // expanding packs to the sum of their inner products.
+            $addFields: {
+               computedSoldProducts: {
+                  $sum: {
+                     $map: {
+                        input: '$orderItems',
+                        as: 'item',
+                        in: {
+                           $cond: {
+                              // If the order item is a pack (has products inside)
+                              if: {
+                                 $gt: [{ $size: { $ifNull: ['$$item.productsInPack', []] } }, 0],
+                              },
+                              then: {
+                                 $multiply: [
+                                    '$$item.quantity',
+                                    {
+                                       $reduce: {
+                                          input: '$$item.productsInPack',
+                                          initialValue: 0,
+                                          in: { $add: ['$$value', '$$this.quantity'] },
+                                       },
+                                    },
+                                 ],
+                              },
+                              // Otherwise, use the order item quantity directly.
+                              else: '$$item.quantity',
+                           },
+                        },
+                     },
+                  },
+               },
+            },
+         },
+         {
+            // Group by payment method, summing the total income and computed sold products.
             $group: {
                _id: '$paymentMethod',
                totalIncome: { $sum: '$total' },
-               numberOfSelledProducts: { $sum: '$numberOfItems' },
+               numberOfSelledProducts: { $sum: '$computedSoldProducts' },
                count: { $sum: 1 },
             },
          },
