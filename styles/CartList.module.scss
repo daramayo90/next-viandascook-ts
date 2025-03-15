@@ -89,7 +89,7 @@
 
                   .cartQuantity {
                      position: absolute;
-                     left: 110px;
+                     left: 90px;
                      bottom: 0;
                   }
 
@@ -159,13 +159,19 @@
    }
 }
 
+@media (min-width: 375px) {
+   .cartList .container .product .details .info .price .cartQuantity {
+      left: 120px;
+   }
+}
+
 @media (min-width: 720px) {
    .cartList .container .product {
       .details {
          .info {
             .price {
                .cartQuantity {
-                  left: 140px;
+                  left: 170px;
                }
 
                .quantity {

@@ -27,12 +27,12 @@ const getBestSellers = async (req: NextApiRequest, res: NextApiResponse<BestSell
 
    try {
       const startOfYear = new Date('2024-01-01T00:00:00.000Z');
-      const endOfYear = new Date('2024-12-31T23:59:59.999Z');
+      const endOfYear = new Date('2025-03-14T23:59:59.999Z');
 
       // Aggregate order items by product and count total sold quantity
       const bestSellers = await Order.aggregate([
          {
-            $match: { createdAt: { $gte: startOfYear, $lte: endOfYear }, isCancel: false },
+            $match: { deliveryDate: { $gte: startOfYear, $lte: endOfYear }, isCancel: false },
          },
          { $unwind: '$orderItems' },
          {

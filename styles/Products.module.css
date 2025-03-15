@@ -10,7 +10,7 @@
    margin: 0 auto;
    padding-top: 15px;
    text-align: center;
-   font-size: 2rem;
+   font-size: 1.2rem;
 }
 
 .products > .shippingAddress {
@@ -158,6 +158,10 @@
 @media (min-width: 720px) {
    .products {
       margin: 0 auto;
+   }
+
+   .products > .title {
+      font-size: 1.8rem;
    }
 
    .products .container {

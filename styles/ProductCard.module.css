@@ -113,7 +113,7 @@
 .product > .addToCart {
    position: absolute;
    right: 1.7rem;
-   bottom: 1.18rem;
+   bottom: 0.5rem;
 }
 
 .product > .addToCart > .selectQuantity,
@@ -216,6 +216,6 @@
    .product > .addToCart {
       position: absolute;
       right: 1.7rem;
-      bottom: 1.18rem;
+      bottom: 1.4rem;
    }
 }
